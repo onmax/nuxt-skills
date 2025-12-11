@@ -15,44 +15,30 @@ Vue, Nuxt, and NuxtHub skills for AI coding assistants.
 ### Claude Code
 
 ```bash
-/plugin marketplace add maxidev/nuxt-skills
+/plugin marketplace add onmax/nuxt-skills
 /plugin install vue@nuxt-skills
 /plugin install nuxt@nuxt-skills
 /plugin install nuxthub@nuxt-skills
 ```
 
-Or install all:
-```bash
-/plugin marketplace add maxidev/nuxt-skills
-# Then use /plugin menu to install
-```
-
 ### OpenCode
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/maxidev/nuxt-skills/main/install.sh | bash -s -- opencode
+curl -fsSL https://raw.githubusercontent.com/onmax/nuxt-skills/main/scripts/opencode.sh | bash
 ```
 
-Or specific skill:
+Specific skill:
 ```bash
-curl -fsSL https://raw.githubusercontent.com/maxidev/nuxt-skills/main/install.sh | bash -s -- opencode vue
+curl -fsSL https://raw.githubusercontent.com/onmax/nuxt-skills/main/scripts/opencode.sh | bash -s -- vue
 ```
 
-### Manual
+### Manual (Claude Code)
 
-Clone and run:
 ```bash
-git clone https://github.com/maxidev/nuxt-skills.git
-cd nuxt-skills
-
-# Claude Code
-./install.sh claude              # All skills
-./install.sh claude vue          # Specific skill
-./install.sh claude --project    # Project-local install
-
-# OpenCode
-./install.sh opencode            # All agents
-./install.sh opencode nuxt       # Specific agent
+git clone https://github.com/onmax/nuxt-skills.git
+cp -r nuxt-skills/skills/vue ~/.claude/skills/
+cp -r nuxt-skills/skills/nuxt ~/.claude/skills/
+cp -r nuxt-skills/skills/nuxthub ~/.claude/skills/
 ```
 
 ## Structure
@@ -63,19 +49,10 @@ nuxt-skills/
 │   ├── vue/
 │   ├── nuxt/
 │   └── nuxthub/
-├── dist/
-│   └── opencode/          # Pre-generated OpenCode agents
-├── adapters/
-│   └── opencode.sh        # Converter script
+├── scripts/
+│   └── opencode.sh        # OpenCode installer
 └── .claude-plugin/
     └── marketplace.json   # Claude Code marketplace
-```
-
-## Regenerating OpenCode Agents
-
-After editing skills:
-```bash
-./adapters/opencode.sh
 ```
 
 ## License
