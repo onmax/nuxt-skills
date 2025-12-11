@@ -8,6 +8,7 @@ Vue, Nuxt, and NuxtHub skills for AI coding assistants.
 |-------|-------------|
 | **vue** | Vue 3 Composition API, components, composables, testing |
 | **nuxt** | Nuxt 4+ server routes, routing, middleware, config |
+| **nuxt-modules** | Creating Nuxt modules with defineNuxtModule, Kit utilities, testing |
 | **nuxthub** | NuxtHub v0.10 database, KV, blob, cache, multi-cloud |
 
 ## Installation
@@ -18,6 +19,7 @@ Vue, Nuxt, and NuxtHub skills for AI coding assistants.
 /plugin marketplace add onmax/nuxt-skills
 /plugin install vue@nuxt-skills
 /plugin install nuxt@nuxt-skills
+/plugin install nuxt-modules@nuxt-skills
 /plugin install nuxthub@nuxt-skills
 ```
 
@@ -40,6 +42,7 @@ Re-run to update.
 git clone https://github.com/onmax/nuxt-skills.git
 cp -r nuxt-skills/skills/vue ~/.claude/skills/
 cp -r nuxt-skills/skills/nuxt ~/.claude/skills/
+cp -r nuxt-skills/skills/nuxt-modules ~/.claude/skills/
 cp -r nuxt-skills/skills/nuxthub ~/.claude/skills/
 ```
 
@@ -50,6 +53,7 @@ nuxt-skills/
 ├── skills/                 # Source (Claude Code format)
 │   ├── vue/
 │   ├── nuxt/
+│   ├── nuxt-modules/
 │   └── nuxthub/
 ├── scripts/
 │   └── opencode.sh        # OpenCode installer
