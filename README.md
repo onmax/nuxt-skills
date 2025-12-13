@@ -1,5 +1,7 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/onmax/nuxt-skills/main/.github/nuxt-adan.jpg" alt="Nuxt Skills" width="100%">
+  <img src="https://raw.githubusercontent.com/onmax/nuxt-skills/main/.github/nuxt-skills.webp" alt="Nuxt Skills" width="100%">
+  <br>
+  <sub>Design inspired by <a href="https://github.com/HugoRCD">HugoRCD</a>'s work</sub>
 </p>
 
 <p align="center">Vue, Nuxt, and NuxtHub skills for AI coding assistants.</p>
