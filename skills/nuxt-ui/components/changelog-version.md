@@ -19,7 +19,6 @@ A customizable article to display in a changelog.
 - `orientation?: UserProps['orientation']`{lang="ts-type"}
 
 You can pass any property from the [Link](/docs/components/link#props) component such as `to`, `target`, etc.
-
 - `indicator`: to hide the indicator dot on the left.
 
 ## Usage

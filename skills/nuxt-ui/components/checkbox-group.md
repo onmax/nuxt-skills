@@ -8,22 +8,23 @@ A set of checklist buttons to select multiple option from a list.
 
 - `items`: as an array of strings or numbers:
 
-## ::component-code
-
+::component-code
+---
 prettier: true
 ignore:
-
-- modelValue
-- items
-  external:
-- items
-- modelValue
-  props:
-  modelValue: - 'System'
-  items: - 'System' - 'Light' - 'Dark'
-
+  - modelValue
+  - items
+external:
+  - items
+  - modelValue
+props:
+  modelValue:
+    - 'System'
+  items:
+    - 'System'
+    - 'Light'
+    - 'Dark'
 ---
-
 ::
 
 You can also pass an array of objects with the following properties:
@@ -35,21 +36,22 @@ You can also pass an array of objects with the following properties:
 - `class?: any`{lang="ts-type"}
 - `ui?: { item?: ClassNameValue, container?: ClassNameValue, base?: ClassNameValue, 'indicator'?: ClassNameValue, icon?: ClassNameValue, wrapper?: ClassNameValue, label?: ClassNameValue, description?: ClassNameValue }`{lang="ts-type"}
 
-## ::component-code
-
+::component-code
+---
 ignore:
-
-- modelValue
-- items
-  external:
-- items
-- modelValue
-  externalTypes:
-- CheckboxGroupItem[]
-  props:
-  modelValue: - 'system'
-  items: - label: 'System'
-  description: 'This is the first option.
+  - modelValue
+  - items
+external:
+  - items
+  - modelValue
+externalTypes:
+  - CheckboxGroupItem[]
+props:
+  modelValue:
+    - 'system'
+  items:
+    - label: 'System'
+      description: 'This is the first option.
 - `legend`: to set the legend of the CheckboxGroup.
 - `color`: to change the color of the CheckboxGroup.
 - `variant`: to change the variant of the CheckboxGroup.

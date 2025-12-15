@@ -16,7 +16,6 @@ A responsive section for your pages.
 - `orientation?: 'horizontal' | 'vertical'`{lang="ts-type"}
 
 You can pass any property from the [Link](/docs/components/link#props) component such as `to`, `target`, etc.
-
 - `links`: to display a list of [Button](/docs/components/button) under the description.
 - `orientation`: to change the orientation with the default slot.
 - `reverse`: to reverse the orientation of the default slot.

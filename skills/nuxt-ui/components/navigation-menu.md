@@ -26,13 +26,12 @@ A list of links that can be displayed horizontally or vertically.
 - `ui?: { linkLeadingAvatarSize?: ClassNameValue, linkLeadingAvatar?: ClassNameValue, linkLeadingIcon?: ClassNameValue, linkLabel?: ClassNameValue, linkLabelExternalIcon?: ClassNameValue, linkTrailing?: ClassNameValue, linkTrailingBadgeSize?: ClassNameValue, linkTrailingBadge?: ClassNameValue, linkTrailingIcon?: ClassNameValue, label?: ClassNameValue, link?: ClassNameValue, content?: ClassNameValue, childList?: ClassNameValue, childLabel?: ClassNameValue, childItem?: ClassNameValue, childLink?: ClassNameValue, childLinkIcon?: ClassNameValue, childLinkWrapper?: ClassNameValue, childLinkLabel?: ClassNameValue, childLinkLabelExternalIcon?: ClassNameValue, childLinkDescription?: ClassNameValue }`{lang="ts-type"}
 
 You can pass any property from the [Link](/docs/components/link#props) component such as `to`, `target`, etc.
-
 - `orientation`: to change the orientation of the NavigationMenu.
 - `highlight`: to display a highlighted border for the active item.
 - `color`: to change the color of the NavigationMenu.
 - `variant`: to change the variant of the NavigationMenu.
 - `arrow`: to display an arrow on the NavigationMenu content when items have children.
-- `slot`:
+- `slot`: 
 
 ## Usage
 

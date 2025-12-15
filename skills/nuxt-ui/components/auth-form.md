@@ -10,7 +10,6 @@ A customizable Form to create login, register or password reset forms.
 - `type: 'checkbox' | 'select' | 'otp' | 'InputHTMLAttributes['type']'`{lang="ts-type"}
 
 Each field must include a `type` property, which determines the input component and any additional props applied: `checkbox` fields use [Checkbox](/docs/components/checkbox#props) props, `select` fields use [SelectMenu](/docs/components/select-menu#props) props, `otp` fields use [PinInput](/docs/components/pin-input#props) props, and all other types use [Input](/docs/components/input#props) props.
-
 - `title`: to set the title of the Form.
 - `description`: to set the description of the Form.
 - `icon`: to set the icon of the Form.

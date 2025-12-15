@@ -18,7 +18,6 @@ A command palette with full-text search powered by Fuse.js for efficient fuzzy m
 
 ::caution
 You must provide an `id` for each group otherwise the group will be ignored.
-
 - `multiple`: to allow multiple selections.
 - `placeholder`: to change the placeholder text.
 - `icon`: to customize the input [Icon](/docs/components/icon).
@@ -27,7 +26,7 @@ You must provide an `id` for each group otherwise the group will be ignored.
 - `back`: to customize or hide the back button (with `false` value) displayed when navigating into a submenu.
 - `disabled`: to disable the CommandPalette.
 - `virtualize`: to enable virtualization for large lists as a boolean or an object with options like `{ estimateSize: 32, overscan: 12 }`.
-- `slot`:
+- `slot`: 
 
 ## Usage
 

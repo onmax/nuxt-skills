@@ -8,22 +8,23 @@ An autocomplete input with real-time suggestions.
 
 - `items`: as an array of strings, numbers or booleans:
 
-## ::component-code
-
+::component-code
+---
 prettier: true
 ignore:
-
-- modelValue
-- items
-  external:
-- items
-- modelValue
-  props:
+  - modelValue
+  - items
+external:
+  - items
+  - modelValue
+props:
   modelValue: 'Backlog'
-  items: - Backlog - Todo - In Progress - Done
-
+  items:
+    - Backlog
+    - Todo
+    - In Progress
+    - Done
 ---
-
 ::
 
 You can also pass an array of objects with the following properties:
@@ -38,11 +39,10 @@ You can also pass an array of objects with the following properties:
 - `class?: any`{lang="ts-type"}
 - `ui?: { tagsItem?: ClassNameValue, tagsItemText?: ClassNameValue, tagsItemDelete?: ClassNameValue, tagsItemDeleteIcon?: ClassNameValue, label?: ClassNameValue, separator?: ClassNameValue, item?: ClassNameValue, itemLeadingIcon?: ClassNameValue, itemLeadingAvatarSize?: ClassNameValue, itemLeadingAvatar?: ClassNameValue, itemLeadingChip?: ClassNameValue, itemLeadingChipSize?: ClassNameValue, itemLabel?: ClassNameValue, itemTrailing?: ClassNameValue, itemTrailingIcon?: ClassNameValue }`{lang="ts-type"}
 
-## ::component-code
-
+::component-code
+---
 ignore:
-
-- modelValue.
+  - modelValue.
 - `multiple`: to allow multiple selections, the selected items will be displayed as tags.
 - `placeholder`: to set a placeholder text.
 - `content`: to control how the InputMenu content is rendered, like its `align` or `side` for example.

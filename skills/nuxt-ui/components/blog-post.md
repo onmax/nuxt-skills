@@ -19,7 +19,6 @@ A customizable article to display in a blog page.
 - `orientation?: UserProps['orientation']`{lang="ts-type"}
 
 You can pass any property from the [Link](/docs/components/link#props) component such as `to`, `target`, etc.
-
 - `variant`: to change the style of the BlogPost.
 - `orientation`: to change the BlogPost orientation.
 

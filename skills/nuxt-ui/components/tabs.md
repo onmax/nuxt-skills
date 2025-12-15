@@ -19,25 +19,25 @@ A set of tab panels that are displayed one at a time.
 - `class?: any`{lang="ts-type"}
 - `ui?: { trigger?: ClassNameValue, leadingIcon?: ClassNameValue, leadingAvatar?: ClassNameValue, leadingAvatarSize?: ClassNameValue, label?: ClassNameValue, trailingBadge?: ClassNameValue, trailingBadgeSize?: ClassNameValue, content?: ClassNameValue }`{lang="ts-type"}
 
-## ::component-code
-
+::component-code
+---
 ignore:
-
-- items
-- class
-  external:
-- items
-  externalTypes:
-- TabsItem[]
-  props:
-  items: - label: Account
-  icon: 'i-lucide-user'
-  content: 'This is the account content.
+  - items
+  - class
+external:
+  - items
+externalTypes:
+  - TabsItem[]
+props:
+  items:
+    - label: Account
+      icon: 'i-lucide-user'
+      content: 'This is the account content.
 - `color`: to change the color of the Tabs.
 - `variant`: to change the variant of the Tabs.
 - `size`: to change the size of the Tabs.
 - `orientation`: to change the orientation of the Tabs.
-- `slot`:
+- `slot`: 
 
 ## Usage
 

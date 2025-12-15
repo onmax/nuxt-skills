@@ -6,14 +6,12 @@ A component to display any icon from Iconify or another component.
 
 - `name`: to display an icon:
 
-## ::component-code
-
-props:
-name: 'i-lucide-lightbulb'
-class: 'size-5'
-
+::component-code
 ---
-
+props:
+  name: 'i-lucide-lightbulb'
+  class: 'size-5'
+---
 ::
 
 ::framework-only
