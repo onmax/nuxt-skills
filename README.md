@@ -19,6 +19,7 @@
 | **nuxt** | Nuxt 4+ server routes, routing, middleware, config |
 | **nuxt-modules** | Creating Nuxt modules with defineNuxtModule, Kit utilities, testing |
 | **nuxthub** | NuxtHub v0.10 database, KV, blob, cache, multi-cloud |
+| **nuxt-content** | Nuxt Content v3 collections, queries, MDC rendering, NuxtStudio |
 
 ## Installation
 
@@ -30,6 +31,7 @@
 /plugin install nuxt@nuxt-skills
 /plugin install nuxt-modules@nuxt-skills
 /plugin install nuxthub@nuxt-skills
+/plugin install nuxt-content@nuxt-skills
 ```
 
 ### OpenCode
@@ -68,6 +70,7 @@ cp -r nuxt-skills/skills/vue ~/.claude/skills/
 cp -r nuxt-skills/skills/nuxt ~/.claude/skills/
 cp -r nuxt-skills/skills/nuxt-modules ~/.claude/skills/
 cp -r nuxt-skills/skills/nuxthub ~/.claude/skills/
+cp -r nuxt-skills/skills/nuxt-content ~/.claude/skills/
 ```
 
 ## Structure
@@ -78,7 +81,8 @@ nuxt-skills/
 │   ├── vue/
 │   ├── nuxt/
 │   ├── nuxt-modules/
-│   └── nuxthub/
+│   ├── nuxthub/
+│   └── nuxt-content/
 ├── scripts/
 │   └── opencode.sh        # OpenCode installer
 └── .claude-plugin/
