@@ -8,22 +8,22 @@ A set of radio buttons to select a single option from a list.
 
 - `items`: as an array of strings or numbers:
 
-::component-code
----
+## ::component-code
+
 prettier: true
 ignore:
-  - modelValue
-  - items
-external:
-  - items
-  - modelValue
-props:
+
+- modelValue
+- items
+  external:
+- items
+- modelValue
+  props:
   modelValue: 'System'
-  items:
-    - 'System'
-    - 'Light'
-    - 'Dark'
+  items: - 'System' - 'Light' - 'Dark'
+
 ---
+
 ::
 
 You can also pass an array of objects with the following properties:
@@ -35,21 +35,21 @@ You can also pass an array of objects with the following properties:
 - `class?: any`{lang="ts-type"}
 - `ui?: { item?: ClassNameValue, container?: ClassNameValue, base?: ClassNameValue, 'indicator'?: ClassNameValue, wrapper?: ClassNameValue, label?: ClassNameValue, description?: ClassNameValue }`{lang="ts-type"}
 
-::component-code
----
+## ::component-code
+
 ignore:
-  - modelValue
-  - items
-external:
-  - items
-  - modelValue
-externalTypes:
-  - RadioGroupItem[]
-props:
+
+- modelValue
+- items
+  external:
+- items
+- modelValue
+  externalTypes:
+- RadioGroupItem[]
+  props:
   modelValue: 'system'
-  items:
-    - label: 'System'
-      description: 'This is the first option.
+  items: - label: 'System'
+  description: 'This is the first option.
 - `legend`: to set the legend of the RadioGroup.
 - `color`: to change the color of the RadioGroup.
 - `variant`: to change the variant of the RadioGroup.

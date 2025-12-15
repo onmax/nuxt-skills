@@ -11,17 +11,18 @@ A customizable pricing plan to display in a pricing page.
 - `discount`: to set a discounted price that will be displayed alongside the original price (which will be shown with a strikethrough).
 - `features`: as an array of string to display a list of features on the PricingPlan:
 
-::component-code
----
+## ::component-code
+
 prettier: true
 hide:
-  - class
-ignore:
-  - title
-  - description
-  - price
-  - features
-props:
+
+- class
+  ignore:
+- title
+- description
+- price
+- features
+  props:
   title: 'Solo'
   description: 'For bootstrappers and indie hackers.
 - `button`: with any property from the [Button](/docs/components/button) component to display a button at the bottom of the PricingPlan.

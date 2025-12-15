@@ -18,24 +18,24 @@ A stacked set of collapsible panels.
 - `class?: any`{lang="ts-type"}
 - `ui?: { item?: ClassNameValue, header?: ClassNameValue, trigger?: ClassNameValue, leadingIcon?: ClassNameValue, label?: ClassNameValue, trailingIcon?: ClassNameValue, content?: ClassNameValue, body?: ClassNameValue }`{lang="ts-type"}
 
-::component-code
----
+## ::component-code
+
 ignore:
-  - items
-external:
-  - items
-externalTypes:
-  - AccordionItem[]
-hide:
-  - class
-props:
+
+- items
+  external:
+- items
+  externalTypes:
+- AccordionItem[]
+  hide:
+- class
+  props:
   class: 'px-4'
-  items:
-    - label: 'Icons'
-      icon: 'i-lucide-smile'
-      content: 'You have nothing to do, @nuxt/icon will handle it automatically.
-- `disabled`: 
-- `slot`: 
+  items: - label: 'Icons'
+  icon: 'i-lucide-smile'
+  content: 'You have nothing to do, @nuxt/icon will handle it automatically.
+- `disabled`:
+- `slot`:
 
 ## Usage
 

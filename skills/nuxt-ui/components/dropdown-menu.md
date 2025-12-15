@@ -24,12 +24,13 @@ A menu to display actions when clicking on an element.
 - `ui?: { item?: ClassNameValue, label?: ClassNameValue, separator?: ClassNameValue, itemLeadingIcon?: ClassNameValue, itemLeadingAvatarSize?: ClassNameValue, itemLeadingAvatar?: ClassNameValue, itemLabel?: ClassNameValue, itemLabelExternalIcon?: ClassNameValue, itemTrailing?: ClassNameValue, itemTrailingIcon?: ClassNameValue, itemTrailingKbds?: ClassNameValue, itemTrailingKbdsSize?: ClassNameValue }`{lang="ts-type"}
 
 You can pass any property from the [Link](/docs/components/link#props) component such as `to`, `target`, etc.
+
 - `content`: to control how the DropdownMenu content is rendered, like its `align` or `side` for example.
 - `arrow`: to display an arrow on the DropdownMenu.
 - `size`: to control the size of the DropdownMenu.
 - `modal`: to control whether the DropdownMenu blocks interaction with outside content.
 - `disabled`: to disable the DropdownMenu.
-- `slot`: 
+- `slot`:
 
 ## Usage
 

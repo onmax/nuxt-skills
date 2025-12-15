@@ -18,36 +18,37 @@ A set of steps that are used to indicate progress through a multi-step process.
 - `class?: any`{lang="ts-type"}
 - `ui?: { item?: ClassNameValue, container?: ClassNameValue, trigger?: ClassNameValue, indicator?: ClassNameValue, icon?: ClassNameValue, separator?: ClassNameValue, wrapper?: ClassNameValue, title?: ClassNameValue, description?: ClassNameValue }`{lang="ts-type"}
 
-::component-code
----
+## ::component-code
+
 ignore:
-  - items
-  - class
-external:
-  - items
-externalTypes:
-  - StepperItem[]
-props:
-  items:
-    - title: 'Address'
-      description: 'Add your address here'
-      icon: 'i-lucide-house'
-    - title: 'Shipping'
-      description: 'Set your preferred shipping method'
-      icon: 'i-lucide-truck'
-    - title: 'Checkout'
-      description: 'Confirm your order'
+
+- items
+- class
+  external:
+- items
+  externalTypes:
+- StepperItem[]
+  props:
+  items: - title: 'Address'
+  description: 'Add your address here'
+  icon: 'i-lucide-house' - title: 'Shipping'
+  description: 'Set your preferred shipping method'
+  icon: 'i-lucide-truck' - title: 'Checkout'
+  description: 'Confirm your order'
   class: 'w-full'
+
 ---
+
 ::
 
 ::note
 Click on the items to navigate through the steps.
+
 - `color`: to change the color of the Stepper.
 - `size`: to change the size of the Stepper.
 - `orientation`: to change the orientation of the Stepper.
 - `disabled`: to disable navigation through the steps.
-- `slot`: 
+- `slot`:
 
 ## Usage
 

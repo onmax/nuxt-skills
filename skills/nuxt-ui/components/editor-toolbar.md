@@ -24,6 +24,7 @@ A customizable toolbar for editor actions that can be displayed as fixed, bubble
 - `class?: any`{lang="ts-type"}
 
 You can pass any property from the [Button](/docs/components/button#props) component such as `color`, `variant`, `size`, etc.
+
 - `layout`: to change how the toolbar is displayed.
 
 ## Usage
