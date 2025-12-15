@@ -7,6 +7,6 @@
     { "name": "nuxt", "source": "./skills/nuxt", "description": "Nuxt 4+ server routes, file-based routing, middleware, and configuration", "version": "1.0.0", "keywords": ["nuxt", "nuxt4", "nitro", "ssr"] },
     { "name": "nuxt-modules", "source": "./skills/nuxt-modules", "description": "Creating Nuxt modules with defineNuxtModule, Kit utilities, testing, and publishing", "version": "1.0.0", "keywords": ["nuxt-modules", "nuxt-kit", "defineNuxtModule"] },
     { "name": "nuxthub", "source": "./skills/nuxthub", "description": "NuxtHub v0.10 database, KV, blob, cache with multi-cloud deployment", "version": "1.0.0", "keywords": ["nuxthub", "cloudflare", "d1", "drizzle", "vercel"] },
-    { "name": "nuxt-content", "source": "./skills/nuxt-content", "description": "Nuxt Content v3 collections, queries, MDC rendering, and database configuration", "version": "1.0.0", "keywords": ["nuxt-content", "mdc", "markdown", "collections", "queryCollection"] }
+    { "name": "nuxt-content", "source": "./skills/nuxt-content", "description": "Nuxt Content v3 collections (local/remote/API), queryCollection API, MDC rendering, database configuration, hooks, i18n, and LLMs integration", "version": "1.0.0", "keywords": ["nuxt-content", "mdc", "markdown", "collections", "queryCollection", "github", "remote-sources", "i18n"] }
   ]
 }

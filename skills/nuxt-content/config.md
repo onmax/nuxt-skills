@@ -275,6 +275,57 @@ TURSO_AUTH_TOKEN=your-token
 GITHUB_TOKEN=ghp_xxxx
 ```
 
+## Content Hooks
+
+Modify content during build:
+
+```ts
+// nuxt.config.ts
+export default defineNuxtConfig({
+  hooks: {
+    'content:file:beforeParse'(ctx) {
+      // Modify raw content before parsing
+      if (ctx.file.id.endsWith('.md')) {
+        ctx.file.body = ctx.file.body.replace(/oldTerm/gi, 'newTerm')
+      }
+    },
+    'content:file:afterParse'(ctx) {
+      // Add computed fields after parsing
+      const wordCount = ctx.file.body?.split(/\s+/).length || 0
+      ctx.content.readingTime = Math.ceil(wordCount / 180)
+    },
+  },
+})
+```
+
+**Note:** Fields added in `afterParse` must be defined in your collection schema:
+```ts
+schema: z.object({ readingTime: z.number().optional() })
+```
+
+## LLMs Integration
+
+Generate AI-ready content with `nuxt-llms`:
+
+```ts
+export default defineNuxtConfig({
+  modules: ['@nuxt/content', 'nuxt-llms'],
+  llms: {
+    domain: 'https://your-site.com',
+    title: 'Your Site',
+    sections: [
+      {
+        title: 'Docs',
+        contentCollection: 'docs',
+        contentFilters: [{ field: 'draft', operator: '<>', value: true }],
+      },
+    ],
+  },
+})
+```
+
+Auto-generates `/llms.txt` for LLM consumption.
+
 ## Best Practices
 
 | Do | Don't |

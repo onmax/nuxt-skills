@@ -90,25 +90,70 @@ source: {
 }
 ```
 
-## Remote Sources
+## Remote Sources (GitHub)
+
+Pull content from external repositories:
 
 ```ts
-import { defineCollection, defineCollectionSource } from '@nuxt/content'
-
-const githubSource = defineCollectionSource({
-  repository: 'nuxt/nuxt',
-  branch: 'main',
-  prefix: '/docs',
-  include: '**/*.md',
-  // For private repos
-  auth: process.env.GITHUB_TOKEN,
-})
-
 export default defineContentConfig({
   collections: {
     nuxtDocs: defineCollection({
       type: 'page',
-      source: githubSource,
+      source: {
+        repository: 'https://github.com/nuxt/content',
+        include: 'docs/content/**',
+        prefix: '/docs',
+      },
+    }),
+  },
+})
+```
+
+**Private repositories:**
+```ts
+source: {
+  repository: 'https://github.com/org/private-repo',
+  include: 'docs/**/*.md',
+  authToken: process.env.GITHUB_TOKEN, // GitHub PAT
+}
+```
+
+**Bitbucket with basic auth:**
+```ts
+source: {
+  repository: 'https://bitbucket.org/org/repo',
+  include: '**/*.md',
+  authBasic: { username: 'user', password: process.env.BITBUCKET_PASSWORD },
+}
+```
+
+## Custom API Sources
+
+Fetch content from any API using `defineCollectionSource`:
+
+```ts
+import { defineCollectionSource, defineCollection, defineContentConfig, z } from '@nuxt/content'
+
+const apiSource = defineCollectionSource({
+  getKeys: async () => {
+    const items = await fetch('https://api.example.com/posts').then(r => r.json())
+    return items.map((item: { id: string }) => `${item.id}.json`)
+  },
+  getItem: async (key: string) => {
+    const id = key.replace('.json', '')
+    return fetch(`https://api.example.com/posts/${id}`).then(r => r.json())
+  },
+})
+
+export default defineContentConfig({
+  collections: {
+    posts: defineCollection({
+      type: 'data',
+      source: apiSource,
+      schema: z.object({
+        title: z.string(),
+        content: z.string(),
+      }),
     }),
   },
 })
@@ -186,6 +231,36 @@ docs: defineCollection({
     section: z.string().optional(),
   }),
 })
+```
+
+**Raw content access:**
+```ts
+// Magic field - include rawbody to access original content
+docs: defineCollection({
+  type: 'page',
+  source: '**/*.md',
+  schema: z.object({
+    rawbody: z.string(), // Auto-filled with raw markdown
+  }),
+})
+// Exclude per-file: add `rawbody: ''` in frontmatter
+```
+
+**i18n with per-locale collections:**
+```ts
+// content.config.ts - separate collection per language
+const commonSchema = z.object({ title: z.string() })
+
+export default defineContentConfig({
+  collections: {
+    content_en: defineCollection({ type: 'page', source: { include: 'en/**', prefix: '' }, schema: commonSchema }),
+    content_fr: defineCollection({ type: 'page', source: { include: 'fr/**', prefix: '' }, schema: commonSchema }),
+  },
+})
+
+// pages/[...slug].vue
+const collection = ('content_' + locale.value) as keyof Collections
+const page = await queryCollection(collection).path(slug).first()
 ```
 
 ## Resources

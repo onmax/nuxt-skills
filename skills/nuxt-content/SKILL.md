@@ -1,6 +1,6 @@
 ---
 name: nuxt-content
-description: Use when working with Nuxt Content v3 - provides collections, queryCollection API, MDC rendering, database configuration, and NuxtStudio integration
+description: Use when working with Nuxt Content v3 - provides collections (local/remote/API sources), queryCollection API, MDC rendering, database configuration, NuxtStudio integration, hooks, i18n patterns, and LLMs integration
 ---
 
 # Nuxt Content v3
@@ -11,10 +11,14 @@ Progressive guidance for content-driven Nuxt apps with typed collections and SQL
 
 Working with:
 - Content collections (`content.config.ts`, `defineCollection`)
+- Remote sources (GitHub repos, external APIs via `defineCollectionSource`)
 - Content queries (`queryCollection`, navigation, search)
 - MDC rendering (`<ContentRenderer>`, prose components)
 - Database configuration (SQLite, PostgreSQL, D1, LibSQL)
+- Content hooks (`content:file:beforeParse`, `content:file:afterParse`)
+- i18n multi-language content
 - NuxtStudio or preview mode
+- LLMs integration (`nuxt-llms`)
 
 ## Available Guidance
 
@@ -60,6 +64,7 @@ cat ~/.claude/skills/nuxt-content/studio.md
 |---------|---------|
 | Collections | Typed content groups with schemas |
 | Page vs Data | `page` = routes + body, `data` = structured data only |
+| Remote sources | `source.repository` for GitHub, `defineCollectionSource` for APIs |
 | queryCollection | SQL-like fluent API for content |
 | MDC | Vue components inside markdown |
 | ContentRenderer | Renders parsed markdown body |
