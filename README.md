@@ -20,6 +20,7 @@
 | **nuxt-modules** | Creating Nuxt modules with defineNuxtModule, Kit utilities, testing |
 | **nuxthub** | NuxtHub v0.10 database, KV, blob, cache, multi-cloud |
 | **nuxt-content** | Nuxt Content v3 collections, queries, MDC rendering, NuxtStudio |
+| **nuxt-ui** | Nuxt UI v4 components, theming, forms, overlays, composables |
 
 ## Installation
 
@@ -32,6 +33,7 @@
 /plugin install nuxt-modules@nuxt-skills
 /plugin install nuxthub@nuxt-skills
 /plugin install nuxt-content@nuxt-skills
+/plugin install nuxt-ui@nuxt-skills
 ```
 
 ### OpenCode
@@ -71,6 +73,7 @@ cp -r nuxt-skills/skills/nuxt ~/.claude/skills/
 cp -r nuxt-skills/skills/nuxt-modules ~/.claude/skills/
 cp -r nuxt-skills/skills/nuxthub ~/.claude/skills/
 cp -r nuxt-skills/skills/nuxt-content ~/.claude/skills/
+cp -r nuxt-skills/skills/nuxt-ui ~/.claude/skills/
 ```
 
 ## Structure
@@ -82,7 +85,8 @@ nuxt-skills/
 │   ├── nuxt/
 │   ├── nuxt-modules/
 │   ├── nuxthub/
-│   └── nuxt-content/
+│   ├── nuxt-content/
+│   └── nuxt-ui/
 ├── scripts/
 │   └── opencode.sh        # OpenCode installer
 └── .claude-plugin/
