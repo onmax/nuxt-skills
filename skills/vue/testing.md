@@ -161,16 +161,20 @@ global.fetch = vi.fn(() =>
 
 ## Best Practices
 
-✅ Test behavior (what user sees/does), not implementation
-✅ Arrange-Act-Assert structure
-✅ One assertion per test
-✅ Descriptive test names
-✅ Mock external dependencies
+**Do:**
 
-❌ Don't test Vue internals (reactivity)
-❌ Don't test third-party libraries
-❌ Don't test trivial getters/setters
-❌ Don't test implementation details
+- Test behavior (what user sees/does), not implementation
+- Arrange-Act-Assert structure
+- One assertion per test
+- Descriptive test names
+- Mock external dependencies
+
+**Don't:**
+
+- Test Vue internals (reactivity)
+- Test third-party libraries
+- Test trivial getters/setters
+- Test implementation details
 
 ## What to Test
 

@@ -55,6 +55,8 @@ cat ~/.claude/skills/nuxt-ui/overlays.md
 cat ~/.claude/skills/nuxt-ui/composables.md
 ```
 
+**DO NOT read all files at once.** Load based on context.
+
 ## Key Concepts
 
 | Concept           | Description                                                |

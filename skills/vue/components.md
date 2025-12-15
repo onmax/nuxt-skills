@@ -135,7 +135,7 @@ const age = defineModel<number>('age')
 <UserForm v-model:first-name="user.firstName" v-model:age="user.age" />
 ```
 
-[v-model modifiers docs](https://vuejs.org/guide/components/v-model.md#handling-v-model-modifiers)
+[v-model modifiers docs](https://vuejs.org/guide/components/v-model#handling-v-model-modifiers)
 
 ## Reusable Templates
 

@@ -50,11 +50,13 @@ export function useCounter(initialValue = 0) {
 
 ## Best Practices
 
-✅ Return object with named properties (destructuring-friendly)
-✅ Accept options object for configuration
-✅ Use `readonly()` for state that shouldn't mutate
-✅ Handle cleanup (`onUnmounted`, `onScopeDispose`)
-✅ Add JSDoc for complex functions
+**Do:**
+
+- Return object with named properties (destructuring-friendly)
+- Accept options object for configuration
+- Use `readonly()` for state that shouldn't mutate
+- Handle cleanup (`onUnmounted`, `onScopeDispose`)
+- Add JSDoc for complex functions
 
 ## Lifecycle
 

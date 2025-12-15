@@ -106,12 +106,8 @@ Use in components:
 
 ```vue
 <script setup lang="ts">
-  const
-  {' '}
-  { $hello }
-  {' '}
-  = useNuxtApp()
-  console.log($hello('World')) // "Hello World!"
+const { $hello } = useNuxtApp()
+console.log($hello('World')) // "Hello World!"
 </script>
 ```
 
