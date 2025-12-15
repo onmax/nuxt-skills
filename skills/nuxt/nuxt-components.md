@@ -6,11 +6,11 @@ Working with images, links, or time display in templates. **Always prefer Nuxt c
 
 ## Component Preferences
 
-| HTML Element | Nuxt Component | Why |
-|-------------|----------------|-----|
-| `<a>` | `<NuxtLink>` | Client-side navigation, prefetching |
-| `<img>` | `<NuxtImg>` | Optimization, lazy loading, responsive |
-| `<time>` | `<NuxtTime>` | SSR-safe formatting, localization |
+| HTML Element | Nuxt Component | Why                                    |
+| ------------ | -------------- | -------------------------------------- |
+| `<a>`        | `<NuxtLink>`   | Client-side navigation, prefetching    |
+| `<img>`      | `<NuxtImg>`    | Optimization, lazy loading, responsive |
+| `<time>`     | `<NuxtTime>`   | SSR-safe formatting, localization      |
 
 ## NuxtLink
 
@@ -36,6 +36,7 @@ Working with images, links, or time display in templates. **Always prefer Nuxt c
 ```
 
 **Props:**
+
 - `to` - Route path or route object
 - `external` - Force external link behavior
 - `target` - Link target (`_blank`, etc.)
@@ -84,6 +85,7 @@ Requires `@nuxt/image` module (usually pre-installed).
 ```
 
 **Props:**
+
 - `src` - Image source path
 - `alt` - Alt text (required for accessibility)
 - `width` / `height` - Dimensions
@@ -125,6 +127,7 @@ Requires `@nuxt/image` module (usually pre-installed).
 ```
 
 **Props:**
+
 - `datetime` - Date string, Date object, or timestamp
 - `relative` - Show relative time ("2 hours ago")
 - `locale` - Locale for formatting
@@ -134,13 +137,13 @@ Requires `@nuxt/image` module (usually pre-installed).
 
 ## Common Mistakes
 
-| ❌ Wrong | ✅ Right |
-|---------|---------|
-| `<a href="/about">` | `<NuxtLink to="/about">` |
-| `<img src="/photo.jpg">` | `<NuxtImg src="/photo.jpg" alt="...">` |
-| `<time>{{ formatDate(date) }}</time>` | `<NuxtTime :datetime="date" />` |
-| `formatTimeAgo(date)` in template | `<NuxtTime :datetime="date" relative />` |
-| `new Date().toLocaleDateString()` | `<NuxtTime :datetime="date" />` |
+| ❌ Wrong                              | ✅ Right                                 |
+| ------------------------------------- | ---------------------------------------- |
+| `<a href="/about">`                   | `<NuxtLink to="/about">`                 |
+| `<img src="/photo.jpg">`              | `<NuxtImg src="/photo.jpg" alt="...">`   |
+| `<time>{{ formatDate(date) }}</time>` | `<NuxtTime :datetime="date" />`          |
+| `formatTimeAgo(date)` in template     | `<NuxtTime :datetime="date" relative />` |
+| `new Date().toLocaleDateString()`     | `<NuxtTime :datetime="date" />`          |
 
 ## Best Practices
 

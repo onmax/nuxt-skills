@@ -4,13 +4,13 @@ Patterns for Vue 3 components using Composition API with `<script setup>`.
 
 ## Quick Reference
 
-| Pattern | Syntax |
-|---------|--------|
-| Props (destructured) | `const { name = 'default' } = defineProps<{ name?: string }>()` |
-| Props (template-only) | `defineProps<{ name: string }>()` |
-| Emits | `const emit = defineEmits<{ click: [id: number] }>()` |
-| Two-way binding | `const model = defineModel<string>()` |
-| Slots shorthand | `<template #header>` not `<template v-slot:header>` |
+| Pattern               | Syntax                                                          |
+| --------------------- | --------------------------------------------------------------- |
+| Props (destructured)  | `const { name = 'default' } = defineProps<{ name?: string }>()` |
+| Props (template-only) | `defineProps<{ name: string }>()`                               |
+| Emits                 | `const emit = defineEmits<{ click: [id: number] }>()`           |
+| Two-way binding       | `const model = defineModel<string>()`                           |
+| Slots shorthand       | `<template #header>` not `<template v-slot:header>`             |
 
 ## Naming
 
@@ -57,8 +57,8 @@ Type-safe event definitions:
 
 ```ts
 const emit = defineEmits<{
-  update: [id: number, value: string]  // multiple args
-  close: []                             // no args
+  update: [id: number, value: string] // multiple args
+  close: [] // no args
 }>()
 
 // Usage
@@ -168,13 +168,15 @@ const [DefineItem, UseItem] = createReusableTemplate<{
 ## Common Mistakes
 
 **Using `const props =` with destructured values:**
+
 ```ts
 // ❌ Wrong
 const props = defineProps<{ count: number }>()
-const { count } = props  // Loses reactivity
+const { count } = props // Loses reactivity
 ```
 
 **Forgetting TypeScript types:**
+
 ```ts
 // ❌ Wrong
 const emit = defineEmits(['update'])

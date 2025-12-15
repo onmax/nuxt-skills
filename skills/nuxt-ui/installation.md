@@ -16,8 +16,8 @@ export default defineNuxtConfig({
 
 ```css
 /* assets/css/main.css */
-@import "tailwindcss";
-@import "@nuxt/ui";
+@import 'tailwindcss';
+@import '@nuxt/ui';
 ```
 
 **Critical**: Wrap app in UApp for Toast, Tooltip, and overlays to work:
@@ -34,6 +34,7 @@ export default defineNuxtConfig({
 ### pnpm Gotcha
 
 If using pnpm, either:
+
 1. Add `shamefully-hoist=true` to `.npmrc`, OR
 2. Install tailwindcss explicitly: `pnpm add tailwindcss`
 
@@ -44,10 +45,10 @@ pnpm add @nuxt/ui
 ```
 
 ```ts
+import ui from '@nuxt/ui/vite'
+import vue from '@vitejs/plugin-vue'
 // vite.config.ts
 import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import ui from '@nuxt/ui/vite'
 
 export default defineConfig({
   plugins: [vue(), ui()]
@@ -55,9 +56,9 @@ export default defineConfig({
 ```
 
 ```ts
+import ui from '@nuxt/ui/vue-plugin'
 // main.ts
 import { createApp } from 'vue'
-import ui from '@nuxt/ui/vue-plugin'
 import App from './App.vue'
 import './assets/main.css'
 
@@ -68,8 +69,8 @@ app.mount('#app')
 
 ```css
 /* assets/main.css */
-@import "tailwindcss";
-@import "@nuxt/ui";
+@import 'tailwindcss';
+@import '@nuxt/ui';
 ```
 
 **Critical**: Add `isolate` class to root for overlay stacking:
@@ -101,22 +102,22 @@ components.d.ts
 export default defineNuxtConfig({
   modules: ['@nuxt/ui'],
   ui: {
-    prefix: 'U',                    // Component prefix (default 'U')
-    fonts: true,                    // Enable @nuxt/fonts
-    colorMode: true,                // Enable @nuxtjs/color-mode
+    prefix: 'U', // Component prefix (default 'U')
+    fonts: true, // Enable @nuxt/fonts
+    colorMode: true, // Enable @nuxtjs/color-mode
     theme: {
       colors: ['primary', 'secondary', 'success', 'info', 'warning', 'error', 'neutral'],
-      transitions: true,            // transition-colors on components
+      transitions: true, // transition-colors on components
       defaultVariants: {
         color: 'primary',
         size: 'md'
       },
-      prefix: ''                    // Tailwind CSS prefix (v4.2+)
+      prefix: '' // Tailwind CSS prefix (v4.2+)
     },
-    mdc: false,                     // Force Prose components
-    content: false,                 // Force UContent* components
+    mdc: false, // Force Prose components
+    content: false, // Force UContent* components
     experimental: {
-      componentDetection: false     // Tree-shake unused components
+      componentDetection: false // Tree-shake unused components
     }
   }
 })
@@ -129,7 +130,7 @@ export default defineNuxtConfig({
 ui({
   prefix: 'U',
   colorMode: true,
-  inertia: true,                    // Inertia.js support
+  inertia: true, // Inertia.js support
   theme: {
     colors: ['primary', 'secondary', 'success', 'info', 'warning', 'error', 'neutral'],
     transitions: true,
@@ -137,7 +138,7 @@ ui({
     prefix: ''
   },
   ui: {
-    colors: { primary: 'green' },   // Runtime color config
+    colors: { primary: 'green' }, // Runtime color config
     button: { /* theme overrides */ }
   }
 })
@@ -146,25 +147,26 @@ ui({
 ## Auto-installed Modules
 
 Nuxt UI automatically installs:
+
 - `@nuxt/icon` - Icon system
 - `@nuxt/fonts` - Web fonts (if `fonts: true`)
 - `@nuxtjs/color-mode` - Dark mode (if `colorMode: true`)
 
 ## Common Issues
 
-| Issue | Solution |
-|-------|----------|
+| Issue                     | Solution                                           |
+| ------------------------- | -------------------------------------------------- |
 | Tailwind not found (pnpm) | Add `shamefully-hoist=true` or install tailwindcss |
-| Overlays not showing | Wrap app in `<UApp>` |
-| Vue overlays broken | Add `isolate` class to root element |
-| Icons not loading | Check @nuxt/icon is installed |
-| Dark mode not working | Ensure `colorMode: true` in config |
+| Overlays not showing      | Wrap app in `<UApp>`                               |
+| Vue overlays broken       | Add `isolate` class to root element                |
+| Icons not loading         | Check @nuxt/icon is installed                      |
+| Dark mode not working     | Ensure `colorMode: true` in config                 |
 
 ## Best Practices
 
-| Do | Don't |
-|----|-------|
-| Wrap in UApp first | Forget UApp wrapper |
-| Use semantic colors | Hardcode color values |
-| Import CSS correctly | Skip @nuxt/ui import |
-| Check pnpm hoisting | Ignore tailwindcss errors |
+| Do                   | Don't                     |
+| -------------------- | ------------------------- |
+| Wrap in UApp first   | Forget UApp wrapper       |
+| Use semantic colors  | Hardcode color values     |
+| Import CSS correctly | Skip @nuxt/ui import      |
+| Check pnpm hoisting  | Ignore tailwindcss errors |

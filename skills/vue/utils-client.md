@@ -4,22 +4,24 @@ Pure functions for formatting, validation, transformation, and parsing.
 
 ## Quick Reference
 
-| Category | Examples |
-|----------|----------|
-| Formatters | `formatCurrency`, `formatDate`, `formatBytes` |
-| Validators | `isValidEmail`, `isValidUrl`, `isValidPhone` |
-| Transformers | `slugify`, `truncate`, `capitalize` |
-| Parsers | `parseQuery`, `parseJSON`, `parseDate` |
+| Category     | Examples                                      |
+| ------------ | --------------------------------------------- |
+| Formatters   | `formatCurrency`, `formatDate`, `formatBytes` |
+| Validators   | `isValidEmail`, `isValidUrl`, `isValidPhone`  |
+| Transformers | `slugify`, `truncate`, `capitalize`           |
+| Parsers      | `parseQuery`, `parseJSON`, `parseDate`        |
 
 ## Rules
 
 **Pure functions:**
+
 - Same input → same output
 - No side effects
 - No external state mutation
 - No API calls, no refs, no reactive
 
 **When NOT to use utils:**
+
 - Stateful logic → use composables
 - Vue-specific → use composables
 - Component logic → keep in component
@@ -51,6 +53,7 @@ export function formatRelativeTime(date: Date): string {
 ## Examples by Category
 
 **Formatters:**
+
 ```ts
 // utils/formatters.ts
 export function formatBytes(bytes: number): string { ... }
@@ -58,10 +61,11 @@ export function formatPhone(phone: string): string { ... }
 ```
 
 **Validators:**
+
 ```ts
 // utils/validators.ts
 export function isValidEmail(email: string): boolean {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+  return /^[^\s@]+@[^\s@][^\s.@]*\.[^\s@]+$/.test(email)
 }
 
 export function isValidUrl(url: string): boolean {
@@ -71,6 +75,7 @@ export function isValidUrl(url: string): boolean {
 ```
 
 **Transformers:**
+
 ```ts
 // utils/transformers.ts
 export function slugify(text: string): string {
@@ -80,11 +85,12 @@ export function slugify(text: string): string {
 }
 
 export function truncate(text: string, length: number): string {
-  return text.length > length ? text.slice(0, length) + '...' : text
+  return text.length > length ? `${text.slice(0, length)}...` : text
 }
 ```
 
 **Parsers:**
+
 ```ts
 // utils/parsers.ts
 export function parseQuery(search: string): Record<string, string> {
@@ -100,6 +106,7 @@ export function parseJSON<T>(json: string, fallback: T): T {
 ## Common Mistakes
 
 **Side effects (not pure):**
+
 ```ts
 // ❌ Wrong - mutates external state
 let count = 0
@@ -115,6 +122,7 @@ export function add(a: number, b: number): number {
 ```
 
 **Using utils for stateful logic:**
+
 ```ts
 // ❌ Wrong - should be composable
 export function useCounter() { ... }
@@ -126,6 +134,7 @@ export function formatCount(count: number): string { ... }
 ## Organization
 
 **Flat for small projects:**
+
 ```
 utils/
 ├── formatters.ts
@@ -134,6 +143,7 @@ utils/
 ```
 
 **Nested for large projects:**
+
 ```
 utils/
 ├── formatters/

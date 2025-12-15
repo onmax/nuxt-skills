@@ -4,13 +4,13 @@ Test patterns for Vue 3 components, composables, and utilities.
 
 ## Quick Reference
 
-| Test Type | Pattern |
-|-----------|---------|
-| Component | `mount(Component, { props, slots })` |
-| User interaction | `await wrapper.trigger('click')` |
-| Emitted events | `wrapper.emitted('update')` |
-| Composable | Call directly, test return values |
-| Utils | Pure function testing (easiest) |
+| Test Type        | Pattern                              |
+| ---------------- | ------------------------------------ |
+| Component        | `mount(Component, { props, slots })` |
+| User interaction | `await wrapper.trigger('click')`     |
+| Emitted events   | `wrapper.emitted('update')`          |
+| Composable       | Call directly, test return values    |
+| Utils            | Pure function testing (easiest)      |
 
 ## Stack
 
@@ -22,6 +22,7 @@ Test patterns for Vue 3 components, composables, and utilities.
 ## File Location
 
 Colocate tests with code:
+
 ```
 Button.vue → Button.spec.ts
 useAuth.ts → useAuth.spec.ts
@@ -136,6 +137,7 @@ describe('slugify', () => {
 ## Mocking
 
 **Composables:**
+
 ```ts
 import { vi } from 'vitest'
 
@@ -148,6 +150,7 @@ vi.mock('./useAuth', () => ({
 ```
 
 **API calls:**
+
 ```ts
 global.fetch = vi.fn(() =>
   Promise.resolve({
@@ -172,12 +175,14 @@ global.fetch = vi.fn(() =>
 ## What to Test
 
 **Test:**
+
 - User interactions (clicks, inputs)
 - Conditional rendering
 - Props validation, emitted events
 - Computed values, business logic
 
 **Skip:**
+
 - Vue internals, third-party libs
 - Trivial getters/setters
 - Implementation details

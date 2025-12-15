@@ -24,6 +24,7 @@ server/
 ## API Routes
 
 File naming determines HTTP method and route:
+
 - `users.get.ts` → GET /api/users
 - `users.post.ts` → POST /api/users
 - `users/[userId].get.ts` → GET /api/users/:userId
@@ -34,6 +35,7 @@ File naming determines HTTP method and route:
 ## Red Flags - Stop and Check Skill
 
 If you're thinking any of these, STOP and re-read this skill:
+
 - "I'll use event.context.params like before"
 - "Generic [id] is fine for params"
 - "Don't need .get.ts suffix"
@@ -164,7 +166,7 @@ Reusable server functions (auto-imported):
 // server/utils/db.ts
 import { db } from './database'
 
-export async function fetchUsers(options: { page: number; limit: number }) {
+export async function fetchUsers(options: { page: number, limit: number }) {
   return await db.select().from('users').limit(options.limit).offset((options.page - 1) * options.limit)
 }
 
@@ -241,13 +243,13 @@ return sendNoContent(event)
 
 ## Common Mistakes
 
-| ❌ Wrong | ✅ Right |
-|---------|---------|
+| ❌ Wrong                  | ✅ Right                      |
+| ------------------------- | ----------------------------- |
 | `event.context.params.id` | `getRouterParam(event, 'id')` |
-| `return res.json(data)` | `return data` |
-| `[id].get.ts` | `[userId].get.ts` |
-| `users-id.get.ts` | `users/[id].get.ts` |
-| Throw generic errors | Use createError with status |
+| `return res.json(data)`   | `return data`                 |
+| `[id].get.ts`             | `[userId].get.ts`             |
+| `users-id.get.ts`         | `users/[id].get.ts`           |
+| Throw generic errors      | Use createError with status   |
 
 ## Resources
 

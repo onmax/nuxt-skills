@@ -21,6 +21,7 @@ const post = await queryCollection('blog')
 ```
 
 **With custom wrapper:**
+
 ```vue
 <ContentRenderer :value="post">
   <template #default="{ body }">
@@ -37,14 +38,17 @@ Use Vue components inside markdown:
 
 ```md
 <!-- Inline component -->
+
 :icon{name="heroicons:star"}
 
 <!-- Block component -->
+
 ::callout{type="warning"}
 This is a warning message.
 ::
 
 <!-- With slots -->
+
 ::card
 #title
 Card Title
@@ -54,14 +58,15 @@ Card content goes here.
 ::
 
 <!-- Nested components -->
-::grid{cols="2"}
-  ::card
-  First card
-  ::
 
-  ::card
-  Second card
-  ::
+::grid{cols="2"}
+::card
+First card
+::
+
+::card
+Second card
+::
 ::
 ```
 
@@ -69,20 +74,26 @@ Card content goes here.
 
 ```md
 <!-- String props -->
+
 :badge{label="New"}
 
 <!-- Boolean props -->
+
 ::collapse{open}
 Content
 ::
 
 <!-- Object/array props (YAML) -->
-::chart
----
+
+## ::chart
+
 data:
-  - value: 10
-  - value: 20
+
+- value: 10
+- value: 20
+
 ---
+
 ::
 ```
 
@@ -102,19 +113,20 @@ components/
 
 Override default HTML elements with custom components:
 
-| Element | Component | Markdown |
-|---------|-----------|----------|
-| `<p>` | `ProseP` | Paragraphs |
-| `<h1>`-`<h6>` | `ProseH1`-`ProseH6` | `#` headings |
-| `<a>` | `ProseA` | `[link](url)` |
-| `<code>` | `ProseCode` | `` `code` `` |
-| `<pre>` | `ProsePre` | Code blocks |
-| `<ul>`, `<ol>` | `ProseUl`, `ProseOl` | Lists |
-| `<img>` | `ProseImg` | `![alt](src)` |
-| `<table>` | `ProseTable` | Tables |
-| `<blockquote>` | `ProseBlockquote` | `>` quotes |
+| Element        | Component            | Markdown      |
+| -------------- | -------------------- | ------------- |
+| `<p>`          | `ProseP`             | Paragraphs    |
+| `<h1>`-`<h6>`  | `ProseH1`-`ProseH6`  | `#` headings  |
+| `<a>`          | `ProseA`             | `[link](url)` |
+| `<code>`       | `ProseCode`          | `` `code` ``  |
+| `<pre>`        | `ProsePre`           | Code blocks   |
+| `<ul>`, `<ol>` | `ProseUl`, `ProseOl` | Lists         |
+| `<img>`        | `ProseImg`           | `![alt](src)` |
+| `<table>`      | `ProseTable`         | Tables        |
+| `<blockquote>` | `ProseBlockquote`    | `>` quotes    |
 
 **Custom prose component:**
+
 ```vue
 <!-- components/content/ProseH2.vue -->
 <template>
@@ -156,6 +168,7 @@ export default defineNuxtConfig({
 ```
 
 **In markdown:**
+
 ````md
 ```ts
 const foo = 'bar'
@@ -169,6 +182,7 @@ const foo = 'bar'
 ````
 
 **Line highlighting:**
+
 ````md
 ```ts {2,4-6}
 const a = 1
@@ -181,6 +195,7 @@ const f = 6  // highlighted
 ````
 
 **Filename display:**
+
 ````md
 ```ts [nuxt.config.ts]
 export default defineNuxtConfig({})
@@ -190,6 +205,7 @@ export default defineNuxtConfig({})
 ## Custom Components Example
 
 **Alert component:**
+
 ```vue
 <!-- components/content/Alert.vue -->
 <template>
@@ -206,6 +222,7 @@ withDefaults(defineProps<{ type?: 'info' | 'warning' | 'error' }>(), {
 ```
 
 Usage in markdown:
+
 ```md
 ::alert{type="warning"}
 Be careful with this operation.
@@ -235,12 +252,12 @@ const toc = post?.body?.toc?.links || []
 
 ## Best Practices
 
-| Do | Don't |
-|----|-------|
-| Use MDC for reusable content patterns | Embed raw HTML in markdown |
-| Create semantic prose components | Override prose without purpose |
-| Use Shiki themes matching your design | Mix multiple highlight libraries |
-| Leverage slots for flexible components | Hardcode all component content |
+| Do                                     | Don't                            |
+| -------------------------------------- | -------------------------------- |
+| Use MDC for reusable content patterns  | Embed raw HTML in markdown       |
+| Create semantic prose components       | Override prose without purpose   |
+| Use Shiki themes matching your design  | Mix multiple highlight libraries |
+| Leverage slots for flexible components | Hardcode all component content   |
 
 ## Resources
 

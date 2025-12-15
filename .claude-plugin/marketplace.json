@@ -8,6 +8,7 @@
     { "name": "nuxt-modules", "source": "./skills/nuxt-modules", "description": "Creating Nuxt modules with defineNuxtModule, Kit utilities, testing, and publishing", "version": "1.0.0", "keywords": ["nuxt-modules", "nuxt-kit", "defineNuxtModule"] },
     { "name": "nuxthub", "source": "./skills/nuxthub", "description": "NuxtHub v0.10 database, KV, blob, cache with multi-cloud deployment", "version": "1.0.0", "keywords": ["nuxthub", "cloudflare", "d1", "drizzle", "vercel"] },
     { "name": "nuxt-content", "source": "./skills/nuxt-content", "description": "Nuxt Content v3 collections (local/remote/API), queryCollection API, MDC rendering, database configuration, hooks, i18n, and LLMs integration", "version": "1.0.0", "keywords": ["nuxt-content", "mdc", "markdown", "collections", "queryCollection", "github", "remote-sources", "i18n"] },
-    { "name": "nuxt-ui", "source": "./skills/nuxt-ui", "description": "Nuxt UI v4 components, theming, forms, overlays, and composables for Vue/Nuxt apps", "version": "1.0.0", "keywords": ["nuxt-ui", "@nuxt/ui", "tailwind-variants", "reka-ui", "components", "forms", "theming"] }
+    { "name": "nuxt-ui", "source": "./skills/nuxt-ui", "description": "Nuxt UI v4 components, theming, forms, overlays, and composables for Vue/Nuxt apps", "version": "1.0.0", "keywords": ["nuxt-ui", "@nuxt/ui", "tailwind-variants", "reka-ui", "components", "forms", "theming"] },
+    { "name": "reka-ui", "source": "./skills/reka-ui", "description": "Reka UI headless Vue components - accessible primitives with props, emits, slots. Formerly Radix Vue.", "version": "1.0.0", "keywords": ["reka-ui", "radix-vue", "headless", "accessible", "wai-aria", "primitives", "vue"] }
   ]
 }

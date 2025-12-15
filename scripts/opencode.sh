@@ -96,6 +96,14 @@ EOF
         fi
       done
       ;;
+    reka-ui)
+      for f in components; do
+        if curl -fsSL "$BASE_URL/skills/$skill/$f.md" -o "$tmp_dir/$f.md" 2>/dev/null; then
+          echo -e "\n---\n" >> "$output_file"
+          cat "$tmp_dir/$f.md" >> "$output_file"
+        fi
+      done
+      ;;
   esac
 
   rm -rf "$tmp_dir"
@@ -106,10 +114,10 @@ EOF
 if [ -n "$1" ]; then
   fetch_and_convert "$1"
 else
-  for skill in vue nuxt nuxt-modules nuxthub nuxt-content nuxt-ui; do
+  for skill in vue nuxt nuxt-modules nuxthub nuxt-content nuxt-ui reka-ui; do
     fetch_and_convert "$skill"
   done
 fi
 
 echo -e "\n${GREEN}Done!${NC} Agents installed to $TARGET_DIR"
-echo "Invoke with /vue, /nuxt, /nuxt-modules, /nuxthub, /nuxt-content, /nuxt-ui or Tab to switch agents"
+echo "Invoke with /vue, /nuxt, /nuxt-modules, /nuxthub, /nuxt-content, /nuxt-ui, /reka-ui or Tab to switch agents"

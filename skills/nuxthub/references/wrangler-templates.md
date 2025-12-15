@@ -45,12 +45,12 @@
 
 ## Required Binding Names
 
-| Feature | Binding Name | Type |
-|---------|-------------|------|
-| Database | `DB` | D1 |
-| Key-Value | `KV` | KV Namespace |
-| Cache | `CACHE` | KV Namespace |
-| Blob Storage | `BLOB` | R2 Bucket |
+| Feature      | Binding Name | Type         |
+| ------------ | ------------ | ------------ |
+| Database     | `DB`         | D1           |
+| Key-Value    | `KV`         | KV Namespace |
+| Cache        | `CACHE`      | KV Namespace |
+| Blob Storage | `BLOB`       | R2 Bucket    |
 
 ## Creating Resources via CLI
 

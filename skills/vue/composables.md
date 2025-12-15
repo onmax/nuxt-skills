@@ -12,19 +12,19 @@ Reusable functions encapsulating stateful logic using Composition API.
 
 ## Quick Reference
 
-| Pattern | Example |
-|---------|---------|
-| Naming | `useAuth`, `useCounter`, `useDebounce` |
-| State | `const count = ref(0)` |
-| Computed | `const double = computed(() => count.value * 2)` |
+| Pattern   | Example                                          |
+| --------- | ------------------------------------------------ |
+| Naming    | `useAuth`, `useCounter`, `useDebounce`           |
+| State     | `const count = ref(0)`                           |
+| Computed  | `const double = computed(() => count.value * 2)` |
 | Lifecycle | `onMounted(() => ...)`, `onUnmounted(() => ...)` |
-| Return | `return { count, increment }` |
+| Return    | `return { count, increment }`                    |
 
 ## Structure
 
 ```ts
 // composables/useCounter.ts
-import { ref, readonly } from 'vue'
+import { readonly, ref } from 'vue'
 
 export function useCounter(initialValue = 0) {
   const count = ref(initialValue)
@@ -34,7 +34,7 @@ export function useCounter(initialValue = 0) {
   function reset() { count.value = initialValue }
 
   return {
-    count: readonly(count),  // readonly if shouldn't be mutated
+    count: readonly(count), // readonly if shouldn't be mutated
     increment,
     decrement,
     reset,
@@ -80,9 +80,11 @@ export function useAsyncData<T>(fetcher: () => Promise<T>) {
     error.value = null
     try {
       data.value = await fetcher()
-    } catch (e) {
+    }
+    catch (e) {
       error.value = e as Error
-    } finally {
+    }
+    finally {
       loading.value = false
     }
   }
@@ -99,6 +101,7 @@ export function useAsyncData<T>(fetcher: () => Promise<T>) {
 **Check VueUse FIRST** - most patterns already implemented: [vueuse.org/functions.html](https://vueuse.org/functions.html)
 
 **Available categories:**
+
 - DOM: `useEventListener`, `useIntersectionObserver`
 - State: `useLocalStorage`, `useSessionStorage`
 - Sensors: `useMouse`, `useScroll`, `useNetwork`
@@ -140,8 +143,10 @@ export function useSearch() {
         query: { q: newQuery },
         signal: abortController.signal,
       })
-    } catch (e) {
-      if (e.name !== 'AbortError') throw e
+    }
+    catch (e) {
+      if (e.name !== 'AbortError')
+        throw e
     }
   })
 }
@@ -155,8 +160,10 @@ export function useSendFlow() {
   const amount = ref('')
 
   const next = () => {
-    if (step.value === 'input') step.value = 'confirm'
-    else if (step.value === 'confirm') step.value = 'success'
+    if (step.value === 'input')
+      step.value = 'confirm'
+    else if (step.value === 'confirm')
+      step.value = 'success'
   }
 
   return { step, amount, next }
@@ -184,7 +191,8 @@ export function useAutoSave(content: Ref<string>) {
   const hasChanges = ref(false)
 
   const save = useDebounceFn(async () => {
-    if (!hasChanges.value) return
+    if (!hasChanges.value)
+      return
     await $fetch('/api/save', { method: 'POST', body: { content: content.value } })
     hasChanges.value = false
   }, 1000)
@@ -215,6 +223,7 @@ export function useSearch() {
 ## Common Mistakes
 
 **Not using `readonly()` for internal state:**
+
 ```ts
 // ❌ Wrong - exposes mutable ref
 return { count }
@@ -224,6 +233,7 @@ return { count: readonly(count) }
 ```
 
 **Missing cleanup:**
+
 ```ts
 // ❌ Wrong - listener never removed
 onMounted(() => target.addEventListener('click', handler))

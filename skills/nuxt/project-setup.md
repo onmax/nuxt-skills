@@ -16,15 +16,16 @@ jobs:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
-        with: { node-version: 22, cache: pnpm }
+        with: {node-version: 22, cache: pnpm}
       - run: pnpm install --frozen-lockfile
       - run: pnpm prepare
       - run: pnpm lint
       - run: pnpm typecheck
-      - run: pnpm test  # if tests exist
+      - run: pnpm test # if tests exist
 ```
 
 **With env vars:**
+
 ```yaml
 env:
   DATABASE_URL: postgresql://test:test@localhost:5432/test
@@ -49,6 +50,7 @@ export default withNuxt(
 ```
 
 **For monorepos, add:**
+
 ```js
 ignores: ['apps/web/.nuxt/**', 'packages/**/dist/**']
 ```
@@ -71,14 +73,14 @@ ignores: ['apps/web/.nuxt/**', 'packages/**/dist/**']
 
 ## Key Conventions
 
-| Convention | Standard |
-|------------|----------|
-| Package manager | pnpm with `--frozen-lockfile` in CI |
-| Node version | 22-24 |
-| ESLint base | @antfu/eslint-config |
-| Formatter | Via ESLint (`formatters: true`), no separate Prettier |
-| Cache | `--cache` flag on lint scripts |
-| Prepare step | Required before lint/typecheck in CI |
+| Convention      | Standard                                              |
+| --------------- | ----------------------------------------------------- |
+| Package manager | pnpm with `--frozen-lockfile` in CI                   |
+| Node version    | 22-24                                                 |
+| ESLint base     | @antfu/eslint-config                                  |
+| Formatter       | Via ESLint (`formatters: true`), no separate Prettier |
+| Cache           | `--cache` flag on lint scripts                        |
+| Prepare step    | Required before lint/typecheck in CI                  |
 
 ## NuxtHub Deployment
 
@@ -90,12 +92,12 @@ on: push
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    permissions: { contents: read, id-token: write }
+    permissions: {contents: read, id-token: write}
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
-        with: { node-version: 22, cache: pnpm }
+        with: {node-version: 22, cache: pnpm}
       - run: pnpm install
       - uses: nuxt-hub/action@v2
         with:

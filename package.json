@@ -1,0 +1,22 @@
+{
+  "name": "nuxt-skills",
+  "type": "module",
+  "private": true,
+  "packageManager": "pnpm@10.0.0",
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "typecheck": "tsc --noEmit",
+    "generate:reka-ui": "tsx skills/reka-ui/scripts/generate-components.ts",
+    "generate:nuxt-ui": "tsx skills/nuxt-ui/scripts/generate-components.ts",
+    "generate": "pnpm generate:reka-ui && pnpm generate:nuxt-ui"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^4.11.0",
+    "@types/node": "^22.10.2",
+    "eslint": "^9.17.0",
+    "eslint-plugin-format": "^1.1.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}

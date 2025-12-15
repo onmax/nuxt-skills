@@ -1,0 +1,127 @@
+---
+name: reka-ui
+description: Use when building with Reka UI (headless Vue components) - provides component API, accessibility patterns, composition (asChild), controlled/uncontrolled state, and styling integration. Formerly Radix Vue.
+---
+
+# Reka UI
+
+Unstyled, accessible Vue 3 component primitives. WAI-ARIA compliant. Previously Radix Vue.
+
+## When to Use
+
+- Building headless/unstyled components from scratch
+- Need WAI-ARIA compliant components
+- Using Nuxt UI, shadcn-vue, or other Reka-based libraries
+- Implementing accessible forms, dialogs, menus, popovers
+
+## Available Guidance
+
+| File                 | Topics                                                              |
+| -------------------- | ------------------------------------------------------------------- |
+| **components.md**    | Component index by category (Form, Date, Overlay, Menu, Data, etc.) |
+| **components/\*.md** | Per-component details (dialog.md, select.md, etc.)                  |
+
+## Usage Pattern
+
+```bash
+# Component index - find what you need
+cat ~/.claude/skills/reka-ui/components.md
+
+# Specific component details
+cat ~/.claude/skills/reka-ui/components/dialog.md
+cat ~/.claude/skills/reka-ui/components/select.md
+cat ~/.claude/skills/reka-ui/components/combobox.md
+
+# For styled Nuxt components built on Reka UI
+cat ~/.claude/skills/nuxt-ui/SKILL.md
+```
+
+## Key Concepts
+
+| Concept                 | Description                                                        |
+| ----------------------- | ------------------------------------------------------------------ |
+| `asChild`               | Render as child element instead of wrapper, merging props/behavior |
+| Controlled/Uncontrolled | Use `v-model` for controlled, `default*` props for uncontrolled    |
+| Parts                   | Components split into Root, Trigger, Content, Portal, etc.         |
+| `forceMount`            | Keep element in DOM for animation libraries                        |
+
+## Installation
+
+```ts
+// nuxt.config.ts (auto-imports all components)
+export default defineNuxtConfig({
+  modules: ['reka-ui/nuxt']
+})
+```
+
+```ts
+import { RekaResolver } from 'reka-ui/resolver'
+// vite.config.ts (with auto-import resolver)
+import Components from 'unplugin-vue-components/vite'
+
+export default defineConfig({
+  plugins: [
+    vue(),
+    Components({ resolvers: [RekaResolver()] })
+  ]
+})
+```
+
+## Basic Patterns
+
+```vue
+<!-- Dialog with controlled state -->
+<script setup>
+import { DialogRoot, DialogTrigger, DialogPortal, DialogOverlay, DialogContent, DialogTitle, DialogDescription, DialogClose } from 'reka-ui'
+const open = ref(false)
+</script>
+
+<template>
+  <DialogRoot v-model:open="open">
+    <DialogTrigger>Open</DialogTrigger>
+    <DialogPortal>
+      <DialogOverlay class="fixed inset-0 bg-black/50" />
+      <DialogContent class="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-white p-6 rounded">
+        <DialogTitle>Title</DialogTitle>
+        <DialogDescription>Description</DialogDescription>
+        <DialogClose>Close</DialogClose>
+      </DialogContent>
+    </DialogPortal>
+  </DialogRoot>
+</template>
+```
+
+```vue
+<!-- Select with uncontrolled default -->
+<SelectRoot default-value="apple">
+  <SelectTrigger>
+    <SelectValue placeholder="Pick fruit" />
+  </SelectTrigger>
+  <SelectPortal>
+    <SelectContent>
+      <SelectViewport>
+        <SelectItem value="apple"><SelectItemText>Apple</SelectItemText></SelectItem>
+        <SelectItem value="banana"><SelectItemText>Banana</SelectItemText></SelectItem>
+      </SelectViewport>
+    </SelectContent>
+  </SelectPortal>
+</SelectRoot>
+```
+
+```vue
+<!-- asChild for custom trigger element -->
+<DialogTrigger as-child>
+  <button class="my-custom-button">Open</button>
+</DialogTrigger>
+```
+
+## Resources
+
+- [Reka UI Docs](https://reka-ui.com)
+- [GitHub](https://github.com/unovue/reka-ui)
+- [Nuxt UI](https://ui.nuxt.com) (styled Reka components)
+- [shadcn-vue](https://www.shadcn-vue.com) (styled Reka components)
+
+---
+
+_Token efficiency: ~300 tokens base, components.md index ~100 tokens, per-component ~50-150 tokens_

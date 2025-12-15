@@ -10,6 +10,7 @@ Guide for creating Nuxt modules that extend framework functionality.
 ## When to Use
 
 Building:
+
 - Published npm modules (`@nuxtjs/`, `nuxt-`)
 - Local project modules (`modules/` directory)
 - Runtime extensions (components, composables, plugins)
@@ -40,11 +41,11 @@ cat ~/.claude/skills/nuxt-modules/testing-and-publishing.md
 
 ## Module Types
 
-| Type | Location | Use Case |
-|------|----------|----------|
-| Published | npm package | `@nuxtjs/`, `nuxt-` distribution |
-| Local | `modules/` dir | Project-specific extensions |
-| Inline | `nuxt.config.ts` | Simple one-off hooks |
+| Type      | Location         | Use Case                         |
+| --------- | ---------------- | -------------------------------- |
+| Published | npm package      | `@nuxtjs/`, `nuxt-` distribution |
+| Local     | `modules/` dir   | Project-specific extensions      |
+| Inline    | `nuxt.config.ts` | Simple one-off hooks             |
 
 ## Project Structure
 

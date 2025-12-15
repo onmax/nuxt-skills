@@ -13,14 +13,15 @@
 
 ## Skills
 
-| Skill | Description |
-|-------|-------------|
-| **vue** | Vue 3 Composition API, components, composables, testing |
-| **nuxt** | Nuxt 4+ server routes, routing, middleware, config |
-| **nuxt-modules** | Creating Nuxt modules with defineNuxtModule, Kit utilities, testing |
-| **nuxthub** | NuxtHub v0.10 database, KV, blob, cache, multi-cloud |
-| **nuxt-content** | Nuxt Content v3 collections, queries, MDC rendering, NuxtStudio |
-| **nuxt-ui** | Nuxt UI v4 components, theming, forms, overlays, composables |
+| Skill            | Description                                                               |
+| ---------------- | ------------------------------------------------------------------------- |
+| **vue**          | Vue 3 Composition API, components, composables, testing                   |
+| **nuxt**         | Nuxt 4+ server routes, routing, middleware, config                        |
+| **nuxt-modules** | Creating Nuxt modules with defineNuxtModule, Kit utilities, testing       |
+| **nuxthub**      | NuxtHub v0.10 database, KV, blob, cache, multi-cloud                      |
+| **nuxt-content** | Nuxt Content v3 collections, queries, MDC rendering, NuxtStudio           |
+| **nuxt-ui**      | Nuxt UI v4 components, theming, forms, overlays, composables              |
+| **reka-ui**      | Reka UI headless Vue components, accessible primitives, props/emits/slots |
 
 ## Installation
 
@@ -34,6 +35,7 @@
 /plugin install nuxthub@nuxt-skills
 /plugin install nuxt-content@nuxt-skills
 /plugin install nuxt-ui@nuxt-skills
+/plugin install reka-ui@nuxt-skills
 ```
 
 ### OpenCode
@@ -43,6 +45,7 @@ curl -fsSL https://raw.githubusercontent.com/onmax/nuxt-skills/main/scripts/open
 ```
 
 Specific skill:
+
 ```bash
 curl -fsSL https://raw.githubusercontent.com/onmax/nuxt-skills/main/scripts/opencode.sh | bash -s -- vue
 ```
@@ -59,6 +62,7 @@ btca config repos add -n nuxt -u https://github.com/onmax/nuxt-skills -b main --
 ```
 
 Ask questions:
+
 ```bash
 btca ask -t nuxt -q "How do I create a server route with validation?"
 btca chat -t nuxt  # interactive mode
@@ -74,6 +78,7 @@ cp -r nuxt-skills/skills/nuxt-modules ~/.claude/skills/
 cp -r nuxt-skills/skills/nuxthub ~/.claude/skills/
 cp -r nuxt-skills/skills/nuxt-content ~/.claude/skills/
 cp -r nuxt-skills/skills/nuxt-ui ~/.claude/skills/
+cp -r nuxt-skills/skills/reka-ui ~/.claude/skills/
 ```
 
 ## Structure
@@ -86,7 +91,8 @@ nuxt-skills/
 │   ├── nuxt-modules/
 │   ├── nuxthub/
 │   ├── nuxt-content/
-│   └── nuxt-ui/
+│   ├── nuxt-ui/
+│   └── reka-ui/
 ├── scripts/
 │   └── opencode.sh        # OpenCode installer
 └── .claude-plugin/

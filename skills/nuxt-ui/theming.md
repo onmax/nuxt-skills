@@ -2,15 +2,15 @@
 
 ## Semantic Colors
 
-| Color | Default | Purpose |
-|-------|---------|---------|
-| `primary` | green | CTAs, active states, brand, important links |
-| `secondary` | blue | Secondary buttons, alternatives |
-| `success` | green | Success messages, positive states |
-| `info` | blue | Info alerts, help text |
-| `warning` | yellow | Warnings, pending states |
-| `error` | red | Errors, destructive actions |
-| `neutral` | slate | Text, borders, disabled states |
+| Color       | Default | Purpose                                     |
+| ----------- | ------- | ------------------------------------------- |
+| `primary`   | green   | CTAs, active states, brand, important links |
+| `secondary` | blue    | Secondary buttons, alternatives             |
+| `success`   | green   | Success messages, positive states           |
+| `info`      | blue    | Info alerts, help text                      |
+| `warning`   | yellow  | Warnings, pending states                    |
+| `error`     | red     | Errors, destructive actions                 |
+| `neutral`   | slate   | Text, borders, disabled states              |
 
 ## Configuring Colors
 
@@ -93,41 +93,41 @@ export default defineAppConfig({
 
 ### Text Utilities
 
-| Class | Light | Dark | Use |
-|-------|-------|------|-----|
-| `text-dimmed` | 400 | 500 | Placeholders, hints |
-| `text-muted` | 500 | 400 | Secondary text |
-| `text-toned` | 600 | 300 | Subtitles |
-| `text-default` | 700 | 200 | Body text |
-| `text-highlighted` | 900 | 100 | Headings, emphasis |
-| `text-inverted` | 50 | 950 | On dark/light backgrounds |
+| Class              | Light | Dark | Use                       |
+| ------------------ | ----- | ---- | ------------------------- |
+| `text-dimmed`      | 400   | 500  | Placeholders, hints       |
+| `text-muted`       | 500   | 400  | Secondary text            |
+| `text-toned`       | 600   | 300  | Subtitles                 |
+| `text-default`     | 700   | 200  | Body text                 |
+| `text-highlighted` | 900   | 100  | Headings, emphasis        |
+| `text-inverted`    | 50    | 950  | On dark/light backgrounds |
 
 ### Background Utilities
 
-| Class | Light | Dark | Use |
-|-------|-------|------|-----|
-| `bg-default` | white | 900 | Page background |
-| `bg-muted` | 50 | 800 | Subtle sections |
-| `bg-elevated` | white | 800 | Cards, modals |
-| `bg-accented` | 100 | 700 | Hover states |
-| `bg-inverted` | 900 | 100 | Inverted sections |
+| Class         | Light | Dark | Use               |
+| ------------- | ----- | ---- | ----------------- |
+| `bg-default`  | white | 900  | Page background   |
+| `bg-muted`    | 50    | 800  | Subtle sections   |
+| `bg-elevated` | white | 800  | Cards, modals     |
+| `bg-accented` | 100   | 700  | Hover states      |
+| `bg-inverted` | 900   | 100  | Inverted sections |
 
 ### Border Utilities
 
-| Class | Light | Dark |
-|-------|-------|------|
-| `border-default` | 200 | 800 |
-| `border-muted` | 100 | 800 |
-| `border-accented` | 200 | 700 |
-| `border-inverted` | 900 | 100 |
+| Class             | Light | Dark |
+| ----------------- | ----- | ---- |
+| `border-default`  | 200   | 800  |
+| `border-muted`    | 100   | 800  |
+| `border-accented` | 200   | 700  |
+| `border-inverted` | 900   | 100  |
 
 ### Global Variables
 
 ```css
 :root {
-  --ui-radius: 0.25rem;      /* Base border radius */
-  --ui-container: 80rem;      /* Container max-width */
-  --ui-header-height: 4rem;   /* Header height */
+  --ui-radius: 0.25rem; /* Base border radius */
+  --ui-container: 80rem; /* Container max-width */
+  --ui-header-height: 4rem; /* Header height */
 }
 ```
 
@@ -241,9 +241,9 @@ colorMode.preference = 'dark' // 'light', 'dark', 'system'
 
 ## Best Practices
 
-| Do | Don't |
-|----|-------|
-| Use semantic colors | Hardcode hex values |
-| Override via app.config | Modify source theme files |
-| Use CSS variables for custom colors | Skip dark mode variants |
+| Do                                     | Don't                         |
+| -------------------------------------- | ----------------------------- |
+| Use semantic colors                    | Hardcode hex values           |
+| Override via app.config                | Modify source theme files     |
+| Use CSS variables for custom colors    | Skip dark mode variants       |
 | Define all 11 shades for custom colors | Use partial shade definitions |

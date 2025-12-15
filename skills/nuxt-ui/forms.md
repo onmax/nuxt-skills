@@ -2,25 +2,25 @@
 
 ## Form Components
 
-| Component | Purpose | Key Props |
-|-----------|---------|-----------|
-| `UInput` | Text input | `type`, `placeholder`, `icon`, `loading` |
-| `UTextarea` | Multi-line text | `rows`, `autoresize`, `maxrows` |
-| `USelect` | Native select | `options`, `placeholder` |
-| `USelectMenu` | Custom select | `options`, `searchable`, `multiple` |
-| `UInputMenu` | Autocomplete | `options`, `searchable` |
-| `UCheckbox` | Single checkbox | `label`, `description` |
-| `UCheckboxGroup` | Multiple checkboxes | `items`, `orientation` |
-| `URadioGroup` | Radio options | `items`, `orientation` |
-| `USwitch` | Toggle switch | `label`, `description`, `on-icon`, `off-icon` |
-| `USlider` | Range slider | `min`, `max`, `step` |
-| `UPinInput` | Code/OTP input | `length`, `type`, `mask` |
-| `UInputNumber` | Number input | `min`, `max`, `step`, `format-options` |
-| `UInputDate` | Date picker | `mode`, `range`, `locale` |
-| `UInputTime` | Time picker | `format`, `step` |
-| `UInputTags` | Tag input | `max`, `placeholder` |
-| `UColorPicker` | Color selection | `format`, `swatches` |
-| `UFileUpload` | File upload | `accept`, `multiple`, `max-files` |
+| Component        | Purpose             | Key Props                                     |
+| ---------------- | ------------------- | --------------------------------------------- |
+| `UInput`         | Text input          | `type`, `placeholder`, `icon`, `loading`      |
+| `UTextarea`      | Multi-line text     | `rows`, `autoresize`, `maxrows`               |
+| `USelect`        | Native select       | `options`, `placeholder`                      |
+| `USelectMenu`    | Custom select       | `options`, `searchable`, `multiple`           |
+| `UInputMenu`     | Autocomplete        | `options`, `searchable`                       |
+| `UCheckbox`      | Single checkbox     | `label`, `description`                        |
+| `UCheckboxGroup` | Multiple checkboxes | `items`, `orientation`                        |
+| `URadioGroup`    | Radio options       | `items`, `orientation`                        |
+| `USwitch`        | Toggle switch       | `label`, `description`, `on-icon`, `off-icon` |
+| `USlider`        | Range slider        | `min`, `max`, `step`                          |
+| `UPinInput`      | Code/OTP input      | `length`, `type`, `mask`                      |
+| `UInputNumber`   | Number input        | `min`, `max`, `step`, `format-options`        |
+| `UInputDate`     | Date picker         | `mode`, `range`, `locale`                     |
+| `UInputTime`     | Time picker         | `format`, `step`                              |
+| `UInputTags`     | Tag input           | `max`, `placeholder`                          |
+| `UColorPicker`   | Color selection     | `format`, `swatches`                          |
+| `UFileUpload`    | File upload         | `accept`, `multiple`, `max-files`             |
 
 ## Basic Input Examples
 
@@ -277,10 +277,10 @@ const range = ref({ start: new Date(), end: new Date() })
 
 ## Best Practices
 
-| Do | Don't |
-|----|-------|
-| Use UForm + UFormField | Build custom form wrappers |
-| Use Standard Schema (Zod/Valibot) | Write custom validation |
-| Use v-model on form inputs | Manually sync form state |
-| Use `required` prop for asterisks | Add asterisks manually |
-| Use `description` for help text | Use separate help elements |
+| Do                                | Don't                      |
+| --------------------------------- | -------------------------- |
+| Use UForm + UFormField            | Build custom form wrappers |
+| Use Standard Schema (Zod/Valibot) | Write custom validation    |
+| Use v-model on form inputs        | Manually sync form state   |
+| Use `required` prop for asterisks | Add asterisks manually     |
+| Use `description` for help text   | Use separate help elements |

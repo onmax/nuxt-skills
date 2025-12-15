@@ -28,6 +28,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
 ## Red Flags - Stop and Check Skill
 
 If you're thinking any of these, STOP and re-read this skill:
+
 - "Suffix doesn't matter, it's about where I put it"
 - "I'll redirect() instead of return navigateTo()"
 - "I remember Nuxt 3 middleware patterns"
@@ -105,16 +106,21 @@ Use in components:
 
 ```vue
 <script setup lang="ts">
-const { $hello } = useNuxtApp()
-console.log($hello('World')) // "Hello World!"
+  const
+  {' '}
+  { $hello }
+  {' '}
+  = useNuxtApp()
+  console.log($hello('World')) // "Hello World!"
 </script>
 ```
 
 ### Plugin with Vue Plugin
 
 ```ts
+import type { PluginOptions } from 'vue-toastification'
 // plugins/toast.client.ts
-import Toast, { type PluginOptions } from 'vue-toastification'
+import Toast from 'vue-toastification'
 import 'vue-toastification/dist/index.css'
 
 export default defineNuxtPlugin((nuxtApp) => {
@@ -143,6 +149,7 @@ export default defineNuxtPlugin((nuxtApp) => {
 ### Client-Only or Server-Only
 
 Use file suffix:
+
 - `.client.ts` - runs only on client
 - `.server.ts` - runs only on server
 
@@ -185,6 +192,7 @@ export default defineNuxtPlugin(async (nuxtApp) => {
 ## Best Practices
 
 **Middleware:**
+
 - **Return navigation or nothing** - don't mutate state heavily
 - **Keep logic minimal** - delegate to composables/stores
 - **Use for guards & redirects** only
@@ -192,6 +200,7 @@ export default defineNuxtPlugin(async (nuxtApp) => {
 - **Global = `.global.ts`** suffix required
 
 **Plugins:**
+
 - **Use for app-wide functionality** only
 - **Provide via `provide`** for type safety
 - **Consider client/server context** - use `.client`/`.server`
@@ -200,13 +209,13 @@ export default defineNuxtPlugin(async (nuxtApp) => {
 
 ## Common Mistakes
 
-| ❌ Wrong | ✅ Right |
-|---------|---------|
+| ❌ Wrong                             | ✅ Right                                                     |
+| ------------------------------------ | ------------------------------------------------------------ |
 | `export default function({ route })` | `export default defineNuxtRouteMiddleware((to, from) => {})` |
-| Mutate route object | Return navigateTo() or nothing |
-| `middleware/auth.ts` (not global) | `middleware/auth.global.ts` (global) |
-| `redirect('/login')` | `return navigateTo('/login')` |
-| Plugin without defineNuxtPlugin | Wrap in defineNuxtPlugin() |
+| Mutate route object                  | Return navigateTo() or nothing                               |
+| `middleware/auth.ts` (not global)    | `middleware/auth.global.ts` (global)                         |
+| `redirect('/login')`                 | `return navigateTo('/login')`                                |
+| Plugin without defineNuxtPlugin      | Wrap in defineNuxtPlugin()                                   |
 
 ## Middleware Example: Auth
 

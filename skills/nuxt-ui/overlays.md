@@ -29,18 +29,18 @@ function showToast() {
 
 ```ts
 toast.add({
-  id: 'unique-id',           // Custom ID (auto-generated if omitted)
-  title: 'Title',            // Toast title
-  description: 'Details',    // Toast body
-  color: 'success',          // primary, success, error, warning, info
+  id: 'unique-id', // Custom ID (auto-generated if omitted)
+  title: 'Title', // Toast title
+  description: 'Details', // Toast body
+  color: 'success', // primary, success, error, warning, info
   icon: 'i-heroicons-check', // Left icon
-  avatar: { src: '...' },    // Avatar instead of icon
-  timeout: 5000,             // Auto-dismiss (0 = never)
-  actions: [{                // Action buttons
+  avatar: { src: '...' }, // Avatar instead of icon
+  timeout: 5000, // Auto-dismiss (0 = never)
+  actions: [{ // Action buttons
     label: 'Undo',
     click: () => {}
   }],
-  callback: () => {}         // Called on dismiss
+  callback: () => {} // Called on dismiss
 })
 ```
 
@@ -328,11 +328,11 @@ defineShortcuts({
 
 ## Best Practices
 
-| Do | Don't |
-|----|-------|
-| Use useToast for notifications | Build custom toast systems |
-| Use UModal for dialogs | Use alerts for complex UI |
-| Use Slideover for panels | Use modals for side content |
-| Use Drawer for mobile sheets | Use slideover on mobile |
-| Use CommandPalette for search | Build custom search UI |
-| Use programmatic overlays for confirms | Create confirm components |
+| Do                                     | Don't                       |
+| -------------------------------------- | --------------------------- |
+| Use useToast for notifications         | Build custom toast systems  |
+| Use UModal for dialogs                 | Use alerts for complex UI   |
+| Use Slideover for panels               | Use modals for side content |
+| Use Drawer for mobile sheets           | Use slideover on mobile     |
+| Use CommandPalette for search          | Build custom search UI      |
+| Use programmatic overlays for confirms | Create confirm components   |

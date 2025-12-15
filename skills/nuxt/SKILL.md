@@ -10,6 +10,7 @@ Progressive guidance for Nuxt 4+ projects with latest patterns and conventions.
 ## When to Use
 
 Working with:
+
 - Server routes (API endpoints, server middleware, server utils)
 - File-based routing (pages, layouts, route groups)
 - Nuxt middleware (route guards, navigation)
@@ -54,6 +55,7 @@ cat ~/.claude/skills/nuxt/project-setup.md
 ```
 
 **DO NOT read all files at once.** Load based on context:
+
 - Working in `server/` → read server.md
 - Working in `pages/` or `layouts/` → read routing.md
 - Using `useFetch`, `useRequestURL`, navigation → read nuxt-composables.md
@@ -65,26 +67,28 @@ cat ~/.claude/skills/nuxt/project-setup.md
 
 **You are working with Nuxt 4+.** Key differences:
 
-| Old (Nuxt 2/3) | New (Nuxt 4) |
-|----------------|--------------|
-| `index.vue` | `(descriptive-name).vue` |
-| `<Nuxt />` | `<NuxtPage />` |
-| `context.params` | `getRouterParam(event, 'name')` |
-| `window.origin` | `useRequestURL().origin` |
-| String routes | Typed router with route names |
-| Separate layouts/ | Parent routes with `<slot>` |
+| Old (Nuxt 2/3)    | New (Nuxt 4)                    |
+| ----------------- | ------------------------------- |
+| `index.vue`       | `(descriptive-name).vue`        |
+| `<Nuxt />`        | `<NuxtPage />`                  |
+| `context.params`  | `getRouterParam(event, 'name')` |
+| `window.origin`   | `useRequestURL().origin`        |
+| String routes     | Typed router with route names   |
+| Separate layouts/ | Parent routes with `<slot>`     |
 
 **If you're unsure about Nuxt 4 patterns, read the relevant guidance file first.**
 
 ## Latest Documentation
 
 **When to fetch latest docs:**
+
 - New Nuxt 4 features not covered here
 - Module-specific configuration
 - Breaking changes or deprecations
 - Advanced use cases
 
 **Official sources:**
+
 - Nuxt: https://nuxt.com/docs
 - h3 (server engine): https://h3.unjs.io/
 - Nitro: https://nitro.unjs.io/

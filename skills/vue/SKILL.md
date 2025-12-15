@@ -14,24 +14,26 @@ Progressive reference system for Vue 3 projects. Load only files relevant to cur
 ## When to Use
 
 **Use this skill when:**
+
 - Writing `.vue` components
 - Creating composables (`use*` functions)
 - Building client-side utilities
 - Testing Vue components/composables
 
 **Use `nuxt` skill instead for:**
+
 - Server routes, API endpoints
 - File-based routing, middleware
 - Nuxt-specific patterns
 
 ## Quick Reference
 
-| Working on... | Load this file |
-|--------------|----------------|
-| `.vue` in `components/` | components.md |
-| File in `composables/` | composables.md |
-| File in `utils/` | utils-client.md |
-| `.spec.ts` or `.test.ts` | testing.md |
+| Working on...            | Load this file  |
+| ------------------------ | --------------- |
+| `.vue` in `components/`  | components.md   |
+| File in `composables/`   | composables.md  |
+| File in `utils/`         | utils-client.md |
+| `.spec.ts` or `.test.ts` | testing.md      |
 
 ## Loading Files
 
@@ -66,5 +68,6 @@ cat ~/.claude/skills/vue/testing.md
 ## Examples
 
 Working examples in `resources/examples/`:
+
 - `component-example.vue` - Full component with all patterns
 - `composable-example.ts` - Reusable composition function

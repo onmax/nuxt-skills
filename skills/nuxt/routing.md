@@ -11,6 +11,7 @@ Working with `pages/` or `layouts/` directories, file-based routing, navigation.
 ## Naming Conventions
 
 **Key principles:**
+
 - **ALWAYS use groups instead of index:** `(home).vue` NOT `index.vue`
 - **ALWAYS use descriptive params:** `[userId].vue` NOT `[id].vue`
 - **Use `.` for path segments:** `users.edit.vue` → `/users/edit`
@@ -20,6 +21,7 @@ Working with `pages/` or `layouts/` directories, file-based routing, navigation.
 ## Red Flags - Stop and Check Skill
 
 If you're thinking any of these, STOP and re-read this skill:
+
 - "Index.vue is a standard convention"
 - "String paths are simpler than typed routes"
 - "Generic param names like [id] are fine"
@@ -74,6 +76,7 @@ Parent route = layout for nested routes:
 ```
 
 Child routes:
+
 ```
 pages/
 ├── users.vue           # Parent route with <NuxtPage />
@@ -198,13 +201,13 @@ pages/
 
 ## Common Mistakes
 
-| ❌ Wrong | ✅ Right |
-|---------|---------|
-| `index.vue` | `(home).vue` or `(list).vue` |
-| `[id].vue` | `[userId].vue` or `[postId].vue` |
+| ❌ Wrong                     | ✅ Right                                                          |
+| ---------------------------- | ----------------------------------------------------------------- |
+| `index.vue`                  | `(home).vue` or `(list).vue`                                      |
+| `[id].vue`                   | `[userId].vue` or `[postId].vue`                                  |
 | `navigateTo('/users/' + id)` | `navigateTo({ name: '/users/[userId]', params: { userId: id } })` |
-| `<Nuxt />` | `<NuxtPage />` |
-| Separate layouts/ folder | Parent routes with `<NuxtPage />` |
+| `<Nuxt />`                   | `<NuxtPage />`                                                    |
+| Separate layouts/ folder     | Parent routes with `<NuxtPage />`                                 |
 
 ## Resources
 

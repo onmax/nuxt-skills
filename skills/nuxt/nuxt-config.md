@@ -56,6 +56,7 @@ console.log(config.apiSecret) // undefined (private)
 ## Auto-Imports
 
 Nuxt auto-imports from these directories:
+
 - `components/` - Vue components
 - `composables/` - Composition functions
 - `utils/` - Utility functions
@@ -245,12 +246,12 @@ export default defineNuxtConfig({
 
 ## Common Mistakes
 
-| ❌ Wrong | ✅ Right |
-|---------|---------|
-| Hardcoded API URLs | Use runtimeConfig.public |
-| Secrets in app.config | Use runtimeConfig (private) |
-| Import everything manually | Let Nuxt auto-import |
-| process.env in client code | Use useRuntimeConfig() |
+| ❌ Wrong                   | ✅ Right                    |
+| -------------------------- | --------------------------- |
+| Hardcoded API URLs         | Use runtimeConfig.public    |
+| Secrets in app.config      | Use runtimeConfig (private) |
+| Import everything manually | Let Nuxt auto-import        |
+| process.env in client code | Use useRuntimeConfig()      |
 
 ## Resources
 

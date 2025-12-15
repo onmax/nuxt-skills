@@ -1,0 +1,76 @@
+name: Update Skills
+
+on:
+  schedule:
+    - cron: '0 6 * * 1' # Weekly on Monday at 6am UTC
+  workflow_dispatch: # Manual trigger
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: pnpm
+
+      - run: pnpm install
+
+      - name: Clone source repos
+        run: |
+          git clone --depth 1 https://github.com/unovue/reka-ui.git /tmp/reka-ui
+          git clone --depth 1 https://github.com/nuxt/ui.git /tmp/nuxt-ui
+
+      - name: Check reka-ui version
+        id: reka-version
+        run: |
+          CURRENT=$(jq -r '.["reka-ui"]' skills/versions.json)
+          NEW=$(jq -r '.version' /tmp/reka-ui/packages/core/package.json | cut -d. -f1)
+          echo "current=$CURRENT" >> $GITHUB_OUTPUT
+          echo "new=$NEW" >> $GITHUB_OUTPUT
+          if [ "$NEW" != "$CURRENT" ]; then
+            echo "::warning::reka-ui major version changed: $CURRENT → $NEW (skipping)"
+          fi
+
+      - name: Check nuxt-ui version
+        id: ui-version
+        run: |
+          CURRENT=$(jq -r '.["nuxt-ui"]' skills/versions.json)
+          NEW=$(jq -r '.version' /tmp/nuxt-ui/package.json | cut -d. -f1)
+          echo "current=$CURRENT" >> $GITHUB_OUTPUT
+          echo "new=$NEW" >> $GITHUB_OUTPUT
+          if [ "$NEW" != "$CURRENT" ]; then
+            echo "::warning::nuxt-ui major version changed: $CURRENT → $NEW (skipping)"
+          fi
+
+      - name: Update reka-ui
+        if: steps.reka-version.outputs.current == steps.reka-version.outputs.new
+        run: pnpm generate:reka-ui
+
+      - name: Update nuxt-ui
+        if: steps.ui-version.outputs.current == steps.ui-version.outputs.new
+        env:
+          NUXT_UI_DOCS: /tmp/nuxt-ui/docs/content/docs/2.components
+        run: pnpm generate:nuxt-ui
+
+      - name: Check for changes
+        id: changes
+        run: |
+          if git diff --quiet; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit and push
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "chore: auto-update skill docs"
+          git push

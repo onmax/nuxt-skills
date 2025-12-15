@@ -10,6 +10,7 @@ Progressive guidance for content-driven Nuxt apps with typed collections and SQL
 ## When to Use
 
 Working with:
+
 - Content collections (`content.config.ts`, `defineCollection`)
 - Remote sources (GitHub repos, external APIs via `defineCollectionSource`)
 - Content queries (`queryCollection`, navigation, search)
@@ -52,6 +53,7 @@ cat ~/.claude/skills/nuxt-content/studio.md
 ```
 
 **DO NOT read all files at once.** Load based on context:
+
 - Editing `content.config.ts` → read collections.md
 - Using `queryCollection()` → read querying.md
 - Working with `<ContentRenderer>` or MDC → read rendering.md
@@ -60,14 +62,14 @@ cat ~/.claude/skills/nuxt-content/studio.md
 
 ## Key Concepts
 
-| Concept | Purpose |
-|---------|---------|
-| Collections | Typed content groups with schemas |
-| Page vs Data | `page` = routes + body, `data` = structured data only |
-| Remote sources | `source.repository` for GitHub, `defineCollectionSource` for APIs |
-| queryCollection | SQL-like fluent API for content |
-| MDC | Vue components inside markdown |
-| ContentRenderer | Renders parsed markdown body |
+| Concept         | Purpose                                                           |
+| --------------- | ----------------------------------------------------------------- |
+| Collections     | Typed content groups with schemas                                 |
+| Page vs Data    | `page` = routes + body, `data` = structured data only             |
+| Remote sources  | `source.repository` for GitHub, `defineCollectionSource` for APIs |
+| queryCollection | SQL-like fluent API for content                                   |
+| MDC             | Vue components inside markdown                                    |
+| ContentRenderer | Renders parsed markdown body                                      |
 
 ## Directory Structure
 

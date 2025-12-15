@@ -5,7 +5,7 @@ Module anatomy, Kit utilities, and common patterns.
 ## defineNuxtModule
 
 ```ts
-import { defineNuxtModule, addPlugin, createResolver } from '@nuxt/kit'
+import { addPlugin, createResolver, defineNuxtModule } from '@nuxt/kit'
 
 export interface ModuleOptions {
   apiKey?: string
@@ -23,7 +23,7 @@ export default defineNuxtModule<ModuleOptions>({
     prefix: 'My'
   },
   hooks: {
-    'app:error': (err) => console.error(err)
+    'app:error': err => console.error(err)
   },
   moduleDependencies: {
     '@nuxtjs/tailwindcss': { version: '>=6.0.0', optional: true }
@@ -53,17 +53,17 @@ Auto-imports don't work in `node_modules`. Runtime files must explicitly import:
 // src/runtime/composables/useMyFeature.ts
 
 // Wrong - won't work in published module
-const route = useRoute()
-
 // Right - explicit import
 import { useRoute } from '#imports'
+
+const route = useRoute()
 const route = useRoute()
 ```
 
 ## Adding Plugins
 
 ```ts
-import { defineNuxtModule, addPlugin, createResolver } from '@nuxt/kit'
+import { addPlugin, createResolver, defineNuxtModule } from '@nuxt/kit'
 
 export default defineNuxtModule({
   setup(options, nuxt) {
@@ -87,7 +87,7 @@ export default defineNuxtPlugin((nuxtApp) => {
 ## Adding Components
 
 ```ts
-import { defineNuxtModule, addComponent, addComponentsDir, createResolver } from '@nuxt/kit'
+import { addComponent, addComponentsDir, createResolver, defineNuxtModule } from '@nuxt/kit'
 
 export default defineNuxtModule({
   setup(options, nuxt) {
@@ -102,7 +102,7 @@ export default defineNuxtModule({
     // Or entire directory with prefix
     addComponentsDir({
       path: resolve('./runtime/components'),
-      prefix: 'My'  // <MyButton>, <MyCard>
+      prefix: 'My' // <MyButton>, <MyCard>
     })
   }
 })
@@ -111,7 +111,7 @@ export default defineNuxtModule({
 ## Adding Composables
 
 ```ts
-import { defineNuxtModule, addImports, addImportsDir, createResolver } from '@nuxt/kit'
+import { addImports, addImportsDir, createResolver, defineNuxtModule } from '@nuxt/kit'
 
 export default defineNuxtModule({
   setup(options, nuxt) {
@@ -132,7 +132,7 @@ export default defineNuxtModule({
 ## Adding Server Routes
 
 ```ts
-import { defineNuxtModule, addServerHandler, createResolver } from '@nuxt/kit'
+import { addServerHandler, createResolver, defineNuxtModule } from '@nuxt/kit'
 
 export default defineNuxtModule({
   setup(options, nuxt) {
@@ -186,13 +186,13 @@ export default defineNuxtModule({
 })
 ```
 
-| Hook | When |
-|------|------|
-| `ready` | Nuxt initialized |
+| Hook           | When               |
+| -------------- | ------------------ |
+| `ready`        | Nuxt initialized   |
 | `modules:done` | All modules loaded |
 | `pages:extend` | Modify pages array |
-| `nitro:config` | Configure Nitro |
-| `close` | Nuxt shutting down |
+| `nitro:config` | Configure Nitro    |
+| `close`        | Nuxt shutting down |
 
 ## Custom Hooks
 
@@ -217,7 +217,7 @@ export default defineNuxtModule({
 ## Virtual Files (Templates)
 
 ```ts
-import { defineNuxtModule, addTemplate } from '@nuxt/kit'
+import { addTemplate, defineNuxtModule } from '@nuxt/kit'
 
 export default defineNuxtModule({
   setup(options, nuxt) {
@@ -234,7 +234,7 @@ Import: `import { config } from '#build/my-module/config.mjs'`
 ## Type Declarations
 
 ```ts
-import { defineNuxtModule, addTypeTemplate } from '@nuxt/kit'
+import { addTypeTemplate, defineNuxtModule } from '@nuxt/kit'
 
 export default defineNuxtModule({
   setup(options, nuxt) {
@@ -276,16 +276,16 @@ export default defineNuxtConfig({
 
 ## Quick Reference
 
-| Task | Kit Function |
-|------|--------------|
-| Add plugin | `addPlugin()` |
-| Add component | `addComponent()` / `addComponentsDir()` |
-| Add composable | `addImports()` / `addImportsDir()` |
-| Add server route | `addServerHandler()` |
-| Add server utils | `addServerImports()` |
-| Virtual file | `addTemplate()` / `addServerTemplate()` |
-| Add types | `addTypeTemplate()` |
-| Add CSS | `nuxt.options.css.push()` |
+| Task             | Kit Function                            |
+| ---------------- | --------------------------------------- |
+| Add plugin       | `addPlugin()`                           |
+| Add component    | `addComponent()` / `addComponentsDir()` |
+| Add composable   | `addImports()` / `addImportsDir()`      |
+| Add server route | `addServerHandler()`                    |
+| Add server utils | `addServerImports()`                    |
+| Virtual file     | `addTemplate()` / `addServerTemplate()` |
+| Add types        | `addTypeTemplate()`                     |
+| Add CSS          | `nuxt.options.css.push()`               |
 
 ## Resources
 

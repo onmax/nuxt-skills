@@ -36,10 +36,10 @@ export default defineContentConfig({
 
 ## Collection Types
 
-| Type | Use Case | Includes |
-|------|----------|----------|
-| `page` | Content with routes | `path`, `title`, `description`, `seo`, `body`, `navigation` |
-| `data` | Structured data only | `id`, `stem`, `extension`, `meta` |
+| Type   | Use Case             | Includes                                                    |
+| ------ | -------------------- | ----------------------------------------------------------- |
+| `page` | Content with routes  | `path`, `title`, `description`, `seo`, `body`, `navigation` |
+| `data` | Structured data only | `id`, `stem`, `extension`, `meta`                           |
 
 **Page collections** auto-generate: `path` from file location, `title` from first H1, `description` from first paragraph.
 
@@ -110,6 +110,7 @@ export default defineContentConfig({
 ```
 
 **Private repositories:**
+
 ```ts
 source: {
   repository: 'https://github.com/org/private-repo',
@@ -119,6 +120,7 @@ source: {
 ```
 
 **Bitbucket with basic auth:**
+
 ```ts
 source: {
   repository: 'https://bitbucket.org/org/repo',
@@ -132,7 +134,7 @@ source: {
 Fetch content from any API using `defineCollectionSource`:
 
 ```ts
-import { defineCollectionSource, defineCollection, defineContentConfig, z } from '@nuxt/content'
+import { defineCollection, defineCollectionSource, defineContentConfig, z } from '@nuxt/content'
 
 const apiSource = defineCollectionSource({
   getKeys: async () => {
@@ -171,6 +173,7 @@ content/blog/2024/my-post.md
 ```
 
 Override path in frontmatter:
+
 ```yaml
 ---
 path: /custom-url
@@ -199,16 +202,17 @@ icon: heroicons:newspaper
 
 ## Best Practices
 
-| Do | Don't |
-|----|-------|
-| Use `page` for routable content | Use `page` for config/data files |
-| Define explicit schemas | Rely on implicit types |
-| Use Zod defaults for optional fields | Leave required fields without validation |
-| Colocate related content | Scatter files across unrelated directories |
+| Do                                   | Don't                                      |
+| ------------------------------------ | ------------------------------------------ |
+| Use `page` for routable content      | Use `page` for config/data files           |
+| Define explicit schemas              | Rely on implicit types                     |
+| Use Zod defaults for optional fields | Leave required fields without validation   |
+| Colocate related content             | Scatter files across unrelated directories |
 
 ## Common Patterns
 
 **Blog with categories:**
+
 ```ts
 blog: defineCollection({
   type: 'page',
@@ -222,6 +226,7 @@ blog: defineCollection({
 ```
 
 **Documentation with ordering:**
+
 ```ts
 docs: defineCollection({
   type: 'page',
@@ -234,6 +239,7 @@ docs: defineCollection({
 ```
 
 **Raw content access:**
+
 ```ts
 // Magic field - include rawbody to access original content
 docs: defineCollection({
@@ -247,6 +253,7 @@ docs: defineCollection({
 ```
 
 **i18n with per-locale collections:**
+
 ```ts
 // content.config.ts - separate collection per language
 const commonSchema = z.object({ title: z.string() })
@@ -259,7 +266,7 @@ export default defineContentConfig({
 })
 
 // pages/[...slug].vue
-const collection = ('content_' + locale.value) as keyof Collections
+const collection = (`content_${locale.value}`) as keyof Collections
 const page = await queryCollection(collection).path(slug).first()
 ```
 

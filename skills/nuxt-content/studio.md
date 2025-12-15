@@ -7,6 +7,7 @@ Setting up NuxtStudio integration, enabling preview mode, or configuring live co
 ## NuxtStudio Overview
 
 NuxtStudio is a visual editor for Nuxt Content sites. It provides:
+
 - Visual WYSIWYG editing
 - Real-time preview
 - Git-based workflow
@@ -233,6 +234,7 @@ export default defineNuxtConfig({
 ## Common Patterns
 
 **Preview banner component:**
+
 ```vue
 <!-- components/PreviewBanner.vue -->
 <script setup lang="ts">
@@ -247,6 +249,7 @@ const { enabled } = useContentPreview()
 ```
 
 **Conditional preview logic:**
+
 ```ts
 const { enabled } = useContentPreview()
 
@@ -257,12 +260,12 @@ const posts = await queryCollection('blog')
 
 ## Best Practices
 
-| Do | Don't |
-|----|-------|
-| Use preview token in production | Expose preview without auth |
-| Enable studio only in preview envs | Enable studio in production |
-| Use `.describe()` for schema fields | Leave schema undocumented |
-| Test preview mode before deploy | Assume preview works |
+| Do                                  | Don't                       |
+| ----------------------------------- | --------------------------- |
+| Use preview token in production     | Expose preview without auth |
+| Enable studio only in preview envs  | Enable studio in production |
+| Use `.describe()` for schema fields | Leave schema undocumented   |
+| Test preview mode before deploy     | Assume preview works        |
 
 ## Resources
 

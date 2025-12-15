@@ -13,9 +13,9 @@ Working with Nuxt-specific composables, URL handling, navigation, or data fetchi
 ```ts
 // ✅ Correct - works SSR + client
 const url = useRequestURL()
-console.log(url.origin)    // https://example.com
-console.log(url.pathname)  // /users/123
-console.log(url.search)    // ?tab=profile
+console.log(url.origin) // https://example.com
+console.log(url.pathname) // /users/123
+console.log(url.search) // ?tab=profile
 
 // ❌ Wrong - breaks on SSR, not available server-side
 const origin = window.origin
@@ -29,17 +29,17 @@ const path = window.location.pathname
 ```ts
 // Get full URL
 const url = useRequestURL()
-const fullUrl = url.href  // https://example.com/users/123?tab=profile
+const fullUrl = url.href // https://example.com/users/123?tab=profile
 
 // Get origin (base URL)
-const baseUrl = url.origin  // https://example.com
+const baseUrl = url.origin // https://example.com
 
 // Get path
-const path = url.pathname  // /users/123
+const path = url.pathname // /users/123
 
 // Get query params (use useRoute() instead for better typing)
 const params = url.searchParams
-const tab = params.get('tab')  // 'profile'
+const tab = params.get('tab') // 'profile'
 
 // Build absolute URL
 const apiUrl = `${url.origin}/api/users`
@@ -66,7 +66,7 @@ await navigateTo('/login', { replace: true })
 await navigateTo('/docs', { open: { target: '_blank' } })
 
 // Server-side redirect
-return navigateTo('/login')  // in middleware or server route
+return navigateTo('/login') // in middleware or server route
 ```
 
 ### useRouter()
@@ -196,7 +196,7 @@ const config = useRuntimeConfig()
 const apiBase = config.public.apiBase
 
 // Private config (server only)
-const apiSecret = config.apiSecret  // undefined on client
+const apiSecret = config.apiSecret // undefined on client
 ```
 
 ## Head Management
@@ -248,13 +248,13 @@ useSeoMeta({
 
 ## Common Mistakes
 
-| ❌ Wrong | ✅ Right |
-|---------|---------|
-| `window.origin` | `useRequestURL().origin` |
-| `window.location.pathname` | `useRequestURL().pathname` |
-| `fetch()` in components | `useFetch()` or `useAsyncData()` |
+| ❌ Wrong                     | ✅ Right                                              |
+| ---------------------------- | ----------------------------------------------------- |
+| `window.origin`              | `useRequestURL().origin`                              |
+| `window.location.pathname`   | `useRequestURL().pathname`                            |
+| `fetch()` in components      | `useFetch()` or `useAsyncData()`                      |
 | `router.push('/path/' + id)` | `router.push({ name: '/path/[id]', params: { id } })` |
-| Duplicate fetches | Use `key` parameter |
+| Duplicate fetches            | Use `key` parameter                                   |
 
 ## Resources
 

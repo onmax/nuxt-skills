@@ -102,8 +102,8 @@ export default defineNuxtConfig({
       markdown: {
         // Table of contents
         toc: {
-          depth: 3,        // Max heading depth
-          searchDepth: 2,  // Search depth in tree
+          depth: 3, // Max heading depth
+          searchDepth: 2, // Search depth in tree
         },
 
         // Extract title from first H1
@@ -137,6 +137,7 @@ export default defineNuxtConfig({
 ## Highlight Themes
 
 Single theme:
+
 ```ts
 highlight: {
   theme: 'github-dark',
@@ -144,6 +145,7 @@ highlight: {
 ```
 
 Multi-theme (light/dark):
+
 ```ts
 highlight: {
   themes: {
@@ -207,8 +209,8 @@ export default defineNuxtConfig({
   content: {
     build: {
       csv: {
-        json: true,        // Parse as JSON objects
-        delimiter: ',',    // Column delimiter
+        json: true, // Parse as JSON objects
+        delimiter: ',', // Column delimiter
       },
     },
   },
@@ -283,13 +285,13 @@ Modify content during build:
 // nuxt.config.ts
 export default defineNuxtConfig({
   hooks: {
-    'content:file:beforeParse'(ctx) {
+    'content:file:beforeParse': function (ctx) {
       // Modify raw content before parsing
       if (ctx.file.id.endsWith('.md')) {
         ctx.file.body = ctx.file.body.replace(/oldTerm/gi, 'newTerm')
       }
     },
-    'content:file:afterParse'(ctx) {
+    'content:file:afterParse': function (ctx) {
       // Add computed fields after parsing
       const wordCount = ctx.file.body?.split(/\s+/).length || 0
       ctx.content.readingTime = Math.ceil(wordCount / 180)
@@ -299,6 +301,7 @@ export default defineNuxtConfig({
 ```
 
 **Note:** Fields added in `afterParse` must be defined in your collection schema:
+
 ```ts
 schema: z.object({ readingTime: z.number().optional() })
 ```
@@ -328,12 +331,12 @@ Auto-generates `/llms.txt` for LLM consumption.
 
 ## Best Practices
 
-| Do | Don't |
-|----|-------|
+| Do                                      | Don't                            |
+| --------------------------------------- | -------------------------------- |
 | Use `_localDatabase` for dev/prod split | Use production DB in development |
-| Specify only needed langs | Load all Shiki languages |
-| Use multi-theme for dark mode support | Hardcode single theme |
-| Configure TOC depth for your content | Use defaults without checking |
+| Specify only needed langs               | Load all Shiki languages         |
+| Use multi-theme for dark mode support   | Hardcode single theme            |
+| Configure TOC depth for your content    | Use defaults without checking    |
 
 ## Resources
 

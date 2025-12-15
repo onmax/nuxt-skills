@@ -118,13 +118,13 @@ defineShortcuts({
 
 ### Shortcut Syntax
 
-| Key | Meaning |
-|-----|---------|
-| `meta` | Cmd (Mac) / Ctrl (Windows) |
-| `ctrl` | Ctrl key |
-| `alt` | Alt / Option key |
-| `shift` | Shift key |
-| `_` | Key separator |
+| Key     | Meaning                    |
+| ------- | -------------------------- |
+| `meta`  | Cmd (Mac) / Ctrl (Windows) |
+| `ctrl`  | Ctrl key                   |
+| `alt`   | Alt / Option key           |
+| `shift` | Shift key                  |
+| `_`     | Key separator              |
 
 ### Extract Shortcuts (for display)
 
@@ -144,10 +144,10 @@ Detect current keyboard state.
 const kbd = useKbd()
 
 // Reactive state
-kbd.meta    // true if Cmd/Ctrl pressed
-kbd.ctrl    // true if Ctrl pressed
-kbd.shift   // true if Shift pressed
-kbd.alt     // true if Alt/Option pressed
+kbd.meta // true if Cmd/Ctrl pressed
+kbd.ctrl // true if Ctrl pressed
+kbd.shift // true if Shift pressed
+kbd.alt // true if Alt/Option pressed
 ```
 
 ## useScrollspy
@@ -312,15 +312,15 @@ const { error } = useFormField()
 
 ## Quick Reference
 
-| Composable | Purpose |
-|------------|---------|
-| `useToast` | Show notifications |
-| `useOverlay` | Programmatic modals/slidelovers |
-| `defineShortcuts` | Keyboard shortcuts |
-| `useKbd` | Keyboard state detection |
-| `useScrollspy` | Track scroll for TOC |
-| `useFileUpload` | File upload handling |
-| `defineLocale` | i18n locale definition |
-| `extendLocale` | Extend existing locale |
-| `useFormField` | Form field context |
-| `extractShortcuts` | Parse shortcut definitions |
+| Composable         | Purpose                         |
+| ------------------ | ------------------------------- |
+| `useToast`         | Show notifications              |
+| `useOverlay`       | Programmatic modals/slidelovers |
+| `defineShortcuts`  | Keyboard shortcuts              |
+| `useKbd`           | Keyboard state detection        |
+| `useScrollspy`     | Track scroll for TOC            |
+| `useFileUpload`    | File upload handling            |
+| `defineLocale`     | i18n locale definition          |
+| `extendLocale`     | Extend existing locale          |
+| `useFormField`     | Form field context              |
+| `extractShortcuts` | Parse shortcut definitions      |

@@ -41,10 +41,10 @@ export default defineNuxtConfig({
 ## Writing Tests
 
 ```ts
-// test/basic.test.ts
-import { describe, it, expect } from 'vitest'
 import { fileURLToPath } from 'node:url'
-import { setup, $fetch } from '@nuxt/test-utils/e2e'
+import { $fetch, setup } from '@nuxt/test-utils/e2e'
+// test/basic.test.ts
+import { describe, expect, it } from 'vitest'
 
 describe('basic', async () => {
   await setup({
@@ -99,12 +99,12 @@ setup(options, nuxt) {
 
 Avoid naming conflicts:
 
-| Type | Wrong | Right |
-|------|-------|-------|
-| Components | `<Button>` | `<FooButton>` |
-| Composables | `useData()` | `useFooData()` |
+| Type          | Wrong        | Right             |
+| ------------- | ------------ | ----------------- |
+| Components    | `<Button>`   | `<FooButton>`     |
+| Composables   | `useData()`  | `useFooData()`    |
 | Server routes | `/api/track` | `/api/_foo/track` |
-| Plugins | `$helper` | `$fooHelper` |
+| Plugins       | `$helper`    | `$fooHelper`      |
 
 ### Lifecycle Hooks
 
@@ -130,14 +130,14 @@ export default defineNuxtModule({
 
 ```ts
 // Always export typed options
+// ESM only - no CommonJS
+import { something } from 'package'
+
 export interface ModuleOptions {
   apiKey: string
   debug?: boolean
-}
-
-// ESM only - no CommonJS
-import { something } from 'package'  // Right
-const { something } = require('package')  // Wrong
+} // Right
+const { something } = require('package') // Wrong
 ```
 
 ### Error Messages
@@ -164,11 +164,11 @@ npm publish      # Publish to npm
 
 ### Naming Conventions
 
-| Scope | Example | Description |
-|-------|---------|-------------|
+| Scope      | Example               | Description                          |
+| ---------- | --------------------- | ------------------------------------ |
 | `@nuxtjs/` | `@nuxtjs/tailwindcss` | Community modules (nuxt-modules org) |
-| `nuxt-` | `nuxt-my-module` | Third-party modules |
-| `@org/` | `@myorg/nuxt-auth` | Organization scoped |
+| `nuxt-`    | `nuxt-my-module`      | Third-party modules                  |
+| `@org/`    | `@myorg/nuxt-auth`    | Organization scoped                  |
 
 ### Documentation Checklist
 

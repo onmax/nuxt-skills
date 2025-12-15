@@ -26,16 +26,16 @@ const total = await queryCollection('blog')
 
 ## Operators
 
-| Operator | Example | Description |
-|----------|---------|-------------|
-| `=` | `where('status', '=', 'published')` | Exact match |
-| `<>` | `where('status', '<>', 'draft')` | Not equal |
-| `>`, `<`, `>=`, `<=` | `where('order', '>', 5)` | Comparison |
-| `IN` | `where('tag', 'IN', ['vue', 'nuxt'])` | Match any in array |
-| `BETWEEN` | `where('date', 'BETWEEN', [start, end])` | Range inclusive |
-| `LIKE` | `where('title', 'LIKE', '%vue%')` | Pattern match |
-| `IS NULL` | `where('image', 'IS NULL', true)` | Null check |
-| `IS NOT NULL` | `where('image', 'IS NOT NULL', true)` | Not null |
+| Operator             | Example                                  | Description        |
+| -------------------- | ---------------------------------------- | ------------------ |
+| `=`                  | `where('status', '=', 'published')`      | Exact match        |
+| `<>`                 | `where('status', '<>', 'draft')`         | Not equal          |
+| `>`, `<`, `>=`, `<=` | `where('order', '>', 5)`                 | Comparison         |
+| `IN`                 | `where('tag', 'IN', ['vue', 'nuxt'])`    | Match any in array |
+| `BETWEEN`            | `where('date', 'BETWEEN', [start, end])` | Range inclusive    |
+| `LIKE`               | `where('title', 'LIKE', '%vue%')`        | Pattern match      |
+| `IS NULL`            | `where('image', 'IS NULL', true)`        | Null check         |
+| `IS NOT NULL`        | `where('image', 'IS NOT NULL', true)`    | Not null           |
 
 ## Complex Queries
 
@@ -78,6 +78,7 @@ const navigation = await queryCollectionNavigation('docs', ['title', 'icon', 'de
 ```
 
 Returns nested structure:
+
 ```ts
 [
   {
@@ -92,13 +93,15 @@ Returns nested structure:
 ```
 
 **Navigation control** via frontmatter:
+
 ```yaml
 ---
-navigation: false  # Exclude from nav
+navigation: false # Exclude from nav
 ---
 ```
 
 Or with custom title:
+
 ```yaml
 ---
 navigation:
@@ -135,15 +138,15 @@ const sections = await queryCollectionSearchSections('docs', {
 })
 
 // Returns
-[
-  {
-    id: 'docs:getting-started#installation',
-    title: 'Installation',
-    titles: ['Getting Started', 'Installation'],
-    content: 'Section text content...',
-    path: '/docs/getting-started',
-  }
-]
+  [
+    {
+      id: 'docs:getting-started#installation',
+      title: 'Installation',
+      titles: ['Getting Started', 'Installation'],
+      content: 'Section text content...',
+      path: '/docs/getting-started',
+    }
+  ]
 ```
 
 ## Server-Side Queries
@@ -162,6 +165,7 @@ export default defineEventHandler(async (event) => {
 ## Common Patterns
 
 **Latest posts:**
+
 ```ts
 const latest = await queryCollection('blog')
   .where('draft', '=', false)
@@ -171,6 +175,7 @@ const latest = await queryCollection('blog')
 ```
 
 **Posts by tag:**
+
 ```ts
 const tagged = await queryCollection('blog')
   .where('tags', 'LIKE', `%${tag}%`)
@@ -178,6 +183,7 @@ const tagged = await queryCollection('blog')
 ```
 
 **Paginated list:**
+
 ```ts
 const page = 1
 const perPage = 10
@@ -189,6 +195,7 @@ const posts = await queryCollection('blog')
 ```
 
 **Featured + recent:**
+
 ```ts
 const [featured, recent] = await Promise.all([
   queryCollection('blog').where('featured', '=', true).first(),
@@ -198,12 +205,12 @@ const [featured, recent] = await Promise.all([
 
 ## Best Practices
 
-| Do | Don't |
-|----|-------|
+| Do                                | Don't                               |
+| --------------------------------- | ----------------------------------- |
 | Use `.select()` to reduce payload | Fetch all fields when only need few |
-| Cache navigation queries | Rebuild navigation on every page |
-| Use `.first()` for single items | Use `.all()[0]` |
-| Pass event in server routes | Omit event on server side |
+| Cache navigation queries          | Rebuild navigation on every page    |
+| Use `.first()` for single items   | Use `.all()[0]`                     |
+| Pass event in server routes       | Omit event on server side           |
 
 ## Resources
 
