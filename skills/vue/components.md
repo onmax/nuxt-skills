@@ -165,6 +165,38 @@ const [DefineItem, UseItem] = createReusableTemplate<{
 </template>
 ```
 
+## UnoCSS Attributify
+
+Attributify mode lets you group utilities: `text="sm white center"` instead of `class="text-sm text-white text-center"`.
+
+### When Attributify is Required
+
+**Special characters** (`%`, `/`) don't work in class syntax:
+
+```vue
+<!-- ❌ Wrong - special chars break class syntax -->
+<div class="translate-50% bg-white/10" />
+
+<!-- ✅ Correct - use attributify -->
+<div translate="50%" bg="white/10" />
+```
+
+### `un-` Prefix for Conflicts
+
+Some attributes conflict with HTML properties. Use `un-` prefix:
+
+```vue
+<!-- ❌ Wrong - changes <a> inner text, not color -->
+<a text="red">Link</a>
+
+<!-- ✅ Correct - un- prefix targets UnoCSS -->
+<a un-text="red">Link</a>
+```
+
+Common conflicts requiring `un-` prefix:
+- `<a text="...">` → `<a un-text="...">`
+- `<svg fill="...">` → `<svg un-fill="...">` (when using variants like `un-fill="hover:blue"`)
+
 ## Common Mistakes
 
 **Using `const props =` with destructured values:**
