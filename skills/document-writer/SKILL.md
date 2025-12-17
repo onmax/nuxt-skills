@@ -13,6 +13,18 @@ Writing guidance for blog posts and documentation following patterns from offici
 - Creating or editing documentation pages
 - Ensuring consistent writing style across content
 
+## Writing Standard
+
+**Override**: When writing documentation, maintain proper grammar and complete sentences. The "sacrifice grammar for brevity" rule does NOT apply here.
+
+Documentation must be:
+- Grammatically correct
+- Clear and unambiguous
+- Properly punctuated
+- Complete sentences (not fragments)
+
+Brevity is still valued, but never at the cost of clarity or correctness.
+
 ## Related Skills
 
 For component and syntax details, use these skills:
