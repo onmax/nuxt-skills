@@ -13,16 +13,17 @@
 
 ## Skills
 
-| Skill               | Description                                                                     |
-| ------------------- | ------------------------------------------------------------------------------- |
-| **vue**             | Vue 3 Composition API, components, composables, testing                         |
-| **nuxt**            | Nuxt 4+ server routes, routing, middleware, config                              |
-| **nuxt-modules**    | Creating Nuxt modules with defineNuxtModule, Kit utilities, testing             |
-| **nuxthub**         | NuxtHub v0.10 database, KV, blob, cache, multi-cloud                            |
-| **nuxt-content**    | Nuxt Content v3 collections, queries, MDC rendering, NuxtStudio                 |
-| **nuxt-ui**         | Nuxt UI v4 components, theming, forms, overlays, composables                    |
-| **reka-ui**         | Reka UI headless Vue components, accessible primitives, props/emits/slots       |
-| **document-writer** | Writing documentation for Nuxt ecosystem - MDC, style, structure, code examples |
+| Skill                 | Description                                                                      |
+| --------------------- | -------------------------------------------------------------------------------- |
+| **vue**               | Vue 3 Composition API, components, composables, testing                          |
+| **nuxt**              | Nuxt 4+ server routes, routing, middleware, config                               |
+| **nuxt-modules**      | Creating Nuxt modules with defineNuxtModule, Kit utilities, testing              |
+| **nuxthub**           | NuxtHub v0.10 database, KV, blob, cache, multi-cloud                             |
+| **nuxt-content**      | Nuxt Content v3 collections, queries, MDC rendering, NuxtStudio                  |
+| **nuxt-ui**           | Nuxt UI v4 components, theming, forms, overlays, composables                     |
+| **reka-ui**           | Reka UI headless Vue components, accessible primitives, props/emits/slots        |
+| **document-writer**   | Writing documentation for Nuxt ecosystem - MDC, style, structure, code examples  |
+| **personal-ts-setup** | Personal TS setup - pnpm catalogs, @antfu/eslint-config, bumpp, CI (opinionated) |
 
 ## Installation
 
@@ -38,6 +39,7 @@
 /plugin install nuxt-ui@nuxt-skills
 /plugin install reka-ui@nuxt-skills
 /plugin install document-writer@nuxt-skills
+/plugin install personal-ts-setup@nuxt-skills
 ```
 
 ### OpenCode
@@ -82,6 +84,7 @@ cp -r nuxt-skills/skills/nuxt-content ~/.claude/skills/
 cp -r nuxt-skills/skills/nuxt-ui ~/.claude/skills/
 cp -r nuxt-skills/skills/reka-ui ~/.claude/skills/
 cp -r nuxt-skills/skills/document-writer ~/.claude/skills/
+cp -r nuxt-skills/skills/personal-ts-setup ~/.claude/skills/
 ```
 
 ## Structure
@@ -96,7 +99,8 @@ nuxt-skills/
 │   ├── nuxt-content/
 │   ├── nuxt-ui/
 │   ├── reka-ui/
-│   └── document-writer/
+│   ├── document-writer/
+│   └── personal-ts-setup/
 ├── scripts/
 │   └── opencode.sh        # OpenCode installer
 └── .claude-plugin/

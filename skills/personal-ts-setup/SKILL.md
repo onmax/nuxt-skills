@@ -1,0 +1,46 @@
+---
+name: personal-ts-setup
+description: Personal/opinionated TypeScript setup for Nuxt apps, Vite apps, TS libraries, and monorepos. Covers pnpm catalogs, @antfu/eslint-config, bumpp/changelogen releases, CI workflows. Use when scaffolding new projects or setting up tooling.
+---
+
+# Personal TypeScript Project Setup
+
+**OPINIONATED**: This skill reflects personal preferences, not universal best practices.
+
+## When to Use
+
+- Scaffolding new TypeScript project (Nuxt, Vite, TS library)
+- Setting up pnpm catalogs for dependency management
+- Configuring ESLint with @antfu/eslint-config
+- Adding release workflow (bumpp, changelogen)
+- Setting up GitHub Actions CI
+
+## Project Types
+
+| Type        | Scaffold                 | Template                           |
+| ----------- | ------------------------ | ---------------------------------- |
+| Nuxt app    | `npx nuxi@latest init`   | https://nuxt.new/                  |
+| Vite app    | `npm create vite@latest` | -                                  |
+| TS library  | Clone starter-ts         | ~/templates/antfu/starter-ts       |
+| TS monorepo | Clone starter-monorepo   | ~/templates/antfu/starter-monorepo |
+| Nuxt module | `npx nuxi module init`   | -                                  |
+
+## Quick Reference
+
+| Working on...           | Load file              |
+| ----------------------- | ---------------------- |
+| Scaffolding new project | project-scaffolding.md |
+| Dependency organization | pnpm-catalogs.md       |
+| Linting setup           | eslint-config.md       |
+| Publishing packages     | release-workflow.md    |
+| CI/CD setup             | ci-workflows.md        |
+| TypeScript config       | tsconfig-patterns.md   |
+
+## Setup Checklist
+
+- [ ] pnpm with catalogs (pnpm-workspace.yaml)
+- [ ] @antfu/eslint-config (formatters, pnpm, vue)
+- [ ] simple-git-hooks + lint-staged
+- [ ] TypeScript strict mode, bundler moduleResolution
+- [ ] Proper ESM exports with types
+- [ ] CI workflow (lint, typecheck, test)
