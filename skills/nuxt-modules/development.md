@@ -251,6 +251,28 @@ export default defineNuxtModule({
 })
 ```
 
+## Logging & Errors
+
+Use `consola.withTag` for consistent module logging:
+
+```ts
+import { consola } from 'consola'
+
+const logger = consola.withTag('my-module')
+
+export default defineNuxtModule({
+  setup(options, nuxt) {
+    logger.info('Initializing...')
+    logger.warn('Deprecated option used')
+
+    // Errors must include tag manually - consola doesn't add it
+    if (!options.apiKey) {
+      throw new Error('[my-module] `apiKey` option is required')
+    }
+  }
+})
+```
+
 ## Local Modules
 
 For project-specific modules:
