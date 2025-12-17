@@ -20,5 +20,11 @@ jobs:
           cache: pnpm
 
       - run: pnpm install
-      - run: pnpm lint
+      - run: pnpm lint --fix
       - run: pnpm typecheck
+
+      - name: Commit lint fixes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'chore: auto-fix lint errors'
+          file_pattern: '*.md skills/**/*.md'

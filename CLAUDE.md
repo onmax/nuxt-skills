@@ -13,6 +13,10 @@ Claude Code skills for Vue 3, Nuxt 4+, NuxtHub v0.10, and Nuxt module developmen
 - `.claude-plugin/marketplace.json` - Claude Code marketplace manifest
 - `scripts/opencode.sh` - OpenCode installer
 
+## MANDATORY: Before Starting Work
+
+**Always run `git pull`** before making any changes. CI auto-commits lint fixes, so your local branch may be behind.
+
 ## MANDATORY: When Working on Skills
 
 **Always use the `example-skills:skill-creator` skill** when creating or editing any skill content. This ensures skills follow best practices.
