@@ -112,6 +112,8 @@ export function useAsyncData<T>(fetcher: () => Promise<T>) {
 
 Only create custom when VueUse doesn't cover your case.
 
+> **For Nuxt-specific composables** (useFetch, useRequestURL): see `nuxt` skill nuxt-composables.md
+
 ## Advanced Patterns
 
 ### Singleton Composable

@@ -29,6 +29,11 @@ Read specific files based on current work:
 - **nuxt-config.md** - Configuration, modules, auto-imports, layers
 
 **For Vue composables:** See `vue` skill composables.md (VueUse, Composition API patterns)
+**For UI components:** use `nuxt-ui` skill
+**For database/storage:** use `nuxthub` skill
+**For content-driven sites:** use `nuxt-content` skill
+**For creating modules:** use `nuxt-modules` skill
+**For project scaffolding/CI:** use `personal-ts-setup` skill
 
 ## Usage Pattern
 

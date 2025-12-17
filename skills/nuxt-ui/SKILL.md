@@ -16,6 +16,9 @@ Component library for Vue 3 and Nuxt 4+ built on Reka UI (headless) + Tailwind C
 - Using overlays (Modal, Toast, CommandPalette)
 - Working with composables (useToast, useOverlay)
 
+**For Vue component patterns:** use `vue` skill
+**For Nuxt routing/server:** use `nuxt` skill
+
 ## Available Guidance
 
 | File                 | Topics                                                           |

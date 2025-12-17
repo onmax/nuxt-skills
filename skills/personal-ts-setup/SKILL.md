@@ -15,6 +15,10 @@ description: Personal/opinionated TypeScript setup for Nuxt apps, Vite apps, TS 
 - Adding release workflow (bumpp, changelogen)
 - Setting up GitHub Actions CI
 
+**For Nuxt-specific patterns:** use `nuxt` skill
+**For Nuxt module development:** use `nuxt-modules` skill
+**For Vue component patterns:** use `vue` skill
+
 ## Project Types
 
 | Type        | Scaffold                 | Template                           |

@@ -14,6 +14,8 @@ Unstyled, accessible Vue 3 component primitives. WAI-ARIA compliant. Previously 
 - Using Nuxt UI, shadcn-vue, or other Reka-based libraries
 - Implementing accessible forms, dialogs, menus, popovers
 
+**For Vue patterns:** use `vue` skill
+
 ## Available Guidance
 
 | File                 | Topics                                                              |

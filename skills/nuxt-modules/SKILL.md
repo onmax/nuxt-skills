@@ -16,6 +16,10 @@ Building:
 - Runtime extensions (components, composables, plugins)
 - Server extensions (API routes, middleware)
 
+**For Nuxt basics:** use `nuxt` skill
+**For Vue runtime patterns:** use `vue` skill
+**For project scaffolding/CI:** use `personal-ts-setup` skill
+
 ## Quick Start
 
 ```bash

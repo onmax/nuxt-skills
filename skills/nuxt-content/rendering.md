@@ -1,5 +1,7 @@
 # Rendering Content
 
+> **For writing style/structure:** see `document-writer` skill
+
 ## When to Use
 
 Working with `<ContentRenderer>`, MDC syntax, custom prose components, or code highlighting.

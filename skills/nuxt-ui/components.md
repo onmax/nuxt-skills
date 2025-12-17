@@ -2,6 +2,8 @@
 
 > Auto-generated from Nuxt UI docs. Run `npx tsx skills/nuxt-ui/scripts/generate-components.ts` to update.
 
+> **For headless primitives (API, accessibility):** see `reka-ui` skill
+
 ## Data
 
 | Component                            | Description                                                                          |

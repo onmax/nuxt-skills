@@ -21,6 +21,10 @@ Working with:
 - NuxtStudio or preview mode
 - LLMs integration (`nuxt-llms`)
 
+**For writing documentation:** use `document-writer` skill
+**For Nuxt basics:** use `nuxt` skill
+**For database config:** use `nuxthub` skill (shares SQLite/PostgreSQL patterns)
+
 ## Available Guidance
 
 Read specific files based on current work:

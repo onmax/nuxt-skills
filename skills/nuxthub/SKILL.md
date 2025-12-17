@@ -7,6 +7,9 @@ description: Use when building NuxtHub v0.10 applications - provides database (D
 
 Full-stack Nuxt framework with database, KV, blob, and cache. Multi-cloud support (Cloudflare, Vercel, Deno, Netlify).
 
+**For Nuxt server patterns:** use `nuxt` skill (server.md)
+**For content with database:** use `nuxt-content` skill
+
 Migrating from v0.9.X? See [Migration Guide](https://hub.nuxt.com/docs/getting-started/migration).
 
 ## Installation

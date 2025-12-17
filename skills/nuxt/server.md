@@ -256,3 +256,5 @@ return sendNoContent(event)
 - Nuxt server: https://nuxt.com/docs/guide/directory-structure/server
 - h3 (Nitro engine): https://h3.unjs.io/
 - Nitro: https://nitro.unjs.io/
+
+> **For database/storage APIs:** see `nuxthub` skill
