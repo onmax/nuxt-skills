@@ -39,17 +39,17 @@ category: Release
 
 Use the right component for the right purpose:
 
-| Need | Component | When |
-|------|-----------|------|
-| Background info | `::note` | Supplementary context |
-| Best practice | `::tip` | Recommendations |
-| Potential issue | `::warning` | Things that could go wrong |
-| Must-know | `::important` | Required actions |
-| Danger | `::caution` | Destructive operations |
-| CTA button | `:u-button{to="..." label="..."}` | Downloads, external links |
-| Package managers | `::code-group{sync="pm"}` | pnpm/npm/yarn variants |
-| Expandable | `::collapsible{title="..."}` | Advanced details |
-| Images | `::carousel{items: [...]}` | Multiple screenshots |
+| Need             | Component                         | When                       |
+| ---------------- | --------------------------------- | -------------------------- |
+| Background info  | `::note`                          | Supplementary context      |
+| Best practice    | `::tip`                           | Recommendations            |
+| Potential issue  | `::warning`                       | Things that could go wrong |
+| Must-know        | `::important`                     | Required actions           |
+| Danger           | `::caution`                       | Destructive operations     |
+| CTA button       | `:u-button{to="..." label="..."}` | Downloads, external links  |
+| Package managers | `::code-group{sync="pm"}`         | pnpm/npm/yarn variants     |
+| Expandable       | `::collapsible{title="..."}`      | Advanced details           |
+| Images           | `::carousel{items: [...]}`        | Multiple screenshots       |
 
 > For component props/details: see **nuxt-ui** skill
 

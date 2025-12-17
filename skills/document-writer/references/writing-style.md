@@ -40,11 +40,11 @@ After installing the module, restart the server.
 
 Subject performs action. Prefer this.
 
-| Active (use) | Passive (avoid) |
-|--------------|-----------------|
+| Active (use)                    | Passive (avoid)                       |
+| ------------------------------- | ------------------------------------- |
 | The module creates a connection | A connection is created by the module |
-| You can override defaults | Defaults can be overridden |
-| Nuxt handles routing | Routing is handled by Nuxt |
+| You can override defaults       | Defaults can be overridden            |
+| Nuxt handles routing            | Routing is handled by Nuxt            |
 
 ### When Passive is OK (15%)
 
@@ -60,12 +60,12 @@ Subject performs action. Prefer this.
 
 ## Modal Verbs
 
-| Verb | Meaning | Example |
-|------|---------|---------|
-| `can` | Optional (40%) | "You can customize colors." |
-| `should` | Recommended (30%) | "You should validate input." |
-| `may` | Possibility (20%) | "This may cause issues." |
-| `must` | Required (10%) | "You must install dependencies." |
+| Verb     | Meaning           | Example                          |
+| -------- | ----------------- | -------------------------------- |
+| `can`    | Optional (40%)    | "You can customize colors."      |
+| `should` | Recommended (30%) | "You should validate input."     |
+| `may`    | Possibility (20%) | "This may cause issues."         |
+| `must`   | Required (10%)    | "You must install dependencies." |
 
 Avoid weak modals: `might`, `could`, `would`
 
@@ -112,22 +112,22 @@ The module accepts several options that control its behavior.
 
 ## Tone by Content Type
 
-| Type | Tone |
-|------|------|
-| Getting Started | Welcoming, encouraging |
-| Guides | Instructional, supportive |
-| API Reference | Precise, neutral |
+| Type            | Tone                         |
+| --------------- | ---------------------------- |
+| Getting Started | Welcoming, encouraging       |
+| Guides          | Instructional, supportive    |
+| API Reference   | Precise, neutral             |
 | Troubleshooting | Empathetic, solution-focused |
 
 ## Word Choice
 
-| Avoid | Use |
-|-------|-----|
-| utilize | use |
-| implement | add, create |
-| leverage | use |
-| in order to | to |
-| due to the fact | because |
+| Avoid           | Use         |
+| --------------- | ----------- |
+| utilize         | use         |
+| implement       | add, create |
+| leverage        | use         |
+| in order to     | to          |
+| due to the fact | because     |
 
 ## Common Mistakes
 

@@ -18,6 +18,7 @@ Writing guidance for blog posts and documentation following patterns from offici
 **Override**: When writing documentation, maintain proper grammar and complete sentences. The "sacrifice grammar for brevity" rule does NOT apply here.
 
 Documentation must be:
+
 - Grammatically correct
 - Clear and unambiguous
 - Properly punctuated
@@ -29,10 +30,10 @@ Brevity is still valued, but never at the cost of clarity or correctness.
 
 For component and syntax details, use these skills:
 
-| Skill | Use For |
-|-------|---------|
+| Skill            | Use For                                         |
+| ---------------- | ----------------------------------------------- |
 | **nuxt-content** | MDC syntax, prose components, code highlighting |
-| **nuxt-ui** | Component props, theming, UI patterns |
+| **nuxt-ui**      | Component props, theming, UI patterns           |
 
 ```bash
 # MDC syntax help
@@ -44,9 +45,9 @@ cat ~/.claude/skills/nuxt-ui/components.md
 
 ## Available References
 
-| Reference | Purpose |
-|-----------|---------|
-| `writing-style.md` | Voice, tone, sentence structure |
+| Reference             | Purpose                                         |
+| --------------------- | ----------------------------------------------- |
+| `writing-style.md`    | Voice, tone, sentence structure                 |
 | `content-patterns.md` | Blog frontmatter, structure, component patterns |
 
 ```bash
@@ -61,30 +62,30 @@ cat ~/.claude/skills/document-writer/references/content-patterns.md
 
 ### Writing Patterns
 
-| Pattern | Example |
-|---------|---------|
+| Pattern       | Example                                            |
+| ------------- | -------------------------------------------------- |
 | Subject-first | "The `useFetch` composable handles data fetching." |
-| Imperative | "Add the following to `nuxt.config.ts`." |
-| Contextual | "When using authentication, configure..." |
+| Imperative    | "Add the following to `nuxt.config.ts`."           |
+| Contextual    | "When using authentication, configure..."          |
 
 ### Modal Verbs
 
-| Verb | Meaning |
-|------|---------|
-| `can` | Optional |
+| Verb     | Meaning     |
+| -------- | ----------- |
+| `can`    | Optional    |
 | `should` | Recommended |
-| `must` | Required |
+| `must`   | Required    |
 
 ### Component Patterns (WHEN to use)
 
-| Need | Component |
-|------|-----------|
-| Info aside | `::note` |
-| Suggestion | `::tip` |
-| Caution | `::warning` |
-| Required | `::important` |
-| CTA | `:u-button{to="..." label="..."}` |
-| Multi-source code | `::code-group` |
+| Need              | Component                         |
+| ----------------- | --------------------------------- |
+| Info aside        | `::note`                          |
+| Suggestion        | `::tip`                           |
+| Caution           | `::warning`                       |
+| Required          | `::important`                     |
+| CTA               | `:u-button{to="..." label="..."}` |
+| Multi-source code | `::code-group`                    |
 
 > For component props: see **nuxt-ui** skill
 

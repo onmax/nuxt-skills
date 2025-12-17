@@ -194,6 +194,7 @@ Some attributes conflict with HTML properties. Use `un-` prefix:
 ```
 
 Common conflicts requiring `un-` prefix:
+
 - `<a text="...">` → `<a un-text="...">`
 - `<svg fill="...">` → `<svg un-fill="...">` (when using variants like `un-fill="hover:blue"`)
 

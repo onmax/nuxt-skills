@@ -13,15 +13,15 @@
 
 ## Skills
 
-| Skill            | Description                                                               |
-| ---------------- | ------------------------------------------------------------------------- |
-| **vue**          | Vue 3 Composition API, components, composables, testing                   |
-| **nuxt**         | Nuxt 4+ server routes, routing, middleware, config                        |
-| **nuxt-modules** | Creating Nuxt modules with defineNuxtModule, Kit utilities, testing       |
-| **nuxthub**      | NuxtHub v0.10 database, KV, blob, cache, multi-cloud                      |
-| **nuxt-content** | Nuxt Content v3 collections, queries, MDC rendering, NuxtStudio           |
-| **nuxt-ui**      | Nuxt UI v4 components, theming, forms, overlays, composables              |
-| **reka-ui**      | Reka UI headless Vue components, accessible primitives, props/emits/slots |
+| Skill               | Description                                                                     |
+| ------------------- | ------------------------------------------------------------------------------- |
+| **vue**             | Vue 3 Composition API, components, composables, testing                         |
+| **nuxt**            | Nuxt 4+ server routes, routing, middleware, config                              |
+| **nuxt-modules**    | Creating Nuxt modules with defineNuxtModule, Kit utilities, testing             |
+| **nuxthub**         | NuxtHub v0.10 database, KV, blob, cache, multi-cloud                            |
+| **nuxt-content**    | Nuxt Content v3 collections, queries, MDC rendering, NuxtStudio                 |
+| **nuxt-ui**         | Nuxt UI v4 components, theming, forms, overlays, composables                    |
+| **reka-ui**         | Reka UI headless Vue components, accessible primitives, props/emits/slots       |
 | **document-writer** | Writing documentation for Nuxt ecosystem - MDC, style, structure, code examples |
 
 ## Installation
