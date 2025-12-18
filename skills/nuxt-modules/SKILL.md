@@ -1,24 +1,13 @@
 ---
 name: nuxt-modules
-description: Use when creating Nuxt modules - provides defineNuxtModule patterns, runtime injection, hooks, testing, and best practices
+description: "Use when creating Nuxt modules: (1) Published npm modules (@nuxtjs/, nuxt-), (2) Local project modules (modules/ directory), (3) Runtime extensions (components, composables, plugins), (4) Server extensions (API routes, middleware), (5) Releasing/publishing modules to npm, (6) Setting up CI/CD workflows for modules. Provides defineNuxtModule patterns, Kit utilities, hooks, E2E testing, and release automation."
 ---
 
 # Nuxt Module Development
 
 Guide for creating Nuxt modules that extend framework functionality.
 
-## When to Use
-
-Building:
-
-- Published npm modules (`@nuxtjs/`, `nuxt-`)
-- Local project modules (`modules/` directory)
-- Runtime extensions (components, composables, plugins)
-- Server extensions (API routes, middleware)
-
-**For Nuxt basics:** use `nuxt` skill
-**For Vue runtime patterns:** use `vue` skill
-**For project scaffolding/CI:** use `personal-ts-setup` skill
+**Related skills:** `nuxt` (basics), `vue` (runtime patterns)
 
 ## Quick Start
 

@@ -2,6 +2,15 @@
 
 Copy-paste templates for GitHub Actions.
 
+## Contents
+
+- [ci.yml](#ciyml) - Lint, typecheck, test
+- [pkg.yml](#pkgyml) - Preview packages via pkg-pr-new
+- [release.yml](#releaseyml) - npm publish + GitHub release
+- [npm Trusted Publishing Setup](#npm-trusted-publishing-setup)
+
+---
+
 ## ci.yml
 
 Runs lint, typecheck, and tests on every push/PR.
