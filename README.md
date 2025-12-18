@@ -44,7 +44,7 @@
 
 ### OpenCode
 
-OpenCode will support the [agentskills](https://github.com/anthropics/agentskills) standard natively. This repo follows that format.
+OpenCode will support the [agentskills](https://github.com/agentskills/agentskills) standard natively. This repo follows that format.
 
 ### btca
 
@@ -79,7 +79,7 @@ cp -r nuxt-skills/skills/personal-ts-setup ~/.claude/skills/
 
 ## Structure
 
-Follows [agentskills](https://github.com/anthropics/agentskills) standard format.
+Follows [agentskills](https://github.com/agentskills/agentskills) standard format.
 
 ```
 nuxt-skills/

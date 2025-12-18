@@ -39,7 +39,7 @@ jobs:
           python-version: '3.12'
 
       - name: Install skills-ref
-        run: pip install git+https://github.com/anthropics/agentskills.git#subdirectory=skills-ref
+        run: pip install git+https://github.com/agentskills/agentskills.git#subdirectory=skills-ref
 
       - name: Validate all skills
         run: |

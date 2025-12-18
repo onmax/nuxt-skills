@@ -8,7 +8,7 @@ Claude Code skills for Vue 3, Nuxt 4+, NuxtHub v0.10, and Nuxt module developmen
 
 ## Structure
 
-Follows [agentskills](https://github.com/anthropics/agentskills) standard format.
+Follows [agentskills](https://github.com/agentskills/agentskills) standard format.
 
 - `skills/<name>/SKILL.md` - Entry point (frontmatter with name/description/license)
 - `skills/<name>/references/*.md` - Sub-files loaded on-demand
