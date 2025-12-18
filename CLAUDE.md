@@ -8,10 +8,11 @@ Claude Code skills for Vue 3, Nuxt 4+, NuxtHub v0.10, and Nuxt module developmen
 
 ## Structure
 
-- `skills/<name>/SKILL.md` - Entry point for each skill (has frontmatter with name/description)
-- `skills/<name>/*.md` - Sub-files loaded on-demand to save context
+Follows [agentskills](https://github.com/agentskills/agentskills) standard format.
+
+- `skills/<name>/SKILL.md` - Entry point (frontmatter with name/description/license)
+- `skills/<name>/references/*.md` - Sub-files loaded on-demand
 - `.claude-plugin/marketplace.json` - Claude Code marketplace manifest
-- `scripts/opencode.sh` - OpenCode installer
 
 ## MANDATORY: Before Starting Work
 
@@ -26,10 +27,9 @@ Claude Code skills for Vue 3, Nuxt 4+, NuxtHub v0.10, and Nuxt module developmen
 When adding/editing/removing a skill, update ALL of these:
 
 1. `skills/<name>/SKILL.md` - Main skill entry point
-2. `skills/<name>/*.md` - Sub-files if applicable
+2. `skills/<name>/references/*.md` - Sub-files if applicable
 3. `.claude-plugin/marketplace.json` - Add/update plugin entry
-4. `scripts/opencode.sh` - Update the skill list and file fetching logic
-5. `README.md` - Update skills table and installation commands
+4. `README.md` - Update skills table and installation commands
 
 **Do not skip any of these.** All must stay in sync.
 

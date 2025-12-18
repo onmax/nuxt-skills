@@ -1,6 +1,7 @@
 ---
 name: nuxt
 description: Use when working on Nuxt 4+ projects - provides server routes, file-based routing, middleware patterns, Nuxt-specific composables, and configuration with latest docs. Covers h3 v1 helpers (validation, WebSocket, SSE) and nitropack v2 patterns.
+license: MIT
 ---
 
 # Nuxt 4+ Development
@@ -21,12 +22,12 @@ Working with:
 
 Read specific files based on current work:
 
-- **server.md** - API routes, server middleware, validation (Zod), WebSocket, SSE
-- **routing.md** - File-based routing, route groups, typed router, definePage
-- **middleware-plugins.md** - Route middleware, plugins, app lifecycle
-- **nuxt-composables.md** - Nuxt composables (useRequestURL, useFetch, navigation)
-- **nuxt-components.md** - NuxtLink, NuxtImg, NuxtTime (prefer over HTML elements)
-- **nuxt-config.md** - Configuration, modules, auto-imports, layers
+- **[references/server.md](references/server.md)** - API routes, server middleware, validation (Zod), WebSocket, SSE
+- **[references/routing.md](references/routing.md)** - File-based routing, route groups, typed router, definePage
+- **[references/middleware-plugins.md](references/middleware-plugins.md)** - Route middleware, plugins, app lifecycle
+- **[references/nuxt-composables.md](references/nuxt-composables.md)** - Nuxt composables (useRequestURL, useFetch, navigation)
+- **[references/nuxt-components.md](references/nuxt-components.md)** - NuxtLink, NuxtImg, NuxtTime (prefer over HTML elements)
+- **[references/nuxt-config.md](references/nuxt-config.md)** - Configuration, modules, auto-imports, layers
 
 **For Vue composables:** See `vue` skill composables.md (VueUse, Composition API patterns)
 **For UI components:** use `nuxt-ui` skill
@@ -39,25 +40,12 @@ Read specific files based on current work:
 
 **Progressive loading - only read what you need:**
 
-```bash
-# Creating API endpoint?
-cat ~/.claude/skills/nuxt/server.md
-
-# Setting up pages/routing?
-cat ~/.claude/skills/nuxt/routing.md
-
-# Using composables/data fetching?
-cat ~/.claude/skills/nuxt/nuxt-composables.md
-
-# Adding middleware/plugins?
-cat ~/.claude/skills/nuxt/middleware-plugins.md
-
-# Configuring Nuxt?
-cat ~/.claude/skills/nuxt/nuxt-config.md
-
-# Setting up CI/ESLint?
-cat ~/.claude/skills/nuxt/project-setup.md
-```
+- Creating API endpoint? → [references/server.md](references/server.md)
+- Setting up pages/routing? → [references/routing.md](references/routing.md)
+- Using composables/data fetching? → [references/nuxt-composables.md](references/nuxt-composables.md)
+- Adding middleware/plugins? → [references/middleware-plugins.md](references/middleware-plugins.md)
+- Configuring Nuxt? → [references/nuxt-config.md](references/nuxt-config.md)
+- Setting up CI/ESLint? → [references/project-setup.md](references/project-setup.md)
 
 **DO NOT read all files at once.** Load based on context:
 

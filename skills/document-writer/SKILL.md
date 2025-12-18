@@ -1,6 +1,7 @@
 ---
 name: document-writer
-description: Use when writing blog posts or documentation for Nuxt ecosystem. Covers writing style, content structure, and component patterns. Links to nuxt-content for MDC syntax and nuxt-ui for component details.
+description: Use when writing blog posts or documentation markdown files - provides writing style guide (active voice, present tense), content structure patterns, and MDC component usage. Overrides brevity rules for proper grammar. Use nuxt-content for MDC syntax, nuxt-ui for component props.
+license: MIT
 ---
 
 # Documentation Writer for Nuxt Ecosystem
@@ -35,28 +36,17 @@ For component and syntax details, use these skills:
 | **nuxt-content** | MDC syntax, prose components, code highlighting |
 | **nuxt-ui**      | Component props, theming, UI patterns           |
 
-```bash
-# MDC syntax help
-cat ~/.claude/skills/nuxt-content/rendering.md
-
-# Component details
-cat ~/.claude/skills/nuxt-ui/components.md
-```
-
 ## Available References
 
-| Reference             | Purpose                                         |
-| --------------------- | ----------------------------------------------- |
-| `writing-style.md`    | Voice, tone, sentence structure                 |
-| `content-patterns.md` | Blog frontmatter, structure, component patterns |
+| Reference                                                            | Purpose                                         |
+| -------------------------------------------------------------------- | ----------------------------------------------- |
+| **[references/writing-style.md](references/writing-style.md)**       | Voice, tone, sentence structure                 |
+| **[references/content-patterns.md](references/content-patterns.md)** | Blog frontmatter, structure, component patterns |
 
-```bash
-# Writing prose
-cat ~/.claude/skills/document-writer/references/writing-style.md
+**Load based on context:**
 
-# Blog structure and patterns
-cat ~/.claude/skills/document-writer/references/content-patterns.md
-```
+- Writing prose → [references/writing-style.md](references/writing-style.md)
+- Blog structure and patterns → [references/content-patterns.md](references/content-patterns.md)
 
 ## Quick Reference
 

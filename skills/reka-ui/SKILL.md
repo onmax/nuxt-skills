@@ -1,6 +1,7 @@
 ---
 name: reka-ui
 description: Use when building with Reka UI (headless Vue components) - provides component API, accessibility patterns, composition (asChild), controlled/uncontrolled state, and styling integration. Formerly Radix Vue.
+license: MIT
 ---
 
 # Reka UI
@@ -18,25 +19,18 @@ Unstyled, accessible Vue 3 component primitives. WAI-ARIA compliant. Previously 
 
 ## Available Guidance
 
-| File                 | Topics                                                              |
-| -------------------- | ------------------------------------------------------------------- |
-| **components.md**    | Component index by category (Form, Date, Overlay, Menu, Data, etc.) |
-| **components/\*.md** | Per-component details (dialog.md, select.md, etc.)                  |
+| File                                                     | Topics                                                              |
+| -------------------------------------------------------- | ------------------------------------------------------------------- |
+| **[references/components.md](references/components.md)** | Component index by category (Form, Date, Overlay, Menu, Data, etc.) |
+| **components/\*.md**                                     | Per-component details (dialog.md, select.md, etc.)                  |
 
 ## Usage Pattern
 
-```bash
-# Component index - find what you need
-cat ~/.claude/skills/reka-ui/components.md
+**Load based on context:**
 
-# Specific component details
-cat ~/.claude/skills/reka-ui/components/dialog.md
-cat ~/.claude/skills/reka-ui/components/select.md
-cat ~/.claude/skills/reka-ui/components/combobox.md
-
-# For styled Nuxt components built on Reka UI
-cat ~/.claude/skills/nuxt-ui/SKILL.md
-```
+- Component index → [references/components.md](references/components.md)
+- Specific component → [components/dialog.md](components/dialog.md), [components/select.md](components/select.md), etc.
+- For styled Nuxt components built on Reka UI → use **nuxt-ui** skill
 
 ## Key Concepts
 

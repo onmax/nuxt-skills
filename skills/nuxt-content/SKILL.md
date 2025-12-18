@@ -1,6 +1,7 @@
 ---
 name: nuxt-content
 description: Use when working with Nuxt Content v3 - provides collections (local/remote/API sources), queryCollection API, MDC rendering, database configuration, NuxtStudio integration, hooks, i18n patterns, and LLMs integration
+license: MIT
 ---
 
 # Nuxt Content v3
@@ -29,32 +30,21 @@ Working with:
 
 Read specific files based on current work:
 
-- **collections.md** - defineCollection, schemas, sources, content.config.ts
-- **querying.md** - queryCollection, navigation, search, surroundings
-- **rendering.md** - ContentRenderer, MDC syntax, prose components, Shiki
-- **config.md** - Database setup, markdown plugins, renderer options
-- **studio.md** - NuxtStudio integration, preview mode, live editing
+- **[references/collections.md](references/collections.md)** - defineCollection, schemas, sources, content.config.ts
+- **[references/querying.md](references/querying.md)** - queryCollection, navigation, search, surroundings
+- **[references/rendering.md](references/rendering.md)** - ContentRenderer, MDC syntax, prose components, Shiki
+- **[references/config.md](references/config.md)** - Database setup, markdown plugins, renderer options
+- **[references/studio.md](references/studio.md)** - NuxtStudio integration, preview mode, live editing
 
 ## Usage Pattern
 
 **Progressive loading - only read what you need:**
 
-```bash
-# Setting up collections?
-cat ~/.claude/skills/nuxt-content/collections.md
-
-# Querying content?
-cat ~/.claude/skills/nuxt-content/querying.md
-
-# Rendering markdown/MDC?
-cat ~/.claude/skills/nuxt-content/rendering.md
-
-# Configuring database/markdown?
-cat ~/.claude/skills/nuxt-content/config.md
-
-# Using NuxtStudio?
-cat ~/.claude/skills/nuxt-content/studio.md
-```
+- Setting up collections? → [references/collections.md](references/collections.md)
+- Querying content? → [references/querying.md](references/querying.md)
+- Rendering markdown/MDC? → [references/rendering.md](references/rendering.md)
+- Configuring database/markdown? → [references/config.md](references/config.md)
+- Using NuxtStudio? → [references/studio.md](references/studio.md)
 
 **DO NOT read all files at once.** Load based on context:
 

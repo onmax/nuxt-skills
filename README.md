@@ -44,17 +44,7 @@
 
 ### OpenCode
 
-```bash
-curl -fsSL https://raw.githubusercontent.com/onmax/nuxt-skills/main/scripts/opencode.sh | bash
-```
-
-Specific skill:
-
-```bash
-curl -fsSL https://raw.githubusercontent.com/onmax/nuxt-skills/main/scripts/opencode.sh | bash -s -- vue
-```
-
-Re-run to update.
+OpenCode will support the [agentskills](https://github.com/agentskills/agentskills) standard natively. This repo follows that format.
 
 ### btca
 
@@ -89,10 +79,14 @@ cp -r nuxt-skills/skills/personal-ts-setup ~/.claude/skills/
 
 ## Structure
 
+Follows [agentskills](https://github.com/agentskills/agentskills) standard format.
+
 ```
 nuxt-skills/
-├── skills/                 # Source (Claude Code format)
+├── skills/                 # Skills (agentskills format)
 │   ├── vue/
+│   │   ├── SKILL.md        # Entry point with frontmatter
+│   │   └── references/     # Sub-files loaded on-demand
 │   ├── nuxt/
 │   ├── nuxt-modules/
 │   ├── nuxthub/
@@ -101,10 +95,8 @@ nuxt-skills/
 │   ├── reka-ui/
 │   ├── document-writer/
 │   └── personal-ts-setup/
-├── scripts/
-│   └── opencode.sh        # OpenCode installer
 └── .claude-plugin/
-    └── marketplace.json   # Claude Code marketplace
+    └── marketplace.json    # Claude Code marketplace
 ```
 
 ## License

@@ -1,6 +1,7 @@
 ---
 name: nuxt-ui
-description: Use when building with Nuxt UI - provides component docs, template references, and patterns for UI-focused Nuxt projects
+description: Use when building styled UI with @nuxt/ui v4 components (Button, Modal, Form, Table, etc.) - provides ready-to-use components with Tailwind Variants theming. Use vue skill for raw component patterns, reka-ui for headless primitives.
+license: MIT
 ---
 
 # Nuxt UI v4
@@ -21,42 +22,27 @@ Component library for Vue 3 and Nuxt 4+ built on Reka UI (headless) + Tailwind C
 
 ## Available Guidance
 
-| File                 | Topics                                                           |
-| -------------------- | ---------------------------------------------------------------- |
-| **installation.md**  | Nuxt/Vue setup, pnpm gotchas, UApp wrapper, module options       |
-| **theming.md**       | Semantic colors, CSS variables, app.config.ts, Tailwind Variants |
-| **components.md**    | Component index by category (121 components)                     |
-| **components/\*.md** | Per-component details (button.md, modal.md, etc.)                |
-| **forms.md**         | Form components, validation (Zod/Valibot), useFormField          |
-| **overlays.md**      | Toast, Modal, Slideover, Drawer, CommandPalette                  |
-| **composables.md**   | useToast, useOverlay, defineShortcuts, useScrollspy              |
+| File                                                         | Topics                                                           |
+| ------------------------------------------------------------ | ---------------------------------------------------------------- |
+| **[references/installation.md](references/installation.md)** | Nuxt/Vue setup, pnpm gotchas, UApp wrapper, module options       |
+| **[references/theming.md](references/theming.md)**           | Semantic colors, CSS variables, app.config.ts, Tailwind Variants |
+| **[references/components.md](references/components.md)**     | Component index by category (121 components)                     |
+| **components/\*.md**                                         | Per-component details (button.md, modal.md, etc.)                |
+| **[references/forms.md](references/forms.md)**               | Form components, validation (Zod/Valibot), useFormField          |
+| **[references/overlays.md](references/overlays.md)**         | Toast, Modal, Slideover, Drawer, CommandPalette                  |
+| **[references/composables.md](references/composables.md)**   | useToast, useOverlay, defineShortcuts, useScrollspy              |
 
 ## Usage Pattern
 
-```bash
-# Installing Nuxt UI?
-cat ~/.claude/skills/nuxt-ui/installation.md
+**Load based on context:**
 
-# Customizing theme?
-cat ~/.claude/skills/nuxt-ui/theming.md
-
-# Component index - find what you need
-cat ~/.claude/skills/nuxt-ui/components.md
-
-# Specific component details
-cat ~/.claude/skills/nuxt-ui/components/button.md
-cat ~/.claude/skills/nuxt-ui/components/modal.md
-cat ~/.claude/skills/nuxt-ui/components/form.md
-
-# Building forms?
-cat ~/.claude/skills/nuxt-ui/forms.md
-
-# Using overlays/modals?
-cat ~/.claude/skills/nuxt-ui/overlays.md
-
-# Using composables?
-cat ~/.claude/skills/nuxt-ui/composables.md
-```
+- Installing Nuxt UI? → [references/installation.md](references/installation.md)
+- Customizing theme? → [references/theming.md](references/theming.md)
+- Component index → [references/components.md](references/components.md)
+- Specific component → [components/button.md](components/button.md), [components/modal.md](components/modal.md), etc.
+- Building forms? → [references/forms.md](references/forms.md)
+- Using overlays? → [references/overlays.md](references/overlays.md)
+- Using composables? → [references/composables.md](references/composables.md)
 
 **DO NOT read all files at once.** Load based on context.
 

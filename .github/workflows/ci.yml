@@ -28,3 +28,22 @@ jobs:
         with:
           commit_message: 'chore: auto-fix lint errors'
           file_pattern: '*.md skills/**/*.md'
+
+  validate-skills:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install skills-ref
+        run: pip install git+https://github.com/agentskills/agentskills.git#subdirectory=skills-ref
+
+      - name: Validate all skills
+        run: |
+          for skill in skills/*/; do
+            echo "Validating $skill..."
+            skills-ref validate "$skill"
+          done

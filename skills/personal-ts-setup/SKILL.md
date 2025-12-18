@@ -1,6 +1,7 @@
 ---
 name: personal-ts-setup
 description: Personal/opinionated TypeScript setup for Nuxt apps, Vite apps, TS libraries, and monorepos. Covers pnpm catalogs, @antfu/eslint-config, bumpp/changelogen releases, CI workflows. Use when scaffolding new projects or setting up tooling.
+license: MIT
 ---
 
 # Personal TypeScript Project Setup
@@ -31,14 +32,14 @@ description: Personal/opinionated TypeScript setup for Nuxt apps, Vite apps, TS 
 
 ## Quick Reference
 
-| Working on...           | Load file              |
-| ----------------------- | ---------------------- |
-| Scaffolding new project | project-scaffolding.md |
-| Dependency organization | pnpm-catalogs.md       |
-| Linting setup           | eslint-config.md       |
-| Publishing packages     | release-workflow.md    |
-| CI/CD setup             | ci-workflows.md        |
-| TypeScript config       | tsconfig-patterns.md   |
+| Working on...           | Load file                                                              |
+| ----------------------- | ---------------------------------------------------------------------- |
+| Scaffolding new project | [references/project-scaffolding.md](references/project-scaffolding.md) |
+| Dependency organization | [references/pnpm-catalogs.md](references/pnpm-catalogs.md)             |
+| Linting setup           | [references/eslint-config.md](references/eslint-config.md)             |
+| Publishing packages     | [references/release-workflow.md](references/release-workflow.md)       |
+| CI/CD setup             | [references/ci-workflows.md](references/ci-workflows.md)               |
+| TypeScript config       | [references/tsconfig-patterns.md](references/tsconfig-patterns.md)     |
 
 ## Setup Checklist
 
