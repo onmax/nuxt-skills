@@ -33,7 +33,8 @@ npm run test       # Run tests
 ## Available Guidance
 
 - **development.md** - Module anatomy, defineNuxtModule, Kit utilities, hooks
-- **testing-and-publishing.md** - E2E testing, best practices, publishing
+- **testing-and-publishing.md** - E2E testing, best practices, releasing, publishing
+- **references/ci-workflows.md** - Copy-paste CI/CD workflow templates
 
 ```bash
 # Building module features?
@@ -41,6 +42,9 @@ cat ~/.claude/skills/nuxt-modules/development.md
 
 # Testing or publishing?
 cat ~/.claude/skills/nuxt-modules/testing-and-publishing.md
+
+# CI workflow templates?
+cat ~/.claude/skills/nuxt-modules/references/ci-workflows.md
 ```
 
 ## Module Types

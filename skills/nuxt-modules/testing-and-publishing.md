@@ -152,15 +152,54 @@ setup(options, nuxt) {
 
 ---
 
-## Publishing
+## Releasing
 
-### Build & Publish
+Two-step: local bump → CI publish. CI must pass before tag push.
+
+### Setup
 
 ```bash
-npm run prepack  # Build
-npm pack         # Test locally first
-npm publish      # Publish to npm
+pnpm add -D bumpp
 ```
+
+```json
+{
+  "scripts": {
+    "release": "bumpp && git push --follow-tags"
+  }
+}
+```
+
+### Flow
+
+```bash
+pnpm release  # Prompts version, commits, tags, pushes
+# → CI release.yml triggers on v* tag → npm publish + GitHub release
+```
+
+### Commit Conventions
+
+| Prefix | Bump |
+|--------|------|
+| `feat:` | minor |
+| `fix:`, `chore:`, `docs:` | patch |
+| `feat!:` or `BREAKING CHANGE:` | major |
+
+### CI Workflows
+
+Three workflows for complete CI/CD:
+
+| File | Trigger | Purpose |
+|------|---------|---------|
+| `ci.yml` | push/PR | lint, typecheck, test |
+| `pkg.yml` | push/PR | preview packages via pkg-pr-new |
+| `release.yml` | tag `v*` | npm publish + GitHub release |
+
+**Copy templates from:** [references/ci-workflows.md](references/ci-workflows.md)
+
+---
+
+## Publishing
 
 ### Naming Conventions
 
