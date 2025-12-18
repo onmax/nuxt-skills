@@ -13,7 +13,7 @@ Copy-paste templates for GitHub Actions.
 
 ## ci.yml
 
-Runs lint, typecheck, and tests on every push/PR.
+Runs lint, typecheck, and tests on every push/PR/tag.
 
 ```yaml
 name: ci
@@ -21,6 +21,7 @@ name: ci
 on:
   push:
     branches: [main]
+    tags: ['v*']
   pull_request:
     branches: [main]
 
@@ -74,7 +75,7 @@ jobs:
 
 ## release.yml
 
-Triggered by tag push. Publishes to npm via OIDC (no token needed) + creates GitHub release.
+Triggered by tag push. Waits for CI, then publishes to npm via OIDC + creates GitHub release.
 
 ```yaml
 name: release
@@ -82,6 +83,7 @@ name: release
 permissions:
   id-token: write
   contents: write
+  actions: read
 
 on:
   push:
@@ -89,7 +91,19 @@ on:
       - 'v*'
 
 jobs:
+  wait-for-ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for CI to complete
+        uses: lewagon/wait-on-check-action@v1.3.4
+        with:
+          ref: ${{ github.sha }}
+          check-name: ci
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          wait-interval: 10
+
   release:
+    needs: wait-for-ci
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
