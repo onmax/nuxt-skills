@@ -8,6 +8,7 @@
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/onmax/nuxt-skills/main/.github/badge-claude-code.svg" alt="Claude Code">
+  <img src="https://raw.githubusercontent.com/onmax/nuxt-skills/main/.github/badge-copilot.svg" alt="GitHub Copilot">
   <img src="https://raw.githubusercontent.com/onmax/nuxt-skills/main/.github/badge-opencode.svg" alt="OpenCode">
 </p>
 
@@ -41,6 +42,25 @@
 /plugin install document-writer@nuxt-skills
 /plugin install personal-ts-setup@nuxt-skills
 ```
+
+### GitHub Copilot
+
+Copy skills to your project's `.github/skills/` directory:
+
+```bash
+git clone https://github.com/onmax/nuxt-skills.git
+cp -r nuxt-skills/skills/vue .github/skills/
+cp -r nuxt-skills/skills/nuxt .github/skills/
+cp -r nuxt-skills/skills/nuxt-modules .github/skills/
+cp -r nuxt-skills/skills/nuxthub .github/skills/
+cp -r nuxt-skills/skills/nuxt-content .github/skills/
+cp -r nuxt-skills/skills/nuxt-ui .github/skills/
+cp -r nuxt-skills/skills/reka-ui .github/skills/
+cp -r nuxt-skills/skills/document-writer .github/skills/
+cp -r nuxt-skills/skills/personal-ts-setup .github/skills/
+```
+
+Copilot auto-detects skills matching your prompt context.
 
 ### OpenCode
 
