@@ -129,11 +129,34 @@ jobs:
         run: npm publish --provenance --access public
 ```
 
-## npm Trusted Publishing Setup
+## npm Trusted Publishing Setup (OIDC)
 
-No `NPM_TOKEN` needed. Uses OIDC authentication.
+**Preferred method** - No `NPM_TOKEN` secret needed. Uses OIDC for secure, tokenless authentication.
 
-1. Go to npmjs.com → your package → Settings
-2. Find "Trusted Publisher" section
-3. Click "GitHub Actions"
-4. Add repository and workflow file (`release.yml`)
+### Requirements
+- Workflow must have `permissions: id-token: write`
+- Publish command must include `--provenance` flag
+- Package must be configured on npmjs.com
+
+### Setup Steps
+
+1. **Open package settings**: `https://www.npmjs.com/package/<PACKAGE_NAME>/access`
+2. **Scroll to "Publishing access"** section
+3. **Click "Add GitHub Actions"** under Trusted Publishers
+4. **Fill in the form**:
+   - Owner: `<github-org-or-username>`
+   - Repository: `<repo-name>`
+   - Workflow file: `release.yml`
+   - Environment: *(leave empty)*
+5. **Click "Add"**
+
+Repeat for each package in your monorepo.
+
+### Verify Setup
+
+The workflow uses OIDC when:
+- `id-token: write` permission is set
+- `--provenance` flag is used
+- No `NODE_AUTH_TOKEN` env var is set
+
+npm automatically detects GitHub Actions and authenticates via OIDC.
