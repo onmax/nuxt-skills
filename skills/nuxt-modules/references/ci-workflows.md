@@ -163,23 +163,24 @@ Each package must have a `repository` field or provenance verification fails:
    - Owner: `<github-org-or-username>`
    - Repository: `<repo-name>`
    - Workflow file: `release.yml`
-   - Environment: *(leave empty)*
+   - Environment: _(leave empty)_
 5. **Click "Add"**
 
 Repeat for each package in your monorepo.
 
 ### Troubleshooting
 
-| Error | Cause | Fix |
-|-------|-------|-----|
-| "Access token expired or revoked" E404 | npm version too old | Use Node.js 24 (npm 11.5.1+) |
-| ENEEDAUTH | Missing registry-url | Add `registry-url: 'https://registry.npmjs.org'` to setup-node |
-| "repository.url is empty" E422 | Missing repository field | Add `repository` to package.json |
-| "npm/xyz not configured as trusted publisher" | Mismatch in config | Check owner, repo, workflow filename match exactly |
+| Error                                         | Cause                    | Fix                                                            |
+| --------------------------------------------- | ------------------------ | -------------------------------------------------------------- |
+| "Access token expired or revoked" E404        | npm version too old      | Use Node.js 24 (npm 11.5.1+)                                   |
+| ENEEDAUTH                                     | Missing registry-url     | Add `registry-url: 'https://registry.npmjs.org'` to setup-node |
+| "repository.url is empty" E422                | Missing repository field | Add `repository` to package.json                               |
+| "npm/xyz not configured as trusted publisher" | Mismatch in config       | Check owner, repo, workflow filename match exactly             |
 
 ### Verify Setup
 
 The workflow uses OIDC when:
+
 - `id-token: write` permission is set
 - `--provenance` flag is used
 - No `NODE_AUTH_TOKEN` env var is set

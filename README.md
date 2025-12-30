@@ -32,11 +32,11 @@
 Skills are **auto-activated by AI agents** based on context - not manually invoked.
 
 | You're working on... | Agent automatically uses... |
-|---------------------|------------------------------|
-| `.vue` file | `vue` skill |
-| `server/api/` route | `nuxt` skill |
-| `nuxt.config.ts` | `nuxt` skill |
-| NuxtHub storage | `nuxthub` skill |
+| -------------------- | --------------------------- |
+| `.vue` file          | `vue` skill                 |
+| `server/api/` route  | `nuxt` skill                |
+| `nuxt.config.ts`     | `nuxt` skill                |
+| NuxtHub storage      | `nuxthub` skill             |
 
 The agent reads the skill's `description` field and decides when to load it. This follows the [Agent Skills](https://agentskills.io) open format.
 

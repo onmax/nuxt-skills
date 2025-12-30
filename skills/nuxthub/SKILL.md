@@ -214,11 +214,11 @@ const { completed, progress, abort } = mpu(file)
 
 ### Blob Providers
 
-| Provider      | Package          | Config                                                               |
-| ------------- | ---------------- | -------------------------------------------------------------------- |
-| Cloudflare R2 | -                | `BLOB` binding in wrangler.jsonc                                     |
-| Vercel Blob   | `@vercel/blob`   | `BLOB_READ_WRITE_TOKEN`                                              |
-| S3            | `aws4fetch`      | `S3_ACCESS_KEY_ID`, `S3_SECRET_ACCESS_KEY`, `S3_BUCKET`, `S3_REGION` |
+| Provider      | Package        | Config                                                               |
+| ------------- | -------------- | -------------------------------------------------------------------- |
+| Cloudflare R2 | -              | `BLOB` binding in wrangler.jsonc                                     |
+| Vercel Blob   | `@vercel/blob` | `BLOB_READ_WRITE_TOKEN`                                              |
+| S3            | `aws4fetch`    | `S3_ACCESS_KEY_ID`, `S3_SECRET_ACCESS_KEY`, `S3_BUCKET`, `S3_REGION` |
 
 ## Cache
 
@@ -303,6 +303,7 @@ npx wrangler r2 bucket create my-bucket   # Get bucket name
 ```
 
 Deploy via Workers Builds:
+
 1. Workers & Pages > Create > Import from Git
 2. Build command: `pnpm build`
 3. Deploy command: `npx wrangler deploy`
@@ -314,6 +315,7 @@ See [references/wrangler-templates.md](references/wrangler-templates.md) for wra
 ### Vercel
 
 Use Vercel Marketplace for compatible storage:
+
 - Database: Vercel Postgres, Turso
 - KV: Vercel KV (Upstash)
 - Blob: Vercel Blob
@@ -387,6 +389,7 @@ export default defineWebSocketHandler({
 ## Deprecated (v0.10)
 
 Removed Cloudflare-specific features:
+
 - `hubAI()` -> Use AI SDK with Workers AI Provider
 - `hubBrowser()` -> Puppeteer
 - `hubVectorize()` -> Vectorize

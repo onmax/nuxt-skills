@@ -136,6 +136,7 @@ jobs:
 ```
 
 **Critical requirements:**
+
 - Node.js 24+ (npm 11.5.1+ required - Node 22 has npm 10.x which fails)
 - `repository` field in package.json for provenance
 - Configure trusted publisher at `https://www.npmjs.com/package/<PKG>/access`
