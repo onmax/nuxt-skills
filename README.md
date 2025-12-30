@@ -27,6 +27,19 @@
 | **document-writer**   | Writing documentation for Nuxt ecosystem - MDC, style, structure, code examples  |
 | **personal-ts-setup** | Personal TS setup - pnpm catalogs, @antfu/eslint-config, bumpp, CI (opinionated) |
 
+## How Skills Work
+
+Skills are **auto-activated by AI agents** based on context - not manually invoked.
+
+| You're working on... | Agent automatically uses... |
+|---------------------|------------------------------|
+| `.vue` file | `vue` skill |
+| `server/api/` route | `nuxt` skill |
+| `nuxt.config.ts` | `nuxt` skill |
+| NuxtHub storage | `nuxthub` skill |
+
+The agent reads the skill's `description` field and decides when to load it. This follows the [Agent Skills](https://agentskills.io) open format.
+
 ## Installation
 
 ### Claude Code
@@ -147,7 +160,9 @@ nuxt-skills/
 
 ## Resources
 
-- [awesome-copilot](https://github.com/github/awesome-copilot) - Community created collection of custom agents, prompts, and instructions to supercharge your GitHub Copilot experience
+- [Agent Skills Spec](https://agentskills.io) - Open format for extending AI agent capabilities
+- [awesome-copilot](https://github.com/github/awesome-copilot) - Community collection of custom agents and prompts
+- [Claude Code Skills](https://code.claude.com/docs/en/skills) - Skills in Claude Code
 
 ## License
 

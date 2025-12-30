@@ -79,6 +79,11 @@ For component and syntax details, use these skills:
 
 > For component props: see **nuxt-ui** skill
 
+## Headings
+
+- **H1 (`#`)**: No backticks — they don't render properly
+- **H2-H4**: Backticks work fine
+
 ## Checklist
 
 - [ ] Active voice (85%+)
@@ -87,3 +92,4 @@ For component and syntax details, use these skills:
 - [ ] Explanation before code
 - [ ] File path labels on code blocks
 - [ ] Appropriate callout types
+- [ ] No backticks in H1 headings
