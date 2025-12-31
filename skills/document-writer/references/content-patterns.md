@@ -50,8 +50,29 @@ Use the right component for the right purpose:
 | Package managers | `::code-group{sync="pm"}`         | pnpm/npm/yarn variants     |
 | Expandable       | `::collapsible{title="..."}`      | Advanced details           |
 | Images           | `::carousel{items: [...]}`        | Multiple screenshots       |
+| Sequential steps | `::steps`                         | Multi-step instructions    |
 
 > For component props/details: see **nuxt-ui** skill
+
+## Steps Component
+
+The `::steps` component auto-renders step numbers. **Do NOT include numbers in step titles** — they'll be duplicated.
+
+```md
+<!-- ✅ Correct -->
+::steps
+### Install the module
+### Configure nuxt.config.ts
+### Restart dev server
+::
+
+<!-- ❌ Wrong (numbers will duplicate) -->
+::steps
+### 1. Install the module
+### 2) Configure nuxt.config.ts
+### Step 3: Restart dev server
+::
+```
 
 ## Code Block Labels
 
