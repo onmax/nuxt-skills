@@ -15,17 +15,17 @@
 
 ## Skills
 
-| Skill                 | Description                                                                      |
-| --------------------- | -------------------------------------------------------------------------------- |
-| **vue**               | Vue 3 Composition API, components, composables, testing                          |
-| **nuxt**              | Nuxt 4+ server routes, routing, middleware, config                               |
-| **nuxt-modules**      | Creating Nuxt modules with defineNuxtModule, Kit utilities, testing              |
-| **nuxthub**           | NuxtHub v0.10 database, KV, blob, cache, multi-cloud                             |
-| **nuxt-content**      | Nuxt Content v3 collections, queries, MDC rendering, NuxtStudio                  |
-| **nuxt-ui**           | Nuxt UI v4 components, theming, forms, overlays, composables                     |
-| **reka-ui**           | Reka UI headless Vue components, accessible primitives, props/emits/slots        |
-| **document-writer**   | Writing documentation for Nuxt ecosystem - MDC, style, structure, code examples  |
-| **personal-ts-setup** | Personal TS setup - pnpm catalogs, @antfu/eslint-config, bumpp, CI (opinionated) |
+| Skill               | Description                                                                     |
+| ------------------- | ------------------------------------------------------------------------------- |
+| **vue**             | Vue 3 Composition API, components, composables, testing                         |
+| **nuxt**            | Nuxt 4+ server routes, routing, middleware, config                              |
+| **nuxt-modules**    | Creating Nuxt modules with defineNuxtModule, Kit utilities, testing             |
+| **nuxthub**         | NuxtHub v0.10 database, KV, blob, cache, multi-cloud                            |
+| **nuxt-content**    | Nuxt Content v3 collections, queries, MDC rendering, NuxtStudio                 |
+| **nuxt-ui**         | Nuxt UI v4 components, theming, forms, overlays, composables                    |
+| **reka-ui**         | Reka UI headless Vue components, accessible primitives, props/emits/slots       |
+| **document-writer** | Writing documentation for Nuxt ecosystem - MDC, style, structure, code examples |
+| **ts-library**      | TypeScript library authoring - exports, tsdown, API patterns, type tricks, CI   |
 
 ## How Skills Work
 
@@ -49,7 +49,7 @@ The agent reads the skill's `description` field and decides when to load it. Thi
 /plugin install nuxt-skills@nuxt-skills
 ```
 
-This installs all skills (vue, nuxt, nuxt-modules, nuxthub, nuxt-content, nuxt-ui, reka-ui, document-writer, personal-ts-setup). Skills appear in `/skills` list and auto-activate based on context.
+This installs all skills (vue, nuxt, nuxt-modules, nuxthub, nuxt-content, nuxt-ui, reka-ui, document-writer, ts-library). Skills appear in `/skills` list and auto-activate based on context.
 
 ### GitHub Copilot
 
@@ -65,7 +65,7 @@ cp -r nuxt-skills/skills/nuxt-content .github/skills/
 cp -r nuxt-skills/skills/nuxt-ui .github/skills/
 cp -r nuxt-skills/skills/reka-ui .github/skills/
 cp -r nuxt-skills/skills/document-writer .github/skills/
-cp -r nuxt-skills/skills/personal-ts-setup .github/skills/
+cp -r nuxt-skills/skills/ts-library .github/skills/
 ```
 
 Copilot auto-detects skills matching your prompt context.
@@ -90,7 +90,7 @@ cp -r nuxt-skills/skills/nuxt-content ~/.codex/skills/
 cp -r nuxt-skills/skills/nuxt-ui ~/.codex/skills/
 cp -r nuxt-skills/skills/reka-ui ~/.codex/skills/
 cp -r nuxt-skills/skills/document-writer ~/.codex/skills/
-cp -r nuxt-skills/skills/personal-ts-setup ~/.codex/skills/
+cp -r nuxt-skills/skills/ts-library ~/.codex/skills/
 ```
 
 Invoke skills with `/skills` command or `$skill-name`.
@@ -127,7 +127,7 @@ cp -r nuxt-skills/skills/nuxt-content ~/.claude/skills/
 cp -r nuxt-skills/skills/nuxt-ui ~/.claude/skills/
 cp -r nuxt-skills/skills/reka-ui ~/.claude/skills/
 cp -r nuxt-skills/skills/document-writer ~/.claude/skills/
-cp -r nuxt-skills/skills/personal-ts-setup ~/.claude/skills/
+cp -r nuxt-skills/skills/ts-library ~/.claude/skills/
 ```
 
 ## Structure
@@ -147,7 +147,7 @@ nuxt-skills/
 │   ├── nuxt-ui/
 │   ├── reka-ui/
 │   ├── document-writer/
-│   └── personal-ts-setup/
+│   └── ts-library/
 └── .claude-plugin/
     └── marketplace.json    # Claude Code marketplace
 ```

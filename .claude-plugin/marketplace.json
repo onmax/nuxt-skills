@@ -16,7 +16,7 @@
         "./skills/nuxt-ui",
         "./skills/reka-ui",
         "./skills/document-writer",
-        "./skills/personal-ts-setup"
+        "./skills/ts-library"
       ]
     }
   ]

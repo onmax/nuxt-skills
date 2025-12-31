@@ -133,7 +133,7 @@ jobs:
 
 **Preferred method** - No `NPM_TOKEN` secret needed. Uses OIDC for secure, tokenless authentication.
 
-**See also:** [personal-ts-setup/ci-workflows.md](../../personal-ts-setup/references/ci-workflows.md) for token-based alternative.
+**See also:** [ts-library/ci-workflows.md](../../ts-library/references/ci-workflows.md) for general TypeScript library CI patterns.
 
 ### Requirements
 
