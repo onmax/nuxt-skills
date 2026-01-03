@@ -28,7 +28,7 @@ export default defineNuxtModule<ModuleOptions>({
   moduleDependencies: {
     '@nuxtjs/tailwindcss': { version: '>=6.0.0', optional: true }
   },
-  // Or as async function (Nuxt 4.2+)
+  // Or as async function (Nuxt 4.3+)
   async moduleDependencies(nuxt) {
     const needsSupport = nuxt.options.runtimeConfig.public?.feature
     return {
@@ -91,7 +91,7 @@ export default defineNuxtPlugin((nuxtApp) => {
 })
 ```
 
-**Async plugins (Nuxt 4.2+):** Lazy-load build plugins:
+**Async plugins (Nuxt 4.3+):** Lazy-load build plugins:
 
 ```ts
 import { addVitePlugin, addWebpackPlugin } from '@nuxt/kit'
@@ -169,7 +169,7 @@ export default defineNuxtModule({
 
 **Always prefix routes:** `/api/_my-module/` avoids conflicts.
 
-**Server imports (Nuxt 4.2+):** Use `#server` alias in server files:
+**Server imports (Nuxt 4.3+):** Use `#server` alias in server files:
 
 ```ts
 // runtime/server/api/users.ts
@@ -303,7 +303,7 @@ export default defineNuxtModule({
 
 ## Disabling Modules
 
-**Set to `false` to disable (Nuxt 4.2+):**
+**Set to `false` to disable (Nuxt 4.3+):**
 
 ```ts
 // nuxt.config.ts
