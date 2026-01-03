@@ -14,7 +14,7 @@ Full-stack Nuxt framework with database, KV, blob, and cache. Multi-cloud suppor
 ## Installation
 
 ```bash
-npx nuxi module add @nuxthub/core-nightly
+npx nuxi module add @nuxthub/core
 ```
 
 ## Configuration
@@ -107,6 +107,8 @@ npx nuxt db generate              # Generate migrations from schema
 npx nuxt db migrate               # Apply pending migrations
 npx nuxt db sql "SELECT * FROM users"  # Execute raw SQL
 npx nuxt db drop <TABLE>          # Drop a table
+npx nuxt db drop-all              # Drop all tables (v0.10.4+)
+npx nuxt db squash                # Squash migrations (v0.10.4+)
 npx nuxt db mark-as-migrated [NAME]   # Mark without running
 ```
 
@@ -263,7 +265,7 @@ Cache key pattern: `${group}:${name}:${getKey(...args)}.json` (defaults: group='
 
 ### Cloudflare Workers
 
-Configure bindings in `nuxt.config.ts` (no wrangler.jsonc needed):
+Configure bindings in `nuxt.config.ts` (no wrangler.jsonc needed). NuxtHub auto-generates wrangler bindings from hub config (v0.10.3+):
 
 ```ts
 // nuxt.config.ts
