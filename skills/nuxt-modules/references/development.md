@@ -28,6 +28,13 @@ export default defineNuxtModule<ModuleOptions>({
   moduleDependencies: {
     '@nuxtjs/tailwindcss': { version: '>=6.0.0', optional: true }
   },
+  // Or as async function (Nuxt 4.3+)
+  async moduleDependencies(nuxt) {
+    const needsSupport = nuxt.options.runtimeConfig.public?.feature
+    return {
+      '@nuxtjs/tailwindcss': needsSupport ? {} : { optional: true }
+    }
+  },
   setup(options, nuxt) {
     const { resolve } = createResolver(import.meta.url)
     addPlugin(resolve('./runtime/plugin'))
@@ -80,6 +87,20 @@ import { defineNuxtPlugin } from '#imports'
 export default defineNuxtPlugin((nuxtApp) => {
   return {
     provide: { myHelper: (msg: string) => console.log(msg) }
+  }
+})
+```
+
+**Async plugins (Nuxt 4.3+):** Lazy-load build plugins:
+
+```ts
+import { addVitePlugin, addWebpackPlugin } from '@nuxt/kit'
+
+export default defineNuxtModule({
+  async setup() {
+    // Lazy-load only the bundler plugin needed
+    addVitePlugin(() => import('my-plugin/vite').then(r => r.default()))
+    addWebpackPlugin(() => import('my-plugin/webpack').then(r => r.default()))
   }
 })
 ```
@@ -147,6 +168,13 @@ export default defineNuxtModule({
 ```
 
 **Always prefix routes:** `/api/_my-module/` avoids conflicts.
+
+**Server imports (Nuxt 4.3+):** Use `#server` alias in server files:
+
+```ts
+// runtime/server/api/users.ts
+import { helper } from '#server/utils/helper'  // Clean imports
+```
 
 ## Runtime Config
 
@@ -272,6 +300,30 @@ export default defineNuxtModule({
   }
 })
 ```
+
+## Disabling Modules
+
+**Set to `false` to disable (Nuxt 4.3+):**
+
+```ts
+// nuxt.config.ts
+export default defineNuxtConfig({
+  modules: ['@nuxtjs/tailwindcss'],
+  tailwindcss: false  // Disable the module
+})
+```
+
+**Disable inherited layer modules:**
+
+```ts
+// nuxt.config.ts
+export default defineNuxtConfig({
+  extends: ['../base-layer'],
+  disabledModules: ['@nuxt/image', '@sentry/nuxt/module']
+})
+```
+
+Only works for modules from layers, not root project modules.
 
 ## Local Modules
 
