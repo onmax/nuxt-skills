@@ -106,3 +106,25 @@ if (loggedIn.value) {
 // Refetch from server
 await fetchSession({ force: true })
 ```
+
+## Session Management
+
+Additional session management via Better Auth client:
+
+```ts
+const { client } = useUserSession()
+
+// List all active sessions for current user
+const sessions = await client.listSessions()
+
+// Revoke a specific session
+await client.revokeSession({ sessionId: 'xxx' })
+
+// Revoke all sessions except current
+await client.revokeOtherSessions()
+
+// Revoke all sessions (logs out everywhere)
+await client.revokeSessions()
+```
+
+These methods require the user to be authenticated.

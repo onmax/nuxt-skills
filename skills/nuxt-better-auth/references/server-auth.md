@@ -16,6 +16,23 @@ export default defineEventHandler(async (event) => {
 
 Request-scoped singleton (cached on `event.context`).
 
+### Available Server Methods
+
+Via `serverAuth(event).api`:
+
+```ts
+const auth = await serverAuth(event)
+
+// Session management
+await auth.api.listSessions({ headers: event.headers })
+await auth.api.revokeSession({ sessionId: 'xxx' }, { headers: event.headers })
+await auth.api.revokeOtherSessions({ headers: event.headers })
+await auth.api.revokeSessions({ headers: event.headers })
+
+// User management (with admin plugin)
+await auth.api.setRole({ userId: 'xxx', role: 'admin' }, { headers: event.headers })
+```
+
 ## getUserSession()
 
 Get current session without throwing (returns null if not authenticated):

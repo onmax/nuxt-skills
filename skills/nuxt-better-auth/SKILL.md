@@ -8,6 +8,8 @@ license: MIT
 
 Authentication module for Nuxt 4+ built on [Better Auth](https://www.better-auth.com/). Provides composables, server utilities, and route protection.
 
+> **Alpha Status**: This module is currently in alpha (v0.0.2-alpha.8) and not recommended for production use. APIs may change.
+
 ## When to Use
 
 - Installing/configuring `@onmax/nuxt-better-auth`
