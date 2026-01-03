@@ -158,6 +158,17 @@ nuxt-skills/
     └── marketplace.json    # Claude Code marketplace
 ```
 
+## Automated Maintenance
+
+Skills are kept up-to-date via GitHub Actions:
+
+| Workflow | Schedule | Purpose |
+| -------- | -------- | ------- |
+| **update-skills.yml** | Weekly (Monday) | Regenerates reka-ui and nuxt-ui component docs from upstream |
+| **skill-maintenance.yml** | Biweekly (1st & 15th) | Claude analyzes upstream changelogs, creates PRs if updates needed |
+
+The maintenance workflow uses [claude-code-action](https://github.com/anthropics/claude-code-action) to intelligently detect breaking changes, new features, and deprecations from upstream sources.
+
 ## Resources
 
 - [Agent Skills Spec](https://agentskills.io) - Open format for extending AI agent capabilities

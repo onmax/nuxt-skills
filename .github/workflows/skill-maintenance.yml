@@ -1,0 +1,150 @@
+name: Skill Maintenance
+
+on:
+  schedule:
+    - cron: "0 6 1,15 * *" # 1st and 15th of month at 6am UTC
+  workflow_dispatch:
+    inputs:
+      skill:
+        description: "Run for specific skill (or 'all')"
+        required: false
+        default: "all"
+        type: choice
+        options:
+          - all
+          - vue
+          - nuxt
+          - nuxthub
+          - nuxt-content
+          - nuxt-ui
+          - nuxt-better-auth
+          - nuxt-modules
+          - reka-ui
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+  id-token: write
+
+jobs:
+  check-updates:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - skill: vue
+            upstream: |
+              - GitHub: vuejs/core (releases, changelog)
+              - Docs: https://vuejs.org/guide/introduction.html
+              - VueUse: https://vueuse.org/ (new composables)
+            focus: "Composition API, reactivity, VueUse composables, defineModel, reactive destructuring"
+
+          - skill: nuxt
+            upstream: |
+              - GitHub: nuxt/nuxt (releases, changelog)
+              - Docs: https://nuxt.com/docs
+              - h3: https://h3.unjs.io/ (server engine)
+              - Nitro: https://nitro.unjs.io/
+            focus: "Nuxt 4 patterns, server routes, file-based routing, composables, config changes"
+
+          - skill: nuxthub
+            upstream: |
+              - GitHub: nuxt-hub/core (releases, changelog)
+              - Docs: https://hub.nuxt.com/docs
+              - Migration: https://hub.nuxt.com/docs/getting-started/migration
+            focus: "v0.10 APIs, hub:db/kv/blob imports, Drizzle ORM, multi-cloud deployment, deprecated features"
+
+          - skill: nuxt-content
+            upstream: |
+              - GitHub: nuxt/content (releases, changelog)
+              - Docs: https://content.nuxt.com/
+            focus: "MDC syntax, content collections, query API, rendering"
+
+          - skill: nuxt-ui
+            upstream: |
+              - GitHub: nuxt/ui (releases, changelog)
+              - Docs: https://ui.nuxt.com/
+            focus: "Component props, theming, new components, breaking changes"
+
+          - skill: nuxt-better-auth
+            upstream: |
+              - GitHub: onmax/nuxt-better-auth (releases)
+              - Better Auth: https://www.better-auth.com/ (core library)
+            focus: "Module config, composables, server helpers, plugins integration"
+
+          - skill: nuxt-modules
+            upstream: |
+              - Docs: https://nuxt.com/docs/guide/going-further/modules
+              - Kit: https://nuxt.com/docs/api/kit
+            focus: "Module authoring, hooks, runtime vs build, kit utilities"
+
+          - skill: reka-ui
+            upstream: |
+              - GitHub: unovue/reka-ui (releases, changelog)
+              - Docs: https://reka-ui.com/
+            focus: "Component APIs, props/emits/slots, new components, accessibility"
+
+    steps:
+      - name: Skip if not matching manual input
+        if: github.event.inputs.skill != '' && github.event.inputs.skill != 'all' && github.event.inputs.skill != matrix.skill
+        run: echo "Skipping ${{ matrix.skill }} - not selected" && exit 0
+
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          model: claude-sonnet-4-20250514
+          timeout_minutes: 15
+          prompt: |
+            SKILL: ${{ matrix.skill }}
+            SKILL_PATH: skills/${{ matrix.skill }}/
+            UPSTREAM_SOURCES:
+            ${{ matrix.upstream }}
+            FOCUS_AREAS: ${{ matrix.focus }}
+
+            ## Task
+            Check if the skill needs updates based on upstream changes.
+
+            ## Steps
+
+            1. **Read current skill content**
+               - Read skills/${{ matrix.skill }}/SKILL.md
+               - Read all files in skills/${{ matrix.skill }}/references/
+
+            2. **Check upstream sources**
+               - Fetch changelogs/releases from GitHub repos listed above
+               - Check official docs for new features, deprecations, breaking changes
+               - Focus on the areas listed in FOCUS_AREAS
+
+            3. **Compare and analyze**
+               - What's new upstream that we don't cover?
+               - What's deprecated/changed that we still document incorrectly?
+               - Are our examples still accurate?
+               - Are there new best practices we should adopt?
+
+            4. **If updates needed, create a PR**
+               - Create a new branch: update-${{ matrix.skill }}-YYYYMMDD
+               - Update the skill following the CLAUDE.md guidelines
+               - Use progressive loading pattern (main SKILL.md ~300 tokens)
+               - Update references/*.md files as needed
+               - Commit with message: "chore(${{ matrix.skill }}): sync with upstream"
+               - Create PR with summary of changes
+
+            5. **If no updates needed**
+               - Just output "No updates needed for ${{ matrix.skill }}"
+
+            ## Important Guidelines
+
+            - Follow CLAUDE.md checklist when editing skills
+            - Keep progressive loading pattern (small SKILL.md, detailed references)
+            - Don't add features that don't exist upstream
+            - Mark alpha/experimental features clearly
+            - Include version info when relevant
+
+          claude_args: |
+            --allowedTools "Read,Write,Edit,Glob,Grep,WebFetch,Bash(git:*),Bash(gh:*),Bash(curl:*)"
