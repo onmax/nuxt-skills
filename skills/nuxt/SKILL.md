@@ -83,8 +83,8 @@ Read specific files based on current work:
 **Official sources:**
 
 - Nuxt: https://nuxt.com/docs
-- h3 (server engine): https://h3.unjs.io/
-- Nitro: https://nitro.unjs.io/
+- h3 (server engine): https://v1.h3.dev/
+- Nitro: https://nitro.build/
 
 ## Token Efficiency
 

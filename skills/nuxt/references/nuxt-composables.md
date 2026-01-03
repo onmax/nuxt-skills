@@ -135,6 +135,13 @@ const { data } = await useFetch('/api/users', {
   query: { page },
   watch: [page]
 })
+
+// Cancel requests with AbortController (Nuxt 4.2+)
+const controller = new AbortController()
+const { data } = await useFetch('/api/users', {
+  signal: controller.signal
+})
+// Later: controller.abort() to cancel the request
 ```
 
 ### useAsyncData()
@@ -150,6 +157,13 @@ const { data, error, pending, refresh } = await useAsyncData('users', async () =
 const { data } = await useLazyAsyncData('users', async () => {
   return await $fetch('/api/users')
 })
+
+// Cancel with AbortController (Nuxt 4.2+)
+const controller = new AbortController()
+const { data } = await useAsyncData('users', async () => {
+  return await $fetch('/api/users', { signal: controller.signal })
+})
+// Later: controller.abort() to cancel
 ```
 
 ## State Management
