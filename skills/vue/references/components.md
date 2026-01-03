@@ -33,6 +33,10 @@ const { count = 0, message = 'Hello' } = defineProps<{
 
 // Use directly - maintains reactivity
 console.log(count + 1)
+
+// ⚠️ When passing to watchers/functions, wrap in getter:
+watch(() => count, (newVal) => { ... }) // ✅ Correct
+watch(count, (newVal) => { ... })        // ❌ Won't work
 ```
 
 **Non-destructured** only if props ONLY used in template:
@@ -120,6 +124,8 @@ const [title, modifiers] = defineModel<string>({
 })
 </script>
 ```
+
+**⚠️ Warning:** When using `default` without parent providing a value, parent and child can de-sync (parent `undefined`, child has default). Always provide matching defaults in parent or make prop required.
 
 ### Multiple Models
 

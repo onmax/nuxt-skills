@@ -1,12 +1,14 @@
 ---
 name: reka-ui
-description: Use when building with Reka UI (headless Vue components) - provides component API, accessibility patterns, composition (asChild), controlled/uncontrolled state, and styling integration. Formerly Radix Vue.
+description: Use when building with Reka UI (headless Vue components) - provides component API, accessibility patterns, composition (asChild), controlled/uncontrolled state, virtualization, and styling integration. Formerly Radix Vue.
 license: MIT
 ---
 
 # Reka UI
 
 Unstyled, accessible Vue 3 component primitives. WAI-ARIA compliant. Previously Radix Vue.
+
+**Current version:** v2.7.0 (December 2024)
 
 ## When to Use
 
@@ -24,6 +26,8 @@ Unstyled, accessible Vue 3 component primitives. WAI-ARIA compliant. Previously 
 | **[references/components.md](references/components.md)** | Component index by category (Form, Date, Overlay, Menu, Data, etc.) |
 | **components/\*.md**                                     | Per-component details (dialog.md, select.md, etc.)                  |
 
+**New guides** (see [reka-ui.com](https://reka-ui.com)): Controlled State, Inject Context, Virtualization, Migration
+
 ## Usage Pattern
 
 **Load based on context:**
@@ -40,6 +44,8 @@ Unstyled, accessible Vue 3 component primitives. WAI-ARIA compliant. Previously 
 | Controlled/Uncontrolled | Use `v-model` for controlled, `default*` props for uncontrolled    |
 | Parts                   | Components split into Root, Trigger, Content, Portal, etc.         |
 | `forceMount`            | Keep element in DOM for animation libraries                        |
+| Virtualization          | Optimize large lists (Listbox, Tree) with virtual scrolling        |
+| Context Injection       | Access component context from child components                     |
 
 ## Installation
 
@@ -111,6 +117,15 @@ const open = ref(false)
 </DialogTrigger>
 ```
 
+## Recent Updates (v2.5.0-v2.7.0)
+
+- **New composables exposed**: `useLocale`, `useDirection` (v2.6.0)
+- **Select**: Added `disableOutsidePointerEvents` prop to Content
+- **Toast**: Added `disableSwipe` prop for swipe control
+- **DatePicker**: Added `closeOnSelect` property
+- **ContextMenu**: Added `pressOpenDelay` for long-press configuration
+- **Virtualization**: Enhanced support in Listbox/Tree components
+
 ## Resources
 
 - [Reka UI Docs](https://reka-ui.com)
@@ -120,4 +135,4 @@ const open = ref(false)
 
 ---
 
-_Token efficiency: ~300 tokens base, components.md index ~100 tokens, per-component ~50-150 tokens_
+_Token efficiency: ~350 tokens base, components.md index ~100 tokens, per-component ~50-150 tokens_

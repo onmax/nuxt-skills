@@ -133,8 +133,8 @@ Split pages into searchable sections:
 
 ```ts
 const sections = await queryCollectionSearchSections('docs', {
-  minHeading: 'h2',
-  maxHeading: 'h4',
+  minHeading: 2,
+  maxHeading: 4,
 })
 
 // Returns

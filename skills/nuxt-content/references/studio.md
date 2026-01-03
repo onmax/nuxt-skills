@@ -119,7 +119,8 @@ Add editor hints to your schema:
 
 ```ts
 // content.config.ts
-import { defineCollection, z } from '@nuxt/content'
+import { defineCollection, defineContentConfig } from '@nuxt/content'
+import { z } from 'zod'
 
 export default defineContentConfig({
   collections: {

@@ -8,7 +8,8 @@ Setting up `content.config.ts`, defining collection schemas, or configuring cont
 
 ```ts
 // content.config.ts
-import { defineCollection, defineContentConfig, z } from '@nuxt/content'
+import { defineCollection, defineContentConfig } from '@nuxt/content'
+import { z } from 'zod'
 
 export default defineContentConfig({
   collections: {
@@ -88,6 +89,9 @@ source: {
   include: 'docs/**/*.md',
   exclude: ['docs/internal/**', 'docs/**/_*.md'],
 }
+
+// Single CSV file (v3.10+)
+source: 'data/products.csv'
 ```
 
 ## Remote Sources (GitHub)
@@ -103,6 +107,8 @@ export default defineContentConfig({
         repository: 'https://github.com/nuxt/content',
         include: 'docs/content/**',
         prefix: '/docs',
+        // Optional: shallow clone for faster fetching (v3.10+)
+        shallow: true,
       },
     }),
   },
@@ -134,7 +140,8 @@ source: {
 Fetch content from any API using `defineCollectionSource`:
 
 ```ts
-import { defineCollection, defineCollectionSource, defineContentConfig, z } from '@nuxt/content'
+import { defineCollection, defineCollectionSource, defineContentConfig } from '@nuxt/content'
+import { z } from 'zod'
 
 const apiSource = defineCollectionSource({
   getKeys: async () => {
@@ -238,6 +245,29 @@ docs: defineCollection({
 })
 ```
 
+**Schema extension and inheritance (v3.8+):**
+
+```ts
+// Base schema with common fields
+const baseSchema = z.object({
+  title: z.string(),
+  description: z.string().optional(),
+})
+
+// Extended schema with additional properties
+const blogSchema = baseSchema.extend({
+  author: z.string(),
+  date: z.date(),
+  tags: z.array(z.string()).optional(),
+})
+
+blog: defineCollection({
+  type: 'page',
+  source: 'blog/**/*.md',
+  schema: blogSchema,
+})
+```
+
 **Raw content access:**
 
 ```ts
@@ -256,6 +286,9 @@ docs: defineCollection({
 
 ```ts
 // content.config.ts - separate collection per language
+import { defineCollection, defineContentConfig } from '@nuxt/content'
+import { z } from 'zod'
+
 const commonSchema = z.object({ title: z.string() })
 
 export default defineContentConfig({

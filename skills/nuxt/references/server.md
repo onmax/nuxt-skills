@@ -341,7 +341,7 @@ export default defineEventHandler(async (event) => {
 ## Resources
 
 - Nuxt server: https://nuxt.com/docs/guide/directory-structure/server
-- h3 (Nitro engine): https://h3.unjs.io/
-- Nitro: https://nitro.unjs.io/
+- h3 (Nitro engine): https://v1.h3.dev/
+- Nitro: https://nitro.build/
 
 > **For database/storage APIs:** see `nuxthub` skill

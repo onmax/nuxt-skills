@@ -16,6 +16,11 @@ export default defineNuxtConfig({
     database: {
       type: 'sqlite',
       filename: '.data/content.db',
+      // Optional: add database indexes for better query performance (v3.10+)
+      indexes: [
+        { fields: ['path'] },
+        { fields: ['date', 'draft'] },
+      ],
     },
   },
 })

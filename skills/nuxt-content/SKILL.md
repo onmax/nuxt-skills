@@ -24,7 +24,7 @@ Working with:
 
 **For writing documentation:** use `document-writer` skill
 **For Nuxt basics:** use `nuxt` skill
-**For database config:** use `nuxthub` skill (shares SQLite/PostgreSQL patterns)
+**For NuxtHub deployment:** use `nuxthub` skill (NuxtHub v1 compatible)
 
 ## Available Guidance
 
