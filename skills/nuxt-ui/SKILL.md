@@ -26,7 +26,7 @@ Component library for Vue 3 and Nuxt 4+ built on Reka UI (headless) + Tailwind C
 | ------------------------------------------------------------ | ---------------------------------------------------------------- |
 | **[references/installation.md](references/installation.md)** | Nuxt/Vue setup, pnpm gotchas, UApp wrapper, module options       |
 | **[references/theming.md](references/theming.md)**           | Semantic colors, CSS variables, app.config.ts, Tailwind Variants |
-| **[references/components.md](references/components.md)**     | Component index by category (127 components)                     |
+| **[references/components.md](references/components.md)**     | Component index by category (121 components)                     |
 | **components/\*.md**                                         | Per-component details (button.md, modal.md, etc.)                |
 | **[references/forms.md](references/forms.md)**               | Form components, validation (Zod/Valibot), useFormField          |
 | **[references/overlays.md](references/overlays.md)**         | Toast, Modal, Slideover, Drawer, CommandPalette                  |
