@@ -150,6 +150,17 @@ const { data, error, pending, refresh } = await useAsyncData('users', async () =
 const { data } = await useLazyAsyncData('users', async () => {
   return await $fetch('/api/users')
 })
+
+// With AbortController signal (Nuxt 4.2+)
+const { data } = await useAsyncData(
+  'users',
+  (_nuxtApp, { signal }) => $fetch('/api/users', { signal })
+)
+
+// External AbortController for refresh/execute
+const { data, refresh } = await useAsyncData('users', fetchUsers)
+const controller = new AbortController()
+refresh({ signal: controller.signal })
 ```
 
 ## State Management
