@@ -6,6 +6,11 @@
 pnpm add @onmax/nuxt-better-auth better-auth
 ```
 
+**Version Requirements:**
+- `@onmax/nuxt-better-auth`: `^0.0.2-alpha.8` (alpha)
+- `better-auth`: `^1.0.0` (module tested with `1.4.7`)
+- `@nuxthub/core`: `^0.10.0` (optional, for database)
+
 ## Module Setup
 
 ```ts
@@ -47,6 +52,16 @@ export default defineServerAuth(({ runtimeConfig, db }) => ({
       clientId: runtimeConfig.github.clientId,
       clientSecret: runtimeConfig.github.clientSecret
     }
+  },
+  // Session configuration (optional)
+  session: {
+    expiresIn: 60 * 60 * 24 * 7,      // 7 days (default)
+    updateAge: 60 * 60 * 24,           // Update every 24h (default)
+    freshAge: 60 * 60 * 24,            // Consider fresh for 24h (default, 0 to disable)
+    cookieCache: {
+      enabled: true,
+      maxAge: 60 * 5                   // 5 minutes cookie cache
+    }
   }
 }))
 ```
@@ -55,6 +70,17 @@ Context available in `defineServerAuth`:
 
 - `runtimeConfig` - Nuxt runtime config
 - `db` - Database adapter (when NuxtHub enabled)
+
+### Session Options
+
+| Option                    | Default             | Description                                   |
+| ------------------------- | ------------------- | --------------------------------------------- |
+| `expiresIn`               | `604800` (7 days)   | Session lifetime in seconds                   |
+| `updateAge`               | `86400` (24 hours)  | How often to refresh session expiry           |
+| `freshAge`                | `86400` (24 hours)  | Session considered "fresh" period (0 = never) |
+| `cookieCache.enabled`     | `false`             | Enable cookie caching to reduce DB queries    |
+| `cookieCache.maxAge`      | `300` (5 minutes)   | Cookie cache lifetime                         |
+| `disableSessionRefresh`   | `false`             | Disable automatic session refresh             |
 
 ## Client Config
 
