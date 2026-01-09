@@ -53,9 +53,15 @@ The agent reads the skill's `description` field and decides when to load it. Thi
 
 This installs all skills (vue, nuxt, nuxt-modules, nuxthub, nuxt-content, nuxt-ui, nuxt-better-auth, reka-ui, document-writer, ts-library). Skills appear in `/skills` list and auto-activate based on context.
 
-### GitHub Copilot
+### GitHub Copilot & VS Code
 
-Copy skills to your project's `.github/skills/` directory:
+**Official support** added December 18, 2025. Enable in VS Code settings:
+
+```json
+"chat.useAgentSkills": true
+```
+
+Copy skills to `.github/skills/`:
 
 ```bash
 git clone https://github.com/onmax/nuxt-skills.git
@@ -71,7 +77,7 @@ cp -r nuxt-skills/skills/document-writer .github/skills/
 cp -r nuxt-skills/skills/ts-library .github/skills/
 ```
 
-Copilot auto-detects skills matching your prompt context.
+**Note:** If you have Claude Code skills in `.claude/skills/`, Copilot auto-detects them. No duplication needed.
 
 ### OpenAI Codex
 
@@ -101,7 +107,27 @@ Invoke skills with `/skills` command or `$skill-name`.
 
 ### OpenCode
 
-OpenCode will support the [agentskills](https://github.com/agentskills/agentskills) standard natively. This repo follows that format.
+**Native support** included. OpenCode auto-discovers skills from:
+- Project: `.opencode/skill/` and `.claude/skills/`
+- Global: `~/.config/opencode/skill/` and `~/.claude/skills/`
+
+Copy to global (OpenCode native):
+
+```bash
+git clone https://github.com/onmax/nuxt-skills.git
+cp -r nuxt-skills/skills/vue ~/.config/opencode/skill/
+cp -r nuxt-skills/skills/nuxt ~/.config/opencode/skill/
+cp -r nuxt-skills/skills/nuxt-modules ~/.config/opencode/skill/
+cp -r nuxt-skills/skills/nuxthub ~/.config/opencode/skill/
+cp -r nuxt-skills/skills/nuxt-content ~/.config/opencode/skill/
+cp -r nuxt-skills/skills/nuxt-ui ~/.config/opencode/skill/
+cp -r nuxt-skills/skills/nuxt-better-auth ~/.config/opencode/skill/
+cp -r nuxt-skills/skills/reka-ui ~/.config/opencode/skill/
+cp -r nuxt-skills/skills/document-writer ~/.config/opencode/skill/
+cp -r nuxt-skills/skills/ts-library ~/.config/opencode/skill/
+```
+
+**Note:** If you have Claude Code skills in `.claude/skills/`, OpenCode auto-detects them. No duplication needed.
 
 ### btca
 
@@ -172,8 +198,11 @@ The maintenance workflow uses [claude-code-action](https://github.com/anthropics
 ## Resources
 
 - [Agent Skills Spec](https://agentskills.io) - Open format for extending AI agent capabilities
-- [awesome-copilot](https://github.com/github/awesome-copilot) - Community collection of custom agents and prompts
 - [Claude Code Skills](https://code.claude.com/docs/en/skills) - Skills in Claude Code
+- [VS Code Agent Skills](https://code.visualstudio.com/docs/copilot/customization/agent-skills) - GitHub Copilot skills in VS Code
+- [GitHub Agent Skills Docs](https://docs.github.com/en/copilot/concepts/agents/about-agent-skills) - About agent skills
+- [OpenCode Skills](https://opencode.ai/docs/skills/) - Agent skills in OpenCode
+- [awesome-copilot](https://github.com/github/awesome-copilot) - Community collection of custom agents and prompts
 
 ## License
 
