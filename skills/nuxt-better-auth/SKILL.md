@@ -25,16 +25,16 @@ Authentication module for Nuxt 4+ built on [Better Auth](https://www.better-auth
 
 ## Available Guidance
 
-| File                                                                 | Topics                                                |
-| -------------------------------------------------------------------- | ----------------------------------------------------- |
-| **[references/installation.md](references/installation.md)**         | Module setup, env vars, config files                  |
+| File                                                                 | Topics                                                                 |
+| -------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| **[references/installation.md](references/installation.md)**         | Module setup, env vars, config files                                   |
 | **[references/client-auth.md](references/client-auth.md)**           | useUserSession, signIn/signUp/signOut, BetterAuthState, safe redirects |
-| **[references/server-auth.md](references/server-auth.md)**           | serverAuth, getUserSession, requireUserSession        |
-| **[references/route-protection.md](references/route-protection.md)** | routeRules, definePageMeta, middleware                |
-| **[references/plugins.md](references/plugins.md)**                   | Better Auth plugins (admin, passkey, 2FA)             |
-| **[references/database.md](references/database.md)**                 | NuxtHub integration, Drizzle schema                   |
-| **[references/client-only.md](references/client-only.md)**           | External auth backend, clientOnly mode, CORS          |
-| **[references/types.md](references/types.md)**                       | AuthUser, AuthSession, type augmentation              |
+| **[references/server-auth.md](references/server-auth.md)**           | serverAuth, getUserSession, requireUserSession                         |
+| **[references/route-protection.md](references/route-protection.md)** | routeRules, definePageMeta, middleware                                 |
+| **[references/plugins.md](references/plugins.md)**                   | Better Auth plugins (admin, passkey, 2FA)                              |
+| **[references/database.md](references/database.md)**                 | NuxtHub integration, Drizzle schema                                    |
+| **[references/client-only.md](references/client-only.md)**           | External auth backend, clientOnly mode, CORS                           |
+| **[references/types.md](references/types.md)**                       | AuthUser, AuthSession, type augmentation                               |
 
 ## Usage Pattern
 

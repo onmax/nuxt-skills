@@ -35,18 +35,19 @@ NUXT_PUBLIC_SITE_URL="https://your-frontend.com"
 
 ## What Changes
 
-| Feature | Full Mode | Client-Only |
-|---------|-----------|-------------|
-| `server/auth.config.ts` | Required | Not needed |
-| `/api/auth/**` handlers | Auto-registered | Skipped |
-| `NUXT_BETTER_AUTH_SECRET` | Required | Not needed |
-| Server utilities (`serverAuth()`, `getUserSession()`, `requireUserSession()`) | Available | **Not available** |
-| SSR session hydration | Server-side | Client-side only |
-| `useUserSession()`, route protection, `<BetterAuthState>` | Works | Works |
+| Feature                                                                       | Full Mode       | Client-Only       |
+| ----------------------------------------------------------------------------- | --------------- | ----------------- |
+| `server/auth.config.ts`                                                       | Required        | Not needed        |
+| `/api/auth/**` handlers                                                       | Auto-registered | Skipped           |
+| `NUXT_BETTER_AUTH_SECRET`                                                     | Required        | Not needed        |
+| Server utilities (`serverAuth()`, `getUserSession()`, `requireUserSession()`) | Available       | **Not available** |
+| SSR session hydration                                                         | Server-side     | Client-side only  |
+| `useUserSession()`, route protection, `<BetterAuthState>`                     | Works           | Works             |
 
 ## CORS Requirements
 
 Ensure external auth server:
+
 - Allows requests from frontend (CORS with `credentials: true`)
 - Uses `SameSite=None; Secure` cookies (HTTPS required)
 - Includes frontend URL in `trustedOrigins`
@@ -54,6 +55,7 @@ Ensure external auth server:
 ## SSR Considerations
 
 Session fetched client-side only:
+
 - Server-rendered pages render as "unauthenticated" initially
 - Hydrates with session data on client
 - Use `<BetterAuthState>` for loading states

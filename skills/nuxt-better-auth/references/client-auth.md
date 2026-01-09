@@ -146,6 +146,7 @@ Renders once session hydration completes (`ready === true`), with loading placeh
 ```
 
 **Slots:**
+
 - `default` - Renders when `ready === true`, provides `{ loggedIn, user, session, signOut }`
 - `placeholder` - Renders while session hydrates
 
