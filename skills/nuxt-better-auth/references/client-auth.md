@@ -128,3 +128,25 @@ await client.revokeSessions()
 ```
 
 These methods require the user to be authenticated.
+
+## BetterAuthState Component
+
+Renders once session hydration completes (`ready === true`), with loading placeholder support.
+
+```vue
+<BetterAuthState>
+  <template #default="{ loggedIn, user, session, signOut }">
+    <p v-if="loggedIn">Hi {{ user?.name }}</p>
+    <button v-else @click="navigateTo('/login')">Sign in</button>
+  </template>
+  <template #placeholder>
+    <p>Loading…</p>
+  </template>
+</BetterAuthState>
+```
+
+**Slots:**
+- `default` - Renders when `ready === true`, provides `{ loggedIn, user, session, signOut }`
+- `placeholder` - Renders while session hydrates
+
+Useful in clientOnly mode or for graceful SSR loading states.

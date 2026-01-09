@@ -23,7 +23,7 @@
 | **nuxthub**          | NuxtHub v0.10 database, KV, blob, cache, multi-cloud                            |
 | **nuxt-content**     | Nuxt Content v3 collections, queries, MDC rendering, NuxtStudio                 |
 | **nuxt-ui**          | Nuxt UI v4 components, theming, forms, overlays, composables                    |
-| **nuxt-better-auth** | Auth with @onmax/nuxt-better-auth, useUserSession, route protection, plugins    |
+| **nuxt-better-auth** | Auth with @onmax/nuxt-better-auth, useUserSession, route protection, clientOnly |
 | **reka-ui**          | Reka UI headless Vue components, accessible primitives, props/emits/slots       |
 | **document-writer**  | Writing documentation for Nuxt ecosystem - MDC, style, structure, code examples |
 | **ts-library**       | TypeScript library authoring - exports, tsdown, API patterns, type tricks, CI   |

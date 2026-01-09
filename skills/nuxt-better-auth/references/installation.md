@@ -8,7 +8,7 @@ pnpm add @onmax/nuxt-better-auth better-auth
 
 **Version Requirements:**
 
-- `@onmax/nuxt-better-auth`: `^0.0.2-alpha.8` (alpha)
+- `@onmax/nuxt-better-auth`: `^0.0.2-alpha.12` (alpha)
 - `better-auth`: `^1.0.0` (module tested with `1.4.7`)
 - `@nuxthub/core`: `^0.10.0` (optional, for database)
 
@@ -21,6 +21,7 @@ export default defineNuxtConfig({
   auth: {
     serverConfig: 'server/auth.config',  // default
     clientConfig: 'app/auth.config',     // default
+    clientOnly: false,                   // true for external auth backend
     redirects: {
       login: '/login',  // redirect when auth required
       guest: '/'        // redirect when already logged in
@@ -108,3 +109,18 @@ export default defineNuxtConfig({
 ```
 
 See [references/database.md](database.md) for schema setup.
+
+## Client-Only Mode
+
+For external auth backends (microservices, separate servers):
+
+```ts
+// nuxt.config.ts
+export default defineNuxtConfig({
+  auth: {
+    clientOnly: true,  // No local auth server
+  }
+})
+```
+
+See [references/client-only.md](client-only.md) for full setup.

@@ -8,7 +8,7 @@ license: MIT
 
 Authentication module for Nuxt 4+ built on [Better Auth](https://www.better-auth.com/). Provides composables, server utilities, and route protection.
 
-> **Alpha Status**: This module is currently in alpha (v0.0.2-alpha.8) and not recommended for production use. APIs may change.
+> **Alpha Status**: This module is currently in alpha (v0.0.2-alpha.12) and not recommended for production use. APIs may change.
 
 ## When to Use
 
@@ -18,6 +18,7 @@ Authentication module for Nuxt 4+ built on [Better Auth](https://www.better-auth
 - Accessing user session in API routes
 - Integrating Better Auth plugins (admin, passkey, 2FA)
 - Setting up database with NuxtHub
+- Using clientOnly mode for external auth backends
 
 **For Nuxt patterns:** use `nuxt` skill
 **For NuxtHub database:** use `nuxthub` skill
@@ -27,11 +28,12 @@ Authentication module for Nuxt 4+ built on [Better Auth](https://www.better-auth
 | File                                                                 | Topics                                                |
 | -------------------------------------------------------------------- | ----------------------------------------------------- |
 | **[references/installation.md](references/installation.md)**         | Module setup, env vars, config files                  |
-| **[references/client-auth.md](references/client-auth.md)**           | useUserSession, signIn/signUp/signOut, safe redirects |
+| **[references/client-auth.md](references/client-auth.md)**           | useUserSession, signIn/signUp/signOut, BetterAuthState, safe redirects |
 | **[references/server-auth.md](references/server-auth.md)**           | serverAuth, getUserSession, requireUserSession        |
 | **[references/route-protection.md](references/route-protection.md)** | routeRules, definePageMeta, middleware                |
 | **[references/plugins.md](references/plugins.md)**                   | Better Auth plugins (admin, passkey, 2FA)             |
 | **[references/database.md](references/database.md)**                 | NuxtHub integration, Drizzle schema                   |
+| **[references/client-only.md](references/client-only.md)**           | External auth backend, clientOnly mode, CORS          |
 | **[references/types.md](references/types.md)**                       | AuthUser, AuthSession, type augmentation              |
 
 ## Usage Pattern
@@ -44,6 +46,7 @@ Authentication module for Nuxt 4+ built on [Better Auth](https://www.better-auth
 - Route rules/page meta? → [references/route-protection.md](references/route-protection.md)
 - Using plugins? → [references/plugins.md](references/plugins.md)
 - Database setup? → [references/database.md](references/database.md)
+- External auth backend? → [references/client-only.md](references/client-only.md)
 - TypeScript types? → [references/types.md](references/types.md)
 
 **DO NOT read all files at once.** Load based on context.

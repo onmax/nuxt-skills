@@ -7,21 +7,21 @@ Get the Better Auth instance for advanced operations:
 ```ts
 // server/api/custom.ts
 export default defineEventHandler(async (event) => {
-  const auth = await serverAuth(event)
+  const auth = serverAuth()
   // Access full Better Auth API
   const sessions = await auth.api.listSessions({ headers: event.headers })
   return sessions
 })
 ```
 
-Request-scoped singleton (cached on `event.context`).
+Module-level singleton (safe to call multiple times - returns cached instance).
 
 ### Available Server Methods
 
-Via `serverAuth(event).api`:
+Via `serverAuth().api`:
 
 ```ts
-const auth = await serverAuth(event)
+const auth = serverAuth()
 
 // Session management
 await auth.api.listSessions({ headers: event.headers })
