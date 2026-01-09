@@ -35,6 +35,26 @@ category: Release
 7. **Resources** - Links to docs, repo
 8. **Release link** - `::read-more` to full changelog
 
+## Recommended Modules
+
+For enhanced documentation features:
+
+| Module                                                                  | Purpose                                                      |
+| ----------------------------------------------------------------------- | ------------------------------------------------------------ |
+| [`nuxt-content-twoslash`](https://github.com/antfu/nuxt-content-twoslash) | TwoSlash for Nuxt Content - inline TypeScript type hints in code blocks |
+
+### Installation
+
+```bash
+pnpm add -D nuxt-content-twoslash
+```
+
+```ts [nuxt.config.ts]
+export default defineNuxtConfig({
+  modules: ['nuxt-content-twoslash', '@nuxt/content'] // twoslash before content
+})
+```
+
 ## Component Patterns
 
 Use the right component for the right purpose:
