@@ -197,6 +197,78 @@ export default defineAppConfig({
 <UButton class="rounded-none">Square</UButton>
 ```
 
+## Matching Theme Structure in app.config
+
+**CRITICAL**: Components have two theme structure patterns. Your app.config MUST match the component's theme structure.
+
+### Pattern 1: Slots-Based Themes (Most Components)
+
+Components like Button, Card, Input, Select use `slots:` in their theme:
+
+```ts
+// Component theme (Button, Card, etc.)
+export default {
+  slots: {
+    base: '...',
+    root: '...',
+    icon: '...'
+  }
+}
+```
+
+**app.config usage**:
+```ts
+ui: {
+  button: {
+    slots: { base: 'font-bold' }  // ✅ Match slots structure
+  }
+}
+```
+
+### Pattern 2: Flat Base Themes (Container, Skeleton, etc.)
+
+Components like Container, Skeleton, Form, Main use flat `base:` in their theme:
+
+```ts
+// Component theme (Container, Skeleton, etc.)
+export default {
+  base: 'w-full max-w-container'
+}
+```
+
+**app.config usage**:
+```ts
+ui: {
+  container: {
+    base: 'max-w-lg'  // ✅ Match flat structure
+  }
+}
+```
+
+### Common Mistake
+
+```ts
+// ❌ WRONG - Don't use slots for flat-base components
+ui: {
+  container: {
+    slots: { base: 'max-w-lg' }  // TypeScript error!
+  }
+}
+
+// ❌ WRONG - Don't use flat for slots-based components
+ui: {
+  button: {
+    base: 'font-bold'  // Won't work correctly
+  }
+}
+```
+
+### How to Check Component Structure
+
+1. Check component docs: https://ui.nuxt.com/components/[component]
+2. Look at "Theme" section - shows the structure
+3. Match that structure in your app.config
+
 ## Component Theme Structure
 
 ```ts
