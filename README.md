@@ -13,6 +13,12 @@
   <img src="https://raw.githubusercontent.com/onmax/nuxt-skills/main/.github/badge-opencode.svg" alt="OpenCode">
 </p>
 
+<p align="center">
+  <a href="https://github.com/nuxt/nuxt/discussions/34059">
+    🔗 Related Nuxt RFC: Bundling Agent Skills in Nuxt Modules
+  </a>
+</p>
+
 ## Skills
 
 | Skill                | Description                                                                     |
