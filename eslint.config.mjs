@@ -8,8 +8,8 @@ export default antfu({
   // Disable code block linting in markdown - examples contain pseudo/partial code
   markdown: false,
 }, {
-  // Scripts can use process global
-  files: ['**/scripts/**/*.ts'],
+  // Scripts and CLI can use process global
+  files: ['**/scripts/**/*.ts', '**/cli/**/*.ts'],
   rules: {
     'node/prefer-global/process': 'off',
   },
