@@ -43,6 +43,8 @@ export type AgentTarget = 'claude' | 'copilot' | 'cursor' | 'codex' | 'opencode'
 export interface SkillsToolkitOptions {
   /** Enable skill discovery (default: true) */
   enabled?: boolean
+  /** Additional skill paths to include (for local development) */
+  additionalPaths?: string[]
 }
 
 /** Agent destination paths */

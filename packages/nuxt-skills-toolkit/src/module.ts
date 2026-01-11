@@ -46,6 +46,15 @@ export default defineNuxtModule<SkillsToolkitOptions>({
       const modulesDir = join(nuxt.options.rootDir, 'node_modules')
       const packageSkills = await scanForSkillPackages(modulesDir)
       const addedSkills = getSkillsArray(nuxt)
+
+      // Add skills from additionalPaths (for local development)
+      if (options.additionalPaths?.length) {
+        for (const skillPath of options.additionalPaths) {
+          const dir = resolve(nuxt.options.rootDir, skillPath)
+          addedSkills.push({ dir, source: 'config' })
+        }
+      }
+
       const skills = await resolveSkills(packageSkills, addedSkills)
 
       if (skills.length === 0) {
