@@ -32,7 +32,7 @@ Authentication module for Nuxt 4+ built on [Better Auth](https://www.better-auth
 | **[references/server-auth.md](references/server-auth.md)**           | serverAuth, getUserSession, requireUserSession                         |
 | **[references/route-protection.md](references/route-protection.md)** | routeRules, definePageMeta, middleware                                 |
 | **[references/plugins.md](references/plugins.md)**                   | Better Auth plugins (admin, passkey, 2FA)                              |
-| **[references/database.md](references/database.md)**                 | NuxtHub integration, Drizzle schema                                    |
+| **[references/database.md](references/database.md)**                 | NuxtHub integration, Drizzle schema, custom tables with FKs            |
 | **[references/client-only.md](references/client-only.md)**           | External auth backend, clientOnly mode, CORS                           |
 | **[references/types.md](references/types.md)**                       | AuthUser, AuthSession, type augmentation                               |
 

@@ -25,6 +25,47 @@ The module auto-generates Drizzle schema from Better Auth tables. Schema availab
 import { user, session, account, verification } from '#auth/database'
 ```
 
+## Creating Custom Tables with Foreign Keys
+
+Create app tables that reference auth tables by importing `schema` from `hub:db`. NuxtHub auto-merges custom schemas with Better Auth tables.
+
+```ts
+// server/db/schema.ts
+import { sqliteTable, text, integer } from 'drizzle-orm/sqlite-core'
+import { schema } from 'hub:db'
+
+export const posts = sqliteTable('posts', {
+  id: text('id').primaryKey(),
+  title: text('title').notNull(),
+  authorId: text('author_id').notNull()
+    .references(() => schema.user.id),
+  createdAt: integer('created_at', { mode: 'timestamp' })
+    .$defaultFn(() => new Date()),
+})
+```
+
+**Available Auth Tables:**
+
+- `schema.user` - User accounts
+- `schema.session` - Active sessions
+- `schema.account` - OAuth provider accounts
+- `schema.verification` - Email verification tokens
+- Plugin tables: `schema.passkey`, `schema.twoFactor`, etc.
+
+**ID Type Matching:**
+
+- SQLite/MySQL: Use `text()` or `varchar()`
+- PostgreSQL with UUID: Use `uuid()` when `advanced.database.generateId = 'uuid'`
+
+**Migrations:**
+
+```bash
+npx nuxt db generate  # Generate migrations
+npx nuxt db migrate   # Apply (auto in dev)
+```
+
+**Adding columns to auth tables:** Use Better Auth's `additionalFields` instead of custom schemas. See [Better Auth Additional Fields](https://better-auth.com/docs/concepts/database#additional-fields).
+
 ## Database Dialect
 
 Supports: `sqlite`, `postgresql`, `mysql`
