@@ -1,19 +1,31 @@
+import type { Nuxt } from '@nuxt/schema'
 import type { AddSkillOptions, SkillsToolkitOptions } from './types'
 import { promises as fsp } from 'node:fs'
-import { defineNuxtModule } from '@nuxt/kit'
+import { defineNuxtModule, useNuxt } from '@nuxt/kit'
 import { consola } from 'consola'
 import { join, resolve } from 'pathe'
 import { copySkillDir, generateManifest, resolveSkills, scanForSkillPackages } from './runtime/utils'
 
 const logger = consola.withTag('nuxt-skills')
 
-// Module-level state for addSkill() calls
-const addedSkills: Array<{ dir: string, name?: string, source: string }> = []
+// Store skills in nuxt.options to share state between module instances
+const SKILLS_KEY = '__nuxtSkillsToolkit'
+
+interface SkillEntry { dir: string, name?: string, source: string }
+
+function getSkillsArray(nuxt: Nuxt): SkillEntry[] {
+  const opts = nuxt.options as Record<string, unknown>
+  if (!opts[SKILLS_KEY]) {
+    opts[SKILLS_KEY] = []
+  }
+  return opts[SKILLS_KEY] as SkillEntry[]
+}
 
 /** Register a skill from a directory containing SKILL.md */
 export function addSkill(options: AddSkillOptions): void {
-  const source = 'module'
-  addedSkills.push({ dir: options.dir, name: options.name, source })
+  const nuxt = useNuxt()
+  const skills = getSkillsArray(nuxt)
+  skills.push({ dir: options.dir, name: options.name, source: 'module' })
 }
 
 export default defineNuxtModule<SkillsToolkitOptions>({
@@ -33,6 +45,7 @@ export default defineNuxtModule<SkillsToolkitOptions>({
     async function generateSkills() {
       const modulesDir = join(nuxt.options.rootDir, 'node_modules')
       const packageSkills = await scanForSkillPackages(modulesDir)
+      const addedSkills = getSkillsArray(nuxt)
       const skills = await resolveSkills(packageSkills, addedSkills)
 
       if (skills.length === 0) {
