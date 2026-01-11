@@ -57,6 +57,7 @@ pages/
 ```
 
 **Use route groups to:**
+
 - Organize pages by feature/team
 - Group related routes without affecting URLs
 - Keep large projects maintainable

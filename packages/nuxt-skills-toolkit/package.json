@@ -1,0 +1,37 @@
+{
+  "name": "nuxt-skills-toolkit",
+  "type": "module",
+  "version": "0.1.0",
+  "description": "Enable Nuxt modules to bundle AI agent skills",
+  "author": "onmax",
+  "license": "MIT",
+  "repository": { "type": "git", "url": "https://github.com/onmax/nuxt-skills" },
+  "exports": {
+    ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js" },
+    "./module": { "types": "./dist/module.d.ts", "import": "./dist/module.js" }
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": { "nuxt-skills": "./bin/nuxt-skills.mjs" },
+  "files": ["bin", "dist"],
+  "scripts": {
+    "build": "tsdown",
+    "dev": "tsdown --watch",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "pnpm build"
+  },
+  "peerDependencies": { "nuxt": "^3.14.0" },
+  "dependencies": {
+    "citty": "^0.1.6",
+    "consola": "^3.4.2",
+    "gray-matter": "^4.0.3",
+    "pathe": "^2.0.3",
+    "pkg-types": "^2.1.0"
+  },
+  "devDependencies": {
+    "@nuxt/kit": "^3.14.0",
+    "@nuxt/schema": "^3.14.0",
+    "tsdown": "^0.9.0",
+    "typescript": "^5.7.0"
+  }
+}
