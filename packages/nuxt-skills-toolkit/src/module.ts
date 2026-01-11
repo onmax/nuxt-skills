@@ -3,7 +3,7 @@ import type { AddSkillOptions, AgentTarget, ResolvedSkill, SkillsToolkitOptions 
 import { addTemplate, defineNuxtModule, useNuxt } from '@nuxt/kit'
 import { consola } from 'consola'
 import { join, resolve } from 'pathe'
-import { copySkillDir, expandHome, generateManifest, resolveSkills, scanForSkillPackages } from './runtime/utils'
+import { copySkillDir, expandHome, generateManifest, resolveSkills, scanForSkillPackages, scanLocalPackage } from './runtime/utils'
 import { AGENT_DESTINATIONS } from './types'
 
 const logger = consola.withTag('nuxt-skills')
@@ -64,20 +64,13 @@ export default defineNuxtModule<SkillsToolkitOptions>({
     const outputDir = resolve(nuxt.options.buildDir, 'skills')
     const targets = options.targets || []
 
-    // Collect skills during module setup
+    // Collect skills from node_modules and local package.json
     const modulesDir = join(nuxt.options.rootDir, 'node_modules')
     const packageSkills = await scanForSkillPackages(modulesDir)
+    const localSkills = await scanLocalPackage(nuxt.options.rootDir)
     const addedSkills = getSkillsArray(nuxt)
 
-    // Add skills from additionalPaths (for local development)
-    if (options.additionalPaths?.length) {
-      for (const skillPath of options.additionalPaths) {
-        const dir = resolve(nuxt.options.rootDir, skillPath)
-        addedSkills.push({ dir, source: 'config' })
-      }
-    }
-
-    const skills = await resolveSkills(packageSkills, addedSkills)
+    const skills = await resolveSkills(packageSkills, localSkills, addedSkills)
     setResolvedSkills(nuxt, skills)
 
     if (skills.length === 0) {
@@ -121,7 +114,7 @@ export default defineNuxtModule<SkillsToolkitOptions>({
         if (path.includes('SKILL.md') || path.includes('/skills/')) {
           logger.info('Skill files changed, regenerating...')
           // Re-resolve and update skills
-          const freshSkills = await resolveSkills(packageSkills, addedSkills)
+          const freshSkills = await resolveSkills(packageSkills, localSkills, addedSkills)
           setResolvedSkills(nuxt, freshSkills)
 
           // Copy to .nuxt/skills/

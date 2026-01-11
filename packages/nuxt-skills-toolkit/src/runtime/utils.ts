@@ -64,6 +64,19 @@ async function checkPackage(pkgDir: string, pkgName: string, results: Array<{ pk
   catch { /* ignore packages without package.json */ }
 }
 
+/** Scan local project package.json for agentskills */
+export async function scanLocalPackage(rootDir: string): Promise<Array<{ pkg: string, skills: PackageAgentSkills, pkgDir: string }>> {
+  const results: Array<{ pkg: string, skills: PackageAgentSkills, pkgDir: string }> = []
+  try {
+    const pkg = await readPackageJSON(rootDir)
+    if (pkg.agentskills && Array.isArray((pkg.agentskills as PackageAgentSkills).skills)) {
+      results.push({ pkg: pkg.name || 'local', skills: pkg.agentskills as PackageAgentSkills, pkgDir: rootDir })
+    }
+  }
+  catch { /* no package.json */ }
+  return results
+}
+
 /** Copy skill directory to destination */
 export async function copySkillDir(srcDir: string, destDir: string): Promise<void> {
   await fsp.mkdir(destDir, { recursive: true })
@@ -80,9 +93,10 @@ export async function copySkillDir(srcDir: string, destDir: string): Promise<voi
   }
 }
 
-/** Resolve skills from packages and addSkill() calls */
+/** Resolve skills from packages, local package.json, and addSkill() calls */
 export async function resolveSkills(
   packageSkills: Array<{ pkg: string, skills: PackageAgentSkills, pkgDir: string }>,
+  localSkills: Array<{ pkg: string, skills: PackageAgentSkills, pkgDir: string }>,
   addedSkills: Array<{ dir: string, name?: string, source: string }>,
 ): Promise<ResolvedSkill[]> {
   const resolved: ResolvedSkill[] = []
@@ -105,13 +119,26 @@ export async function resolveSkills(
     resolved.push({ name, description: meta.description, license: meta.license, source: added.source, dir: added.dir, references: await findReferences(added.dir) })
   }
 
-  // Process package.json agentskills
-  for (const { pkg, skills, pkgDir } of packageSkills) {
+  // Process local package.json agentskills (priority over node_modules)
+  for (const { pkg, skills, pkgDir } of localSkills) {
     for (const entry of skills.skills) {
-      if (seen.has(entry.name)) {
-        console.warn(`[nuxt-skills] Duplicate skill "${entry.name}" from ${pkg}, skipping`)
+      if (seen.has(entry.name)) continue
+      const skillDir = resolve(pkgDir, entry.path)
+      const skillMdPath = join(skillDir, 'SKILL.md')
+      if (!existsSync(skillMdPath)) {
+        console.warn(`[nuxt-skills] SKILL.md not found: ${skillMdPath}`)
         continue
       }
+      const meta = await parseSkillMd(skillMdPath)
+      seen.add(entry.name)
+      resolved.push({ name: entry.name, description: meta.description, license: meta.license, source: pkg, dir: skillDir, references: await findReferences(skillDir) })
+    }
+  }
+
+  // Process node_modules package.json agentskills
+  for (const { pkg, skills, pkgDir } of packageSkills) {
+    for (const entry of skills.skills) {
+      if (seen.has(entry.name)) continue
       const skillDir = resolve(pkgDir, entry.path)
       const skillMdPath = join(skillDir, 'SKILL.md')
       if (!existsSync(skillMdPath)) {
