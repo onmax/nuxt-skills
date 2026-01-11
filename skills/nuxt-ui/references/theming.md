@@ -217,6 +217,7 @@ export default {
 ```
 
 **app.config usage**:
+
 ```ts
 ui: {
   button: {
@@ -237,6 +238,7 @@ export default {
 ```
 
 **app.config usage**:
+
 ```ts
 ui: {
   container: {

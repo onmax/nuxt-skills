@@ -23,8 +23,10 @@ jobs:
           cache: pnpm
 
       - run: pnpm install
+      - run: pnpm -C packages/nuxt-skills-toolkit build
       - run: pnpm lint --fix
       - run: pnpm typecheck
+      - run: pnpm -C packages/nuxt-skills-toolkit typecheck
 
       - name: Commit lint fixes
         uses: stefanzweifel/git-auto-commit-action@v5
