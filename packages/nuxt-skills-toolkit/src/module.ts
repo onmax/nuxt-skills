@@ -1,9 +1,10 @@
 import type { Nuxt } from '@nuxt/schema'
-import type { AddSkillOptions, ResolvedSkill, SkillsToolkitOptions } from './types'
+import type { AddSkillOptions, AgentTarget, ResolvedSkill, SkillsToolkitOptions } from './types'
 import { addTemplate, defineNuxtModule, useNuxt } from '@nuxt/kit'
 import { consola } from 'consola'
 import { join, resolve } from 'pathe'
-import { copySkillDir, generateManifest, resolveSkills, scanForSkillPackages } from './runtime/utils'
+import { copySkillDir, expandHome, generateManifest, resolveSkills, scanForSkillPackages } from './runtime/utils'
+import { AGENT_DESTINATIONS } from './types'
 
 const logger = consola.withTag('nuxt-skills')
 
@@ -36,6 +37,19 @@ export function addSkill(options: AddSkillOptions): void {
   skills.push({ dir: options.dir, name: options.name, source: 'module' })
 }
 
+/** Export skills to agent target destinations */
+async function exportToTargets(skills: ResolvedSkill[], targets: AgentTarget[], cwd: string): Promise<void> {
+  for (const target of targets) {
+    const destPath = AGENT_DESTINATIONS[target]
+    const destDir = destPath.startsWith('.') ? resolve(cwd, destPath) : expandHome(destPath)
+
+    for (const skill of skills) {
+      await copySkillDir(skill.dir, join(destDir, skill.name))
+    }
+    logger.success(`Exported to ${destDir}`)
+  }
+}
+
 export default defineNuxtModule<SkillsToolkitOptions>({
   meta: {
     name: 'nuxt-skills-toolkit',
@@ -48,6 +62,7 @@ export default defineNuxtModule<SkillsToolkitOptions>({
       return
 
     const outputDir = resolve(nuxt.options.buildDir, 'skills')
+    const targets = options.targets || []
 
     // Collect skills during module setup
     const modulesDir = join(nuxt.options.rootDir, 'node_modules')
@@ -85,12 +100,19 @@ export default defineNuxtModule<SkillsToolkitOptions>({
     // Copy skill directories after templates are generated
     nuxt.hook('app:templatesGenerated', async () => {
       const resolvedSkills = getResolvedSkills(nuxt)
+
+      // Copy to .nuxt/skills/
       for (const skill of resolvedSkills) {
         const destDir = join(outputDir, skill.name)
         await copySkillDir(skill.dir, destDir)
         logger.success(`  ${skill.name} (from ${skill.source})`)
       }
       logger.success(`Generated .nuxt/skills/manifest.json`)
+
+      // Export to agent targets
+      if (targets.length > 0) {
+        await exportToTargets(resolvedSkills, targets, nuxt.options.rootDir)
+      }
     })
 
     // Hook: builder:watch - regenerate on skill file changes (dev only)
@@ -101,10 +123,16 @@ export default defineNuxtModule<SkillsToolkitOptions>({
           // Re-resolve and update skills
           const freshSkills = await resolveSkills(packageSkills, addedSkills)
           setResolvedSkills(nuxt, freshSkills)
-          // Copy updated files
+
+          // Copy to .nuxt/skills/
           for (const skill of freshSkills) {
             const destDir = join(outputDir, skill.name)
             await copySkillDir(skill.dir, destDir)
+          }
+
+          // Export to agent targets
+          if (targets.length > 0) {
+            await exportToTargets(freshSkills, targets, nuxt.options.rootDir)
           }
         }
       })

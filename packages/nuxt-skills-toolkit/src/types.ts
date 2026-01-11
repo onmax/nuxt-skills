@@ -45,6 +45,8 @@ export interface SkillsToolkitOptions {
   enabled?: boolean
   /** Additional skill paths to include (for local development) */
   additionalPaths?: string[]
+  /** Agent targets to auto-export skills to on prepare/dev */
+  targets?: AgentTarget[]
 }
 
 /** Agent destination paths */
