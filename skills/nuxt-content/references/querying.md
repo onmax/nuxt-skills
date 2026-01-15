@@ -133,8 +133,8 @@ Split pages into searchable sections:
 
 ```ts
 const sections = await queryCollectionSearchSections('docs', {
-  minHeading: 2,
-  maxHeading: 4,
+  minHeading: 2,  // Minimum heading level to index (v3.10+)
+  maxHeading: 4,  // Maximum heading level to index (v3.10+)
 })
 
 // Returns
@@ -147,6 +147,13 @@ const sections = await queryCollectionSearchSections('docs', {
       path: '/docs/getting-started',
     }
   ]
+
+// Include extra fields (v3.4+)
+const sections = await queryCollectionSearchSections('docs', {
+  minHeading: 2,
+  maxHeading: 3,
+  fields: ['description', 'category'],
+})
 ```
 
 ## Server-Side Queries
@@ -211,6 +218,25 @@ const [featured, recent] = await Promise.all([
 | Cache navigation queries          | Rebuild navigation on every page    |
 | Use `.first()` for single items   | Use `.all()[0]`                     |
 | Pass event in server routes       | Omit event on server side           |
+
+## Utility Functions (v3.6+)
+
+Helper functions for common navigation patterns:
+
+```ts
+// Find page headline (first H1)
+const headline = findPageHeadline(page)
+
+// Get breadcrumb trail
+const breadcrumb = findPageBreadcrumb(navigation, '/docs/collections/schema')
+// Returns: [{ title: 'Docs', path: '/docs' }, { title: 'Collections', path: '/docs/collections' }, ...]
+
+// Get immediate children of a page
+const children = findPageChildren(navigation, '/docs/collections')
+
+// Get siblings (prev/next at same level)
+const siblings = findPageSiblings(navigation, '/docs/collections/schema')
+```
 
 ## Resources
 

@@ -9,7 +9,7 @@ Setting up `content.config.ts`, defining collection schemas, or configuring cont
 ```ts
 // content.config.ts
 import { defineCollection, defineContentConfig } from '@nuxt/content'
-import { z } from 'zod'
+import { z } from 'zod'  // Import z from 'zod' directly (not from @nuxt/content)
 
 export default defineContentConfig({
   collections: {
@@ -35,6 +35,8 @@ export default defineContentConfig({
 })
 ```
 
+**Note:** In v3.7.0+, the `z` re-export from `@nuxt/content` was deprecated. Always import from `zod` directly.
+
 ## Collection Types
 
 | Type   | Use Case             | Includes                                                    |
@@ -48,9 +50,12 @@ export default defineContentConfig({
 
 ## Schema Definition
 
-Use Zod for type-safe schemas:
+Use Zod (or other validators like Valibot since v3.7+) for type-safe schemas:
 
 ```ts
+// Using Zod
+import { z } from 'zod'
+
 schema: z.object({
   // Required fields
   title: z.string(),
@@ -74,6 +79,8 @@ schema: z.object({
   }).optional(),
 })
 ```
+
+**Multi-validator support (v3.7+):** Nuxt Content supports multiple schema validators including Zod v4 and Valibot via the standard schema spec. Import your preferred validator directly.
 
 ## Source Patterns
 
@@ -302,6 +309,25 @@ export default defineContentConfig({
 const collection = (`content_${locale.value}`) as keyof Collections
 const page = await queryCollection(collection).path(slug).first()
 ```
+
+**Inherit component prop types (v3.7+):**
+
+```ts
+import { defineCollection, defineContentConfig, property } from '@nuxt/content'
+import { z } from 'zod'
+
+defineCollection({
+  type: 'page',
+  source: 'blog/**/*.md',
+  schema: z.object({
+    // Use property().inherit() to inherit Vue component props
+    hero: property(z.object({})).inherit('app/components/HeroComponent.vue'),
+    title: z.string(),
+  }),
+})
+```
+
+This allows schema fields to automatically match Vue component prop types.
 
 ## Resources
 
