@@ -8,6 +8,8 @@ license: MIT
 
 Component library for Vue 3 and Nuxt 4+ built on Reka UI (headless) + Tailwind CSS v4 + Tailwind Variants.
 
+**Current stable version:** v4.3.0 (December 2024)
+
 ## When to Use
 
 - Installing/configuring @nuxt/ui
@@ -24,9 +26,9 @@ Component library for Vue 3 and Nuxt 4+ built on Reka UI (headless) + Tailwind C
 
 | File                                                         | Topics                                                           |
 | ------------------------------------------------------------ | ---------------------------------------------------------------- |
-| **[references/installation.md](references/installation.md)** | Nuxt/Vue setup, pnpm gotchas, UApp wrapper, module options       |
-| **[references/theming.md](references/theming.md)**           | Semantic colors, CSS variables, app.config.ts, Tailwind Variants |
-| **[references/components.md](references/components.md)**     | Component index by category (121 components)                     |
+| **[references/installation.md](references/installation.md)** | Nuxt/Vue setup, pnpm gotchas, UApp wrapper, module options, prefix, tree-shaking |
+| **[references/theming.md](references/theming.md)**           | Semantic colors, CSS variables, app.config.ts, Tailwind Variants                |
+| **[references/components.md](references/components.md)**     | Component index by category (125+ components)                                    |
 | **components/\*.md**                                         | Per-component details (button.md, modal.md, etc.)                |
 | **[references/forms.md](references/forms.md)**               | Form components, validation (Zod/Valibot), useFormField          |
 | **[references/overlays.md](references/overlays.md)**         | Toast, Modal, Slideover, Drawer, CommandPalette                  |
