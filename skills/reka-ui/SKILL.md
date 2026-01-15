@@ -38,14 +38,14 @@ Unstyled, accessible Vue 3 component primitives. WAI-ARIA compliant. Previously 
 
 ## Key Concepts
 
-| Concept                 | Description                                                        |
-| ----------------------- | ------------------------------------------------------------------ |
-| `asChild`               | Render as child element instead of wrapper, merging props/behavior |
-| Controlled/Uncontrolled | Use `v-model` for controlled, `default*` props for uncontrolled    |
-| Parts                   | Components split into Root, Trigger, Content, Portal, etc.         |
-| `forceMount`            | Keep element in DOM for animation libraries                        |
-| Virtualization          | Optimize large lists (Combobox, Listbox, Tree) with virtual scrolling        |
-| Context Injection       | Access component context from child components                     |
+| Concept                 | Description                                                           |
+| ----------------------- | --------------------------------------------------------------------- |
+| `asChild`               | Render as child element instead of wrapper, merging props/behavior    |
+| Controlled/Uncontrolled | Use `v-model` for controlled, `default*` props for uncontrolled       |
+| Parts                   | Components split into Root, Trigger, Content, Portal, etc.            |
+| `forceMount`            | Keep element in DOM for animation libraries                           |
+| Virtualization          | Optimize large lists (Combobox, Listbox, Tree) with virtual scrolling |
+| Context Injection       | Access component context from child components                        |
 
 ## Installation
 
