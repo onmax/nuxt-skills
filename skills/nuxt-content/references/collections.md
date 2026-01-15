@@ -313,12 +313,15 @@ const page = await queryCollection(collection).path(slug).first()
 **Inherit component prop types (v3.7+):**
 
 ```ts
-// Define schema that inherits from a Vue component's props
+import { defineCollection, defineContentConfig, property } from '@nuxt/content'
+import { z } from 'zod'
+
 defineCollection({
   type: 'page',
   source: 'blog/**/*.md',
   schema: z.object({
-    hero: inherit('HeroComponent'),  // Inherits props from components/HeroComponent.vue
+    // Use property().inherit() to inherit Vue component props
+    hero: property(z.object({})).inherit('app/components/HeroComponent.vue'),
     title: z.string(),
   }),
 })
