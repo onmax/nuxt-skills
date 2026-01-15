@@ -4,8 +4,8 @@
  * Run: npx tsx skills/nuxt-ui/scripts/generate-components.ts
  *
  * Creates:
- *   - components.md (index)
- *   - components/<name>.md (per-component)
+ *   - references/components.md (index with version column for Other category)
+ *   - components/<name>.md (per-component details)
  */
 
 import { execSync } from 'node:child_process'
@@ -23,6 +23,7 @@ interface ComponentMeta {
   description: string
   category: string
   rekaLink?: string
+  version?: string
 }
 
 // Category groupings for better organization
@@ -33,6 +34,20 @@ const CATEGORIES: Record<string, string> = {
   navigation: 'Navigation',
   overlay: 'Overlay',
   layout: 'Layout',
+}
+
+// Version mapping for components introduced after v4.0
+const VERSION_MAP: Record<string, string> = {
+  'empty': 'v4.1+',
+  'scroll-area': 'v4.3+',
+  'input-date': 'v4.2+',
+  'input-time': 'v4.2+',
+  'editor': 'v4.3+',
+  'editor-drag-handle': 'v4.3+',
+  'editor-emoji-menu': 'v4.3+',
+  'editor-mention-menu': 'v4.3+',
+  'editor-suggestion-menu': 'v4.3+',
+  'editor-toolbar': 'v4.3+',
 }
 
 function parseYamlFrontmatter(content: string): { frontmatter: Record<string, any>, body: string } {
@@ -158,6 +173,7 @@ async function main() {
       description: frontmatter.description || '',
       category: frontmatter.category || 'other',
       rekaLink: frontmatter.rekaLink,
+      version: VERSION_MAP[name],
     }
     components.push(meta)
 
@@ -173,6 +189,8 @@ async function main() {
   index.push('')
   index.push('> Auto-generated from Nuxt UI docs. Run `npx tsx skills/nuxt-ui/scripts/generate-components.ts` to update.')
   index.push('')
+  index.push('> **For headless primitives (API, accessibility):** see `reka-ui` skill')
+  index.push('')
 
   // Group by category
   const byCategory: Record<string, ComponentMeta[]> = {}
@@ -183,20 +201,54 @@ async function main() {
     byCategory[cat].push(comp)
   }
 
+  // Calculate column widths for alignment
+  function getMaxLengths(comps: ComponentMeta[], hasVersionCol: boolean) {
+    let maxComp = 'Component'.length
+    let maxDesc = 'Description'.length
+    for (const comp of comps) {
+      const displayName = comp.name.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join('')
+      const link = `[${displayName}](components/${comp.name}.md)`
+      if (link.length > maxComp)
+        maxComp = link.length
+      const desc = hasVersionCol ? comp.description : (comp.version ? `${comp.description} (${comp.version})` : comp.description)
+      if (desc.length > maxDesc)
+        maxDesc = desc.length
+    }
+    return { maxComp, maxDesc }
+  }
+
   for (const [cat, comps] of Object.entries(byCategory).sort((a, b) => a[0].localeCompare(b[0]))) {
     index.push(`## ${cat}`)
     index.push('')
-    index.push('| Component | Description |')
-    index.push('|-----------|-------------|')
+    const hasVersionCol = cat === 'Other'
+    const { maxComp, maxDesc } = getMaxLengths(comps, hasVersionCol)
+
+    if (hasVersionCol) {
+      index.push(`| ${'Component'.padEnd(maxComp)} | ${'Description'.padEnd(maxDesc)} | Version |`)
+      index.push(`| ${'-'.repeat(maxComp)} | ${'-'.repeat(maxDesc)} | ------- |`)
+    }
+    else {
+      index.push(`| ${'Component'.padEnd(maxComp)} | ${'Description'.padEnd(maxDesc)} |`)
+      index.push(`| ${'-'.repeat(maxComp)} | ${'-'.repeat(maxDesc)} |`)
+    }
+
     for (const comp of comps.sort((a, b) => a.name.localeCompare(b.name))) {
       const displayName = comp.name.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join('')
-      index.push(`| [${displayName}](components/${comp.name}.md) | ${comp.description} |`)
+      const link = `[${displayName}](components/${comp.name}.md)`
+      if (hasVersionCol) {
+        const desc = comp.version ? `${comp.description} (${comp.version})` : comp.description
+        index.push(`| ${link.padEnd(maxComp)} | ${desc.padEnd(maxDesc)} | ${(comp.version || '').padEnd(7)} |`)
+      }
+      else {
+        const desc = comp.version ? `${comp.description} (${comp.version})` : comp.description
+        index.push(`| ${link.padEnd(maxComp)} | ${desc.padEnd(maxDesc)} |`)
+      }
     }
     index.push('')
   }
 
-  writeFileSync(join(baseDir, 'components.md'), index.join('\n'))
-  console.log('✓ Generated components.md (index)')
+  writeFileSync(join(baseDir, 'references', 'components.md'), index.join('\n'))
+  console.log('✓ Generated references/components.md (index)')
 
   console.log(`\nDone! Generated ${components.length + 1} files.`)
 }

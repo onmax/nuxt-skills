@@ -112,12 +112,12 @@ export default defineNuxtConfig({
         color: 'primary',
         size: 'md'
       },
-      prefix: '' // Tailwind CSS prefix (v4.2+)
+      prefix: '' // Tailwind CSS prefix (v4.2+) - ensures prefixed utilities work
     },
     mdc: false, // Force Prose components
     content: false, // Force UContent* components
     experimental: {
-      componentDetection: false // Tree-shake unused components
+      componentDetection: false // Tree-shake unused components (v4.1+) - auto-generates CSS only for used components
     }
   }
 })
@@ -162,11 +162,53 @@ Nuxt UI automatically installs:
 | Icons not loading         | Check @nuxt/icon is installed                      |
 | Dark mode not working     | Ensure `colorMode: true` in config                 |
 
+## Performance Features (v4.1+)
+
+### Component Virtualization
+
+Large datasets in CommandPalette, InputMenu, SelectMenu, Table, and Tree automatically use virtualization for better performance.
+
+### Experimental Component Detection
+
+Enable `experimental.componentDetection` to auto-generate CSS only for components you actually use:
+
+```ts
+// nuxt.config.ts
+export default defineNuxtConfig({
+  ui: {
+    experimental: {
+      componentDetection: true
+    }
+  }
+})
+```
+
+**Benefits:** Smaller CSS bundle, faster builds, reduced unused styles.
+
+### Tailwind CSS Prefix Support (v4.2+)
+
+Avoid style conflicts in complex apps:
+
+```ts
+// nuxt.config.ts
+export default defineNuxtConfig({
+  ui: {
+    theme: {
+      prefix: 'ui-' // Prefixes all Tailwind utilities
+    }
+  }
+})
+```
+
+**Result:** Components use `ui-bg-primary` instead of `bg-primary`.
+
 ## Best Practices
 
-| Do                   | Don't                     |
-| -------------------- | ------------------------- |
-| Wrap in UApp first   | Forget UApp wrapper       |
-| Use semantic colors  | Hardcode color values     |
-| Import CSS correctly | Skip @nuxt/ui import      |
-| Check pnpm hoisting  | Ignore tailwindcss errors |
+| Do                         | Don't                     |
+| -------------------------- | ------------------------- |
+| Wrap in UApp first         | Forget UApp wrapper       |
+| Use semantic colors        | Hardcode color values     |
+| Import CSS correctly       | Skip @nuxt/ui import      |
+| Check pnpm hoisting        | Ignore tailwindcss errors |
+| Use component detection    | Ship unused component CSS |
+| Use prefix in complex apps | Risk style conflicts      |

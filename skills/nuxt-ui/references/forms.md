@@ -2,25 +2,25 @@
 
 ## Form Components
 
-| Component        | Purpose             | Key Props                                     |
-| ---------------- | ------------------- | --------------------------------------------- |
-| `UInput`         | Text input          | `type`, `placeholder`, `icon`, `loading`      |
-| `UTextarea`      | Multi-line text     | `rows`, `autoresize`, `maxrows`               |
-| `USelect`        | Native select       | `options`, `placeholder`                      |
-| `USelectMenu`    | Custom select       | `options`, `searchable`, `multiple`           |
-| `UInputMenu`     | Autocomplete        | `options`, `searchable`                       |
-| `UCheckbox`      | Single checkbox     | `label`, `description`                        |
-| `UCheckboxGroup` | Multiple checkboxes | `items`, `orientation`                        |
-| `URadioGroup`    | Radio options       | `items`, `orientation`                        |
-| `USwitch`        | Toggle switch       | `label`, `description`, `on-icon`, `off-icon` |
-| `USlider`        | Range slider        | `min`, `max`, `step`                          |
-| `UPinInput`      | Code/OTP input      | `length`, `type`, `mask`                      |
-| `UInputNumber`   | Number input        | `min`, `max`, `step`, `format-options`        |
-| `UInputDate`     | Date picker         | `mode`, `range`, `locale`                     |
-| `UInputTime`     | Time picker         | `format`, `step`                              |
-| `UInputTags`     | Tag input           | `max`, `placeholder`                          |
-| `UColorPicker`   | Color selection     | `format`, `swatches`                          |
-| `UFileUpload`    | File upload         | `accept`, `multiple`, `max-files`             |
+| Component        | Purpose             | Key Props                                     | Version |
+| ---------------- | ------------------- | --------------------------------------------- | ------- |
+| `UInput`         | Text input          | `type`, `placeholder`, `icon`, `loading`      |         |
+| `UTextarea`      | Multi-line text     | `rows`, `autoresize`, `maxrows`               |         |
+| `USelect`        | Native select       | `options`, `placeholder`                      |         |
+| `USelectMenu`    | Custom select       | `options`, `searchable`, `multiple`           |         |
+| `UInputMenu`     | Autocomplete        | `options`, `searchable`                       |         |
+| `UCheckbox`      | Single checkbox     | `label`, `description`                        |         |
+| `UCheckboxGroup` | Multiple checkboxes | `items`, `orientation`                        |         |
+| `URadioGroup`    | Radio options       | `items`, `orientation`                        |         |
+| `USwitch`        | Toggle switch       | `label`, `description`, `on-icon`, `off-icon` |         |
+| `USlider`        | Range slider        | `min`, `max`, `step`                          |         |
+| `UPinInput`      | Code/OTP input      | `length`, `type`, `mask`                      |         |
+| `UInputNumber`   | Number input        | `min`, `max`, `step`, `format-options`        |         |
+| `UInputDate`     | Date picker         | `mode`, `range`, `locale`                     | v4.2+   |
+| `UInputTime`     | Time picker         | `hour-cycle`, `minute-step`                   | v4.2+   |
+| `UInputTags`     | Tag input           | `max`, `placeholder`                          |         |
+| `UColorPicker`   | Color selection     | `format`, `swatches`                          |         |
+| `UFileUpload`    | File upload         | `accept`, `multiple`, `max-files`             |         |
 
 ## Basic Input Examples
 
@@ -225,7 +225,9 @@ const { files, open, reset } = useFileUpload()
 </template>
 ```
 
-## Date Picker
+## Date & Time Pickers (v4.2+)
+
+### Date Picker
 
 ```vue
 <script setup>
@@ -242,6 +244,27 @@ const range = ref({ start: new Date(), end: new Date() })
 
   <!-- With locale -->
   <UInputDate v-model="date" locale="es" />
+</template>
+```
+
+### Time Picker
+
+```vue
+<script setup>
+import { Time } from '@internationalized/date'
+
+const time = ref(new Time(12, 0))
+</script>
+
+<template>
+  <!-- Basic time picker -->
+  <UInputTime v-model="time" />
+
+  <!-- 24-hour format -->
+  <UInputTime v-model="time" hour-cycle="24" />
+
+  <!-- Custom step (minutes) -->
+  <UInputTime v-model="time" :minute-step="15" />
 </template>
 ```
 
