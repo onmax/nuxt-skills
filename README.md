@@ -50,14 +50,24 @@ The agent reads the skill's `description` field and decides when to load it. Thi
 
 ## Installation
 
-### Claude Code
+### add-skill (Recommended)
+
+The simplest way to install skills. Works with Claude Code, Cursor, OpenCode, and Codex:
+
+```bash
+npx add-skill onmax/nuxt-skills
+```
+
+The interactive picker displays all available skills. Select the ones you need. Use `--global` for user-wide installation.
+
+### Claude Code (Marketplace)
 
 ```bash
 /plugin marketplace add onmax/nuxt-skills
 /plugin install nuxt-skills@nuxt-skills
 ```
 
-This installs all skills (vue, nuxt, nuxt-modules, nuxthub, nuxt-content, nuxt-ui, nuxt-better-auth, reka-ui, document-writer, ts-library). Skills appear in `/skills` list and auto-activate based on context.
+Installs all skills at once. Skills appear in `/skills` list and auto-activate based on context.
 
 ### GitHub Copilot & VS Code
 
