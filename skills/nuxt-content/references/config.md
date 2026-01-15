@@ -228,15 +228,18 @@ export default defineNuxtConfig({
 export default defineNuxtConfig({
   content: {
     experimental: {
-      // Use Node.js native SQLite (v22.5.0+)
+      // Use Node.js native SQLite (Node.js v22.5.0+, v3.4+)
       nativeSqlite: true,
 
-      // Specify SQLite connector
-      sqliteConnector: 'better-sqlite3', // or 'native', 'sqlite3'
+      // Specify SQLite connector (v3.6+)
+      // 'better-sqlite3' moved to peer dependency in v3.6.0
+      sqliteConnector: 'better-sqlite3', // or 'native' (Node 22+), 'sqlite3'
     },
   },
 })
 ```
+
+**Note:** Starting v3.6.0, `better-sqlite3` is a peer dependency. The module will prompt you to install your preferred SQLite connector on first run.
 
 ## Full Configuration Example
 
