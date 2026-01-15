@@ -19,7 +19,7 @@ export default defineNuxtConfig({
 
 ## Schema Generation
 
-The module auto-generates Drizzle schema from Better Auth tables. Schema available via:
+The module auto-generates Drizzle schema from Better Auth tables using Better Auth's schema generation API. Schema available via:
 
 ```ts
 import { user, session, account, verification } from '#auth/database'

@@ -8,7 +8,7 @@ pnpm add @onmax/nuxt-better-auth better-auth
 
 **Version Requirements:**
 
-- `@onmax/nuxt-better-auth`: `^0.0.2-alpha.12` (alpha)
+- `@onmax/nuxt-better-auth`: `^0.0.2-alpha.14` (alpha)
 - `better-auth`: `^1.0.0` (module tested with `1.4.7`)
 - `@nuxthub/core`: `^0.10.0` (optional, for database)
 
@@ -34,6 +34,7 @@ export default defineNuxtConfig({
 
 ```bash
 # Required (min 32 chars)
+# Can also be set via runtimeConfig.betterAuthSecret (takes priority)
 BETTER_AUTH_SECRET=your-secret-key-at-least-32-characters
 
 # Required in production for OAuth
