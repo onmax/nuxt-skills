@@ -1,6 +1,7 @@
 ---
 name: ts-library
 description: Use when authoring TypeScript libraries - covers project setup, package exports, build tooling (tsdown/unbuild), API design patterns, type inference tricks, testing, and release workflows. Patterns extracted from 20+ high-quality ecosystem libraries.
+version: 1.0.0
 license: MIT
 ---
 

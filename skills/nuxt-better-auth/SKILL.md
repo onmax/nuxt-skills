@@ -1,6 +1,7 @@
 ---
 name: nuxt-better-auth
 description: Use when implementing auth in Nuxt apps with @onmax/nuxt-better-auth - provides useUserSession composable, server auth helpers, route protection, and Better Auth plugins integration.
+version: 0.3.0
 license: MIT
 ---
 

@@ -1,6 +1,7 @@
 ---
 name: nuxt-ui
 description: Use when building styled UI with @nuxt/ui v4 components (Button, Modal, Form, Table, etc.) - provides ready-to-use components with Tailwind Variants theming. Use vue skill for raw component patterns, reka-ui for headless primitives.
+version: 4.3.0
 license: MIT
 ---
 

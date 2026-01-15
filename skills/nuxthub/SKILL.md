@@ -1,6 +1,7 @@
 ---
 name: nuxthub
 description: Use when building NuxtHub v0.10.4 applications - provides database (Drizzle ORM with sqlite/postgresql/mysql), KV storage, blob storage, and cache APIs. Covers configuration, schema definition, migrations, multi-cloud deployment (Cloudflare, Vercel), and the new hub:db, hub:kv, hub:blob virtual module imports.
+version: 0.10.4
 license: MIT
 ---
 

@@ -225,6 +225,7 @@ onMounted(() => {
 ```
 
 **Benefits over `ref()`:**
+
 - Type-safe with generics
 - Better IDE autocomplete and refactoring
 - Explicit ref name as string literal

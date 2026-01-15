@@ -1,6 +1,7 @@
 ---
 name: vue
 description: Use when editing .vue files, creating Vue 3 components, writing composables, or testing Vue code - provides Composition API patterns, props/emits best practices, VueUse integration, and reactive destructuring guidance
+version: 3.5.0
 license: MIT
 ---
 

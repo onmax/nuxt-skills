@@ -1,6 +1,7 @@
 ---
 name: document-writer
 description: Use when writing blog posts or documentation markdown files - provides writing style guide (active voice, present tense), content structure patterns, and MDC component usage. Overrides brevity rules for proper grammar. Use nuxt-content for MDC syntax, nuxt-ui for component props.
+version: 1.0.0
 license: MIT
 ---
 

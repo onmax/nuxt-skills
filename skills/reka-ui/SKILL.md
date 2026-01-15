@@ -1,6 +1,7 @@
 ---
 name: reka-ui
 description: Use when building with Reka UI (headless Vue components) - provides component API, accessibility patterns, composition (asChild), controlled/uncontrolled state, virtualization, and styling integration. Formerly Radix Vue.
+version: 2.0.0
 license: MIT
 ---
 

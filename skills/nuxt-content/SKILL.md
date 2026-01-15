@@ -1,6 +1,7 @@
 ---
 name: nuxt-content
 description: Use when working with Nuxt Content v3 - provides collections (local/remote/API sources), queryCollection API, MDC rendering, database configuration, NuxtStudio integration, hooks, i18n patterns, and LLMs integration
+version: 3.0.0
 license: MIT
 ---
 
