@@ -204,6 +204,104 @@ Common conflicts requiring `un-` prefix:
 - `<a text="...">` → `<a un-text="...">`
 - `<svg fill="...">` → `<svg un-fill="...">` (when using variants like `un-fill="hover:blue"`)
 
+## Template Refs (Vue 3.5+)
+
+Use `useTemplateRef()` for type-safe template references with IDE support:
+
+```vue
+<script setup lang="ts">
+import { useTemplateRef, onMounted } from 'vue'
+
+const input = useTemplateRef<HTMLInputElement>('my-input')
+
+onMounted(() => {
+  input.value?.focus()
+})
+</script>
+
+<template>
+  <input ref="my-input">
+</template>
+```
+
+**Benefits over `ref()`:**
+- Type-safe with generics
+- Better IDE autocomplete and refactoring
+- Explicit ref name as string literal
+
+**Dynamic refs:**
+
+```vue
+<script setup lang="ts">
+const items = ref(['a', 'b', 'c'])
+const itemRefs = useTemplateRef<HTMLElement>('item')
+
+// Access refs after mount
+onMounted(() => {
+  console.log(itemRefs.value) // Array of elements
+})
+</script>
+
+<template>
+  <div v-for="item in items" :key="item" ref="item">
+    {{ item }}
+  </div>
+</template>
+```
+
+## SSR Hydration (Vue 3.5+)
+
+**Suppress hydration mismatches** for values that differ between server/client:
+
+```vue
+<template>
+  <!-- Client-side only values -->
+  <span data-allow-mismatch>{{ new Date().toLocaleString() }}</span>
+
+  <!-- Specific mismatch types -->
+  <span data-allow-mismatch="text">{{ timestamp }}</span>
+  <span data-allow-mismatch="children">
+    <ClientOnly>...</ClientOnly>
+  </span>
+  <span data-allow-mismatch="style">...</span>
+  <span data-allow-mismatch="class">...</span>
+  <span data-allow-mismatch="attribute">...</span>
+</template>
+```
+
+**Generate SSR-stable IDs:**
+
+```vue
+<script setup lang="ts">
+import { useId } from 'vue'
+
+const id = useId() // Stable across server/client renders
+</script>
+
+<template>
+  <label :for="id">Name</label>
+  <input :id="id">
+</template>
+```
+
+## Deferred Teleport (Vue 3.5+)
+
+Teleport to elements rendered later in the same cycle:
+
+```vue
+<template>
+  <!-- This renders first -->
+  <Teleport defer to="#late-div">
+    <span>Deferred content</span>
+  </Teleport>
+
+  <!-- This renders after, but Teleport waits -->
+  <div id="late-div"></div>
+</template>
+```
+
+Without `defer`, teleport to `#late-div` would fail since it doesn't exist yet.
+
 ## Common Mistakes
 
 **Using `const props =` with destructured values:**

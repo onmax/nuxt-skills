@@ -69,6 +69,30 @@ export function useEventListener(target: EventTarget, event: string, handler: Fu
 }
 ```
 
+**Watcher cleanup (Vue 3.5+):**
+
+```ts
+import { watch, onWatcherCleanup } from 'vue'
+
+export function usePolling(url: Ref<string>) {
+  watch(url, (newUrl) => {
+    const interval = setInterval(() => {
+      fetch(newUrl).then(/* ... */)
+    }, 1000)
+
+    // Cleanup when watcher re-runs or stops
+    onWatcherCleanup(() => {
+      clearInterval(interval)
+    })
+  })
+}
+```
+
+**Benefits of `onWatcherCleanup()`:**
+- Cleaner than returning cleanup functions
+- Works with async watchers
+- Can be called multiple times in same watcher
+
 ## Async Pattern
 
 ```ts
@@ -187,6 +211,30 @@ export function useUserLocation() {
   return { location }
 }
 ```
+
+### Custom Element Composables (Vue 3.5+)
+
+For custom element components, use built-in helpers:
+
+```ts
+import { useHost, useShadowRoot } from 'vue'
+
+export function useCustomElement() {
+  const host = useHost() // Host element reference
+  const shadowRoot = useShadowRoot() // Shadow DOM root
+
+  onMounted(() => {
+    console.log('Host:', host)
+    console.log('Shadow:', shadowRoot)
+  })
+
+  return { host, shadowRoot }
+}
+```
+
+**Available in:**
+- Components using `<script setup>` in custom elements
+- Access via `this.$host` in Options API
 
 ### Auto-Save with Debounce
 
