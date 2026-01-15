@@ -204,11 +204,11 @@ export default defineNuxtConfig({
 
 ## Best Practices
 
-| Do                          | Don't                     |
-| --------------------------- | ------------------------- |
-| Wrap in UApp first          | Forget UApp wrapper       |
-| Use semantic colors         | Hardcode color values     |
-| Import CSS correctly        | Skip @nuxt/ui import      |
-| Check pnpm hoisting         | Ignore tailwindcss errors |
-| Use component detection     | Ship unused component CSS |
-| Use prefix in complex apps  | Risk style conflicts      |
+| Do                         | Don't                     |
+| -------------------------- | ------------------------- |
+| Wrap in UApp first         | Forget UApp wrapper       |
+| Use semantic colors        | Hardcode color values     |
+| Import CSS correctly       | Skip @nuxt/ui import      |
+| Check pnpm hoisting        | Ignore tailwindcss errors |
+| Use component detection    | Ship unused component CSS |
+| Use prefix in complex apps | Risk style conflicts      |
