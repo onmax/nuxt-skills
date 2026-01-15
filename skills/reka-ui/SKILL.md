@@ -8,7 +8,7 @@ license: MIT
 
 Unstyled, accessible Vue 3 component primitives. WAI-ARIA compliant. Previously Radix Vue.
 
-**Current version:** v2.7.0 (December 2024)
+**Current version:** v2.7.0 (December 2025)
 
 ## When to Use
 
