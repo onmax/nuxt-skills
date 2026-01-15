@@ -164,6 +164,26 @@ const { data } = await useAsyncData('users', async () => {
   return await $fetch('/api/users', { signal: controller.signal })
 })
 // Later: controller.abort() to cancel
+
+// Custom cache logic with getCachedData (Nuxt 4+)
+const { data } = await useAsyncData('users',
+  async () => $fetch('/api/users'),
+  {
+    getCachedData: (key) => {
+      // Return cached data or null/undefined to trigger fetch
+      const cached = useNuxtData(key)
+      return cached.data.value
+    }
+  }
+)
+
+// Deep reactivity for nested objects (default is shallow)
+const { data } = await useAsyncData('user',
+  async () => $fetch('/api/user'),
+  {
+    deep: true // Makes nested properties reactive
+  }
+)
 ```
 
 ## State Management
