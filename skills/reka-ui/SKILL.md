@@ -8,7 +8,7 @@ license: MIT
 
 Unstyled, accessible Vue 3 component primitives. WAI-ARIA compliant. Previously Radix Vue.
 
-**Current version:** v2.7.0 (December 2025)
+**Current version:** v2.7.0 (December 2024)
 
 ## When to Use
 
@@ -44,7 +44,7 @@ Unstyled, accessible Vue 3 component primitives. WAI-ARIA compliant. Previously 
 | Controlled/Uncontrolled | Use `v-model` for controlled, `default*` props for uncontrolled    |
 | Parts                   | Components split into Root, Trigger, Content, Portal, etc.         |
 | `forceMount`            | Keep element in DOM for animation libraries                        |
-| Virtualization          | Optimize large lists (Listbox, Tree) with virtual scrolling        |
+| Virtualization          | Optimize large lists (Combobox, Listbox, Tree) with virtual scrolling        |
 | Context Injection       | Access component context from child components                     |
 
 ## Installation
@@ -124,7 +124,7 @@ const open = ref(false)
 - **Toast**: Added `disableSwipe` prop for swipe control
 - **DatePicker**: Added `closeOnSelect` property
 - **ContextMenu**: Added `pressOpenDelay` for long-press configuration
-- **Virtualization**: Enhanced support in Listbox/Tree components
+- **Virtualization**: `estimateSize` now accepts function for Listbox/Tree (v2.7.0); supported in Combobox, Listbox, Tree
 
 ## Resources
 
