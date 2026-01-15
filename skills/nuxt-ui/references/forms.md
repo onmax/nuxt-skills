@@ -17,7 +17,7 @@
 | `UPinInput`      | Code/OTP input      | `length`, `type`, `mask`                      |         |
 | `UInputNumber`   | Number input        | `min`, `max`, `step`, `format-options`        |         |
 | `UInputDate`     | Date picker         | `mode`, `range`, `locale`                     | v4.2+   |
-| `UInputTime`     | Time picker         | `format`, `step`                              | v4.2+   |
+| `UInputTime`     | Time picker         | `hour-cycle`, `minute-step`                   | v4.2+   |
 | `UInputTags`     | Tag input           | `max`, `placeholder`                          |         |
 | `UColorPicker`   | Color selection     | `format`, `swatches`                          |         |
 | `UFileUpload`    | File upload         | `accept`, `multiple`, `max-files`             |         |
@@ -251,7 +251,9 @@ const range = ref({ start: new Date(), end: new Date() })
 
 ```vue
 <script setup>
-const time = ref('12:00')
+import { Time } from '@internationalized/date'
+
+const time = ref(new Time(12, 0))
 </script>
 
 <template>
@@ -259,10 +261,10 @@ const time = ref('12:00')
   <UInputTime v-model="time" />
 
   <!-- 24-hour format -->
-  <UInputTime v-model="time" format="24" />
+  <UInputTime v-model="time" hour-cycle="24" />
 
   <!-- Custom step (minutes) -->
-  <UInputTime v-model="time" :step="15" />
+  <UInputTime v-model="time" :minute-step="15" />
 </template>
 ```
 
