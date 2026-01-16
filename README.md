@@ -19,6 +19,10 @@
   </a>
 </p>
 
+```bash
+npx add-skill onmax/nuxt-skills
+```
+
 ## Skills
 
 | Skill                | Description                                                                     |
