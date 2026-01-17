@@ -19,9 +19,36 @@
   </a>
 </p>
 
+## Installation
+
 ```bash
-npx add-skill onmax/nuxt-skills
+npx skills add onmax/nuxt-skills
 ```
+
+The [`skills`](https://www.npmjs.com/package/skills) CLI auto-detects your installed agents and provides an interactive picker. Use `-g` for global (user-wide) or `-y` to install all skills.
+
+Works with Claude Code, Cursor, Codex, OpenCode, GitHub Copilot, Antigravity, Roo Code, and more.
+
+### Claude Code Marketplace
+
+An alternative for Claude Code users:
+
+```bash
+/plugin marketplace add onmax/nuxt-skills
+/plugin install nuxt-skills@nuxt-skills
+```
+
+### Manual Installation
+
+Clone the repository and copy skill folders to your agent's skills directory:
+
+| Agent       | Project path       | Global path                 |
+| ----------- | ------------------ | --------------------------- |
+| Claude Code | `.claude/skills/`  | `~/.claude/skills/`         |
+| Cursor      | `.cursor/skills/`  | `~/.cursor/skills/`         |
+| Codex       | `.codex/skills/`   | `~/.codex/skills/`          |
+| OpenCode    | `.opencode/skill/` | `~/.config/opencode/skill/` |
+| Copilot     | `.github/skills/`  | —                           |
 
 ## Skills
 
@@ -40,147 +67,18 @@ npx add-skill onmax/nuxt-skills
 
 ## How Skills Work
 
-Skills are **auto-activated by AI agents** based on context - not manually invoked.
+Skills follow the [Agent Skills](https://agentskills.io) open format. They can be activated in two ways:
 
-| You're working on... | Agent automatically uses... |
-| -------------------- | --------------------------- |
-| `.vue` file          | `vue` skill                 |
-| `server/api/` route  | `nuxt` skill                |
-| `nuxt.config.ts`     | `nuxt` skill                |
-| NuxtHub storage      | `nuxthub` skill             |
-| Auth/login/session   | `nuxt-better-auth` skill    |
+1. **Auto-discovery** — The agent reads each skill's `description` and loads it when relevant to your task
+2. **Manual invocation** — Type `/skill-name` (e.g., `/nuxt`) to explicitly load a skill
 
-The agent reads the skill's `description` field and decides when to load it. This follows the [Agent Skills](https://agentskills.io) open format.
-
-## Installation
-
-### add-skill (Recommended)
-
-The simplest way to install skills. Works with Claude Code, Cursor, OpenCode, and Codex:
-
-```bash
-npx add-skill onmax/nuxt-skills
-```
-
-The interactive picker displays all available skills. Select the ones you need. Use `--global` for user-wide installation.
-
-### Claude Code (Marketplace)
-
-```bash
-/plugin marketplace add onmax/nuxt-skills
-/plugin install nuxt-skills@nuxt-skills
-```
-
-Installs all skills at once. Skills appear in `/skills` list and auto-activate based on context.
-
-### GitHub Copilot & VS Code
-
-**Official support** added December 18, 2025. Enable in VS Code settings:
-
-```json
-"chat.useAgentSkills": true
-```
-
-Copy skills to `.github/skills/`:
-
-```bash
-git clone https://github.com/onmax/nuxt-skills.git
-cp -r nuxt-skills/skills/vue .github/skills/
-cp -r nuxt-skills/skills/nuxt .github/skills/
-cp -r nuxt-skills/skills/nuxt-modules .github/skills/
-cp -r nuxt-skills/skills/nuxthub .github/skills/
-cp -r nuxt-skills/skills/nuxt-content .github/skills/
-cp -r nuxt-skills/skills/nuxt-ui .github/skills/
-cp -r nuxt-skills/skills/nuxt-better-auth .github/skills/
-cp -r nuxt-skills/skills/reka-ui .github/skills/
-cp -r nuxt-skills/skills/document-writer .github/skills/
-cp -r nuxt-skills/skills/ts-library .github/skills/
-```
-
-**Note:** If you have Claude Code skills in `.claude/skills/`, Copilot auto-detects them. No duplication needed.
-
-### OpenAI Codex
-
-Use the built-in skill installer:
-
-```
-$skill-installer https://github.com/onmax/nuxt-skills
-```
-
-Or copy skills to your `.codex/skills/` directory:
-
-```bash
-git clone https://github.com/onmax/nuxt-skills.git
-cp -r nuxt-skills/skills/vue ~/.codex/skills/
-cp -r nuxt-skills/skills/nuxt ~/.codex/skills/
-cp -r nuxt-skills/skills/nuxt-modules ~/.codex/skills/
-cp -r nuxt-skills/skills/nuxthub ~/.codex/skills/
-cp -r nuxt-skills/skills/nuxt-content ~/.codex/skills/
-cp -r nuxt-skills/skills/nuxt-ui ~/.codex/skills/
-cp -r nuxt-skills/skills/nuxt-better-auth ~/.codex/skills/
-cp -r nuxt-skills/skills/reka-ui ~/.codex/skills/
-cp -r nuxt-skills/skills/document-writer ~/.codex/skills/
-cp -r nuxt-skills/skills/ts-library ~/.codex/skills/
-```
-
-Invoke skills with `/skills` command or `$skill-name`.
-
-### OpenCode
-
-**Native support** included. OpenCode auto-discovers skills from:
-
-- Project: `.opencode/skill/` and `.claude/skills/`
-- Global: `~/.config/opencode/skill/` and `~/.claude/skills/`
-
-Copy to global (OpenCode native):
-
-```bash
-git clone https://github.com/onmax/nuxt-skills.git
-cp -r nuxt-skills/skills/vue ~/.config/opencode/skill/
-cp -r nuxt-skills/skills/nuxt ~/.config/opencode/skill/
-cp -r nuxt-skills/skills/nuxt-modules ~/.config/opencode/skill/
-cp -r nuxt-skills/skills/nuxthub ~/.config/opencode/skill/
-cp -r nuxt-skills/skills/nuxt-content ~/.config/opencode/skill/
-cp -r nuxt-skills/skills/nuxt-ui ~/.config/opencode/skill/
-cp -r nuxt-skills/skills/nuxt-better-auth ~/.config/opencode/skill/
-cp -r nuxt-skills/skills/reka-ui ~/.config/opencode/skill/
-cp -r nuxt-skills/skills/document-writer ~/.config/opencode/skill/
-cp -r nuxt-skills/skills/ts-library ~/.config/opencode/skill/
-```
-
-**Note:** If you have Claude Code skills in `.claude/skills/`, OpenCode auto-detects them. No duplication needed.
-
-### btca
-
-[btca](https://github.com/davis7dotsh/better-context) searches repos locally to answer questions.
-
-```bash
-bun add -g btca
-btca config repos add -n nuxt -u https://github.com/onmax/nuxt-skills -b main --notes "Nuxt 4, Vue 3, NuxtHub patterns. Check skills/ folder."
-```
-
-Ask questions:
-
-```bash
-btca ask -t nuxt -q "How do I create a server route with validation?"
-btca chat -t nuxt  # interactive mode
-```
-
-### Manual (Claude Code)
-
-```bash
-git clone https://github.com/onmax/nuxt-skills.git
-cp -r nuxt-skills/skills/vue ~/.claude/skills/
-cp -r nuxt-skills/skills/nuxt ~/.claude/skills/
-cp -r nuxt-skills/skills/nuxt-modules ~/.claude/skills/
-cp -r nuxt-skills/skills/nuxthub ~/.claude/skills/
-cp -r nuxt-skills/skills/nuxt-content ~/.claude/skills/
-cp -r nuxt-skills/skills/nuxt-ui ~/.claude/skills/
-cp -r nuxt-skills/skills/nuxt-better-auth ~/.claude/skills/
-cp -r nuxt-skills/skills/reka-ui ~/.claude/skills/
-cp -r nuxt-skills/skills/document-writer ~/.claude/skills/
-cp -r nuxt-skills/skills/ts-library ~/.claude/skills/
-```
+| You're working on... | Agent may auto-load... |
+| -------------------- | ---------------------- |
+| `.vue` file          | `vue` skill            |
+| `server/api/` route  | `nuxt` skill           |
+| `nuxt.config.ts`     | `nuxt` skill           |
+| NuxtHub storage      | `nuxthub` skill        |
+| Auth/login/session   | `nuxt-better-auth`     |
 
 ## Structure
 
