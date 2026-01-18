@@ -49,11 +49,11 @@ export default defineNuxtConfig({
 
 ## Quick Reference
 
-| Working on...                | Load file                  |
-| ---------------------------- | -------------------------- |
-| Motion component, gestures   | references/components.md   |
-| useMotionValue, useScroll    | references/composables.md  |
-| Animation examples, patterns | references/examples.md     |
+| Working on...                | Load file                 |
+| ---------------------------- | ------------------------- |
+| Motion component, gestures   | references/components.md  |
+| useMotionValue, useScroll    | references/composables.md |
+| Animation examples, patterns | references/examples.md    |
 
 ## Loading Files
 

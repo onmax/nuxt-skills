@@ -89,6 +89,7 @@ export function usePolling(url: Ref<string>) {
 ```
 
 **Benefits of `onWatcherCleanup()`:**
+
 - Cleaner than returning cleanup functions
 - Works with async watchers
 - Can be called multiple times in same watcher
@@ -233,6 +234,7 @@ export function useCustomElement() {
 ```
 
 **Available in:**
+
 - Components using `<script setup>` in custom elements
 - Access via `this.$host` in Options API
 
