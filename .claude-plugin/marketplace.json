@@ -17,7 +17,8 @@
         "./skills/nuxt-better-auth",
         "./skills/reka-ui",
         "./skills/document-writer",
-        "./skills/ts-library"
+        "./skills/ts-library",
+        "./skills/motion"
       ]
     }
   ]

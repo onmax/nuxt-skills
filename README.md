@@ -64,6 +64,7 @@ Clone the repository and copy skill folders to your agent's skills directory:
 | **reka-ui**          | Reka UI headless Vue components, accessible primitives, props/emits/slots       |
 | **document-writer**  | Writing documentation for Nuxt ecosystem - MDC, style, structure, code examples |
 | **ts-library**       | TypeScript library authoring - exports, tsdown, API patterns, type tricks, CI   |
+| **motion**           | Motion Vue animations - motion component, composables, scroll, gestures         |
 
 ## How Skills Work
 
@@ -98,7 +99,8 @@ nuxt-skills/
 │   ├── nuxt-better-auth/
 │   ├── reka-ui/
 │   ├── document-writer/
-│   └── ts-library/
+│   ├── ts-library/
+│   └── motion/
 └── .claude-plugin/
     └── marketplace.json    # Claude Code marketplace
 ```
