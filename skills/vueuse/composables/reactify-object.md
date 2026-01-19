@@ -1,0 +1,22 @@
+# reactifyObject
+
+Apply to an object
+
+**Package:** `@vueuse/shared`
+**Category:** Reactivity
+
+## Usage
+
+```ts
+import { reactifyObject } from '@vueuse/core'
+
+const reactifiedConsole = reactifyObject(console)
+
+const a = ref('42')
+
+reactifiedConsole.log(a) // no longer need `.value`
+```
+
+## Reference
+
+[VueUse Docs](https://vueuse.org/core/reactifyObject/)

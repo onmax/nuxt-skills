@@ -65,6 +65,7 @@ Clone the repository and copy skill folders to your agent's skills directory:
 | **document-writer**  | Writing documentation for Nuxt ecosystem - MDC, style, structure, code examples |
 | **ts-library**       | TypeScript library authoring - exports, tsdown, API patterns, type tricks, CI   |
 | **motion**           | Motion Vue animations - motion component, composables, scroll, gestures         |
+| **vueuse**           | VueUse composables - state, browser, sensors, network, animation utilities      |
 
 ## How Skills Work
 
@@ -100,7 +101,8 @@ nuxt-skills/
 │   ├── reka-ui/
 │   ├── document-writer/
 │   ├── ts-library/
-│   └── motion/
+│   ├── motion/
+│   └── vueuse/
 └── .claude-plugin/
     └── marketplace.json    # Claude Code marketplace
 ```

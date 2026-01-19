@@ -18,7 +18,8 @@
         "./skills/reka-ui",
         "./skills/document-writer",
         "./skills/ts-library",
-        "./skills/motion"
+        "./skills/motion",
+        "./skills/vueuse"
       ]
     }
   ]

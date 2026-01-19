@@ -31,6 +31,7 @@ Progressive reference system for Vue 3 projects. Load only files relevant to cur
 
 **For styled UI components:** use `nuxt-ui` skill
 **For headless accessible components:** use `reka-ui` skill
+**For VueUse composables:** use `vueuse` skill
 
 ## Quick Reference
 

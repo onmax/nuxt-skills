@@ -123,19 +123,11 @@ export function useAsyncData<T>(fetcher: () => Promise<T>) {
 
 **Data fetching:** Prefer Pinia Colada queries over custom composables.
 
-## VueUse Integration
+## VueUse
 
-**Check VueUse FIRST** - most patterns already implemented: [vueuse.org/functions.html](https://vueuse.org/functions.html)
+> For VueUse composable reference, use the `vueuse` skill.
 
-**Available categories:**
-
-- DOM: `useEventListener`, `useIntersectionObserver`
-- State: `useLocalStorage`, `useSessionStorage`
-- Sensors: `useMouse`, `useScroll`, `useNetwork`
-- Animation: `useTransition`, `useInterval`
-- Utilities: `useDebounce`, `useThrottle`, `useFetch`
-
-Only create custom when VueUse doesn't cover your case.
+Check VueUse before writing custom composables - most patterns already implemented.
 
 > **For Nuxt-specific composables** (useFetch, useRequestURL): see `nuxt` skill nuxt-composables.md
 
