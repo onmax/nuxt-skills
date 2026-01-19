@@ -1,7 +1,5 @@
 # useVirtualList
 
-
-
 **Package:** `@vueuse/core`
 **Category:** Component
 

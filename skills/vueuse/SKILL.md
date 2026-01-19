@@ -35,29 +35,29 @@ Nuxt module auto-imports composables - no import needed.
 
 ## Categories
 
-| Category | Examples |
-| --- | --- |
-| State | useLocalStorage, useSessionStorage, useRefHistory |
-| Elements | useElementSize, useIntersectionObserver, useResizeObserver |
-| Browser | useClipboard, useFullscreen, useMediaQuery |
-| Sensors | useMouse, useKeyboard, useDeviceOrientation |
-| Network | useFetch, useWebSocket, useEventSource |
-| Animation | useTransition, useInterval, useTimeout |
-| Component | useVModel, useVirtualList, useTemplateRefsList |
-| Watch | watchDebounced, watchThrottled, watchOnce |
-| Reactivity | createSharedComposable, toRef, toReactive |
-| Array | useArrayFilter, useArrayMap, useSorted |
-| Time | useDateFormat, useNow, useTimeAgo |
-| Utilities | useDebounce, useThrottle, useMemoize |
+| Category   | Examples                                                   |
+| ---------- | ---------------------------------------------------------- |
+| State      | useLocalStorage, useSessionStorage, useRefHistory          |
+| Elements   | useElementSize, useIntersectionObserver, useResizeObserver |
+| Browser    | useClipboard, useFullscreen, useMediaQuery                 |
+| Sensors    | useMouse, useKeyboard, useDeviceOrientation                |
+| Network    | useFetch, useWebSocket, useEventSource                     |
+| Animation  | useTransition, useInterval, useTimeout                     |
+| Component  | useVModel, useVirtualList, useTemplateRefsList             |
+| Watch      | watchDebounced, watchThrottled, watchOnce                  |
+| Reactivity | createSharedComposable, toRef, toReactive                  |
+| Array      | useArrayFilter, useArrayMap, useSorted                     |
+| Time       | useDateFormat, useNow, useTimeAgo                          |
+| Utilities  | useDebounce, useThrottle, useMemoize                       |
 
 ## Quick Reference
 
 Load composable files based on what you need:
 
-| Working on... | Load file |
-| --- | --- |
+| Working on...        | Load file                                              |
+| -------------------- | ------------------------------------------------------ |
 | Finding a composable | [references/composables.md](references/composables.md) |
-| Specific composable | `composables/<name>.md` |
+| Specific composable  | `composables/<name>.md`                                |
 
 ## Loading Files
 
