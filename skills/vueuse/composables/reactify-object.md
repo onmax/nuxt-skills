@@ -17,6 +17,12 @@ const a = ref('42')
 reactifiedConsole.log(a) // no longer need `.value`
 ```
 
+## Options
+
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| includeOwnProperties | `boolean` | true | Includes names from Object.getOwnPropertyNames |
+
 ## Reference
 
 [VueUse Docs](https://vueuse.org/core/reactifyObject/)

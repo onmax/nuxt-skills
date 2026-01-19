@@ -24,6 +24,12 @@ const { a, b } = toRefs(obj)
 const [a, b] = toRefs(arr)
 ```
 
+## Options
+
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| replaceRef | `MaybeRefOrGetter&lt;boolean&gt;` | true | Replace the original ref with a copy on property update. |
+
 ## Reference
 
 [VueUse Docs](https://vueuse.org/core/toRefs/)

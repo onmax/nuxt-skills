@@ -25,6 +25,23 @@ ipcRenderer.on('custom-event', (event, ...args) => {
 })
 ```
 
+## Returns
+
+| Name | Type |
+| --- | --- |
+| on | `Ref` |
+| listener | `Ref` |
+| once | `Ref` |
+| removeListener | `Ref` |
+| removeAllListeners | `Ref` |
+| send | `Ref` |
+| invoke | `Ref` |
+| channel | `Ref` |
+| sendSync | `Ref` |
+| postMessage | `Ref` |
+| sendTo | `Ref` |
+| sendToHost | `Ref` |
+
 ## Reference
 
 [VueUse Docs](https://vueuse.org/core/useIpcRenderer/)

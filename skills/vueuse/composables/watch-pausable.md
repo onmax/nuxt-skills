@@ -32,6 +32,15 @@ source.value = 'hello'
 await nextTick() // Changed to hello!
 ```
 
+## Returns
+
+| Name | Type |
+| --- | --- |
+| stop | `watchWithFilter` |
+| pause | `Ref` |
+| resume | `Ref` |
+| isActive | `Ref` |
+
 ## Reference
 
 [VueUse Docs](https://vueuse.org/core/watchPausable/)

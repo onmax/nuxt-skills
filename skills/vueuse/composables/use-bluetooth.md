@@ -29,6 +29,20 @@ const {
 </template>
 ```
 
+## Options
+
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| acceptAllDevices | `boolean` | false | * A boolean value indicating that the requesting script can accept all Bluetooth |
+
+## Returns
+
+| Name | Type |
+| --- | --- |
+| isSupported | `useSupported` |
+| isConnected | `shallowRef` |
+| requestDevice | `Ref` |
+
 ## Reference
 
 [VueUse Docs](https://vueuse.org/core/useBluetooth/)

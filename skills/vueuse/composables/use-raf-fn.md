@@ -19,6 +19,22 @@ const { pause, resume } = useRafFn(() => {
 })
 ```
 
+## Options
+
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| immediate | `boolean` | true | Start the requestAnimationFrame loop immediately on creation |
+| fpsLimit | `MaybeRefOrGetter&lt;number&gt;` | undefined | The maximum frame per second to execute the function. |
+| once | `boolean` | false | After the requestAnimationFrame loop executed once, it will be automatically stopped. |
+
+## Returns
+
+| Name | Type |
+| --- | --- |
+| isActive | `shallowRef` |
+| pause | `Ref` |
+| resume | `Ref` |
+
 ## Reference
 
 [VueUse Docs](https://vueuse.org/core/useRafFn/)

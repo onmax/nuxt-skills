@@ -27,6 +27,26 @@ watchEffect(() => {
 </template>
 ```
 
+## Options
+
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| enabled | `MaybeRef&lt;boolean&gt;` | false | If the stream is enabled |
+| autoSwitch | `MaybeRef&lt;boolean&gt;` | true | Recreate stream when deviceIds or constraints changed |
+
+## Returns
+
+| Name | Type |
+| --- | --- |
+| isSupported | `useSupported` |
+| stream | `Ref` |
+| start | `Ref` |
+| stop | `Ref` |
+| restart | `Ref` |
+| constraints | `deepRef` |
+| enabled | `shallowRef` |
+| autoSwitch | `shallowRef` |
+
 ## Reference
 
 [VueUse Docs](https://vueuse.org/core/useUserMedia/)

@@ -23,6 +23,13 @@ watchEffect(() => {
 })
 ```
 
+## Options
+
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| reactive | `Reactive` | false | Returns a reactive object instead of an object of refs |
+| target | `MaybeRefOrGetter&lt;EventTarget&gt;` | window | Target for listening events |
+
 ## Reference
 
 [VueUse Docs](https://vueuse.org/core/useMagicKeys/)

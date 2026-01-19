@@ -33,6 +33,14 @@ const objArr = [{
 const objSorted = useSorted(objArr, (a, b) => a.age - b.age)
 ```
 
+## Options
+
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| sortFn | `UseSortedFn&lt;T&gt;` | - | sort algorithm |
+| compareFn | `UseSortedCompareFn&lt;T&gt;` | - | compare function |
+| dirty | `boolean` | false | change the value of the source array |
+
 ## Reference
 
 [VueUse Docs](https://vueuse.org/core/useSorted/)

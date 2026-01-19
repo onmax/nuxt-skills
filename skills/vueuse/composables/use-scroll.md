@@ -21,6 +21,24 @@ const { x, y, isScrolling, arrivedState, directions } = useScroll(el)
 </template>
 ```
 
+## Options
+
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| throttle | `number` | 0 | Throttle time for scroll event, it’s disabled by default. |
+| idle | `number` | 200 | The check time when scrolling ends. |
+| offset | `{` | - | Offset arrived states by x pixels |
+
+## Returns
+
+| Name | Type |
+| --- | --- |
+| x | `computed` |
+| y | `computed` |
+| isScrolling | `shallowRef` |
+| arrivedState | `reactive` |
+| directions | `reactive` |
+
 ## Reference
 
 [VueUse Docs](https://vueuse.org/core/useScroll/)

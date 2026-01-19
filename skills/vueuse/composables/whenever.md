@@ -18,6 +18,12 @@ const { state, isReady } = useAsyncState(
 whenever(isReady, () => console.log(state))
 ```
 
+## Options
+
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| once | `boolean` | false | Only trigger once when the condition is met |
+
 ## Reference
 
 [VueUse Docs](https://vueuse.org/core/whenever/)

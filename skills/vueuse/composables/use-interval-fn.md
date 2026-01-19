@@ -15,6 +15,21 @@ const { pause, resume, isActive } = useIntervalFn(() => {
 }, 1000)
 ```
 
+## Options
+
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| immediate | `boolean` | true | Start the timer immediately |
+| immediateCallback | `boolean` | false | Execute the callback immediately after calling `resume` |
+
+## Returns
+
+| Name | Type |
+| --- | --- |
+| isActive | `shallowRef` |
+| pause | `Ref` |
+| resume | `Ref` |
+
 ## Reference
 
 [VueUse Docs](https://vueuse.org/core/useIntervalFn/)

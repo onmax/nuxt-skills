@@ -30,6 +30,14 @@ useMutationObserver(el, (mutations) => {
 </template>
 ```
 
+## Returns
+
+| Name | Type |
+| --- | --- |
+| isSupported | `useSupported` |
+| stop | `Ref` |
+| takeRecords | `Ref` |
+
 ## Reference
 
 [VueUse Docs](https://vueuse.org/core/useMutationObserver/)

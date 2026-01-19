@@ -18,6 +18,16 @@ const {
 } = useScreenSafeArea()
 ```
 
+## Returns
+
+| Name | Type |
+| --- | --- |
+| top | `shallowRef` |
+| right | `shallowRef` |
+| bottom | `shallowRef` |
+| left | `shallowRef` |
+| update | `Ref` |
+
 ## Reference
 
 [VueUse Docs](https://vueuse.org/core/useScreenSafeArea/)

@@ -21,6 +21,23 @@ vibrate()
 stop()
 ```
 
+## Options
+
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| pattern | `MaybeRefOrGetter&lt;number[] \| number&gt;` | [] | * Vibration Pattern |
+| interval | `number` | 0 | Interval to run a persistent vibration, in ms |
+
+## Returns
+
+| Name | Type |
+| --- | --- |
+| isSupported | `useSupported` |
+| pattern | `Ref` |
+| intervalControls | `Ref` |
+| vibrate | `Ref` |
+| stop | `Ref` |
+
 ## Reference
 
 [VueUse Docs](https://vueuse.org/core/useVibrate/)

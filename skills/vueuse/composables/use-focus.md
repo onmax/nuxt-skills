@@ -20,6 +20,20 @@ watch(focused, (focused) => {
 })
 ```
 
+## Options
+
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| initialValue | `boolean` | false | Initial value. If set true, then focus will be set on the target |
+| focusVisible | `boolean` | false | Replicate the :focus-visible behavior of CSS |
+| preventScroll | `boolean` | false | Prevent scrolling to the element when it is focused. |
+
+## Returns
+
+| Name | Type |
+| --- | --- |
+| focused | `computed` |
+
 ## Reference
 
 [VueUse Docs](https://vueuse.org/core/useFocus/)

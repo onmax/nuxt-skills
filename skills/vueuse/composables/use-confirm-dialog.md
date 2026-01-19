@@ -36,6 +36,18 @@ const { isRevealed, reveal, confirm, cancel, onReveal, onConfirm, onCancel }
 </template>
 ```
 
+## Returns
+
+| Name | Type |
+| --- | --- |
+| isRevealed | `Ref` |
+| reveal | `Ref` |
+| confirm | `Ref` |
+| cancel | `Ref` |
+| onReveal | `Ref` |
+| onConfirm | `Ref` |
+| onCancel | `Ref` |
+
 ## Reference
 
 [VueUse Docs](https://vueuse.org/core/useConfirmDialog/)

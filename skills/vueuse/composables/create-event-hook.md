@@ -25,6 +25,15 @@ export function useMyFetch(url) {
 }
 ```
 
+## Returns
+
+| Name | Type |
+| --- | --- |
+| on | `Ref` |
+| off | `Ref` |
+| trigger | `Ref` |
+| clear | `Ref` |
+
 ## Reference
 
 [VueUse Docs](https://vueuse.org/core/createEventHook/)

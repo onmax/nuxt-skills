@@ -19,6 +19,21 @@ original.value.key = 'some new value'
 console.log(cloned.value.key) // 'value'
 ```
 
+## Options
+
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| clone | `(source: T) =&gt; T` | - | Custom clone function. |
+| manual | `boolean` | false | Manually sync the ref |
+
+## Returns
+
+| Name | Type |
+| --- | --- |
+| cloned | `deepRef` |
+| isModified | `shallowRef&lt;boolean&gt;` |
+| sync | `Ref` |
+
 ## Reference
 
 [VueUse Docs](https://vueuse.org/core/useCloned/)

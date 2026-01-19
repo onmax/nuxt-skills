@@ -18,6 +18,19 @@ const {
 } = useDeviceMotion()
 ```
 
+## Returns
+
+| Name | Type |
+| --- | --- |
+| acceleration | `Ref` |
+| accelerationIncludingGravity | `Ref` |
+| rotationRate | `Ref` |
+| interval | `shallowRef` |
+| isSupported | `useSupported` |
+| requirePermissions | `useSupported` |
+| ensurePermissions | `Ref` |
+| permissionGranted | `shallowRef` |
+
 ## Reference
 
 [VueUse Docs](https://vueuse.org/core/useDeviceMotion/)

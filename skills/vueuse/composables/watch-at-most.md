@@ -19,6 +19,15 @@ watchAtMost(
 )
 ```
 
+## Returns
+
+| Name | Type |
+| --- | --- |
+| count | `Ref` |
+| stop | `Ref` |
+| resume | `Ref` |
+| pause | `Ref` |
+
 ## Reference
 
 [VueUse Docs](https://vueuse.org/core/watchAtMost/)

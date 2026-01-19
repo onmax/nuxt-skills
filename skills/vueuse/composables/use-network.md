@@ -15,6 +15,21 @@ const { isOnline, offlineAt, downlink, downlinkMax, effectiveType, saveData, typ
 console.log(isOnline.value)
 ```
 
+## Returns
+
+| Name | Type |
+| --- | --- |
+| isSupported | `useSupported` |
+| isOnline | `shallowRef` |
+| saveData | `shallowRef` |
+| offlineAt | `shallowRef&lt;number \| undefined&gt;` |
+| onlineAt | `shallowRef&lt;number \| undefined&gt;` |
+| downlink | `shallowRef&lt;number \| undefined&gt;` |
+| downlinkMax | `shallowRef&lt;number \| undefined&gt;` |
+| effectiveType | `shallowRef&lt;NetworkEffectiveType&gt;` |
+| rtt | `shallowRef&lt;number \| undefined&gt;` |
+| type | `shallowRef&lt;NetworkType&gt;` |
+
 ## Reference
 
 [VueUse Docs](https://vueuse.org/core/useNetwork/)

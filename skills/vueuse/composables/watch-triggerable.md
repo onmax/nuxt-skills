@@ -25,6 +25,12 @@ await nextTick() // logs: Changed to bar!
 trigger() // logs: Changed to bar!
 ```
 
+## Returns
+
+| Name | Type |
+| --- | --- |
+| trigger | `Ref` |
+
 ## Reference
 
 [VueUse Docs](https://vueuse.org/core/watchTriggerable/)

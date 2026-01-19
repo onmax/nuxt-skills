@@ -22,6 +22,12 @@ const floorResult = usePrecision(value, 3, {
 }) // 3.141
 ```
 
+## Options
+
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| math | `'floor' \| 'ceil' \| 'round'` | round | Method to use for rounding |
+
 ## Reference
 
 [VueUse Docs](https://vueuse.org/core/usePrecision/)

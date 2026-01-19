@@ -29,6 +29,13 @@ useResizeObserver(el, (entries) => {
 </template>
 ```
 
+## Returns
+
+| Name | Type |
+| --- | --- |
+| isSupported | `useSupported` |
+| stop | `Ref` |
+
 ## Reference
 
 [VueUse Docs](https://vueuse.org/core/useResizeObserver/)

@@ -33,6 +33,34 @@ onMounted(() => {
 </template>
 ```
 
+## Options
+
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| src | `MaybeRefOrGetter&lt;string \| UseMediaSource \| UseMediaSource[]&gt;` | - | The source for the media, may either be a string, a `UseMediaSource` object, or a list |
+| tracks | `MaybeRefOrGetter&lt;UseMediaTextTrackSource[]&gt;` | - | A list of text tracks for the media |
+
+## Returns
+
+| Name | Type |
+| --- | --- |
+| currentTime | `shallowRef` |
+| duration | `shallowRef` |
+| waiting | `shallowRef` |
+| seeking | `shallowRef` |
+| ended | `shallowRef` |
+| stalled | `shallowRef` |
+| buffered | `deepRef&lt;[number, number][]&gt;` |
+| playing | `shallowRef` |
+| rate | `shallowRef` |
+| muted | `shallowRef` |
+| selectedTrack | `shallowRef&lt;number&gt;` |
+| enableTrack | `Ref` |
+| disableTrack | `Ref` |
+| togglePictureInPicture | `Ref` |
+| isPictureInPicture | `shallowRef` |
+| onPlaybackError | `Ref` |
+
 ## Reference
 
 [VueUse Docs](https://vueuse.org/core/useMediaControls/)

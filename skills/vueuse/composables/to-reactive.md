@@ -25,6 +25,13 @@ console.log(state.foo) // => undefined
 console.log(state.bar) // => 'foo'
 ```
 
+## Returns
+
+| Name | Type |
+| --- | --- |
+| enumerable | `Ref` |
+| configurable | `Ref` |
+
 ## Reference
 
 [VueUse Docs](https://vueuse.org/core/toReactive/)

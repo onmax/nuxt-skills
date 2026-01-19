@@ -17,6 +17,13 @@ watch(language, () => {
 })
 ```
 
+## Returns
+
+| Name | Type |
+| --- | --- |
+| isSupported | `useSupported` |
+| language | `shallowRef&lt;string \| undefined&gt;` |
+
 ## Reference
 
 [VueUse Docs](https://vueuse.org/core/useNavigatorLanguage/)

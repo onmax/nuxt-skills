@@ -38,6 +38,24 @@ const { content, copy, copied, isSupported } = useClipboardItems({ source })
 </template>
 ```
 
+## Options
+
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| read | `boolean` | false | Enabled reading for clipboard |
+| source | `Source` | - | Copy source |
+| copiedDuring | `number` | 1500 | Milliseconds to reset state of `copied` ref |
+
+## Returns
+
+| Name | Type |
+| --- | --- |
+| isSupported | `useSupported` |
+| content | `deepRef&lt;ClipboardItems&gt;` |
+| copied | `shallowRef` |
+| copy | `Ref` |
+| read | `Ref` |
+
 ## Reference
 
 [VueUse Docs](https://vueuse.org/core/useClipboardItems/)

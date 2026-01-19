@@ -33,6 +33,12 @@ watch(focused, (focused) => {
 </template>
 ```
 
+## Returns
+
+| Name | Type |
+| --- | --- |
+| focused | `computed` |
+
 ## Reference
 
 [VueUse Docs](https://vueuse.org/core/useFocusWithin/)

@@ -32,6 +32,23 @@ const { hasFocus, activate, deactivate } = useFocusTrap(target)
 </template>
 ```
 
+## Options
+
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| immediate | `boolean` | - | Immediately activate the trap |
+
+## Returns
+
+| Name | Type |
+| --- | --- |
+| hasFocus | `shallowRef` |
+| isPaused | `shallowRef` |
+| activate | `Ref` |
+| deactivate | `Ref` |
+| pause | `Ref` |
+| unpause | `Ref` |
+
 ## Reference
 
 [VueUse Docs](https://vueuse.org/core/useFocusTrap/)

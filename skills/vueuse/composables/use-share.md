@@ -21,6 +21,13 @@ function startShare() {
 }
 ```
 
+## Returns
+
+| Name | Type |
+| --- | --- |
+| isSupported | `useSupported` |
+| share | `Ref` |
+
 ## Reference
 
 [VueUse Docs](https://vueuse.org/core/useShare/)

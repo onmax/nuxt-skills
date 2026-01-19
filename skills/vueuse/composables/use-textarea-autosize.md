@@ -24,6 +24,25 @@ const { textarea, input } = useTextareaAutosize()
 </template>
 ```
 
+## Options
+
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| element | `MaybeRef&lt;HTMLTextAreaElement \| undefined \| null&gt;` | - |  |
+| input | `MaybeRef&lt;string&gt;` | - |  |
+| watch | `WatchSource \| MultiWatchSources` | - |  |
+| onResize | `() =&gt; void` | - |  |
+| styleTarget | `MaybeRef&lt;HTMLElement \| undefined&gt;` | - |  |
+| styleProp | `'height' \| 'minHeight'` | - |  |
+
+## Returns
+
+| Name | Type |
+| --- | --- |
+| textarea | `toRef` |
+| input | `toRef` |
+| triggerResize | `Ref` |
+
 ## Reference
 
 [VueUse Docs](https://vueuse.org/core/useTextareaAutosize/)

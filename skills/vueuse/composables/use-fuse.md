@@ -33,6 +33,13 @@ const { results } = useFuse(input, data)
  */
 ```
 
+## Returns
+
+| Name | Type |
+| --- | --- |
+| fuse | `deepRef` |
+| results | `Ref` |
+
 ## Reference
 
 [VueUse Docs](https://vueuse.org/core/useFuse/)

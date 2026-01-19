@@ -19,6 +19,15 @@ const state = useTextSelection()
 </template>
 ```
 
+## Returns
+
+| Name | Type |
+| --- | --- |
+| text | `computed` |
+| rects | `computed` |
+| ranges | `computed&lt;Range[]&gt;` |
+| selection | `shallowRef&lt;Selection \| null&gt;` |
+
 ## Reference
 
 [VueUse Docs](https://vueuse.org/core/useTextSelection/)

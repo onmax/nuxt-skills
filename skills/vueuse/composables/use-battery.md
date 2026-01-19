@@ -13,6 +13,16 @@ import { useBattery } from '@vueuse/core'
 const { charging, chargingTime, dischargingTime, level } = useBattery()
 ```
 
+## Returns
+
+| Name | Type |
+| --- | --- |
+| isSupported | `useSupported` |
+| charging | `shallowRef` |
+| chargingTime | `shallowRef` |
+| dischargingTime | `shallowRef` |
+| level | `shallowRef` |
+
 ## Reference
 
 [VueUse Docs](https://vueuse.org/core/useBattery/)

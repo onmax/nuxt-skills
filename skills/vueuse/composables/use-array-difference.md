@@ -18,6 +18,12 @@ list2.value = [0, 1, 2]
 // result.value: [3, 4, 5]
 ```
 
+## Options
+
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| symmetric | `boolean` | false | Returns asymmetric difference |
+
 ## Reference
 
 [VueUse Docs](https://vueuse.org/core/useArrayDifference/)

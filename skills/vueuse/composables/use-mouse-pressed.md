@@ -13,6 +13,13 @@ import { useMousePressed } from '@vueuse/core'
 const { pressed } = useMousePressed()
 ```
 
+## Returns
+
+| Name | Type |
+| --- | --- |
+| pressed | `shallowRef` |
+| sourceType | `shallowRef&lt;UseMouseSourceType&gt;` |
+
 ## Reference
 
 [VueUse Docs](https://vueuse.org/core/useMousePressed/)

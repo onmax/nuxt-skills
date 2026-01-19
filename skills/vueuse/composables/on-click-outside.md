@@ -25,6 +25,22 @@ onClickOutside(target, event => console.log(event))
 </template>
 ```
 
+## Options
+
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| ignore | `MaybeRefOrGetter&lt;(MaybeElementRef \| string)[]&gt;` | - | List of elements that should not trigger the event, |
+| capture | `boolean` | true | Use capturing phase for internal event listener. |
+| detectIframe | `boolean` | false | Run handler function if focus moves to an iframe. |
+| controls | `Controls` | false | Use controls to cancel/trigger listener. |
+
+## Returns
+
+| Name | Type |
+| --- | --- |
+| stop | `Ref` |
+| cancel | `Ref` |
+
 ## Reference
 
 [VueUse Docs](https://vueuse.org/core/onClickOutside/)

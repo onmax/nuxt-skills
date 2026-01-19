@@ -37,6 +37,14 @@ source.value = 'logged'
 await nextTick() // logs: Changed to logged!
 ```
 
+## Returns
+
+| Name | Type |
+| --- | --- |
+| stop | `Ref` |
+| ignoreUpdates | `Ref` |
+| ignorePrevAsyncUpdates | `Ref` |
+
 ## Reference
 
 [VueUse Docs](https://vueuse.org/core/watchIgnorable/)

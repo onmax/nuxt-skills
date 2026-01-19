@@ -21,6 +21,13 @@ setTimeout(() => {
 }, 500)
 ```
 
+## Options
+
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| serializer | `SerializerAsync&lt;T&gt;` | - | Custom data serialization |
+| onReady | `(value: T) =&gt; void` | - | On first value loaded hook. |
+
 ## Reference
 
 [VueUse Docs](https://vueuse.org/core/useStorageAsync/)

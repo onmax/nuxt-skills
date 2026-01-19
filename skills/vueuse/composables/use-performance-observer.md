@@ -18,6 +18,14 @@ usePerformanceObserver({
 })
 ```
 
+## Returns
+
+| Name | Type |
+| --- | --- |
+| isSupported | `useSupported` |
+| start | `Ref` |
+| stop | `Ref` |
+
 ## Reference
 
 [VueUse Docs](https://vueuse.org/core/usePerformanceObserver/)

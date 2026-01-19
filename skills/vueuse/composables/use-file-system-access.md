@@ -26,6 +26,23 @@ const {
 } = useFileSystemAccess()
 ```
 
+## Returns
+
+| Name | Type |
+| --- | --- |
+| isSupported | `useSupported` |
+| data | `shallowRef&lt;string \| ArrayBuffer \| Blob&gt;` |
+| file | `shallowRef&lt;File&gt;` |
+| fileName | `computed` |
+| fileMIME | `computed` |
+| fileSize | `computed` |
+| fileLastModified | `computed` |
+| open | `Ref` |
+| create | `Ref` |
+| save | `Ref` |
+| saveAs | `Ref` |
+| updateData | `Ref` |
+
 ## Reference
 
 [VueUse Docs](https://vueuse.org/core/useFileSystemAccess/)

@@ -3,9 +3,9 @@
  *
  * Run: npx tsx skills/vueuse/scripts/generate-composables.ts
  *
- * Clones VueUse repo (sparse checkout), parses composable docs, generates:
+ * Clones VueUse repo (sparse checkout), parses composable docs + TypeScript source, generates:
  * - references/composables.md (index by category)
- * - composables/<name>.md (per-composable docs)
+ * - composables/<name>.md (per-composable docs with options/returns tables)
  */
 
 import { execSync } from 'node:child_process'
@@ -19,12 +19,27 @@ const TEMP_DIR = join(SKILL_ROOT, '.temp-vueuse')
 const COMPOSABLES_DIR = join(SKILL_ROOT, 'composables')
 const REFERENCES_DIR = join(SKILL_ROOT, 'references')
 
+interface OptionInfo {
+  name: string
+  type: string
+  description: string
+  default?: string
+}
+
+interface ReturnInfo {
+  name: string
+  type: string
+  description?: string
+}
+
 interface ComposableInfo {
   name: string
   description: string
   category: string
   package: string
   usage?: string
+  options: OptionInfo[]
+  returns: ReturnInfo[]
 }
 
 // Package to npm package mapping
@@ -59,37 +74,30 @@ function parseFrontmatter(content: string): Record<string, string> {
 
 // Extract first paragraph as description
 function extractDescription(content: string): string {
-  // Remove frontmatter
   const withoutFrontmatter = content.replace(/^---[\s\S]*?---\n*/, '')
-  // Split into lines, skip title
   const lines = withoutFrontmatter.split('\n')
   let desc = ''
   let inCodeBlock = false
 
   for (const line of lines) {
-    // Skip code blocks
     if (line.trim().startsWith('```')) {
       inCodeBlock = !inCodeBlock
-      if (desc) break // Stop at first code block if we have description
+      if (desc) break
       continue
     }
     if (inCodeBlock) continue
-    // Skip headers
     if (line.startsWith('#')) continue
-    // Skip empty lines at the start
     if (!line.trim() && !desc) continue
-    // Stop at empty line after getting content
     if (!line.trim() && desc) break
-    // Stop at directives
     if (line.trim().startsWith(':::')) break
 
     desc += (desc ? ' ' : '') + line.trim()
   }
 
   return desc
-    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1') // Remove markdown links
-    .replace(/`[^`]+`/g, '') // Remove inline code
-    .replace(/\s+/g, ' ') // Normalize whitespace
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+    .replace(/`[^`]+`/g, '')
+    .replace(/\s+/g, ' ')
     .trim()
 }
 
@@ -97,6 +105,94 @@ function extractDescription(content: string): string {
 function extractUsage(content: string): string | undefined {
   const match = content.match(/```(?:ts|typescript|vue|js|javascript)\n([\s\S]*?)```/)
   return match?.[1]?.trim()
+}
+
+// Extract options from TypeScript interface
+function extractOptions(tsContent: string, composableName: string): OptionInfo[] {
+  const options: OptionInfo[] = []
+
+  // Look for Options interface (e.g., UseMouseOptions, UseFetchOptions)
+  const pascalName = composableName.charAt(0).toUpperCase() + composableName.slice(1)
+  const interfacePatterns = [
+    new RegExp(`interface\\s+${pascalName}Options[^{]*\\{([^}]+(?:\\{[^}]*\\}[^}]*)*)\\}`, 's'),
+    new RegExp(`interface\\s+${pascalName}Option[^{]*\\{([^}]+(?:\\{[^}]*\\}[^}]*)*)\\}`, 's'),
+  ]
+
+  let interfaceContent = ''
+  for (const pattern of interfacePatterns) {
+    const match = tsContent.match(pattern)
+    if (match) {
+      interfaceContent = match[1]
+      break
+    }
+  }
+
+  if (!interfaceContent) return options
+
+  // Parse each property with JSDoc comments
+  const propRegex = /\/\*\*\s*([\s\S]*?)\*\/\s*(\w+)\??:\s*([^;\n]+)/g
+  let match
+
+  while ((match = propRegex.exec(interfaceContent)) !== null) {
+    const [, jsdoc, name, type] = match
+
+    // Extract description from JSDoc
+    const descMatch = jsdoc.match(/\*\s*([^@*\n][^\n]*)/)?.[1]?.trim() || ''
+
+    // Extract @default value
+    const defaultMatch = jsdoc.match(/@default\s+['"`]?([^'"`\n*]+)['"`]?/)?.[1]?.trim()
+
+    options.push({
+      name,
+      type: type.trim().replace(/\s+/g, ' '),
+      description: descMatch,
+      default: defaultMatch,
+    })
+  }
+
+  return options
+}
+
+// Extract returns from function
+function extractReturns(tsContent: string, composableName: string): ReturnInfo[] {
+  const returns: ReturnInfo[] = []
+
+  // Look for return statement with object literal
+  const funcPattern = new RegExp(`function\\s+${composableName}[^{]*\\{([\\s\\S]*)`, 's')
+  const funcMatch = tsContent.match(funcPattern)
+  if (!funcMatch) return returns
+
+  // Find the last return statement with object
+  const returnPattern = /return\s*\{([^}]+)\}/g
+  let lastMatch
+  let match
+
+  while ((match = returnPattern.exec(funcMatch[1])) !== null) {
+    lastMatch = match
+  }
+
+  if (!lastMatch) return returns
+
+  // Parse returned properties
+  const props = lastMatch[1].split(',').map(p => p.trim()).filter(Boolean)
+
+  for (const prop of props) {
+    // Handle shorthand (e.g., "x") and explicit (e.g., "x: xRef")
+    const [name] = prop.split(':').map(s => s.trim())
+    if (name && /^\w+$/.test(name)) {
+      // Try to find the type from variable declaration
+      const typeMatch = tsContent.match(new RegExp(`const\\s+${name}\\s*=\\s*(\\w+)(?:<([^>]+)>)?\\(`))
+
+      let type = 'Ref'
+      if (typeMatch) {
+        type = typeMatch[2] ? `${typeMatch[1]}<${typeMatch[2]}>` : typeMatch[1]
+      }
+
+      returns.push({ name, type })
+    }
+  }
+
+  return returns
 }
 
 // Clone VueUse repo with sparse checkout
@@ -131,7 +227,6 @@ function parseComposable(filePath: string): ComposableInfo | null {
   const content = readFileSync(filePath, 'utf-8')
   const frontmatter = parseFrontmatter(content)
 
-  // Extract package from path: packages/<pkg>/<name>/index.md
   const parts = filePath.split('/')
   const packagesIdx = parts.findIndex(p => p === 'packages')
   if (packagesIdx === -1) return null
@@ -141,12 +236,25 @@ function parseComposable(filePath: string): ComposableInfo | null {
 
   if (!frontmatter.category) return null
 
+  // Read TypeScript source
+  const tsPath = filePath.replace('index.md', 'index.ts')
+  let options: OptionInfo[] = []
+  let returns: ReturnInfo[] = []
+
+  if (existsSync(tsPath)) {
+    const tsContent = readFileSync(tsPath, 'utf-8')
+    options = extractOptions(tsContent, name)
+    returns = extractReturns(tsContent, name)
+  }
+
   return {
     name,
     description: extractDescription(content),
     category: frontmatter.category,
     package: PACKAGE_MAP[pkg] || `@vueuse/${pkg}`,
     usage: extractUsage(content),
+    options,
+    returns,
   }
 }
 
@@ -173,6 +281,33 @@ ${info.usage}
 `
   }
 
+  if (info.options.length > 0) {
+    content += `
+## Options
+
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+`
+    for (const opt of info.options) {
+      const type = opt.type.replace(/\|/g, '\\|').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      const def = opt.default || '-'
+      content += `| ${opt.name} | \`${type}\` | ${def} | ${opt.description} |\n`
+    }
+  }
+
+  if (info.returns.length > 0) {
+    content += `
+## Returns
+
+| Name | Type |
+| --- | --- |
+`
+    for (const ret of info.returns) {
+      const type = ret.type.replace(/\|/g, '\\|').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      content += `| ${ret.name} | \`${type}\` |\n`
+    }
+  }
+
   content += `
 ## Reference
 
@@ -184,14 +319,12 @@ ${info.usage}
 
 // Generate index file by category
 function generateIndexFile(composables: ComposableInfo[]): void {
-  // Group by category
   const byCategory: Record<string, ComposableInfo[]> = {}
   for (const c of composables) {
     if (!byCategory[c.category]) byCategory[c.category] = []
     byCategory[c.category].push(c)
   }
 
-  // Sort categories and composables
   const categories = Object.keys(byCategory).sort()
   for (const cat of categories) {
     byCategory[cat].sort((a, b) => a.name.localeCompare(b.name))
@@ -224,14 +357,11 @@ function generateIndexFile(composables: ComposableInfo[]): void {
 async function main() {
   console.log('VueUse Composables Generator\n')
 
-  // Ensure directories exist
   mkdirSync(COMPOSABLES_DIR, { recursive: true })
   mkdirSync(REFERENCES_DIR, { recursive: true })
 
-  // Clone repo
   cloneVueUseRepo()
 
-  // Find and parse composables
   const docFiles = findComposableDocs()
   console.log(`Found ${docFiles.length} composable docs`)
 
@@ -246,11 +376,9 @@ async function main() {
 
   console.log(`Parsed ${composables.length} composables`)
 
-  // Generate index
   generateIndexFile(composables)
   console.log('Generated references/composables.md')
 
-  // Cleanup
   rmSync(TEMP_DIR, { recursive: true })
   console.log('\nDone!')
 }

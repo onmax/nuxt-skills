@@ -20,6 +20,13 @@ watch(activeElement, (el) => {
 </script>
 ```
 
+## Options
+
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| deep | `boolean` | true | Search active element deeply inside shadow dom |
+| triggerOnRemoval | `boolean` | false | Track active element when it's removed from the DOM |
+
 ## Reference
 
 [VueUse Docs](https://vueuse.org/core/useActiveElement/)

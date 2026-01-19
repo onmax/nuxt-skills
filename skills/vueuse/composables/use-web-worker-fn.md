@@ -15,6 +15,14 @@ const { workerFn } = useWebWorkerFn(() => {
 })
 ```
 
+## Returns
+
+| Name | Type |
+| --- | --- |
+| workerFn | `Ref` |
+| workerStatus | `shallowRef&lt;WebWorkerStatus&gt;` |
+| workerTerminate | `Ref` |
+
 ## Reference
 
 [VueUse Docs](https://vueuse.org/core/useWebWorkerFn/)

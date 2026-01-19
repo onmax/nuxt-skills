@@ -24,6 +24,14 @@ const { width, height } = useElementSize(el)
 </template>
 ```
 
+## Returns
+
+| Name | Type |
+| --- | --- |
+| width | `shallowRef` |
+| height | `shallowRef` |
+| stop | `Ref` |
+
 ## Reference
 
 [VueUse Docs](https://vueuse.org/core/useElementSize/)

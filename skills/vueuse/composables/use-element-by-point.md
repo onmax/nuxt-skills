@@ -14,6 +14,13 @@ const { x, y } = useMouse({ type: 'client' })
 const { element } = useElementByPoint({ x, y })
 ```
 
+## Returns
+
+| Name | Type |
+| --- | --- |
+| isSupported | `useSupported` |
+| element | `shallowRef&lt;any&gt;` |
+
 ## Reference
 
 [VueUse Docs](https://vueuse.org/core/useElementByPoint/)

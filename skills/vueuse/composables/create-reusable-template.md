@@ -18,6 +18,13 @@ Define and reuse template inside the component scope.
 </template>
 ```
 
+## Options
+
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| inheritAttrs | `boolean` | true | Inherit attrs from reuse component. |
+| props | `ComponentObjectPropsOptions&lt;Props&gt;` | - | Props definition for reuse component. |
+
 ## Reference
 
 [VueUse Docs](https://vueuse.org/core/createReusableTemplate/)

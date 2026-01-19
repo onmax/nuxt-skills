@@ -20,6 +20,14 @@ const { tilt, roll, source } = useParallax(container)
 </template>
 ```
 
+## Returns
+
+| Name | Type |
+| --- | --- |
+| roll | `computed` |
+| tilt | `computed` |
+| source | `computed` |
+
 ## Reference
 
 [VueUse Docs](https://vueuse.org/core/useParallax/)

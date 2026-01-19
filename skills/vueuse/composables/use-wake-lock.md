@@ -13,6 +13,17 @@ import { useWakeLock } from '@vueuse/core'
 const { isSupported, isActive, forceRequest, request, release } = useWakeLock()
 ```
 
+## Returns
+
+| Name | Type |
+| --- | --- |
+| sentinel | `shallowRef&lt;WakeLockSentinel \| null&gt;` |
+| isSupported | `useSupported` |
+| isActive | `computed` |
+| request | `Ref` |
+| forceRequest | `Ref` |
+| release | `Ref` |
+
 ## Reference
 
 [VueUse Docs](https://vueuse.org/core/useWakeLock/)

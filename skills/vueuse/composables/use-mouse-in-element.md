@@ -24,6 +24,22 @@ const { x, y, isOutside } = useMouseInElement(target)
 </template>
 ```
 
+## Returns
+
+| Name | Type |
+| --- | --- |
+| x | `Ref` |
+| y | `Ref` |
+| sourceType | `Ref` |
+| elementX | `shallowRef` |
+| elementY | `shallowRef` |
+| elementPositionX | `shallowRef` |
+| elementPositionY | `shallowRef` |
+| elementHeight | `shallowRef` |
+| elementWidth | `shallowRef` |
+| isOutside | `shallowRef` |
+| stop | `Ref` |
+
 ## Reference
 
 [VueUse Docs](https://vueuse.org/core/useMouseInElement/)

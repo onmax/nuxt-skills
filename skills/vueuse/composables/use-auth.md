@@ -30,6 +30,13 @@ const signIn = () => signInWithPopup(auth, new GoogleAuthProvider())
 </template>
 ```
 
+## Returns
+
+| Name | Type |
+| --- | --- |
+| isAuthenticated | `computed` |
+| user | `deepRef&lt;User \| null&gt;` |
+
 ## Reference
 
 [VueUse Docs](https://vueuse.org/core/useAuth/)

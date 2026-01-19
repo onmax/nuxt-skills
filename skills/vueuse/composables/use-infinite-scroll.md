@@ -49,6 +49,21 @@ function resetList() {
 </template>
 ```
 
+## Options
+
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| distance | `number` | 0 | The minimum distance between the bottom of the element and the bottom of the viewport |
+| direction | `'top' \| 'bottom' \| 'left' \| 'right'` | bottom | The direction in which to listen the scroll. |
+| interval | `number` | 100 | The interval time between two load more (to avoid too many invokes). |
+| canLoadMore | `(el: T) =&gt; boolean` | - | A function that determines whether more content can be loaded for a specific element. |
+
+## Returns
+
+| Name | Type |
+| --- | --- |
+| isLoading | `computed` |
+
 ## Reference
 
 [VueUse Docs](https://vueuse.org/core/useInfiniteScroll/)

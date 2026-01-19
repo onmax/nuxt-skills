@@ -29,6 +29,24 @@ watchEffect(() => {
 </template>
 ```
 
+## Options
+
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| enabled | `MaybeRef&lt;boolean&gt;` | false | If the stream is enabled |
+| video | `boolean \| MediaTrackConstraints \| undefined` | - | If the stream video media constraints |
+| audio | `boolean \| MediaTrackConstraints \| undefined` | - | If the stream audio media constraints |
+
+## Returns
+
+| Name | Type |
+| --- | --- |
+| isSupported | `useSupported` |
+| stream | `shallowRef&lt;MediaStream \| undefined&gt;` |
+| start | `Ref` |
+| stop | `Ref` |
+| enabled | `shallowRef` |
+
 ## Reference
 
 [VueUse Docs](https://vueuse.org/core/useDisplayMedia/)

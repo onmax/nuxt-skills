@@ -23,6 +23,13 @@ source.value = 'foo'
 console.log(target.value) // foo
 ```
 
+## Options
+
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| deep | `boolean` | false | Watch deeply |
+| immediate | `boolean` | true | Sync values immediately |
+
 ## Reference
 
 [VueUse Docs](https://vueuse.org/core/syncRefs/)

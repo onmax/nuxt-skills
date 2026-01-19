@@ -27,6 +27,20 @@ useSortable(el, list)
 </template>
 ```
 
+## Options
+
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| watchElement | `boolean` | false | Watch the element reference for changes and automatically reinitialize Sortable |
+
+## Returns
+
+| Name | Type |
+| --- | --- |
+| stop | `Ref` |
+| start | `Ref` |
+| option | `Ref` |
+
 ## Reference
 
 [VueUse Docs](https://vueuse.org/core/useSortable/)

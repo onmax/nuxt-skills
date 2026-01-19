@@ -31,6 +31,16 @@ bus.off(listener)
 bus.reset()
 ```
 
+## Returns
+
+| Name | Type |
+| --- | --- |
+| on | `Ref` |
+| once | `Ref` |
+| off | `Ref` |
+| emit | `Ref` |
+| reset | `Ref` |
+
 ## Reference
 
 [VueUse Docs](https://vueuse.org/core/useEventBus/)

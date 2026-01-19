@@ -18,6 +18,16 @@ const {
 } = useDeviceOrientation()
 ```
 
+## Returns
+
+| Name | Type |
+| --- | --- |
+| isSupported | `useSupported` |
+| isAbsolute | `shallowRef` |
+| alpha | `Ref` |
+| beta | `Ref` |
+| gamma | `Ref` |
+
 ## Reference
 
 [VueUse Docs](https://vueuse.org/core/useDeviceOrientation/)

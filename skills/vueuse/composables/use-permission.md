@@ -13,6 +13,20 @@ import { usePermission } from '@vueuse/core'
 const microphoneAccess = usePermission('microphone')
 ```
 
+## Options
+
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| controls | `Controls` | false | Expose more controls |
+
+## Returns
+
+| Name | Type |
+| --- | --- |
+| state | `shallowRef&lt;PermissionState \| undefined&gt;` |
+| isSupported | `useSupported` |
+| query | `createSingletonPromise` |
+
 ## Reference
 
 [VueUse Docs](https://vueuse.org/core/usePermission/)

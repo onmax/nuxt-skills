@@ -30,6 +30,14 @@ console.log('IDB transaction finished!')
 storedObject.value = null
 ```
 
+## Returns
+
+| Name | Type |
+| --- | --- |
+| set | `Ref` |
+| isFinished | `shallowRef` |
+| data | `Ref` |
+
 ## Reference
 
 [VueUse Docs](https://vueuse.org/core/useIDBKeyval/)

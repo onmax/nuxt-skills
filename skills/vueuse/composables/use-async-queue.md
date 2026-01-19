@@ -33,6 +33,22 @@ console.log(activeIndex.value) // current pending task index
 console.log(result) // the tasks result
 ```
 
+## Options
+
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| interrupt | `boolean` | true | Interrupt tasks when current task fails. |
+| onError | `() =&gt; void` | - | Trigger it when the tasks fails. |
+| onFinished | `() =&gt; void` | - | Trigger it when the tasks ends. |
+| signal | `AbortSignal` | - | A AbortSignal that can be used to abort the task. |
+
+## Returns
+
+| Name | Type |
+| --- | --- |
+| activeIndex | `shallowRef&lt;number&gt;` |
+| result | `reactive` |
+
 ## Reference
 
 [VueUse Docs](https://vueuse.org/core/useAsyncQueue/)

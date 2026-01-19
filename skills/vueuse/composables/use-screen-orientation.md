@@ -19,6 +19,16 @@ const {
 } = useScreenOrientation()
 ```
 
+## Returns
+
+| Name | Type |
+| --- | --- |
+| isSupported | `useSupported` |
+| orientation | `deepRef&lt;OrientationType \| undefined&gt;` |
+| angle | `shallowRef` |
+| lockOrientation | `Ref` |
+| unlockOrientation | `Ref` |
+
 ## Reference
 
 [VueUse Docs](https://vueuse.org/core/useScreenOrientation/)
