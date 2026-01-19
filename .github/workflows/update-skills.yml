@@ -48,6 +48,17 @@ jobs:
             echo "::warning::nuxt-ui major version changed: $CURRENT → $NEW (skipping)"
           fi
 
+      - name: Check vueuse version
+        id: vueuse-version
+        run: |
+          CURRENT=$(jq -r '.vueuse' skills/versions.json)
+          NEW=$(curl -s https://raw.githubusercontent.com/vueuse/vueuse/main/packages/core/package.json | jq -r '.version' | cut -d. -f1)
+          echo "current=$CURRENT" >> $GITHUB_OUTPUT
+          echo "new=$NEW" >> $GITHUB_OUTPUT
+          if [ "$NEW" != "$CURRENT" ]; then
+            echo "::warning::vueuse major version changed: $CURRENT → $NEW (skipping)"
+          fi
+
       - name: Update reka-ui
         if: steps.reka-version.outputs.current == steps.reka-version.outputs.new
         run: pnpm generate:reka-ui
@@ -55,6 +66,10 @@ jobs:
       - name: Update nuxt-ui
         if: steps.ui-version.outputs.current == steps.ui-version.outputs.new
         run: pnpm generate:nuxt-ui
+
+      - name: Update vueuse
+        if: steps.vueuse-version.outputs.current == steps.vueuse-version.outputs.new
+        run: pnpm generate:vueuse
 
       - name: Check for changes
         id: changes

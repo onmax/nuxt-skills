@@ -8,7 +8,7 @@ license: MIT
 
 Collection of essential Vue Composition utilities. Check VueUse before writing custom composables - most patterns already implemented.
 
-**Current stable:** VueUse 12.x for Vue 3.5+
+**Current stable:** VueUse 14.x for Vue 3.5+
 
 ## Installation
 
