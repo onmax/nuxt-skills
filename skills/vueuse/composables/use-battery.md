@@ -15,13 +15,13 @@ const { charging, chargingTime, dischargingTime, level } = useBattery()
 
 ## Returns
 
-| Name | Type |
-| --- | --- |
-| isSupported | `useSupported` |
-| charging | `shallowRef` |
-| chargingTime | `shallowRef` |
-| dischargingTime | `shallowRef` |
-| level | `shallowRef` |
+| Name            | Type           |
+| --------------- | -------------- |
+| isSupported     | `useSupported` |
+| charging        | `shallowRef`   |
+| chargingTime    | `shallowRef`   |
+| dischargingTime | `shallowRef`   |
+| level           | `shallowRef`   |
 
 ## Reference
 
