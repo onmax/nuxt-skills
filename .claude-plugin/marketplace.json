@@ -5,22 +5,107 @@
   "plugins": [
     {
       "name": "nuxt-skills",
-      "description": "Vue, Nuxt, NuxtHub, and related ecosystem skills",
-      "source": "./",
-      "skills": [
-        "./skills/vue",
-        "./skills/nuxt",
-        "./skills/nuxt-modules",
-        "./skills/nuxthub",
-        "./skills/nuxt-content",
-        "./skills/nuxt-ui",
-        "./skills/nuxt-better-auth",
-        "./skills/reka-ui",
-        "./skills/document-writer",
-        "./skills/ts-library",
-        "./skills/motion",
-        "./skills/vueuse"
-      ]
+      "version": "1.0.0",
+      "description": "[Deprecated: prefer individual skills] All Vue, Nuxt, and NuxtHub skills bundled together.",
+      "keywords": ["vue", "nuxt", "nuxthub", "nuxt-ui", "reka-ui", "vueuse", "motion"],
+      "category": "frontend",
+      "skills": ["./skills/vue", "./skills/nuxt", "./skills/nuxt-modules", "./skills/nuxthub", "./skills/nuxt-content", "./skills/nuxt-ui", "./skills/nuxt-better-auth", "./skills/reka-ui", "./skills/document-writer", "./skills/ts-library", "./skills/motion", "./skills/vueuse"]
+    },
+    {
+      "name": "vue",
+      "source": "./skills/vue",
+      "version": "1.0.0",
+      "description": "Vue 3 Composition API, components, composables. Use when editing .vue files, writing reactive code, or encountering ref, computed, watch, defineProps errors.",
+      "keywords": ["vue", "vue3", "composition-api", "components", "composables", "reactivity", "script-setup"],
+      "category": "frontend"
+    },
+    {
+      "name": "nuxt",
+      "source": "./skills/nuxt",
+      "version": "1.0.0",
+      "description": "Nuxt 4+ with server routes, h3 v1, nitro v2. Use when building SSR apps, data fetching, or encountering useFetch, useAsyncData, middleware, hydration errors.",
+      "keywords": ["nuxt", "nuxt4", "ssr", "server-routes", "h3", "nitro", "middleware", "usefetch", "useasyncdata"],
+      "category": "frontend"
+    },
+    {
+      "name": "nuxt-modules",
+      "source": "./skills/nuxt-modules",
+      "version": "1.0.0",
+      "description": "Nuxt module development with defineNuxtModule, Kit utilities, hooks. Use when creating modules or encountering module registration, hook, testing errors.",
+      "keywords": ["nuxt", "modules", "defineNuxtModule", "kit", "hooks", "runtime", "testing"],
+      "category": "tooling"
+    },
+    {
+      "name": "nuxthub",
+      "source": "./skills/nuxthub",
+      "version": "1.0.0",
+      "description": "NuxtHub v0.10 database, KV, blob, cache APIs with Drizzle ORM. Use when working with Cloudflare storage or encountering D1, hubDatabase, hubKV errors.",
+      "keywords": ["nuxthub", "cloudflare", "database", "kv", "blob", "cache", "drizzle", "d1", "workers"],
+      "category": "backend"
+    },
+    {
+      "name": "nuxt-content",
+      "source": "./skills/nuxt-content",
+      "version": "1.0.0",
+      "description": "Nuxt Content v3 collections, queries, MDC rendering. Use when building markdown-based sites or encountering queryCollection, content rendering errors.",
+      "keywords": ["nuxt", "content", "markdown", "mdc", "collections", "cms", "nuxtstudio"],
+      "category": "frontend"
+    },
+    {
+      "name": "nuxt-ui",
+      "source": "./skills/nuxt-ui",
+      "version": "1.0.0",
+      "description": "Nuxt UI v4 components with Tailwind Variants theming. Use when building styled UI or encountering UButton, UModal, UForm, UTable component errors.",
+      "keywords": ["nuxt", "ui", "components", "tailwind", "forms", "modal", "table", "theming"],
+      "category": "frontend"
+    },
+    {
+      "name": "nuxt-better-auth",
+      "source": "./skills/nuxt-better-auth",
+      "version": "1.0.0",
+      "description": "Auth with @onmax/nuxt-better-auth, useUserSession. Use when implementing authentication or encountering session, OAuth, route protection errors.",
+      "keywords": ["nuxt", "auth", "better-auth", "session", "oauth", "jwt", "route-protection"],
+      "category": "auth"
+    },
+    {
+      "name": "reka-ui",
+      "source": "./skills/reka-ui",
+      "version": "1.0.0",
+      "description": "Reka UI headless Vue components, accessible primitives. Use when building accessible UI or encountering asChild, controlled state, DialogRoot errors.",
+      "keywords": ["vue", "headless", "accessibility", "radix", "primitives", "controlled", "asChild"],
+      "category": "frontend"
+    },
+    {
+      "name": "document-writer",
+      "source": "./skills/document-writer",
+      "version": "1.0.0",
+      "description": "Writing documentation and blog posts with MDC. Use when creating markdown content or needing style guidance for technical writing.",
+      "keywords": ["docs", "markdown", "writing", "mdc", "blog", "documentation"],
+      "category": "tooling"
+    },
+    {
+      "name": "ts-library",
+      "source": "./skills/ts-library",
+      "version": "1.0.0",
+      "description": "TypeScript library authoring with tsdown/unbuild. Use when publishing npm packages or encountering exports, type inference, build config errors.",
+      "keywords": ["typescript", "library", "npm", "tsdown", "unbuild", "exports", "api-design"],
+      "category": "tooling"
+    },
+    {
+      "name": "motion",
+      "source": "./skills/motion",
+      "version": "1.0.0",
+      "description": "Motion Vue (motion-v) animations, gestures, scroll effects. Use when adding animations or encountering motion component, useAnimate, layout transition errors.",
+      "keywords": ["vue", "animation", "motion", "gestures", "scroll", "transitions"],
+      "category": "frontend"
+    },
+    {
+      "name": "vueuse",
+      "source": "./skills/vueuse",
+      "version": "1.0.0",
+      "description": "VueUse composables for state, browser, sensors, network. Use when needing utility composables or encountering useMouse, useStorage, useAsyncState errors.",
+      "keywords": ["vue", "vueuse", "composables", "utilities", "state", "browser", "sensors"],
+      "category": "frontend"
     }
   ]
 }
