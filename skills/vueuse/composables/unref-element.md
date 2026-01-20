@@ -1,0 +1,32 @@
+# unrefElement
+
+Retrieves the underlying DOM element from a Vue ref or component instance
+
+**Package:** `@vueuse/core`
+**Category:** Component
+
+## Usage
+
+```ts
+<script setup lang="ts">
+import { unrefElement } from '@vueuse/core'
+import { onMounted, useTemplateRef } from 'vue'
+
+const div = useTemplateRef('div') // will be bound to the <div> element
+const hello = useTemplateRef('hello') // will be bound to the HelloWorld Component
+
+onMounted(() => {
+  console.log(unrefElement(div)) // the <div> element
+  console.log(unrefElement(hello)) // the root element of the HelloWorld Component
+})
+</script>
+
+<template>
+  <div ref="div" />
+  <HelloWorld ref="hello" />
+</template>
+```
+
+## Reference
+
+[VueUse Docs](https://vueuse.org/core/unrefElement/)

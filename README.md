@@ -65,6 +65,7 @@ Clone the repository and copy skill folders to your agent's skills directory:
 | **document-writer**  | Writing documentation for Nuxt ecosystem - MDC, style, structure, code examples |
 | **ts-library**       | TypeScript library authoring - exports, tsdown, API patterns, type tricks, CI   |
 | **motion**           | Motion Vue animations - motion component, composables, scroll, gestures         |
+| **vueuse**           | VueUse composables - state, browser, sensors, network, animation utilities      |
 
 ## How Skills Work
 
@@ -100,7 +101,8 @@ nuxt-skills/
 │   ├── reka-ui/
 │   ├── document-writer/
 │   ├── ts-library/
-│   └── motion/
+│   ├── motion/
+│   └── vueuse/
 └── .claude-plugin/
     └── marketplace.json    # Claude Code marketplace
 ```
@@ -111,7 +113,7 @@ Skills are kept up-to-date via GitHub Actions:
 
 | Workflow                  | Schedule              | Purpose                                                            |
 | ------------------------- | --------------------- | ------------------------------------------------------------------ |
-| **update-skills.yml**     | Weekly (Monday)       | Regenerates reka-ui and nuxt-ui component docs from upstream       |
+| **update-skills.yml**     | Weekly (Monday)       | Regenerates reka-ui, nuxt-ui, and vueuse docs from upstream        |
 | **skill-maintenance.yml** | Biweekly (1st & 15th) | Claude analyzes upstream changelogs, creates PRs if updates needed |
 
 The maintenance workflow uses [claude-code-action](https://github.com/anthropics/claude-code-action) to intelligently detect breaking changes, new features, and deprecations from upstream sources.
