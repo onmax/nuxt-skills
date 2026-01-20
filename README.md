@@ -34,8 +34,15 @@ Works with Claude Code, Cursor, Codex, OpenCode, GitHub Copilot, Antigravity, Ro
 An alternative for Claude Code users:
 
 ```bash
+# Add marketplace
 /plugin marketplace add onmax/nuxt-skills
-/plugin install nuxt-skills@nuxt-skills
+
+# Install individual skills
+/plugin install vue@nuxt-skills
+/plugin install nuxt@nuxt-skills
+
+# Install multiple skills
+/plugin install vue@nuxt-skills nuxt@nuxt-skills nuxt-ui@nuxt-skills
 ```
 
 ### Manual Installation
