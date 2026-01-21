@@ -159,6 +159,97 @@ global.fetch = vi.fn(() =>
 )
 ```
 
+## Router Mocking
+
+Mock `useRoute` and `useRouter` for component tests:
+
+```ts
+import { vi } from 'vitest'
+import { mount } from '@vue/test-utils'
+
+vi.mock('vue-router', () => ({
+  useRoute: vi.fn(() => ({
+    params: { id: '123' },
+    query: { filter: 'active' },
+    path: '/users/123',
+  })),
+  useRouter: vi.fn(() => ({
+    push: vi.fn(),
+    replace: vi.fn(),
+  })),
+}))
+
+it('uses route params', () => {
+  const wrapper = mount(UserPage)
+  expect(wrapper.text()).toContain('123')
+})
+```
+
+**Dynamic route mocking per test:**
+
+```ts
+import { useRoute } from 'vue-router'
+
+it('handles different routes', () => {
+  vi.mocked(useRoute).mockReturnValue({
+    params: { id: '456' },
+  } as any)
+
+  const wrapper = mount(UserPage)
+  expect(wrapper.text()).toContain('456')
+})
+```
+
+## Suspense and Teleport
+
+**Testing async components with Suspense:**
+
+```ts
+import { flushPromises, mount } from '@vue/test-utils'
+
+it('renders async content', async () => {
+  const wrapper = mount(AsyncComponent, {
+    global: {
+      stubs: { Suspense: false }, // Don't stub Suspense
+    },
+  })
+
+  // Wait for async setup to complete
+  await flushPromises()
+
+  expect(wrapper.text()).toContain('Loaded content')
+})
+```
+
+**Testing Teleport:**
+
+```ts
+it('teleports modal content', () => {
+  const wrapper = mount(Modal, {
+    global: {
+      stubs: {
+        teleport: true, // Stub teleport to render inline
+      },
+    },
+  })
+
+  expect(wrapper.text()).toContain('Modal content')
+})
+```
+
+**Access teleported content:**
+
+```ts
+it('finds teleported content', () => {
+  document.body.innerHTML = '<div id="modal-target"></div>'
+
+  mount(Modal, { props: { open: true } })
+
+  // Content teleports to #modal-target
+  expect(document.body.innerHTML).toContain('Modal content')
+})
+```
+
 ## Best Practices
 
 **Do:**
