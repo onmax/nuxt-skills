@@ -93,3 +93,69 @@ const debouncedSearch = refDebounced(search, 300)
 ```ts
 const useSharedMouse = createSharedComposable(useMouse)
 ```
+
+## SSR Gotchas
+
+Many VueUse composables use browser APIs unavailable during SSR.
+
+**Check with `isClient`:**
+
+```ts
+import { isClient } from '@vueuse/core'
+
+if (isClient) {
+  // Browser-only code
+  const { width } = useWindowSize()
+}
+```
+
+**Wrap in onMounted:**
+
+```ts
+const width = ref(0)
+
+onMounted(() => {
+  // Only runs in browser
+  const { width: w } = useWindowSize()
+  width.value = w.value
+})
+```
+
+**Use SSR-safe composables:**
+
+```ts
+// These check isClient internally
+const mouse = useMouse() // Returns {x: 0, y: 0} on server
+const storage = useLocalStorage('key', 'default') // Uses default on server
+```
+
+**`@vueuse/nuxt` auto-handles SSR** - composables return safe defaults on server.
+
+## Target Element Refs
+
+When targeting component refs instead of DOM elements:
+
+```ts
+import type { MaybeElementRef } from '@vueuse/core'
+
+// Component ref needs .$el to get DOM element
+const compRef = ref<ComponentInstance>()
+const { width } = useElementSize(compRef) // ❌ Won't work
+
+// Use MaybeElementRef pattern
+import { unrefElement } from '@vueuse/core'
+
+const el = computed(() => unrefElement(compRef)) // Gets .$el
+const { width } = useElementSize(el) // ✅ Works
+```
+
+**Or access `$el` directly:**
+
+```ts
+const compRef = ref<ComponentInstance>()
+
+onMounted(() => {
+  const el = compRef.value?.$el as HTMLElement
+  const { width } = useElementSize(el)
+})
+```
