@@ -266,6 +266,74 @@ export function useSearch() {
 }
 ```
 
+## Reactivity Gotchas
+
+### Ref Unwrapping in Reactive
+
+Refs auto-unwrap in `reactive()` objects but **NOT** in arrays, Maps, or Sets:
+
+```ts
+// ✅ Object - auto unwraps
+const state = reactive({ count: ref(0) })
+state.count++ // No .value needed
+
+// ❌ Array - NO unwrapping
+const arr = reactive([ref(1)])
+arr[0].value // Need .value!
+
+// ❌ Map/Set - NO unwrapping
+const map = reactive(new Map([['key', ref(1)]]))
+map.get('key').value // Need .value!
+```
+
+### watchEffect Conditional Tracking
+
+Dependencies inside conditional branches are **not tracked** when condition is false:
+
+```ts
+// ❌ Wrong - dep not tracked when condition false
+watchEffect(() => {
+  if (condition.value) {
+    console.log(dep.value) // Only tracked when condition=true
+  }
+})
+
+// ✅ Correct - use explicit watch for conditional deps
+watch([condition, dep], ([cond, d]) => {
+  if (cond) console.log(d)
+})
+```
+
+### Cleanup Patterns
+
+**For keep-alive components** - use `onDeactivated`:
+
+```ts
+export function usePolling() {
+  let interval: NodeJS.Timeout
+
+  onMounted(() => { interval = setInterval(poll, 5000) })
+  onUnmounted(() => clearInterval(interval))
+  onDeactivated(() => clearInterval(interval)) // Pause when deactivated
+  onActivated(() => { interval = setInterval(poll, 5000) }) // Resume
+}
+```
+
+**For scope-aware cleanup** - use `tryOnScopeDispose` from VueUse:
+
+```ts
+import { tryOnScopeDispose } from '@vueuse/core'
+
+export function useEventSource(url: string) {
+  const source = new EventSource(url)
+
+  // Cleans up when effect scope disposes (component unmount, watcher stop)
+  tryOnScopeDispose(() => source.close())
+
+  return { source }
+}
+```
+
 ## Common Mistakes
 
 **Not using `readonly()` for internal state:**

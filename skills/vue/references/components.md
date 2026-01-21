@@ -127,6 +127,18 @@ const [title, modifiers] = defineModel<string>({
 
 **⚠️ Warning:** When using `default` without parent providing a value, parent and child can de-sync (parent `undefined`, child has default). Always provide matching defaults in parent or make prop required.
 
+**Prevent double-emit with `required: true`:**
+
+```ts
+// ❌ Without required - emits twice (undefined then value)
+const model = defineModel<Item>()
+
+// ✅ With required - single emit
+const model = defineModel<Item>({ required: true })
+```
+
+Use `required: true` when the model should always have a value to avoid the double-emit issue during initialization.
+
 ### Multiple Models
 
 Default assumes `modelValue` prop. For multiple bindings, use explicit names:
@@ -216,6 +228,24 @@ onMounted(() => {
   </div>
 </template>
 ```
+
+**Component refs with generics:**
+
+For generic components, use `ComponentExposed` from `vue-component-type-helpers`:
+
+```ts
+import type { ComponentExposed } from 'vue-component-type-helpers'
+import MyGenericComponent from './MyGenericComponent.vue'
+
+// Get exposed methods/properties with correct generic types
+const compRef = useTemplateRef<ComponentExposed<typeof MyGenericComponent>>('comp')
+
+onMounted(() => {
+  compRef.value?.someExposedMethod() // Typed!
+})
+```
+
+Install: `pnpm add -D vue-component-type-helpers`
 
 ## SSR Hydration (Vue 3.5+)
 

@@ -41,6 +41,8 @@ Progressive reference system for Vue 3 projects. Load only files relevant to cur
 | File in `composables/`   | references/composables.md  |
 | File in `utils/`         | references/utils-client.md |
 | `.spec.ts` or `.test.ts` | references/testing.md      |
+| TypeScript patterns      | references/typescript.md   |
+| Vue Router typing        | references/router.md       |
 
 ## Loading Files
 
@@ -50,6 +52,8 @@ Progressive reference system for Vue 3 projects. Load only files relevant to cur
 - Composable work → [references/composables.md](references/composables.md)
 - Utils work → [references/utils-client.md](references/utils-client.md)
 - Testing → [references/testing.md](references/testing.md)
+- TypeScript → [references/typescript.md](references/typescript.md)
+- Vue Router → [references/router.md](references/router.md)
 
 **DO NOT load all files at once** - wastes context on irrelevant patterns.
 
@@ -57,11 +61,15 @@ Progressive reference system for Vue 3 projects. Load only files relevant to cur
 
 **[references/components.md](references/components.md)** - Props with reactive destructuring, emits patterns, defineModel for v-model, slots shorthand
 
-**[references/composables.md](references/composables.md)** - Composition API structure, VueUse integration, lifecycle hooks, async patterns
+**[references/composables.md](references/composables.md)** - Composition API structure, VueUse integration, lifecycle hooks, async patterns, reactivity gotchas
 
 **[references/utils-client.md](references/utils-client.md)** - Pure functions, formatters, validators, transformers, when NOT to use utils
 
-**[references/testing.md](references/testing.md)** - Vitest + @vue/test-utils, component testing, composable testing, mocking patterns
+**[references/testing.md](references/testing.md)** - Vitest + @vue/test-utils, component testing, composable testing, router mocking
+
+**[references/typescript.md](references/typescript.md)** - InjectionKey for provide/inject, vue-tsc strict templates, tsconfig settings, generic components
+
+**[references/router.md](references/router.md)** - Route meta types, typed params with unplugin-vue-router, scroll behavior, navigation guards
 
 ## Examples
 
