@@ -134,6 +134,10 @@ The maintenance workflow uses [claude-code-action](https://github.com/anthropics
 - [OpenCode Skills](https://opencode.ai/docs/skills/) - Agent skills in OpenCode
 - [awesome-copilot](https://github.com/github/awesome-copilot) - Community collection of custom agents and prompts
 
+## Acknowledgments
+
+- **vue** skill based on patterns from [@hyf0](https://github.com/hyf0)'s [vue-skills](https://github.com/hyf0/vue-skills)
+
 ## License
 
 MIT
