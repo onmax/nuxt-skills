@@ -73,6 +73,7 @@ Clone the repository and copy skill folders to your agent's skills directory:
 | **ts-library**       | TypeScript library authoring - exports, tsdown, API patterns, type tricks, CI   |
 | **motion**           | Motion Vue animations - motion component, composables, scroll, gestures         |
 | **vueuse**           | VueUse composables - state, browser, sensors, network, animation utilities      |
+| **nuxt-seo**         | Nuxt SEO meta-module - robots, sitemap, og-image, schema-org, site config       |
 
 ## How Skills Work
 
@@ -109,7 +110,8 @@ nuxt-skills/
 │   ├── document-writer/
 │   ├── ts-library/
 │   ├── motion/
-│   └── vueuse/
+│   ├── vueuse/
+│   └── nuxt-seo/
 └── .claude-plugin/
     └── marketplace.json    # Claude Code marketplace
 ```

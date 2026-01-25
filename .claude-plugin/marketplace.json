@@ -98,6 +98,14 @@
       "description": "VueUse composables for state, browser, sensors, network. Use when needing utility composables or encountering useMouse, useStorage, useAsyncState errors.",
       "keywords": ["vue", "vueuse", "composables", "utilities", "state", "browser", "sensors"],
       "category": "frontend"
+    },
+    {
+      "name": "nuxt-seo",
+      "source": "./skills/nuxt-seo",
+      "version": "1.0.0",
+      "description": "Nuxt SEO meta-module with robots, sitemap, og-image, schema-org. Use when configuring SEO, generating sitemaps, creating OG images, or adding structured data.",
+      "keywords": ["nuxt", "seo", "robots", "sitemap", "og-image", "schema-org", "meta-tags"],
+      "category": "frontend"
     }
   ]
 }
