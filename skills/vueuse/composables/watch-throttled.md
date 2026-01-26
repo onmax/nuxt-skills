@@ -1,6 +1,6 @@
 # watchThrottled
 
-Throttled watch.
+Throttled watch. The callback will be invoked at most once per specified duration.
 
 **Package:** `@vueuse/shared`
 **Category:** Watch

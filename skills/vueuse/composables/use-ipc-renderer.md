@@ -1,6 +1,6 @@
 # useIpcRenderer
 
-Provides ipcRenderer and all of its APIs.
+Provides ipcRenderer and all of its APIs with Vue reactivity.
 
 **Package:** `@vueuse/electron`
 **Category:** '@Electron'
@@ -27,20 +27,20 @@ ipcRenderer.on('custom-event', (event, ...args) => {
 
 ## Returns
 
-| Name               | Type  |
-| ------------------ | ----- |
-| on                 | `Ref` |
-| listener           | `Ref` |
-| once               | `Ref` |
-| removeListener     | `Ref` |
+| Name | Type |
+| --- | --- |
+| on | `Ref` |
+| listener | `Ref` |
+| once | `Ref` |
+| removeListener | `Ref` |
 | removeAllListeners | `Ref` |
-| send               | `Ref` |
-| invoke             | `Ref` |
-| channel            | `Ref` |
-| sendSync           | `Ref` |
-| postMessage        | `Ref` |
-| sendTo             | `Ref` |
-| sendToHost         | `Ref` |
+| send | `Ref` |
+| invoke | `Ref` |
+| channel | `Ref` |
+| sendSync | `Ref` |
+| postMessage | `Ref` |
+| sendTo | `Ref` |
+| sendToHost | `Ref` |
 
 ## Reference
 

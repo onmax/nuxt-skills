@@ -1,6 +1,6 @@
 # watchDebounced
 
-Debounced watch
+Debounced watch. The callback will only be invoked after the source stops changing for the specified duration.
 
 **Package:** `@vueuse/shared`
 **Category:** Watch

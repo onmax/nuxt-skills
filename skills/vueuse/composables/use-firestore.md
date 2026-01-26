@@ -8,10 +8,12 @@ Reactive Firestore binding. Making it straightforward to **always keep your loca
 ## Usage
 
 ```ts
-import { useFirestore } from '@vueuse/firebase/useFirestore'
-import { collection } from 'firebase/firestore'
-// ---cut---
-const todos = useFirestore(collection(db, 'todos'), undefined, { autoDispose: false })
+const todos = useFirestore(collection(db, 'todos'), [], {
+  errorHandler: (err) => {
+    console.error('Firestore error:', err)
+    // Handle error (e.g., show notification)
+  },
+})
 ```
 
 ## Reference

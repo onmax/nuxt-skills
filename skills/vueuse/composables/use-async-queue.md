@@ -1,6 +1,6 @@
 # useAsyncQueue
 
-Executes each asynchronous task sequentially and passes the current task result to the next task
+Executes each asynchronous task sequentially and passes the current task result to the next task.
 
 **Package:** `@vueuse/core`
 **Category:** Utilities
@@ -35,19 +35,19 @@ console.log(result) // the tasks result
 
 ## Options
 
-| Option     | Type            | Default | Description                                       |
-| ---------- | --------------- | ------- | ------------------------------------------------- |
-| interrupt  | `boolean`       | true    | Interrupt tasks when current task fails.          |
-| onError    | `() =&gt; void` | -       | Trigger it when the tasks fails.                  |
-| onFinished | `() =&gt; void` | -       | Trigger it when the tasks ends.                   |
-| signal     | `AbortSignal`   | -       | A AbortSignal that can be used to abort the task. |
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| interrupt | `boolean` | true | Interrupt tasks when current task fails. |
+| onError | `() =&gt; void` | - | Trigger it when the tasks fails. |
+| onFinished | `() =&gt; void` | - | Trigger it when the tasks ends. |
+| signal | `AbortSignal` | - | A AbortSignal that can be used to abort the task. |
 
 ## Returns
 
-| Name        | Type                       |
-| ----------- | -------------------------- |
+| Name | Type |
+| --- | --- |
 | activeIndex | `shallowRef&lt;number&gt;` |
-| result      | `reactive`                 |
+| result | `reactive` |
 
 ## Reference
 

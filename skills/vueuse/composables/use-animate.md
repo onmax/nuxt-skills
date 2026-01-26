@@ -42,30 +42,30 @@ const {
 
 ## Options
 
-| Option       | Type                              | Default | Description                                                                            |
-| ------------ | --------------------------------- | ------- | -------------------------------------------------------------------------------------- |
-| immediate    | `boolean`                         | true    | Will automatically run play when `useAnimate` is used                                  |
-| commitStyles | `boolean`                         | false   | Whether to commits the end styling state of an animation to the element being animated |
-| persist      | `boolean`                         | false   | Whether to persists the animation                                                      |
-| onReady      | `(animate: Animation) =&gt; void` | -       | Executed after animation initialization                                                |
-| onError      | `(e: unknown) =&gt; void`         | -       | Callback when error is caught.                                                         |
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| immediate | `boolean` | true | Will automatically run play when `useAnimate` is used |
+| commitStyles | `boolean` | false | Whether to commits the end styling state of an animation to the element being animated |
+| persist | `boolean` | false | Whether to persists the animation |
+| onReady | `(animate: Animation) =&gt; void` | - | Executed after animation initialization |
+| onError | `(e: unknown) =&gt; void` | - | Callback when error is caught. |
 
 ## Returns
 
-| Name         | Type                                             |
-| ------------ | ------------------------------------------------ |
-| isSupported  | `useSupported`                                   |
-| animate      | `shallowRef&lt;Animation \| undefined&gt;`       |
-| pause        | `Ref`                                            |
-| reverse      | `Ref`                                            |
-| finish       | `Ref`                                            |
-| cancel       | `Ref`                                            |
-| playState    | `computed`                                       |
-| replaceState | `computed`                                       |
-| startTime    | `computed&lt;CSSNumberish \| number \| null&gt;` |
-| currentTime  | `computed`                                       |
-| timeline     | `computed`                                       |
-| playbackRate | `computed`                                       |
+| Name | Type |
+| --- | --- |
+| isSupported | `useSupported` |
+| animate | `shallowRef&lt;Animation \| undefined&gt;` |
+| pause | `Ref` |
+| reverse | `Ref` |
+| finish | `Ref` |
+| cancel | `Ref` |
+| playState | `computed` |
+| replaceState | `computed` |
+| startTime | `computed&lt;CSSNumberish \| number \| null&gt;` |
+| currentTime | `computed` |
+| timeline | `computed` |
+| playbackRate | `computed` |
 
 ## Reference
 

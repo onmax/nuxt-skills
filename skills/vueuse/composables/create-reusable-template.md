@@ -20,10 +20,10 @@ Define and reuse template inside the component scope.
 
 ## Options
 
-| Option       | Type                                       | Default | Description                           |
-| ------------ | ------------------------------------------ | ------- | ------------------------------------- |
-| inheritAttrs | `boolean`                                  | true    | Inherit attrs from reuse component.   |
-| props        | `ComponentObjectPropsOptions&lt;Props&gt;` | -       | Props definition for reuse component. |
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| inheritAttrs | `boolean` | true | Inherit attrs from reuse component. |
+| props | `ComponentObjectPropsOptions&lt;Props&gt;` | - | Props definition for reuse component. |
 
 ## Reference
 

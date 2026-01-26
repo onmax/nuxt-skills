@@ -1,6 +1,6 @@
 # useTimeout
 
-Update value after a given time with controls.
+Reactive value that becomes after a given time.
 
 **Package:** `@vueuse/shared`
 **Category:** Animation
@@ -15,15 +15,15 @@ const ready = useTimeout(1000)
 
 ## Options
 
-| Option   | Type       | Default | Description          |
-| -------- | ---------- | ------- | -------------------- |
-| controls | `Controls` | false   | Expose more controls |
-| callback | `Fn`       | -       | Callback on timeout  |
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| controls | `Controls` | false | Expose more controls |
+| callback | `Fn` | - | Callback on timeout |
 
 ## Returns
 
-| Name  | Type       |
-| ----- | ---------- |
+| Name | Type |
+| --- | --- |
 | ready | `computed` |
 
 ## Reference

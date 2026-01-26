@@ -39,10 +39,10 @@ await nextTick() // logs: Changed to logged!
 
 ## Returns
 
-| Name                   | Type  |
-| ---------------------- | ----- |
-| stop                   | `Ref` |
-| ignoreUpdates          | `Ref` |
+| Name | Type |
+| --- | --- |
+| stop | `Ref` |
+| ignoreUpdates | `Ref` |
 | ignorePrevAsyncUpdates | `Ref` |
 
 ## Reference

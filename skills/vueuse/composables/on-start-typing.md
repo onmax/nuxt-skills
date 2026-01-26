@@ -1,6 +1,6 @@
 # onStartTyping
 
-Fires when users start typing on non-editable elements.
+Fires when users start typing on non-editable elements. Useful for auto-focusing an input field when the user starts typing anywhere on the page.
 
 **Package:** `@vueuse/core`
 **Category:** Sensors

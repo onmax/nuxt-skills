@@ -17,6 +17,7 @@ const {
   device,
   requestDevice,
   server,
+  error,
 } = useBluetooth({
   acceptAllDevices: true,
 })
@@ -26,22 +27,25 @@ const {
   <button @click="requestDevice()">
     Request Bluetooth Device
   </button>
+  <div v-if="error">
+    Error: {{ error }}
+  </div>
 </template>
 ```
 
 ## Options
 
-| Option           | Type      | Default | Description                                                                       |
-| ---------------- | --------- | ------- | --------------------------------------------------------------------------------- |
-| acceptAllDevices | `boolean` | false   | \* A boolean value indicating that the requesting script can accept all Bluetooth |
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| acceptAllDevices | `boolean` | false | * A boolean value indicating that the requesting script can accept all Bluetooth |
 
 ## Returns
 
-| Name          | Type           |
-| ------------- | -------------- |
-| isSupported   | `useSupported` |
-| isConnected   | `shallowRef`   |
-| requestDevice | `Ref`          |
+| Name | Type |
+| --- | --- |
+| isSupported | `useSupported` |
+| isConnected | `shallowRef` |
+| requestDevice | `Ref` |
 
 ## Reference
 

@@ -16,10 +16,10 @@ const { element } = useElementByPoint({ x, y })
 
 ## Returns
 
-| Name        | Type                    |
-| ----------- | ----------------------- |
-| isSupported | `useSupported`          |
-| element     | `shallowRef&lt;any&gt;` |
+| Name | Type |
+| --- | --- |
+| isSupported | `useSupported` |
+| element | `shallowRef&lt;any&gt;` |
 
 ## Reference
 

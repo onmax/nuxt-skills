@@ -20,21 +20,21 @@ const {
 
 ## Options
 
-| Option             | Type      | Default | Description                                              |
-| ------------------ | --------- | ------- | -------------------------------------------------------- |
-| requestPermissions | `boolean` | false   | Request for permissions immediately if it's not granted, |
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| requestPermissions | `boolean` | false | Request for permissions immediately if it's not granted, |
 
 ## Returns
 
-| Name              | Type           |
-| ----------------- | -------------- |
-| devices           | `deepRef`      |
-| ensurePermissions | `Ref`          |
-| permissionGranted | `shallowRef`   |
-| videoInputs       | `computed`     |
-| audioInputs       | `computed`     |
-| audioOutputs      | `computed`     |
-| isSupported       | `useSupported` |
+| Name | Type |
+| --- | --- |
+| devices | `deepRef` |
+| ensurePermissions | `Ref` |
+| permissionGranted | `shallowRef` |
+| videoInputs | `computed` |
+| audioInputs | `computed` |
+| audioOutputs | `computed` |
+| isSupported | `useSupported` |
 
 ## Reference
 

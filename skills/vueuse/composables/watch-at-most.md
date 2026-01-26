@@ -21,12 +21,12 @@ watchAtMost(
 
 ## Returns
 
-| Name   | Type  |
-| ------ | ----- |
-| count  | `Ref` |
-| stop   | `Ref` |
+| Name | Type |
+| --- | --- |
+| count | `Ref` |
+| stop | `Ref` |
 | resume | `Ref` |
-| pause  | `Ref` |
+| pause | `Ref` |
 
 ## Reference
 

@@ -1,6 +1,6 @@
 # computedAsync
 
-Computed for async functions
+Computed for async functions.
 
 **Package:** `@vueuse/core`
 **Category:** Reactivity
@@ -17,7 +17,7 @@ const userInfo = computedAsync(
   async () => {
     return await mockLookUp(name.value)
   },
-  null, /* initial state */
+  null, // initial state
 )
 ```
 

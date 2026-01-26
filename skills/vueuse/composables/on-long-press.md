@@ -1,6 +1,6 @@
 # onLongPress
 
-Listen for a long press on an element.
+Listen for a long press on an element. Returns a stop function.
 
 **Package:** `@vueuse/core`
 **Category:** Sensors
@@ -48,11 +48,11 @@ onLongPress(
 
 ## Options
 
-| Option            | Type                                                                    | Default | Description                                       |
-| ----------------- | ----------------------------------------------------------------------- | ------- | ------------------------------------------------- |
-| delay             | `number \| ((ev: PointerEvent) =&gt; number)`                           | 500     | Time in ms till `longpress` gets called           |
-| distanceThreshold | `number \| false`                                                       | 10      | Allowance of moving distance in pixels,           |
-| onMouseUp         | `(duration: number, distance: number, isLongPress: boolean) =&gt; void` | -       | Function called when the ref element is released. |
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| delay | `number \| ((ev: PointerEvent) =&gt; number)` | 500 | Time in ms till `longpress` gets called |
+| distanceThreshold | `number \| false` | 10 | Allowance of moving distance in pixels, |
+| onMouseUp | `(duration: number, distance: number, isLongPress: boolean) =&gt; void` | - | Function called when the ref element is released. |
 
 ## Reference
 

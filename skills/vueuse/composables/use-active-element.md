@@ -1,6 +1,6 @@
 # useActiveElement
 
-Reactive
+Reactive . Returns a shallow ref that updates when focus changes.
 
 **Package:** `@vueuse/core`
 **Category:** Elements
@@ -22,10 +22,10 @@ watch(activeElement, (el) => {
 
 ## Options
 
-| Option           | Type      | Default | Description                                         |
-| ---------------- | --------- | ------- | --------------------------------------------------- |
-| deep             | `boolean` | true    | Search active element deeply inside shadow dom      |
-| triggerOnRemoval | `boolean` | false   | Track active element when it's removed from the DOM |
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| deep | `boolean` | true | Search active element deeply inside shadow dom |
+| triggerOnRemoval | `boolean` | false | Track active element when it's removed from the DOM |
 
 ## Reference
 

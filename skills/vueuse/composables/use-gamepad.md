@@ -25,15 +25,15 @@ const gamepad = computed(() => gamepads.value.find(g => g.mapping === 'standard'
 
 ## Returns
 
-| Name           | Type                       |
-| -------------- | -------------------------- |
-| isSupported    | `useSupported`             |
-| onConnected    | `Ref`                      |
-| onDisconnected | `Ref`                      |
-| gamepads       | `deepRef&lt;Gamepad[]&gt;` |
-| pause          | `Ref`                      |
-| resume         | `Ref`                      |
-| isActive       | `Ref`                      |
+| Name | Type |
+| --- | --- |
+| isSupported | `useSupported` |
+| onConnected | `Ref` |
+| onDisconnected | `Ref` |
+| gamepads | `deepRef&lt;Gamepad[]&gt;` |
+| pause | `Ref` |
+| resume | `Ref` |
+| isActive | `Ref` |
 
 ## Reference
 

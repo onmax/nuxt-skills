@@ -21,18 +21,18 @@ console.log(cloned.value.key) // 'value'
 
 ## Options
 
-| Option | Type                  | Default | Description            |
-| ------ | --------------------- | ------- | ---------------------- |
-| clone  | `(source: T) =&gt; T` | -       | Custom clone function. |
-| manual | `boolean`             | false   | Manually sync the ref  |
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| clone | `(source: T) =&gt; T` | - | Custom clone function. |
+| manual | `boolean` | false | Manually sync the ref |
 
 ## Returns
 
-| Name       | Type                        |
-| ---------- | --------------------------- |
-| cloned     | `deepRef`                   |
+| Name | Type |
+| --- | --- |
+| cloned | `deepRef` |
 | isModified | `shallowRef&lt;boolean&gt;` |
-| sync       | `Ref`                       |
+| sync | `Ref` |
 
 ## Reference
 

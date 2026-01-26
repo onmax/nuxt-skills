@@ -25,23 +25,23 @@ const { color, size } = toRefs(brush)
 
 ## Returns
 
-| Name          | Type                   |
-| ------------- | ---------------------- |
+| Name | Type |
+| --- | --- |
 | drauuInstance | `deepRef&lt;Drauu&gt;` |
-| load          | `Ref`                  |
-| dump          | `Ref`                  |
-| clear         | `Ref`                  |
-| cancel        | `Ref`                  |
-| undo          | `Ref`                  |
-| redo          | `Ref`                  |
-| canUndo       | `shallowRef`           |
-| canRedo       | `shallowRef`           |
-| brush         | `deepRef&lt;Brush&gt;` |
-| onChanged     | `Ref`                  |
-| onCommitted   | `Ref`                  |
-| onStart       | `Ref`                  |
-| onEnd         | `Ref`                  |
-| onCanceled    | `Ref`                  |
+| load | `Ref` |
+| dump | `Ref` |
+| clear | `Ref` |
+| cancel | `Ref` |
+| undo | `Ref` |
+| redo | `Ref` |
+| canUndo | `shallowRef` |
+| canRedo | `shallowRef` |
+| brush | `deepRef&lt;Brush&gt;` |
+| onChanged | `Ref` |
+| onCommitted | `Ref` |
+| onStart | `Ref` |
+| onEnd | `Ref` |
+| onCanceled | `Ref` |
 
 ## Reference
 

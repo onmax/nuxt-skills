@@ -21,13 +21,13 @@ const {
 
 ## Returns
 
-| Name           | Type                             |
-| -------------- | -------------------------------- |
-| isSupported    | `useSupported`                   |
-| element        | `shallowRef&lt;MaybeElement&gt;` |
+| Name | Type |
+| --- | --- |
+| isSupported | `useSupported` |
+| element | `shallowRef&lt;MaybeElement&gt;` |
 | triggerElement | `shallowRef&lt;MaybeElement&gt;` |
-| lock           | `Ref`                            |
-| unlock         | `Ref`                            |
+| lock | `Ref` |
+| unlock | `Ref` |
 
 ## Reference
 

@@ -23,26 +23,26 @@ const { x, y, top, right, bottom, left, width, height } = useElementBounding(el)
 
 ## Options
 
-| Option       | Type      | Default | Description                                  |
-| ------------ | --------- | ------- | -------------------------------------------- |
-| reset        | `boolean` | true    | Reset values to 0 on component unmounted     |
-| windowResize | `boolean` | true    | Listen to window resize event                |
-| windowScroll | `boolean` | true    | Listen to window scroll event                |
-| immediate    | `boolean` | true    | Immediately call update on component mounted |
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| reset | `boolean` | true | Reset values to 0 on component unmounted |
+| windowResize | `boolean` | true | Listen to window resize event |
+| windowScroll | `boolean` | true | Listen to window scroll event |
+| immediate | `boolean` | true | Immediately call update on component mounted |
 
 ## Returns
 
-| Name   | Type         |
-| ------ | ------------ |
+| Name | Type |
+| --- | --- |
 | height | `shallowRef` |
 | bottom | `shallowRef` |
-| left   | `shallowRef` |
-| right  | `shallowRef` |
-| top    | `shallowRef` |
-| width  | `shallowRef` |
-| x      | `shallowRef` |
-| y      | `shallowRef` |
-| update | `Ref`        |
+| left | `shallowRef` |
+| right | `shallowRef` |
+| top | `shallowRef` |
+| width | `shallowRef` |
+| x | `shallowRef` |
+| y | `shallowRef` |
+| update | `Ref` |
 
 ## Reference
 

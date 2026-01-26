@@ -21,10 +21,10 @@ const formatted = useDateFormat(useNow(), 'YYYY-MM-DD HH:mm:ss')
 
 ## Options
 
-| Option         | Type                                                                                        | Default | Description                                                |
-| -------------- | ------------------------------------------------------------------------------------------- | ------- | ---------------------------------------------------------- |
-| locales        | `MaybeRefOrGetter&lt;Intl.LocalesArgument&gt;`                                              | -       | The locale(s) to used for dd/ddd/dddd/MMM/MMMM format      |
-| customMeridiem | `(hours: number, minutes: number, isLowercase?: boolean, hasPeriod?: boolean) =&gt; string` | -       | A custom function to re-modify the way to display meridiem |
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| locales | `MaybeRefOrGetter&lt;Intl.LocalesArgument&gt;` | - | The locale(s) to used for dd/ddd/dddd/MMM/MMMM format |
+| customMeridiem | `(hours: number, minutes: number, isLowercase?: boolean, hasPeriod?: boolean) =&gt; string` | - | A custom function to re-modify the way to display meridiem |
 
 ## Reference
 

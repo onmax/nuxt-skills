@@ -1,6 +1,6 @@
 # computedInject
 
-Combine computed and inject
+Combine and . Useful for creating a computed property based on an injected value.
 
 **Package:** `@vueuse/core`
 **Category:** Component

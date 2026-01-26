@@ -1,6 +1,6 @@
 # useRouteQuery
 
-Shorthand for a reactive .
+Shorthand for a reactive . Updates the URL query parameters when the ref changes.
 
 **Package:** `@vueuse/router`
 **Category:** '@Router'

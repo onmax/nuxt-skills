@@ -15,10 +15,10 @@ const { isSupported, memory } = useMemory()
 
 ## Returns
 
-| Name        | Type                        |
-| ----------- | --------------------------- |
-| isSupported | `useSupported`              |
-| memory      | `deepRef&lt;MemoryInfo&gt;` |
+| Name | Type |
+| --- | --- |
+| isSupported | `useSupported` |
+| memory | `deepRef&lt;MemoryInfo&gt;` |
 
 ## Reference
 
