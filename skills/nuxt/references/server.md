@@ -117,21 +117,21 @@ export default defineEventHandler(async (event) => {
 })
 ```
 
-### Validation with Zod
+### Validation with Valibot
 
 Use `readValidatedBody` and `getValidatedQuery` for schema validation:
 
 ```ts
 // server/api/users.post.ts
-import { z } from 'zod'
+import * as v from 'valibot'
 
-const userSchema = z.object({
-  name: z.string().min(1),
-  email: z.string().email()
+const UserSchema = v.object({
+  name: v.pipe(v.string(), v.minLength(1)),
+  email: v.pipe(v.string(), v.email())
 })
 
 export default defineEventHandler(async (event) => {
-  const body = await readValidatedBody(event, userSchema.parse)
+  const body = await readValidatedBody(event, v.parser(UserSchema))
   // body is typed as { name: string, email: string }
   const user = await createUser(body)
   setResponseStatus(event, 201)
@@ -141,15 +141,15 @@ export default defineEventHandler(async (event) => {
 
 ```ts
 // server/api/users.get.ts
-import { z } from 'zod'
+import * as v from 'valibot'
 
-const querySchema = z.object({
-  page: z.coerce.number().default(1),
-  limit: z.coerce.number().default(10)
+const QuerySchema = v.object({
+  page: v.optional(v.pipe(v.string(), v.transform(Number)), '1'),
+  limit: v.optional(v.pipe(v.string(), v.transform(Number)), '10')
 })
 
 export default defineEventHandler(async (event) => {
-  const { page, limit } = await getValidatedQuery(event, querySchema.parse)
+  const { page, limit } = await getValidatedQuery(event, v.parser(QuerySchema))
   return fetchUsers({ page, limit })
 })
 ```
@@ -215,6 +215,83 @@ export async function fetchUserById(id: string) {
 ```
 
 Auto-imported in all server routes and middleware.
+
+## Cached Functions
+
+Use `defineCachedFunction` for caching expensive operations in server utils:
+
+```ts
+// server/utils/npm.ts
+export const fetchNpmPackage = defineCachedFunction(
+  async (name: string) => {
+    return await $fetch(`https://registry.npmjs.org/${name}`)
+  },
+  {
+    maxAge: 60 * 5,       // Cache for 5 minutes
+    swr: true,            // Stale-while-revalidate
+    name: 'npm-package',  // Cache namespace
+    getKey: (name: string) => name,
+  }
+)
+```
+
+## Cached Event Handlers
+
+Use `defineCachedEventHandler` for ISR-style caching on API routes:
+
+```ts
+// server/api/registry/[...pkg].get.ts
+export default defineCachedEventHandler(
+  async (event) => {
+    const pkg = getRouterParam(event, 'pkg')
+    return await fetchNpmPackage(pkg)
+  },
+  {
+    maxAge: 3600,  // Cache for 1 hour
+    swr: true,     // Serve stale while revalidating
+    getKey: (event) => {
+      const pkg = getRouterParam(event, 'pkg') ?? ''
+      return `packument:${pkg.trim()}`
+    },
+  }
+)
+```
+
+## Generic Error Handler
+
+Centralize error handling for H3 errors, validation errors, and fallbacks:
+
+```ts
+// server/utils/error-handler.ts
+import { isError, createError } from 'h3'
+import * as v from 'valibot'
+
+export function handleApiError(error: unknown, fallback: { statusCode?: number, message: string }): never {
+  // Re-throw existing H3 errors
+  if (isError(error)) throw error
+
+  // Handle Valibot validation errors
+  if (v.isValiError(error)) {
+    throw createError({ statusCode: 400, message: error.issues[0].message })
+  }
+
+  // Generic fallback
+  throw createError({ statusCode: fallback.statusCode ?? 502, message: fallback.message })
+}
+```
+
+Usage in routes:
+
+```ts
+export default defineEventHandler(async (event) => {
+  try {
+    const data = await fetchExternalApi()
+    return data
+  } catch (error) {
+    handleApiError(error, { statusCode: 502, message: 'Failed to fetch data' })
+  }
+})
+```
 
 ## Request Helpers
 
