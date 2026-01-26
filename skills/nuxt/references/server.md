@@ -221,16 +221,16 @@ Auto-imported in all server routes and middleware.
 Use `defineCachedFunction` for caching expensive operations in server utils:
 
 ```ts
-// server/utils/npm.ts
-export const fetchNpmPackage = defineCachedFunction(
-  async (name: string) => {
-    return await $fetch(`https://registry.npmjs.org/${name}`)
+// server/utils/github.ts
+export const fetchRepo = defineCachedFunction(
+  async (owner: string, repo: string) => {
+    return await $fetch(`https://api.github.com/repos/${owner}/${repo}`)
   },
   {
-    maxAge: 60 * 5,       // Cache for 5 minutes
-    swr: true,            // Stale-while-revalidate
-    name: 'npm-package',  // Cache namespace
-    getKey: (name: string) => name,
+    maxAge: 60 * 5,  // Cache for 5 minutes
+    swr: true,       // Stale-while-revalidate
+    name: 'github-repo',
+    getKey: (owner, repo) => `${owner}/${repo}`,
   }
 )
 ```
@@ -240,19 +240,16 @@ export const fetchNpmPackage = defineCachedFunction(
 Use `defineCachedEventHandler` for ISR-style caching on API routes:
 
 ```ts
-// server/api/registry/[...pkg].get.ts
+// server/api/products/[productId].get.ts
 export default defineCachedEventHandler(
   async (event) => {
-    const pkg = getRouterParam(event, 'pkg')
-    return await fetchNpmPackage(pkg)
+    const productId = getRouterParam(event, 'productId')
+    return await fetchProductById(productId)
   },
   {
     maxAge: 3600,  // Cache for 1 hour
     swr: true,     // Serve stale while revalidating
-    getKey: (event) => {
-      const pkg = getRouterParam(event, 'pkg') ?? ''
-      return `packument:${pkg.trim()}`
-    },
+    getKey: event => getRouterParam(event, 'productId') ?? '',
   }
 )
 ```
