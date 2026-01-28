@@ -74,6 +74,10 @@ Clone the repository and copy skill folders to your agent's skills directory:
 | **motion**           | Motion Vue animations - motion component, composables, scroll, gestures         |
 | **vueuse**           | VueUse composables - state, browser, sensors, network, animation utilities      |
 | **nuxt-seo**         | Nuxt SEO meta-module - robots, sitemap, og-image, schema-org, site config       |
+| **vitest**           | Vitest testing - test API, mocking, coverage, type testing, environments        |
+| **vite**             | Vite build tool - config, plugins, HMR, SSR, library mode, performance          |
+| **pnpm**             | pnpm package manager - workspaces, catalogs, CLI commands, CI/CD                |
+| **tsdown**           | tsdown bundler - TypeScript libraries, DTS generation, Rolldown-powered         |
 
 ## How Skills Work
 
@@ -111,7 +115,11 @@ nuxt-skills/
 │   ├── ts-library/
 │   ├── motion/
 │   ├── vueuse/
-│   └── nuxt-seo/
+│   ├── nuxt-seo/
+│   ├── vitest/
+│   ├── vite/
+│   ├── pnpm/
+│   └── tsdown/
 └── .claude-plugin/
     └── marketplace.json    # Claude Code marketplace
 ```
@@ -139,6 +147,7 @@ The maintenance workflow uses [claude-code-action](https://github.com/anthropics
 ## Acknowledgments
 
 - **vue** skill based on patterns from [@hyf0](https://github.com/hyf0)'s [vue-skills](https://github.com/hyf0/vue-skills)
+- **vitest**, **vite**, **pnpm**, **tsdown** skills from [@antfu](https://github.com/antfu)'s [skills](https://github.com/antfu/skills)
 
 ## License
 

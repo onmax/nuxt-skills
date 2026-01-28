@@ -35,14 +35,17 @@ Progressive reference system for Vue 3 projects. Load only files relevant to cur
 
 ## Quick Reference
 
-| Working on...            | Load file                  |
-| ------------------------ | -------------------------- |
-| `.vue` in `components/`  | references/components.md   |
-| File in `composables/`   | references/composables.md  |
-| File in `utils/`         | references/utils-client.md |
-| `.spec.ts` or `.test.ts` | references/testing.md      |
-| TypeScript patterns      | references/typescript.md   |
-| Vue Router typing        | references/router.md       |
+| Working on...            | Load file                    |
+| ------------------------ | ---------------------------- |
+| `.vue` in `components/`  | references/components.md     |
+| File in `composables/`   | references/composables.md    |
+| File in `utils/`         | references/utils-client.md   |
+| `.spec.ts` or `.test.ts` | references/testing.md        |
+| TypeScript patterns      | references/typescript.md     |
+| Vue Router typing        | references/router.md         |
+| Reactivity (ref, watch)  | references/reactivity.md     |
+| Custom directives        | references/directives.md     |
+| Provide/inject           | references/provide-inject.md |
 
 ## Loading Files
 
@@ -54,6 +57,9 @@ Progressive reference system for Vue 3 projects. Load only files relevant to cur
 - Testing → [references/testing.md](references/testing.md)
 - TypeScript → [references/typescript.md](references/typescript.md)
 - Vue Router → [references/router.md](references/router.md)
+- Reactivity → [references/reactivity.md](references/reactivity.md)
+- Custom directives → [references/directives.md](references/directives.md)
+- Provide/Inject → [references/provide-inject.md](references/provide-inject.md)
 
 **DO NOT load all files at once** - wastes context on irrelevant patterns.
 
@@ -70,6 +76,12 @@ Progressive reference system for Vue 3 projects. Load only files relevant to cur
 **[references/typescript.md](references/typescript.md)** - InjectionKey for provide/inject, vue-tsc strict templates, tsconfig settings, generic components
 
 **[references/router.md](references/router.md)** - Route meta types, typed params with unplugin-vue-router, scroll behavior, navigation guards
+
+**[references/reactivity.md](references/reactivity.md)** - ref, reactive, computed, watch, watchEffect, reactivity fundamentals
+
+**[references/directives.md](references/directives.md)** - Custom directive hooks, v-focus, v-click-outside, v-tooltip patterns
+
+**[references/provide-inject.md](references/provide-inject.md)** - InjectionKey typing, app-level provide, readonly patterns
 
 ## Examples
 
