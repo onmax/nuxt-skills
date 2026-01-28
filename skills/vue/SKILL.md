@@ -46,6 +46,7 @@ Progressive reference system for Vue 3 projects. Load only files relevant to cur
 | Reactivity (ref, watch)  | references/reactivity.md     |
 | Custom directives        | references/directives.md     |
 | Provide/inject           | references/provide-inject.md |
+| Edge cases, vue-tsc      | references/gotchas.md        |
 
 ## Loading Files
 
@@ -60,6 +61,7 @@ Progressive reference system for Vue 3 projects. Load only files relevant to cur
 - Reactivity → [references/reactivity.md](references/reactivity.md)
 - Custom directives → [references/directives.md](references/directives.md)
 - Provide/Inject → [references/provide-inject.md](references/provide-inject.md)
+- Gotchas/edge cases → [references/gotchas.md](references/gotchas.md)
 
 **DO NOT load all files at once** - wastes context on irrelevant patterns.
 
@@ -82,6 +84,8 @@ Progressive reference system for Vue 3 projects. Load only files relevant to cur
 **[references/directives.md](references/directives.md)** - Custom directive hooks, v-focus, v-click-outside, v-tooltip patterns
 
 **[references/provide-inject.md](references/provide-inject.md)** - InjectionKey typing, app-level provide, readonly patterns
+
+**[references/gotchas.md](references/gotchas.md)** - Common gotchas, vue-tsc edge cases, hydration issues, race conditions (from vuejs-ai/skills)
 
 ## Examples
 

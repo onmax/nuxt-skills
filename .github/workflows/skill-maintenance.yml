@@ -40,11 +40,11 @@ jobs:
         include:
           - skill: vue
             upstream: |
-              - GitHub: hyf0/vue-skills (PRIORITY - our rules are based on this repo)
+              - GitHub: vuejs-ai/skills (PRIORITY - vue-best-practices 200+ rules)
               - GitHub: vuejs/core (releases, changelog)
               - Docs: https://vuejs.org/guide/introduction.html
               - VueUse: https://vueuse.org/ (new composables)
-            focus: 'Composition API, reactivity, VueUse composables, defineModel, reactive destructuring, patterns from hyf0/vue-skills'
+            focus: 'Composition API, reactivity, VueUse composables, defineModel, reactive destructuring, gotchas from vuejs-ai/skills'
 
           - skill: nuxt
             upstream: |
@@ -211,6 +211,7 @@ jobs:
                - List skills in /tmp/antfu-skills/skills/
                - Compare with our skills/ directory
                - Identify any NEW skills we don't have (exclude: vue, nuxt, antfu, slidev, turborepo, unocss, vitepress, vue-best-practices, vueuse, web-design-guidelines - we have our own or don't need)
+               - Note: vue-best-practices comes from vuejs-ai/skills which we track separately in check-updates job
 
             2. **Check for updates in synced skills**
                For each of: vitest, vite, pnpm, tsdown
