@@ -6,9 +6,9 @@
     {
       "name": "vue",
       "source": "./skills/vue",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "description": "Vue 3 Composition API, components, composables. Use when editing .vue files, writing reactive code, or encountering ref, computed, watch, defineProps errors.",
-      "keywords": ["vue", "vue3", "composition-api", "components", "composables", "reactivity", "script-setup"],
+      "keywords": ["vue", "vue3", "composition-api", "components", "composables", "reactivity", "script-setup", "vue-tsc", "gotchas", "volar"],
       "category": "frontend"
     },
     {

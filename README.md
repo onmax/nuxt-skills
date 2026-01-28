@@ -146,7 +146,7 @@ The maintenance workflow uses [claude-code-action](https://github.com/anthropics
 
 ## Acknowledgments
 
-- **vue** skill based on patterns from [@hyf0](https://github.com/hyf0)'s [vue-skills](https://github.com/hyf0/vue-skills)
+- **vue** skill gotchas from [vuejs-ai/skills](https://github.com/vuejs-ai/skills) vue-best-practices (200+ rules)
 - **vitest**, **vite**, **pnpm**, **tsdown** skills from [@antfu](https://github.com/antfu)'s [skills](https://github.com/antfu/skills)
 
 ## License
