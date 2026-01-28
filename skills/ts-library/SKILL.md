@@ -29,6 +29,7 @@ Patterns for authoring high-quality TypeScript libraries, extracted from studyin
 | Package exports       | [references/package-exports.md](references/package-exports.md)     |
 | tsconfig options      | [references/typescript-config.md](references/typescript-config.md) |
 | Build configuration   | [references/build-tooling.md](references/build-tooling.md)         |
+| ESLint config         | [references/eslint-config.md](references/eslint-config.md)         |
 | API design patterns   | [references/api-design.md](references/api-design.md)               |
 | Type inference tricks | [references/type-patterns.md](references/type-patterns.md)         |
 | Testing setup         | [references/testing.md](references/testing.md)                     |

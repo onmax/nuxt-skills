@@ -106,6 +106,38 @@
       "description": "Nuxt SEO meta-module with robots, sitemap, og-image, schema-org. Use when configuring SEO, generating sitemaps, creating OG images, or adding structured data.",
       "keywords": ["nuxt", "seo", "robots", "sitemap", "og-image", "schema-org", "meta-tags"],
       "category": "frontend"
+    },
+    {
+      "name": "vitest",
+      "source": "./skills/vitest",
+      "version": "1.0.0",
+      "description": "Vitest testing framework with Vite integration. Use when writing unit tests, mocking modules, testing types, or configuring test coverage.",
+      "keywords": ["vitest", "testing", "unit-tests", "mocking", "coverage", "snapshot", "type-testing"],
+      "category": "tooling"
+    },
+    {
+      "name": "vite",
+      "source": "./skills/vite",
+      "version": "1.0.0",
+      "description": "Vite build tool with HMR and production builds. Use when configuring dev server, plugins, SSR, library mode, or troubleshooting build issues.",
+      "keywords": ["vite", "build", "hmr", "plugins", "ssr", "library-mode", "rolldown"],
+      "category": "tooling"
+    },
+    {
+      "name": "pnpm",
+      "source": "./skills/pnpm",
+      "version": "1.0.0",
+      "description": "pnpm package manager with workspaces and catalogs. Use when managing dependencies, setting up monorepos, or configuring CI/CD with pnpm.",
+      "keywords": ["pnpm", "package-manager", "workspaces", "monorepo", "catalogs", "ci-cd"],
+      "category": "tooling"
+    },
+    {
+      "name": "tsdown",
+      "source": "./skills/tsdown",
+      "version": "1.0.0",
+      "description": "tsdown TypeScript library bundler powered by Rolldown. Use when building libraries, generating DTS files, or configuring package exports.",
+      "keywords": ["tsdown", "bundler", "typescript", "dts", "rolldown", "library"],
+      "category": "tooling"
     }
   ]
 }

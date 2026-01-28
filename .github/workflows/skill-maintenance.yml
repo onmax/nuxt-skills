@@ -20,6 +20,10 @@ on:
           - nuxt-better-auth
           - nuxt-modules
           - reka-ui
+          - vitest
+          - vite
+          - pnpm
+          - tsdown
 
 permissions:
   contents: write
@@ -87,6 +91,34 @@ jobs:
               - Docs: https://reka-ui.com/
             focus: 'Component APIs, props/emits/slots, new components, accessibility'
 
+          - skill: vitest
+            upstream: |
+              - GitHub: antfu/skills (SYNCED - primary source)
+              - GitHub: vitest-dev/vitest (releases, changelog)
+              - Docs: https://vitest.dev/
+            focus: 'Test API, mocking, coverage, type testing, config options'
+
+          - skill: vite
+            upstream: |
+              - GitHub: antfu/skills (SYNCED - primary source)
+              - GitHub: vitejs/vite (releases, changelog)
+              - Docs: https://vite.dev/
+            focus: 'Config, plugins, HMR, build modes, SSR, library mode'
+
+          - skill: pnpm
+            upstream: |
+              - GitHub: antfu/skills (SYNCED - primary source)
+              - GitHub: pnpm/pnpm (releases, changelog)
+              - Docs: https://pnpm.io/
+            focus: 'Workspaces, catalogs, CLI commands, CI/CD patterns'
+
+          - skill: tsdown
+            upstream: |
+              - GitHub: antfu/skills (SYNCED - primary source)
+              - GitHub: rolldown/tsdown (releases, changelog)
+              - Docs: https://tsdown.dev/
+            focus: 'Config, DTS generation, output formats, plugins'
+
     steps:
       - name: Skip if not matching manual input
         if: github.event.inputs.skill != '' && github.event.inputs.skill != 'all' && github.event.inputs.skill != matrix.skill
@@ -149,3 +181,58 @@ jobs:
 
           claude_args: |
             --allowedTools "Read,Write,Edit,Glob,Grep,WebFetch,Bash(git:*),Bash(gh:*),Bash(curl:*)"
+
+  # Track antfu/skills for new skills or major rewrites
+  sync-antfu-skills:
+    runs-on: ubuntu-latest
+    if: github.event.inputs.skill == '' || github.event.inputs.skill == 'all'
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Clone antfu/skills
+        run: git clone --depth 1 https://github.com/antfu/skills.git /tmp/antfu-skills
+
+      - uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          model: claude-sonnet-4-20250514
+          timeout_minutes: 20
+          prompt: |
+            ## Task
+            Sync skills from antfu/skills upstream repository.
+
+            **Our skills from antfu/skills:** vitest, vite, pnpm, tsdown
+
+            ## Steps
+
+            1. **Check for new skills in antfu/skills**
+               - List skills in /tmp/antfu-skills/skills/
+               - Compare with our skills/ directory
+               - Identify any NEW skills we don't have (exclude: vue, nuxt, antfu, slidev, turborepo, unocss, vitepress, vue-best-practices, vueuse, web-design-guidelines - we have our own or don't need)
+
+            2. **Check for updates in synced skills**
+               For each of: vitest, vite, pnpm, tsdown
+               - Compare /tmp/antfu-skills/skills/{skill}/ with skills/{skill}/
+               - Check if SKILL.md structure changed significantly
+               - Check if new reference files were added
+               - Check if existing references have major updates
+
+            3. **If changes found, create PR**
+               - Branch: sync-antfu-skills-YYYYMMDD
+               - Copy new/updated files (skip GENERATION.md files)
+               - Update marketplace.json if new skills added
+               - Update README.md if new skills added
+               - Commit: "chore: sync with antfu/skills upstream"
+               - Create PR with detailed changelog
+
+            4. **If no changes needed**
+               - Output "antfu/skills is in sync"
+
+            ## Important
+            - Do NOT copy GENERATION.md files
+            - Keep our SKILL.md descriptions if they're better suited for our audience
+            - Update the upstream tracking comment in synced SKILL.md files
+          claude_args: |
+            --allowedTools "Read,Write,Edit,Glob,Grep,Bash(git:*),Bash(gh:*),Bash(ls:*),Bash(diff:*),Bash(cp:*)"
