@@ -1,30 +1,62 @@
 # Motion Component API
 
-## Component Variants
+## Import Patterns
 
-Motion wraps any HTML or SVG element:
+### motion (lowercase) - Standard pattern
+
+The standard way to use motion-v with dot notation:
 
 ```vue
-<script setup lang="ts">
+<script setup>
+import { motion } from 'motion-v'
+</script>
+
+<template>
+  <motion.div />
+</template>
+```
+
+### Motion (capital) - Primitive pattern
+
+Alternative pattern using `as` prop. Useful when element type needs to be dynamic at runtime:
+
+```vue
+<script setup>
 import { Motion } from 'motion-v'
 </script>
 
 <template>
+  <Motion as="div" />
+</template>
+```
+
+**Use `motion` (lowercase) throughout this guide** - it's preloaded with all features.
+
+## Component Variants
+
+The `motion` component wraps any HTML or SVG element:
+
+```vue
+<script setup lang="ts">
+import { motion } from 'motion-v'
+</script>
+
+<template>
   <!-- HTML elements -->
-  <Motion.div />
-  <Motion.span />
-  <Motion.button />
-  <Motion.a />
-  <Motion.img />
-  <Motion.ul />
-  <Motion.li />
+  <motion.div />
+  <motion.span />
+  <motion.button />
+  <motion.a />
+  <motion.img />
+  <motion.ul />
+  <motion.li />
 
   <!-- SVG elements -->
-  <Motion.svg />
-  <Motion.path />
-  <Motion.circle />
-  <Motion.rect />
-  <Motion.g />
+  <motion.svg />
+  <motion.path />
+  <motion.circle />
+  <motion.rect />
+  <motion.g />
 </template>
 ```
 
@@ -35,7 +67,7 @@ import { Motion } from 'motion-v'
 Starting state before component mounts:
 
 ```vue
-<Motion.div :initial="{ opacity: 0, scale: 0.8, x: -100 }">
+<motion.div :initial="{ opacity: 0, scale: 0.8, x: -100 }">
 ```
 
 Set `initial: false` to disable enter animation and start at `animate` values.
@@ -49,7 +81,7 @@ Target animation state. Changes trigger animation:
 const isOpen = ref(false)
 </script>
 
-<Motion.div :animate="{ height: isOpen ? 'auto' : 0 }">
+<motion.div :animate="{ height: isOpen ? 'auto' : 0 }">
 ```
 
 ### exit
@@ -58,12 +90,12 @@ Animation when component unmounts. Requires `AnimatePresence`:
 
 ```vue
 <script setup>
-import { Motion, AnimatePresence } from 'motion-v'
+import { motion, AnimatePresence } from 'motion-v'
 </script>
 
 <template>
   <AnimatePresence>
-    <Motion.div
+    <motion.div
       v-if="show"
       :initial="{ opacity: 0 }"
       :animate="{ opacity: 1 }"
@@ -78,7 +110,7 @@ import { Motion, AnimatePresence } from 'motion-v'
 Reactive style object. Use motion values for performant updates:
 
 ```vue
-<Motion.div :style="{ x: motionValue, backgroundColor: '#fff' }">
+<motion.div :style="{ x: motionValue, backgroundColor: '#fff' }">
 ```
 
 ## Gesture Props
@@ -88,7 +120,7 @@ Reactive style object. Use motion values for performant updates:
 Animation while pointer hovers:
 
 ```vue
-<Motion.div
+<motion.div
   :whileHover="{ scale: 1.1, backgroundColor: '#f00' }"
   :transition="{ type: 'spring', stiffness: 300 }"
 />
@@ -99,7 +131,7 @@ Animation while pointer hovers:
 Animation while element is pressed:
 
 ```vue
-<Motion.button :whilePress="{ scale: 0.95 }">
+<motion.button :whilePress="{ scale: 0.95 }">
 ```
 
 ### whileFocus
@@ -107,7 +139,7 @@ Animation while element is pressed:
 Animation while element has focus:
 
 ```vue
-<Motion.input :whileFocus="{ borderColor: '#0066ff', scale: 1.02 }">
+<motion.input :whileFocus="{ borderColor: '#0066ff', scale: 1.02 }">
 ```
 
 ### whileDrag
@@ -115,7 +147,7 @@ Animation while element has focus:
 Animation while element is being dragged:
 
 ```vue
-<Motion.div
+<motion.div
   drag
   :whileDrag="{ scale: 1.1, cursor: 'grabbing' }"
   :dragConstraints="{ top: 0, left: 0, right: 300, bottom: 300 }"
@@ -125,7 +157,7 @@ Animation while element is being dragged:
 ### Drag Props
 
 ```vue
-<Motion.div
+<motion.div
   drag              <!-- Enable drag on both axes -->
   drag="x"          <!-- Constrain to x-axis -->
   drag="y"          <!-- Constrain to y-axis -->
@@ -143,7 +175,7 @@ Animation while element is being dragged:
 Animation when element enters viewport:
 
 ```vue
-<Motion.div
+<motion.div
   :initial="{ opacity: 0, y: 50 }"
   :whileInView="{ opacity: 1, y: 0 }"
   :viewport="{ once: true, amount: 0.5 }"
@@ -168,17 +200,17 @@ interface ViewportOptions {
 Automatically animate layout changes:
 
 ```vue
-<Motion.div layout>
+<motion.div layout>
   <!-- Position/size changes animate smoothly -->
-</Motion.div>
+</motion.div>
 ```
 
 Layout modes:
 
 ```vue
-<Motion.div layout />           <!-- Animate position and size -->
-<Motion.div layout="position" /> <!-- Position only -->
-<Motion.div layout="size" />     <!-- Size only -->
+<motion.div layout />           <!-- Animate position and size -->
+<motion.div layout="position" /> <!-- Position only -->
+<motion.div layout="size" />     <!-- Size only -->
 ```
 
 ### layoutId - Shared Element Transitions
@@ -192,7 +224,7 @@ const selected = ref<string | null>(null)
 
 <template>
   <div class="grid">
-    <Motion.div
+    <motion.div
       v-for="item in items"
       :key="item.id"
       :layoutId="item.id"
@@ -201,7 +233,7 @@ const selected = ref<string | null>(null)
   </div>
 
   <AnimatePresence>
-    <Motion.div
+    <motion.div
       v-if="selected"
       :layoutId="selected"
       class="expanded"
@@ -216,13 +248,13 @@ Sync layout animations across components:
 
 ```vue
 <script setup>
-import { Motion, LayoutGroup } from 'motion-v'
+import { motion, LayoutGroup } from 'motion-v'
 </script>
 
 <template>
   <LayoutGroup>
-    <Motion.div layout />
-    <Motion.div layout />
+    <motion.div layout />
+    <motion.div layout />
   </LayoutGroup>
 </template>
 ```
@@ -234,7 +266,7 @@ import { Motion, LayoutGroup } from 'motion-v'
 Configure animation behavior:
 
 ```vue
-<Motion.div
+<motion.div
   :animate="{ x: 100 }"
   :transition="{
     type: 'spring',
@@ -290,7 +322,7 @@ Configure animation behavior:
 ### Per-Property Transitions
 
 ```vue
-<Motion.div
+<motion.div
   :animate="{ x: 100, opacity: 1 }"
   :transition="{
     x: { type: 'spring', stiffness: 100 },
@@ -305,12 +337,12 @@ Animate components as they mount/unmount:
 
 ```vue
 <script setup>
-import { Motion, AnimatePresence } from 'motion-v'
+import { motion, AnimatePresence } from 'motion-v'
 </script>
 
 <template>
   <AnimatePresence mode="wait">
-    <Motion.div
+    <motion.div
       :key="currentPage"
       :initial="{ opacity: 0, x: 100 }"
       :animate="{ opacity: 1, x: 0 }"
@@ -331,7 +363,7 @@ import { Motion, AnimatePresence } from 'motion-v'
 ## Events
 
 ```vue
-<Motion.div
+<motion.div
   @animationStart="onStart"
   @animationComplete="onComplete"
   @update="onUpdate"              <!-- Called every frame -->

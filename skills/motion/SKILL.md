@@ -71,43 +71,43 @@ Render any HTML/SVG element with animation capabilities:
 
 ```vue
 <script setup lang="ts">
-import { Motion } from 'motion-v'
+import { motion } from 'motion-v'
 </script>
 
 <template>
-  <Motion.div
+  <motion.div
     :initial="{ opacity: 0, y: 20 }"
     :animate="{ opacity: 1, y: 0 }"
     :exit="{ opacity: 0, y: -20 }"
     :transition="{ duration: 0.3 }"
   >
     Animated content
-  </Motion.div>
+  </motion.div>
 </template>
 ```
 
 ### Gesture Animations
 
 ```vue
-<Motion.button
+<motion.button
   :whileHover="{ scale: 1.05 }"
   :whilePress="{ scale: 0.95 }"
   :transition="{ type: 'spring', stiffness: 400 }"
 >
   Click me
-</Motion.button>
+</motion.button>
 ```
 
 ### Scroll Animations
 
 ```vue
-<Motion.div
+<motion.div
   :initial="{ opacity: 0 }"
   :whileInView="{ opacity: 1 }"
   :viewport="{ once: true, margin: '-100px' }"
 >
   Appears on scroll
-</Motion.div>
+</motion.div>
 ```
 
 ## Available Guidance
