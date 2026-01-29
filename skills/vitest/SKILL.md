@@ -55,13 +55,17 @@ describe('math', () => {
 | expect, snapshots, coverage, filtering   | [utilities.md](references/utilities.md) |
 | Environments, type testing, browser mode | [advanced.md](references/advanced.md)   |
 
-## Load Based on Task
+## Loading Files
 
-**Setting up tests?** → Load `config.md`
-**Writing test cases?** → Load `test-api.md`
-**Mocking dependencies?** → Load `mocking.md`
-**Assertions/snapshots?** → Load `utilities.md`
-**DOM/browser/types?** → Load `advanced.md`
+**Consider loading these reference files based on your task:**
+
+- [ ] [references/config.md](references/config.md) - if setting up vitest.config.ts, CLI, or workspace projects
+- [ ] [references/test-api.md](references/test-api.md) - if writing test/describe blocks, using hooks, or test fixtures
+- [ ] [references/mocking.md](references/mocking.md) - if mocking modules, timers, dates, or using spies
+- [ ] [references/utilities.md](references/utilities.md) - if writing assertions, snapshots, or configuring coverage
+- [ ] [references/advanced.md](references/advanced.md) - if configuring test environments, type testing, or browser mode
+
+**DO NOT load all files at once.** Load only what's relevant to your current task.
 
 ## Cross-Skill References
 

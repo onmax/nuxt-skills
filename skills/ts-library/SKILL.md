@@ -36,6 +36,23 @@ Patterns for authoring high-quality TypeScript libraries, extracted from studyin
 | Release workflow      | [references/release.md](references/release.md)                     |
 | CI/CD setup           | [references/ci-workflows.md](references/ci-workflows.md)           |
 
+## Loading Files
+
+**Consider loading these reference files based on your task:**
+
+- [ ] [references/project-setup.md](references/project-setup.md) - if starting a new TypeScript library project
+- [ ] [references/package-exports.md](references/package-exports.md) - if configuring package.json exports or dual CJS/ESM
+- [ ] [references/typescript-config.md](references/typescript-config.md) - if setting up or modifying tsconfig.json
+- [ ] [references/build-tooling.md](references/build-tooling.md) - if configuring tsdown, unbuild, or build scripts
+- [ ] [references/eslint-config.md](references/eslint-config.md) - if setting up ESLint for library development
+- [ ] [references/api-design.md](references/api-design.md) - if designing public APIs, builder patterns, or plugin systems
+- [ ] [references/type-patterns.md](references/type-patterns.md) - if working with advanced TypeScript types or type inference
+- [ ] [references/testing.md](references/testing.md) - if setting up vitest or writing tests for library code
+- [ ] [references/release.md](references/release.md) - if configuring release workflow or versioning
+- [ ] [references/ci-workflows.md](references/ci-workflows.md) - if setting up GitHub Actions or CI/CD pipelines
+
+**DO NOT load all files at once.** Load only what's relevant to your current task.
+
 ## Key Principles
 
 - ESM-first: `"type": "module"` with `.mjs` outputs

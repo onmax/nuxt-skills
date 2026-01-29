@@ -36,20 +36,20 @@ Authentication module for Nuxt 4+ built on [Better Auth](https://www.better-auth
 | **[references/client-only.md](references/client-only.md)**           | External auth backend, clientOnly mode, CORS                           |
 | **[references/types.md](references/types.md)**                       | AuthUser, AuthSession, type augmentation                               |
 
-## Usage Pattern
+## Loading Files
 
-**Load based on context:**
+**Consider loading these reference files based on your task:**
 
-- Installing module? → [references/installation.md](references/installation.md)
-- Login/signup forms? → [references/client-auth.md](references/client-auth.md)
-- API route protection? → [references/server-auth.md](references/server-auth.md)
-- Route rules/page meta? → [references/route-protection.md](references/route-protection.md)
-- Using plugins? → [references/plugins.md](references/plugins.md)
-- Database setup? → [references/database.md](references/database.md)
-- External auth backend? → [references/client-only.md](references/client-only.md)
-- TypeScript types? → [references/types.md](references/types.md)
+- [ ] [references/installation.md](references/installation.md) - if installing or configuring the module
+- [ ] [references/client-auth.md](references/client-auth.md) - if building login/signup/signout flows
+- [ ] [references/server-auth.md](references/server-auth.md) - if protecting API routes or accessing user session server-side
+- [ ] [references/route-protection.md](references/route-protection.md) - if using routeRules or definePageMeta for auth
+- [ ] [references/plugins.md](references/plugins.md) - if integrating Better Auth plugins (admin, passkey, 2FA)
+- [ ] [references/database.md](references/database.md) - if setting up database with NuxtHub or Drizzle
+- [ ] [references/client-only.md](references/client-only.md) - if using external auth backend with clientOnly mode
+- [ ] [references/types.md](references/types.md) - if working with AuthUser, AuthSession, or type augmentation
 
-**DO NOT read all files at once.** Load based on context.
+**DO NOT load all files at once.** Load only what's relevant to your current task.
 
 ## Key Concepts
 

@@ -43,10 +43,14 @@ For component and syntax details, use these skills:
 | **[references/writing-style.md](references/writing-style.md)**       | Voice, tone, sentence structure                 |
 | **[references/content-patterns.md](references/content-patterns.md)** | Blog frontmatter, structure, component patterns |
 
-**Load based on context:**
+## Loading Files
 
-- Writing prose → [references/writing-style.md](references/writing-style.md)
-- Blog structure and patterns → [references/content-patterns.md](references/content-patterns.md)
+**Consider loading these reference files based on your task:**
+
+- [ ] [references/writing-style.md](references/writing-style.md) - if writing prose, improving voice/tone, or structuring sentences
+- [ ] [references/content-patterns.md](references/content-patterns.md) - if creating blog posts, setting up frontmatter, or using MDC components
+
+**DO NOT load all files at once.** Load only what's relevant to your current task.
 
 ## Quick Reference
 
