@@ -30,16 +30,18 @@ These React/CSS libraries provide patterns easily ported to Motion Vue:
 ```vue
 <!-- Parallax -->
 <script setup>
+import { motion, useScroll, useTransform } from 'motion-v'
+
 const { scrollYProgress } = useScroll()
 const y = useTransform(scrollYProgress, [0, 1], [0, -200])
 </script>
 
-<Motion.div :style="{ y }">Parallax content</Motion.div>
+<motion.div :style="{ y }">Parallax content</motion.div>
 ```
 
 ```vue
 <!-- Progress bar -->
-<Motion.div
+<motion.div
   class="fixed top-0 left-0 right-0 h-1 bg-blue-500 origin-left"
   :style="{ scaleX: scrollYProgress }"
 />
@@ -49,7 +51,7 @@ const y = useTransform(scrollYProgress, [0, 1], [0, -200])
 
 ```vue
 <!-- Expanding card -->
-<Motion.div
+<motion.div
   :layoutId="`card-${id}`"
   @click="expanded = !expanded"
   :class="expanded ? 'w-full h-64' : 'w-32 h-32'"
@@ -58,7 +60,7 @@ const y = useTransform(scrollYProgress, [0, 1], [0, -200])
 
 ```vue
 <!-- Reordering list -->
-<Motion.li
+<motion.li
   v-for="item in items"
   :key="item.id"
   layout
@@ -73,6 +75,8 @@ const y = useTransform(scrollYProgress, [0, 1], [0, -200])
 ```vue
 <!-- Magnetic button -->
 <script setup>
+import { motion, useMotionValue } from 'motion-v'
+
 const x = useMotionValue(0)
 const y = useMotionValue(0)
 
@@ -88,7 +92,7 @@ function reset() {
 }
 </script>
 
-<Motion.button
+<motion.button
   :style="{ x, y }"
   @mousemove="handleMouse"
   @mouseleave="reset"
@@ -98,7 +102,7 @@ function reset() {
 
 ```vue
 <!-- Swipe to dismiss -->
-<Motion.div
+<motion.div
   drag="x"
   :dragConstraints="{ left: 0, right: 0 }"
   :onDragEnd="(_, info) => info.offset.x > 100 && dismiss()"
@@ -111,18 +115,20 @@ function reset() {
 ```vue
 <!-- Staggered text reveal -->
 <script setup>
+import { motion } from 'motion-v'
+
 const words = text.split(' ')
 </script>
 
 <template>
   <span v-for="(word, i) in words" :key="i">
-    <Motion.span
+    <motion.span
       :initial="{ opacity: 0, y: 20 }"
       :animate="{ opacity: 1, y: 0 }"
       :transition="{ delay: i * 0.1 }"
     >
       {{ word }}
-    </Motion.span>
+    </motion.span>
     {{ ' ' }}
   </span>
 </template>
@@ -130,7 +136,7 @@ const words = text.split(' ')
 
 ```vue
 <!-- Character animation -->
-<Motion.span
+<motion.span
   v-for="(char, i) in text.split('')"
   :key="i"
   :initial="{ opacity: 0 }"
@@ -138,14 +144,14 @@ const words = text.split(' ')
   :transition="{ delay: i * 0.03 }"
 >
   {{ char }}
-</Motion.span>
+</motion.span>
 ```
 
 ### SVG Animations
 
 ```vue
 <!-- Path drawing -->
-<Motion.path
+<motion.path
   d="M0 0 L100 100"
   :initial="{ pathLength: 0 }"
   :animate="{ pathLength: 1 }"
@@ -155,7 +161,7 @@ const words = text.split(' ')
 
 ```vue
 <!-- Morphing shapes -->
-<Motion.path
+<motion.path
   :animate="{ d: isCircle ? circlePath : squarePath }"
   :transition="{ duration: 0.5 }"
 />
@@ -166,6 +172,8 @@ const words = text.split(' ')
 ```vue
 <!-- Gradient follow cursor -->
 <script setup>
+import { motion, useMotionValue, useMotionTemplate } from 'motion-v'
+
 const x = useMotionValue(0)
 const y = useMotionValue(0)
 const background = useMotionTemplate`radial-gradient(circle at ${x}px ${y}px, #3b82f6, transparent 80%)`
@@ -176,7 +184,7 @@ function handleMouse(e: MouseEvent) {
 }
 </script>
 
-<Motion.div
+<motion.div
   :style="{ background }"
   @mousemove="handleMouse"
   class="fixed inset-0"
@@ -188,7 +196,7 @@ function handleMouse(e: MouseEvent) {
 ```vue
 <!-- Slide transition -->
 <AnimatePresence mode="wait">
-  <Motion.div
+  <motion.div
     :key="route.path"
     :initial="{ opacity: 0, x: 100 }"
     :animate="{ opacity: 1, x: 0 }"

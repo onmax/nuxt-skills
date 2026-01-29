@@ -6,7 +6,7 @@ Create a motion value for performant animations that bypass Vue's reactivity:
 
 ```vue
 <script setup>
-import { Motion, useMotionValue } from 'motion-v'
+import { motion, useMotionValue } from 'motion-v'
 
 const x = useMotionValue(0)
 
@@ -21,7 +21,7 @@ const unsubscribe = x.on('change', (latest) => {
 </script>
 
 <template>
-  <Motion.div :style="{ x }" />
+  <motion.div :style="{ x }" />
 </template>
 ```
 
@@ -31,7 +31,7 @@ Create spring-animated motion value:
 
 ```vue
 <script setup>
-import { useMotionValue, useSpring } from 'motion-v'
+import { motion, useMotionValue, useSpring } from 'motion-v'
 
 const x = useMotionValue(0)
 const springX = useSpring(x, {
@@ -45,7 +45,7 @@ x.set(100)
 </script>
 
 <template>
-  <Motion.div :style="{ x: springX }" />
+  <motion.div :style="{ x: springX }" />
 </template>
 ```
 
@@ -55,7 +55,7 @@ Derive motion values from other motion values:
 
 ```vue
 <script setup>
-import { useMotionValue, useTransform } from 'motion-v'
+import { motion, useMotionValue, useTransform } from 'motion-v'
 
 const x = useMotionValue(0)
 
@@ -75,7 +75,7 @@ const combined = useTransform([x, opacity], ([x, opacity]) => {
 </script>
 
 <template>
-  <Motion.div :style="{ x, opacity, scale, rotate }" />
+  <motion.div :style="{ x, opacity, scale, rotate }" />
 </template>
 ```
 
@@ -113,7 +113,7 @@ Track scroll progress of window or element:
 
 ```vue
 <script setup>
-import { useScroll, useTransform, Motion } from 'motion-v'
+import { useScroll, useTransform, motion } from 'motion-v'
 
 // Window scroll
 const { scrollX, scrollY, scrollXProgress, scrollYProgress } = useScroll()
@@ -137,7 +137,7 @@ const scale = useTransform(scrollYProgress, [0, 1], [0.8, 1])
 </script>
 
 <template>
-  <Motion.div :style="{ opacity, scale }" />
+  <motion.div :style="{ opacity, scale }" />
 </template>
 ```
 
@@ -197,7 +197,7 @@ useAnimationFrame((time, delta) => {
 </script>
 
 <template>
-  <Motion.div :style="{ rotate: rotation }">Spinning</Motion.div>
+  <motion.div :style="{ rotate: rotation }">Spinning</motion.div>
 </template>
 ```
 
@@ -285,7 +285,7 @@ const prefersReduced = useReducedMotion()
 </script>
 
 <template>
-  <Motion.div
+  <motion.div
     :animate="{ x: 100 }"
     :transition="prefersReduced ? { duration: 0 } : { type: 'spring' }"
   />
