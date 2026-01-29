@@ -26,11 +26,15 @@ npm run test       # Run tests
 - **[references/testing-and-publishing.md](references/testing-and-publishing.md)** - E2E testing, best practices, releasing, publishing
 - **[references/ci-workflows.md](references/ci-workflows.md)** - Copy-paste CI/CD workflow templates
 
-**Load based on context:**
+## Loading Files
 
-- Building module features? → [references/development.md](references/development.md)
-- Testing or publishing? → [references/testing-and-publishing.md](references/testing-and-publishing.md)
-- CI workflow templates? → [references/ci-workflows.md](references/ci-workflows.md)
+**Consider loading these reference files based on your task:**
+
+- [ ] [references/development.md](references/development.md) - if building module features, using defineNuxtModule, or working with Kit utilities
+- [ ] [references/testing-and-publishing.md](references/testing-and-publishing.md) - if writing E2E tests, publishing to npm, or following best practices
+- [ ] [references/ci-workflows.md](references/ci-workflows.md) - if setting up CI/CD workflows for your module
+
+**DO NOT load all files at once.** Load only what's relevant to your current task.
 
 ## Module Types
 

@@ -28,13 +28,15 @@ Unstyled, accessible Vue 3 component primitives. WAI-ARIA compliant. Previously 
 
 **New guides** (see [reka-ui.com](https://reka-ui.com)): Controlled State, Inject Context, Virtualization, Migration
 
-## Usage Pattern
+## Loading Files
 
-**Load based on context:**
+**Consider loading these reference files based on your task:**
 
-- Component index → [references/components.md](references/components.md)
-- Specific component → [components/dialog.md](components/dialog.md), [components/select.md](components/select.md), etc.
-- For styled Nuxt components built on Reka UI → use **nuxt-ui** skill
+- [ ] [references/components.md](references/components.md) - if browsing component index by category or searching for specific components
+
+**DO NOT load all files at once.** Load only what's relevant to your current task.
+
+**For styled Nuxt components built on Reka UI:** use **nuxt-ui** skill
 
 ## Key Concepts
 

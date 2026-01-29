@@ -36,25 +36,19 @@ Read specific files based on current work:
 **For creating modules:** use `nuxt-modules` skill
 **For project scaffolding/CI:** use `personal-ts-setup` skill
 
-## Usage Pattern
+## Loading Files
 
-**Progressive loading - only read what you need:**
+**Consider loading these reference files based on your task:**
 
-- Creating API endpoint? → [references/server.md](references/server.md)
-- Setting up pages/routing? → [references/routing.md](references/routing.md)
-- Using composables/data fetching? → [references/nuxt-composables.md](references/nuxt-composables.md)
-- Adding middleware/plugins? → [references/middleware-plugins.md](references/middleware-plugins.md)
-- Configuring Nuxt? → [references/nuxt-config.md](references/nuxt-config.md)
-- Setting up CI/ESLint? → [references/project-setup.md](references/project-setup.md)
+- [ ] [references/server.md](references/server.md) - if creating API endpoints or server middleware
+- [ ] [references/routing.md](references/routing.md) - if setting up pages, layouts, or route groups
+- [ ] [references/nuxt-composables.md](references/nuxt-composables.md) - if using Nuxt composables (useFetch, useRequestURL, etc.)
+- [ ] [references/middleware-plugins.md](references/middleware-plugins.md) - if working with middleware or plugins
+- [ ] [references/nuxt-components.md](references/nuxt-components.md) - if using Nuxt components (NuxtLink, NuxtImg, etc.)
+- [ ] [references/nuxt-config.md](references/nuxt-config.md) - if editing nuxt.config.ts
+- [ ] [references/project-setup.md](references/project-setup.md) - if setting up CI/ESLint/build tools
 
-**DO NOT read all files at once.** Load based on context:
-
-- Working in `server/` → read server.md
-- Working in `pages/` or `layouts/` → read routing.md
-- Using `useFetch`, `useRequestURL`, navigation → read nuxt-composables.md
-- Using `<a>`, `<img>`, `<time>` elements → read nuxt-components.md
-- Working in `middleware/` or `plugins/` → read middleware-plugins.md
-- Editing `nuxt.config.ts` → read nuxt-config.md
+**DO NOT load all files at once.** Load only what's relevant to your current task.
 
 ## Nuxt 4 vs Older Versions
 

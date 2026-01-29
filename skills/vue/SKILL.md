@@ -50,20 +50,20 @@ Progressive reference system for Vue 3 projects. Load only files relevant to cur
 
 ## Loading Files
 
-**Load one file at a time based on file context:**
+**Consider loading these reference files based on your task:**
 
-- Component work → [references/components.md](references/components.md)
-- Composable work → [references/composables.md](references/composables.md)
-- Utils work → [references/utils-client.md](references/utils-client.md)
-- Testing → [references/testing.md](references/testing.md)
-- TypeScript → [references/typescript.md](references/typescript.md)
-- Vue Router → [references/router.md](references/router.md)
-- Reactivity → [references/reactivity.md](references/reactivity.md)
-- Custom directives → [references/directives.md](references/directives.md)
-- Provide/Inject → [references/provide-inject.md](references/provide-inject.md)
-- Gotchas/edge cases → [references/gotchas.md](references/gotchas.md)
+- [ ] [references/components.md](references/components.md) - if working in `components/` or writing `.vue` files
+- [ ] [references/composables.md](references/composables.md) - if creating composables (`use*` functions)
+- [ ] [references/utils-client.md](references/utils-client.md) - if working in `utils/` or writing client utilities
+- [ ] [references/testing.md](references/testing.md) - if writing `.spec.ts` or `.test.ts` files
+- [ ] [references/typescript.md](references/typescript.md) - if working with Vue TypeScript patterns or generics
+- [ ] [references/router.md](references/router.md) - if working with Vue Router or route typing
+- [ ] [references/reactivity.md](references/reactivity.md) - if using ref, reactive, computed, watch, or watchEffect
+- [ ] [references/directives.md](references/directives.md) - if creating or using custom directives
+- [ ] [references/provide-inject.md](references/provide-inject.md) - if using provide/inject patterns
+- [ ] [references/gotchas.md](references/gotchas.md) - if debugging edge cases or hydration issues
 
-**DO NOT load all files at once** - wastes context on irrelevant patterns.
+**DO NOT load all files at once.** Load only what's relevant to your current task.
 
 ## Available Guidance
 

@@ -51,13 +51,17 @@ vite preview  # Preview build
 | Production, library mode, SSR, chunking | [build.md](references/build.md)       |
 | JS API, plugin authoring, module graph  | [advanced.md](references/advanced.md) |
 
-## Load Based on Task
+## Loading Files
 
-**Setting up a project?** → Load `config.md`
-**Using CSS/assets/env vars?** → Load `features.md`
-**Dev server issues?** → Load `dev.md`
-**Building for production?** → Load `build.md`
-**Writing plugins?** → Load `advanced.md`
+**Consider loading these reference files based on your task:**
+
+- [ ] [references/config.md](references/config.md) - if setting up vite.config.ts, configuring plugins, or using CLI
+- [ ] [references/features.md](references/features.md) - if using ESM, CSS, assets, env vars, or glob imports
+- [ ] [references/dev.md](references/dev.md) - if configuring dev server, HMR, workers, or optimizing performance
+- [ ] [references/build.md](references/build.md) - if building for production, library mode, SSR, or chunking
+- [ ] [references/advanced.md](references/advanced.md) - if writing plugins, using JS API, or working with module graph
+
+**DO NOT load all files at once.** Load only what's relevant to your current task.
 
 ## Cross-Skill References
 

@@ -36,23 +36,17 @@ Read specific files based on current work:
 - **[references/config.md](references/config.md)** - Database setup, markdown plugins, renderer options
 - **[references/studio.md](references/studio.md)** - NuxtStudio integration, preview mode, live editing
 
-## Usage Pattern
+## Loading Files
 
-**Progressive loading - only read what you need:**
+**Consider loading these reference files based on your task:**
 
-- Setting up collections? → [references/collections.md](references/collections.md)
-- Querying content? → [references/querying.md](references/querying.md)
-- Rendering markdown/MDC? → [references/rendering.md](references/rendering.md)
-- Configuring database/markdown? → [references/config.md](references/config.md)
-- Using NuxtStudio? → [references/studio.md](references/studio.md)
+- [ ] [references/collections.md](references/collections.md) - if setting up collections, schemas, or content.config.ts
+- [ ] [references/querying.md](references/querying.md) - if using queryCollection, navigation, or search
+- [ ] [references/rendering.md](references/rendering.md) - if rendering markdown/MDC or working with ContentRenderer
+- [ ] [references/config.md](references/config.md) - if configuring database, markdown plugins, or renderer options
+- [ ] [references/studio.md](references/studio.md) - if integrating NuxtStudio or preview mode
 
-**DO NOT read all files at once.** Load based on context:
-
-- Editing `content.config.ts` → read collections.md
-- Using `queryCollection()` → read querying.md
-- Working with `<ContentRenderer>` or MDC → read rendering.md
-- Configuring database or markdown → read config.md
-- Setting up preview/studio → read studio.md
+**DO NOT load all files at once.** Load only what's relevant to your current task.
 
 ## Key Concepts
 

@@ -11,6 +11,15 @@ Full-stack Nuxt framework with database, KV, blob, and cache. Multi-cloud suppor
 **For Nuxt server patterns:** use `nuxt` skill (server.md)
 **For content with database:** use `nuxt-content` skill
 
+## Loading Files
+
+**Consider loading these reference files based on your task:**
+
+- [ ] [references/wrangler-templates.md](references/wrangler-templates.md) - if manually configuring wrangler.jsonc for Cloudflare deployment
+- [ ] [references/providers.md](references/providers.md) - if deploying to Vercel, Netlify, Deno, AWS, or configuring external database/storage providers
+
+**DO NOT load all files at once.** Load only what's relevant to your current task.
+
 ## Installation
 
 ```bash

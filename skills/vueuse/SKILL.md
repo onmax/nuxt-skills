@@ -61,11 +61,11 @@ Load composable files based on what you need:
 
 ## Loading Files
 
-**Start with [references/composables.md](references/composables.md)** to find the right composable.
+**Consider loading these reference files based on your task:**
 
-Then load the specific composable file for detailed usage: `composables/use-mouse.md`, `composables/use-local-storage.md`, etc.
+- [ ] [references/composables.md](references/composables.md) - if searching for VueUse composables by category or functionality
 
-**DO NOT load all files at once** - wastes context on irrelevant patterns.
+**DO NOT load all files at once.** Load only what's relevant to your current task.
 
 ## Common Patterns
 

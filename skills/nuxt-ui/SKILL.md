@@ -34,19 +34,18 @@ Component library for Vue 3 and Nuxt 4+ built on Reka UI (headless) + Tailwind C
 | **[references/overlays.md](references/overlays.md)**         | Toast, Modal, Slideover, Drawer, CommandPalette                                  |
 | **[references/composables.md](references/composables.md)**   | useToast, useOverlay, defineShortcuts, useScrollspy                              |
 
-## Usage Pattern
+## Loading Files
 
-**Load based on context:**
+**Consider loading these reference files based on your task:**
 
-- Installing Nuxt UI? → [references/installation.md](references/installation.md)
-- Customizing theme? → [references/theming.md](references/theming.md)
-- Component index → [references/components.md](references/components.md)
-- Specific component → [components/button.md](components/button.md), [components/modal.md](components/modal.md), etc.
-- Building forms? → [references/forms.md](references/forms.md)
-- Using overlays? → [references/overlays.md](references/overlays.md)
-- Using composables? → [references/composables.md](references/composables.md)
+- [ ] [references/installation.md](references/installation.md) - if installing or configuring @nuxt/ui
+- [ ] [references/theming.md](references/theming.md) - if customizing theme, colors, or Tailwind Variants
+- [ ] [references/components.md](references/components.md) - if browsing component index or finding components by category
+- [ ] [references/forms.md](references/forms.md) - if building forms with validation (Zod/Valibot)
+- [ ] [references/overlays.md](references/overlays.md) - if using Toast, Modal, Slideover, Drawer, or CommandPalette
+- [ ] [references/composables.md](references/composables.md) - if using useToast, useOverlay, or other composables
 
-**DO NOT read all files at once.** Load based on context.
+**DO NOT load all files at once.** Load only what's relevant to your current task.
 
 ## Key Concepts
 

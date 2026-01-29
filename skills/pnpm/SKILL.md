@@ -58,12 +58,16 @@ catalog:
 | Overrides, patches, hooks, store | [features.md](references/features.md)     |
 | CI/CD, Docker, migration         | [ci.md](references/ci.md)                 |
 
-## Load Based on Task
+## Loading Files
 
-**Installing packages?** → Load `cli.md`
-**Setting up monorepo?** → Load `workspaces.md`
-**Fixing dep issues?** → Load `features.md`
-**Configuring CI?** → Load `ci.md`
+**Consider loading these reference files based on your task:**
+
+- [ ] [references/cli.md](references/cli.md) - if using pnpm commands, scripts, or filtering
+- [ ] [references/workspaces.md](references/workspaces.md) - if setting up monorepo, catalogs, or workspace config
+- [ ] [references/features.md](references/features.md) - if using overrides, patches, hooks, or managing store
+- [ ] [references/ci.md](references/ci.md) - if configuring CI/CD, Docker, or migrating from npm/yarn
+
+**DO NOT load all files at once.** Load only what's relevant to your current task.
 
 ## Cross-Skill References
 

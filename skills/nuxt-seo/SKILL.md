@@ -20,15 +20,17 @@ Working with:
 - JSON-LD structured data (schema.org)
 - Breadcrumbs and canonical URLs
 
-## Usage Pattern
+## Loading Files
 
-**Progressive loading - only read what you need:**
+**Consider loading these reference files based on your task:**
 
-- Configuring site? → [references/site-config.md](references/site-config.md)
-- Setting up robots/sitemap? → [references/crawlability.md](references/crawlability.md)
-- Generating OG images? → [references/og-image.md](references/og-image.md)
-- Adding JSON-LD? → [references/schema-org.md](references/schema-org.md)
-- Breadcrumbs, links, icons? → [references/utilities.md](references/utilities.md)
+- [ ] [references/site-config.md](references/site-config.md) - if configuring site URL, name, or SEO foundation
+- [ ] [references/crawlability.md](references/crawlability.md) - if setting up robots.txt or sitemap.xml
+- [ ] [references/og-image.md](references/og-image.md) - if generating dynamic OG images
+- [ ] [references/schema-org.md](references/schema-org.md) - if adding JSON-LD structured data
+- [ ] [references/utilities.md](references/utilities.md) - if working with breadcrumbs, canonical URLs, or link checking
+
+**DO NOT load all files at once.** Load only what's relevant to your current task.
 
 ## Site Config
 
