@@ -1,6 +1,6 @@
 ---
 name: pnpm
-description: Fast, disk space efficient package manager for Node.js with strict dependency resolution and monorepo support
+description: Use when managing Node.js dependencies with pnpm - provides workspace setup, catalogs, CLI commands, overrides, and CI configuration
 license: MIT
 ---
 

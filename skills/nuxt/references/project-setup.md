@@ -104,4 +104,4 @@ jobs:
           project-key: your-project-key
 ```
 
-> **For pnpm catalogs, release workflows, tsconfig patterns:** see `personal-ts-setup` skill
+> **For pnpm catalogs, release workflows, tsconfig patterns:** see `ts-library` skill
