@@ -1,6 +1,6 @@
 ---
 name: vitest
-description: A blazing fast unit testing framework powered by Vite
+description: Use when writing unit/integration tests for Vite projects - provides Vitest configuration, test APIs, mocking patterns, and coverage setup
 license: MIT
 ---
 

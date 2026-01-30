@@ -13,7 +13,6 @@ Working with `pages/` or `layouts/` directories, file-based routing, navigation.
 **Key principles:**
 
 - **ALWAYS use descriptive params:** `[userId].vue` NOT `[id].vue`
-- **Use `.` for path segments:** `users.edit.vue` → `/users/edit`
 - **Optional params:** `[[paramName]].vue`
 - **Catch-all:** `[...path].vue`
 - **Route groups for organization:** `(folder)/` groups files without affecting URLs
@@ -35,7 +34,6 @@ pages/
 ├── index.vue               # /
 ├── about.vue               # /about
 ├── [...slug].vue           # catch-all for 404
-├── users.edit.vue          # /users/edit - breaks out of nesting
 ├── users.vue               # parent route (layout for /users/*)
 └── users/
     ├── index.vue           # /users
@@ -179,18 +177,6 @@ definePageMeta({
 [[slug]].vue              # /blog or /blog/post (optional)
 [...path].vue             # /a/b/c (catch-all)
 [[...path]].vue           # / or /a/b/c (optional catch-all)
-```
-
-## Breaking Out of Nested Routing
-
-Use `.` to create routes at parent level:
-
-```
-pages/
-├── users.vue               # /users layout
-├── users/
-│   └── [userId].vue        # /users/123
-└── users.settings.vue      # /users/settings (NOT nested under layout)
 ```
 
 ## Best Practices

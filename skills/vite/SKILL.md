@@ -1,6 +1,6 @@
 ---
 name: vite
-description: Vite is a next-generation frontend build tool that provides a fast dev server with HMR and optimized production builds
+description: Use when setting up Vite projects - provides dev server, HMR, build configuration, library mode, and plugin authoring patterns
 license: MIT
 ---
 

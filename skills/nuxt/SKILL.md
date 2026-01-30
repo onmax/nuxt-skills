@@ -34,7 +34,7 @@ Read specific files based on current work:
 **For database/storage:** use `nuxthub` skill
 **For content-driven sites:** use `nuxt-content` skill
 **For creating modules:** use `nuxt-modules` skill
-**For project scaffolding/CI:** use `personal-ts-setup` skill
+**For project scaffolding/CI:** use `ts-library` skill
 
 ## Loading Files
 

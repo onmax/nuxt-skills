@@ -1,6 +1,6 @@
 ---
 name: tsdown
-description: tsdown is a fast and elegant TypeScript library bundler powered by Rolldown and Oxc
+description: Use when bundling TypeScript libraries - provides tsdown configuration, dual ESM/CJS output, .d.ts generation, and plugin authoring
 license: MIT
 ---
 
