@@ -86,4 +86,3 @@ Progressive reference system for Vue 3 projects. Load only files relevant to cur
 **[references/provide-inject.md](references/provide-inject.md)** - InjectionKey typing, app-level provide, readonly patterns
 
 **[references/gotchas.md](references/gotchas.md)** - Common gotchas, vue-tsc edge cases, hydration issues, race conditions (from vuejs-ai/skills)
-
