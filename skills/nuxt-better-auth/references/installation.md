@@ -8,11 +8,13 @@ pnpm add @onmax/nuxt-better-auth better-auth
 
 **Version Requirements:**
 
-- `@onmax/nuxt-better-auth`: `^0.0.2-alpha.14` (alpha)
+- `@onmax/nuxt-better-auth`: `^0.0.2-alpha.19` (alpha)
 - `better-auth`: `^1.0.0` (module tested with `1.4.7`)
-- `@nuxthub/core`: `^0.10.0` (optional, for database)
+- `@nuxthub/core`: `^0.10.5+` (optional, for database - requires 0.10.5+ for `hub:db` aliases)
 
 ## Module Setup
+
+The module auto-scaffolds `server/auth.config.ts` and `app/auth.config.ts` files during installation (since v0.0.2-alpha.15).
 
 ```ts
 // nuxt.config.ts
@@ -125,3 +127,19 @@ export default defineNuxtConfig({
 ```
 
 See [references/client-only.md](client-only.md) for full setup.
+
+## i18n Integration
+
+For internationalization support with `@nuxtjs/i18n` (since v0.0.2-alpha.15):
+
+```ts
+// nuxt.config.ts
+export default defineNuxtConfig({
+  modules: ['@nuxtjs/i18n', '@onmax/nuxt-better-auth'],
+  i18n: {
+    // Your i18n config
+  }
+})
+```
+
+The module automatically integrates with `@nuxtjs/i18n` when present, enabling localized auth flows and error messages.
