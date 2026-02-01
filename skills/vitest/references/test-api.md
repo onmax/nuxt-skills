@@ -102,7 +102,7 @@ describe('User', () => {
 describe.skip('skipped', () => {})
 describe.only('only this', () => {})
 describe.concurrent('parallel', () => {})
-describe.shuffle('random order', () => {})
+describe.shuffle('random order', () => {})  // Randomize test order
 describe.each([{ name: 'Chrome' }, { name: 'Firefox' }])('$name', ({ name }) => {})
 ```
 
@@ -125,6 +125,8 @@ beforeAll(async () => {
 
 ## Around Hooks
 
+Wrap test execution with setup/teardown logic:
+
 ```ts
 import { aroundEach, aroundAll } from 'vitest'
 
@@ -132,6 +134,12 @@ aroundEach(async (runTest) => {
   await db.beginTransaction()
   await runTest()  // Must be called!
   await db.rollback()
+})
+
+aroundAll(async (runAll) => {
+  const server = await startServer()
+  await runAll()
+  await server.close()
 })
 ```
 
