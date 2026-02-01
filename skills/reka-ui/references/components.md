@@ -67,6 +67,7 @@
 | **avatar**     | User image with fallback      | `components/avatar.md`      |
 | **pagination** | Page navigation               | `components/pagination.md`  |
 | **progress**   | Progress indicator            | `components/progress.md`    |
+| **rating**     | Star rating input (v2.8.0)    | `components/rating.md`      |
 | **scrollArea** | Custom scrollbar container    | `components/scroll-area.md` |
 | **separator**  | Visual divider                | `components/separator.md`   |
 | **splitter**   | Resizable split panels        | `components/splitter.md`    |
