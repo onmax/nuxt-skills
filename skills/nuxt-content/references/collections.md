@@ -264,7 +264,7 @@ const baseSchema = z.object({
 // Extended schema with additional properties
 const blogSchema = baseSchema.extend({
   author: z.string(),
-  date: z.date(),
+  date: z.date(), // Auto-cast to date string in v3.11+
   tags: z.array(z.string()).optional(),
 })
 
@@ -272,6 +272,19 @@ blog: defineCollection({
   type: 'page',
   source: 'blog/**/*.md',
   schema: blogSchema,
+})
+```
+
+**Hidden properties in editor (v3.11+):**
+
+```ts
+// Define properties that exist in content but shouldn't be shown in the editor UI
+import { property } from '@nuxt/content'
+
+schema: z.object({
+  title: z.string(),
+  // Hidden from editor without redefining validation
+  internalId: property(z.string()).hidden(),
 })
 ```
 

@@ -17,9 +17,11 @@ export default defineNuxtConfig({
       type: 'sqlite',
       filename: '.data/content.db',
       // Optional: add database indexes for better query performance (v3.10+)
+      // Recommended for large sites or frequently queried fields
       indexes: [
         { fields: ['path'] },
         { fields: ['date', 'draft'] },
+        { fields: ['category'] },
       ],
     },
   },
@@ -304,6 +306,10 @@ export default defineNuxtConfig({
       const wordCount = ctx.file.body?.split(/\s+/).length || 0
       ctx.content.readingTime = Math.ceil(wordCount / 180)
     },
+    'content:document:generated': function (ctx) {
+      // Hook fires when auto-generated markdown versions are created (v3.11+)
+      // Use to modify or process generated markdown
+    },
   },
 })
 ```
@@ -313,6 +319,8 @@ export default defineNuxtConfig({
 ```ts
 schema: z.object({ readingTime: z.number().optional() })
 ```
+
+**Date field casting (v3.11+):** Date fields are automatically cast to date strings in proper format.
 
 ## LLMs Integration
 
@@ -337,6 +345,22 @@ export default defineNuxtConfig({
 
 Auto-generates `/llms.txt` for LLM consumption.
 
+## Performance
+
+**Database indexes (v3.10+):** For large sites or collections with frequent queries on specific fields, add indexes to improve query performance:
+
+```ts
+database: {
+  type: 'sqlite',
+  indexes: [
+    { fields: ['path'] },           // Single field
+    { fields: ['date', 'draft'] },  // Composite index
+  ],
+}
+```
+
+**SQL transactions (v3.11+):** Queries are automatically wrapped in transactions for better performance and consistency.
+
 ## Best Practices
 
 | Do                                      | Don't                            |
@@ -345,6 +369,7 @@ Auto-generates `/llms.txt` for LLM consumption.
 | Specify only needed langs               | Load all Shiki languages         |
 | Use multi-theme for dark mode support   | Hardcode single theme            |
 | Configure TOC depth for your content    | Use defaults without checking    |
+| Add indexes for frequently queried fields | Index every field unnecessarily  |
 
 ## Resources
 
