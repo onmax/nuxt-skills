@@ -1,10 +1,10 @@
 ---
 name: nuxthub
-description: Use when building NuxtHub v0.10.4 applications - provides database (Drizzle ORM with sqlite/postgresql/mysql), KV storage, blob storage, and cache APIs. Covers configuration, schema definition, migrations, multi-cloud deployment (Cloudflare, Vercel), and the new hub:db, hub:kv, hub:blob virtual module imports.
+description: Use when building NuxtHub v0.10.6 applications - provides database (Drizzle ORM with sqlite/postgresql/mysql), KV storage, blob storage, and cache APIs. Covers configuration, schema definition, migrations, multi-cloud deployment (Cloudflare, Vercel), and the new hub:db, hub:kv, hub:blob virtual module imports.
 license: MIT
 ---
 
-# NuxtHub v0.10.4
+# NuxtHub v0.10.6
 
 Full-stack Nuxt framework with database, KV, blob, and cache. Multi-cloud support (Cloudflare, Vercel, Deno, Netlify).
 
@@ -38,7 +38,7 @@ export default defineNuxtConfig({
     blob: true,
     cache: true,
     dir: '.data', // local storage directory
-    remote: false // use production bindings in dev (v0.10.4+)
+    remote: false // use production bindings in dev (v0.10+)
   }
 })
 ```
@@ -50,15 +50,20 @@ hub: {
   db: {
     dialect: 'postgresql',
     driver: 'postgres-js', // Optional: auto-detected
-    casing: 'snake_case',  // camelCase JS -> snake_case DB
+    casing: 'snake_case',  // camelCase JS -> snake_case DB (v0.10.3+)
     migrationsDirs: ['server/db/custom-migrations/'],
-    applyMigrationsDuringBuild: true // default
+    applyMigrationsDuringBuild: true, // default
+    replica: { // Read replica support (v0.10.6+)
+      connection: { connectionString: process.env.DATABASE_REPLICA_URL }
+    }
   },
-  remote: true // Use production Cloudflare bindings in dev (v0.10.4+)
+  remote: true // Use production Cloudflare bindings in dev (v0.10+)
 }
 ```
 
 **remote mode:** When enabled, connects to production D1/KV/R2 during local development instead of local emulation. Useful for testing with production data.
+
+**Database replica (v0.10.6+):** Configure read replicas to distribute database load. Queries use replicas automatically while writes go to primary.
 
 ## Database
 
@@ -120,8 +125,8 @@ npx nuxt db generate                  # Generate migrations from schema
 npx nuxt db migrate                   # Apply pending migrations
 npx nuxt db sql "SELECT * FROM users" # Execute raw SQL
 npx nuxt db drop <TABLE>              # Drop a specific table
-npx nuxt db drop-all                  # Drop all tables (v0.10.4+)
-npx nuxt db squash                    # Squash migrations into one (v0.10.4+)
+npx nuxt db drop-all                  # Drop all tables (v0.10+)
+npx nuxt db squash                    # Squash migrations into one (v0.10+)
 npx nuxt db mark-as-migrated [NAME]   # Mark as migrated without running
 ```
 
@@ -129,11 +134,11 @@ Migrations auto-apply during `npx nuxi dev` and `npx nuxi build`. Tracked in `_h
 
 ### Database Providers
 
-| Dialect    | Local                | Production                                                        |
-| ---------- | -------------------- | ----------------------------------------------------------------- |
-| sqlite     | `.data/db/sqlite.db` | D1 (Cloudflare), Turso (`TURSO_DATABASE_URL`, `TURSO_AUTH_TOKEN`) |
-| postgresql | PGlite               | postgres-js (`DATABASE_URL`), neon-http (`DATABASE_URL`)          |
-| mysql      | -                    | mysql2 (`DATABASE_URL`, `MYSQL_URL`)                              |
+| Dialect    | Local                | Production                                                         |
+| ---------- | -------------------- | ------------------------------------------------------------------ |
+| sqlite     | `.data/db/sqlite.db` | D1 (Cloudflare), Turso (`TURSO_DATABASE_URL`, `TURSO_AUTH_TOKEN`)  |
+| postgresql | PGlite               | postgres-js (`DATABASE_URL`), neon-http (v0.10.2+, `DATABASE_URL`) |
+| mysql      | -                    | mysql2 (`DATABASE_URL`, `MYSQL_URL`)                               |
 
 ## KV Storage
 
@@ -175,7 +180,7 @@ import { blob } from 'hub:blob'
 // Upload
 const result = await blob.put('path/file.txt', body, {
   contentType: 'text/plain',
-  access: 'public', // 'public' | 'private' (v0.10.4+)
+  access: 'public', // 'public' | 'private' (v0.10.2+)
   addRandomSuffix: true,
   prefix: 'uploads'
 })
