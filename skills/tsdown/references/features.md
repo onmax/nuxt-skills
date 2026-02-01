@@ -235,6 +235,36 @@ export default defineConfig({
 })
 ```
 
+### WebAssembly
+
+```bash
+pnpm add -D rolldown-plugin-wasm
+```
+
+```ts
+import { defineConfig } from 'tsdown'
+import wasm from 'rolldown-plugin-wasm'
+
+export default defineConfig({
+  plugins: [
+    wasm({
+      maxFileSize: 14000,  // Inline if < 14KB
+      targetEnv: 'auto',   // 'auto' | 'node' | 'browser'
+    }),
+  ],
+})
+```
+
+Import methods:
+
+```ts
+import { add } from './add.wasm'              // Direct
+import init from './module.wasm?init'         // Async
+import initSync from './module.wasm?init&sync' // Sync
+```
+
+Supports wasm-bindgen for `bundler` and `web` targets.
+
 ## Quick Start Templates
 
 ```bash

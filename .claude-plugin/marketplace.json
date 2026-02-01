@@ -134,9 +134,9 @@
     {
       "name": "tsdown",
       "source": "./skills/tsdown",
-      "version": "1.0.0",
-      "description": "tsdown TypeScript library bundler powered by Rolldown. Use when building libraries, generating DTS files, or configuring package exports.",
-      "keywords": ["tsdown", "bundler", "typescript", "dts", "rolldown", "library"],
+      "version": "1.1.0",
+      "description": "tsdown TypeScript library bundler powered by Rolldown. Use when building libraries, generating DTS files, configuring package exports, or validating packages.",
+      "keywords": ["tsdown", "bundler", "typescript", "dts", "rolldown", "library", "publint", "attw", "validation"],
       "category": "tooling"
     }
   ]

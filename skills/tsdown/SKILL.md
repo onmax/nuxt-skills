@@ -1,6 +1,6 @@
 ---
 name: tsdown
-description: Use when bundling TypeScript libraries - provides tsdown configuration, dual ESM/CJS output, .d.ts generation, and plugin authoring
+description: Use when bundling TypeScript libraries - provides tsdown configuration, dual ESM/CJS output, .d.ts generation, package validation, and plugin authoring
 license: MIT
 ---
 
@@ -41,21 +41,21 @@ tsdown --watch   # Watch mode
 
 ## Reference Files
 
-| Task                                    | File                                  |
-| --------------------------------------- | ------------------------------------- |
-| Config file, CLI, entry points          | [config.md](references/config.md)     |
-| Format, target, dts, exports            | [output.md](references/output.md)     |
-| Shims, unbundle, watch, frameworks      | [features.md](references/features.md) |
-| Plugins, hooks, programmatic, migration | [advanced.md](references/advanced.md) |
+| Task                                          | File                                  |
+| --------------------------------------------- | ------------------------------------- |
+| Config file, CLI, entry points                | [config.md](references/config.md)     |
+| Format, target, dts, exports, validation      | [output.md](references/output.md)     |
+| Shims, unbundle, watch, frameworks, WASM      | [features.md](references/features.md) |
+| Plugins, hooks, lint, programmatic, migration | [advanced.md](references/advanced.md) |
 
 ## Loading Files
 
 **Consider loading these reference files based on your task:**
 
 - [ ] [references/config.md](references/config.md) - if setting up tsdown.config.ts, CLI, or entry points
-- [ ] [references/output.md](references/output.md) - if configuring output format, target, .d.ts, or exports
-- [ ] [references/features.md](references/features.md) - if using shims, unbundle, watch mode, or framework integrations
-- [ ] [references/advanced.md](references/advanced.md) - if writing plugins, using programmatic API, or migrating from tsup
+- [ ] [references/output.md](references/output.md) - if configuring output format, target, .d.ts, exports, or validation
+- [ ] [references/features.md](references/features.md) - if using shims, unbundle, watch mode, framework integrations, or WebAssembly
+- [ ] [references/advanced.md](references/advanced.md) - if writing plugins, using linting/validation, programmatic API, or migrating from tsup
 
 **DO NOT load all files at once.** Load only what's relevant to your current task.
 

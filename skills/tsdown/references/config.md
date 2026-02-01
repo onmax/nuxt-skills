@@ -62,6 +62,14 @@ defineConfig({
 defineConfig({
   entry: 'src/**/*.ts',
 })
+
+// Mixed array and object entries
+defineConfig({
+  entry: [
+    'src/index.ts',
+    { cli: 'src/cli.ts' },
+  ],
+})
 ```
 
 ## CLI Commands
@@ -127,6 +135,10 @@ tsdown --no-config              # Skip config file
 
 # Package exports
 --exports
+
+# Validation
+--publint
+--attw
 ```
 
 ## CLI Flag Patterns

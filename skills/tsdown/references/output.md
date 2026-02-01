@@ -148,6 +148,16 @@ defineConfig({
 })
 ```
 
+### Inline-Only Mode
+
+Warn if dependencies are bundled (useful for libraries):
+
+```ts
+defineConfig({
+  inlineOnly: true,  // Shows warnings for bundled deps
+})
+```
+
 ### Custom External
 
 ```ts
@@ -183,6 +193,21 @@ defineConfig({
   },
 })
 ```
+
+### Legacy Support
+
+Control `main` and `module` field generation:
+
+```ts
+defineConfig({
+  exports: {
+    legacy: true,  // Default, generates main/module fields
+    legacy: false, // Pure ESM, omits main/module if only ESM format
+  },
+})
+```
+
+Auto-fills `types` field only when `legacy: true`.
 
 ### Dev Exports
 
