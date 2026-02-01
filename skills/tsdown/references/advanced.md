@@ -168,6 +168,15 @@ npx tsdown-migrate --dry-run   # Preview
 | `dts`    | `false` | Auto-enabled if `types` field |
 | `target` | -       | Reads `engines.node`          |
 
+### Breaking Changes (v0.19+)
+
+- **Removed**: `dts.resolve` option (v0.20+)
+- **Removed**: `silent` option - use log levels instead
+- **Renamed**: `debugLogs` → `debug`
+- **Renamed**: `debug.devtools` → `devtools.ui`
+- **Exports**: `exports.legacy` controls `main`/`module` field generation
+- **Exports**: `exports.exclude` now excludes extension names
+
 ### No Stub Mode
 
 tsdown doesn't support stub mode. Alternatives:
@@ -182,6 +191,43 @@ tsdown doesn't support stub mode. Alternatives:
 2. Use `skipNodeModulesBundle: true` if not bundling deps
 3. Disable sourcemaps in production if not needed
 
+## Package Validation
+
+### publint
+
+Validates `package.json` exports configuration:
+
+```ts
+defineConfig({
+  publint: true,  // Enable
+  publint: 'warning',  // Set severity: 'warning' | 'error' | 'suggestion'
+  publint: 'ci-only',  // Run only in CI
+})
+```
+
+```bash
+tsdown --publint
+```
+
+### attw (Are The Types Wrong?)
+
+Validates TypeScript declarations across module resolutions:
+
+```ts
+defineConfig({
+  attw: {
+    profile: 'strict',  // 'strict' | 'node16' | 'esm-only'
+    level: 'error',     // 'warn' | 'error'
+    ignoreRules: ['false-cjs', 'named-exports'],
+  },
+  attw: 'ci-only',  // Run only in CI
+})
+```
+
+```bash
+tsdown --attw
+```
+
 ## Debugging
 
 ```bash
@@ -190,4 +236,16 @@ DEBUG=tsdown:* tsdown
 
 # Dry run (migration)
 npx tsdown-migrate --dry-run
+```
+
+### Devtools
+
+Rolldown devtools for debugging:
+
+```ts
+defineConfig({
+  devtools: {
+    ui: true,  // Enable UI (renamed from debug.devtools)
+  },
+})
 ```
