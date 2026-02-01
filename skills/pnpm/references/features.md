@@ -116,10 +116,17 @@ function afterAllResolved(lockfile, context) {
   return lockfile
 }
 
+function beforePacking(pkg, context) {
+  // Customize package.json before publishing (v10.28+)
+  pkg.main = './dist/index.js'
+  return pkg
+}
+
 module.exports = {
   hooks: {
     readPackage,
     afterAllResolved,
+    beforePacking,  // v10.28+
   },
 }
 ```
@@ -203,6 +210,8 @@ side-effects-cache=true
 
 ## Security
 
+### Build Controls
+
 ```ini
 # Only build specific deps
 onlyBuiltDependencies[]=esbuild
@@ -210,6 +219,9 @@ onlyBuiltDependencies[]=sharp
 
 # Skip all scripts
 ignore-scripts=true
+
+# Strict build deps (default in pnpm 11+)
+strict-dep-builds=true
 ```
 
 ```json
@@ -218,4 +230,20 @@ ignore-scripts=true
     "neverBuiltDependencies": ["fsevents", "cpu-features"]
   }
 }
+```
+
+### Supply Chain Protection
+
+pnpm 10.x+ includes security hardening:
+
+- **Path traversal protection** - Validates symlinks in `file:` and `git:` dependencies
+- **Tarball validation** - Prevents malicious extraction on Windows
+- **Bin linking protection** - Validates `directories.bin` field
+
+```bash
+# Prevent postinstall scripts from running (reduces attack surface)
+pnpm install --ignore-scripts
+
+# Use lockfile strictly (ensures reproducible builds)
+pnpm install --frozen-lockfile
 ```

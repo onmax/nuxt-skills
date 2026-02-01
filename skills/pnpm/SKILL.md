@@ -11,10 +11,11 @@ Content-addressable store, strict deps, workspace protocol, catalogs.
 ## When to Use
 
 - Installing/managing npm packages
-- Monorepo workspace setup
+- Monorepo workspace setup with catalogs
 - Overriding transitive dependencies
 - Patching third-party packages
 - CI/CD configuration for pnpm projects
+- Supply chain security hardening
 
 ## Quick Start
 
@@ -34,14 +35,16 @@ packages:
   - 'packages/*'
   - 'apps/*'
 
+# Catalogs for centralized version management
 catalog:
   react: ^18.2.0
   typescript: ~5.3.0
 ```
 
 ```json
-// package.json
+// package.json - Use workspace protocol and catalogs
 {
+  "packageManager": "pnpm@10.28.2",
   "dependencies": {
     "@myorg/utils": "workspace:^",
     "react": "catalog:"
