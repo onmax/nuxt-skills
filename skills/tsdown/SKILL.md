@@ -41,11 +41,11 @@ tsdown --watch   # Watch mode
 
 ## Reference Files
 
-| Task                                      | File                                  |
-| ----------------------------------------- | ------------------------------------- |
-| Config file, CLI, entry points            | [config.md](references/config.md)     |
-| Format, target, dts, exports, validation  | [output.md](references/output.md)     |
-| Shims, unbundle, watch, frameworks, WASM  | [features.md](references/features.md) |
+| Task                                          | File                                  |
+| --------------------------------------------- | ------------------------------------- |
+| Config file, CLI, entry points                | [config.md](references/config.md)     |
+| Format, target, dts, exports, validation      | [output.md](references/output.md)     |
+| Shims, unbundle, watch, frameworks, WASM      | [features.md](references/features.md) |
 | Plugins, hooks, lint, programmatic, migration | [advanced.md](references/advanced.md) |
 
 ## Loading Files
