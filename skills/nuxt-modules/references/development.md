@@ -26,7 +26,14 @@ export default defineNuxtModule<ModuleOptions>({
     'app:error': err => console.error(err)
   },
   moduleDependencies: {
-    '@nuxtjs/tailwindcss': { version: '>=6.0.0', optional: true }
+    '@nuxtjs/tailwindcss': {
+      version: '>=6.0.0',
+      optional: true,
+      // Override nuxt.options for this module
+      overrides: {},
+      // Set defaults (lower priority than nuxt.options)
+      defaults: {}
+    }
   },
   // Or as async function (Nuxt 4.3+)
   async moduleDependencies(nuxt) {
@@ -117,7 +124,9 @@ export default defineNuxtModule({
     // Single component
     addComponent({
       name: 'MyButton',
-      filePath: resolve('./runtime/components/MyButton.vue')
+      filePath: resolve('./runtime/components/MyButton.vue'),
+      // Custom declaration path (Nuxt 4.2+)
+      declarationPath: resolve('./runtime/types/components.d.ts')
     })
 
     // Or entire directory with prefix
@@ -348,6 +357,40 @@ export default defineNuxtConfig({
 })
 ```
 
+## Head Management (Nuxt 4.2+)
+
+For modules that need to set global head elements:
+
+```ts
+import { setGlobalHead } from '@nuxt/kit'
+
+export default defineNuxtModule({
+  setup(options, nuxt) {
+    setGlobalHead({
+      title: 'My Module',
+      meta: [{ name: 'description', content: 'Description' }],
+      link: [{ rel: 'icon', href: '/favicon.ico' }]
+    })
+  }
+})
+```
+
+## Module Resolution (Nuxt 4.2+)
+
+Resolve modules with custom extensions:
+
+```ts
+import { resolveModule } from '@nuxt/kit'
+
+export default defineNuxtModule({
+  async setup(options, nuxt) {
+    const modulePath = await resolveModule('my-module', {
+      extensions: ['.mjs', '.js', '.ts']
+    })
+  }
+})
+```
+
 ## Quick Reference
 
 | Task             | Kit Function                            |
@@ -360,6 +403,8 @@ export default defineNuxtConfig({
 | Virtual file     | `addTemplate()` / `addServerTemplate()` |
 | Add types        | `addTypeTemplate()`                     |
 | Add CSS          | `nuxt.options.css.push()`               |
+| Set global head  | `setGlobalHead()`                       |
+| Resolve module   | `resolveModule()`                       |
 
 ## Resources
 
