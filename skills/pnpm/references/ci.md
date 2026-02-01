@@ -119,9 +119,9 @@ CMD ["node", "dist/index.js"]
 ## Corepack
 
 ```json
-// package.json
+// package.json - Specify exact pnpm version
 {
-  "packageManager": "pnpm@9.0.0"
+  "packageManager": "pnpm@10.28.2"
 }
 ```
 
@@ -130,6 +130,8 @@ CMD ["node", "dist/index.js"]
 - run: corepack enable
 - run: pnpm install --frozen-lockfile
 ```
+
+**Note:** pnpm 11+ ships with its own Node.js version and doesn't rely on system installation.
 
 ## Migration from npm
 
@@ -218,8 +220,21 @@ pnpm --filter "...[origin/main]" build
 # Parallel workspace
 pnpm -r --parallel run test
 
-# Clean store periodically
+# Clean store (v10.27+ includes global virtual store)
 pnpm store prune
+```
+
+## Security Best Practices
+
+```bash
+# CI - prevent script execution
+pnpm install --frozen-lockfile --ignore-scripts
+
+# Use exact lockfile (prevents supply chain attacks)
+pnpm install --frozen-lockfile
+
+# Audit dependencies
+pnpm audit
 ```
 
 ## Scripts Migration

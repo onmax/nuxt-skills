@@ -8,9 +8,15 @@ pnpm i                    # Alias
 
 pnpm install --frozen-lockfile  # CI mode - fail if lockfile outdated
 pnpm install --prefer-offline   # Use cache when available
+pnpm install --offline          # Use store only (no network)
 pnpm install --prod             # Production only
 pnpm install --no-optional      # Skip optional deps
 pnpm install --ignore-scripts   # Skip lifecycle scripts
+
+# Platform overrides (v10.14+)
+pnpm install --cpu=arm64        # Override CPU architecture
+pnpm install --os=darwin        # Override OS
+pnpm install --libc=musl        # Override libc for native modules
 ```
 
 ## Adding Dependencies
@@ -160,8 +166,16 @@ pnpm publish -r --no-git-checks  # CI publish
 corepack enable
 corepack prepare pnpm@latest --activate
 
-# package.json
+# package.json - Specify pnpm version
 {
-  "packageManager": "pnpm@9.0.0"
+  "packageManager": "pnpm@10.28.2"
 }
 ```
+
+## Version Notes
+
+- **pnpm 10.x** - Current stable (recommended)
+- **pnpm 11.x** - Alpha release with breaking changes (pure ESM, new config format)
+  - Node.js v18/v19 support dropped
+  - `.npmrc` project configs → `packageConfigs` in `pnpm-workspace.yaml`
+  - New build permission system

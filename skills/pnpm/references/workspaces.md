@@ -58,7 +58,7 @@ Reference local packages:
 
 ## Catalogs
 
-Centralized version management:
+Centralized version management - define dependency versions once, reference everywhere.
 
 ```yaml
 # pnpm-workspace.yaml
@@ -87,7 +87,24 @@ Named catalogs:
 }
 ```
 
+### Catalog Settings
+
+```ini
+# .npmrc
+catalog-mode=manual     # Default - don't auto-add to catalog
+catalog-mode=strict     # Fail if dep not in catalog
+catalog-mode=prefer     # Use catalog version if exists, otherwise regular
+
+cleanup-unused-catalogs=true  # Remove unused entries on install (v10.15+)
+```
+
 On publish, `catalog:` becomes actual version.
+
+### Benefits
+
+- **Unique versions** - Prevent version conflicts across workspace
+- **Easy upgrades** - Update one place instead of many package.json files
+- **Fewer merge conflicts** - Changes localized to workspace file
 
 ## .npmrc Settings
 
@@ -121,8 +138,9 @@ link-workspace-packages=true
 prefer-workspace-packages=true
 shared-workspace-lockfile=true
 save-workspace-protocol=rolling
+inject-workspace-packages=false  # Hard-link instead of symlink
 
-# Node.js
+# Node.js (use devEngines.runtime in pnpm 11+)
 use-node-version=20.10.0
 node-version-file=.nvmrc
 ```
@@ -144,7 +162,8 @@ node-version-file=.nvmrc
     "onlyBuiltDependencies": ["esbuild"],
     "patchedDependencies": {
       "express@4.18.2": "patches/express@4.18.2.patch"
-    }
+    },
+    "syncInjectedDepsAfterScripts": ["build"]  // v10.5+ - sync hardlinked deps after scripts
   }
 }
 ```
