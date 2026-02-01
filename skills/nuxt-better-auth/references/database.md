@@ -2,6 +2,8 @@
 
 ## NuxtHub Setup
 
+**Requires NuxtHub 0.10.5+** for `hub:db` and `hub:kv` alias support.
+
 ```ts
 // nuxt.config.ts
 export default defineNuxtConfig({
