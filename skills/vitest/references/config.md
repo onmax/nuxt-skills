@@ -60,6 +60,7 @@ defineConfig({
       include: ['src/**/*.ts'],
     },
     isolate: true,                    // Each file in separate process
+    fileParallelism: true,            // Run test files in parallel
     pool: 'threads',                  // 'threads', 'forks', 'vmThreads'
     poolOptions: {
       threads: { maxThreads: 4, minThreads: 1 },

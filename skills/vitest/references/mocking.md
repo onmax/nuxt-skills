@@ -109,6 +109,9 @@ test('dynamic mock', async () => {
   expect(apiUrl).toBe('http://test.local')
   vi.doUnmock('./config')
 })
+
+// Wait for all dynamic imports to load
+await vi.dynamicImportSettled()
 ```
 
 ## Hoisted Variables

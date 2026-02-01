@@ -17,6 +17,10 @@ expect(null).toBeNull()
 expect(undefined).toBeUndefined()
 expect('value').toBeDefined()
 
+// Special
+expect('a').toBeOneOf(['a', 'b', 'c'])
+expect(value).toSatisfy((v) => v > 0)
+
 // Numbers
 expect(10).toBeGreaterThan(5)
 expect(10).toBeGreaterThanOrEqual(10)
@@ -80,6 +84,14 @@ expect(fn).toHaveBeenLastCalledWith('arg3')
 expect(fn).toHaveBeenNthCalledWith(1, 'arg1', 'arg2')
 expect(fn).toHaveReturned()
 expect(fn).toHaveReturnedWith(value)
+
+// Call order
+const fn1 = vi.fn()
+const fn2 = vi.fn()
+fn1()
+fn2()
+expect(fn1).toHaveBeenCalledBefore(fn2)
+expect(fn2).toHaveBeenCalledAfter(fn1)
 ```
 
 ## Asymmetric Matchers
@@ -96,6 +108,7 @@ expect('hello world').toEqual(expect.stringContaining('world'))
 expect('hello world').toEqual(expect.stringMatching(/world$/))
 expect({ value: null }).toEqual({ value: expect.anything() })
 expect([1, 2]).toEqual(expect.not.arrayContaining([3]))
+expect(0.1 + 0.2).toEqual(expect.closeTo(0.3, 5))  // Floating point
 ```
 
 ## Soft & Poll Assertions
