@@ -58,13 +58,30 @@ const options = [
 </script>
 
 <template>
-  <USelectMenu v-model="selected" :options="options" searchable placeholder="Select user">
+  <USelectMenu
+    v-model="selected"
+    :options="options"
+    searchable
+    clear
+    placeholder="Select user"
+  >
     <template #option="{ option }">
       <UAvatar v-bind="option.avatar" size="xs" />
       <span>{{ option.label }}</span>
     </template>
   </USelectMenu>
 </template>
+```
+
+### SelectMenu/InputMenu Props (v4.4+)
+
+```vue
+<USelectMenu
+  v-model="selected"
+  :options="options"
+  clear                <!-- Add clear button (v4.4+) -->
+  :viewport-ref="ref"  <!-- For infinite scroll (v4.4+) -->
+/>
 ```
 
 ## Checkbox & Radio
@@ -224,6 +241,8 @@ const { files, open, reset } = useFileUpload()
   </UFileUpload>
 </template>
 ```
+
+**Note (v4.4):** FileUpload now emits `null` when clearing files (previously emitted empty array).
 
 ## Date & Time Pickers (v4.2+)
 

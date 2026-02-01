@@ -113,6 +113,8 @@ defineShortcuts({
     handler: () => submit(),
     whenever: [isFormValid]
   }
+}, {
+  layoutIndependent: true // Ignore keyboard layout (v4.3+)
 })
 ```
 
