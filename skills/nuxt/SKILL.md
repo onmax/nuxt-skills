@@ -1,12 +1,12 @@
 ---
 name: nuxt
-description: Use when working on Nuxt 4+ projects - provides server routes, file-based routing, middleware patterns, Nuxt-specific composables, and configuration with latest docs. Covers h3 v1 helpers (validation, WebSocket, SSE) and nitropack v2 patterns.
+description: Use when working on Nuxt 4+ projects - provides server routes, file-based routing, middleware patterns, Nuxt-specific composables, and configuration with latest docs. Covers h3 v1 helpers (validation, WebSocket, SSE) and nitropack v2 patterns. Updated for Nuxt 4.3+.
 license: MIT
 ---
 
 # Nuxt 4+ Development
 
-Progressive guidance for Nuxt 4+ projects with latest patterns and conventions.
+Progressive guidance for Nuxt 4+ projects (v4.3+) with latest patterns and conventions.
 
 ## When to Use
 
