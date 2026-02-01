@@ -2,6 +2,8 @@
 
 **Prerequisite**: All overlays require `<UApp>` wrapper in app root.
 
+**Important:** v4.4.0 includes security fixes for XSS vulnerabilities in Banner and CommandPalette components. Upgrade recommended.
+
 ## Toast (Notifications)
 
 ### Basic Usage
@@ -312,8 +314,25 @@ const groups = [{
 </script>
 
 <template>
-  <UCommandPalette v-model:open="isOpen" :groups="groups" placeholder="Search..." />
+  <UCommandPalette
+    v-model:open="isOpen"
+    :groups="groups"
+    placeholder="Search..."
+    size="md"
+  />
 </template>
+```
+
+### CommandPalette Props (v4.4+)
+
+```vue
+<UCommandPalette
+  v-model:open="isOpen"
+  :groups="groups"
+  placeholder="Search..."
+  size="md"              <!-- Size: sm, md, lg (v4.4+) -->
+  :input="{ /* props */ }"  <!-- Custom input props (v4.4+) -->
+/>
 ```
 
 ### Keyboard Shortcut

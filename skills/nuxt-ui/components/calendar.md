@@ -13,6 +13,7 @@ A calendar component for selecting single dates, multiple dates or date ranges.
 - `size`: to change the size of the calendar.
 - `disabled`: to disable the calendar.
 - `numberOfMonths`: to change the number of months in the calendar.
+- `weekNumbers`: to display week numbers (v4.4+).
 
 ## Usage
 

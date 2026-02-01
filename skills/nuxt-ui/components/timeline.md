@@ -38,10 +38,15 @@ ignore:
 - `ui`: to create a Timeline with alternating layout.
 - `slot`:
 
+## Events
+
+- `@select`: Emitted when an item is selected (v4.4+)
+
 ## Usage
 
 ```vue
 <UTimeline
-  <!-- props here -->
+  :items="items"
+  @select="handleSelect"
 />
 ```
