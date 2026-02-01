@@ -59,6 +59,20 @@ pages/
 - Organize pages by feature/team
 - Group related routes without affecting URLs
 - Keep large projects maintainable
+- Apply middleware to specific groups (via `route.meta.groups`)
+
+**Access route groups in middleware:**
+
+```ts
+// middleware/auth.global.ts
+export default defineNuxtRouteMiddleware((to) => {
+  // Check if route is in admin group
+  if (to.meta.groups?.includes('admin')) {
+    const auth = useAuthStore()
+    if (!auth.isAdmin) return navigateTo('/')
+  }
+})
+```
 
 ## Parent Routes (Layouts)
 
@@ -166,6 +180,29 @@ definePageMeta({
   meta: {
     requiresAuth: true
   }
+})
+</script>
+```
+
+## Dynamic Layout Switching
+
+Use `setPageLayout()` to switch layouts programmatically:
+
+```vue
+<script setup lang="ts">
+const user = useUser()
+
+// Switch layout based on auth state
+if (!user.value) {
+  setPageLayout('guest')
+} else {
+  setPageLayout('dashboard')
+}
+
+// With layout props (Nuxt 4.3+)
+setPageLayout('dashboard', {
+  sidebar: 'collapsed',
+  theme: 'dark'
 })
 </script>
 ```

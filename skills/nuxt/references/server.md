@@ -216,6 +216,15 @@ export async function fetchUserById(id: string) {
 
 Auto-imported in all server routes and middleware.
 
+**Import server utils from client (Nuxt 4.3+):**
+
+```ts
+// Use #server alias for type-safe server-only imports
+import type { User } from '#server/utils/db'
+```
+
+**Note:** Only types are imported; actual server code never bundles into client.
+
 ## Cached Functions
 
 Use `defineCachedFunction` for caching expensive operations in server utils:
@@ -343,6 +352,26 @@ return sendStream(event, stream)
 return sendNoContent(event)
 ```
 
+## Background Tasks
+
+Use `event.waitUntil()` for async tasks that shouldn't block the response (Nuxt 4+):
+
+```ts
+// server/api/analytics.post.ts
+export default defineEventHandler(async (event) => {
+  const data = await readBody(event)
+
+  // Don't block response with analytics logging
+  event.waitUntil(
+    logAnalytics(data)
+  )
+
+  return { success: true }
+})
+```
+
+**Use cases:** logging, caching, background processing, async cleanup.
+
 ## Best Practices
 
 - **Use descriptive param names** - `[userId]` not `[id]`
@@ -353,6 +382,7 @@ return sendNoContent(event)
 - **Use server utils** for DB/external APIs
 - **Don't expose sensitive data** in responses
 - **Set proper status codes** - 201 for created, 204 for no content
+- **Use event.waitUntil()** for background tasks that shouldn't block responses
 
 ## Common Mistakes
 

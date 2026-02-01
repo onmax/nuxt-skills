@@ -254,6 +254,22 @@ export default defineNuxtConfig({
 })
 ```
 
+### Route Rule Layouts (Nuxt 4.3+)
+
+Apply layouts via route rules for centralized layout management:
+
+```ts
+export default defineNuxtConfig({
+  routeRules: {
+    '/admin/**': { appLayout: 'admin' },
+    '/docs/**': { appLayout: 'docs' },
+    '/': { appLayout: 'default' }
+  }
+})
+```
+
+**Benefits:** Centralized layout control, no need for `setPageLayout()` in every page.
+
 ## Inline Modules
 
 Add conditional logic during nuxt prepare:
@@ -317,10 +333,13 @@ export default defineNuxtConfig({
 
   experimental: {
     typedPages: true,
-    viewTransition: true
+    viewTransition: true,
+    payloadExtraction: true // Enable ISR/SWR payload extraction (Nuxt 4.3+)
   }
 })
 ```
+
+**Payload extraction** (Nuxt 4.3+): Enables cached payloads during client navigation for ISR/SWR routes, improving performance.
 
 ## Nitro Config
 

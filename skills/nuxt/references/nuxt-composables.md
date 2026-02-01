@@ -136,12 +136,18 @@ const { data } = await useFetch('/api/users', {
   watch: [page]
 })
 
-// Cancel requests with AbortController (Nuxt 4.2+)
+// Cancel requests with AbortController signal (Nuxt 4.2+)
 const controller = new AbortController()
 const { data } = await useFetch('/api/users', {
   signal: controller.signal
 })
 // Later: controller.abort() to cancel the request
+
+// Manual cancellation via execute/refresh
+const { data, execute } = await useFetch('/api/users', { immediate: false })
+const abortController = new AbortController()
+await execute({ signal: abortController.signal })
+// Later: abortController.abort() to cancel
 ```
 
 ### useAsyncData()
@@ -185,6 +191,24 @@ const { data } = await useAsyncData('user',
     deep: true // Makes nested properties reactive
   }
 )
+
+// Deduplication strategies (Nuxt 4.2+)
+const { data } = await useAsyncData('users',
+  async () => $fetch('/api/users'),
+  {
+    dedupe: 'cancel' // Cancel existing requests when new one starts
+    // dedupe: 'defer' // Prevent new requests while one is pending
+  }
+)
+
+// Manual cancellation via execute/refresh
+const { data, execute } = await useAsyncData('users',
+  async ({ signal }) => $fetch('/api/users', { signal }),
+  { immediate: false }
+)
+const abortController = new AbortController()
+await execute({ signal: abortController.signal })
+// Later: abortController.abort() to cancel
 ```
 
 ## State Management
