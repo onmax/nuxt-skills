@@ -1,6 +1,8 @@
-# Wrangler Configuration for NuxtHub v0.10.4
+# Wrangler Configuration for NuxtHub v0.10.6
 
 **Default (Recommended):** NuxtHub auto-generates `wrangler.json` from your `hub` config in `nuxt.config.ts`. No manual wrangler.jsonc required.
+
+**Note:** Node.js compatibility (`nodejs_compat`) is automatically enabled for Cloudflare Workers in v0.10.5+.
 
 **Manual wrangler.jsonc:** Use when you need features not auto-generated (observability, migrations config, etc.) or prefer explicit file-based configuration.
 
