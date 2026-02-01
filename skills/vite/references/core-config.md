@@ -54,7 +54,7 @@ import { defineConfig, loadEnv } from 'vite'
 export default defineConfig(({ mode }) => {
   // Load env files from cwd, include all vars (empty prefix)
   const env = loadEnv(mode, process.cwd(), '')
-  
+
   return {
     define: {
       __APP_ENV__: JSON.stringify(env.APP_ENV),

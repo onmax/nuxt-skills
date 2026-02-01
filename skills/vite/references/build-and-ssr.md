@@ -140,6 +140,7 @@ app.listen(5173)
 ```
 
 The `--ssr` flag:
+
 - Externalizes dependencies by default
 - Outputs for Node.js consumption
 
