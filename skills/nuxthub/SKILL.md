@@ -134,11 +134,11 @@ Migrations auto-apply during `npx nuxi dev` and `npx nuxi build`. Tracked in `_h
 
 ### Database Providers
 
-| Dialect    | Local                | Production                                                        |
-| ---------- | -------------------- | ----------------------------------------------------------------- |
-| sqlite     | `.data/db/sqlite.db` | D1 (Cloudflare), Turso (`TURSO_DATABASE_URL`, `TURSO_AUTH_TOKEN`) |
-| postgresql | PGlite               | postgres-js (`DATABASE_URL`), neon-http (v0.10.2+, `DATABASE_URL`)          |
-| mysql      | -                    | mysql2 (`DATABASE_URL`, `MYSQL_URL`)                              |
+| Dialect    | Local                | Production                                                         |
+| ---------- | -------------------- | ------------------------------------------------------------------ |
+| sqlite     | `.data/db/sqlite.db` | D1 (Cloudflare), Turso (`TURSO_DATABASE_URL`, `TURSO_AUTH_TOKEN`)  |
+| postgresql | PGlite               | postgres-js (`DATABASE_URL`), neon-http (v0.10.2+, `DATABASE_URL`) |
+| mysql      | -                    | mysql2 (`DATABASE_URL`, `MYSQL_URL`)                               |
 
 ## KV Storage
 
