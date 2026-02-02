@@ -7,96 +7,87 @@ Inline text editing with preview/edit modes
 ## EditableRoot
 
 ### Props
-
-| Prop                | Type                                           | Default           |
-| ------------------- | ---------------------------------------------- | ----------------- |
-| `activationMode`    | `"dblclick" \| "focus" \| "none"`              | `"focus"`         |
-| `as`                | `AsTag \| Component`                           | `"div"`           |
-| `asChild`           | `boolean`                                      | -                 |
-| `autoResize`        | `boolean`                                      | `false`           |
-| `defaultValue`      | `string`                                       | -                 |
-| `dir`               | `"ltr" \| "rtl"`                               | -                 |
-| `disabled`          | `boolean`                                      | `false`           |
-| `id`                | `string`                                       | -                 |
-| `maxLength`         | `number`                                       | -                 |
-| `modelValue`        | `string`                                       | -                 |
-| `name`              | `string`                                       | -                 |
-| `placeholder`       | `string \| { edit: string; preview: string; }` | `"Enter text..."` |
-| `readonly`          | `boolean`                                      | -                 |
-| `required`          | `boolean`                                      | `false`           |
-| `selectOnFocus`     | `boolean`                                      | `false`           |
-| `startWithEditMode` | `boolean`                                      | -                 |
-| `submitMode`        | `"blur" \| "none" \| "enter" \| "both"`        | `"blur"`          |
+| Prop | Type | Default |
+|------|------|---------|
+| `activationMode` | `"dblclick" \| "focus" \| "none"` | `"focus"` |
+| `as` | `AsTag \| Component` | `"div"` |
+| `asChild` | `boolean` | - |
+| `autoResize` | `boolean` | `false` |
+| `defaultValue` | `string` | - |
+| `dir` | `"ltr" \| "rtl"` | - |
+| `disabled` | `boolean` | `false` |
+| `id` | `string` | - |
+| `maxLength` | `number` | - |
+| `modelValue` | `string` | - |
+| `name` | `string` | - |
+| `placeholder` | `string \| { edit: string; preview: string; }` | `"Enter text..."` |
+| `readonly` | `boolean` | - |
+| `required` | `boolean` | `false` |
+| `selectOnFocus` | `boolean` | `false` |
+| `startWithEditMode` | `boolean` | - |
+| `submitMode` | `"blur" \| "none" \| "enter" \| "both"` | `"blur"` |
 
 ### Emits
-
-| Event               | Payload                                   |
-| ------------------- | ----------------------------------------- |
-| `submit`            | `[value: string]`                         |
-| `update:modelValue` | `[value: string]`                         |
-| `update:state`      | `[state: "cancel" \| "submit" \| "edit"]` |
+| Event | Payload |
+|-------|---------|
+| `submit` | `[value: string]` |
+| `update:modelValue` | `[value: string]` |
+| `update:state` | `[state: "cancel" \| "submit" \| "edit"]` |
 
 ### Slots
-
-| Slot         | Type                  |
-| ------------ | --------------------- |
-| `isEditing`  | `boolean`             |
+| Slot | Type |
+|------|------|
+| `isEditing` | `boolean` |
 | `modelValue` | `string \| undefined` |
-| `isEmpty`    | `boolean`             |
-| `submit`     | ``                    |
-| `cancel`     | ``                    |
-| `edit`       | ``                    |
+| `isEmpty` | `boolean` |
+| `submit` | `` |
+| `cancel` | `` |
+| `edit` | `` |
 
 ## EditableArea
 
 ### Props
-
-| Prop      | Type                 | Default |
-| --------- | -------------------- | ------- |
-| `as`      | `AsTag \| Component` | `"div"` |
-| `asChild` | `boolean`            | -       |
+| Prop | Type | Default |
+|------|------|---------|
+| `as` | `AsTag \| Component` | `"div"` |
+| `asChild` | `boolean` | - |
 
 ## EditableInput
 
 ### Props
-
-| Prop      | Type                 | Default   |
-| --------- | -------------------- | --------- |
-| `as`      | `AsTag \| Component` | `"input"` |
-| `asChild` | `boolean`            | -         |
+| Prop | Type | Default |
+|------|------|---------|
+| `as` | `AsTag \| Component` | `"input"` |
+| `asChild` | `boolean` | - |
 
 ## EditablePreview
 
 ### Props
-
-| Prop      | Type                 | Default  |
-| --------- | -------------------- | -------- |
-| `as`      | `AsTag \| Component` | `"span"` |
-| `asChild` | `boolean`            | -        |
+| Prop | Type | Default |
+|------|------|---------|
+| `as` | `AsTag \| Component` | `"span"` |
+| `asChild` | `boolean` | - |
 
 ## EditableSubmitTrigger
 
 ### Props
-
-| Prop      | Type                 | Default    |
-| --------- | -------------------- | ---------- |
-| `as`      | `AsTag \| Component` | `"button"` |
-| `asChild` | `boolean`            | -          |
+| Prop | Type | Default |
+|------|------|---------|
+| `as` | `AsTag \| Component` | `"button"` |
+| `asChild` | `boolean` | - |
 
 ## EditableCancelTrigger
 
 ### Props
-
-| Prop      | Type                 | Default    |
-| --------- | -------------------- | ---------- |
-| `as`      | `AsTag \| Component` | `"button"` |
-| `asChild` | `boolean`            | -          |
+| Prop | Type | Default |
+|------|------|---------|
+| `as` | `AsTag \| Component` | `"button"` |
+| `asChild` | `boolean` | - |
 
 ## EditableEditTrigger
 
 ### Props
-
-| Prop      | Type                 | Default    |
-| --------- | -------------------- | ---------- |
-| `as`      | `AsTag \| Component` | `"button"` |
-| `asChild` | `boolean`            | -          |
+| Prop | Type | Default |
+|------|------|---------|
+| `as` | `AsTag \| Component` | `"button"` |
+| `asChild` | `boolean` | - |

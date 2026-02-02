@@ -34,24 +34,24 @@ if (isSupported.value && permissionGranted.value)
 
 ## Options
 
-| Option             | Type      | Default | Description                                            |
-| ------------------ | --------- | ------- | ------------------------------------------------------ |
-| requestPermissions | `boolean` | true    | Request for permissions onMounted if it's not granted. |
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| requestPermissions | `boolean` | true | Request for permissions onMounted if it's not granted. |
 
 ## Returns
 
-| Name              | Type           |
-| ----------------- | -------------- |
-| isSupported       | `useSupported` |
-| notification      | `Ref`          |
-| ensurePermissions | `Ref`          |
-| permissionGranted | `shallowRef`   |
-| show              | `Ref`          |
-| close             | `Ref`          |
-| onClick           | `Ref`          |
-| onShow            | `Ref`          |
-| onError           | `Ref`          |
-| onClose           | `Ref`          |
+| Name | Type |
+| --- | --- |
+| isSupported | `useSupported` |
+| notification | `Ref` |
+| ensurePermissions | `Ref` |
+| permissionGranted | `shallowRef` |
+| show | `Ref` |
+| close | `Ref` |
+| onClick | `Ref` |
+| onShow | `Ref` |
+| onError | `Ref` |
+| onClose | `Ref` |
 
 ## Reference
 

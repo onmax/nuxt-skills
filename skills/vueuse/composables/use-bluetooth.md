@@ -35,17 +35,17 @@ const {
 
 ## Options
 
-| Option           | Type      | Default | Description                                                                       |
-| ---------------- | --------- | ------- | --------------------------------------------------------------------------------- |
-| acceptAllDevices | `boolean` | false   | \* A boolean value indicating that the requesting script can accept all Bluetooth |
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| acceptAllDevices | `boolean` | false | * A boolean value indicating that the requesting script can accept all Bluetooth |
 
 ## Returns
 
-| Name          | Type           |
-| ------------- | -------------- |
-| isSupported   | `useSupported` |
-| isConnected   | `shallowRef`   |
-| requestDevice | `Ref`          |
+| Name | Type |
+| --- | --- |
+| isSupported | `useSupported` |
+| isConnected | `shallowRef` |
+| requestDevice | `Ref` |
 
 ## Reference
 

@@ -27,8 +27,8 @@ trigger() // logs: Changed to bar!
 
 ## Returns
 
-| Name    | Type  |
-| ------- | ----- |
+| Name | Type |
+| --- | --- |
 | trigger | `Ref` |
 
 ## Reference

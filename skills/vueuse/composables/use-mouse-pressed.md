@@ -15,9 +15,9 @@ const { pressed } = useMousePressed()
 
 ## Returns
 
-| Name       | Type                                   |
-| ---------- | -------------------------------------- |
-| pressed    | `shallowRef`                           |
+| Name | Type |
+| --- | --- |
+| pressed | `shallowRef` |
 | sourceType | `shallowRef&lt;UseMouseSourceType&gt;` |
 
 ## Reference

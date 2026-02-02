@@ -27,9 +27,9 @@ console.log(state.bar) // => 'foo'
 
 ## Returns
 
-| Name         | Type  |
-| ------------ | ----- |
-| enumerable   | `Ref` |
+| Name | Type |
+| --- | --- |
+| enumerable | `Ref` |
 | configurable | `Ref` |
 
 ## Reference

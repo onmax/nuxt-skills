@@ -24,9 +24,9 @@ const floorResult = usePrecision(value, 3, {
 
 ## Options
 
-| Option | Type                           | Default | Description                |
-| ------ | ------------------------------ | ------- | -------------------------- |
-| math   | `'floor' \| 'ceil' \| 'round'` | round   | Method to use for rounding |
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| math | `'floor' \| 'ceil' \| 'round'` | round | Method to use for rounding |
 
 ## Reference
 

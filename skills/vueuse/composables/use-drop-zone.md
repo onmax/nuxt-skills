@@ -38,19 +38,19 @@ const { isOverDropZone } = useDropZone(dropZoneRef, {
 
 ## Options
 
-| Option                     | Type                                                                              | Default | Description                                                                       |
-| -------------------------- | --------------------------------------------------------------------------------- | ------- | --------------------------------------------------------------------------------- |
-| dataTypes                  | `MaybeRef&lt;readonly string[]&gt; \| ((types: readonly string[]) =&gt; boolean)` | -       | Allowed data types, if not set, all data types are allowed.                       |
-| checkValidity              | `(items: DataTransferItemList) =&gt; boolean`                                     | -       | Similar to dataTypes, but exposes the DataTransferItemList for custom validation. |
-| multiple                   | `boolean`                                                                         | -       | Allow multiple files to be dropped. Defaults to true.                             |
-| preventDefaultForUnhandled | `boolean`                                                                         | -       | Prevent default behavior for unhandled events. Defaults to false.                 |
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| dataTypes | `MaybeRef&lt;readonly string[]&gt; \| ((types: readonly string[]) =&gt; boolean)` | - | Allowed data types, if not set, all data types are allowed. |
+| checkValidity | `(items: DataTransferItemList) =&gt; boolean` | - | Similar to dataTypes, but exposes the DataTransferItemList for custom validation. |
+| multiple | `boolean` | - | Allow multiple files to be dropped. Defaults to true. |
+| preventDefaultForUnhandled | `boolean` | - | Prevent default behavior for unhandled events. Defaults to false. |
 
 ## Returns
 
-| Name           | Type                               |
-| -------------- | ---------------------------------- |
-| files          | `shallowRef&lt;File[] \| null&gt;` |
-| isOverDropZone | `shallowRef`                       |
+| Name | Type |
+| --- | --- |
+| files | `shallowRef&lt;File[] \| null&gt;` |
+| isOverDropZone | `shallowRef` |
 
 ## Reference
 

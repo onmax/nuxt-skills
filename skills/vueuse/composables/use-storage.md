@@ -28,16 +28,16 @@ state.value = null
 
 ## Options
 
-| Option                 | Type                                                  | Default | Description                                                      |
-| ---------------------- | ----------------------------------------------------- | ------- | ---------------------------------------------------------------- |
-| deep                   | `boolean`                                             | true    | Watch for deep changes                                           |
-| listenToStorageChanges | `boolean`                                             | true    | Listen to storage changes, useful for multiple tabs application  |
-| writeDefaults          | `boolean`                                             | true    | Write the default value to the storage when it does not exist    |
-| mergeDefaults          | `boolean \| ((storageValue: T, defaults: T) =&gt; T)` | false   | Merge the default value with the value read from the storage.    |
-| serializer             | `Serializer&lt;T&gt;`                                 | -       | Custom data serialization                                        |
-| onError                | `(error: unknown) =&gt; void`                         | -       | On error callback                                                |
-| shallow                | `boolean`                                             | false   | Use shallow ref as reference                                     |
-| initOnMounted          | `boolean`                                             | false   | Wait for the component to be mounted before reading the storage. |
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| deep | `boolean` | true | Watch for deep changes |
+| listenToStorageChanges | `boolean` | true | Listen to storage changes, useful for multiple tabs application |
+| writeDefaults | `boolean` | true | Write the default value to the storage when it does not exist |
+| mergeDefaults | `boolean \| ((storageValue: T, defaults: T) =&gt; T)` | false | Merge the default value with the value read from the storage. |
+| serializer | `Serializer&lt;T&gt;` | - | Custom data serialization |
+| onError | `(error: unknown) =&gt; void` | - | On error callback |
+| shallow | `boolean` | false | Use shallow ref as reference |
+| initOnMounted | `boolean` | false | Wait for the component to be mounted before reading the storage. |
 
 ## Reference
 

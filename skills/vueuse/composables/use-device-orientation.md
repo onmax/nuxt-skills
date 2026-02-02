@@ -20,13 +20,13 @@ const {
 
 ## Returns
 
-| Name        | Type           |
-| ----------- | -------------- |
+| Name | Type |
+| --- | --- |
 | isSupported | `useSupported` |
-| isAbsolute  | `shallowRef`   |
-| alpha       | `Ref`          |
-| beta        | `Ref`          |
-| gamma       | `Ref`          |
+| isAbsolute | `shallowRef` |
+| alpha | `Ref` |
+| beta | `Ref` |
+| gamma | `Ref` |
 
 ## Reference
 

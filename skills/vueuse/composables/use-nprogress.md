@@ -7,13 +7,13 @@ Reactive wrapper for .
 
 ## Returns
 
-| Name      | Type       |
-| --------- | ---------- |
+| Name | Type |
+| --- | --- |
 | isLoading | `computed` |
-| progress  | `toRef`    |
-| start     | `Ref`      |
-| done      | `Ref`      |
-| remove    | `Ref`      |
+| progress | `toRef` |
+| start | `Ref` |
+| done | `Ref` |
+| remove | `Ref` |
 
 ## Reference
 

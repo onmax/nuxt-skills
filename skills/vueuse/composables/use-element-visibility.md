@@ -25,11 +25,11 @@ const targetIsVisible = useElementVisibility(target)
 
 ## Options
 
-| Option       | Type                                     | Default | Description                                                                     |
-| ------------ | ---------------------------------------- | ------- | ------------------------------------------------------------------------------- |
-| initialValue | `boolean`                                | false   | Initial value.                                                                  |
-| scrollTarget | `UseIntersectionObserverOptions['root']` | -       | The element that is used as the viewport for checking visibility of the target. |
-| once         | `boolean`                                | false   | Stop tracking when element visibility changes for the first time                |
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| initialValue | `boolean` | false | Initial value. |
+| scrollTarget | `UseIntersectionObserverOptions['root']` | - | The element that is used as the viewport for checking visibility of the target. |
+| once | `boolean` | false | Stop tracking when element visibility changes for the first time |
 
 ## Reference
 

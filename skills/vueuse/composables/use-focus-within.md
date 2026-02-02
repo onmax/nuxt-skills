@@ -35,8 +35,8 @@ watch(focused, (focused) => {
 
 ## Returns
 
-| Name    | Type       |
-| ------- | ---------- |
+| Name | Type |
+| --- | --- |
 | focused | `computed` |
 
 ## Reference
