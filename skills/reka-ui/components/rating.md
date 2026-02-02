@@ -23,16 +23,16 @@ Star rating input (v2.8.0)
 
 ### Emits
 
-| Event               | Payload            |
-| ------------------- | ------------------ |
+| Event               | Payload             |
+| ------------------- | ------------------- |
 | `update:modelValue` | `[payload: number]` |
 
 ### Slots
 
-| Slot         | Type                              |
-| ------------ | --------------------------------- |
-| `modelValue` | `number \| undefined`             |
-| `items`      | `number[]`                        |
+| Slot         | Type                  |
+| ------------ | --------------------- |
+| `modelValue` | `number \| undefined` |
+| `items`      | `number[]`            |
 
 ## RatingItem
 
@@ -54,25 +54,25 @@ Star rating input (v2.8.0)
 
 ### Props
 
-| Prop      | Type                 | Default |
-| --------- | -------------------- | ------- |
-| `as`      | `AsTag \| Component` | -       |
-| `asChild` | `boolean`            | -       |
+| Prop      | Type                 | Default  |
+| --------- | -------------------- | -------- |
+| `as`      | `AsTag \| Component` | -        |
+| `asChild` | `boolean`            | -        |
 | `step`    | `number`             | required |
 
 ### CSS Variables
 
-| Variable                           | Description             |
-| ---------------------------------- | ----------------------- |
-| `--reka-rating-item-step-width`    | Width based on step     |
-| `--reka-rating-item-step-opacity`  | Visibility of step      |
-| `--reka-rating-item-step-z-index`  | Z-index stacking order  |
+| Variable                          | Description            |
+| --------------------------------- | ---------------------- |
+| `--reka-rating-item-step-width`   | Width based on step    |
+| `--reka-rating-item-step-opacity` | Visibility of step     |
+| `--reka-rating-item-step-z-index` | Z-index stacking order |
 
 ### Data Attributes
 
-| Attribute      | Value                    |
-| -------------- | ------------------------ |
-| `[data-state]` | `"active" \| undefined`  |
+| Attribute      | Value                   |
+| -------------- | ----------------------- |
+| `[data-state]` | `"active" \| undefined` |
 
 ## Example
 

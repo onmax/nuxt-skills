@@ -363,12 +363,12 @@ database: {
 
 ## Best Practices
 
-| Do                                      | Don't                            |
-| --------------------------------------- | -------------------------------- |
-| Use `_localDatabase` for dev/prod split | Use production DB in development |
-| Specify only needed langs               | Load all Shiki languages         |
-| Use multi-theme for dark mode support   | Hardcode single theme            |
-| Configure TOC depth for your content    | Use defaults without checking    |
+| Do                                        | Don't                            |
+| ----------------------------------------- | -------------------------------- |
+| Use `_localDatabase` for dev/prod split   | Use production DB in development |
+| Specify only needed langs                 | Load all Shiki languages         |
+| Use multi-theme for dark mode support     | Hardcode single theme            |
+| Configure TOC depth for your content      | Use defaults without checking    |
 | Add indexes for frequently queried fields | Index every field unnecessarily  |
 
 ## Resources
