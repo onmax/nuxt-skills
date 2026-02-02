@@ -1,7 +1,5 @@
 # templateRef
 
-
-
 **Package:** `@vueuse/core`
 **Category:** Component
 

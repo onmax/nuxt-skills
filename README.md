@@ -78,6 +78,7 @@ Clone the repository and copy skill folders to your agent's skills directory:
 | **vite**             | Vite build tool - config, plugins, HMR, SSR, library mode, performance          |
 | **pnpm**             | pnpm package manager - workspaces, catalogs, CLI commands, CI/CD                |
 | **tsdown**           | tsdown bundler - TypeScript libraries, DTS generation, package validation       |
+| **tresjs**           | TresJS 3D framework - TresCanvas, Cientos helpers, post-processing effects      |
 
 ## How Skills Work
 
@@ -119,7 +120,8 @@ nuxt-skills/
 │   ├── vitest/
 │   ├── vite/
 │   ├── pnpm/
-│   └── tsdown/
+│   ├── tsdown/
+│   └── tresjs/
 └── .claude-plugin/
     └── marketplace.json    # Claude Code marketplace
 ```

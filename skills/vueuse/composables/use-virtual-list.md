@@ -1,7 +1,5 @@
 # useVirtualList
 
-
-
 **Package:** `@vueuse/core`
 **Category:** Component
 
@@ -21,20 +19,20 @@ const { list, containerProps, wrapperProps } = useVirtualList(
 
 ## Options
 
-| Option | Type | Default | Description |
-| --- | --- | --- | --- |
-| overscan | `number` | 5 | the extra buffer items outside of the view area |
+| Option   | Type     | Default | Description                                     |
+| -------- | -------- | ------- | ----------------------------------------------- |
+| overscan | `number` | 5       | the extra buffer items outside of the view area |
 
 ## Returns
 
-| Name | Type |
-| --- | --- |
-| calculateRange | `createCalculateRange` |
-| scrollTo | `createScrollTo` |
-| containerStyle | `Ref` |
-| wrapperProps | `computed` |
-| currentList | `Ref` |
-| containerRef | `shallowRef&lt;HTMLElement \| null&gt;` |
+| Name           | Type                                    |
+| -------------- | --------------------------------------- |
+| calculateRange | `createCalculateRange`                  |
+| scrollTo       | `createScrollTo`                        |
+| containerStyle | `Ref`                                   |
+| wrapperProps   | `computed`                              |
+| currentList    | `Ref`                                   |
+| containerRef   | `shallowRef&lt;HTMLElement \| null&gt;` |
 
 ## Reference
 
