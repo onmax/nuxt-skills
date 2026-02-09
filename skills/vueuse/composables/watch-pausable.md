@@ -34,12 +34,12 @@ await nextTick() // Changed to hello!
 
 ## Returns
 
-| Name     | Type              |
-| -------- | ----------------- |
-| stop     | `watchWithFilter` |
-| pause    | `Ref`             |
-| resume   | `Ref`             |
-| isActive | `Ref`             |
+| Name | Type |
+| --- | --- |
+| stop | `watchWithFilter` |
+| pause | `Ref` |
+| resume | `Ref` |
+| isActive | `Ref` |
 
 ## Reference
 

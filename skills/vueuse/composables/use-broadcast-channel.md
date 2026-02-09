@@ -33,21 +33,21 @@ close()
 
 ## Options
 
-| Option | Type     | Default | Description              |
-| ------ | -------- | ------- | ------------------------ |
-| name   | `string` | -       | The name of the channel. |
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| name | `string` | - | The name of the channel. |
 
 ## Returns
 
-| Name        | Type                                           |
-| ----------- | ---------------------------------------------- |
-| isSupported | `useSupported`                                 |
-| channel     | `deepRef&lt;BroadcastChannel \| undefined&gt;` |
-| data        | `deepRef`                                      |
-| post        | `Ref`                                          |
-| close       | `Ref`                                          |
-| error       | `shallowRef&lt;Event \| null&gt;`              |
-| isClosed    | `shallowRef`                                   |
+| Name | Type |
+| --- | --- |
+| isSupported | `useSupported` |
+| channel | `deepRef&lt;BroadcastChannel \| undefined&gt;` |
+| data | `deepRef` |
+| post | `Ref` |
+| close | `Ref` |
+| error | `shallowRef&lt;Event \| null&gt;` |
+| isClosed | `shallowRef` |
 
 ## Reference
 

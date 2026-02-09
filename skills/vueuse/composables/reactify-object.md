@@ -19,9 +19,9 @@ reactifiedConsole.log(a) // no longer need `.value`
 
 ## Options
 
-| Option               | Type      | Default | Description                                    |
-| -------------------- | --------- | ------- | ---------------------------------------------- |
-| includeOwnProperties | `boolean` | true    | Includes names from Object.getOwnPropertyNames |
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| includeOwnProperties | `boolean` | true | Includes names from Object.getOwnPropertyNames |
 
 ## Reference
 

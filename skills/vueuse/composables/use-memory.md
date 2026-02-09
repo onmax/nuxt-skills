@@ -15,18 +15,18 @@ const { isSupported, memory } = useMemory()
 
 ## Options
 
-| Option            | Type      | Default | Description                                             |
-| ----------------- | --------- | ------- | ------------------------------------------------------- |
-| immediate         | `boolean` | true    | Start the timer immediately                             |
-| immediateCallback | `boolean` | false   | Execute the callback immediately after calling `resume` |
-| interval          | `number`  | -       |                                                         |
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| immediate | `boolean` | true | Start the timer immediately |
+| immediateCallback | `boolean` | false | Execute the callback immediately after calling `resume` |
+| interval | `number` | - |  |
 
 ## Returns
 
-| Name        | Type                        |
-| ----------- | --------------------------- |
-| isSupported | `useSupported`              |
-| memory      | `deepRef&lt;MemoryInfo&gt;` |
+| Name | Type |
+| --- | --- |
+| isSupported | `useSupported` |
+| memory | `deepRef&lt;MemoryInfo&gt;` |
 
 ## Reference
 

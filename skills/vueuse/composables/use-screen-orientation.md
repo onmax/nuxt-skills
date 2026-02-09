@@ -21,13 +21,13 @@ const {
 
 ## Returns
 
-| Name              | Type                                          |
-| ----------------- | --------------------------------------------- |
-| isSupported       | `useSupported`                                |
-| orientation       | `deepRef&lt;OrientationType \| undefined&gt;` |
-| angle             | `shallowRef`                                  |
-| lockOrientation   | `Ref`                                         |
-| unlockOrientation | `Ref`                                         |
+| Name | Type |
+| --- | --- |
+| isSupported | `useSupported` |
+| orientation | `deepRef&lt;OrientationType \| undefined&gt;` |
+| angle | `shallowRef` |
+| lockOrientation | `Ref` |
+| unlockOrientation | `Ref` |
 
 ## Reference
 

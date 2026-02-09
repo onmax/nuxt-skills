@@ -23,22 +23,22 @@ const { isLoading } = useImage({ src: avatarUrl })
 
 ## Options
 
-| Option         | Type                                 | Default | Description |
-| -------------- | ------------------------------------ | ------- | ----------- |
-| src            | `string`                             | -       |             |
-| srcset         | `string`                             | -       |             |
-| sizes          | `string`                             | -       |             |
-| alt            | `string`                             | -       |             |
-| class          | `string`                             | -       |             |
-| loading        | `HTMLImageElement['loading']`        | -       |             |
-| crossorigin    | `string`                             | -       |             |
-| referrerPolicy | `HTMLImageElement['referrerPolicy']` | -       |             |
-| width          | `HTMLImageElement['width']`          | -       |             |
-| height         | `HTMLImageElement['height']`         | -       |             |
-| decoding       | `HTMLImageElement['decoding']`       | -       |             |
-| fetchPriority  | `HTMLImageElement['fetchPriority']`  | -       |             |
-| ismap          | `HTMLImageElement['isMap']`          | -       |             |
-| usemap         | `HTMLImageElement['useMap']`         | -       |             |
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| src | `string` | - |  |
+| srcset | `string` | - |  |
+| sizes | `string` | - |  |
+| alt | `string` | - |  |
+| class | `string` | - |  |
+| loading | `HTMLImageElement['loading']` | - |  |
+| crossorigin | `string` | - |  |
+| referrerPolicy | `HTMLImageElement['referrerPolicy']` | - |  |
+| width | `HTMLImageElement['width']` | - |  |
+| height | `HTMLImageElement['height']` | - |  |
+| decoding | `HTMLImageElement['decoding']` | - |  |
+| fetchPriority | `HTMLImageElement['fetchPriority']` | - |  |
+| ismap | `HTMLImageElement['isMap']` | - |  |
+| usemap | `HTMLImageElement['useMap']` | - |  |
 
 ## Reference
 

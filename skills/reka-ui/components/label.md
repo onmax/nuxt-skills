@@ -7,9 +7,8 @@ Accessible form label
 ## Label
 
 ### Props
-
-| Prop      | Type                 | Default   |
-| --------- | -------------------- | --------- |
-| `as`      | `AsTag \| Component` | `"label"` |
-| `asChild` | `boolean`            | -         |
-| `for`     | `string`             | -         |
+| Prop | Type | Default |
+|------|------|---------|
+| `as` | `AsTag \| Component` | `"label"` |
+| `asChild` | `boolean` | - |
+| `for` | `string` | - |

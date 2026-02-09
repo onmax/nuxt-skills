@@ -34,21 +34,21 @@ console.log(state.value) // 'Shark'
 
 ## Options
 
-| Option        | Type                                 | Default | Description                                            |
-| ------------- | ------------------------------------ | ------- | ------------------------------------------------------ |
-| initialValue  | `MaybeRef&lt;T&gt;`                  | -       | The initial value of the state.                        |
-| fallbackIndex | `number`                             | -       | The default index when                                 |
-| getIndexOf    | `(value: T, list: T[]) =&gt; number` | -       | Custom function to get the index of the current value. |
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| initialValue | `MaybeRef&lt;T&gt;` | - | The initial value of the state. |
+| fallbackIndex | `number` | - | The default index when |
+| getIndexOf | `(value: T, list: T[]) =&gt; number` | - | Custom function to get the index of the current value. |
 
 ## Returns
 
-| Name  | Type                     |
-| ----- | ------------------------ |
-| state | `shallowRef`             |
+| Name | Type |
+| --- | --- |
+| state | `shallowRef` |
 | index | `computed&lt;number&gt;` |
-| next  | `Ref`                    |
-| prev  | `Ref`                    |
-| go    | `Ref`                    |
+| next | `Ref` |
+| prev | `Ref` |
+| go | `Ref` |
 
 ## Reference
 

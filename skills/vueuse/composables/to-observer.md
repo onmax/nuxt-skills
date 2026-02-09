@@ -7,8 +7,8 @@ Sugar function to convert a into an RxJS Observer.
 
 ## Returns
 
-| Name | Type  |
-| ---- | ----- |
+| Name | Type |
+| --- | --- |
 | next | `Ref` |
 
 ## Reference

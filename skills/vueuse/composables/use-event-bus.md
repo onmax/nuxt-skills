@@ -33,12 +33,12 @@ bus.reset()
 
 ## Returns
 
-| Name  | Type  |
-| ----- | ----- |
-| on    | `Ref` |
-| once  | `Ref` |
-| off   | `Ref` |
-| emit  | `Ref` |
+| Name | Type |
+| --- | --- |
+| on | `Ref` |
+| once | `Ref` |
+| off | `Ref` |
+| emit | `Ref` |
 | reset | `Ref` |
 
 ## Reference

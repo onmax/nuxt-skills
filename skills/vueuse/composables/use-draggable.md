@@ -29,24 +29,24 @@ const { x, y, style } = useDraggable(el, {
 
 ## Options
 
-| Option           | Type                                                                                           | Default   | Description                                                                  |
-| ---------------- | ---------------------------------------------------------------------------------------------- | --------- | ---------------------------------------------------------------------------- |
-| exact            | `MaybeRefOrGetter&lt;boolean&gt;`                                                              | false     | Only start the dragging when click on the element directly                   |
-| preventDefault   | `MaybeRefOrGetter&lt;boolean&gt;`                                                              | false     | Prevent events defaults                                                      |
-| stopPropagation  | `MaybeRefOrGetter&lt;boolean&gt;`                                                              | false     | Prevent events propagation                                                   |
-| capture          | `boolean`                                                                                      | true      | Whether dispatch events in capturing phase                                   |
-| draggingElement  | `MaybeRefOrGetter&lt;HTMLElement \| SVGElement \| Window \| Document \| null \| undefined&gt;` | window    | Element to attach `pointermove` and `pointerup` events to.                   |
-| containerElement | `MaybeRefOrGetter&lt;HTMLElement \| SVGElement \| null \| undefined&gt;`                       | undefined | Element for calculating bounds (If not set, it will use the event's target). |
-| handle           | `MaybeRefOrGetter&lt;HTMLElement \| SVGElement \| null \| undefined&gt;`                       | target    | Handle that triggers the drag event                                          |
-| pointerTypes     | `PointerType[]`                                                                                | [         | Pointer types that listen to.                                                |
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| exact | `MaybeRefOrGetter&lt;boolean&gt;` | false | Only start the dragging when click on the element directly |
+| preventDefault | `MaybeRefOrGetter&lt;boolean&gt;` | false | Prevent events defaults |
+| stopPropagation | `MaybeRefOrGetter&lt;boolean&gt;` | false | Prevent events propagation |
+| capture | `boolean` | true | Whether dispatch events in capturing phase |
+| draggingElement | `MaybeRefOrGetter&lt;HTMLElement \| SVGElement \| Window \| Document \| null \| undefined&gt;` | window | Element to attach `pointermove` and `pointerup` events to. |
+| containerElement | `MaybeRefOrGetter&lt;HTMLElement \| SVGElement \| null \| undefined&gt;` | undefined | Element for calculating bounds (If not set, it will use the event's target). |
+| handle | `MaybeRefOrGetter&lt;HTMLElement \| SVGElement \| null \| undefined&gt;` | target | Handle that triggers the drag event |
+| pointerTypes | `PointerType[]` | [ | Pointer types that listen to. |
 
 ## Returns
 
-| Name       | Type                      |
-| ---------- | ------------------------- |
-| position   | `deepRef&lt;Position&gt;` |
-| isDragging | `Ref`                     |
-| style      | `Ref`                     |
+| Name | Type |
+| --- | --- |
+| position | `deepRef&lt;Position&gt;` |
+| isDragging | `Ref` |
+| style | `Ref` |
 
 ## Reference
 
