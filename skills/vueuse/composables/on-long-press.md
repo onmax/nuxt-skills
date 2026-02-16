@@ -52,7 +52,6 @@ onLongPress(
 | --- | --- | --- | --- |
 | delay | `number \| ((ev: PointerEvent) =&gt; number)` | 500 | Time in ms till `longpress` gets called |
 | distanceThreshold | `number \| false` | 10 | Allowance of moving distance in pixels, |
-| onMouseUp | `(duration: number, distance: number, isLongPress: boolean) =&gt; void` | - | Function called when the ref element is released. |
 
 ## Reference
 
