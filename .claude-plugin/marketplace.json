@@ -47,7 +47,7 @@
       "name": "nuxt-ui",
       "source": "./skills/nuxt-ui",
       "version": "1.0.0",
-      "description": "Nuxt UI v4 components with Tailwind Variants theming. Use when building styled UI or encountering UButton, UModal, UForm, UTable component errors.",
+      "description": "Deprecated compatibility shim (sunsets 2026-03-31). Redirects legacy users to official Nuxt UI skills while preserving existing /nuxt-ui workflows.",
       "keywords": ["nuxt", "ui", "components", "tailwind", "forms", "modal", "table", "theming"],
       "category": "frontend"
     },

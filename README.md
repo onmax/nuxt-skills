@@ -42,7 +42,13 @@ An alternative for Claude Code users:
 /plugin install nuxt@nuxt-skills
 
 # Install multiple skills
-/plugin install vue@nuxt-skills nuxt@nuxt-skills nuxt-ui@nuxt-skills
+/plugin install vue@nuxt-skills nuxt@nuxt-skills nuxt-content@nuxt-skills
+```
+
+For Nuxt UI, prefer the official package:
+
+```bash
+npx skills add nuxt/ui
 ```
 
 ### Manual Installation
@@ -66,7 +72,7 @@ Clone the repository and copy skill folders to your agent's skills directory:
 | **nuxt-modules**     | Creating Nuxt modules with defineNuxtModule, Kit utilities, testing             |
 | **nuxthub**          | NuxtHub v0.10 database, KV, blob, cache, multi-cloud                            |
 | **nuxt-content**     | Nuxt Content v3 collections, queries, MDC rendering, NuxtStudio                 |
-| **nuxt-ui**          | Nuxt UI v4 components, theming, forms, overlays, composables                    |
+| **nuxt-ui**          | Deprecated compatibility shim (sunsets 2026-03-31). Migrate to official `nuxt/ui` skills. |
 | **nuxt-better-auth** | Auth with @onmax/nuxt-better-auth, useUserSession, route protection, clientOnly |
 | **reka-ui**          | Reka UI headless Vue components, accessible primitives, props/emits/slots       |
 | **document-writer**  | Writing documentation for Nuxt ecosystem - MDC, style, structure, code examples |
@@ -78,6 +84,33 @@ Clone the repository and copy skill folders to your agent's skills directory:
 | **vite**             | Vite build tool - config, plugins, HMR, SSR, library mode, performance          |
 | **pnpm**             | pnpm package manager - workspaces, catalogs, CLI commands, CI/CD                |
 | **tsdown**           | tsdown bundler - TypeScript libraries, DTS generation, package validation       |
+
+## Nuxt UI Skill Deprecation
+
+The custom `nuxt-ui` skill in this repository is deprecated and will be removed after **March 31, 2026**.
+
+Migration path:
+
+```bash
+npx skills add nuxt/ui
+```
+
+Optional cleanup (interactive):
+
+```bash
+npx skills remove
+```
+
+Phase policy:
+
+- Phase A (now to 2026-03-31): keep `nuxt-ui` as a compatibility shim and show migration guidance.
+- Phase B (after 2026-03-31): remove `skills/nuxt-ui` and listing references in the next release.
+
+References:
+
+- [Nuxt UI Skills docs](https://ui.nuxt.com/raw/docs/getting-started/ai/skills.md)
+- [Nuxt UI MCP docs](https://ui.nuxt.com/raw/docs/getting-started/ai/mcp.md)
+- [Nuxt UI LLMs.txt docs](https://ui.nuxt.com/raw/docs/getting-started/ai/llms-txt.md)
 
 ## How Skills Work
 
