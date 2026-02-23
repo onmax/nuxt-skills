@@ -48,10 +48,10 @@ onLongPress(
 
 ## Options
 
-| Option | Type | Default | Description |
-| --- | --- | --- | --- |
-| delay | `number \| ((ev: PointerEvent) =&gt; number)` | 500 | Time in ms till `longpress` gets called |
-| distanceThreshold | `number \| false` | 10 | Allowance of moving distance in pixels, |
+| Option            | Type                                          | Default | Description                             |
+| ----------------- | --------------------------------------------- | ------- | --------------------------------------- |
+| delay             | `number \| ((ev: PointerEvent) =&gt; number)` | 500     | Time in ms till `longpress` gets called |
+| distanceThreshold | `number \| false`                             | 10      | Allowance of moving distance in pixels, |
 
 ## Reference
 
