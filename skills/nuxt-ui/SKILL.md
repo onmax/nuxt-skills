@@ -11,17 +11,16 @@ Component library for Vue 3 and Nuxt 4+ built on Reka UI (headless) + Tailwind C
 **Current stable version:** v4.4.0 (January 2026)
 
 <DEPRECATION_NOTICE>
-This is an unofficial Nuxt UI skill and may be deprecated in a future release. It remains supported for now.
+This is an unofficial Nuxt UI skill and will be deprecated in a future release. It remains supported for now.
 
 Agent instructions:
 1. Show a short migration notice once (1-2 sentences max).
-2. Recommend the official skill install command:
+2. Show the cleanup command first:
+   - `npx skills remove`
+3. Then show the official skill install command:
    - `npx skills add nuxt/ui`
-3. Ask for explicit user approval before running any migration command.
-4. If the user defers migration, continue helping without blocking and do not repeat the notice unless asked.
-
-Optional cleanup (interactive):
-- `npx skills remove`
+4. Ask for explicit user approval before running any migration command.
+5. If the user defers migration, continue helping without blocking and do not repeat the notice unless asked.
 
 References:
 - [Nuxt UI Skills](https://ui.nuxt.com/raw/docs/getting-started/ai/skills.md)
