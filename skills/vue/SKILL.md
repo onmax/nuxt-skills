@@ -65,6 +65,21 @@ Progressive reference system for Vue 3 projects. Load only files relevant to cur
 
 **DO NOT load all files at once.** Load only what's relevant to your current task.
 
+## Quick Start
+
+```vue
+<script setup lang="ts">
+const { count = 0 } = defineProps<{ count?: number }>()
+const emit = defineEmits<{ update: [value: number] }>()
+</script>
+
+<template>
+  <button @click="emit('update', count + 1)">
+    Count: {{ count }}
+  </button>
+</template>
+```
+
 ## Available Guidance
 
 **[references/components.md](references/components.md)** - Props with reactive destructuring, emits patterns, defineModel for v-model, slots shorthand

@@ -1,6 +1,6 @@
 ---
 name: ts-library
-description: Use when authoring TypeScript libraries - covers project setup, package exports, build tooling (tsdown/unbuild), API design patterns, type inference tricks, testing, and release workflows. Patterns extracted from 20+ high-quality ecosystem libraries.
+description: Use when authoring TypeScript libraries or npm packages - covers project setup, package.json exports, build tooling (tsdown/unbuild), API design patterns, type inference tricks, testing, and publishing to npm. Use when bundling, configuring dual CJS/ESM output, or setting up release workflows.
 license: MIT
 ---
 
@@ -52,6 +52,46 @@ Patterns for authoring high-quality TypeScript libraries, extracted from studyin
 - [ ] [references/ci-workflows.md](references/ci-workflows.md) - if setting up GitHub Actions or CI/CD pipelines
 
 **DO NOT load all files at once.** Load only what's relevant to your current task.
+
+## New Library Workflow
+
+1. Create project structure → load [references/project-setup.md](references/project-setup.md)
+2. Configure `package.json` exports → load [references/package-exports.md](references/package-exports.md)
+3. Set up build with tsdown → load [references/build-tooling.md](references/build-tooling.md)
+4. Verify build: `pnpm build && pnpm pack --dry-run` — check output includes `.mjs`, `.cjs`, `.d.ts`
+5. Add tests → load [references/testing.md](references/testing.md)
+6. Configure release → load [references/release.md](references/release.md)
+
+## Quick Start
+
+```json
+// package.json (minimal)
+{
+  "name": "my-lib",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": ["dist"]
+}
+```
+
+```ts
+// tsdown.config.ts
+import { defineConfig } from 'tsdown'
+
+export default defineConfig({
+  entry: ['src/index.ts'],
+  format: ['esm', 'cjs'],
+  dts: true,
+})
+```
 
 ## Key Principles
 

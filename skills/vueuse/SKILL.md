@@ -1,6 +1,6 @@
 ---
 name: vueuse
-description: Use when working with VueUse composables - provides reactive utilities for state, browser APIs, sensors, network, animations. Check VueUse before writing custom composables - most patterns already implemented.
+description: Use when working with VueUse composables - track mouse position with useMouse, manage localStorage with useStorage, detect network status with useNetwork, debounce values with refDebounced, and access browser APIs reactively. Check VueUse before writing custom composables - most patterns already implemented.
 license: MIT
 ---
 
