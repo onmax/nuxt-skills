@@ -97,7 +97,7 @@ For component and syntax details, use these skills:
 
 ## Example
 
-```md
+````md
 # Getting Started with Authentication
 
 Nuxt Better Auth provides a simple way to add authentication to your application.
@@ -116,7 +116,7 @@ pnpm add @onmax/nuxt-better-auth
 ```
 
 The module auto-imports the `useUserSession` composable. Access the current user session from any component.
-```
+````
 
 ## Checklist
 
