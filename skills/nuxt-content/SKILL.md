@@ -1,6 +1,6 @@
 ---
 name: nuxt-content
-description: Use when working with Nuxt Content v3 - provides collections (local/remote/API sources), queryCollection API, MDC rendering, database configuration, NuxtStudio integration, hooks, i18n patterns, and LLMs integration
+description: Use when working with Nuxt Content v3, markdown content, or CMS features in Nuxt - provides collections (local/remote/API sources), queryCollection API, MDC rendering, database configuration, NuxtStudio integration, hooks, i18n patterns, and LLMs integration
 license: MIT
 ---
 
@@ -58,6 +58,41 @@ Read specific files based on current work:
 | queryCollection | SQL-like fluent API for content                                   |
 | MDC             | Vue components inside markdown                                    |
 | ContentRenderer | Renders parsed markdown body                                      |
+
+## Quick Start
+
+```ts
+// content.config.ts
+import { defineCollection, defineContentConfig, z } from '@nuxt/content'
+
+export default defineContentConfig({
+  collections: {
+    blog: defineCollection({
+      type: 'page',
+      source: 'blog/**',
+      schema: z.object({
+        title: z.string(),
+        date: z.date(),
+      }),
+    }),
+  },
+})
+```
+
+```vue
+<!-- pages/blog/[...slug].vue -->
+<script setup lang="ts">
+const { data: page } = await useAsyncData(
+  () => queryCollection('blog').path(useRoute().path).first()
+)
+</script>
+
+<template>
+  <ContentRenderer v-if="page" :value="page" />
+</template>
+```
+
+**Verify setup:** Run `npx nuxi typecheck` to confirm collection types resolve. If `queryCollection` returns empty, check that content files exist in the path matching your `source` glob.
 
 ## Directory Structure
 

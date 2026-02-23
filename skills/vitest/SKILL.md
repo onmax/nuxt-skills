@@ -1,6 +1,6 @@
 ---
 name: vitest
-description: Use when writing unit/integration tests for Vite projects - provides Vitest configuration, test APIs, mocking patterns, and coverage setup
+description: Use when writing unit/integration tests for Vite projects - configure vitest.config.ts, write test suites with describe/it, create mock implementations with vi.fn and vi.mock, set up code coverage thresholds, and run tests in parallel
 license: MIT
 ---
 

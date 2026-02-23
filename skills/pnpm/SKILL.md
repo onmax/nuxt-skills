@@ -1,6 +1,6 @@
 ---
 name: pnpm
-description: Use when managing Node.js dependencies with pnpm - provides workspace setup, catalogs, CLI commands, overrides, and CI configuration
+description: Use when managing Node.js dependencies with pnpm - install packages, configure monorepo workspaces, set up pnpm catalogs, resolve dependency conflicts with overrides, patch third-party packages, and configure CI pipelines for pnpm projects
 license: MIT
 ---
 
@@ -71,6 +71,16 @@ catalog:
 - [ ] [references/ci.md](references/ci.md) - if configuring CI/CD, Docker, or migrating from npm/yarn
 
 **DO NOT load all files at once.** Load only what's relevant to your current task.
+
+## Verify Setup
+
+After configuring a workspace, verify it works:
+
+```bash
+pnpm install          # Install all deps
+pnpm ls --depth 0     # Verify workspace links
+pnpm -r run build     # Build all packages
+```
 
 ## Cross-Skill References
 

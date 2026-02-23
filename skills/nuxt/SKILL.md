@@ -50,6 +50,20 @@ Read specific files based on current work:
 
 **DO NOT load all files at once.** Load only what's relevant to your current task.
 
+## Quick Start
+
+```ts
+// server/api/hello.get.ts
+import { z } from 'zod'
+
+export default defineEventHandler(async (event) => {
+  const { name } = await getValidatedQuery(event, z.object({
+    name: z.string().default('world'),
+  }).parse)
+  return { message: `Hello ${name}` }
+})
+```
+
 ## Nuxt 4 vs Older Versions
 
 **You are working with Nuxt 4+.** Key differences:

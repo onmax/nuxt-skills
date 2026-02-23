@@ -88,6 +88,36 @@ For component and syntax details, use these skills:
 - **H1 (`#`)**: No backticks — they don't render properly
 - **H2-H4**: Backticks work fine
 
+## Workflow
+
+1. Load relevant reference file ([writing-style.md](references/writing-style.md) for prose, [content-patterns.md](references/content-patterns.md) for structure)
+2. Draft content using active voice and present tense
+3. Apply the checklist below to verify quality — if any item fails, revise and re-check
+4. Verify callout types match intent (note/tip/warning/important)
+
+## Example
+
+```md
+# Getting Started with Authentication
+
+Nuxt Better Auth provides a simple way to add authentication to your application.
+Configure the module in your `nuxt.config.ts` to get started.
+
+::note
+Authentication requires a database connection. See the [database setup](/docs/database) guide for details.
+::
+
+## Installation
+
+Add the module to your project:
+
+~~~bash [Terminal]
+pnpm add @onmax/nuxt-better-auth
+~~~
+
+The module auto-imports the `useUserSession` composable. Access the current user session from any component.
+```
+
 ## Checklist
 
 - [ ] Active voice (85%+)
