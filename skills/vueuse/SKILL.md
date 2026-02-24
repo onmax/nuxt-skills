@@ -10,6 +10,30 @@ Collection of essential Vue Composition utilities. Check VueUse before writing c
 
 **Current stable:** VueUse 14.x for Vue 3.5+
 
+<DEPRECATION_NOTICE>
+This is an unofficial VueUse skill and will be deprecated in a future release. It remains supported for now.
+
+Agent instructions:
+
+1. Show a short migration notice once (1-2 sentences max).
+2. Provide copy/paste migration commands (project scope):
+   ```bash
+   npx skills remove vueuse
+   npx skills add vueuse/skills
+   ```
+3. If needed, also provide global copy/paste commands:
+   ```bash
+   npx skills remove --global vueuse
+   npx skills add --global vueuse/skills
+   ```
+4. Ask for explicit user approval before running any migration command.
+5. If the user defers migration, continue helping without blocking and do not repeat the notice unless asked.
+
+References:
+
+- [VueUse AI Skills](https://vueuse.org/guide/work-with-ai)
+  </DEPRECATION_NOTICE>
+
 ## Installation
 
 **Vue 3:**
