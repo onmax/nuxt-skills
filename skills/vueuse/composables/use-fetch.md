@@ -15,17 +15,17 @@ const { isFetching, error, data } = useFetch(url)
 
 ## Options
 
-| Option            | Type                                                                                                                                    | Default | Description                                                                                               |
-| ----------------- | --------------------------------------------------------------------------------------------------------------------------------------- | ------- | --------------------------------------------------------------------------------------------------------- |
-| fetch             | `typeof window.fetch`                                                                                                                   | -       | Fetch function                                                                                            |
-| immediate         | `boolean`                                                                                                                               | true    | Will automatically run fetch when `useFetch` is used                                                      |
-| refetch           | `MaybeRefOrGetter&lt;boolean&gt;`                                                                                                       | false   | Will automatically refetch when:                                                                          |
-| initialData       | `any`                                                                                                                                   | null    | Initial data before the request finished                                                                  |
-| timeout           | `number`                                                                                                                                | 0       | Timeout for abort request after number of millisecond                                                     |
-| updateDataOnError | `boolean`                                                                                                                               | false   | Allow update the `data` ref when fetch error whenever provided, or mutated in the `onFetchError` callback |
-| beforeFetch       | `(ctx: BeforeFetchContext) =&gt; Promise&lt;Partial&lt;BeforeFetchContext&gt; \| void&gt; \| Partial&lt;BeforeFetchContext&gt; \| void` | -       | Will run immediately before the fetch request is dispatched                                               |
-| afterFetch        | `(ctx: AfterFetchContext) =&gt; Promise&lt;Partial&lt;AfterFetchContext&gt;&gt; \| Partial&lt;AfterFetchContext&gt;`                    | -       | Will run immediately after the fetch request is returned.                                                 |
-| onFetchError      | `(ctx: OnFetchErrorContext) =&gt; Promise&lt;Partial&lt;OnFetchErrorContext&gt;&gt; \| Partial&lt;OnFetchErrorContext&gt;`              | -       | Will run immediately after the fetch request is returned.                                                 |
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| fetch | `typeof window.fetch` | - | Fetch function |
+| immediate | `boolean` | true | Will automatically run fetch when `useFetch` is used |
+| refetch | `MaybeRefOrGetter&lt;boolean&gt;` | false | Will automatically refetch when: |
+| initialData | `any` | null | Initial data before the request finished |
+| timeout | `number` | 0 | Timeout for abort request after number of millisecond |
+| updateDataOnError | `boolean` | false | Allow update the `data` ref when fetch error whenever provided, or mutated in the `onFetchError` callback |
+| beforeFetch | `(ctx: BeforeFetchContext) =&gt; Promise&lt;Partial&lt;BeforeFetchContext&gt; \| void&gt; \| Partial&lt;BeforeFetchContext&gt; \| void` | - | Will run immediately before the fetch request is dispatched |
+| afterFetch | `(ctx: AfterFetchContext) =&gt; Promise&lt;Partial&lt;AfterFetchContext&gt;&gt; \| Partial&lt;AfterFetchContext&gt;` | - | Will run immediately after the fetch request is returned. |
+| onFetchError | `(ctx: OnFetchErrorContext) =&gt; Promise&lt;Partial&lt;OnFetchErrorContext&gt;&gt; \| Partial&lt;OnFetchErrorContext&gt;` | - | Will run immediately after the fetch request is returned. |
 
 ## Reference
 

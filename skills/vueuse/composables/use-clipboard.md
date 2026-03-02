@@ -32,21 +32,21 @@ const { text, copy, copied, isSupported } = useClipboard({ source })
 
 ## Options
 
-| Option       | Type      | Default | Description                                                                 |
-| ------------ | --------- | ------- | --------------------------------------------------------------------------- |
-| read         | `boolean` | false   | Enabled reading for clipboard                                               |
-| source       | `Source`  | -       | Copy source                                                                 |
-| copiedDuring | `number`  | 1500    | Milliseconds to reset state of `copied` ref                                 |
-| legacy       | `boolean` | false   | Whether fallback to document.execCommand('copy') if clipboard is undefined. |
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| read | `boolean` | false | Enabled reading for clipboard |
+| source | `Source` | - | Copy source |
+| copiedDuring | `number` | 1500 | Milliseconds to reset state of `copied` ref |
+| legacy | `boolean` | false | Whether fallback to document.execCommand('copy') if clipboard is undefined. |
 
 ## Returns
 
-| Name        | Type         |
-| ----------- | ------------ |
-| isSupported | `computed`   |
-| text        | `shallowRef` |
-| copied      | `shallowRef` |
-| copy        | `Ref`        |
+| Name | Type |
+| --- | --- |
+| isSupported | `computed` |
+| text | `shallowRef` |
+| copied | `shallowRef` |
+| copy | `Ref` |
 
 ## Reference
 

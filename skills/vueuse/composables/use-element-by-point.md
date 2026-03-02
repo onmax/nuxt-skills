@@ -16,17 +16,17 @@ const { element } = useElementByPoint({ x, y })
 
 ## Options
 
-| Option    | Type                                | Default | Description |
-| --------- | ----------------------------------- | ------- | ----------- |
-| immediate | `boolean`                           | -       |             |
-| interval  | `'requestAnimationFrame' \| number` | -       |             |
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| immediate | `boolean` | - |  |
+| interval | `'requestAnimationFrame' \| number` | - |  |
 
 ## Returns
 
-| Name        | Type                    |
-| ----------- | ----------------------- |
-| isSupported | `useSupported`          |
-| element     | `shallowRef&lt;any&gt;` |
+| Name | Type |
+| --- | --- |
+| isSupported | `useSupported` |
+| element | `shallowRef&lt;any&gt;` |
 
 ## Reference
 

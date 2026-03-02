@@ -33,9 +33,9 @@ console.log(sum.value) // 7
 
 ## Options
 
-| Option         | Type | Default | Description                                    |
-| -------------- | ---- | ------- | ---------------------------------------------- |
-| computedGetter | `T`  | true    | Accept passing a function as a reactive getter |
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| computedGetter | `T` | true | Accept passing a function as a reactive getter |
 
 ## Reference
 

@@ -23,10 +23,10 @@ function startShare() {
 
 ## Returns
 
-| Name        | Type           |
-| ----------- | -------------- |
+| Name | Type |
+| --- | --- |
 | isSupported | `useSupported` |
-| share       | `Ref`          |
+| share | `Ref` |
 
 ## Reference
 

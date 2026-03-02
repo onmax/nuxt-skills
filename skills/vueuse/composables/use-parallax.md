@@ -22,10 +22,10 @@ const { tilt, roll, source } = useParallax(container)
 
 ## Returns
 
-| Name   | Type       |
-| ------ | ---------- |
-| roll   | `computed` |
-| tilt   | `computed` |
+| Name | Type |
+| --- | --- |
+| roll | `computed` |
+| tilt | `computed` |
 | source | `computed` |
 
 ## Reference
