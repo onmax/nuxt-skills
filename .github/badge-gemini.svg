@@ -1,0 +1,22 @@
+<svg width="112.7" height="20" viewBox="0 0 1127 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Google: Gemini">
+  <title>Google: Gemini</title>
+  <linearGradient id="g" x2="0" y2="100%">
+    <stop offset="0" stop-opacity=".1" stop-color="#EEE"/>
+    <stop offset="1" stop-opacity=".1"/>
+  </linearGradient>
+  <mask id="m"><rect width="1127" height="200" rx="30" fill="#FFF"/></mask>
+  <g mask="url(#m)">
+    <rect width="603" height="200" fill="#555"/>
+    <rect width="524" height="200" fill="#4285F4" x="603"/>
+    <rect width="1127" height="200" fill="url(#g)"/>
+  </g>
+  <g fill="#fff" text-anchor="start" font-family="Verdana,DejaVu Sans,sans-serif" font-size="110">
+    <text x="190" y="148" textLength="373" fill="#000" opacity="0.25">Google</text>
+    <text x="180" y="138" textLength="373">Google</text>
+    <text x="658" y="148" textLength="424" fill="#000" opacity="0.25">Gemini</text>
+    <text x="648" y="138" textLength="424">Gemini</text>
+  </g>
+  <g transform="translate(40,35) scale(5.4)" fill="#fff">
+    <path d="M12 0C12 6.627 17.373 12 24 12C17.373 12 12 17.373 12 24C12 17.373 6.627 12 0 12C6.627 12 12 6.627 12 0Z"/>
+  </g>
+</svg>
