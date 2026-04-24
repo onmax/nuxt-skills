@@ -32,7 +32,8 @@ When adding/editing/removing a skill, update ALL of these:
 1. `skills/<name>/SKILL.md` - Main skill entry point
 2. `skills/<name>/references/*.md` - Sub-files if applicable
 3. `.claude-plugin/plugin.json` and `.claude-plugin/marketplace.json` - Add/update plugin entry
-4. `README.md` - Update skills table and installation commands
+4. `.claude-plugin/marketplace.json` - Bump `plugins[0].version` for any installed plugin change (`skills/**`, `.claude-plugin/**`, or install docs)
+5. `README.md` - Update skills table and installation commands
 
 **Do not skip any of these.** All must stay in sync.
 

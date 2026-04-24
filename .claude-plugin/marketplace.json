@@ -1,7 +1,7 @@
 {
   "name": "nuxt-skills",
   "owner": { "name": "onmax", "email": "maximogarciamtnez@gmail.com" },
-  "metadata": { "description": "Vue, Nuxt, and NuxtHub skills for AI coding assistants", "version": "1.0.0" },
+  "metadata": { "description": "Vue, Nuxt, and NuxtHub skills for AI coding assistants" },
   "plugins": [
     {
       "name": "nuxt-skills",
