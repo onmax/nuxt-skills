@@ -35,10 +35,10 @@ const { results } = useFuse(input, data)
 
 ## Returns
 
-| Name | Type |
-| --- | --- |
-| fuse | `shallowRef` |
-| results | `Ref` |
+| Name    | Type         |
+| ------- | ------------ |
+| fuse    | `shallowRef` |
+| results | `Ref`        |
 
 ## Reference
 

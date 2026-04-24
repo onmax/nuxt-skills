@@ -25,14 +25,14 @@ export const VDirective = createDisposableDirective({
 
 ## Returns
 
-| Name | Type |
-| --- | --- |
-| binding | `Ref` |
-| string | `Ref` |
-| vNode | `Ref` |
+| Name     | Type  |
+| -------- | ----- |
+| binding  | `Ref` |
+| string   | `Ref` |
+| vNode    | `Ref` |
 | prevNode | `Ref` |
-| binding | `Ref` |
-| vNode | `Ref` |
+| binding  | `Ref` |
+| vNode    | `Ref` |
 
 ## Reference
 
