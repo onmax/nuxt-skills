@@ -41,13 +41,11 @@ An alternative for Claude Code users:
 # Add marketplace
 /plugin marketplace add onmax/nuxt-skills
 
-# Install individual skills
-/plugin install vue@nuxt-skills
-/plugin install nuxt@nuxt-skills
-
-# Install multiple skills
-/plugin install vue@nuxt-skills nuxt@nuxt-skills nuxt-ui@nuxt-skills
+# Install Nuxt Skills
+/plugin install nuxt-skills@nuxt-skills
 ```
+
+Claude Code installs Nuxt Skills as one plugin and dynamically discovers all included skill entries.
 
 ### Manual Installation
 
@@ -129,6 +127,7 @@ nuxt-skills/
 │   ├── tresjs/
 │   └── writing-web-documentation/
 └── .claude-plugin/
+    ├── plugin.json         # Claude Code plugin manifest
     └── marketplace.json    # Claude Code marketplace
 ```
 

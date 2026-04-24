@@ -12,6 +12,7 @@ Follows [agentskills](https://github.com/agentskills/agentskills) standard forma
 
 - `skills/<name>/SKILL.md` - Entry point (frontmatter with name/description/license)
 - `skills/<name>/references/*.md` - Sub-files loaded on-demand
+- `.claude-plugin/plugin.json` - Claude Code plugin manifest
 - `.claude-plugin/marketplace.json` - Claude Code marketplace manifest
 
 ## MANDATORY: Before Starting Work
@@ -30,7 +31,7 @@ When adding/editing/removing a skill, update ALL of these:
 
 1. `skills/<name>/SKILL.md` - Main skill entry point
 2. `skills/<name>/references/*.md` - Sub-files if applicable
-3. `.claude-plugin/marketplace.json` - Add/update plugin entry
+3. `.claude-plugin/plugin.json` and `.claude-plugin/marketplace.json` - Add/update plugin entry
 4. `README.md` - Update skills table and installation commands
 
 **Do not skip any of these.** All must stay in sync.
