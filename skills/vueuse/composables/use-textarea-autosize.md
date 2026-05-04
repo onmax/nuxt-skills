@@ -30,6 +30,7 @@ const { textarea, input } = useTextareaAutosize()
 | --- | --- | --- | --- |
 | element | `MaybeRef&lt;HTMLTextAreaElement \| undefined \| null&gt;` | - |  |
 | input | `MaybeRef&lt;string&gt;` | - |  |
+| maxHeight | `number` | - |  |
 | watch | `WatchSource \| MultiWatchSources` | - |  |
 | onResize | `() =&gt; void` | - |  |
 | styleTarget | `MaybeRef&lt;HTMLElement \| undefined&gt;` | - |  |

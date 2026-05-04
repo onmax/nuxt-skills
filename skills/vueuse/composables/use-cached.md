@@ -17,7 +17,7 @@ interface Data {
 }
 
 const source = shallowRef<Data>({ value: 42, extra: 0 })
-const cached = useCached(source, (a, b) => a.value === b.value)
+const cached = useCached(source, (newSourceValue, cachedValue) => newSourceValue.value === cachedValue.value)
 
 source.value = {
   value: 42,
