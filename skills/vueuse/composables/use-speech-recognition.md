@@ -15,6 +15,7 @@ const {
   isListening,
   isFinal,
   result,
+  confidence,
   start,
   stop,
 } = useSpeechRecognition()
@@ -38,6 +39,7 @@ const {
 | isFinal | `shallowRef` |
 | recognition | `Ref` |
 | result | `shallowRef` |
+| confidence | `shallowRef` |
 | error | `shallowRef&lt;SpeechRecognitionErrorEvent \| Error \| undefined&gt;` |
 | toggle | `Ref` |
 | start | `Ref` |
