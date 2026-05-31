@@ -7,13 +7,15 @@ Maintain aspect ratio
 ## AspectRatio
 
 ### Props
-| Prop | Type | Default |
-|------|------|---------|
-| `as` | `AsTag \| Component` | `"div"` |
-| `asChild` | `boolean` | - |
-| `ratio` | `number` | `1` |
+
+| Prop      | Type                 | Default |
+| --------- | -------------------- | ------- |
+| `as`      | `AsTag \| Component` | `"div"` |
+| `asChild` | `boolean`            | -       |
+| `ratio`   | `number`             | `1`     |
 
 ### Slots
-| Slot | Type |
-|------|------|
+
+| Slot     | Type     |
+| -------- | -------- |
 | `aspect` | `number` |

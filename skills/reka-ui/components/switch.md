@@ -7,32 +7,36 @@ Toggle between two states
 ## SwitchRoot
 
 ### Props
-| Prop | Type | Default |
-|------|------|---------|
-| `as` | `AsTag \| Component` | `"button"` |
-| `asChild` | `boolean` | - |
-| `checked` | `boolean` | - |
-| `defaultChecked` | `boolean` | - |
-| `disabled` | `boolean` | - |
-| `id` | `string` | - |
-| `name` | `string` | - |
-| `required` | `boolean` | - |
-| `value` | `string` | `"on"` |
+
+| Prop             | Type                 | Default    |
+| ---------------- | -------------------- | ---------- |
+| `as`             | `AsTag \| Component` | `"button"` |
+| `asChild`        | `boolean`            | -          |
+| `checked`        | `boolean`            | -          |
+| `defaultChecked` | `boolean`            | -          |
+| `disabled`       | `boolean`            | -          |
+| `id`             | `string`             | -          |
+| `name`           | `string`             | -          |
+| `required`       | `boolean`            | -          |
+| `value`          | `string`             | `"on"`     |
 
 ### Emits
-| Event | Payload |
-|-------|---------|
+
+| Event            | Payload              |
+| ---------------- | -------------------- |
 | `update:checked` | `[payload: boolean]` |
 
 ### Slots
-| Slot | Type |
-|------|------|
+
+| Slot      | Type      |
+| --------- | --------- |
 | `checked` | `boolean` |
 
 ## SwitchThumb
 
 ### Props
-| Prop | Type | Default |
-|------|------|---------|
-| `as` | `AsTag \| Component` | `"span"` |
-| `asChild` | `boolean` | - |
+
+| Prop      | Type                 | Default  |
+| --------- | -------------------- | -------- |
+| `as`      | `AsTag \| Component` | `"span"` |
+| `asChild` | `boolean`            | -        |
