@@ -7,8 +7,8 @@ Make isomorphic destructurable for object and array at the same time. See this b
 
 ## Returns
 
-| Name | Type  |
-| ---- | ----- |
+| Name | Type |
+| --- | --- |
 | next | `Ref` |
 | done | `Ref` |
 

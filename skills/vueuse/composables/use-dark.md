@@ -16,11 +16,11 @@ const toggleDark = useToggle(isDark)
 
 ## Options
 
-| Option     | Type                                                                                                          | Default   | Description                                            |
-| ---------- | ------------------------------------------------------------------------------------------------------------- | --------- | ------------------------------------------------------ |
-| valueDark  | `string`                                                                                                      | dark      | Value applying to the target element when isDark=true  |
-| valueLight | `string`                                                                                                      | -         | Value applying to the target element when isDark=false |
-| onChanged  | `(isDark: boolean, defaultHandler: ((mode: BasicColorSchema) =&gt; void), mode: BasicColorSchema) =&gt; void` | undefined | A custom handler for handle the updates.               |
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| valueDark | `string` | dark | Value applying to the target element when isDark=true |
+| valueLight | `string` | - | Value applying to the target element when isDark=false |
+| onChanged | `(isDark: boolean, defaultHandler: ((mode: BasicColorSchema) =&gt; void), mode: BasicColorSchema) =&gt; void` | undefined | A custom handler for handle the updates. |
 
 ## Reference
 

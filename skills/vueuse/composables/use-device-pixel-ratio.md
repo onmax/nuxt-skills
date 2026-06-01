@@ -15,10 +15,10 @@ const { pixelRatio } = useDevicePixelRatio()
 
 ## Returns
 
-| Name       | Type         |
-| ---------- | ------------ |
+| Name | Type |
+| --- | --- |
 | pixelRatio | `shallowRef` |
-| stop       | `Ref`        |
+| stop | `Ref` |
 
 ## Reference
 

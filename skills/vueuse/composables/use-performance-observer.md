@@ -20,11 +20,11 @@ usePerformanceObserver({
 
 ## Returns
 
-| Name        | Type           |
-| ----------- | -------------- |
+| Name | Type |
+| --- | --- |
 | isSupported | `useSupported` |
-| start       | `Ref`          |
-| stop        | `Ref`          |
+| start | `Ref` |
+| stop | `Ref` |
 
 ## Reference
 

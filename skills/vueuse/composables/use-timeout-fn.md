@@ -17,18 +17,18 @@ const { isPending, start, stop } = useTimeoutFn(() => {
 
 ## Options
 
-| Option            | Type      | Default | Description                                            |
-| ----------------- | --------- | ------- | ------------------------------------------------------ |
-| immediate         | `boolean` | true    | Start the timer immediately                            |
-| immediateCallback | `boolean` | false   | Execute the callback immediately after calling `start` |
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| immediate | `boolean` | true | Start the timer immediately |
+| immediateCallback | `boolean` | false | Execute the callback immediately after calling `start` |
 
 ## Returns
 
-| Name      | Type         |
-| --------- | ------------ |
+| Name | Type |
+| --- | --- |
 | isPending | `shallowRef` |
-| start     | `Ref`        |
-| stop      | `Ref`        |
+| start | `Ref` |
+| stop | `Ref` |
 
 ## Reference
 

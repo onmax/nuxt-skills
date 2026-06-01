@@ -20,9 +20,9 @@ list2.value = [0, 1, 2]
 
 ## Options
 
-| Option    | Type      | Default | Description                   |
-| --------- | --------- | ------- | ----------------------------- |
-| symmetric | `boolean` | false   | Returns asymmetric difference |
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| symmetric | `boolean` | false | Returns asymmetric difference |
 
 ## Reference
 

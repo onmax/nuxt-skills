@@ -26,11 +26,11 @@ const { width, height } = useElementSize(el)
 
 ## Returns
 
-| Name   | Type         |
-| ------ | ------------ |
-| width  | `shallowRef` |
+| Name | Type |
+| --- | --- |
+| width | `shallowRef` |
 | height | `shallowRef` |
-| stop   | `Ref`        |
+| stop | `Ref` |
 
 ## Reference
 

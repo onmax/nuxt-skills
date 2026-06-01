@@ -32,19 +32,19 @@ const { stop } = useIntersectionObserver(
 
 ## Options
 
-| Option     | Type                                  | Default | Description                                                                                                 |
-| ---------- | ------------------------------------- | ------- | ----------------------------------------------------------------------------------------------------------- |
-| immediate  | `boolean`                             | true    | Start the IntersectionObserver immediately on creation                                                      |
-| root       | `MaybeComputedElementRef \| Document` | -       | The Element or Document whose bounds are used as the bounding box when testing for intersection.            |
-| rootMargin | `MaybeRefOrGetter&lt;string&gt;`      | -       | A string which specifies a set of offsets to add to the root's bounding_box when calculating intersections. |
-| threshold  | `number \| number[]`                  | 0       | Either a single number or an array of numbers between 0.0 and 1.                                            |
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| immediate | `boolean` | true | Start the IntersectionObserver immediately on creation |
+| root | `MaybeComputedElementRef \| Document` | - | The Element or Document whose bounds are used as the bounding box when testing for intersection. |
+| rootMargin | `MaybeRefOrGetter&lt;string&gt;` | - | A string which specifies a set of offsets to add to the root's bounding_box when calculating intersections. |
+| threshold | `number \| number[]` | 0 | Either a single number or an array of numbers between 0.0 and 1. |
 
 ## Returns
 
-| Name        | Type           |
-| ----------- | -------------- |
+| Name | Type |
+| --- | --- |
 | isSupported | `useSupported` |
-| isActive    | `shallowRef`   |
+| isActive | `shallowRef` |
 
 ## Reference
 

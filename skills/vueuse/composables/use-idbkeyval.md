@@ -32,11 +32,11 @@ storedObject.value = null
 
 ## Returns
 
-| Name       | Type         |
-| ---------- | ------------ |
-| set        | `Ref`        |
+| Name | Type |
+| --- | --- |
+| set | `Ref` |
 | isFinished | `shallowRef` |
-| data       | `Ref`        |
+| data | `Ref` |
 
 ## Reference
 

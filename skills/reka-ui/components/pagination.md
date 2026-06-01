@@ -7,98 +7,87 @@ Page navigation
 ## PaginationRoot
 
 ### Props
-
-| Prop           | Type                 | Default |
-| -------------- | -------------------- | ------- |
-| `as`           | `AsTag \| Component` | `"nav"` |
-| `asChild`      | `boolean`            | -       |
-| `defaultPage`  | `number`             | `1`     |
-| `disabled`     | `boolean`            | -       |
-| `itemsPerPage` | `number`             | `10`    |
-| `page`         | `number`             | -       |
-| `showEdges`    | `boolean`            | `false` |
-| `siblingCount` | `number`             | `2`     |
-| `total`        | `number`             | `0`     |
+| Prop | Type | Default |
+|------|------|---------|
+| `as` | `AsTag \| Component` | `"nav"` |
+| `asChild` | `boolean` | - |
+| `defaultPage` | `number` | `1` |
+| `disabled` | `boolean` | - |
+| `itemsPerPage` | `number` | `10` |
+| `page` | `number` | - |
+| `showEdges` | `boolean` | `false` |
+| `siblingCount` | `number` | `2` |
+| `total` | `number` | `0` |
 
 ### Emits
-
-| Event         | Payload           |
-| ------------- | ----------------- |
+| Event | Payload |
+|-------|---------|
 | `update:page` | `[value: number]` |
 
 ### Slots
-
-| Slot        | Type     |
-| ----------- | -------- |
-| `page`      | `number` |
+| Slot | Type |
+|------|------|
+| `page` | `number` |
 | `pageCount` | `number` |
 
 ## PaginationList
 
 ### Props
-
-| Prop      | Type                 | Default |
-| --------- | -------------------- | ------- |
-| `as`      | `AsTag \| Component` | `"div"` |
-| `asChild` | `boolean`            | -       |
+| Prop | Type | Default |
+|------|------|---------|
+| `as` | `AsTag \| Component` | `"div"` |
+| `asChild` | `boolean` | - |
 
 ### Slots
-
-| Slot    | Type                                                  |
-| ------- | ----------------------------------------------------- |
+| Slot | Type |
+|------|------|
 | `items` | `{ type: "ellipsis"; } \| { type: "page"; value: ...` |
 
 ## PaginationListItem
 
 ### Props
-
-| Prop      | Type                 | Default    |
-| --------- | -------------------- | ---------- |
-| `as`      | `AsTag \| Component` | `"button"` |
-| `asChild` | `boolean`            | -          |
-| `value`\* | `number`             | -          |
+| Prop | Type | Default |
+|------|------|---------|
+| `as` | `AsTag \| Component` | `"button"` |
+| `asChild` | `boolean` | - |
+| `value`* | `number` | - |
 
 ## PaginationFirst
 
 ### Props
-
-| Prop      | Type                 | Default    |
-| --------- | -------------------- | ---------- |
-| `as`      | `AsTag \| Component` | `"button"` |
-| `asChild` | `boolean`            | -          |
+| Prop | Type | Default |
+|------|------|---------|
+| `as` | `AsTag \| Component` | `"button"` |
+| `asChild` | `boolean` | - |
 
 ## PaginationPrev
 
 ### Props
-
-| Prop      | Type                 | Default    |
-| --------- | -------------------- | ---------- |
-| `as`      | `AsTag \| Component` | `"button"` |
-| `asChild` | `boolean`            | -          |
+| Prop | Type | Default |
+|------|------|---------|
+| `as` | `AsTag \| Component` | `"button"` |
+| `asChild` | `boolean` | - |
 
 ## PaginationNext
 
 ### Props
-
-| Prop      | Type                 | Default    |
-| --------- | -------------------- | ---------- |
-| `as`      | `AsTag \| Component` | `"button"` |
-| `asChild` | `boolean`            | -          |
+| Prop | Type | Default |
+|------|------|---------|
+| `as` | `AsTag \| Component` | `"button"` |
+| `asChild` | `boolean` | - |
 
 ## PaginationLast
 
 ### Props
-
-| Prop      | Type                 | Default    |
-| --------- | -------------------- | ---------- |
-| `as`      | `AsTag \| Component` | `"button"` |
-| `asChild` | `boolean`            | -          |
+| Prop | Type | Default |
+|------|------|---------|
+| `as` | `AsTag \| Component` | `"button"` |
+| `asChild` | `boolean` | - |
 
 ## PaginationEllipsis
 
 ### Props
-
-| Prop      | Type                 | Default |
-| --------- | -------------------- | ------- |
-| `as`      | `AsTag \| Component` | `"div"` |
-| `asChild` | `boolean`            | -       |
+| Prop | Type | Default |
+|------|------|---------|
+| `as` | `AsTag \| Component` | `"div"` |
+| `asChild` | `boolean` | - |

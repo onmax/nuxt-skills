@@ -25,10 +25,10 @@ console.log(target.value) // foo
 
 ## Options
 
-| Option    | Type      | Default | Description             |
-| --------- | --------- | ------- | ----------------------- |
-| deep      | `boolean` | false   | Watch deeply            |
-| immediate | `boolean` | true    | Sync values immediately |
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| deep | `boolean` | false | Watch deeply |
+| immediate | `boolean` | true | Sync values immediately |
 
 ## Reference
 

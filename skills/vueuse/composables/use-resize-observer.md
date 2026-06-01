@@ -31,10 +31,10 @@ useResizeObserver(el, (entries) => {
 
 ## Returns
 
-| Name        | Type           |
-| ----------- | -------------- |
+| Name | Type |
+| --- | --- |
 | isSupported | `useSupported` |
-| stop        | `Ref`          |
+| stop | `Ref` |
 
 ## Reference
 

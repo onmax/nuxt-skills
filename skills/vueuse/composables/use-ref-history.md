@@ -22,25 +22,25 @@ console.log(history.value)
 
 ## Options
 
-| Option       | Type                                                        | Default | Description                                                                         |
-| ------------ | ----------------------------------------------------------- | ------- | ----------------------------------------------------------------------------------- |
-| deep         | `boolean`                                                   | false   | Watch for deep changes, default to false                                            |
-| capacity     | `number`                                                    | -       | Maximum number of history to be kept. Default to unlimited.                         |
-| clone        | `boolean \| CloneFn&lt;Raw&gt;`                             | false   | Clone when taking a snapshot, shortcut for dump: JSON.parse(JSON.stringify(value)). |
-| dump         | `(v: Raw) =&gt; Serialized`                                 | -       | Serialize data into the history                                                     |
-| parse        | `(v: Serialized) =&gt; Raw`                                 | -       | Deserialize data from the history                                                   |
-| shouldCommit | `(oldValue: Raw \| undefined, newValue: Raw) =&gt; boolean` | -       | Function to determine if the commit should proceed                                  |
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| deep | `boolean` | false | Watch for deep changes, default to false |
+| capacity | `number` | - | Maximum number of history to be kept. Default to unlimited. |
+| clone | `boolean \| CloneFn&lt;Raw&gt;` | false | Clone when taking a snapshot, shortcut for dump: JSON.parse(JSON.stringify(value)). |
+| dump | `(v: Raw) =&gt; Serialized` | - | Serialize data into the history |
+| parse | `(v: Serialized) =&gt; Raw` | - | Deserialize data from the history |
+| shouldCommit | `(oldValue: Raw \| undefined, newValue: Raw) =&gt; boolean` | - | Function to determine if the commit should proceed |
 
 ## Returns
 
-| Name       | Type  |
-| ---------- | ----- |
+| Name | Type |
+| --- | --- |
 | isTracking | `Ref` |
-| pause      | `Ref` |
-| resume     | `Ref` |
-| commit     | `Ref` |
-| batch      | `Ref` |
-| dispose    | `Ref` |
+| pause | `Ref` |
+| resume | `Ref` |
+| commit | `Ref` |
+| batch | `Ref` |
+| dispose | `Ref` |
 
 ## Reference
 

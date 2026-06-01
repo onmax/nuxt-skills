@@ -15,14 +15,14 @@ const { count, inc, dec, set, reset } = useCounter()
 
 ## Returns
 
-| Name  | Type         |
-| ----- | ------------ |
+| Name | Type |
+| --- | --- |
 | count | `shallowRef` |
-| inc   | `Ref`        |
-| dec   | `Ref`        |
-| get   | `Ref`        |
-| set   | `Ref`        |
-| reset | `Ref`        |
+| inc | `Ref` |
+| dec | `Ref` |
+| get | `Ref` |
+| set | `Ref` |
+| reset | `Ref` |
 
 ## Reference
 

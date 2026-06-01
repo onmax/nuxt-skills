@@ -23,10 +23,10 @@ setTimeout(() => {
 
 ## Options
 
-| Option     | Type                       | Default | Description                 |
-| ---------- | -------------------------- | ------- | --------------------------- |
-| serializer | `SerializerAsync&lt;T&gt;` | -       | Custom data serialization   |
-| onReady    | `(value: T) =&gt; void`    | -       | On first value loaded hook. |
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| serializer | `SerializerAsync&lt;T&gt;` | - | Custom data serialization |
+| onReady | `(value: T) =&gt; void` | - | On first value loaded hook. |
 
 ## Reference
 

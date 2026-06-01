@@ -27,12 +27,12 @@ export function useMyFetch(url) {
 
 ## Returns
 
-| Name    | Type  |
-| ------- | ----- |
-| on      | `Ref` |
-| off     | `Ref` |
+| Name | Type |
+| --- | --- |
+| on | `Ref` |
+| off | `Ref` |
 | trigger | `Ref` |
-| clear   | `Ref` |
+| clear | `Ref` |
 
 ## Reference
 

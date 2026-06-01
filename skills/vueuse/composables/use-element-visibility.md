@@ -32,12 +32,12 @@ const targetVisibilityController = useElementVisibility(target2, { controls: tru
 
 ## Options
 
-| Option       | Type                                     | Default | Description                                                                     |
-| ------------ | ---------------------------------------- | ------- | ------------------------------------------------------------------------------- |
-| initialValue | `boolean`                                | false   | Initial value.                                                                  |
-| scrollTarget | `UseIntersectionObserverOptions['root']` | -       | The element that is used as the viewport for checking visibility of the target. |
-| once         | `boolean`                                | false   | Stop tracking when element visibility changes for the first time                |
-| controls     | `Controls`                               | false   | Expose more controls                                                            |
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| initialValue | `boolean` | false | Initial value. |
+| scrollTarget | `UseIntersectionObserverOptions['root']` | - | The element that is used as the viewport for checking visibility of the target. |
+| once | `boolean` | false | Stop tracking when element visibility changes for the first time |
+| controls | `Controls` | false | Expose more controls |
 
 ## Reference
 

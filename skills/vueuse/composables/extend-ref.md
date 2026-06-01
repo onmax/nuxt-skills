@@ -21,10 +21,10 @@ extended.foo === 'extra data'
 
 ## Options
 
-| Option     | Type      | Default | Description                          |
-| ---------- | --------- | ------- | ------------------------------------ |
-| enumerable | `boolean` | false   | Is the extends properties enumerable |
-| unwrap     | `Unwrap`  | true    | Unwrap for Ref properties            |
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| enumerable | `boolean` | false | Is the extends properties enumerable |
+| unwrap | `Unwrap` | true | Unwrap for Ref properties |
 
 ## Reference
 

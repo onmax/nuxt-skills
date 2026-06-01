@@ -20,9 +20,9 @@ whenever(isReady, () => console.log(state))
 
 ## Options
 
-| Option | Type      | Default | Description                                 |
-| ------ | --------- | ------- | ------------------------------------------- |
-| once   | `boolean` | false   | Only trigger once when the condition is met |
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| once | `boolean` | false | Only trigger once when the condition is met |
 
 ## Reference
 

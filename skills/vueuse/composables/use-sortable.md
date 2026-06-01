@@ -29,16 +29,16 @@ useSortable(el, list)
 
 ## Options
 
-| Option       | Type      | Default | Description                                                                     |
-| ------------ | --------- | ------- | ------------------------------------------------------------------------------- |
-| watchElement | `boolean` | false   | Watch the element reference for changes and automatically reinitialize Sortable |
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| watchElement | `boolean` | false | Watch the element reference for changes and automatically reinitialize Sortable |
 
 ## Returns
 
-| Name   | Type  |
-| ------ | ----- |
-| stop   | `Ref` |
-| start  | `Ref` |
+| Name | Type |
+| --- | --- |
+| stop | `Ref` |
+| start | `Ref` |
 | option | `Ref` |
 
 ## Reference

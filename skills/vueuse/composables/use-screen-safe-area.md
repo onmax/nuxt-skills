@@ -20,13 +20,13 @@ const {
 
 ## Returns
 
-| Name   | Type         |
-| ------ | ------------ |
-| top    | `shallowRef` |
-| right  | `shallowRef` |
+| Name | Type |
+| --- | --- |
+| top | `shallowRef` |
+| right | `shallowRef` |
 | bottom | `shallowRef` |
-| left   | `shallowRef` |
-| update | `Ref`        |
+| left | `shallowRef` |
+| update | `Ref` |
 
 ## Reference
 

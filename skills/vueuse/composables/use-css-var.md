@@ -24,9 +24,9 @@ const color2 = useCssVar('--color', someEl, { initialValue: '#eee' })
 
 ## Options
 
-| Option  | Type      | Default | Description                                      |
-| ------- | --------- | ------- | ------------------------------------------------ |
-| observe | `boolean` | false   | Use MutationObserver to monitor variable changes |
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| observe | `boolean` | false | Use MutationObserver to monitor variable changes |
 
 ## Reference
 

@@ -15,17 +15,17 @@ const timeAgoIntl = useTimeAgoIntl(new Date(2021, 0, 1))
 
 ## Options
 
-| Option         | Type       | Default | Description                                                   |
-| -------------- | ---------- | ------- | ------------------------------------------------------------- |
-| controls       | `Controls` | false   | Expose more controls and the raw `parts` result.              |
-| updateInterval | `number`   | 30_000  | Update interval in milliseconds, set 0 to disable auto update |
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| controls | `Controls` | false | Expose more controls and the raw `parts` result. |
+| updateInterval | `number` | 30_000 | Update interval in milliseconds, set 0 to disable auto update |
 
 ## Returns
 
-| Name           | Type       |
-| -------------- | ---------- |
-| resolvedLocale | `Ref`      |
-| parts          | `computed` |
+| Name | Type |
+| --- | --- |
+| resolvedLocale | `Ref` |
+| parts | `computed` |
 
 ## Reference
 

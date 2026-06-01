@@ -21,12 +21,12 @@ const output = useTransition(source, {
 
 ## Options
 
-| Option     | Type                      | Default | Description                                     |
-| ---------- | ------------------------- | ------- | ----------------------------------------------- |
-| delay      | `MaybeRef&lt;number&gt;`  | -       | Milliseconds to wait before starting transition |
-| disabled   | `MaybeRef&lt;boolean&gt;` | -       | Disables the transition                         |
-| onFinished | `() =&gt; void`           | -       | Callback to execute after transition finishes   |
-| onStarted  | `() =&gt; void`           | -       | Callback to execute after transition starts     |
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| delay | `MaybeRef&lt;number&gt;` | - | Milliseconds to wait before starting transition |
+| disabled | `MaybeRef&lt;boolean&gt;` | - | Disables the transition |
+| onFinished | `() =&gt; void` | - | Callback to execute after transition finishes |
+| onStarted | `() =&gt; void` | - | Callback to execute after transition starts |
 
 ## Reference
 

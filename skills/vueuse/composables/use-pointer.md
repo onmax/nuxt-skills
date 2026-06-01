@@ -15,16 +15,16 @@ const { x, y, pressure, pointerType } = usePointer()
 
 ## Options
 
-| Option       | Type                                                                     | Default | Description                   |
-| ------------ | ------------------------------------------------------------------------ | ------- | ----------------------------- |
-| pointerTypes | `PointerType[]`                                                          | [       | Pointer types that listen to. |
-| initialValue | `MaybeRef&lt;Partial&lt;UsePointerState&gt;&gt;`                         | -       | Initial values                |
-| target       | `MaybeRef&lt;EventTarget \| null \| undefined&gt; \| Document \| Window` | window  | @default window               |
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| pointerTypes | `PointerType[]` | [ | Pointer types that listen to. |
+| initialValue | `MaybeRef&lt;Partial&lt;UsePointerState&gt;&gt;` | - | Initial values |
+| target | `MaybeRef&lt;EventTarget \| null \| undefined&gt; \| Document \| Window` | window | @default window |
 
 ## Returns
 
-| Name     | Type         |
-| -------- | ------------ |
+| Name | Type |
+| --- | --- |
 | isInside | `shallowRef` |
 
 ## Reference

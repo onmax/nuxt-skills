@@ -7,23 +7,20 @@ Single state button toggle
 ## Toggle
 
 ### Props
-
-| Prop           | Type                 | Default    |
-| -------------- | -------------------- | ---------- |
-| `as`           | `AsTag \| Component` | `"button"` |
-| `asChild`      | `boolean`            | -          |
-| `defaultValue` | `boolean`            | -          |
-| `disabled`     | `boolean`            | `false`    |
-| `pressed`      | `boolean`            | -          |
+| Prop | Type | Default |
+|------|------|---------|
+| `as` | `AsTag \| Component` | `"button"` |
+| `asChild` | `boolean` | - |
+| `defaultValue` | `boolean` | - |
+| `disabled` | `boolean` | `false` |
+| `pressed` | `boolean` | - |
 
 ### Emits
-
-| Event            | Payload            |
-| ---------------- | ------------------ |
+| Event | Payload |
+|-------|---------|
 | `update:pressed` | `[value: boolean]` |
 
 ### Slots
-
-| Slot      | Type      |
-| --------- | --------- |
+| Slot | Type |
+|------|------|
 | `pressed` | `boolean` |

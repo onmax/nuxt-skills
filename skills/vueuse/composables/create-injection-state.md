@@ -27,10 +27,10 @@ useProvideCounterStore(0)
 
 ## Options
 
-| Option       | Type                                   | Default | Description                            |
-| ------------ | -------------------------------------- | ------- | -------------------------------------- |
-| injectionKey | `string \| InjectionKey&lt;Return&gt;` | -       | Custom injectionKey for InjectionState |
-| defaultValue | `Return`                               | -       | Default value for the InjectionState   |
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| injectionKey | `string \| InjectionKey&lt;Return&gt;` | - | Custom injectionKey for InjectionState |
+| defaultValue | `Return` | - | Default value for the InjectionState |
 
 ## Reference
 

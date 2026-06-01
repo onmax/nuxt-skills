@@ -34,25 +34,25 @@ onCancel(() => {
 
 ## Options
 
-| Option       | Type                                      | Default                 | Description                                   |
-| ------------ | ----------------------------------------- | ----------------------- | --------------------------------------------- |
-| multiple     | `MaybeRef&lt;boolean&gt;`                 | true                    | @default true                                 |
-| accept       | `MaybeRef&lt;string&gt;`                  | -                       | @default '\*'                                 |
-| capture      | `MaybeRef&lt;string&gt;`                  | -                       | Select the input source for the capture file. |
-| reset        | `MaybeRef&lt;boolean&gt;`                 | false                   | Reset when open file dialog.                  |
-| directory    | `MaybeRef&lt;boolean&gt;`                 | false                   | Select directories instead of files.          |
-| initialFiles | `Array&lt;File&gt; \| FileList`           | null                    | Initial files to set.                         |
-| input        | `MaybeElementRef&lt;HTMLInputElement&gt;` | document.createElement( | The input element to use for file dialog.     |
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| multiple | `MaybeRef&lt;boolean&gt;` | true | @default true |
+| accept | `MaybeRef&lt;string&gt;` | - | @default '*' |
+| capture | `MaybeRef&lt;string&gt;` | - | Select the input source for the capture file. |
+| reset | `MaybeRef&lt;boolean&gt;` | false | Reset when open file dialog. |
+| directory | `MaybeRef&lt;boolean&gt;` | false | Select directories instead of files. |
+| initialFiles | `Array&lt;File&gt; \| FileList` | null | Initial files to set. |
+| input | `MaybeElementRef&lt;HTMLInputElement&gt;` | document.createElement( | The input element to use for file dialog. |
 
 ## Returns
 
-| Name     | Type                              |
-| -------- | --------------------------------- |
-| files    | `deepRef&lt;FileList \| null&gt;` |
-| open     | `Ref`                             |
-| reset    | `Ref`                             |
-| onCancel | `Ref`                             |
-| onChange | `Ref`                             |
+| Name | Type |
+| --- | --- |
+| files | `deepRef&lt;FileList \| null&gt;` |
+| open | `Ref` |
+| reset | `Ref` |
+| onCancel | `Ref` |
+| onChange | `Ref` |
 
 ## Reference
 

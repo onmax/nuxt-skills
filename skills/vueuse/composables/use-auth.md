@@ -32,10 +32,10 @@ const signIn = () => signInWithPopup(auth, new GoogleAuthProvider())
 
 ## Returns
 
-| Name            | Type                          |
-| --------------- | ----------------------------- |
-| isAuthenticated | `computed`                    |
-| user            | `deepRef&lt;User \| null&gt;` |
+| Name | Type |
+| --- | --- |
+| isAuthenticated | `computed` |
+| user | `deepRef&lt;User \| null&gt;` |
 
 ## Reference
 

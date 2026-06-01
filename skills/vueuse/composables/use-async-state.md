@@ -21,11 +21,11 @@ const { state, isReady, isLoading, error } = useAsyncState(
 
 ## Options
 
-| Option    | Type                      | Default | Description                                                                             |
-| --------- | ------------------------- | ------- | --------------------------------------------------------------------------------------- |
-| delay     | `number`                  | 0       | Delay for the first execution of the promise when "immediate" is true. In milliseconds. |
-| immediate | `boolean`                 | true    | Execute the promise right after the function is invoked.                                |
-| onError   | `(e: unknown) =&gt; void` | -       | Callback when error is caught.                                                          |
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| delay | `number` | 0 | Delay for the first execution of the promise when "immediate" is true. In milliseconds. |
+| immediate | `boolean` | true | Execute the promise right after the function is invoked. |
+| onError | `(e: unknown) =&gt; void` | - | Callback when error is caught. |
 
 ## Reference
 

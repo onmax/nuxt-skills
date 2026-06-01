@@ -7,35 +7,31 @@ User image with fallback
 ## AvatarRoot
 
 ### Props
-
-| Prop      | Type                 | Default  |
-| --------- | -------------------- | -------- |
-| `as`      | `AsTag \| Component` | `"span"` |
-| `asChild` | `boolean`            | -        |
+| Prop | Type | Default |
+|------|------|---------|
+| `as` | `AsTag \| Component` | `"span"` |
+| `asChild` | `boolean` | - |
 
 ## AvatarImage
 
 ### Props
-
-| Prop             | Type                                                   | Default |
-| ---------------- | ------------------------------------------------------ | ------- |
-| `as`             | `AsTag \| Component`                                   | `"img"` |
-| `asChild`        | `boolean`                                              | -       |
-| `referrerPolicy` | `"" \| "no-referrer" \| "no-referrer-when-downgrad...` | -       |
-| `src`\*          | `string`                                               | -       |
+| Prop | Type | Default |
+|------|------|---------|
+| `as` | `AsTag \| Component` | `"img"` |
+| `asChild` | `boolean` | - |
+| `referrerPolicy` | `"" \| "no-referrer" \| "no-referrer-when-downgrad...` | - |
+| `src`* | `string` | - |
 
 ### Emits
-
-| Event                 | Payload                       |
-| --------------------- | ----------------------------- |
+| Event | Payload |
+|-------|---------|
 | `loadingStatusChange` | `[value: ImageLoadingStatus]` |
 
 ## AvatarFallback
 
 ### Props
-
-| Prop      | Type                 | Default  |
-| --------- | -------------------- | -------- |
-| `as`      | `AsTag \| Component` | `"span"` |
-| `asChild` | `boolean`            | -        |
-| `delayMs` | `number`             | `0`      |
+| Prop | Type | Default |
+|------|------|---------|
+| `as` | `AsTag \| Component` | `"span"` |
+| `asChild` | `boolean` | - |
+| `delayMs` | `number` | `0` |

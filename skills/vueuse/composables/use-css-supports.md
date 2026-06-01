@@ -15,8 +15,8 @@ const { isSupported } = useCssSupports('container-type', 'scroll-state')
 
 ## Returns
 
-| Name        | Type  |
-| ----------- | ----- |
+| Name | Type |
+| --- | --- |
 | isSupported | `Ref` |
 
 ## Reference

@@ -40,27 +40,27 @@ console.log(current.value) // 'billing-address'
 
 ## Returns
 
-| Name         | Type                    |
-| ------------ | ----------------------- |
-| steps        | `Ref`                   |
-| stepNames    | `computed&lt;any[]&gt;` |
-| index        | `deepRef`               |
-| current      | `computed`              |
-| next         | `computed`              |
-| previous     | `computed`              |
-| isFirst      | `computed`              |
-| isLast       | `computed`              |
-| at           | `Ref`                   |
-| get          | `Ref`                   |
-| goTo         | `Ref`                   |
-| goToNext     | `Ref`                   |
-| goToPrevious | `Ref`                   |
-| goBackTo     | `Ref`                   |
-| isNext       | `Ref`                   |
-| isPrevious   | `Ref`                   |
-| isCurrent    | `Ref`                   |
-| isBefore     | `Ref`                   |
-| isAfter      | `Ref`                   |
+| Name | Type |
+| --- | --- |
+| steps | `Ref` |
+| stepNames | `computed&lt;any[]&gt;` |
+| index | `deepRef` |
+| current | `computed` |
+| next | `computed` |
+| previous | `computed` |
+| isFirst | `computed` |
+| isLast | `computed` |
+| at | `Ref` |
+| get | `Ref` |
+| goTo | `Ref` |
+| goToNext | `Ref` |
+| goToPrevious | `Ref` |
+| goBackTo | `Ref` |
+| isNext | `Ref` |
+| isPrevious | `Ref` |
+| isCurrent | `Ref` |
+| isBefore | `Ref` |
+| isAfter | `Ref` |
 
 ## Reference
 

@@ -15,14 +15,14 @@ const { coords, locatedAt, error, resume, pause } = useGeolocation()
 
 ## Returns
 
-| Name        | Type                                                 |
-| ----------- | ---------------------------------------------------- |
-| isSupported | `useSupported`                                       |
-| coords      | `Ref`                                                |
-| locatedAt   | `shallowRef&lt;number \| null&gt;`                   |
-| error       | `shallowRef&lt;GeolocationPositionError \| null&gt;` |
-| resume      | `Ref`                                                |
-| pause       | `Ref`                                                |
+| Name | Type |
+| --- | --- |
+| isSupported | `useSupported` |
+| coords | `Ref` |
+| locatedAt | `shallowRef&lt;number \| null&gt;` |
+| error | `shallowRef&lt;GeolocationPositionError \| null&gt;` |
+| resume | `Ref` |
+| pause | `Ref` |
 
 ## Reference
 

@@ -35,14 +35,14 @@ const {
 
 ## Options
 
-| Option            | Type                                                                             | Default | Description                              |
-| ----------------- | -------------------------------------------------------------------------------- | ------- | ---------------------------------------- |
-| total             | `MaybeRefOrGetter&lt;number&gt;`                                                 | -       | Total number of items.                   |
-| pageSize          | `MaybeRefOrGetter&lt;number&gt;`                                                 | 10      | The number of items to display per page. |
-| page              | `MaybeRef&lt;number&gt;`                                                         | 1       | The current page number.                 |
-| onPageChange      | `(returnValue: UnwrapNestedRefs&lt;UseOffsetPaginationReturn&gt;) =&gt; unknown` | -       | Callback when the `page` change.         |
-| onPageSizeChange  | `(returnValue: UnwrapNestedRefs&lt;UseOffsetPaginationReturn&gt;) =&gt; unknown` | -       | Callback when the `pageSize` change.     |
-| onPageCountChange | `(returnValue: UnwrapNestedRefs&lt;UseOffsetPaginationReturn&gt;) =&gt; unknown` | -       | Callback when the `pageCount` change.    |
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| total | `MaybeRefOrGetter&lt;number&gt;` | - | Total number of items. |
+| pageSize | `MaybeRefOrGetter&lt;number&gt;` | 10 | The number of items to display per page. |
+| page | `MaybeRef&lt;number&gt;` | 1 | The current page number. |
+| onPageChange | `(returnValue: UnwrapNestedRefs&lt;UseOffsetPaginationReturn&gt;) =&gt; unknown` | - | Callback when the `page` change. |
+| onPageSizeChange | `(returnValue: UnwrapNestedRefs&lt;UseOffsetPaginationReturn&gt;) =&gt; unknown` | - | Callback when the `pageSize` change. |
+| onPageCountChange | `(returnValue: UnwrapNestedRefs&lt;UseOffsetPaginationReturn&gt;) =&gt; unknown` | - | Callback when the `pageCount` change. |
 
 ## Reference
 

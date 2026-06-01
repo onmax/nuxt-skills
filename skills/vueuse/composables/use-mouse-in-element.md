@@ -26,19 +26,19 @@ const { x, y, isOutside } = useMouseInElement(target)
 
 ## Returns
 
-| Name             | Type         |
-| ---------------- | ------------ |
-| x                | `Ref`        |
-| y                | `Ref`        |
-| sourceType       | `Ref`        |
-| elementX         | `shallowRef` |
-| elementY         | `shallowRef` |
+| Name | Type |
+| --- | --- |
+| x | `Ref` |
+| y | `Ref` |
+| sourceType | `Ref` |
+| elementX | `shallowRef` |
+| elementY | `shallowRef` |
 | elementPositionX | `shallowRef` |
 | elementPositionY | `shallowRef` |
-| elementHeight    | `shallowRef` |
-| elementWidth     | `shallowRef` |
-| isOutside        | `shallowRef` |
-| stop             | `Ref`        |
+| elementHeight | `shallowRef` |
+| elementWidth | `shallowRef` |
+| isOutside | `shallowRef` |
+| stop | `Ref` |
 
 ## Reference
 

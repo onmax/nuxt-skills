@@ -20,8 +20,8 @@ const smallerThanLg = breakpoints.smaller('lg') // only smaller than lg
 
 ## Options
 
-| Option   | Type                         | Default   | Description                                                             |
-| -------- | ---------------------------- | --------- | ----------------------------------------------------------------------- |
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
 | strategy | `'min-width' \| 'max-width'` | min-width | The query strategy to use for the generated shortcut methods like `.lg` |
 
 ## Reference

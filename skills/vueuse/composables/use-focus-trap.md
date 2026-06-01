@@ -34,20 +34,20 @@ const { hasFocus, activate, deactivate } = useFocusTrap(target)
 
 ## Options
 
-| Option    | Type      | Default | Description                   |
-| --------- | --------- | ------- | ----------------------------- |
-| immediate | `boolean` | -       | Immediately activate the trap |
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| immediate | `boolean` | - | Immediately activate the trap |
 
 ## Returns
 
-| Name       | Type         |
-| ---------- | ------------ |
-| hasFocus   | `shallowRef` |
-| isPaused   | `shallowRef` |
-| activate   | `Ref`        |
-| deactivate | `Ref`        |
-| pause      | `Ref`        |
-| unpause    | `Ref`        |
+| Name | Type |
+| --- | --- |
+| hasFocus | `shallowRef` |
+| isPaused | `shallowRef` |
+| activate | `Ref` |
+| deactivate | `Ref` |
+| pause | `Ref` |
+| unpause | `Ref` |
 
 ## Reference
 

@@ -17,9 +17,9 @@ onKeyStroke('ArrowDown', (e) => {
 
 ## Options
 
-| Option | Type                              | Default | Description                                                              |
-| ------ | --------------------------------- | ------- | ------------------------------------------------------------------------ |
-| dedupe | `MaybeRefOrGetter&lt;boolean&gt;` | false   | Set to `true` to ignore repeated events when the key is being held down. |
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| dedupe | `MaybeRefOrGetter&lt;boolean&gt;` | false | Set to `true` to ignore repeated events when the key is being held down. |
 
 ## Reference
 

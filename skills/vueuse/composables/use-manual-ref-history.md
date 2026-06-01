@@ -17,30 +17,30 @@ console.log(counter.value) // 0
 
 ## Options
 
-| Option    | Type                                          | Default | Description                                                                         |
-| --------- | --------------------------------------------- | ------- | ----------------------------------------------------------------------------------- |
-| capacity  | `number`                                      | -       | Maximum number of history to be kept. Default to unlimited.                         |
-| clone     | `boolean \| CloneFn&lt;Raw&gt;`               | false   | Clone when taking a snapshot, shortcut for dump: JSON.parse(JSON.stringify(value)). |
-| dump      | `(v: Raw) =&gt; Serialized`                   | -       | Serialize data into the history                                                     |
-| parse     | `(v: Serialized) =&gt; Raw`                   | -       | Deserialize data from the history                                                   |
-| setSource | `(source: Ref&lt;Raw&gt;, v: Raw) =&gt; void` | -       | set data source                                                                     |
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| capacity | `number` | - | Maximum number of history to be kept. Default to unlimited. |
+| clone | `boolean \| CloneFn&lt;Raw&gt;` | false | Clone when taking a snapshot, shortcut for dump: JSON.parse(JSON.stringify(value)). |
+| dump | `(v: Raw) =&gt; Serialized` | - | Serialize data into the history |
+| parse | `(v: Serialized) =&gt; Raw` | - | Deserialize data from the history |
+| setSource | `(source: Ref&lt;Raw&gt;, v: Raw) =&gt; void` | - | set data source |
 
 ## Returns
 
-| Name      | Type       |
-| --------- | ---------- |
-| source    | `Ref`      |
-| undoStack | `Ref`      |
-| redoStack | `Ref`      |
-| last      | `Ref`      |
-| history   | `computed` |
-| canUndo   | `computed` |
-| canRedo   | `computed` |
-| clear     | `Ref`      |
-| commit    | `Ref`      |
-| reset     | `Ref`      |
-| undo      | `Ref`      |
-| redo      | `Ref`      |
+| Name | Type |
+| --- | --- |
+| source | `Ref` |
+| undoStack | `Ref` |
+| redoStack | `Ref` |
+| last | `Ref` |
+| history | `computed` |
+| canUndo | `computed` |
+| canRedo | `computed` |
+| clear | `Ref` |
+| commit | `Ref` |
+| reset | `Ref` |
+| undo | `Ref` |
+| redo | `Ref` |
 
 ## Reference
 

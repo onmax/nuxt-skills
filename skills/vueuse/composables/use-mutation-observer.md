@@ -32,11 +32,11 @@ useMutationObserver(el, (mutations) => {
 
 ## Returns
 
-| Name        | Type           |
-| ----------- | -------------- |
+| Name | Type |
+| --- | --- |
 | isSupported | `useSupported` |
-| stop        | `Ref`          |
-| takeRecords | `Ref`          |
+| stop | `Ref` |
+| takeRecords | `Ref` |
 
 ## Reference
 

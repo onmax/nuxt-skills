@@ -38,15 +38,15 @@ const { isRevealed, reveal, confirm, cancel, onReveal, onConfirm, onCancel }
 
 ## Returns
 
-| Name       | Type  |
-| ---------- | ----- |
+| Name | Type |
+| --- | --- |
 | isRevealed | `Ref` |
-| reveal     | `Ref` |
-| confirm    | `Ref` |
-| cancel     | `Ref` |
-| onReveal   | `Ref` |
-| onConfirm  | `Ref` |
-| onCancel   | `Ref` |
+| reveal | `Ref` |
+| confirm | `Ref` |
+| cancel | `Ref` |
+| onReveal | `Ref` |
+| onConfirm | `Ref` |
+| onCancel | `Ref` |
 
 ## Reference
 
