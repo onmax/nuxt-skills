@@ -24,13 +24,6 @@ Horizontal menu bar
 |------|------|
 | `modelValue` | `string` |
 
-## MenubarMenu
-
-### Props
-| Prop | Type | Default |
-|------|------|---------|
-| `value` | `string` | - |
-
 ## MenubarTrigger
 
 ### Props
