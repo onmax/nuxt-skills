@@ -145,6 +145,15 @@ Date picker with calendar (alpha)
 | `as` | `AsTag \| Component` | `"div"` |
 | `asChild` | `boolean` | - |
 
+## DatePickerCell
+
+### Props
+| Prop | Type | Default |
+|------|------|---------|
+| `as` | `AsTag \| Component` | `"div"` |
+| `asChild` | `boolean` | - |
+| `date`* | `DateValue` | - |
+
 ## DatePickerCellTrigger
 
 ### Props

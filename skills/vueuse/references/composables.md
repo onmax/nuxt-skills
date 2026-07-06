@@ -192,6 +192,7 @@
 | useDraggable | Make elements draggable. | [use-draggable.md](../composables/use-draggable.md) |
 | useDropZone | Create a zone where files can be dropped. | [use-drop-zone.md](../composables/use-drop-zone.md) |
 | useElementBounding | Reactive bounding box of an HTML element | [use-element-bounding.md](../composables/use-element-bounding.md) |
+| useElementOverflow | Reactive element's overflow state. | [use-element-overflow.md](../composables/use-element-overflow.md) |
 | useElementSize | Reactive size of an HTML element. ResizeObserver MDN | [use-element-size.md](../composables/use-element-size.md) |
 | useElementVisibility | Tracks the visibility of an element within the viewport. | [use-element-visibility.md](../composables/use-element-visibility.md) |
 | useIntersectionObserver | Detects changes to a target element's visibility. | [use-intersection-observer.md](../composables/use-intersection-observer.md) |
