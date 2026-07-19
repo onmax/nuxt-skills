@@ -1,378 +1,94 @@
-# Configuration
+# Configuration and deployment
 
-## When to Use
+## Database adapters
 
-Setting up database backend, configuring markdown processing, or customizing renderer behavior.
-
-## Database Configuration
-
-Content uses SQL for queries. Configure in `nuxt.config.ts`:
-
-### SQLite (Default)
+Nuxt Content builds a database dump and restores it into the configured adapter at runtime. SQLite is the default.
 
 ```ts
 export default defineNuxtConfig({
   content: {
     database: {
       type: 'sqlite',
-      filename: '.data/content.db',
-      // Optional: add database indexes for better query performance (v3.10+)
-      // Recommended for large sites or frequently queried fields
-      indexes: [
-        { fields: ['path'] },
-        { fields: ['date', 'draft'] },
-        { fields: ['category'] },
-      ],
+      filename: '.data/content/contents.sqlite',
     },
   },
 })
 ```
 
-### PostgreSQL
+Supported adapters include:
 
-```ts
-export default defineNuxtConfig({
-  content: {
-    database: {
-      type: 'postgresql',
-      url: process.env.DATABASE_URL,
-    },
-  },
-})
-```
-
-### Cloudflare D1
+- `sqlite` with a file path or `:memory:`; select `experimental.sqliteConnector` when the runtime needs `better-sqlite3`, `sqlite3`, Bun SQLite, or Node's native SQLite.
+- `d1` with a Cloudflare binding name.
+- `postgresql` with `pg` installed and a connection URL.
+- `libsql` with `@libsql/client`, URL, and optional auth token.
+- `pglite` with `@electric-sql/pglite`; keep it to development-oriented deployments unless the chosen host provides durable storage.
 
 ```ts
 export default defineNuxtConfig({
   content: {
     database: {
       type: 'd1',
-      bindingName: 'DB', // Matches wrangler.toml binding
+      bindingName: 'CONTENT_DB',
     },
-  },
-})
-```
-
-### LibSQL / Turso
-
-```ts
-export default defineNuxtConfig({
-  content: {
-    database: {
-      type: 'libsql',
-      url: process.env.TURSO_URL,
-      authToken: process.env.TURSO_AUTH_TOKEN,
-    },
-  },
-})
-```
-
-### PGlite (In-memory)
-
-```ts
-export default defineNuxtConfig({
-  content: {
-    database: {
-      type: 'pglite',
-    },
-  },
-})
-```
-
-## Local Development Database
-
-Use different database for dev vs production:
-
-```ts
-export default defineNuxtConfig({
-  content: {
-    database: {
-      type: 'd1',
-      bindingName: 'DB',
-    },
-    // Dev-only SQLite
-    _localDatabase: {
-      type: 'sqlite',
-      filename: '.data/content-dev.db',
-    },
-  },
-})
-```
-
-## Markdown Configuration
-
-```ts
-export default defineNuxtConfig({
-  content: {
-    build: {
-      markdown: {
-        // Table of contents
-        toc: {
-          depth: 3, // Max heading depth
-          searchDepth: 2, // Search depth in tree
-        },
-
-        // Extract title from first H1
-        contentHeading: true,
-
-        // Remark plugins (markdown → mdast)
-        remarkPlugins: {
-          'remark-emoji': {},
-          'remark-gfm': { singleTilde: false },
-        },
-
-        // Rehype plugins (mdast → hast)
-        rehypePlugins: {
-          'rehype-external-links': {
-            target: '_blank',
-            rel: ['noopener', 'noreferrer'],
-          },
-        },
-
-        // Code highlighting
-        highlight: {
-          theme: 'github-dark',
-          langs: ['js', 'ts', 'vue', 'css', 'html', 'bash', 'yaml', 'json'],
-        },
-      },
-    },
-  },
-})
-```
-
-## Highlight Themes
-
-Single theme:
-
-```ts
-highlight: {
-  theme: 'github-dark',
-}
-```
-
-Multi-theme (light/dark):
-
-```ts
-highlight: {
-  themes: {
-    default: 'github-light',
-    dark: 'github-dark',
-  },
-}
-```
-
-Available themes: `github-dark`, `github-light`, `dracula`, `nord`, `one-dark-pro`, etc. See [Shiki themes](https://shiki.style/themes).
-
-## Renderer Configuration
-
-```ts
-export default defineNuxtConfig({
-  content: {
-    renderer: {
-      // Component aliases for prose
-      alias: {
-        p: 'MyParagraph',
-        h2: 'MyHeading2',
-        code: 'MyCodeBlock',
-      },
-
-      // Anchor links per heading level
-      anchorLinks: {
-        h1: false,
-        h2: true,
-        h3: true,
-        h4: false,
-        h5: false,
-        h6: false,
-      },
-    },
-  },
-})
-```
-
-## File Type Configuration
-
-### YAML
-
-```ts
-export default defineNuxtConfig({
-  content: {
-    build: {
-      yaml: {
-        // YAML parser options
-      },
-      // Or disable YAML parsing
-      yaml: false,
-    },
-  },
-})
-```
-
-### CSV
-
-```ts
-export default defineNuxtConfig({
-  content: {
-    build: {
-      csv: {
-        json: true, // Parse as JSON objects
-        delimiter: ',', // Column delimiter
-      },
-    },
-  },
-})
-```
-
-## Experimental Options
-
-```ts
-export default defineNuxtConfig({
-  content: {
     experimental: {
-      // Use Node.js native SQLite (Node.js v22.5.0+, v3.4+)
-      nativeSqlite: true,
-
-      // Specify SQLite connector (v3.6+)
-      // 'better-sqlite3' moved to peer dependency in v3.6.0
-      sqliteConnector: 'better-sqlite3', // or 'native' (Node 22+), 'sqlite3'
+      sqliteConnector: 'native',
     },
   },
 })
 ```
 
-**Note:** Starting v3.6.0, `better-sqlite3` is a peer dependency. The module will prompt you to install your preferred SQLite connector on first run.
+Database indexes belong in `defineCollection({ indexes: [...] })`, because each collection owns its table and query patterns.
 
-## Full Configuration Example
+## Build and renderer options
 
 ```ts
 export default defineNuxtConfig({
   content: {
-    database: {
-      type: 'sqlite',
-      filename: '.data/content.db',
-    },
     build: {
       markdown: {
         toc: { depth: 3, searchDepth: 2 },
         remarkPlugins: {
           'remark-gfm': {},
         },
+        rehypePlugins: {
+          'rehype-external-links': {
+            target: '_blank',
+            rel: ['noopener', 'noreferrer'],
+          },
+        },
         highlight: {
           themes: { default: 'github-light', dark: 'github-dark' },
-          langs: ['vue', 'ts', 'bash', 'yaml', 'json'],
+          langs: ['ts', 'vue', 'bash'],
         },
       },
+      csv: { json: true, delimiter: ',' },
     },
     renderer: {
+      alias: { a: 'DocsLink' },
       anchorLinks: { h2: true, h3: true },
     },
+    watch: { enabled: true },
   },
 })
 ```
 
-## Environment Variables
+The watcher is a development feature. Transformers are registered under `content.build.transformers`; load [Advanced](advanced.md) when processing behavior extends beyond remark/rehype plugins.
 
-Common env vars for database:
+## Deployment boundary
 
-```bash
-# PostgreSQL
-DATABASE_URL=postgresql://user:pass@host:5432/db
+- Static generation packages queried content into the generated application.
+- Server and serverless targets restore the generated dump on first query; an in-memory SQLite database is recreated on cold start.
+- Cloudflare Workers use D1 when content must share a durable runtime database.
+- NuxtHub can supply the database configuration through `@nuxthub/core`; apply the `nuxthub` skill for provider and binding details.
+- Vercel, Netlify, AWS, Docker, and other targets have provider-specific presets; verify the selected adapter against the deployment filesystem and runtime.
 
-# Turso/LibSQL
-TURSO_URL=libsql://your-db.turso.io
-TURSO_AUTH_TOKEN=your-token
+Keep database URLs and tokens in private runtime configuration or build environment variables. Remote collection credentials are build-time inputs; database credentials are runtime inputs when the adapter connects after deployment.
 
-# GitHub (for remote sources)
-GITHUB_TOKEN=ghp_xxxx
-```
+## Checks
 
-## Content Hooks
+- The deployment runtime supports the chosen driver and its peer dependency.
+- Production can restore or reach the database after a cold start.
+- Shiki languages and Markdown plugins are limited to the actual content set.
+- A clean build and a production-mode query both succeed.
 
-Modify content during build:
-
-```ts
-// nuxt.config.ts
-export default defineNuxtConfig({
-  hooks: {
-    'content:file:beforeParse': function (ctx) {
-      // Modify raw content before parsing
-      if (ctx.file.id.endsWith('.md')) {
-        ctx.file.body = ctx.file.body.replace(/oldTerm/gi, 'newTerm')
-      }
-    },
-    'content:file:afterParse': function (ctx) {
-      // Add computed fields after parsing
-      const wordCount = ctx.file.body?.split(/\s+/).length || 0
-      ctx.content.readingTime = Math.ceil(wordCount / 180)
-    },
-    'content:document:generated': function (ctx) {
-      // Hook fires when auto-generated markdown versions are created (v3.11+)
-      // Use to modify or process generated markdown
-    },
-  },
-})
-```
-
-**Note:** Fields added in `afterParse` must be defined in your collection schema:
-
-```ts
-schema: z.object({ readingTime: z.number().optional() })
-```
-
-**Date field casting (v3.11+):** Date fields are automatically cast to date strings in proper format.
-
-## LLMs Integration
-
-Generate AI-ready content with `nuxt-llms`:
-
-```ts
-export default defineNuxtConfig({
-  modules: ['@nuxt/content', 'nuxt-llms'],
-  llms: {
-    domain: 'https://your-site.com',
-    title: 'Your Site',
-    sections: [
-      {
-        title: 'Docs',
-        contentCollection: 'docs',
-        contentFilters: [{ field: 'draft', operator: '<>', value: true }],
-      },
-    ],
-  },
-})
-```
-
-Auto-generates `/llms.txt` for LLM consumption.
-
-## Performance
-
-**Database indexes (v3.10+):** For large sites or collections with frequent queries on specific fields, add indexes to improve query performance:
-
-```ts
-database: {
-  type: 'sqlite',
-  indexes: [
-    { fields: ['path'] },           // Single field
-    { fields: ['date', 'draft'] },  // Composite index
-  ],
-}
-```
-
-**SQL transactions (v3.11+):** Queries are automatically wrapped in transactions for better performance and consistency.
-
-## Best Practices
-
-| Do                                        | Don't                            |
-| ----------------------------------------- | -------------------------------- |
-| Use `_localDatabase` for dev/prod split   | Use production DB in development |
-| Specify only needed langs                 | Load all Shiki languages         |
-| Use multi-theme for dark mode support     | Hardcode single theme            |
-| Configure TOC depth for your content      | Use defaults without checking    |
-| Add indexes for frequently queried fields | Index every field unnecessarily  |
-
-## Resources
-
-- Configuration: https://content.nuxt.com/docs/getting-started/configuration
-- Database: https://content.nuxt.com/docs/getting-started/configuration#database
-- Markdown: https://content.nuxt.com/docs/getting-started/configuration#markdown
+Official references: [configuration](https://content.nuxt.com/docs/getting-started/configuration), [deployment](https://content.nuxt.com/docs/deploy/server), [NuxtHub](https://content.nuxt.com/docs/deploy/nuxthub).

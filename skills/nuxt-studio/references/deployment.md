@@ -1,150 +1,8 @@
-# Deployment
+# Deployment and publishing
 
-## When to Use
+## Runtime requirement
 
-Deploying a Nuxt Studio site, configuring Git publishing, setting up branch strategies, or troubleshooting the publish flow.
-
-## Requirements
-
-- **SSR hosting required** — Studio needs server-side routes for authentication. Deploy with `nuxt build`, not static-only generation.
-- **Nuxt Content** — `@nuxt/content` must be installed and configured.
-- Supported platforms: Vercel, Netlify, Cloudflare Pages, any Node.js SSR host.
-
-## Publishing Flow
-
-1. Editor makes changes → stored as drafts in IndexedDB (browser-local)
-2. Editor clicks Publish → Studio commits drafts to Git via provider API
-3. CI/CD detects commit → rebuilds and redeploys automatically
-4. Studio detects new deployment → notifies editors
-
-No webhooks to configure — publishing uses the Git provider's API directly, and deployment relies on your existing CI/CD pipeline.
-
-## Git Repository Config
-
-```ts
-// nuxt.config.ts
-export default defineNuxtConfig({
-  studio: {
-    repository: {
-      provider: 'github', // or 'gitlab'
-      owner: 'your-username',
-      repo: 'your-repo',
-      branch: 'main',
-    },
-  },
-})
-```
-
-### Auto-Detection
-
-On supported platforms, repository details auto-detect from CI env vars:
-
-| Platform       | Env Vars Used                                                                                   |
-| -------------- | ----------------------------------------------------------------------------------------------- |
-| Vercel         | `VERCEL_GIT_PROVIDER`, `VERCEL_GIT_REPO_OWNER`, `VERCEL_GIT_REPO_SLUG`, `VERCEL_GIT_COMMIT_REF` |
-| Netlify        | `REPOSITORY_URL`, `BRANCH`                                                                      |
-| GitHub Actions | `GITHUB_REPOSITORY`, `GITHUB_REF_NAME`                                                          |
-| GitLab CI      | `CI_PROJECT_NAMESPACE`, `CI_PROJECT_NAME`, `CI_COMMIT_BRANCH`                                   |
-
-Manual config overrides auto-detection.
-
-## Branch Strategies
-
-### Direct to Production
-
-Default. Commits go to `main` (or configured branch), triggering production rebuild:
-
-```ts
-studio: { repository: { branch: 'main' } }
-```
-
-### Preview Branch
-
-Publish to a staging branch, review on preview environment, then merge to production:
-
-```ts
-studio: {
-  repository: {
-    branch: process.env.STUDIO_BRANCH_NAME || 'content-preview',
-  },
-}
-```
-
-### Environment-Based
-
-Different branches per deployment environment:
-
-```ts
-studio: {
-  repository: {
-    branch: process.env.VERCEL_GIT_COMMIT_REF || 'main',
-  },
-}
-```
-
-## Commit Configuration
-
-```ts
-studio: {
-  git: {
-    commit: {
-      messagePrefix: 'content:', // Prepends to all Studio commits
-    },
-  },
-}
-```
-
-## Conflict Detection
-
-Studio compares local drafts against the latest Git version before publishing. Conflicts arise when:
-
-- Multiple editors modify the same files during active builds
-- Deployments fail, leaving production database out of sync with Git
-
-Studio warns editors and prevents overwriting newer changes.
-
-## Platform-Specific Setup
-
-### Vercel
-
-```ts
-// nuxt.config.ts — repository auto-detected
-export default defineNuxtConfig({
-  modules: ['@nuxt/content', 'nuxt-studio'],
-  // studio.repository auto-populated from VERCEL_GIT_* env vars
-})
-```
-
-Set `STUDIO_GITHUB_CLIENT_ID` and `STUDIO_GITHUB_CLIENT_SECRET` in Vercel project settings.
-
-### Netlify
-
-```ts
-// nuxt.config.ts — repository auto-detected from REPOSITORY_URL
-export default defineNuxtConfig({
-  modules: ['@nuxt/content', 'nuxt-studio'],
-})
-```
-
-### Cloudflare Pages
-
-```ts
-export default defineNuxtConfig({
-  modules: ['@nuxt/content', 'nuxt-studio'],
-  studio: {
-    repository: {
-      provider: 'github',
-      owner: 'your-username',
-      repo: 'your-repo',
-      branch: process.env.CF_PAGES_BRANCH || 'main',
-    },
-  },
-})
-```
-
-## Pre-rendering (Optional)
-
-If using hybrid rendering, ensure Studio routes aren't pre-rendered:
+Studio needs server routes for authentication, so deploy with `nuxt build` to an SSR-capable platform. Content pages may still be prerendered through hybrid rendering; the Studio and auth routes remain server-backed.
 
 ```ts
 export default defineNuxtConfig({
@@ -157,30 +15,52 @@ export default defineNuxtConfig({
 })
 ```
 
-Studio's `/_studio` route requires SSR and handles itself automatically.
+## Repository resolution
 
-## Monorepo Support
+Vercel, Netlify, GitHub Actions, and GitLab CI can populate provider, owner, repository, and branch from their system environment variables. For other platforms, or when the editor publishes to a different repository, configure every field explicitly.
 
 ```ts
-studio: {
-  repository: {
-    rootDir: 'docs', // Subdirectory containing the Nuxt project
+export default defineNuxtConfig({
+  studio: {
+    repository: {
+      provider: 'github',
+      owner: 'your-org',
+      repo: 'docs',
+      branch: process.env.NUXT_STUDIO_BRANCH || 'content-preview',
+      rootDir: 'apps/docs',
+    },
   },
-}
+})
 ```
 
-## Troubleshooting
+`rootDir` points at the Nuxt application inside a monorepo. A preview branch is useful when content changes require review before production; Studio commits to that branch and the repository's normal pull-request workflow owns promotion to `main`.
 
-| Issue                             | Solution                                                     |
-| --------------------------------- | ------------------------------------------------------------ |
-| Auth callback fails               | Verify callback URL matches `/__nuxt_studio/auth/{provider}` |
-| Publishing fails                  | Check PAT/OAuth has write permissions to repo                |
-| Changes not visible after publish | CI/CD may still be building — wait for deployment            |
-| Draft conflicts                   | Pull latest changes, discard stale drafts                    |
-| Studio route 404                  | Ensure SSR deployment (`nuxt build`), not static generation  |
+## Publish cycle
 
-## Resources
+1. Studio checks drafts against the current Git revision.
+2. The editor supplies a commit message and publishes.
+3. The Git provider writes the commit to the configured branch.
+4. Existing CI/CD builds and deploys the commit.
+5. Studio waits for the deployed Content database to catch up.
 
-- Setup: https://nuxt.studio/setup
-- Advanced sync: https://nuxt.studio/advanced
-- Git providers: https://nuxt.studio/git-providers
+There is no separate Studio deployment webhook in this flow. The Git commit is the deployment trigger.
+
+## Failure boundaries
+
+| Symptom                       | Inspect                                                             |
+| ----------------------------- | ------------------------------------------------------------------- |
+| Login callback fails          | OAuth callback URL, deployed origin, provider environment variables |
+| Studio route returns 404      | SSR deployment, module registration, custom `studio.route`          |
+| Publish is forbidden          | OAuth scopes or fine-grained token content permissions              |
+| Wrong repository or branch    | CI auto-detected metadata and explicit `studio.repository` values   |
+| Published content stays stale | CI build status and deployed Content database revision              |
+| Draft conflict                | Upstream file changes made after the local draft baseline           |
+
+## Checks
+
+- A production login succeeds through the configured provider.
+- A disposable content edit creates one commit on the intended branch.
+- CI deploys that commit and the refreshed site reads the new Content dump.
+- Secrets remain deployment environment variables and are absent from client runtime config.
+
+Official references: [setup](https://nuxt.studio/setup), [Git providers](https://nuxt.studio/git-providers), [auth providers](https://nuxt.studio/auth-providers).

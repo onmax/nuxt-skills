@@ -1,78 +1,43 @@
 ---
 name: nuxt-content
-description: Use when working with Nuxt Content v3, markdown content, or CMS features in Nuxt - provides collections (local/remote/API sources), queryCollection API, MDC rendering, database configuration, NuxtStudio integration, hooks, i18n patterns, and LLMs integration
+description: Build typed, content-driven Nuxt applications with @nuxt/content. Use when working with content.config.ts, collections, queryCollection, Markdown or MDC rendering, content databases, hooks, custom sources, search, or Content v2 migrations.
 license: MIT
 ---
 
-# Nuxt Content v3
+# Nuxt Content
 
-Progressive guidance for content-driven Nuxt apps with typed collections and SQL-backed queries.
+## Workflow
 
-## When to Use
+1. Inspect the installed `@nuxt/content` version, `content.config.ts`, matching files under `content/`, and the Nuxt surface that consumes them. The branch is understood when the collection, source glob, schema, and consumer agree.
+2. Open the smallest matching guide below. Apply Nuxt Content guidance only to content-owned APIs; use Nuxt, Nuxt Studio, Nuxt UI, or Vue guidance when those packages own the remaining surface.
+3. Implement with typed collections and payload-backed Nuxt data loading. The change is complete when collection types resolve, the intended query returns the expected document shape, and the rendered route works in the target rendering mode.
 
-Working with:
+## Routing
 
-- Content collections (`content.config.ts`, `defineCollection`)
-- Remote sources (GitHub repos, external APIs via `defineCollectionSource`)
-- Content queries (`queryCollection`, navigation, search)
-- MDC rendering (`<ContentRenderer>`, prose components)
-- Database configuration (SQLite, PostgreSQL, D1, LibSQL)
-- Content hooks (`content:file:beforeParse`, `content:file:afterParse`)
-- i18n multi-language content
-- NuxtStudio or preview mode
-- LLMs integration (`nuxt-llms`)
+| Task                                                                                 | Open                                     |
+| ------------------------------------------------------------------------------------ | ---------------------------------------- |
+| Collection types, schemas, indexes, local/remote sources, or locale prefixes         | [Collections](references/collections.md) |
+| Filtering, sorting, pagination, navigation, surroundings, or search                  | [Querying](references/querying.md)       |
+| Markdown, MDC, `ContentRenderer`, prose components, or code highlighting             | [Rendering](references/rendering.md)     |
+| Database adapters, markdown processing, renderer aliases, or deployment storage      | [Configuration](references/config.md)    |
+| Hooks, transformers, custom sources, raw content, debugging, or Content v2 migration | [Advanced](references/advanced.md)       |
+| Visual editing, authentication, media, drafts, or Git publishing                     | `nuxt-studio` skill                      |
+| Writing or restructuring documentation prose                                         | `document-writer` skill                  |
 
-**For writing documentation:** use `document-writer` skill
-**For Nuxt basics:** use `nuxt` skill
-**For NuxtHub deployment:** use `nuxthub` skill (NuxtHub v1 compatible)
-
-## Available Guidance
-
-Read specific files based on current work:
-
-- **[references/collections.md](references/collections.md)** - defineCollection, schemas, sources, content.config.ts
-- **[references/querying.md](references/querying.md)** - queryCollection, navigation, search, surroundings
-- **[references/rendering.md](references/rendering.md)** - ContentRenderer, MDC syntax, prose components, Shiki
-- **[references/config.md](references/config.md)** - Database setup, markdown plugins, renderer options
-- **[references/studio.md](references/studio.md)** - NuxtStudio integration, preview mode, live editing
-
-## Loading Files
-
-**Consider loading these reference files based on your task:**
-
-- [ ] [references/collections.md](references/collections.md) - if setting up collections, schemas, or content.config.ts
-- [ ] [references/querying.md](references/querying.md) - if using queryCollection, navigation, or search
-- [ ] [references/rendering.md](references/rendering.md) - if rendering markdown/MDC or working with ContentRenderer
-- [ ] [references/config.md](references/config.md) - if configuring database, markdown plugins, or renderer options
-- [ ] [references/studio.md](references/studio.md) - if integrating NuxtStudio or preview mode
-
-**DO NOT load all files at once.** Load only what's relevant to your current task.
-
-## Key Concepts
-
-| Concept         | Purpose                                                           |
-| --------------- | ----------------------------------------------------------------- |
-| Collections     | Typed content groups with schemas                                 |
-| Page vs Data    | `page` = routes + body, `data` = structured data only             |
-| Remote sources  | `source.repository` for GitHub, `defineCollectionSource` for APIs |
-| queryCollection | SQL-like fluent API for content                                   |
-| MDC             | Vue components inside markdown                                    |
-| ContentRenderer | Renders parsed markdown body                                      |
-
-## Quick Start
+## Baseline
 
 ```ts
 // content.config.ts
-import { defineCollection, defineContentConfig, z } from '@nuxt/content'
+import { defineCollection, defineContentConfig } from '@nuxt/content'
+import { z } from 'zod'
 
 export default defineContentConfig({
   collections: {
-    blog: defineCollection({
+    docs: defineCollection({
       type: 'page',
-      source: 'blog/**',
+      source: 'docs/**',
       schema: z.object({
-        title: z.string(),
-        date: z.date(),
+        updatedAt: z.date().optional(),
       }),
     }),
   },
@@ -80,11 +45,11 @@ export default defineContentConfig({
 ```
 
 ```vue
-<!-- pages/blog/[...slug].vue -->
 <script setup lang="ts">
-const { data: page } = await useAsyncData(
-  () => queryCollection('blog').path(useRoute().path).first()
-)
+const route = useRoute()
+const { data: page } = await useAsyncData(route.path, () => {
+  return queryCollection('docs').path(route.path).first()
+})
 </script>
 
 <template>
@@ -92,25 +57,4 @@ const { data: page } = await useAsyncData(
 </template>
 ```
 
-**Verify setup:** Run `npx nuxi typecheck` to confirm collection types resolve. If `queryCollection` returns empty, check that content files exist in the path matching your `source` glob.
-
-## Directory Structure
-
-```
-project/
-├── content/                    # Content files
-│   ├── blog/                   # Maps to 'blog' collection
-│   └── .navigation.yml         # Navigation metadata
-├── components/content/         # MDC components
-└── content.config.ts           # Collection definitions
-```
-
-## Official Documentation
-
-- Nuxt Content: https://content.nuxt.com
-- MDC syntax: https://content.nuxt.com/docs/files/markdown#mdc-syntax
-- Collections: https://content.nuxt.com/docs/collections/collections
-
-## Token Efficiency
-
-Main skill: ~300 tokens. Each sub-file: ~800-1200 tokens. Only load files relevant to current task.
+Use `npx nuxi typecheck` to verify generated collection types. When a query is empty, confirm that its collection source includes the file—especially `.navigation.yml`—before changing query logic.

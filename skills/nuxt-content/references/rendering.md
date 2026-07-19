@@ -1,268 +1,93 @@
-# Rendering Content
-
-> **For writing style/structure:** see `document-writer` skill
-
-## When to Use
-
-Working with `<ContentRenderer>`, MDC syntax, custom prose components, or code highlighting.
+# Rendering
 
 ## ContentRenderer
 
-Render parsed markdown body:
+Query a page document, handle the missing state at the route boundary, then pass the document to `ContentRenderer`.
 
 ```vue
 <script setup lang="ts">
-const post = await queryCollection('blog')
-  .where('path', '=', '/blog/my-post')
-  .first()
+const route = useRoute()
+const { data: page } = await useAsyncData(route.path, () => {
+  return queryCollection('docs').path(route.path).first()
+})
+
+if (!page.value) {
+  throw createError({ statusCode: 404, statusMessage: 'Page not found' })
+}
 </script>
 
 <template>
-  <ContentRenderer v-if="post" :value="post" />
+  <ContentRenderer :value="page" />
 </template>
 ```
 
-**With custom wrapper:**
+Nuxt Content v3 renders documents through `ContentRenderer`; document-driven routing still belongs in an explicit Nuxt page such as `app/pages/[...slug].vue`.
 
-```vue
-<ContentRenderer :value="post">
-  <template #default="{ body }">
-    <article class="prose">
-      <component :is="body" />
-    </article>
-  </template>
-</ContentRenderer>
-```
+## MDC components
 
-## MDC Syntax
-
-Use Vue components inside markdown:
+Components under `components/content/` are available in Markdown and MDC.
 
 ```md
-<!-- Inline component -->
-
-:icon{name="heroicons:star"}
-
-<!-- Block component -->
+:icon{name="lucide:star"}
 
 ::callout{type="warning"}
-This is a warning message.
+Review this before publishing.
 ::
-
-<!-- With slots -->
 
 ::card
 #title
-Card Title
+Typed collections
 
 #default
-Card content goes here.
-::
-
-<!-- Nested components -->
-
-::grid{cols="2"}
-::card
-First card
-::
-
-::card
-Second card
-::
+The body is rendered through the default slot.
 ::
 ```
 
-## Component Props
-
-```md
-<!-- String props -->
-
-:badge{label="New"}
-
-<!-- Boolean props -->
-
-::collapse{open}
-Content
-::
-
-<!-- Object/array props (YAML) -->
-
-## ::chart
-
-data:
-
-- value: 10
-- value: 20
-
----
-
-::
-```
-
-## MDC Component Location
-
-Components in `components/content/` are auto-registered for MDC:
-
-```
-components/
-└── content/
-    ├── Callout.vue      → ::callout
-    ├── ProseCode.vue    → Code blocks
-    └── ProseH2.vue      → ## headings
-```
-
-## Prose Components
-
-Override default HTML elements with custom components:
-
-| Element        | Component            | Markdown      |
-| -------------- | -------------------- | ------------- |
-| `<p>`          | `ProseP`             | Paragraphs    |
-| `<h1>`-`<h6>`  | `ProseH1`-`ProseH6`  | `#` headings  |
-| `<a>`          | `ProseA`             | `[link](url)` |
-| `<code>`       | `ProseCode`          | `` `code` ``  |
-| `<pre>`        | `ProsePre`           | Code blocks   |
-| `<ul>`, `<ol>` | `ProseUl`, `ProseOl` | Lists         |
-| `<img>`        | `ProseImg`           | `![alt](src)` |
-| `<table>`      | `ProseTable`         | Tables        |
-| `<blockquote>` | `ProseBlockquote`    | `>` quotes    |
-
-**Custom prose component:**
+Use native slots in content components. The `mdc-unwrap` attribute removes Markdown wrapper elements when a component needs the raw slot shape.
 
 ```vue
-<!-- components/content/ProseH2.vue -->
 <template>
-  <h2 :id="id" class="group">
-    <a :href="`#${id}`" class="anchor">
-      <slot />
-    </a>
-  </h2>
+  <aside class="callout">
+    <slot mdc-unwrap="p" />
+  </aside>
 </template>
-
-<script setup lang="ts">
-defineProps<{ id?: string }>()
-</script>
 ```
 
-## Code Highlighting
+Content components are registered for MDC rendering. Register them separately when they also need dynamic use outside Markdown.
 
-Shiki provides syntax highlighting. Configure in `nuxt.config.ts`:
+## Prose components
+
+Override semantic Markdown output with `ProseP`, `ProseA`, `ProseH1`–`ProseH6`, `ProseCode`, `ProsePre`, `ProseImg`, `ProseTable`, and the matching list/blockquote components. Inline code maps to `ProseCode`; fenced code maps to `ProsePre`.
+
+Keep accessible HTML semantics and forward the attributes supplied by MDC. Let a design-system skill own styling decisions when Nuxt UI or another component library is installed.
+
+## Markdown processing and highlighting
+
+Configure Markdown under `content.build.markdown` and renderer aliases under `content.renderer`.
 
 ```ts
 export default defineNuxtConfig({
   content: {
     build: {
       markdown: {
+        toc: { depth: 3, searchDepth: 2 },
         highlight: {
-          theme: 'github-dark',
-          // Or multi-theme
           themes: {
             default: 'github-light',
             dark: 'github-dark',
           },
-          // Additional languages
-          langs: ['vue', 'typescript', 'bash', 'yaml'],
+          langs: ['ts', 'vue', 'bash'],
         },
       },
+    },
+    renderer: {
+      alias: { a: 'DocsLink' },
+      anchorLinks: { h2: true, h3: true },
     },
   },
 })
 ```
 
-**In markdown:**
+Load only the Shiki languages used by the content set. When custom remark or rehype plugins are involved, verify the rendered AST and the final SSR HTML.
 
-````md
-```ts
-const foo = 'bar'
-```
-
-```vue
-<template>
-  <div>Hello</div>
-</template>
-```
-````
-
-**Line highlighting:**
-
-````md
-```ts {2,4-6}
-const a = 1
-const b = 2  // highlighted
-const c = 3
-const d = 4  // highlighted
-const e = 5  // highlighted
-const f = 6  // highlighted
-```
-````
-
-**Filename display:**
-
-````md
-```ts [nuxt.config.ts]
-export default defineNuxtConfig({})
-```
-````
-
-## Custom Components Example
-
-**Alert component:**
-
-```vue
-<!-- components/content/Alert.vue -->
-<template>
-  <div :class="['alert', `alert-${type}`]">
-    <slot />
-  </div>
-</template>
-
-<script setup lang="ts">
-withDefaults(defineProps<{ type?: 'info' | 'warning' | 'error' }>(), {
-  type: 'info',
-})
-</script>
-```
-
-Usage in markdown:
-
-```md
-::alert{type="warning"}
-Be careful with this operation.
-::
-```
-
-## Table of Contents
-
-Access TOC from parsed content:
-
-```vue
-<script setup lang="ts">
-const post = await queryCollection('blog').where('path', '=', route.path).first()
-const toc = post?.body?.toc?.links || []
-</script>
-
-<template>
-  <nav>
-    <ul>
-      <li v-for="link in toc" :key="link.id">
-        <a :href="`#${link.id}`">{{ link.text }}</a>
-      </li>
-    </ul>
-  </nav>
-</template>
-```
-
-## Best Practices
-
-| Do                                     | Don't                            |
-| -------------------------------------- | -------------------------------- |
-| Use MDC for reusable content patterns  | Embed raw HTML in markdown       |
-| Create semantic prose components       | Override prose without purpose   |
-| Use Shiki themes matching your design  | Mix multiple highlight libraries |
-| Leverage slots for flexible components | Hardcode all component content   |
-
-## Resources
-
-- MDC Syntax: https://content.nuxt.com/docs/files/markdown#mdc-syntax
-- Prose Components: https://content.nuxt.com/docs/components/prose
-- ContentRenderer: https://content.nuxt.com/docs/components/content-renderer
+Official references: [Markdown and MDC](https://content.nuxt.com/docs/files/markdown), [ContentRenderer](https://content.nuxt.com/docs/components/content-renderer), [prose components](https://content.nuxt.com/docs/components/prose).

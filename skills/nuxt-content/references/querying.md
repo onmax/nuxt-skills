@@ -1,245 +1,89 @@
-# Querying Content
+# Querying
 
-## When to Use
+## Page and list queries
 
-Using `queryCollection()`, building navigation, implementing search, or getting prev/next items.
-
-## Query Builder
+Wrap initial render queries in `useAsyncData` or `useFetch` so Nuxt can transfer the result in its payload.
 
 ```ts
-const posts = await queryCollection('blog')
-  .where('draft', '=', false)
-  .order('date', 'DESC')
-  .limit(10)
-  .all()
+const route = useRoute()
 
-// Single item
-const post = await queryCollection('blog')
-  .where('path', '=', '/blog/my-post')
-  .first()
-
-// Count
-const total = await queryCollection('blog')
-  .where('category', '=', 'tech')
-  .count()
-```
-
-## Operators
-
-| Operator             | Example                                  | Description        |
-| -------------------- | ---------------------------------------- | ------------------ |
-| `=`                  | `where('status', '=', 'published')`      | Exact match        |
-| `<>`                 | `where('status', '<>', 'draft')`         | Not equal          |
-| `>`, `<`, `>=`, `<=` | `where('order', '>', 5)`                 | Comparison         |
-| `IN`                 | `where('tag', 'IN', ['vue', 'nuxt'])`    | Match any in array |
-| `BETWEEN`            | `where('date', 'BETWEEN', [start, end])` | Range inclusive    |
-| `LIKE`               | `where('title', 'LIKE', '%vue%')`        | Pattern match      |
-| `IS NULL`            | `where('image', 'IS NULL', true)`        | Null check         |
-| `IS NOT NULL`        | `where('image', 'IS NOT NULL', true)`    | Not null           |
-
-## Complex Queries
-
-```ts
-// AND conditions
-const posts = await queryCollection('blog')
-  .where('draft', '=', false)
-  .andWhere(group => group
-    .where('category', '=', 'tech')
-    .orWhere('featured', '=', true)
-  )
-  .all()
-
-// OR conditions
-const posts = await queryCollection('blog')
-  .where('author', '=', 'john')
-  .orWhere('author', '=', 'jane')
-  .all()
-```
-
-## Select Fields
-
-```ts
-// Select specific fields (reduces payload)
-const titles = await queryCollection('blog')
-  .select('title', 'path', 'date')
-  .all()
-```
-
-## Navigation
-
-Generate hierarchical navigation trees:
-
-```ts
-// In pages/[...slug].vue or composables
-const navigation = await queryCollectionNavigation('docs')
-
-// With custom fields
-const navigation = await queryCollectionNavigation('docs', ['title', 'icon', 'description'])
-```
-
-Returns nested structure:
-
-```ts
-[
-  {
-    title: 'Getting Started',
-    path: '/docs/getting-started',
-    children: [
-      { title: 'Installation', path: '/docs/getting-started/installation' },
-      { title: 'Configuration', path: '/docs/getting-started/configuration' },
-    ]
-  }
-]
-```
-
-**Navigation control** via frontmatter:
-
-```yaml
----
-navigation: false # Exclude from nav
----
-```
-
-Or with custom title:
-
-```yaml
----
-navigation:
-  title: Short Title
-  icon: heroicons:home
----
-```
-
-## Surroundings (Prev/Next)
-
-```ts
-const { prev, next } = await queryCollectionItemSurroundings(
-  'docs',
-  '/docs/current-page',
-  { before: 1, after: 1 }
-)
-
-// With specific fields
-const { prev, next } = await queryCollectionItemSurroundings(
-  'docs',
-  currentPath,
-  { before: 1, after: 1, fields: ['title', 'path', 'description'] }
-)
-```
-
-## Search Sections
-
-Split pages into searchable sections:
-
-```ts
-const sections = await queryCollectionSearchSections('docs', {
-  minHeading: 2,  // Minimum heading level to index (v3.10+)
-  maxHeading: 4,  // Maximum heading level to index (v3.10+)
+const { data: page } = await useAsyncData(route.path, () => {
+  return queryCollection('docs').path(route.path).first()
 })
 
-// Returns
-  [
-    {
-      id: 'docs:getting-started#installation',
-      title: 'Installation',
-      titles: ['Getting Started', 'Installation'],
-      content: 'Section text content...',
-      path: '/docs/getting-started',
-    }
-  ]
-
-// Include extra fields (v3.4+)
-const sections = await queryCollectionSearchSections('docs', {
-  minHeading: 2,
-  maxHeading: 3,
-  fields: ['description', 'category'],
-})
-```
-
-## Server-Side Queries
-
-In server routes, pass the event:
-
-```ts
-// server/api/posts.get.ts
-export default defineEventHandler(async (event) => {
-  return await queryCollection(event, 'blog')
+const { data: posts } = await useAsyncData('published-posts', () => {
+  return queryCollection('blog')
     .where('draft', '=', false)
+    .order('date', 'DESC')
+    .select('path', 'title', 'description', 'date')
+    .limit(12)
     .all()
 })
 ```
 
-## Common Patterns
-
-**Latest posts:**
+The builder supports `where`, `andWhere`, `orWhere`, `order`, `select`, `skip`, `limit`, `all`, `first`, and `count`. Use grouped conditions when SQL precedence matters.
 
 ```ts
-const latest = await queryCollection('blog')
-  .where('draft', '=', false)
-  .order('date', 'DESC')
-  .limit(5)
-  .all()
-```
-
-**Posts by tag:**
-
-```ts
-const tagged = await queryCollection('blog')
-  .where('tags', 'LIKE', `%${tag}%`)
-  .all()
-```
-
-**Paginated list:**
-
-```ts
-const page = 1
-const perPage = 10
 const posts = await queryCollection('blog')
-  .order('date', 'DESC')
-  .skip((page - 1) * perPage)
-  .limit(perPage)
+  .where('published', '=', true)
+  .andWhere(group => group
+    .where('date', '>', '2026-01-01')
+    .where('category', '=', 'news'))
   .all()
 ```
 
-**Featured + recent:**
+## Nitro queries
+
+Pass the event as the first argument on the server so the query uses the request's Content context.
 
 ```ts
-const [featured, recent] = await Promise.all([
-  queryCollection('blog').where('featured', '=', true).first(),
-  queryCollection('blog').order('date', 'DESC').limit(5).all(),
+export default defineEventHandler(async (event) => {
+  const { slug } = getRouterParams(event)
+  return queryCollection(event, 'docs').path(`/${slug}`).first()
+})
+```
+
+Extend `../.nuxt/tsconfig.server.json` from `server/tsconfig.json` when server-side collection types are missing.
+
+## Navigation and surroundings
+
+```ts
+const navigation = await queryCollectionNavigation('docs', [
+  'title',
+  'description',
+  'icon',
 ])
+
+const [previous, next] = await queryCollectionItemSurroundings(
+  'docs',
+  route.path,
+  { fields: ['title', 'description'] },
+)
 ```
 
-## Best Practices
+Navigation reads page paths plus `.navigation.yml` metadata. Surroundings returns a two-item tuple, with `null` at either boundary.
 
-| Do                                | Don't                               |
-| --------------------------------- | ----------------------------------- |
-| Use `.select()` to reduce payload | Fetch all fields when only need few |
-| Cache navigation queries          | Rebuild navigation on every page    |
-| Use `.first()` for single items   | Use `.all()[0]`                     |
-| Pass event in server routes       | Omit event on server side           |
+## Search
 
-## Utility Functions (v3.6+)
-
-Helper functions for common navigation patterns:
+`queryCollectionSearchSections` turns headings and their text into a search index suitable for Nuxt UI, MiniSearch, Fuse, or another client-side search engine.
 
 ```ts
-// Find page headline (first H1)
-const headline = findPageHeadline(page)
-
-// Get breadcrumb trail
-const breadcrumb = findPageBreadcrumb(navigation, '/docs/collections/schema')
-// Returns: [{ title: 'Docs', path: '/docs' }, { title: 'Collections', path: '/docs/collections' }, ...]
-
-// Get immediate children of a page
-const children = findPageChildren(navigation, '/docs/collections')
-
-// Get siblings (prev/next at same level)
-const siblings = findPageSiblings(navigation, '/docs/collections/schema')
+const { data: sections } = await useAsyncData('docs-search', () => {
+  return queryCollectionSearchSections('docs', {
+    ignoredTags: ['style', 'script'],
+    extraFields: ['description'],
+  })
+})
 ```
 
-## Resources
+Use `useSearchCollection` when the app needs reactive, built-in search over a collection rather than managing an external index. Load the search data once per stable collection and avoid rebuilding an index on every keystroke.
 
-- Query API: https://content.nuxt.com/docs/querying/query-collection
-- Navigation: https://content.nuxt.com/docs/querying/query-collection-navigation
-- Search: https://content.nuxt.com/docs/querying/query-collection-search-sections
+## Checks
+
+- A stable `useAsyncData` key identifies each payload-backed query.
+- Client and server calls use their correct signatures.
+- `select()` retains every field the renderer consumes.
+- Pagination applies a deterministic `order()` before `skip()` and `limit()`.
+- Search and navigation source globs include the files that generate their metadata.
+
+Official references: [queryCollection](https://content.nuxt.com/docs/utils/query-collection), [navigation](https://content.nuxt.com/docs/utils/query-collection-navigation), [surroundings](https://content.nuxt.com/docs/utils/query-collection-item-surroundings), [search sections](https://content.nuxt.com/docs/utils/query-collection-search-sections).

@@ -1,278 +1,68 @@
-# Nuxt Middleware & Plugins
+# Route middleware and app plugins
 
-## When to Use
+## Route middleware
 
-Working with `middleware/` or `plugins/` directories, route guards, app extensions.
-
-## Route Middleware
-
-Route middleware runs before navigation. Used for auth checks, redirects, logging.
-
-### Global Middleware
-
-Runs on every route change. **REQUIRED: Use `.global.ts` suffix:**
+Route middleware runs during application navigation. Put named middleware in `app/middleware/auth.ts`, global middleware in a `.global.ts` file, or inline middleware in `definePageMeta`.
 
 ```ts
-// middleware/auth.global.ts
-export default defineNuxtRouteMiddleware((to, from) => {
-  const auth = useAuthStore()
+export default defineNuxtRouteMiddleware(async (to) => {
+  const session = useSession()
 
-  if (to.meta.requiresAuth && !auth.isAuthenticated) {
+  if (!session.value && to.path !== '/login')
     return navigateTo('/login')
-  }
 })
 ```
 
-**Without `.global.ts` suffix, middleware is named (not global).**
+Return the result of `navigateTo(...)` or `abortNavigation(...)`; do not call them and then continue. Use `to` and `from` inside middleware because `useRoute()` may represent a different navigation state.
 
-## Red Flags - Stop and Check Skill
+Initial navigation can run route middleware on the server and again during client hydration. Keep it idempotent, or guard browser-only work with the Nuxt runtime context. Avoid redirect loops by checking the destination before redirecting.
 
-If you're thinking any of these, STOP and re-read this skill:
+Route middleware does not protect an API. Authorization for `server/api` belongs in server middleware, a server utility, or the handler itself.
 
-- "Suffix doesn't matter, it's about where I put it"
-- "I'll redirect() instead of return navigateTo()"
-- "I remember Nuxt 3 middleware patterns"
-- "Export default function is simpler"
+## App plugins
 
-All of these mean: You're using outdated patterns. Use Nuxt 4 patterns instead.
-
-### Named Middleware
-
-Runs only when explicitly applied. No `.global` suffix:
+Nuxt scans top-level files in `app/plugins/`. Use `.client` or `.server` suffixes when a dependency is limited to one runtime.
 
 ```ts
-// middleware/admin.ts
-export default defineNuxtRouteMiddleware((to, from) => {
-  const auth = useAuthStore()
+export default defineNuxtPlugin({
+  name: 'analytics',
+  parallel: true,
+  setup () {
+    const analytics = createAnalyticsClient()
 
-  if (!auth.isAdmin) {
-    return navigateTo('/')
-  }
-})
-```
-
-Apply in page:
-
-```vue
-<script setup lang="ts">
-definePageMeta({
-  middleware: ['admin']
-})
-</script>
-```
-
-### Middleware Return Values
-
-```ts
-export default defineNuxtRouteMiddleware((to, from) => {
-  // Allow navigation
-  return
-
-  // Redirect
-  return navigateTo('/login')
-
-  // Abort navigation
-  return abortNavigation()
-
-  // Abort with error
-  return abortNavigation('Not authorized')
-})
-```
-
-### Middleware Order
-
-1. Global middleware (alphabetical by filename)
-2. Layout middleware (if layout defines middleware)
-3. Page middleware (defined in definePageMeta)
-
-## Plugins
-
-Plugins extend Vue app with global functionality. Run during app initialization.
-
-### Basic Plugin
-
-```ts
-// plugins/my-plugin.ts
-export default defineNuxtPlugin((nuxtApp) => {
-  return {
-    provide: {
-      hello: (name: string) => `Hello ${name}!`
+    return {
+      provide: { analytics },
     }
-  }
+  },
 })
 ```
 
-Use in components:
+Object-syntax plugin properties are statically analyzed, so keep fields such as `name`, `enforce`, `parallel`, `dependsOn`, and hook names static. Use `dependsOn` only for a real ordering dependency; otherwise independent plugins may initialize in parallel.
 
-```vue
-<script setup lang="ts">
-const { $hello } = useNuxtApp()
-console.log($hello('World')) // "Hello World!"
-</script>
-```
+Plugins are appropriate for runtime injections, Vue plugins, and Nuxt runtime hooks. Prefer an ordinary composable for application logic that does not require initialization or injection.
 
-### Plugin with Vue Plugin
+Type plugin injections through the value returned from `provide`, and access them with `useNuxtApp()`. Avoid global mutable singletons on the server because they can leak state between requests.
 
-```ts
-import type { PluginOptions } from 'vue-toastification'
-// plugins/toast.client.ts
-import Toast from 'vue-toastification'
-import 'vue-toastification/dist/index.css'
+## Runtime hooks
 
-export default defineNuxtPlugin((nuxtApp) => {
-  nuxtApp.vueApp.use(Toast, {
-    position: 'top-right',
-    timeout: 3000
-  } as PluginOptions)
-})
-```
-
-### Plugin with Hooks
+Register app hooks in an object-syntax plugin when they are part of plugin setup:
 
 ```ts
-// plugins/init.ts
-export default defineNuxtPlugin((nuxtApp) => {
-  nuxtApp.hook('app:created', () => {
-    console.log('App created')
-  })
-
-  nuxtApp.hook('page:finish', () => {
-    console.log('Page finished loading')
-  })
-})
-```
-
-### Client-Only or Server-Only
-
-Use file suffix:
-
-- `.client.ts` - runs only on client
-- `.server.ts` - runs only on server
-
-```ts
-// plugins/analytics.client.ts
-export default defineNuxtPlugin(() => {
-  // Only runs in browser
-  if (window.analytics) {
-    window.analytics.init()
-  }
-})
-```
-
-### Plugin Order
-
-Use numeric prefix for execution order:
-
-```
-plugins/
-├── 01.first.ts
-├── 02.second.ts
-└── 03.third.ts
-```
-
-### Async Plugins
-
-```ts
-// plugins/api.ts
-export default defineNuxtPlugin(async (nuxtApp) => {
-  const config = await fetch('/api/config').then(r => r.json())
-
-  return {
-    provide: {
-      config
-    }
-  }
-})
-```
-
-## Best Practices
-
-**Middleware:**
-
-- **Return navigation or nothing** - don't mutate state heavily
-- **Keep logic minimal** - delegate to composables/stores
-- **Use for guards & redirects** only
-- **Check meta properly** - `to.meta.requiresAuth`
-- **Global = `.global.ts`** suffix required
-
-**Plugins:**
-
-- **Use for app-wide functionality** only
-- **Provide via `provide`** for type safety
-- **Consider client/server context** - use `.client`/`.server`
-- **Minimize work** in plugin initialization
-- **Use hooks** for lifecycle events
-
-## Common Mistakes
-
-| ❌ Wrong                             | ✅ Right                                                     |
-| ------------------------------------ | ------------------------------------------------------------ |
-| `export default function({ route })` | `export default defineNuxtRouteMiddleware((to, from) => {})` |
-| Mutate route object                  | Return navigateTo() or nothing                               |
-| `middleware/auth.ts` (not global)    | `middleware/auth.global.ts` (global)                         |
-| `redirect('/login')`                 | `return navigateTo('/login')`                                |
-| Plugin without defineNuxtPlugin      | Wrap in defineNuxtPlugin()                                   |
-
-## Middleware Example: Auth
-
-```ts
-// middleware/auth.global.ts
-export default defineNuxtRouteMiddleware((to, from) => {
-  const auth = useAuthStore()
-
-  // Public routes
-  const publicRoutes = ['/', '/login', '/register']
-  if (publicRoutes.includes(to.path)) {
-    return
-  }
-
-  // Check auth
-  if (!auth.isAuthenticated) {
-    return navigateTo('/login')
-  }
-
-  // Check role
-  if (to.meta.requiresAdmin && !auth.isAdmin) {
-    return abortNavigation('Access denied')
-  }
-})
-```
-
-## Plugin Example: API Client
-
-```ts
-// plugins/api.ts
-export default defineNuxtPlugin((nuxtApp) => {
-  const config = useRuntimeConfig()
-
-  const api = $fetch.create({
-    baseURL: config.public.apiBase,
-    onRequest({ request, options }) {
-      const auth = useAuthStore()
-      if (auth.token) {
-        options.headers = {
-          ...options.headers,
-          Authorization: `Bearer ${auth.token}`
-        }
-      }
+export default defineNuxtPlugin({
+  name: 'navigation-metrics',
+  hooks: {
+    'page:finish' () {
+      recordPageReady()
     },
-    onResponseError({ response }) {
-      if (response.status === 401) {
-        navigateTo('/login')
-      }
-    }
-  })
-
-  return {
-    provide: {
-      api
-    }
-  }
+  },
 })
 ```
 
-## Resources
+Use `nuxtApp.hook(...)` for dynamic registration. Keep hooks small and remove external listeners when the owning scope is disposed.
 
-- Nuxt middleware: https://nuxt.com/docs/guide/directory-structure/middleware
-- Nuxt plugins: https://nuxt.com/docs/guide/directory-structure/plugins
-- Route middleware: https://nuxt.com/docs/getting-started/routing#route-middleware
+## Completion checks
+
+- Middleware cannot redirect to itself and returns every navigation outcome.
+- API authorization is enforced on the server, even when route middleware also improves the client experience.
+- Server plugins do not hold request-specific state in a process-global value.
+- Plugin order is explicit only where another plugin is genuinely required.

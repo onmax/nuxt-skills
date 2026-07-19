@@ -1,419 +1,62 @@
-# Nuxt Configuration
+# Nuxt configuration
 
-## When to Use
+Keep `nuxt.config.ts` declarative and use the narrowest configuration owner. Module-specific options belong under that module's config key and should follow the installed module's skill or documentation.
 
-Configuring `nuxt.config.ts`, modules, auto-imports, runtime config, layers.
-
-## Basic Structure
+## Core shape
 
 ```ts
-// nuxt.config.ts
 export default defineNuxtConfig({
-  devtools: { enabled: true },
-
-  modules: [
-    '@nuxtjs/tailwindcss',
-    '@pinia/nuxt'
-  ],
-
+  modules: [],
   runtimeConfig: {
-    // Private (server-only)
-    apiSecret: process.env.API_SECRET,
-
+    apiSecret: '',
     public: {
-      // Public (client + server)
-      apiBase: process.env.API_BASE || 'http://localhost:3000'
-    }
-  },
-
-  app: {
-    head: {
-      title: 'My App',
-      meta: [
-        { charset: 'utf-8' },
-        { name: 'viewport', content: 'width=device-width, initial-scale=1' }
-      ]
-    }
-  }
-})
-```
-
-## Runtime Config
-
-Access runtime config in app:
-
-```ts
-// Server-side
-const config = useRuntimeConfig()
-console.log(config.apiSecret) // Available
-
-// Client-side
-const config = useRuntimeConfig()
-console.log(config.public.apiBase) // Available
-console.log(config.apiSecret) // undefined (private)
-```
-
-### Runtime Config Validation (Recommended)
-
-Use `nuxt-safe-runtime-config` for type-safe runtime config with build-time validation:
-
-```bash
-npx nuxi module add nuxt-safe-runtime-config
-```
-
-**Benefits:**
-
-- Build-time validation (catches missing env vars early)
-- Optional runtime validation (validates when server starts)
-- Auto-generated types (no manual type definitions needed)
-- No manual env var checks required (schema handles validation)
-
-**Example with Valibot:**
-
-```ts
-import { number, object, optional, string } from 'valibot'
-
-export default defineNuxtConfig({
-  modules: ['nuxt-safe-runtime-config'],
-
-  runtimeConfig: {
-    databaseUrl: process.env.DATABASE_URL,
-    secretKey: process.env.SECRET_KEY,
-    port: Number.parseInt(process.env.PORT || '3000'),
-    public: {
-      apiBase: process.env.PUBLIC_API_BASE,
-      appName: 'My App',
+      apiBase: '/api',
     },
   },
-
-  safeRuntimeConfig: {
-    $schema: object({
-      public: object({
-        apiBase: string(),
-        appName: optional(string()),
-      }),
-      databaseUrl: string(),
-      secretKey: string(),
-      port: optional(number()),
-    }),
-    validateAtRuntime: true, // Optional: validate when server starts
-  },
-})
-```
-
-**Usage:**
-
-```ts
-// Auto-typed from schema - no generics needed
-const config = useSafeRuntimeConfig()
-// config.public.apiBase is string
-// config.databaseUrl is string
-```
-
-**No manual env checks needed:**
-
-```ts
-// ❌ Don't do this with nuxt-safe-runtime-config
-if (!config.databaseUrl) throw new Error('Missing DATABASE_URL')
-
-// ✅ Schema validation handles it automatically
-// If env var is missing, build fails with detailed error
-```
-
-Works with Zod, ArkType, or any Standard Schema library. See: https://github.com/onmax/nuxt-safe-runtime-config
-
-## Auto-Imports
-
-Nuxt auto-imports from these directories:
-
-- `components/` - Vue components
-- `composables/` - Composition functions
-- `utils/` - Utility functions
-- `server/utils/` - Server utilities (server-only)
-
-### Custom Auto-Imports
-
-```ts
-export default defineNuxtConfig({
-  imports: {
-    dirs: [
-      'stores',
-      'types'
-    ]
-  }
-})
-```
-
-### Disable Auto-Import
-
-```ts
-export default defineNuxtConfig({
-  imports: {
-    autoImport: false
-  }
-})
-```
-
-## Modules
-
-```ts
-export default defineNuxtConfig({
-  modules: [
-    '@nuxtjs/tailwindcss',
-    '@pinia/nuxt',
-    '@vueuse/nuxt',
-    ['@nuxtjs/google-fonts', {
-      families: {
-        Inter: [400, 700]
-      }
-    }]
-  ]
-})
-```
-
-## App Config
-
-For non-sensitive config exposed to client:
-
-```ts
-// app.config.ts
-export default defineAppConfig({
-  theme: {
-    primaryColor: '#3b82f6',
-    borderRadius: '0.5rem'
-  }
-})
-```
-
-Access in app:
-
-```ts
-const appConfig = useAppConfig()
-console.log(appConfig.theme.primaryColor)
-```
-
-## TypeScript
-
-```ts
-export default defineNuxtConfig({
-  typescript: {
-    strict: true,
-    typeCheck: true,
-    shim: false
-  }
-})
-```
-
-## Build Configuration
-
-```ts
-export default defineNuxtConfig({
-  build: {
-    transpile: ['some-package']
-  },
-
-  vite: {
-    css: {
-      preprocessorOptions: {
-        scss: {
-          additionalData: '@use "@/assets/styles/variables" as *;'
-        }
-      }
-    }
-  }
-})
-```
-
-## Route Rules
-
-Pre-render, cache, or customize routes:
-
-```ts
-export default defineNuxtConfig({
   routeRules: {
     '/': { prerender: true },
-    '/api/**': { cors: true },
     '/admin/**': { ssr: false },
-    '/blog/**': { swr: 3600 } // Cache for 1 hour
-  }
-})
-```
-
-### ISR Route Rules
-
-Use `isr` for incremental static regeneration:
-
-```ts
-export default defineNuxtConfig({
-  routeRules: {
-    '/': { prerender: true },        // Static at build time
-    '/**': { isr: 60 },              // Regenerate every 60s
-    '/package/**': { isr: 60 },      // ISR for dynamic routes
-    '/search': { isr: false, cache: false },  // No cache
-  }
-})
-```
-
-### Route Rule Layouts (Nuxt 4.3+)
-
-Apply layouts via route rules for centralized layout management:
-
-```ts
-export default defineNuxtConfig({
-  routeRules: {
-    '/admin/**': { appLayout: 'admin' },
-    '/docs/**': { appLayout: 'docs' },
-    '/': { appLayout: 'default' }
-  }
-})
-```
-
-**Benefits:** Centralized layout control, no need for `setPageLayout()` in every page.
-
-## Inline Modules
-
-Add conditional logic during nuxt prepare:
-
-```ts
-export default defineNuxtConfig({
-  modules: [
-    // Inline function module
-    function (_, nuxt) {
-      if (nuxt.options._prepare) {
-        // Disable expensive operations during prepare
-        nuxt.options.pwa ||= {}
-        nuxt.options.pwa.pwaAssets ||= { disabled: true }
-      }
-    },
-    '@nuxtjs/tailwindcss',
-  ]
-})
-```
-
-## Provider-Specific Modules
-
-Use `std-env` to detect platform and configure accordingly:
-
-```ts
-// modules/vercel-cache.ts
-import { defineNuxtModule } from 'nuxt/kit'
-import { provider } from 'std-env'
-
-export default defineNuxtModule({
-  meta: { name: 'vercel-cache' },
-  setup(_, nuxt) {
-    if (provider !== 'vercel') return
-
-    nuxt.hook('nitro:config', (nitroConfig) => {
-      nitroConfig.storage ||= {}
-      nitroConfig.storage.cache = {
-        driver: 'vercel-runtime-cache',
-        ...nitroConfig.storage.cache,
-      }
-    })
-  }
-})
-```
-
-Then register in nuxt.config.ts:
-
-```ts
-export default defineNuxtConfig({
-  modules: ['~/modules/vercel-cache']
-})
-```
-
-## Experimental Features
-
-```ts
-export default defineNuxtConfig({
-  future: {
-    compatibilityVersion: 4
+    '/old': { redirect: '/new' },
   },
-
-  experimental: {
-    typedPages: true,
-    viewTransition: true,
-    payloadExtraction: true // Enable ISR/SWR payload extraction (Nuxt 4.3+)
-  }
 })
 ```
 
-**Payload extraction** (Nuxt 4.3+): Enables cached payloads during client navigation for ISR/SWR routes, improving performance.
+Preserve the repository's established `compatibilityDate`; do not update it incidentally because it can change Nitro behavior. Add one from the current Nuxt guidance when a project does not have it, then treat later changes as deliberate upgrades. Treat `future.compatibilityVersion` as an opt-in migration test and verify the entire application before keeping it.
 
-## Nitro Config
+## Runtime config and app config
 
-Server engine configuration:
+`runtimeConfig` is populated at runtime and can receive environment overrides. Values outside `public` remain server-only; values under `public` are serialized to the client. Use matching `NUXT_...` environment variable names for runtime overrides instead of reading arbitrary environment variables in client code.
 
-```ts
-export default defineNuxtConfig({
-  nitro: {
-    preset: 'vercel',
-    compressPublicAssets: true,
-    routeRules: {
-      '/api/**': { cors: true }
-    }
-  }
-})
-```
+`app.config.ts` holds public, reactive application configuration that can be known at build time. It is not a secret store and does not receive the same runtime environment override contract as `runtimeConfig`.
 
-## Layers
+## Route rules
 
-Extend or share configuration:
+`routeRules` applies behavior by route pattern. Depending on the installed Nitro version and deployment preset, rules can control prerendering, SSR, caching, redirects, headers, proxies, and middleware. Verify provider-specific caching and proxy semantics against the production preset.
 
-```ts
-export default defineNuxtConfig({
-  extends: [
-    './base-layer'
-  ]
-})
-```
+Prefer config-level route rules for stable project behavior. Page-level inline rules require explicit framework support and configuration, so check the installed version before using them.
 
-## Environment Variables
+## Modules, imports, and components
 
-Use `.env` file:
+List modules in `modules` and keep their configuration under their documented key. Nuxt auto-imports its own composables and scans conventional `app/composables`, `app/utils`, and `app/components` locations. Add custom import or component directories only when the conventional structure cannot represent the ownership.
 
-```env
-API_SECRET=secret123
-API_BASE=https://api.example.com
-```
+Avoid manual imports solely to work around stale generated types; run `nuxt prepare` first. Avoid broad global component registration when local import or a focused scan path keeps the bundle and ownership clearer.
 
-Access via runtimeConfig:
+## Layers and aliases
 
-```ts
-export default defineNuxtConfig({
-  runtimeConfig: {
-    apiSecret: process.env.API_SECRET,
-    public: {
-      apiBase: process.env.API_BASE
-    }
-  }
-})
-```
+Use `extends` for Nuxt layers that intentionally share configuration, components, composables, or assets across applications. Keep application secrets and deployment-specific values out of reusable layers.
 
-## Best Practices
+Prefer Nuxt aliases (`~`, `~~`, `#imports`, `#components`, and server aliases supported by the installed version) over duplicating them in Vite or TypeScript. Define custom aliases in Nuxt config so generated TypeScript configuration receives them too.
 
-- **Use nuxt-safe-runtime-config** for runtime config with validation
-- **Public vs private** - keep secrets in private runtimeConfig
-- **App config** for non-sensitive client config
-- **Route rules** for performance (prerender, cache, SWR)
-- **Auto-imports** for cleaner code
-- **TypeScript strict mode** for better DX
+## Vite, Nitro, and hooks
 
-## Common Mistakes
+Configure Vite through `vite` and the server build through `nitro`. Reach into these objects only for behavior owned by those tools; Nuxt-level options are more portable across builders and presets.
 
-| ❌ Wrong                   | ✅ Right                     |
-| -------------------------- | ---------------------------- |
-| Hardcoded API URLs         | Use runtimeConfig.public     |
-| Secrets in app.config      | Use runtimeConfig (private)  |
-| Import everything manually | Let Nuxt auto-import         |
-| process.env in client code | Use useRuntimeConfig()       |
-| Manual env var validation  | Use nuxt-safe-runtime-config |
-| if (!config.x) throw error | Schema validation handles it |
+Use Nuxt hooks for build-time extension and plugins for application-runtime hooks. If the task is reusable across projects, it may belong in a local Nuxt module instead of a large config callback.
 
-## Resources
+## Completion checks
 
-- Nuxt config: https://nuxt.com/docs/api/nuxt-config
-- Runtime config: https://nuxt.com/docs/guide/going-further/runtime-config
-- App config: https://nuxt.com/docs/guide/directory-structure/app-config
-- Modules: https://nuxt.com/modules
+- `nuxt prepare` regenerates types without alias or module errors.
+- Private runtime config is absent from the client payload.
+- Route rules behave on the production Nitro preset.
+- Layer order and overrides are deliberate and documented by the repository structure.
+- Module APIs are sourced from the installed module rather than copied into core Nuxt guidance.
