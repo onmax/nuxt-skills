@@ -70,14 +70,14 @@ Clone the repository and copy skill folders to your agent's skills directory:
 | **nuxt**                      | Nuxt 4+ server routes, routing, middleware, config                                      |
 | **nuxt-modules**              | Creating Nuxt modules with defineNuxtModule, Kit utilities, testing                     |
 | **nuxthub**                   | NuxtHub v0.10 database, KV, blob, cache, multi-cloud                                    |
-| **nuxt-content**              | Nuxt Content v3 collections, queries, MDC rendering, NuxtStudio                         |
+| **nuxt-content**              | Nuxt Content collections, schemas, queries, navigation, search, MDC, and deployment     |
+| **nuxt-studio**               | Nuxt Studio setup, auth, visual editing, drafts, media, AI, and Git publishing          |
 | **nuxt-ui**                   | Nuxt UI v4 components, theming, forms, overlays, composables                            |
 | **nuxt-better-auth**          | Auth with @onmax/nuxt-better-auth, useUserSession, route protection, clientOnly         |
 | **reka-ui**                   | Reka UI headless Vue components, accessible primitives, props/emits/slots               |
 | **document-writer**           | Writing documentation for Nuxt ecosystem - MDC, style, structure, code examples         |
 | **ts-library**                | TypeScript library authoring - exports, tsdown, API patterns, type tricks, CI           |
 | **motion**                    | Motion Vue animations - motion component, composables, scroll, gestures                 |
-| **vueuse**                    | VueUse composables - state, browser, sensors, network, animation utilities              |
 | **nuxt-seo**                  | Nuxt SEO meta-module - robots, sitemap, og-image, schema-org, site config               |
 | **vitest**                    | Vitest testing - test API, mocking, coverage, type testing, environments                |
 | **vite**                      | Vite build tool - config, plugins, HMR, SSR, library mode, performance                  |
@@ -115,13 +115,13 @@ nuxt-skills/
 │   ├── nuxt-modules/
 │   ├── nuxthub/
 │   ├── nuxt-content/
+│   ├── nuxt-studio/
 │   ├── nuxt-ui/
 │   ├── nuxt-better-auth/
 │   ├── reka-ui/
 │   ├── document-writer/
 │   ├── ts-library/
 │   ├── motion/
-│   ├── vueuse/
 │   ├── nuxt-seo/
 │   ├── vitest/
 │   ├── vite/
@@ -140,12 +140,14 @@ Skills are kept up-to-date via GitHub Actions:
 
 | Workflow                  | Schedule              | Purpose                                                            |
 | ------------------------- | --------------------- | ------------------------------------------------------------------ |
-| **update-skills.yml**     | Weekly (Monday)       | Regenerates reka-ui, nuxt-ui, and vueuse docs from upstream        |
+| **update-skills.yml**     | Weekly (Monday)       | Regenerates reka-ui and nuxt-ui docs from upstream                 |
 | **skill-maintenance.yml** | Biweekly (1st & 15th) | Claude analyzes upstream changelogs, creates PRs if updates needed |
 
 The maintenance workflow uses [claude-code-action](https://github.com/anthropics/claude-code-action) to intelligently detect breaking changes, new features, and deprecations from upstream sources.
 
 ## Resources
+
+VueUse maintains its own current skill, so install it directly with `npx skills add vueuse/skills` instead of relying on a generated copy here.
 
 - [Agent Skills Spec](https://agentskills.io) - Open format for extending AI agent capabilities
 - [Claude Code Skills](https://code.claude.com/docs/en/skills) - Skills in Claude Code

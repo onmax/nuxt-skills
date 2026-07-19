@@ -9,8 +9,7 @@
     "typecheck": "tsc --noEmit",
     "generate:reka-ui": "tsx skills/reka-ui/scripts/generate-components.ts",
     "generate:nuxt-ui": "tsx skills/nuxt-ui/scripts/generate-components.ts",
-    "generate:vueuse": "tsx skills/vueuse/scripts/generate-composables.ts",
-    "generate": "pnpm generate:reka-ui && pnpm generate:nuxt-ui && pnpm generate:vueuse"
+    "generate": "pnpm generate:reka-ui && pnpm generate:nuxt-ui"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^4.11.0",

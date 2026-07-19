@@ -1,152 +1,67 @@
-# Live Editing
+# Live editing
 
-## When to Use
+## Editor surfaces
 
-Working with the visual content editor, media management, MDC component editing, or AI content features.
+Studio provides three views over the same source files:
 
-## Visual Editor
+- The visual editor converts Markdown and MDC to an editable TipTap document.
+- The code editor exposes Markdown, MDC, YAML, and JSON directly.
+- Schema forms edit frontmatter and data files from the Nuxt Content collection schema.
 
-TipTap-based WYSIWYG editor that generates MDC syntax. Two editing modes:
+Content components remain Vue components in `components/content/`. Studio derives editable props from their component metadata and from `property(...).editor(...)` schema metadata; the source schema remains the contract.
 
-- **Visual editor** — Notion-like block editing with drag-and-drop
-- **Code editor** — Direct markdown/MDC editing
+## Draft and preview model
 
-### MDC Component Support
+Studio layers browser-local drafts over the deployed Nuxt Content database:
 
-Insert Vue components in content, edit props visually, drag-and-drop blocks. Components in `components/content/` are available in the editor.
+1. The deployed Content dump initializes SQLite WASM in the browser.
+2. Drafts in IndexedDB overlay created, modified, and deleted files.
+3. Publishing commits those drafts to the configured Git branch.
+4. The deployment rebuild makes the Git state the new production baseline.
 
-Filter visible components:
+Drafts belong to one browser profile, so another editor or device will not see them until publication. Conflict checks compare drafts against the latest Git state before commit.
+
+In development, edits write to the local filesystem and Nuxt's watcher refreshes the preview. Publishing remains a production flow.
+
+## Media
+
+By default, the media library owns files in the project's `public/` directory. Uploads, renames, and deletions participate in the same draft and Git publish cycle as content files.
+
+Use media editor metadata for fields that should select a public asset:
 
 ```ts
-// nuxt.config.ts
+cover: property(z.string()).editor({ input: 'media' })
+```
+
+For larger media libraries, enable NuxtHub blob storage so files go to Vercel Blob, S3-compatible storage, or Cloudflare R2 instead of Git. List `@nuxthub/core` before `nuxt-studio`.
+
+```ts
 export default defineNuxtConfig({
+  modules: ['@nuxthub/core', 'nuxt-studio'],
+  hub: { blob: true },
   studio: {
-    meta: {
-      components: {
-        include: ['Content*', 'Landing*'],
-        exclude: ['InternalComponent'],
-        groups: [
-          { label: 'Content', include: ['content*'] },
-          { label: 'Landing', include: ['landing*'] },
-        ],
-      },
+    media: {
+      external: true,
+      maxFileSize: 10 * 1024 * 1024,
+      allowedTypes: ['image/*', 'video/*'],
+      prefix: 'studio',
     },
   },
 })
 ```
 
-### Schema-Driven Forms
+External uploads are durable immediately and are not part of the Git draft. Configure the storage driver's credentials and `NUXT_PUBLIC_STUDIO_MEDIA_PUBLIC_URL` when the provider needs an explicit public origin.
 
-Frontmatter and YAML/JSON files get auto-generated form UIs based on collection schemas. Use `.describe()` for editor labels:
+## AI assistance
 
-```ts
-// content.config.ts
-import { defineCollection, defineContentConfig, z } from '@nuxt/content'
+Set `NUXT_STUDIO_AI_API_KEY` to enable completions and text transforms through Vercel AI Gateway. `studio.ai.context` can describe the project's title, subject, style, and tone; `studio.ai.experimental.collectionContext` adds per-collection guidance under `.studio/`. Treat generated text as an editor draft and publish it through the same Git boundary.
 
-export default defineContentConfig({
-  collections: {
-    blog: defineCollection({
-      type: 'page',
-      source: 'blog/**/*.md',
-      schema: z.object({
-        title: z.string().describe('Post title'),
-        description: z.string().describe('SEO description'),
-        image: z.string().describe('Cover image URL'),
-        date: z.date().describe('Publication date'),
-        tags: z.array(z.string()).describe('Post tags'),
-      }),
-    }),
-  },
-})
-```
+## Checks
 
-## Draft System
+- Visual edits serialize back to valid Markdown/MDC and preserve component slots.
+- Form fields round-trip through the collection validator.
+- A refresh in the same browser restores drafts; a second profile sees only published content.
+- Media URLs resolve in preview and after the deployment rebuild.
+- External media limits and MIME rules reject invalid uploads on the server.
 
-Changes are stored as drafts in IndexedDB (browser-local, not shared across devices). Three-tier flow:
-
-1. **Production layer** — SQLite WASM in browser, mirrors deployed content
-2. **Draft layer** — IndexedDB via unstorage, stores unpublished edits
-3. **Git repository** — Final destination when publishing
-
-On load, drafts merge with the SQLite database to render a preview of your changes.
-
-## Preview
-
-In development, file changes sync in real-time with local filesystem via WebSocket HMR.
-
-In production, the draft layer overlays production content so editors see their changes before publishing.
-
-## Media Management
-
-Access via the **Media** tab. Browse folders, upload files, drag-and-drop.
-
-### Default Storage (`/public`)
-
-Zero config. Files committed to Git on publish. Best for small projects. A service worker intercepts media requests to display draft versions.
-
-### External Storage (NuxtHub Blob)
-
-For larger projects — files stored in cloud, not committed to Git:
-
-```bash
-npx nuxi module add hub
-```
-
-```ts
-// nuxt.config.ts
-export default defineNuxtConfig({
-  modules: ['@nuxthub/core', 'nuxt-studio'],
-  hub: { blob: true },
-  studio: {
-    media: { external: true },
-  },
-})
-```
-
-Provider env vars:
-
-```bash
-# Vercel Blob
-BLOB_READ_WRITE_TOKEN=your-token
-
-# S3-compatible
-S3_ACCESS_KEY_ID=key
-S3_SECRET_ACCESS_KEY=secret
-S3_BUCKET=bucket-name
-S3_ENDPOINT=endpoint-url
-```
-
-Or Cloudflare R2:
-
-```ts
-hub: { blob: { driver: 'cloudflare-r2', bucketName: 'your-bucket' } }
-```
-
-### Media Config Options
-
-| Option         | Type     | Default                             |
-| -------------- | -------- | ----------------------------------- |
-| `external`     | boolean  | `false`                             |
-| `maxFileSize`  | number   | `10` (MB)                           |
-| `allowedTypes` | string[] | `['image/*', 'video/*', 'audio/*']` |
-| `prefix`       | string   | `'studio'`                          |
-
-Supported: PNG, JPG, SVG, WebP, AVIF, GIF, MP4, MOV, WebM, MP3, WAV, AAC.
-
-### Editor Integration
-
-- Slash command `/` → search "Image" for quick insertion
-- Alt text support for SEO/a11y
-- Custom width/height attributes
-
-## AI Content Assistance
-
-Powered by Vercel AI Gateway. Provides context-aware content completion, transformation, and style guidance based on project context, cursor position, and active components.
-
-Plug-and-play — no additional configuration needed beyond Vercel AI Gateway access.
-
-## Resources
-
-- Content editing: https://nuxt.studio/content-editing
-- Media: https://nuxt.studio/medias
-- Introduction: https://nuxt.studio/introduction
+Official references: [content editors](https://nuxt.studio/content), [media](https://nuxt.studio/medias), [AI](https://nuxt.studio/ai), [advanced synchronization](https://nuxt.studio/advanced).

@@ -16,6 +16,7 @@ on:
           - nuxt
           - nuxthub
           - nuxt-content
+          - nuxt-studio
           - nuxt-ui
           - nuxt-better-auth
           - nuxt-modules
@@ -65,7 +66,13 @@ jobs:
             upstream: |
               - GitHub: nuxt/content (releases, changelog)
               - Docs: https://content.nuxt.com/
-            focus: 'MDC syntax, content collections, query API, rendering'
+            focus: 'Collection schemas, validators, indexes, sources, query and navigation APIs, rendering, hooks, search, deployment, and v2 migration'
+
+          - skill: nuxt-studio
+            upstream: |
+              - GitHub: nuxt-content/nuxt-studio (releases, changelog, docs)
+              - Docs: https://nuxt.studio/
+            focus: 'Installation, NUXT_STUDIO_AUTH configuration, editor customization, drafts, media, AI, SSR, and Git publishing'
 
           - skill: nuxt-ui
             upstream: |

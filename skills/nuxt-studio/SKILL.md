@@ -1,72 +1,41 @@
 ---
 name: nuxt-studio
-description: Use when working with Nuxt Studio, the self-hosted open-source CMS for Nuxt Content sites - provides visual editing, media management, Git-based publishing, auth providers, and AI content assistance
+description: Configure and operate the self-hosted Nuxt Studio editor for Nuxt Content. Use when working with nuxt-studio installation, editor customization, OAuth or custom authentication, media, drafts, Git publishing, or production deployment.
 license: MIT
 ---
 
 # Nuxt Studio
 
-Self-hosted, open-source CMS module for editing Nuxt Content websites in production.
+Nuxt Studio owns content editing and publishing. Nuxt Content owns collections, queries, parsing, and rendering.
 
-## When to Use
+## Workflow
 
-Working with:
+1. Inspect the installed `nuxt-studio` and `@nuxt/content` versions, deployment mode, repository provider, and authentication provider. Setup is understood when the editor route, Git target, and login callback all point at the same deployment.
+2. Open the smallest matching guide below and keep collection/schema changes within the `nuxt-content` boundary.
+3. Verify local editing against the filesystem, then verify production login and one publish cycle on an SSR-capable deployment. The work is complete when the commit reaches the configured branch and the rebuilt site exposes it.
 
-- Installing and configuring `nuxt-studio` module
-- Authentication providers (GitHub, GitLab, Google OAuth, SSO, custom)
-- Git provider setup (GitHub, GitLab, branch config)
-- Visual content editing (MDC components, YAML/JSON forms, frontmatter)
-- Media management (public dir, NuxtHub blob, S3, R2)
-- Publishing flow (draft layer, conflict detection, CI/CD rebuild)
-- AI-powered content assistance (Vercel AI Gateway)
+## Routing
 
-**For content collections/queries:** use `nuxt-content` skill
-**For NuxtHub storage/database:** use `nuxthub` skill
-**For Nuxt basics:** use `nuxt` skill
+| Task                                                                                      | Open                                         |
+| ----------------------------------------------------------------------------------------- | -------------------------------------------- |
+| Install, repository settings, OAuth/custom auth, editor filters, or environment variables | [Configuration](references/configuration.md) |
+| Visual/MDC editing, schema forms, drafts, media, or AI assistance                         | [Live editing](references/live-editing.md)   |
+| SSR deployment, Git publishing, branch strategy, conflicts, or monorepos                  | [Deployment](references/deployment.md)       |
+| Collections, validators, queries, hooks, or rendering                                     | `nuxt-content` skill                         |
 
-## Available Guidance
-
-Read specific files based on current work:
-
-- **[references/configuration.md](references/configuration.md)** - Module setup, auth providers, Git providers, environment variables
-- **[references/live-editing.md](references/live-editing.md)** - Visual editor, media management, MDC components, AI features
-- **[references/deployment.md](references/deployment.md)** - SSR requirements, Git publishing, branch strategies, CI/CD
-
-## Loading Files
-
-**Consider loading these reference files based on your task:**
-
-- [ ] [references/configuration.md](references/configuration.md) - if installing, configuring auth/git providers, or setting env vars
-- [ ] [references/live-editing.md](references/live-editing.md) - if working with content editor, media, components, or AI features
-- [ ] [references/deployment.md](references/deployment.md) - if deploying, configuring branches, or troubleshooting publish flow
-
-**DO NOT load all files at once.** Load only what's relevant to your current task.
-
-## Key Concepts
-
-| Concept        | Purpose                                                     |
-| -------------- | ----------------------------------------------------------- |
-| Auth providers | Control who can access Studio (GitHub, GitLab, Google, SSO) |
-| Git providers  | Handle publishing commits to your repository                |
-| Draft layer    | IndexedDB-backed local storage for unpublished changes      |
-| Media manager  | Upload/browse files in `/public` or external blob storage   |
-| Visual editor  | TipTap-based WYSIWYG with MDC component support             |
-| Publishing     | Commits drafts to Git, triggers CI/CD rebuild               |
-
-## Quick Start
+## Baseline
 
 ```bash
 npx nuxt module add nuxt-studio
 ```
 
 ```ts
-// nuxt.config.ts
 export default defineNuxtConfig({
   modules: ['@nuxt/content', 'nuxt-studio'],
   studio: {
     repository: {
       provider: 'github',
-      owner: 'your-username',
+      owner: 'your-org',
       repo: 'your-repo',
       branch: 'main',
     },
@@ -75,19 +44,8 @@ export default defineNuxtConfig({
 ```
 
 ```bash
-# .env
-STUDIO_GITHUB_CLIENT_ID=<client_id>
-STUDIO_GITHUB_CLIENT_SECRET=<client_secret>
+NUXT_STUDIO_AUTH_GITHUB_CLIENT_ID=<client-id>
+NUXT_STUDIO_AUTH_GITHUB_CLIENT_SECRET=<client-secret>
 ```
 
-Access Studio at `https://your-site.com/_studio` (default route).
-
-## Official Documentation
-
-- Nuxt Studio: https://nuxt.studio
-- Setup: https://nuxt.studio/setup
-- GitHub: https://github.com/nuxt-content/nuxt-studio
-
-## Token Efficiency
-
-Main skill: ~300 tokens. Each sub-file: ~800-1200 tokens. Only load files relevant to current task.
+Studio runs at `/_studio` by default. Supported CI providers can infer repository metadata, but authentication credentials remain explicit deployment secrets.
