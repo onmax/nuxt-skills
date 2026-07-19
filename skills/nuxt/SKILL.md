@@ -1,98 +1,56 @@
 ---
 name: nuxt
-description: Use when working on Nuxt 4+ projects - provides server routes, file-based routing, middleware patterns, Nuxt-specific composables, and configuration with latest docs. Covers h3 v1 helpers (validation, WebSocket, SSE) and nitropack v2 patterns. Updated for Nuxt 4.3+.
+description: Nuxt application development and maintenance. Use for project structure, pages and routing, data fetching, SSR-safe state, middleware, plugins, server routes, runtime config, route rules, layers, built-in components, hydration, upgrades, and testing.
 license: MIT
 ---
 
-# Nuxt 4+ Development
+# Nuxt
 
-Progressive guidance for Nuxt 4+ projects (v4.3+) with latest patterns and conventions.
+Use Nuxt-owned primitives for Nuxt lifecycle, rendering, routing, and server behavior. Hand module-specific behavior to the matching module skill instead of reproducing its API here.
 
-## When to Use
+## Start here
 
-Working with:
+1. Inspect `package.json`, the lockfile, `nuxt.config.*`, and the directory layout before choosing an API. Nuxt features move, so verify the installed version instead of assuming the latest release.
+2. Open only the reference that owns the task.
+3. Prefer the smallest Nuxt primitive that preserves SSR, hydration, and generated types.
+4. Run `nuxt prepare` after config, module, alias, or generated-type changes, then verify the affected runtime path.
 
-- Server routes (API endpoints, server middleware, server utils)
-- File-based routing (pages, layouts, route groups)
-- Nuxt middleware (route guards, navigation)
-- Nuxt plugins (app extensions)
-- Nuxt-specific features (auto-imports, layers, modules)
+## Reference map
 
-## Available Guidance
+- Project structure, upgrades, deployment mode, and testing: [project-setup.md](references/project-setup.md)
+- Data fetching, state, request context, cookies, head, and hydration: [nuxt-composables.md](references/nuxt-composables.md)
+- Pages, layouts, navigation, route metadata, and errors: [routing.md](references/routing.md)
+- Route middleware, app plugins, and runtime hooks: [middleware-plugins.md](references/middleware-plugins.md)
+- API routes, server middleware, validation, caching, and Nitro: [server.md](references/server.md)
+- Built-in components, assets, images, and lazy hydration: [nuxt-components.md](references/nuxt-components.md)
+- Nuxt config, runtime config, route rules, layers, modules, Vite, and Nitro options: [nuxt-config.md](references/nuxt-config.md)
 
-Read specific files based on current work:
+## Ownership boundaries
 
-- **[references/server.md](references/server.md)** - API routes, server middleware, validation (Zod), WebSocket, SSE
-- **[references/routing.md](references/routing.md)** - File-based routing, route groups, typed router, definePage
-- **[references/middleware-plugins.md](references/middleware-plugins.md)** - Route middleware, plugins, app lifecycle
-- **[references/nuxt-composables.md](references/nuxt-composables.md)** - Nuxt composables (useRequestURL, useFetch, navigation)
-- **[references/nuxt-components.md](references/nuxt-components.md)** - NuxtLink, NuxtImg, NuxtTime (prefer over HTML elements)
-- **[references/nuxt-config.md](references/nuxt-config.md)** - Configuration, modules, auto-imports, layers
+- Use the `nuxt-modules` skill for authoring or publishing a Nuxt module.
+- Use the relevant module skill for Nuxt UI, Nuxt Content, Nuxt Studio, NuxtHub, Nuxt Image, Nuxt Scripts, Nuxt SEO, or another installed module.
+- Use official VueUse guidance for VueUse composables. When names overlap, Nuxt owns Nuxt lifecycle and SSR semantics; see [nuxt-composables.md](references/nuxt-composables.md#vueuse-boundary).
+- Use Vue guidance for component-local reactivity that has no Nuxt lifecycle or rendering concern.
 
-**For Vue composables:** See `vue` skill composables.md (VueUse, Composition API patterns)
-**For UI components:** use `nuxt-ui` skill
-**For database/storage:** use `nuxthub` skill
-**For content-driven sites:** use `nuxt-content` skill
-**For creating modules:** use `nuxt-modules` skill
-**For project scaffolding/CI:** use `ts-library` skill
+## Baseline
 
-## Loading Files
+```vue
+<script setup lang="ts">
+const { data: products, status, error } = await useFetch('/api/products')
 
-**Consider loading these reference files based on your task:**
-
-- [ ] [references/server.md](references/server.md) - if creating API endpoints or server middleware
-- [ ] [references/routing.md](references/routing.md) - if setting up pages, layouts, or route groups
-- [ ] [references/nuxt-composables.md](references/nuxt-composables.md) - if using Nuxt composables (useFetch, useRequestURL, etc.)
-- [ ] [references/middleware-plugins.md](references/middleware-plugins.md) - if working with middleware or plugins
-- [ ] [references/nuxt-components.md](references/nuxt-components.md) - if using Nuxt components (NuxtLink, NuxtImg, etc.)
-- [ ] [references/nuxt-config.md](references/nuxt-config.md) - if editing nuxt.config.ts
-- [ ] [references/project-setup.md](references/project-setup.md) - if setting up CI/ESLint/build tools
-
-**DO NOT load all files at once.** Load only what's relevant to your current task.
-
-## Quick Start
-
-```ts
-// server/api/hello.get.ts
-import { z } from 'zod'
-
-export default defineEventHandler(async (event) => {
-  const { name } = await getValidatedQuery(event, z.object({
-    name: z.string().default('world'),
-  }).parse)
-  return { message: `Hello ${name}` }
+useSeoMeta({
+  title: 'Products',
+  description: 'Browse the product catalog.',
 })
+</script>
+
+<template>
+  <main>
+    <p v-if="status === 'pending'">Loading…</p>
+    <p v-else-if="error">Could not load products.</p>
+    <ProductList v-else :products="products ?? []" />
+  </main>
+</template>
 ```
 
-## Nuxt 4 vs Older Versions
-
-**You are working with Nuxt 4+.** Key differences:
-
-| Old (Nuxt 2/3)    | New (Nuxt 4)                    |
-| ----------------- | ------------------------------- |
-| `<Nuxt />`        | `<NuxtPage />`                  |
-| `context.params`  | `getRouterParam(event, 'name')` |
-| `window.origin`   | `useRequestURL().origin`        |
-| String routes     | Typed router with route names   |
-| Separate layouts/ | Parent routes with `<slot>`     |
-
-**If you're unsure about Nuxt 4 patterns, read the relevant guidance file first.**
-
-## Latest Documentation
-
-**When to fetch latest docs:**
-
-- New Nuxt 4 features not covered here
-- Module-specific configuration
-- Breaking changes or deprecations
-- Advanced use cases
-
-**Official sources:**
-
-- Nuxt: https://nuxt.com/docs
-- h3 (server engine): https://v1.h3.dev/
-- Nitro: https://nitro.build/
-
-## Token Efficiency
-
-Main skill: ~300 tokens. Each sub-file: ~800-1500 tokens. Only load files relevant to current task.
+`useFetch` integrates the request with Nuxt's SSR payload, while `useSeoMeta` participates in Nuxt's head lifecycle. Reach for lower-level primitives only when the task needs behavior these do not provide.

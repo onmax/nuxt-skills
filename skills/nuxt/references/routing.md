@@ -1,242 +1,64 @@
-# Nuxt File-Based Routing
+# Pages, routing, layouts, and errors
 
-## When to Use
+## File-based routing
 
-Working with `pages/` or `layouts/` directories, file-based routing, navigation.
+Files in `app/pages/` become routes when the application renders `<NuxtPage />` directly or through `app/app.vue`.
 
-## File-Based Routing Basics
-
-`pages/` folder structure directly maps to routes. File names determine URLs.
-
-## Naming Conventions
-
-**Key principles:**
-
-- **ALWAYS use descriptive params:** `[userId].vue` NOT `[id].vue`
-- **Optional params:** `[[paramName]].vue`
-- **Catch-all:** `[...path].vue`
-- **Route groups for organization:** `(folder)/` groups files without affecting URLs
-
-## Red Flags - Stop and Check Skill
-
-If you're thinking any of these, STOP and re-read this skill:
-
-- "String paths are simpler than typed routes"
-- "Generic param names like [id] are fine"
-- "I remember how Nuxt 3 worked"
-
-All of these mean: You're about to use outdated patterns. Use Nuxt 4 patterns instead.
-
-## File Structure Example
-
-```
-pages/
-├── index.vue               # /
-├── about.vue               # /about
-├── [...slug].vue           # catch-all for 404
-├── users.vue               # parent route (layout for /users/*)
-└── users/
-    ├── index.vue           # /users
-    └── [userId].vue        # /users/:userId
+```text
+app/pages/index.vue                 /
+app/pages/products/[id].vue        /products/:id
+app/pages/docs/[[slug]].vue         /docs/:slug?
+app/pages/blog/[...slug].vue        /blog/:slug(.*)*
+app/pages/(marketing)/about.vue     /about
 ```
 
-## Route Groups for Organization
+Route groups organize pages without adding a URL segment. Nested pages need a matching parent page that renders `<NuxtPage />`. Give a page a single root element when page transitions are enabled, because transitions need one DOM root.
 
-Route groups organize files WITHOUT affecting URLs. Wrap folder names in parentheses:
+Read params and query through `useRoute()`. Navigate declaratively with `<NuxtLink>` and programmatically with `await navigateTo(...)`.
 
-```
-pages/
-├── (marketing)/            # group folder (ignored in URL)
-│   ├── about.vue           # /about (not /marketing/about)
-│   └── pricing.vue         # /pricing
-└── (admin)/                # group folder (ignored in URL)
-    ├── dashboard.vue       # /dashboard
-    └── settings.vue        # /settings
-```
+## Page metadata
 
-**Use route groups to:**
-
-- Organize pages by feature/team
-- Group related routes without affecting URLs
-- Keep large projects maintainable
-- Apply middleware to specific groups (via `route.meta.groups`)
-
-**Access route groups in middleware:**
-
-```ts
-// middleware/auth.global.ts
-export default defineNuxtRouteMiddleware((to) => {
-  // Check if route is in admin group
-  if (to.meta.groups?.includes('admin')) {
-    const auth = useAuthStore()
-    if (!auth.isAdmin) return navigateTo('/')
-  }
-})
-```
-
-## Parent Routes (Layouts)
-
-Parent route = layout for nested routes:
-
-```vue
-<!-- pages/users.vue -->
-<template>
-  <div class="users-layout">
-    <nav>
-      <NuxtLink to="/users">All Users</NuxtLink>
-      <NuxtLink to="/users/create">Create User</NuxtLink>
-    </nav>
-    <NuxtPage />
-  </div>
-</template>
-```
-
-Child routes:
-
-```
-pages/
-├── users.vue           # Parent route with <NuxtPage />
-└── users/
-    ├── index.vue       # /users
-    ├── [userId].vue    # /users/:userId
-    └── create.vue      # /users/create
-```
-
-## definePage() for Route Customization
-
-```vue
-<script setup lang="ts">
-definePage({
-  name: 'user-profile',
-  path: '/profile/:userId',  // Override default path
-  alias: ['/me', '/profile'],
-  meta: {
-    requiresAuth: true,
-    title: 'User Profile',
-    roles: ['user', 'admin']
-  }
-})
-</script>
-
-<template>
-  <div>Profile content</div>
-</template>
-```
-
-## Typed Router
-
-**ALWAYS use typed routes for navigation:**
-
-```ts
-// ✅ Type-safe with route name
-await navigateTo({ name: '/users/[userId]', params: { userId: '123' } })
-
-// ❌ String-based (not type-safe, avoid)
-await navigateTo('/users/123')
-```
-
-**REQUIRED: Check `typed-router.d.ts` for available route names and params before navigating.**
-
-## useRoute with Types
-
-Pass route name for stricter typing:
-
-```ts
-// Generic route
-const route = useRoute()
-
-// Typed route (preferred)
-const route = useRoute('/users/[userId]')
-// route.params.userId is now typed correctly
-```
-
-## Navigation
-
-```ts
-// Navigate to route
-await navigateTo('/about')
-await navigateTo({ name: '/users/[userId]', params: { userId: '123' } })
-
-// Navigate with query
-await navigateTo({ path: '/search', query: { q: 'nuxt' } })
-
-// External redirect
-await navigateTo('https://nuxt.com', { external: true })
-
-// Replace history
-await navigateTo('/login', { replace: true })
-
-// Open in new tab
-await navigateTo('/docs', { open: { target: '_blank' } })
-```
-
-## Route Meta & Middleware
+Use the compile-time `definePageMeta` macro inside a page:
 
 ```vue
 <script setup lang="ts">
 definePageMeta({
-  middleware: ['auth', 'admin'],
   layout: 'dashboard',
-  meta: {
-    requiresAuth: true
-  }
+  middleware: ['auth'],
+  validate: route => typeof route.params.id === 'string',
 })
 </script>
 ```
 
-## Dynamic Layout Switching
+Page metadata owns layout selection, route middleware, validation, transition configuration, keys, and other route-level behavior. Use `useSeoMeta` or `useHead` for document metadata instead of putting SEO fields into arbitrary page metadata.
 
-Use `setPageLayout()` to switch layouts programmatically:
+## Layouts and navigation
 
-```vue
-<script setup lang="ts">
-const user = useUser()
+Layouts live in `app/layouts/` and render page content through `<slot />`. Select one with `definePageMeta({ layout: 'dashboard' })`, or use `<NuxtLayout>` when layout selection itself is dynamic.
 
-// Switch layout based on auth state
-if (!user.value) {
-  setPageLayout('guest')
-} else {
-  setPageLayout('dashboard')
-}
+`<NuxtLink>` supports internal router navigation and external links. Keep navigation targets as paths or named-route objects; avoid constructing internal URLs with string concatenation when route params express the intent.
 
-// With layout props (Nuxt 4.3+)
-setPageLayout('dashboard', {
-  sidebar: 'collapsed',
-  theme: 'dark'
-})
-</script>
-```
+## Route middleware boundary
 
-## Dynamic Routes Patterns
+Route middleware controls application navigation. It is different from `server/middleware`, which runs for HTTP requests. Put route middleware in `app/middleware/` and read [middleware-plugins.md](middleware-plugins.md) for return behavior and SSR caveats.
 
-```
-[userId].vue              # /users/123
-[[slug]].vue              # /blog or /blog/post (optional)
-[...path].vue             # /a/b/c (catch-all)
-[[...path]].vue           # / or /a/b/c (optional catch-all)
-```
+## Error handling
 
-## Best Practices
+- Throw `createError(...)` when the current operation cannot continue. Server-thrown errors propagate with their status code and safe message.
+- Use `showError(...)` for a full-screen Nuxt error outside a thrown control flow.
+- Read the current full-screen error with `useError()` and recover with `clearError({ redirect: '/' })`.
+- Use `<NuxtErrorBoundary>` when one part of a page should fail without replacing the entire application.
+- Customize the full-screen error in the project-root `error.vue`. Keep it self-contained because it renders outside the normal application tree.
 
-- **`index.vue` for index routes** - valid and correct for creating default routes
-- **Route groups `(folder)/` for organization** - group files without affecting URLs
-- **Descriptive param names** - `[userId]` not `[id]`, `[postSlug]` not `[slug]`
-- **Type-safe navigation** - use route names, not strings
-- **Check typed-router.d.ts** for available routes
-- **Parent routes for layouts** - `users.vue` with `<NuxtPage />`
-- **Use definePage** for custom paths/aliases
-- **Catch-all for 404** - `[...path].vue` or `[...slug].vue`
+Do not expose sensitive server error data to the client. On the server, prefer the error `message` for a client-safe explanation and keep private context in logs.
 
-## Common Mistakes
+## Custom routes
 
-| ❌ Wrong                     | ✅ Right                                                          |
-| ---------------------------- | ----------------------------------------------------------------- |
-| `[id].vue`                   | `[userId].vue` or `[postId].vue`                                  |
-| `navigateTo('/users/' + id)` | `navigateTo({ name: '/users/[userId]', params: { userId: id } })` |
-| `<Nuxt />`                   | `<NuxtPage />`                                                    |
-| Separate layouts/ folder     | Parent routes with `<NuxtPage />`                                 |
+Stay with file-based routing until it cannot express the requirement. Use `app/router.options.ts` for router options and the `pages:extend` Nuxt hook to add or alter generated routes. A custom `routes` function replaces the generated route set, so reserve it for cases that truly need full ownership.
 
-## Resources
+## Completion checks
 
-- Nuxt routing: https://nuxt.com/docs/guide/directory-structure/pages
-- File-based routing: https://nuxt.com/docs/getting-started/routing
+- Direct SSR entry and client navigation reach the same route state.
+- Nested pages render through their parent `<NuxtPage>`.
+- Middleware and validation return typed navigation outcomes.
+- The full-screen error page can render without depending on a failed plugin or layout.

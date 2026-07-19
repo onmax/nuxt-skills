@@ -1,323 +1,75 @@
-# Nuxt Composables & Utilities
+# Nuxt composables
 
-## When to Use
+## Choose the data primitive
 
-Working with Nuxt-specific composables, URL handling, navigation, or data fetching.
+- Use `useFetch` for one HTTP endpoint. It wraps `useAsyncData` and `$fetch`, generates a stable key from the URL and options, transfers SSR data through the Nuxt payload, and forwards request context for relative server calls.
+- Use `useAsyncData` for custom async logic, SDK calls, multiple requests, or an explicit shared cache key.
+- Use `$fetch` for event-driven requests such as form submissions. Calling `$fetch` directly during component setup can run once on the server and again during hydration because its result is not transferred in the Nuxt payload.
 
-## URL & Request Handling
-
-### useRequestURL()
-
-**ALWAYS use `useRequestURL()` instead of `window.origin` or `window.location`:**
-
-```ts
-// ✅ Correct - works SSR + client
-const url = useRequestURL()
-console.log(url.origin) // https://example.com
-console.log(url.pathname) // /users/123
-console.log(url.search) // ?tab=profile
-
-// ❌ Wrong - breaks on SSR, not available server-side
-const origin = window.origin
-const path = window.location.pathname
-```
-
-**Why:** `window` is undefined during SSR. `useRequestURL()` works everywhere.
-
-### useRequestURL() Patterns
-
-```ts
-// Get full URL
-const url = useRequestURL()
-const fullUrl = url.href // https://example.com/users/123?tab=profile
-
-// Get origin (base URL)
-const baseUrl = url.origin // https://example.com
-
-// Get path
-const path = url.pathname // /users/123
-
-// Get query params (use useRoute() instead for better typing)
-const params = url.searchParams
-const tab = params.get('tab') // 'profile'
-
-// Build absolute URL
-const apiUrl = `${url.origin}/api/users`
-```
-
-## Navigation Composables
-
-### navigateTo()
-
-```ts
-// Navigate to route
-await navigateTo('/about')
-
-// Type-safe navigation
-await navigateTo({ name: '/users/[userId]', params: { userId: '123' } })
-
-// External URL
-await navigateTo('https://nuxt.com', { external: true })
-
-// Replace history
-await navigateTo('/login', { replace: true })
-
-// Open in new tab
-await navigateTo('/docs', { open: { target: '_blank' } })
-
-// Server-side redirect
-return navigateTo('/login') // in middleware or server route
-```
-
-### useRouter()
-
-```ts
-const router = useRouter()
-
-// Navigate
-router.push({ name: '/users/[userId]', params: { userId: '123' } })
-
-// Go back
-router.back()
-
-// Go forward
-router.forward()
-
-// Navigation guards
-router.beforeEach((to, from) => {
-  // Guard logic
-})
-```
-
-### useRoute()
-
-```ts
-// Generic route
-const route = useRoute()
-
-// Typed route (preferred)
-const route = useRoute('/users/[userId]')
-
-// Access params
-const userId = route.params.userId
-
-// Access query
-const tab = route.query.tab
-
-// Access meta
-const requiresAuth = route.meta.requiresAuth
-```
-
-## Data Fetching
-
-### useFetch()
-
-```ts
-// Basic fetch
-const { data, error, pending, refresh } = await useFetch('/api/users')
-
-// With params
-const { data } = await useFetch('/api/users', {
-  query: { page: 1, limit: 10 }
-})
-
-// With key for deduplication
-const { data } = await useFetch(`/api/users/${userId}`, {
-  key: `user-${userId}`
-})
-
-// Lazy fetch (doesn't block navigation)
-const { data } = await useLazyFetch('/api/users')
-
-// Watch and refetch
+```vue
+<script setup lang="ts">
 const page = ref(1)
-const { data } = await useFetch('/api/users', {
+
+const { data, status, error, execute, clear } = await useFetch('/api/products', {
   query: { page },
-  watch: [page]
+  immediate: false,
+  watch: false,
 })
-
-// Cancel requests with AbortController signal (Nuxt 4.2+)
-const controller = new AbortController()
-const { data } = await useFetch('/api/users', {
-  signal: controller.signal
-})
-// Later: controller.abort() to cancel the request
-
-// Manual cancellation via execute/refresh
-const { data, execute } = await useFetch('/api/users', { immediate: false })
-const abortController = new AbortController()
-await execute({ signal: abortController.signal })
-// Later: abortController.abort() to cancel
+</script>
 ```
 
-### useAsyncData()
+`execute()` starts the deferred request. `clear()` resets data, error, and status and cancels a pending request. Add `watch` sources only when changing them should refetch automatically.
+
+## Async data invariants
+
+Give reusable `useAsyncData` wrappers an explicit stable key. Calls sharing a key also share state, so keep their handler and structural options consistent.
 
 ```ts
-// Custom async logic
-const { data, error, pending, refresh } = await useAsyncData('users', async () => {
-  const response = await $fetch('/api/users')
-  return response.filter(u => u.active)
-})
-
-// Lazy version
-const { data } = await useLazyAsyncData('users', async () => {
-  return await $fetch('/api/users')
-})
-
-// Cancel with AbortController (Nuxt 4.2+)
-const controller = new AbortController()
-const { data } = await useAsyncData('users', async () => {
-  return await $fetch('/api/users', { signal: controller.signal })
-})
-// Later: controller.abort() to cancel
-
-// Custom cache logic with getCachedData
-const { data } = await useAsyncData('users',
-  async () => $fetch('/api/users'),
-  {
-    getCachedData: (key) => {
-      // Return cached data or null/undefined to trigger fetch
-      const cached = useNuxtData(key)
-      return cached.data.value
-    }
-  }
-)
-
-// Deep reactivity for nested objects
-// Default is shallow in Nuxt 4 (was deep in Nuxt 3)
-const { data } = await useAsyncData('user',
-  async () => $fetch('/api/user'),
-  {
-    deep: true // Makes nested properties reactive
-  }
-)
-
-// Deduplication strategies (Nuxt 4.2+)
-const { data } = await useAsyncData('users',
-  async () => $fetch('/api/users'),
-  {
-    dedupe: 'cancel' // Cancel existing requests when new one starts
-    // dedupe: 'defer' // Prevent new requests while one is pending
-  }
-)
-
-// Manual cancellation via execute/refresh
-const { data, execute } = await useAsyncData('users',
-  async ({ signal }) => $fetch('/api/users', { signal }),
-  { immediate: false }
-)
-const abortController = new AbortController()
-await execute({ signal: abortController.signal })
-// Later: abortController.abort() to cancel
+export function useCatalog () {
+  return useAsyncData('catalog', (_nuxtApp, { signal }) => {
+    return $fetch('/api/catalog', { signal })
+  })
+}
 ```
 
-## State Management
+Handlers should return a truthy value and remain side-effect-free. Use `callOnce` for side effects that must coordinate across SSR and client navigation. Pass the handler's abort `signal` to cancellable work.
 
-### useState()
+Use `useNuxtData(key)` to read cached async data, `refreshNuxtData(key)` to refresh it, and `clearNuxtData(key)` to discard it. Prefer these over a second cache layered around Nuxt unless the application needs different persistence semantics.
+
+For relative server requests during SSR, `useFetch` uses the current request context. In a custom helper, use `useRequestFetch()` when cookies and request headers need to be forwarded; plain `$fetch` intentionally does not forward them automatically.
+
+## State and hydration
+
+Use `useState` for SSR-safe state shared by components in one Nuxt application request. Its initializer must be serializable and side-effect-free.
 
 ```ts
-// Create shared state
-const counter = useState('counter', () => 0)
-
-// Use in components
-counter.value++
-
-// With type
-const user = useState<User | null>('user', () => null)
+export const useSelectedTeam = () => useState<string | null>('selected-team', () => null)
 ```
 
-## App Context
+Use a dedicated store when the domain needs actions, persistence, or richer organization. Use `useHydration` only in plugins or modules that must transfer custom server state into the client payload; application data normally belongs in `useFetch`, `useAsyncData`, or `useState`.
 
-### useNuxtApp()
+## Request, config, cookies, and head
 
-```ts
-const nuxtApp = useNuxtApp()
+- `useRuntimeConfig()` reads private server config and public client config. Do not expose private values through `runtimeConfig.public`.
+- `useRequestURL()`, `useRequestHeaders()`, and `useRequestFetch()` read the active SSR request. Guard server-only behavior with the runtime context when necessary.
+- `useCookie()` creates an SSR-aware cookie ref. Keep values serializable and set security attributes appropriate to the data.
+- `useSeoMeta()` is the preferred typed API for common SEO metadata. Use `useHead()` for links, scripts, attributes, and metadata outside that surface.
+- `useRoute()` and `useRouter()` are application-routing APIs. Route middleware should use its `to` and `from` arguments instead of `useRoute()`.
 
-// Access provided values
-const { $api, $hello } = nuxtApp
+## VueUse boundary
 
-// Access hooks
-nuxtApp.hook('page:finish', () => {
-  console.log('Page loaded')
-})
+VueUse complements Nuxt for browser APIs, sensors, timing, and general Vue reactivity. Install and use VueUse from its official package rather than maintaining a copied skill or API catalog.
 
-// Access Vue app
-nuxtApp.vueApp.use(SomePlugin)
-```
+When names overlap, choose by ownership:
 
-### useRuntimeConfig()
+- Nuxt `useFetch`, `useCookie`, `useHead`, `useState`, and request composables preserve Nuxt SSR and hydration behavior, so use them in a Nuxt application.
+- Vue's `toRef`, `toRefs`, and `toValue` are the canonical reactivity utilities; do not import same-named helpers accidentally from another package.
+- VueUse utilities such as `watchDebounced`, `useStorage`, and browser sensor composables are appropriate after the Nuxt lifecycle boundary is settled. A client storage ref does not replace SSR state or a server cookie.
+- Module-provided composables, such as an image or content helper, belong to that module's skill and documentation.
 
-```ts
-// Access runtime config
-const config = useRuntimeConfig()
+## Completion checks
 
-// Public config (client + server)
-const apiBase = config.public.apiBase
-
-// Private config (server only)
-const apiSecret = config.apiSecret // undefined on client
-```
-
-## Head Management
-
-### useHead()
-
-```ts
-// Set page meta
-useHead({
-  title: 'User Profile',
-  meta: [
-    { name: 'description', content: 'View user profile' },
-    { property: 'og:title', content: 'User Profile' }
-  ],
-  link: [
-    { rel: 'canonical', href: 'https://example.com/profile' }
-  ]
-})
-
-// Dynamic values
-const user = ref({ name: 'John' })
-useHead({
-  title: () => `${user.value.name}'s Profile`
-})
-```
-
-### useSeoMeta()
-
-```ts
-// Cleaner SEO meta
-useSeoMeta({
-  title: 'User Profile',
-  description: 'View user profile',
-  ogTitle: 'User Profile',
-  ogDescription: 'View user profile',
-  ogImage: 'https://example.com/image.jpg',
-  twitterCard: 'summary_large_image'
-})
-```
-
-## Best Practices
-
-- **Use useRequestURL()** NOT window.origin/location
-- **Type routes** with useRoute('/path/[param]')
-- **Use useFetch** for API calls (deduplication, SSR)
-- **Key your fetches** for proper caching
-- **useState for shared state** across components
-- **useSeoMeta** for cleaner SEO tags
-
-## Common Mistakes
-
-| ❌ Wrong                     | ✅ Right                                              |
-| ---------------------------- | ----------------------------------------------------- |
-| `window.origin`              | `useRequestURL().origin`                              |
-| `window.location.pathname`   | `useRequestURL().pathname`                            |
-| `fetch()` in components      | `useFetch()` or `useAsyncData()`                      |
-| `router.push('/path/' + id)` | `router.push({ name: '/path/[id]', params: { id } })` |
-| Duplicate fetches            | Use `key` parameter                                   |
-
-## Resources
-
-- Nuxt composables: https://nuxt.com/docs/api/composables/use-fetch
-- Data fetching: https://nuxt.com/docs/getting-started/data-fetching
-- useRequestURL: https://nuxt.com/docs/api/composables/use-request-url
-- **For NuxtTime, NuxtLink, NuxtImg:** See nuxt-components.md
+- Initial data is not fetched twice across SSR and hydration.
+- Shared async-data keys have consistent handlers and options.
+- Request headers and cookies cross server boundaries only when intended.
+- State placed in the Nuxt payload is serializable and contains no secrets.
