@@ -73,6 +73,7 @@ Clone the repository and copy skill folders to your agent's skills directory:
 | **nuxt-content**              | Nuxt Content collections, schemas, queries, navigation, search, MDC, and deployment     |
 | **nuxt-studio**               | Nuxt Studio setup, auth, visual editing, drafts, media, AI, and Git publishing          |
 | **nuxt-ui**                   | Nuxt UI v4 components, theming, forms, overlays, composables                            |
+| **nuxt-i18n**                 | Nuxt I18n locales, messages, routing, language switching, fallbacks, and locale SEO     |
 | **nuxt-better-auth**          | Auth with @onmax/nuxt-better-auth, useUserSession, route protection, clientOnly         |
 | **reka-ui**                   | Reka UI headless Vue components, accessible primitives, props/emits/slots               |
 | **document-writer**           | Writing documentation for Nuxt ecosystem - MDC, style, structure, code examples         |
@@ -117,6 +118,7 @@ nuxt-skills/
 │   ├── nuxt-content/
 │   ├── nuxt-studio/
 │   ├── nuxt-ui/
+│   ├── nuxt-i18n/
 │   ├── nuxt-better-auth/
 │   ├── reka-ui/
 │   ├── document-writer/
