@@ -112,7 +112,7 @@ Authentication requires a database connection. See the [database setup](/docs/da
 Add the module to your project:
 
 ~~~bash [Terminal]
-pnpm add @onmax/nuxt-better-auth
+pnpm add @nuxtjs/better-auth
 ~~~
 
 The module auto-imports the `useUserSession` composable. Access the current user session from any component.

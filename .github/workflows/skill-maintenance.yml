@@ -18,7 +18,6 @@ on:
           - nuxt-content
           - nuxt-studio
           - nuxt-ui
-          - nuxt-better-auth
           - nuxt-modules
           - reka-ui
           - vitest
@@ -79,12 +78,6 @@ jobs:
               - GitHub: nuxt/ui (releases, changelog)
               - Docs: https://ui.nuxt.com/
             focus: 'Component props, theming, new components, breaking changes'
-
-          - skill: nuxt-better-auth
-            upstream: |
-              - GitHub: onmax/nuxt-better-auth (releases)
-              - Better Auth: https://www.better-auth.com/ (core library)
-            focus: 'Module config, composables, server helpers, plugins integration'
 
           - skill: nuxt-modules
             upstream: |
