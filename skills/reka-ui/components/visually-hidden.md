@@ -7,7 +7,8 @@ Screen reader only content
 ## VisuallyHidden
 
 ### Props
-| Prop | Type | Default |
-|------|------|---------|
-| `as` | `AsTag \| Component` | `"span"` |
-| `asChild` | `boolean` | - |
+
+| Prop      | Type                 | Default  |
+| --------- | -------------------- | -------- |
+| `as`      | `AsTag \| Component` | `"span"` |
+| `asChild` | `boolean`            | -        |
