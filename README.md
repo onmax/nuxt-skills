@@ -1,9 +1,3 @@
-> [!WARNING]
-> This repo may be replaced by [nuxt-skill.onmax.me](https://nuxt-skill.onmax.me/). Stay tuned.
-
-> [!TIP]
-> Debug Vite issues with [Vite Doctor](https://vite-doctor.onmax.me/).
-
 <p align="center">
   <img src="https://raw.githubusercontent.com/onmax/nuxt-skills/main/.github/nuxt-skills.webp" alt="Nuxt Skills" width="100%">
   <br>
@@ -25,6 +19,18 @@
     🔗 Related Nuxt RFC: Bundling Agent Skills in Nuxt Modules
   </a>
 </p>
+
+> [!NOTE]
+> **Sponsored by [Cactus](https://usecactus.app/for-coding-agents?utm_source=github&utm_medium=readme&utm_campaign=nuxt_skills_cactus_test)**
+>
+> Your agent is working. Don't drift into YouTube. Cactus blocks distracting websites on your Mac during the hours you choose, with a schedule that repeats every week. Built by this repo's maintainer.
+>
+> [Try Cactus free for 7 days](https://usecactus.app/for-coding-agents?utm_source=github&utm_medium=readme&utm_campaign=nuxt_skills_cactus_test). Keep it for $19.99 USD, paid once. No subscription.
+
+## Other projects
+
+- [Nuxt Skill Hub](https://nuxt-skill.onmax.me/): Give your coding agent Nuxt guidance tailored to your project's modules and stack.
+- [Vite Doctor](https://vite-doctor.onmax.me/): Catch framework bugs in Nuxt, Vue, Nitro, and Vite before code review.
 
 ## Installation
 
