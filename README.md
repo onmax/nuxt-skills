@@ -129,7 +129,7 @@ VueUse maintains its own current skill, so install it directly with `npx skills 
 ## Acknowledgments
 
 - **vue** skill gotchas from [vuejs-ai/skills](https://github.com/vuejs-ai/skills) vue-best-practices (200+ rules)
-- **vitest**, **vite**, and **pnpm** skills from [@antfu](https://github.com/antfu)'s [skills](https://github.com/antfu/skills)
+- **vitest** and **vite** skills from [@antfu](https://github.com/antfu)'s [skills](https://github.com/antfu/skills)
 
 ## License
 
@@ -144,7 +144,6 @@ Every skill in the plugin is listed below with its provenance. The table is rege
 | --- | --- |
 | [`arkenv`](skills/arkenv/) | [Bundled from nuxt-modules/yamcodes/arkenv](https://github.com/yamcodes/arkenv/tree/4465170dd36d9c0dddfdee4cf4134076785850df/skills/arkenv) |
 | [`comark`](skills/comark/) | [Bundled from nuxt-modules/comarkdown/comark](https://github.com/comarkdown/comark/tree/9bcbbfd427c647e5f7ebaf4a43b191ba01b747c1/docs/skills/comark) |
-| [`document-writer`](skills/document-writer/) | Manually written in this repository. |
 | [`nitro`](skills/nitro/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/nitro) |
 | [`nuxt`](skills/nuxt/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/nuxt) |
 | [`nuxt-better-auth`](skills/nuxt-better-auth/) | [Bundled from nuxt-modules/nuxt-modules/better-auth](https://github.com/nuxt-modules/better-auth/tree/4e0b7cc20bd23ebaa721c4a1dfce51a281b9e750/docs/public/.well-known/skills/nuxt-better-auth) |
@@ -157,26 +156,18 @@ Every skill in the plugin is listed below with its provenance. The table is rege
 | [`nuxt-users`](skills/nuxt-users/) | [Bundled from nuxt-modules/rrd108/nuxt-users](https://github.com/rrd108/nuxt-users/tree/ac0b122c6f92ec001ed30bdec5637939570f587f/skills/nuxt-users) |
 | [`nuxthub`](skills/nuxthub/) | Manually written in this repository. |
 | [`pinia`](skills/pinia/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/pinia) |
-| [`pnpm`](skills/pnpm/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/pnpm) |
 | [`regle`](skills/regle/) | [Bundled from nuxt-modules/victorgarciaesgi/regle](https://github.com/victorgarciaesgi/regle/tree/0df09b530955e2e54d0f3b931346ff33f8e19834/skills/regle) |
 | [`reka-ui`](skills/reka-ui/) | Manually written in this repository. |
 | [`solar-icons`](skills/solar-icons/) | [Bundled from nuxt-modules/saoudi-h/solar-icons](https://github.com/saoudi-h/solar-icons/tree/062d81307b64e2811c3e9d3f40ffb803f6930a7f/skills/solar-icons) |
-| [`ts-library`](skills/ts-library/) | Manually written in this repository. |
 | [`unocss`](skills/unocss/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/unocss) |
 | [`vite`](skills/vite/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/vite) |
-| [`vitepress`](skills/vitepress/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/vitepress) |
 | [`vitest`](skills/vitest/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/vitest) |
 | [`vue`](skills/vue/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/vue) |
 | [`vue-best-practices`](skills/vue-best-practices/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/vue-best-practices) |
 | [`vue-debug-guides`](skills/vue-debug-guides/) | [Bundled from vuejs-ai/skills](https://github.com/vuejs-ai/skills/tree/c9d355ff23f654309dd02006be671859df0a134c/skills/vue-debug-guides) |
-| [`vue-jsx-best-practices`](skills/vue-jsx-best-practices/) | [Bundled from vuejs-ai/skills](https://github.com/vuejs-ai/skills/tree/c9d355ff23f654309dd02006be671859df0a134c/skills/vue-jsx-best-practices) |
-| [`vue-options-api-best-practices`](skills/vue-options-api-best-practices/) | [Bundled from vuejs-ai/skills](https://github.com/vuejs-ai/skills/tree/c9d355ff23f654309dd02006be671859df0a134c/skills/vue-options-api-best-practices) |
-| [`vue-pinia-best-practices`](skills/vue-pinia-best-practices/) | [Bundled from vuejs-ai/skills](https://github.com/vuejs-ai/skills/tree/c9d355ff23f654309dd02006be671859df0a134c/skills/vue-pinia-best-practices) |
 | [`vue-router-best-practices`](skills/vue-router-best-practices/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/vue-router-best-practices) |
 | [`vue-testing-best-practices`](skills/vue-testing-best-practices/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/vue-testing-best-practices) |
 | [`vueuse-functions`](skills/vueuse-functions/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/vueuse-functions) |
-| [`web-design-guidelines`](skills/web-design-guidelines/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/web-design-guidelines) |
 | [`workflow`](skills/workflow/) | [Bundled from nuxt-modules/vercel/workflow](https://github.com/vercel/workflow/tree/636169a066e90c184667ad7b0306050afd8dd497/skills/workflow) |
-| [`writing-web-documentation`](skills/writing-web-documentation/) | Manually written in this repository. |
 
 <!-- END GENERATED SKILL CATALOG -->

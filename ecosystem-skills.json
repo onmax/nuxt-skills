@@ -9,17 +9,14 @@
         "nitro",
         "nuxt",
         "pinia",
-        "pnpm",
         "unocss",
         "vite",
-        "vitepress",
         "vitest",
         "vue",
         "vue-best-practices",
         "vue-router-best-practices",
         "vue-testing-best-practices",
-        "vueuse-functions",
-        "web-design-guidelines"
+        "vueuse-functions"
       ]
     },
     {
@@ -27,10 +24,7 @@
       "repository": "https://github.com/vuejs-ai/skills.git",
       "root": "skills",
       "include": [
-        "vue-debug-guides",
-        "vue-jsx-best-practices",
-        "vue-options-api-best-practices",
-        "vue-pinia-best-practices"
+        "vue-debug-guides"
       ]
     }
   ]
