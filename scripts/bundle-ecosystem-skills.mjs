@@ -2,6 +2,7 @@
 import { cp, mkdtemp, readFile, readdir, rm, writeFile } from 'node:fs/promises'
 import { existsSync } from 'node:fs'
 import { execFile } from 'node:child_process'
+import process from 'node:process'
 import { promisify } from 'node:util'
 import { dirname, join, relative, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
