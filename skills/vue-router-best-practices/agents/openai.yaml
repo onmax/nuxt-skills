@@ -1,0 +1,5 @@
+interface:
+  display_name: "Vue Router Best Practices"
+  short_description: "Vue Router 4 patterns, navigation guards, route params, and route-component lifecycle interactions."
+policy:
+  allow_implicit_invocation: false

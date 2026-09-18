@@ -1,0 +1,5 @@
+interface:
+  display_name: "Vitest"
+  short_description: "Vitest fast unit testing framework powered by Vite with Jest-compatible API."
+policy:
+  allow_implicit_invocation: false

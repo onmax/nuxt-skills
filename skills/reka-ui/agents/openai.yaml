@@ -1,0 +1,5 @@
+interface:
+  display_name: "Reka Ui"
+  short_description: "Use when building with Reka UI (headless Vue components) - provides component API, accessibility patterns, composition..."
+policy:
+  allow_implicit_invocation: false

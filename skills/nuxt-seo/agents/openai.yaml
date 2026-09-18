@@ -1,0 +1,5 @@
+interface:
+  display_name: "Nuxt Seo"
+  short_description: "Nuxt SEO meta-module with robots, sitemap, og-image, schema-org."
+policy:
+  allow_implicit_invocation: false

@@ -1,0 +1,5 @@
+interface:
+  display_name: "Comark"
+  short_description: "'Comark (Components in Markdown) parser: syntax, AST, Vue/React/Svelte/Angular renderers, plugins, and LLM streaming with..."
+policy:
+  allow_implicit_invocation: false

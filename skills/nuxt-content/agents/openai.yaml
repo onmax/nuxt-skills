@@ -1,0 +1,5 @@
+interface:
+  display_name: "Nuxt Content"
+  short_description: "Build typed, content-driven Nuxt applications with @nuxt/content."
+policy:
+  allow_implicit_invocation: false
