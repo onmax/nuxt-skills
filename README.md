@@ -83,14 +83,34 @@ Clone the repository and copy skill folders to your agent's skills directory:
 | **reka-ui**                   | Reka UI headless Vue components, accessible primitives, props/emits/slots               |
 | **document-writer**           | Writing documentation for Nuxt ecosystem - MDC, style, structure, code examples         |
 | **ts-library**                | TypeScript library authoring - exports, tsdown, API patterns, type tricks, CI           |
-| **motion**                    | Motion Vue animations - motion component, composables, scroll, gestures                 |
 | **nuxt-seo**                  | Nuxt SEO meta-module - robots, sitemap, og-image, schema-org, site config               |
 | **vitest**                    | Vitest testing - test API, mocking, coverage, type testing, environments                |
 | **vite**                      | Vite build tool - config, plugins, HMR, SSR, library mode, performance                  |
 | **pnpm**                      | pnpm package manager - workspaces, catalogs, CLI commands, CI/CD                        |
 | **tsdown**                    | tsdown bundler - TypeScript libraries, DTS generation, package validation               |
-| **tresjs**                    | TresJS 3D framework - TresCanvas, Cientos helpers, post-processing effects              |
 | **writing-web-documentation** | Write and review developer docs - page types, house style, templates, web-project rules |
+| **nitro**                     | Nitro server engine patterns and deployment                                           |
+| **pinia**                     | Pinia stores and state management                                                      |
+| **antfu-design**              | Anthony Fu design and implementation conventions                                       |
+| **slidev**                    | Slidev presentation authoring                                                          |
+| **turborepo**                 | Turborepo monorepo workflows                                                           |
+| **unocss**                    | UnoCSS configuration and utility authoring                                             |
+| **vitepress**                 | VitePress documentation sites                                                          |
+| **vue-best-practices**        | Vue best practices                                                                     |
+| **vue-router-best-practices** | Vue Router best practices                                                              |
+| **vue-testing-best-practices** | Vue testing best practices                                                            |
+| **vueuse-functions**          | VueUse composable selection and usage                                                  |
+| **web-design-guidelines**     | Web interface review guidelines                                                        |
+| **vue-debug-guides**          | Vue debugging guides                                                                   |
+| **vue-jsx-best-practices**    | Vue JSX best practices                                                                 |
+| **vue-options-api-best-practices** | Vue Options API best practices                                                        |
+| **vue-pinia-best-practices**  | Vue and Pinia best practices                                                           |
+| **nuxt-better-auth**          | Better Auth integration for Nuxt                                                        |
+| **nuxt-test-utils-skilld**    | Nuxt Test Utils testing patterns                                                        |
+| **nuxt-site-config-skilld**   | Shared site configuration for Nuxt modules                                              |
+| **nuxt-ui**                   | Nuxt UI skill maintained by the Nuxt UI project                                         |
+| **comark**                    | Comark Markdown parsing and rendering                                                  |
+| **migrate-mdc-to-comark**     | Migration guidance from MDC to Comark                                                   |
 
 ## How Skills Work
 
@@ -126,13 +146,27 @@ nuxt-skills/
 │   ├── reka-ui/
 │   ├── document-writer/
 │   ├── ts-library/
-│   ├── motion/
 │   ├── nuxt-seo/
 │   ├── vitest/
 │   ├── vite/
 │   ├── pnpm/
 │   ├── tsdown/
-│   ├── tresjs/
+│   ├── antfu-design/              # generated ecosystem skills
+│   ├── nitro/
+│   ├── pinia/
+│   ├── slidev/
+│   ├── turborepo/
+│   ├── unocss/
+│   ├── vitepress/
+│   ├── vue-best-practices/
+│   ├── vue-router-best-practices/
+│   ├── vue-testing-best-practices/
+│   ├── vueuse-functions/
+│   ├── web-design-guidelines/
+│   ├── vue-debug-guides/
+│   ├── vue-jsx-best-practices/
+│   ├── vue-options-api-best-practices/
+│   ├── vue-pinia-best-practices/
 │   └── writing-web-documentation/
 └── .claude-plugin/
     ├── plugin.json         # Claude Code plugin manifest
@@ -147,8 +181,11 @@ Skills are kept up-to-date via GitHub Actions:
 | ------------------------- | --------------------- | ------------------------------------------------------------------ |
 | **update-skills.yml**     | Weekly (Monday)       | Regenerates reka-ui and nuxt-ui docs from upstream                 |
 | **skill-maintenance.yml** | Biweekly (1st & 15th) | Claude analyzes upstream changelogs, creates PRs if updates needed |
+| **bundle-ecosystem-skills.yml** | Weekly (Monday) | Replaces configured local skills with upstream ecosystem copies, validates them, and pushes changes |
 
 The maintenance workflow uses [claude-code-action](https://github.com/anthropics/claude-code-action) to intelligently detect breaking changes, new features, and deprecations from upstream sources.
+
+The ecosystem bundle is configured in [`ecosystem-skills.json`](ecosystem-skills.json). It records the upstream repositories and skill names included in the Claude and Codex plugin. `ecosystem-skills.lock.json` records the exact source revisions used for each bundle.
 
 ## Resources
 

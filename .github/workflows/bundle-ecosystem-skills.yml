@@ -1,0 +1,55 @@
+name: Bundle Ecosystem Skills
+
+on:
+  schedule:
+    - cron: '0 7 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  bundle:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Bundle upstream skills
+        run: node scripts/bundle-ecosystem-skills.mjs --bump-plugin
+
+      - name: Validate bundled skills
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install skills-ref
+        run: pip install git+https://github.com/agentskills/agentskills.git#subdirectory=skills-ref
+
+      - name: Validate all skills
+        run: |
+          for skill in skills/*/; do
+            skills-ref validate "$skill"
+          done
+
+      - name: Validate plugin manifests
+        run: |
+          python3 -m json.tool .codex-plugin/plugin.json >/dev/null
+          python3 -m json.tool .claude-plugin/plugin.json >/dev/null
+          python3 -m json.tool .claude-plugin/marketplace.json >/dev/null
+
+      - name: Commit and push when the bundle changed
+        run: |
+          if git diff --quiet; then
+            echo "No ecosystem skill changes"
+            exit 0
+          fi
+          node scripts/bump-plugin-version.mjs
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .claude-plugin .codex-plugin ecosystem-skills.lock.json skills
+          git commit -m "chore: bundle ecosystem skills"
+          git push

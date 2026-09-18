@@ -1,4 +1,9 @@
-#!/bin/bash
-# Sync skills from dev repo to ~/.claude/skills/
-rsync -av --delete skills/ ~/.claude/skills/ --exclude="versions.json"
-echo "✓ Skills synced to ~/.claude/skills/"
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Keep local Claude and Codex skill directories in sync during development.
+for target in "$HOME/.claude/skills" "$HOME/.codex/skills"; do
+  mkdir -p "$target"
+  rsync -av --delete skills/ "$target/" --exclude="versions.json"
+  echo "✓ Skills synced to $target"
+done

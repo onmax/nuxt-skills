@@ -1,88 +1,45 @@
 ---
 name: pnpm
-description: Use when managing Node.js dependencies with pnpm - install packages, configure monorepo workspaces, set up pnpm catalogs, resolve dependency conflicts with overrides, patch third-party packages, and configure CI pipelines for pnpm projects
-license: MIT
+description: Node.js package manager with strict dependency resolution. Use when running pnpm specific commands, configuring workspaces via pnpm-workspace.yaml, or managing dependencies with catalogs, patches, overrides, config dependencies, or the global virtual store.
+metadata:
+  author: Anthony Fu
+  version: "2026.6.22"
+  source: Generated from https://github.com/pnpm/pnpm, scripts located at https://github.com/antfu/skills
 ---
 
-# pnpm
+pnpm is a fast, disk space efficient package manager. It uses a content-addressable store to deduplicate packages across all projects on a machine, and enforces strict dependency resolution by default, preventing phantom dependencies.
 
-Content-addressable store, strict deps, workspace protocol, catalogs.
+**Configuration model (important):** pnpm settings now live in `pnpm-workspace.yaml` (and the global `config.yaml`) using **camelCase** keys. `.npmrc` is used **only** for authentication/registry credentials, and the `pnpm` field of `package.json` is no longer read. When working in a pnpm project, check `pnpm-workspace.yaml` for settings/workspace structure and `.npmrc` only for auth. Always use `--frozen-lockfile` (or `pnpm ci`) in CI.
 
-## When to Use
+> The skill is based on pnpm 10.x, generated at 2026-06-22. It also covers v11 behavior changes (config split, isolated global packages, `allowBuilds`, `pmOnFail`, global virtual store) where current docs describe them.
 
-- Installing/managing npm packages
-- Monorepo workspace setup with catalogs
-- Overriding transitive dependencies
-- Patching third-party packages
-- CI/CD configuration for pnpm projects
-- Supply chain security hardening
+## Core
 
-## Quick Start
+| Topic | Description | Reference |
+|-------|-------------|-----------|
+| CLI Commands | install/add/remove/update, run, dlx/pnx, workspace, runtime, publishing (version, view, sbom, stage) | [core-cli](references/core-cli.md) |
+| Configuration | pnpm-workspace.yaml settings (camelCase), global config.yaml, packageConfigs, .npmrc auth | [core-config](references/core-config.md) |
+| Workspaces | Monorepo support: filtering, workspace protocol, shared lockfile, packageConfigs | [core-workspaces](references/core-workspaces.md) |
+| Store | Content-addressable store, virtual store, node linker modes, frozen/read-only store | [core-store](references/core-store.md) |
 
-```bash
-pnpm install                      # Install deps
-pnpm add <pkg>                    # Add dep
-pnpm add -D <pkg>                 # Dev dep
-pnpm -r run build                 # Run in all packages
-pnpm --filter @myorg/app build    # Run in specific package
-```
+## Features
 
-## Workspace Setup
+| Topic | Description | Reference |
+|-------|-------------|-----------|
+| Catalogs | Centralized dependency versions; catalogMode, catalog: in overrides | [features-catalogs](references/features-catalogs.md) |
+| Overrides | Force versions (incl. transitive & peer deps); packageExtensions | [features-overrides](references/features-overrides.md) |
+| Patches | Modify third-party packages; patchedDependencies in pnpm-workspace.yaml | [features-patches](references/features-patches.md) |
+| Aliases | Install under custom names (npm:) and registry aliases (namedRegistries) | [features-aliases](references/features-aliases.md) |
+| Hooks | .pnpmfile.mjs hooks (readPackage, updateConfig, beforePacking), finders, resolvers/fetchers | [features-hooks](references/features-hooks.md) |
+| Peer Dependencies | Auto-install, strict mode, rules, dedupePeers, peers check | [features-peer-deps](references/features-peer-deps.md) |
+| Config Dependencies | Share hooks/settings/catalogs/patches across repos via configDependencies | [features-config-dependencies](references/features-config-dependencies.md) |
+| Global Virtual Store | Shared node_modules, git-worktree multi-agent setups, isolated global packages | [features-global-virtual-store](references/features-global-virtual-store.md) |
+| Supply-Chain Security | Build approval (allowBuilds), minimumReleaseAge, trustPolicy, lockfile integrity | [features-supply-chain-security](references/features-supply-chain-security.md) |
 
-```yaml
-# pnpm-workspace.yaml
-packages:
-  - 'packages/*'
-  - 'apps/*'
+## Best Practices
 
-# Catalogs for centralized version management
-catalog:
-  react: ^18.2.0
-  typescript: ~5.3.0
-```
-
-```json
-// package.json - Use workspace protocol and catalogs
-{
-  "packageManager": "pnpm@10.28.2",
-  "dependencies": {
-    "@myorg/utils": "workspace:^",
-    "react": "catalog:"
-  }
-}
-```
-
-## Reference Files
-
-| Task                             | File                                      |
-| -------------------------------- | ----------------------------------------- |
-| Commands, scripts, filtering     | [cli.md](references/cli.md)               |
-| Workspaces, catalogs, config     | [workspaces.md](references/workspaces.md) |
-| Overrides, patches, hooks, store | [features.md](references/features.md)     |
-| CI/CD, Docker, migration         | [ci.md](references/ci.md)                 |
-
-## Loading Files
-
-**Consider loading these reference files based on your task:**
-
-- [ ] [references/cli.md](references/cli.md) - if using pnpm commands, scripts, or filtering
-- [ ] [references/workspaces.md](references/workspaces.md) - if setting up monorepo, catalogs, or workspace config
-- [ ] [references/features.md](references/features.md) - if using overrides, patches, hooks, or managing store
-- [ ] [references/ci.md](references/ci.md) - if configuring CI/CD, Docker, or migrating from npm/yarn
-
-**DO NOT load all files at once.** Load only what's relevant to your current task.
-
-## Verify Setup
-
-After configuring a workspace, verify it works:
-
-```bash
-pnpm install          # Install all deps
-pnpm ls --depth 0     # Verify workspace links
-pnpm -r run build     # Build all packages
-```
-
-## Cross-Skill References
-
-- **TypeScript libs** → Use `ts-library` skill for library patterns
-- **Build tooling** → Use `tsdown` or `vite` skills
+| Topic | Description | Reference |
+|-------|-------------|-----------|
+| CI/CD Setup | GitHub Actions, GitLab, Docker, pnpm ci, store caching, frozen lockfiles | [best-practices-ci](references/best-practices-ci.md) |
+| Migration | npm/Yarn → pnpm, phantom deps, and pnpm v10 → v11 config migration | [best-practices-migration](references/best-practices-migration.md) |
+| Performance | Install optimizations, allowBuilds, global virtual store, workspace parallelization | [best-practices-performance](references/best-practices-performance.md) |

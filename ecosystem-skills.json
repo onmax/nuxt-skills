@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "sources": [
+    {
+      "name": "antfu/skills",
+      "repository": "https://github.com/antfu/skills.git",
+      "root": "skills",
+      "include": [
+        "antfu-design",
+        "nitro",
+        "nuxt",
+        "pinia",
+        "pnpm",
+        "slidev",
+        "tsdown",
+        "turborepo",
+        "unocss",
+        "vite",
+        "vitepress",
+        "vitest",
+        "vue",
+        "vue-best-practices",
+        "vue-router-best-practices",
+        "vue-testing-best-practices",
+        "vueuse-functions",
+        "web-design-guidelines"
+      ]
+    },
+    {
+      "name": "vuejs-ai/skills",
+      "repository": "https://github.com/vuejs-ai/skills.git",
+      "root": "skills",
+      "include": [
+        "vue-debug-guides",
+        "vue-jsx-best-practices",
+        "vue-options-api-best-practices",
+        "vue-pinia-best-practices"
+      ]
+    },
+    {
+      "name": "nuxt/ui",
+      "repository": "https://github.com/nuxt/ui.git",
+      "root": "skills",
+      "include": ["nuxt-ui"]
+    },
+    {
+      "name": "comarkdown/comark",
+      "repository": "https://github.com/comarkdown/comark.git",
+      "root": "docs/skills",
+      "include": ["comark", "migrate-mdc-to-comark"]
+    },
+    {
+      "name": "nuxt-modules/better-auth",
+      "repository": "https://github.com/nuxt-modules/better-auth.git",
+      "root": "docs/public/.well-known/skills",
+      "include": ["nuxt-better-auth"]
+    },
+    {
+      "name": "nuxt-modules/sitemap",
+      "repository": "https://github.com/nuxt-modules/sitemap.git",
+      "root": ".claude/skills",
+      "include": ["nuxt-test-utils-skilld", "nuxt-site-config-skilld"]
+    }
+  ]
+}

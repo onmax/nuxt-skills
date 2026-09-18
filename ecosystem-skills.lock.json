@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "sources": {
+    "antfu/skills": {
+      "repository": "https://github.com/antfu/skills.git",
+      "revision": "a74f281a27dadc02397bc1a174b0f2c97531b6ae"
+    },
+    "vuejs-ai/skills": {
+      "repository": "https://github.com/vuejs-ai/skills.git",
+      "revision": "c9d355ff23f654309dd02006be671859df0a134c"
+    },
+    "nuxt/ui": {
+      "repository": "https://github.com/nuxt/ui.git",
+      "revision": "b3d4342d9b588b85c69410dd14f0f7bba4a83adb"
+    },
+    "comarkdown/comark": {
+      "repository": "https://github.com/comarkdown/comark.git",
+      "revision": "9bcbbfd427c647e5f7ebaf4a43b191ba01b747c1"
+    },
+    "nuxt-modules/better-auth": {
+      "repository": "https://github.com/nuxt-modules/better-auth.git",
+      "revision": "4e0b7cc20bd23ebaa721c4a1dfce51a281b9e750"
+    },
+    "nuxt-modules/sitemap": {
+      "repository": "https://github.com/nuxt-modules/sitemap.git",
+      "revision": "ce81e848e7fd40149ed6080a84f65340389aa7c7"
+    }
+  }
+}

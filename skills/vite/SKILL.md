@@ -1,7 +1,6 @@
 ---
 name: vite
 description: Vite build tool configuration, plugin API, SSR, and Vite 8 Rolldown migration. Use when working with Vite projects, vite.config.ts, Vite plugins, or building libraries/SSR apps with Vite.
-license: MIT
 metadata:
   author: Anthony Fu
   version: "2026.1.31"
@@ -21,23 +20,23 @@ Vite is a next-generation frontend build tool with fast dev server (native ESM +
 
 ## Core
 
-| Topic         | Description                                                                    | Reference                                        |
-| ------------- | ------------------------------------------------------------------------------ | ------------------------------------------------ |
-| Configuration | `vite.config.ts`, `defineConfig`, conditional configs, `loadEnv`               | [core-config](references/core-config.md)         |
-| Features      | `import.meta.glob`, asset queries (`?raw`, `?url`), `import.meta.env`, HMR API | [core-features](references/core-features.md)     |
-| Plugin API    | Vite-specific hooks, virtual modules, plugin ordering                          | [core-plugin-api](references/core-plugin-api.md) |
+| Topic | Description | Reference |
+|-------|-------------|-----------|
+| Configuration | `vite.config.ts`, `defineConfig`, conditional configs, `loadEnv` | [core-config](references/core-config.md) |
+| Features | `import.meta.glob`, asset queries (`?raw`, `?url`), `import.meta.env`, HMR API | [core-features](references/core-features.md) |
+| Plugin API | Vite-specific hooks, virtual modules, plugin ordering | [core-plugin-api](references/core-plugin-api.md) |
 
 ## Build & SSR
 
-| Topic       | Description                                                        | Reference                                    |
-| ----------- | ------------------------------------------------------------------ | -------------------------------------------- |
+| Topic | Description | Reference |
+|-------|-------------|-----------|
 | Build & SSR | Library mode, SSR middleware mode, `ssrLoadModule`, JavaScript API | [build-and-ssr](references/build-and-ssr.md) |
 
 ## Advanced
 
-| Topic              | Description                                                         | Reference                                              |
-| ------------------ | ------------------------------------------------------------------- | ------------------------------------------------------ |
-| Environment API    | Vite 6+ multi-environment support, custom runtimes                  | [environment-api](references/environment-api.md)       |
+| Topic | Description | Reference |
+|-------|-------------|-----------|
+| Environment API | Vite 6+ multi-environment support, custom runtimes | [environment-api](references/environment-api.md) |
 | Rolldown Migration | Vite 8 changes: Rolldown bundler, Oxc transformer, config migration | [rolldown-migration](references/rolldown-migration.md) |
 
 ## Quick Reference
@@ -71,9 +70,3 @@ export default defineConfig({
 - `@vitejs/plugin-react` - React with Oxc/Babel
 - `@vitejs/plugin-react-swc` - React with SWC
 - `@vitejs/plugin-legacy` - Legacy browser support
-
-## Cross-Skill References
-
-- **Testing** → Use `vitest` skill (Vite-native testing)
-- **Vue projects** → Use `vue` skill for component patterns
-- **Library bundling** → Use `tsdown` skill for TypeScript libs
