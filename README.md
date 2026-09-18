@@ -56,6 +56,17 @@ An alternative for Claude Code users:
 
 Claude Code installs Nuxt Skills as one plugin and dynamically discovers all included skill entries.
 
+### Codex plugin marketplace
+
+Install the Codex plugin from this repository's marketplace source:
+
+```bash
+codex plugin marketplace add onmax/nuxt-skills
+codex plugin add nuxt-skills@nuxt-skills
+```
+
+See the [Codex plugin manifest](.codex-plugin/plugin.json) and [marketplace source](https://github.com/onmax/nuxt-skills) for the published metadata.
+
 ### Manual Installation
 
 Clone the repository and copy skill folders to your agent's skills directory:
