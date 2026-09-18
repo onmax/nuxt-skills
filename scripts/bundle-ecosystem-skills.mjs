@@ -153,8 +153,12 @@ async function fetchJson(url) {
   const text = await fetchText(url)
   if (!text)
     return null
-  try { return JSON.parse(text) }
-  catch { return null }
+  try {
+    return JSON.parse(text)
+  }
+  catch {
+    return null
+  }
 }
 
 function githubRepo(value) {
