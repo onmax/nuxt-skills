@@ -36,40 +36,6 @@
         "vue-options-api-best-practices",
         "vue-pinia-best-practices"
       ]
-    },
-    {
-      "name": "comarkdown/comark",
-      "repository": "https://github.com/comarkdown/comark.git",
-      "root": "docs/skills",
-      "include": ["comark", "migrate-mdc-to-comark"]
-    },
-    {
-      "name": "nuxt-modules/better-auth",
-      "repository": "https://github.com/nuxt-modules/better-auth.git",
-      "root": "docs/public/.well-known/skills",
-      "include": ["nuxt-better-auth"]
-    },
-    {
-      "name": "nuxt-modules/sitemap",
-      "repository": "https://github.com/nuxt-modules/sitemap.git",
-      "root": ".claude/skills",
-      "include": ["nuxt-test-utils-skilld", "nuxt-site-config-skilld"]
-    },
-    {
-      "name": "nuxt-modules/og-image",
-      "repository": "https://github.com/nuxt-modules/og-image.git",
-      "root": ".claude/skills",
-      "include": [
-        "nuxt-fonts",
-        "unjs-unifont",
-        "vercel-satori",
-        "unjs-fontaine",
-        "satori-skilld",
-        "kane50613-takumi",
-        "parcel-bundler-lightningcss",
-        "lightningcss-skilld",
-        "takumi-rs-core-skilld"
-      ]
     }
   ]
 }

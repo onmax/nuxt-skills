@@ -9,29 +9,37 @@
       "repository": "https://github.com/vuejs-ai/skills.git",
       "revision": "c9d355ff23f654309dd02006be671859df0a134c"
     },
-    "comarkdown/comark": {
+    "nuxt-modules/yamcodes/arkenv": {
+      "repository": "https://github.com/yamcodes/arkenv.git",
+      "revision": "4465170dd36d9c0dddfdee4cf4134076785850df"
+    },
+    "nuxt-modules/comarkdown/comark": {
       "repository": "https://github.com/comarkdown/comark.git",
       "revision": "9bcbbfd427c647e5f7ebaf4a43b191ba01b747c1"
-    },
-    "nuxt-modules/better-auth": {
-      "repository": "https://github.com/nuxt-modules/better-auth.git",
-      "revision": "4e0b7cc20bd23ebaa721c4a1dfce51a281b9e750"
-    },
-    "nuxt-modules/sitemap": {
-      "repository": "https://github.com/nuxt-modules/sitemap.git",
-      "revision": "ce81e848e7fd40149ed6080a84f65340389aa7c7"
-    },
-    "nuxt-modules/og-image": {
-      "repository": "https://github.com/nuxt-modules/og-image.git",
-      "revision": "417139e430612ee4a1dcba1fd08afe25411ac7e8"
     },
     "nuxt-modules/rrd108/nuxt-users": {
       "repository": "https://github.com/rrd108/nuxt-users.git",
       "revision": "ac0b122c6f92ec001ed30bdec5637939570f587f"
     },
+    "nuxt-modules/victorgarciaesgi/regle": {
+      "repository": "https://github.com/victorgarciaesgi/regle.git",
+      "revision": "0df09b530955e2e54d0f3b931346ff33f8e19834"
+    },
+    "nuxt-modules/saoudi-h/solar-icons": {
+      "repository": "https://github.com/saoudi-h/solar-icons.git",
+      "revision": "062d81307b64e2811c3e9d3f40ffb803f6930a7f"
+    },
     "nuxt-modules/nuxt/ui": {
       "repository": "https://github.com/nuxt/ui.git",
       "revision": "b3d4342d9b588b85c69410dd14f0f7bba4a83adb"
+    },
+    "nuxt-modules/vercel/workflow": {
+      "repository": "https://github.com/vercel/workflow.git",
+      "revision": "636169a066e90c184667ad7b0306050afd8dd497"
+    },
+    "nuxt-modules/nuxt-modules/better-auth": {
+      "repository": "https://github.com/nuxt-modules/better-auth.git",
+      "revision": "4e0b7cc20bd23ebaa721c4a1dfce51a281b9e750"
     }
   },
   "skills": {
@@ -57,21 +65,13 @@
     "vue-jsx-best-practices": "vuejs-ai/skills",
     "vue-options-api-best-practices": "vuejs-ai/skills",
     "vue-pinia-best-practices": "vuejs-ai/skills",
-    "comark": "comarkdown/comark",
-    "migrate-mdc-to-comark": "comarkdown/comark",
-    "nuxt-better-auth": "nuxt-modules/better-auth",
-    "nuxt-test-utils-skilld": "nuxt-modules/sitemap",
-    "nuxt-site-config-skilld": "nuxt-modules/sitemap",
-    "nuxt-fonts": "nuxt-modules/og-image",
-    "unjs-unifont": "nuxt-modules/og-image",
-    "vercel-satori": "nuxt-modules/og-image",
-    "unjs-fontaine": "nuxt-modules/og-image",
-    "satori-skilld": "nuxt-modules/og-image",
-    "kane50613-takumi": "nuxt-modules/og-image",
-    "parcel-bundler-lightningcss": "nuxt-modules/og-image",
-    "lightningcss-skilld": "nuxt-modules/og-image",
-    "takumi-rs-core-skilld": "nuxt-modules/og-image",
+    "arkenv": "nuxt-modules/yamcodes/arkenv",
+    "comark": "nuxt-modules/comarkdown/comark",
     "nuxt-users": "nuxt-modules/rrd108/nuxt-users",
-    "nuxt-ui": "nuxt-modules/nuxt/ui"
+    "regle": "nuxt-modules/victorgarciaesgi/regle",
+    "solar-icons": "nuxt-modules/saoudi-h/solar-icons",
+    "nuxt-ui": "nuxt-modules/nuxt/ui",
+    "workflow": "nuxt-modules/vercel/workflow",
+    "nuxt-better-auth": "nuxt-modules/nuxt-modules/better-auth"
   }
 }

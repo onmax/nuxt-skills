@@ -3,6 +3,7 @@ import { cp, mkdtemp, readFile, readdir, rm, writeFile } from 'node:fs/promises'
 import { existsSync } from 'node:fs'
 import { execFile } from 'node:child_process'
 import process from 'node:process'
+import { createHash } from 'node:crypto'
 import { promisify } from 'node:util'
 import { dirname, join, relative, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -168,7 +169,16 @@ function githubRepo(value) {
   return match?.[1] || null
 }
 
-function moduleSlug(npm) {
+function moduleSlug(module) {
+  const npm = module.npm
+  if (typeof npm === 'string' && npm.startsWith('@nuxt/')) {
+    const base = npm.split('/')[1]
+    return base ? `nuxt-${base}` : null
+  }
+  if (typeof npm === 'string' && npm === '@nuxthub/core')
+    return 'nuxthub'
+  if (typeof module.name === 'string' && module.name)
+    return module.name
   if (typeof npm !== 'string')
     return null
   const name = npm.split('/').pop()
@@ -195,7 +205,7 @@ async function discoverNuxtModuleSources() {
   const modules = (Array.isArray(moduleRefs) ? moduleRefs : []).map(ref => deref(ref)).map(module => {
     if (!module || typeof module !== 'object')
       return null
-    return { ...module, npm: deref(module.npm), github: deref(module.github) }
+    return { ...module, name: deref(module.name), npm: deref(module.npm), github: deref(module.github) }
   }).filter(module => module && typeof module.github === 'string' && typeof module.npm === 'string')
   const sources = []
   const seen = new Set()
@@ -206,6 +216,13 @@ async function discoverNuxtModuleSources() {
     seen.add(repo)
     return true
   })
+  for (const module of [{ name: 'better-auth', npm: '@nuxtjs/better-auth', github: 'https://github.com/nuxt-modules/better-auth' }]) {
+    const repo = githubRepo(module.github)
+    if (repo && !seen.has(repo)) {
+      seen.add(repo)
+      uniqueModules.push(module)
+    }
+  }
   const resolveModule = async (module) => {
     const repo = githubRepo(module.github)
     if (!repo)
@@ -252,9 +269,43 @@ async function discoverNuxtModuleSources() {
       }
     }
     if (!found.length) {
-      const slug = moduleSlug(module.npm)
+      const indexRoots = ['.well-known/agent-skills', 'docs/public/.well-known/agent-skills', 'public/.well-known/agent-skills']
       for (const ref of refs) {
-        for (const path of [`skills/${slug}`, `.claude/skills/${slug}`, `.github/skills/${slug}`]) {
+        for (const indexRoot of indexRoots) {
+          const index = await fetchJson(`https://raw.githubusercontent.com/${repo}/${ref}/${indexRoot}/index.json`)
+          const entries = Array.isArray(index?.skills) ? index.skills : []
+          const available = []
+          for (const skill of entries) {
+            if (skill?.type !== 'skill-md' || typeof skill.name !== 'string' || typeof skill.url !== 'string' || typeof skill.digest !== 'string')
+              continue
+            const digest = skill.digest.replace(/^sha256:/, '')
+            if (!/^[a-f0-9]{64}$/i.test(digest))
+              continue
+            const indexUrl = `https://raw.githubusercontent.com/${repo}/${ref}/${indexRoot}/index.json`
+            const skillUrl = new URL(skill.url, indexUrl).toString()
+            const content = await fetchText(skillUrl)
+            if (!content || createHash('sha256').update(content).digest('hex') !== digest)
+              continue
+            const prefix = `https://raw.githubusercontent.com/${repo}/${ref}/`
+            if (!skillUrl.startsWith(prefix))
+              continue
+            const skillFilePath = decodeURIComponent(skillUrl.slice(prefix.length))
+            available.push({ name: skill.name, path: skillFilePath.slice(0, skillFilePath.lastIndexOf('/')) })
+          }
+          if (available.length) {
+            found = available
+            foundRoot = '.'
+            break
+          }
+        }
+        if (found.length)
+          break
+      }
+    }
+    if (!found.length) {
+      const slug = moduleSlug(module)
+      for (const ref of refs) {
+        for (const path of [`skills/${slug}`, `docs/skills/${slug}`, `.claude/skills/${slug}`, `.github/skills/${slug}`, `docs/public/.well-known/skills/${slug}`]) {
           if (slug && await findSkillPath(repo, ref, path)) {
             found.push({ name: slug, path })
             break
