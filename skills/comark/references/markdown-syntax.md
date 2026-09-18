@@ -311,11 +311,13 @@ hello
 ```
 
 **Without `#default`**: content becomes direct children (auto-unwrapped):
+
 ```json
 ["component", {}, "hello"]
 ```
 
 **With `#default`**: content is wrapped in an explicit template node:
+
 ```json
 ["component", {}, ["template", { "name": "default" }, "hello"]]
 ```
@@ -464,6 +466,7 @@ function hello() {
 ````
 
 **Metadata Order:** Any order is supported:
+
 - `language {highlights} [filename] meta`
 - `language [filename] {highlights} meta`
 - etc.

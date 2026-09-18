@@ -168,6 +168,7 @@ const { Layout } = DefaultTheme
 ### Available Slots
 
 **Doc layout (`layout: doc`):**
+
 - `doc-top`, `doc-bottom`
 - `doc-before`, `doc-after`
 - `doc-footer-before`
@@ -177,15 +178,18 @@ const { Layout } = DefaultTheme
 - `aside-ads-before`, `aside-ads-after`
 
 **Home layout (`layout: home`):**
+
 - `home-hero-before`, `home-hero-after`
 - `home-hero-info-before`, `home-hero-info`, `home-hero-info-after`
 - `home-hero-actions-after`, `home-hero-image`
 - `home-features-before`, `home-features-after`
 
 **Page layout (`layout: page`):**
+
 - `page-top`, `page-bottom`
 
 **Always available:**
+
 - `layout-top`, `layout-bottom`
 - `nav-bar-title-before`, `nav-bar-title-after`
 - `nav-bar-content-before`, `nav-bar-content-after`

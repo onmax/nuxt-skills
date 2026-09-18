@@ -7,6 +7,7 @@ description: Use for Vue.js testing. Covers Vitest, Vue Test Utils, component te
 Vue.js testing best practices, patterns, and common gotchas.
 
 ### Testing
+
 - Setting up test infrastructure for Vue 3 projects → See [testing-vitest-recommended-for-vue](reference/testing-vitest-recommended-for-vue.md)
 - Tests keep breaking when refactoring component internals → See [testing-component-blackbox-approach](reference/testing-component-blackbox-approach.md)
 - Tests fail intermittently with race conditions → See [testing-async-await-flushpromises](reference/testing-async-await-flushpromises.md)

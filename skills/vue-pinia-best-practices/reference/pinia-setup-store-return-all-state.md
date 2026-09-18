@@ -222,6 +222,7 @@ console.log(Object.keys(userStore))
 ```
 
 ## Reference
+
 - [Pinia - Setup Stores](https://pinia.vuejs.org/core-concepts/#setup-stores)
 - [Pinia - SSR](https://pinia.vuejs.org/ssr/)
 - [Mastering Pinia - Common Mistakes](https://masteringpinia.com/blog/top-5-mistakes-to-avoid-when-using-pinia)

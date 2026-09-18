@@ -75,24 +75,24 @@ function onSubmit(payload: FormSubmitEvent<Schema>) {
 
 ### UAuthForm key props
 
-| Prop | Purpose |
-|---|---|
-| `title`, `description`, `icon` | Header content |
-| `fields` | `AuthFormField[]` — each has `name`, `type`, `label`, `placeholder`, `required` |
-| `providers` | `ButtonProps[]` — social login buttons shown above/below the form |
-| `schema` | Zod/Valibot schema for validation |
-| `submit` | Customize submit button: `{ label: 'Sign in', block: true }` |
-| `separator` | Text between providers and fields (default: `'or'`) |
+| Prop                           | Purpose                                                                         |
+| ------------------------------ | ------------------------------------------------------------------------------- |
+| `title`, `description`, `icon` | Header content                                                                  |
+| `fields`                       | `AuthFormField[]` — each has `name`, `type`, `label`, `placeholder`, `required` |
+| `providers`                    | `ButtonProps[]` — social login buttons shown above/below the form               |
+| `schema`                       | Zod/Valibot schema for validation                                               |
+| `submit`                       | Customize submit button: `{ label: 'Sign in', block: true }`                    |
+| `separator`                    | Text between providers and fields (default: `'or'`)                             |
 
 ### UAuthForm key slots
 
-| Slot | Purpose |
-|---|---|
-| `#description` | Override description (e.g., add sign-up link) |
-| `#password-hint` | "Forgot password?" link on password field |
-| `#validation` | Custom error display (e.g., `UAlert`) |
-| `#footer` | Terms of service, sign-up link |
-| `#<field>-field` | Override a specific field's rendering |
+| Slot             | Purpose                                       |
+| ---------------- | --------------------------------------------- |
+| `#description`   | Override description (e.g., add sign-up link) |
+| `#password-hint` | "Forgot password?" link on password field     |
+| `#validation`    | Custom error display (e.g., `UAlert`)         |
+| `#footer`        | Terms of service, sign-up link                |
+| `#<field>-field` | Override a specific field's rendering         |
 
 ## Custom auth layout
 

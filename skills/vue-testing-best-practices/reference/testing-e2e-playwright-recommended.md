@@ -34,6 +34,7 @@ npm init playwright@latest
 ```
 
 **playwright.config.ts:**
+
 ```typescript
 import { defineConfig, devices } from '@playwright/test'
 
@@ -119,16 +120,16 @@ test.describe('User Authentication', () => {
 
 ## Playwright vs Cypress Comparison
 
-| Feature | Playwright | Cypress |
-|---------|------------|---------|
-| Browsers | Chromium, Firefox, WebKit | Chromium, Firefox, Electron (WebKit experimental) |
-| Cross-browser | Full support | Limited |
-| Parallelization | Built-in | Requires Cypress Cloud |
-| Open source | Fully | Core only |
-| Mobile testing | Device emulation | Limited |
-| Debugging | Inspector, trace viewer | Time-travel UI |
-| API testing | Built-in | Plugin required |
-| Iframes | Full support | Limited |
+| Feature         | Playwright                | Cypress                                           |
+| --------------- | ------------------------- | ------------------------------------------------- |
+| Browsers        | Chromium, Firefox, WebKit | Chromium, Firefox, Electron (WebKit experimental) |
+| Cross-browser   | Full support              | Limited                                           |
+| Parallelization | Built-in                  | Requires Cypress Cloud                            |
+| Open source     | Fully                     | Core only                                         |
+| Mobile testing  | Device emulation          | Limited                                           |
+| Debugging       | Inspector, trace viewer   | Time-travel UI                                    |
+| API testing     | Built-in                  | Plugin required                                   |
+| Iframes         | Full support              | Limited                                           |
 
 ## Testing Vue Components with Data-Testid
 
@@ -237,6 +238,7 @@ npx playwright codegen localhost:5173
 ```
 
 ## Reference
+
 - [Playwright Documentation](https://playwright.dev/)
 - [Vue.js E2E Testing Recommendations](https://vuejs.org/guide/scaling-up/testing#e2e-testing)
 - [Playwright Best Practices](https://playwright.dev/docs/best-practices)

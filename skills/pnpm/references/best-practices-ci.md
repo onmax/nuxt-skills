@@ -65,7 +65,7 @@ For larger projects, cache the pnpm store:
 - run: pnpm install --frozen-lockfile
 ```
 
-> **Trust:** only cache/restore the pnpm store and cache dir between *trusted* jobs. A store an untrusted job can write to must not be reused by trusted jobs — it is part of pnpm's trust domain.
+> **Trust:** only cache/restore the pnpm store and cache dir between _trusted_ jobs. A store an untrusted job can write to must not be reused by trusted jobs — it is part of pnpm's trust domain.
 
 ### Matrix Testing
 
@@ -295,4 +295,3 @@ Source references:
 - https://pnpm.io/cli/ci
 - https://github.com/pnpm/action-setup
 -->
-

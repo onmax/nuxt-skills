@@ -19,23 +19,23 @@ export default definePlugin((nitroApp) => {
 
 ## The `nitroApp` context
 
-| Property | Description |
-|---|---|
-| `hooks` | [hookable](https://github.com/unjs/hookable) instance to register lifecycle callbacks. |
-| `h3` | The underlying H3 app instance. |
-| `fetch(req)` | The app's internal fetch handler. |
-| `captureError(error, ctx)` | Feed errors into the error hook pipeline. |
+| Property                   | Description                                                                            |
+| -------------------------- | -------------------------------------------------------------------------------------- |
+| `hooks`                    | [hookable](https://github.com/unjs/hookable) instance to register lifecycle callbacks. |
+| `h3`                       | The underlying H3 app instance.                                                        |
+| `fetch(req)`               | The app's internal fetch handler.                                                      |
+| `captureError(error, ctx)` | Feed errors into the error hook pipeline.                                              |
 
 ## Runtime hooks
 
 Register lifecycle callbacks inside a plugin. `hook()` returns an unregister function.
 
-| Hook | Signature | When |
-|---|---|---|
-| `request` | `(event) => void \| Promise` | Start of each request, before routing. |
-| `response` | `(res: Response, event) => void \| Promise` | After the response is created. |
-| `error` | `(error, { event?, tags? }) => void` | When any error is captured. |
-| `close` | `() => void` | On server shutdown. |
+| Hook       | Signature                                   | When                                   |
+| ---------- | ------------------------------------------- | -------------------------------------- |
+| `request`  | `(event) => void \| Promise`                | Start of each request, before routing. |
+| `response` | `(res: Response, event) => void \| Promise` | After the response is created.         |
+| `error`    | `(error, { event?, tags? }) => void`        | When any error is captured.            |
+| `close`    | `() => void`                                | On server shutdown.                    |
 
 ```ts [plugins/lifecycle.ts]
 import { definePlugin } from "nitro";

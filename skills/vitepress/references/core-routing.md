@@ -80,6 +80,7 @@ export default {
 ```
 
 **Server requirements:**
+
 - Netlify, GitHub Pages: Supported by default
 - Vercel: Enable `cleanUrls` in `vercel.json`
 - Nginx: Configure `try_files $uri $uri.html $uri/ =404`

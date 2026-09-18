@@ -18,6 +18,7 @@ tags: [vue3, transition, animation, duration, nested, timing]
 - [ ] Test animations to ensure nested elements complete fully
 
 **Problematic Code:**
+
 ```vue
 <template>
   <!-- BAD: Inner element has longer animation that gets cut off -->
@@ -53,6 +54,7 @@ tags: [vue3, transition, animation, duration, nested, timing]
 ```
 
 **Correct Code:**
+
 ```vue
 <template>
   <!-- GOOD: Explicit duration ensures all nested animations complete -->
@@ -167,11 +169,13 @@ tags: [vue3, transition, animation, duration, nested, timing]
 ## Calculating Duration
 
 Use this formula to calculate the correct duration:
+
 ```
 duration = max(delay + animation_duration) for all nested elements
 ```
 
 Example:
+
 - Element A: no delay, 300ms duration = 300ms total
 - Element B: 100ms delay, 300ms duration = 400ms total
 - Element C: 200ms delay, 500ms duration = 700ms total
@@ -179,4 +183,5 @@ Example:
 **Required `:duration`**: 700 (or slightly higher for safety margin)
 
 ## Reference
+
 - [Vue.js Transition - Nested Transitions](https://vuejs.org/guide/built-ins/transition.html#nested-transitions-and-explicit-transition-durations)

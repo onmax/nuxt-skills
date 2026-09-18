@@ -5,7 +5,7 @@ description: Label tests with tags to filter runs and apply shared runner option
 
 # Test Tags (4.1+)
 
-Tags label tests so you can filter what runs and apply shared options (timeout, retry) to a *category* of tests that span many files. Reach for tags over projects when the category needs different timeouts/retries (not different pools/environments).
+Tags label tests so you can filter what runs and apply shared options (timeout, retry) to a _category_ of tests that span many files. Reach for tags over projects when the category needs different timeouts/retries (not different pools/environments).
 
 ## Defining Tags
 

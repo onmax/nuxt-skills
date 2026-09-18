@@ -9,13 +9,13 @@ Vite 8 replaces esbuild+Rollup with Rolldown, a unified Rust-based bundler.
 
 ## What Changed
 
-| Before (Vite 7) | After (Vite 8) |
-|-----------------|----------------|
-| esbuild (dev transform) | Oxc Transformer |
-| esbuild (dep pre-bundling) | Rolldown |
-| Rollup (production build) | Rolldown |
-| `rollupOptions` | `rolldownOptions` |
-| `esbuild` option | `oxc` option |
+| Before (Vite 7)            | After (Vite 8)    |
+| -------------------------- | ----------------- |
+| esbuild (dev transform)    | Oxc Transformer   |
+| esbuild (dep pre-bundling) | Rolldown          |
+| Rollup (production build)  | Rolldown          |
+| `rollupOptions`            | `rolldownOptions` |
+| `esbuild` option           | `oxc` option      |
 
 ## Performance Impact
 

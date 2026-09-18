@@ -155,13 +155,13 @@ const user = route.meta.user
 
 ## Comparison of Navigation Guards
 
-| Guard | Has `this`/component? | Can delay navigation? | Use case |
-|-------|----------------------|----------------------|----------|
-| beforeRouteEnter | NO (use next callback) | YES | Pre-fetch, redirect if data missing |
-| beforeRouteUpdate | YES | YES | React to param changes |
-| beforeRouteLeave | YES | YES | Unsaved changes warning |
-| Global beforeEach | NO | YES | Auth checks |
-| Route beforeEnter | NO | YES | Route-specific validation |
+| Guard             | Has `this`/component?  | Can delay navigation? | Use case                            |
+| ----------------- | ---------------------- | --------------------- | ----------------------------------- |
+| beforeRouteEnter  | NO (use next callback) | YES                   | Pre-fetch, redirect if data missing |
+| beforeRouteUpdate | YES                    | YES                   | React to param changes              |
+| beforeRouteLeave  | YES                    | YES                   | Unsaved changes warning             |
+| Global beforeEach | NO                     | YES                   | Auth checks                         |
+| Route beforeEnter | NO                     | YES                   | Route-specific validation           |
 
 ## Key Points
 
@@ -172,5 +172,6 @@ const user = route.meta.user
 5. **beforeRouteUpdate and beforeRouteLeave have component access** - They run when component exists
 
 ## Reference
+
 - [Vue Router In-Component Guards](https://router.vuejs.org/guide/advanced/navigation-guards.html#in-component-guards)
 - [Vue Router Navigation Resolution Flow](https://router.vuejs.org/guide/advanced/navigation-guards.html#the-full-navigation-resolution-flow)

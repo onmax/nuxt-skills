@@ -189,5 +189,6 @@ const { login } = userStore
 ```
 
 ## Reference
+
 - [Pinia - Destructuring from a Store](https://pinia.vuejs.org/core-concepts/#destructuring-from-a-store)
 - [Pinia API - storeToRefs](https://pinia.vuejs.org/api/modules/pinia.html#storetorefs)

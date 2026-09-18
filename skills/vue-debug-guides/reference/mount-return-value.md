@@ -20,6 +20,7 @@ This is a subtle API detail that catches developers who assume mount() returns t
 - [ ] Use the app instance for configuration, plugins, and global registration
 
 **Incorrect:**
+
 ```javascript
 import { createApp } from 'vue'
 import App from './App.vue'
@@ -38,6 +39,7 @@ const { app, component } = createApp(App).mount('#app')  // Doesn't work this wa
 ```
 
 **Correct:**
+
 ```javascript
 import { createApp } from 'vue'
 import App from './App.vue'
@@ -84,5 +86,6 @@ vm.someExposedMethod()
 ```
 
 ## Reference
+
 - [Vue.js - Mounting the App](https://vuejs.org/guide/essentials/application.html#mounting-the-app)
 - [Vue.js Application API - mount()](https://vuejs.org/api/application.html#app-mount)

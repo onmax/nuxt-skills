@@ -26,6 +26,7 @@ tags: [vue3, sfc, scoped-css, styles, build-tools, performance, template, v-html
 ## Colocate template, script, and styles
 
 **BAD:**
+
 ```
 components/
 ├── UserCard.vue
@@ -34,6 +35,7 @@ components/
 ```
 
 **GOOD:**
+
 ```vue
 <!-- components/UserCard.vue -->
 <script setup>
@@ -68,6 +70,7 @@ const displayName = computed(() =>
 ## Use PascalCase for component names
 
 **BAD:**
+
 ```vue
 <script setup>
 import userProfile from './user-profile.vue'
@@ -79,6 +82,7 @@ import userProfile from './user-profile.vue'
 ```
 
 **GOOD:**
+
 ```vue
 <script setup>
 import UserProfile from './UserProfile.vue'
@@ -125,6 +129,7 @@ button { border-radius: 999px; }
 ### Use class selectors in scoped CSS
 
 **BAD:**
+
 ```vue
 <template>
   <article>
@@ -141,6 +146,7 @@ p { line-height: 1.6; }
 ```
 
 **GOOD:**
+
 ```vue
 <template>
   <article class="article">
@@ -179,6 +185,7 @@ onMounted(() => {
 ## Use camelCase in `:style` bindings
 
 **BAD:**
+
 ```vue
 <template>
   <div :style="{ 'font-size': fontSize + 'px', 'background-color': bg }">
@@ -188,6 +195,7 @@ onMounted(() => {
 ```
 
 **GOOD:**
+
 ```vue
 <template>
   <div :style="{ fontSize: fontSize + 'px', backgroundColor: bg }">
@@ -255,6 +263,7 @@ const activeUsers = computed(() => users.value.filter(u => u.active))
 ## Never render untrusted HTML with `v-html`
 
 **BAD:**
+
 ```vue
 <template>
   <!-- DANGEROUS: untrusted input can inject scripts -->
@@ -263,6 +272,7 @@ const activeUsers = computed(() => users.value.filter(u => u.active))
 ```
 
 **GOOD:**
+
 ```vue
 <script setup>
 import { computed } from 'vue'
@@ -288,6 +298,7 @@ const safeHtml = computed(() => DOMPurify.sanitize(props.trustedHtml ?? ''))
 ## Choose `v-if` vs `v-show` by toggle behavior
 
 **BAD:**
+
 ```vue
 <template>
   <!-- Frequent toggles with v-if cause repeated mount/unmount -->
@@ -299,6 +310,7 @@ const safeHtml = computed(() => DOMPurify.sanitize(props.trustedHtml ?? ''))
 ```
 
 **GOOD:**
+
 ```vue
 <template>
   <!-- Frequent toggles: keep in DOM, toggle display -->

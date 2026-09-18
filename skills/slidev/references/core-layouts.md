@@ -12,6 +12,7 @@ Available layouts for slides.
 ### default
 
 Standard slide layout.
+
 ```yaml
 ---
 layout: default
@@ -21,6 +22,7 @@ layout: default
 ### center
 
 Content centered horizontally and vertically.
+
 ```yaml
 ---
 layout: center
@@ -30,6 +32,7 @@ layout: center
 ### cover
 
 Title/cover slide with centered content.
+
 ```yaml
 ---
 layout: cover
@@ -39,6 +42,7 @@ layout: cover
 ### end
 
 End slide.
+
 ```yaml
 ---
 layout: end
@@ -48,6 +52,7 @@ layout: end
 ### full
 
 Full-screen content, no padding.
+
 ```yaml
 ---
 layout: full
@@ -57,6 +62,7 @@ layout: full
 ### none
 
 No layout styling.
+
 ```yaml
 ---
 layout: none
@@ -68,6 +74,7 @@ layout: none
 ### intro
 
 Introduction slide.
+
 ```yaml
 ---
 layout: intro
@@ -77,6 +84,7 @@ layout: intro
 ### quote
 
 Large quotation display.
+
 ```yaml
 ---
 layout: quote
@@ -86,6 +94,7 @@ layout: quote
 ### section
 
 Section divider.
+
 ```yaml
 ---
 layout: section
@@ -95,6 +104,7 @@ layout: section
 ### statement
 
 Statement/affirmation display.
+
 ```yaml
 ---
 layout: statement
@@ -104,6 +114,7 @@ layout: statement
 ### fact
 
 Fact/data display.
+
 ```yaml
 ---
 layout: fact
@@ -115,6 +126,7 @@ layout: fact
 ### two-cols
 
 Two columns side by side:
+
 ```md
 ---
 layout: two-cols
@@ -134,6 +146,7 @@ Right content
 ### two-cols-header
 
 Header with two columns below:
+
 ```md
 ---
 layout: two-cols-header
@@ -155,6 +168,7 @@ Right content
 ### image
 
 Full-screen image:
+
 ```yaml
 ---
 layout: image
@@ -166,6 +180,7 @@ backgroundSize: cover
 ### image-left
 
 Image on left, content on right:
+
 ```yaml
 ---
 layout: image-left
@@ -179,6 +194,7 @@ class: my-class
 ### image-right
 
 Image on right, content on left:
+
 ```yaml
 ---
 layout: image-right
@@ -195,6 +211,7 @@ Props: `image`, `class`, `backgroundSize`
 ### iframe
 
 Full-screen iframe:
+
 ```yaml
 ---
 layout: iframe
@@ -205,6 +222,7 @@ url: https://example.com
 ### iframe-left
 
 Iframe on left, content on right:
+
 ```yaml
 ---
 layout: iframe-left
@@ -217,6 +235,7 @@ url: https://example.com
 ### iframe-right
 
 Iframe on right, content on left:
+
 ```yaml
 ---
 layout: iframe-right
@@ -271,6 +290,7 @@ With named slots:
 ```
 
 Usage:
+
 ```md
 ---
 layout: two-areas

@@ -7,15 +7,15 @@ description: Common semantic token families and class combinations for UnoCSS-ba
 
 ## Common Token Families
 
-| Family | Common Tokens | Purpose |
-|-------|----------------|---------|
+| Family  | Common Tokens                                                    | Purpose                                           |
+| ------- | ---------------------------------------------------------------- | ------------------------------------------------- |
 | Surface | `bg-base`, `bg-secondary`, `bg-active`, `bg-tooltip`, `bg-glass` | Main app surfaces, hover/selected state, overlays |
-| Text | `color-base`, `color-active`, `op-fade`, `op-mute` | Readability hierarchy and active emphasis |
-| Border | `border-base`, `border-active` | Structural and active outlines |
-| Action | `btn-action`, `btn-action-sm`, `btn-action-icon` | Unified clickable controls |
-| Scale | `color-scale-neutral/low/medium/high/critical` | Visual severity gradients |
-| Layout | `h-nav`, `h-tabs`, `pad-safe`, `page-padding` | Stable shell geometry and responsive spacing |
-| Depth | `z-*` named shortcuts | Explicit stack order without magic numbers |
+| Text    | `color-base`, `color-active`, `op-fade`, `op-mute`               | Readability hierarchy and active emphasis         |
+| Border  | `border-base`, `border-active`                                   | Structural and active outlines                    |
+| Action  | `btn-action`, `btn-action-sm`, `btn-action-icon`                 | Unified clickable controls                        |
+| Scale   | `color-scale-neutral/low/medium/high/critical`                   | Visual severity gradients                         |
+| Layout  | `h-nav`, `h-tabs`, `pad-safe`, `page-padding`                    | Stable shell geometry and responsive spacing      |
+| Depth   | `z-*` named shortcuts                                            | Explicit stack order without magic numbers        |
 
 ## Reusable Shortcuts
 

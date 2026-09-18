@@ -33,12 +33,14 @@ npm install -D rollup-plugin-svelte svelte svelte-preprocess
 **Recommended: Ship `.svelte` source files** instead of precompiled JS. Let consumers' tooling (Vite + `@sveltejs/vite-plugin-svelte`) compile in their apps.
 
 Reasons:
+
 - Avoids version compatibility issues with `svelte/internal`
 - Better SSR/hydration consistency
 - Consumers get better HMR, diagnostics, and tree-shaking
 - Fewer republish cycles on Svelte upgrades
 
 **Exceptions** where shipping JS makes sense:
+
 - Web Components via `customElement` mode
 - CDN direct-load without a build step
 

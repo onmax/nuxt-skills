@@ -66,6 +66,7 @@ Recommended `.vscode/settings.json` for Tailwind IntelliSense autocomplete with 
 ## UApp wrapper
 
 Always wrap your app in `UApp` — it provides:
+
 - Toast container (`useToast`)
 - Tooltip provider
 - Programmatic overlay context (`useOverlay`)
@@ -133,17 +134,17 @@ export default defineAppConfig({
 
 Most components follow consistent slot naming:
 
-| Slot | Used by | Purpose |
-|---|---|---|
-| `#header` | Card, Modal, Slideover, DashboardPanel | Top section |
-| `#body` | DashboardPanel | Scrollable content area |
-| `#footer` | Card, Modal, Slideover, DashboardPanel | Bottom section |
-| `#left` | Page, DashboardNavbar | Left sidebar or content |
-| `#right` | Page, DashboardNavbar, Header | Right sidebar or content |
-| `#leading` | Input, Button, Alert | Before main content (icon area) |
-| `#trailing` | Input, Button | After main content (icon area) |
-| `#content` | Modal, Slideover, Popover, Tooltip | Full content override |
-| `#default` | Most components | Main content area |
+| Slot        | Used by                                | Purpose                         |
+| ----------- | -------------------------------------- | ------------------------------- |
+| `#header`   | Card, Modal, Slideover, DashboardPanel | Top section                     |
+| `#body`     | DashboardPanel                         | Scrollable content area         |
+| `#footer`   | Card, Modal, Slideover, DashboardPanel | Bottom section                  |
+| `#left`     | Page, DashboardNavbar                  | Left sidebar or content         |
+| `#right`    | Page, DashboardNavbar, Header          | Right sidebar or content        |
+| `#leading`  | Input, Button, Alert                   | Before main content (icon area) |
+| `#trailing` | Input, Button                          | After main content (icon area)  |
+| `#content`  | Modal, Slideover, Popover, Tooltip     | Full content override           |
+| `#default`  | Most components                        | Main content area               |
 
 ## Items arrays
 
@@ -324,6 +325,7 @@ Each locale has a `dir` property (`'ltr'` or `'rtl'`). `UApp` uses it to set dir
 ## Color mode
 
 Nuxt UI registers `@nuxtjs/color-mode` automatically. Built-in components for switching:
+
 - `UColorModeButton` — single button toggle (light/dark)
 - `UColorModeSwitch` — toggle switch
 - `UColorModeSelect` — dropdown with system/light/dark options

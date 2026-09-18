@@ -20,6 +20,7 @@ When you modify reactive state, Vue doesn't update the DOM synchronously. Instea
 - [ ] Consider if you really need DOM access - often you can work with reactive data instead
 
 **Incorrect:**
+
 ```javascript
 import { ref } from 'vue'
 
@@ -38,6 +39,7 @@ function updateMessage() {
 ```
 
 **Correct:**
+
 ```javascript
 import { ref, nextTick } from 'vue'
 
@@ -86,5 +88,6 @@ async function addItem() {
 ```
 
 ## Reference
+
 - [Vue.js Reactivity Fundamentals - DOM Update Timing](https://vuejs.org/guide/essentials/reactivity-fundamentals.html#dom-update-timing)
 - [Vue.js nextTick API](https://vuejs.org/api/general.html#nexttick)

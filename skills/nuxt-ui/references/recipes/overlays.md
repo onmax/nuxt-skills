@@ -170,4 +170,3 @@ const isOpen = ref(false)
   </UDrawer>
 </template>
 ```
-

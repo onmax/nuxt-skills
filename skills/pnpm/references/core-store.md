@@ -158,6 +158,7 @@ For CI/CD, you can share the store:
 ## Troubleshooting
 
 ### Store corruption
+
 ```bash
 # Verify and fix store
 pnpm store status
@@ -165,12 +166,14 @@ pnpm store prune
 ```
 
 ### Hard link issues (network drives, Docker)
+
 ```yaml title="pnpm-workspace.yaml"
 # auto (default) tries clone -> hardlink -> copy
 packageImportMethod: copy
 ```
 
 ### Permission issues
+
 ```bash
 # Fix store permissions (find the path with `pnpm store path`)
 chmod -R u+w "$(pnpm store path)"

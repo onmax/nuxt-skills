@@ -21,6 +21,7 @@ This is critical because composables often register `onMounted` and `onUnmounted
 - [ ] Exception: Composables CAN be called in lifecycle hooks like `onMounted`
 
 **Incorrect:**
+
 ```vue
 <script setup>
 import { useFetch } from './composables/useFetch'
@@ -48,6 +49,7 @@ for (const url of urls) {
 ```
 
 **Correct:**
+
 ```vue
 <script setup>
 import { ref, onMounted } from 'vue'
@@ -137,5 +139,6 @@ export function useFetch(url) {
 ```
 
 ## Reference
+
 - [Vue.js Composables - Usage Restrictions](https://vuejs.org/guide/reusability/composables.html#usage-restrictions)
 - [Vue.js Composition API - Setup Context](https://vuejs.org/api/composition-api-setup.html)

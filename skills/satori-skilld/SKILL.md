@@ -27,6 +27,7 @@ skilld search "releases:deprecated" -p satori
 Filters: `docs:`, `issues:`, `releases:` prefix narrows by source type.
 
 <!-- skilld:api-changes -->
+
 ## API Changes
 
 This section documents version-specific API changes — prioritize recent major/minor releases.
@@ -52,9 +53,11 @@ This section documents version-specific API changes — prioritize recent major/
 - NEW: `forwardRef` wrapped components — v0.18.3 added support for components wrapped with React's `forwardRef()` [source](./.skilld/releases/v0.18.3.md:L14)
 
 **Also changed:** `text-decoration-style: double` new v0.15.0 · `text-decoration-skip-ink` new v0.19.1 · `init()` accepts instantiated WASM instance v0.18.2
+
 <!-- /skilld:api-changes -->
 
 <!-- skilld:best-practices -->
+
 ## Best Practices
 
 - Reuse font definitions as static/module-level variables instead of recreating them on each render call — satori uses WeakMap to cache fonts and will miss the cache with a new array, causing a 2x performance penalty [source](./.skilld/issues/issue-590.md#2x-faster-with-satorioptionsfonts-as-a-global-variable)

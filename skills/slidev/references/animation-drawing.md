@@ -31,6 +31,7 @@ Drawings saved to `.slidev/drawings/`.
 ## Disable Drawing
 
 Entirely:
+
 ```md
 ---
 drawings:
@@ -39,6 +40,7 @@ drawings:
 ```
 
 Only in development:
+
 ```md
 ---
 drawings:
@@ -47,6 +49,7 @@ drawings:
 ```
 
 Only in presenter mode:
+
 ```md
 ---
 drawings:

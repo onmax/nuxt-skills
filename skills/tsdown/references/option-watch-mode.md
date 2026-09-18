@@ -74,6 +74,7 @@ export default defineConfig({
 ### Default Watch Targets
 
 By default, tsdown watches:
+
 - All entry files
 - All imported files
 - Config file (triggers restart)
@@ -87,6 +88,7 @@ By default, tsdown watches:
 ### Keyboard Shortcuts
 
 During watch mode:
+
 - `r` - Manual rebuild
 - `q` - Quit watch mode
 

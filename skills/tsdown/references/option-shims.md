@@ -52,12 +52,14 @@ export default defineConfig({
 ### ESM with Shims
 
 **Source:**
+
 ```ts
 console.log(__dirname)
 console.log(__filename)
 ```
 
 **Output (shims: true):**
+
 ```js
 import { fileURLToPath } from 'node:url'
 import { dirname } from 'node:path'
@@ -72,11 +74,13 @@ console.log(__filename)
 ### ESM with require
 
 **Source:**
+
 ```ts
 const mod = require('some-module')
 ```
 
 **Output (automatic on Node.js):**
+
 ```js
 import { createRequire } from 'node:module'
 const require = createRequire(import.meta.url)
@@ -87,12 +91,14 @@ const mod = require('some-module')
 ### CJS with import.meta
 
 **Source:**
+
 ```ts
 console.log(import.meta.url)
 console.log(import.meta.dirname)
 ```
 
 **Output (automatic):**
+
 ```js
 const import_meta = {
   url: require('url').pathToFileURL(__filename).toString(),

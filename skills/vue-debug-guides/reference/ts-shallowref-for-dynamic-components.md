@@ -27,6 +27,7 @@ Vue components are objects with internal properties that should not be made reac
 4. Impacts performance
 
 **Incorrect - Using ref() for components:**
+
 ```typescript
 import { ref } from 'vue'
 import ComponentA from './ComponentA.vue'
@@ -41,6 +42,7 @@ function switchComponent() {
 ```
 
 **Console warning:**
+
 ```
 [Vue warn]: Vue received a Component that was made a reactive object.
 This can lead to unnecessary performance overhead and should be avoided
@@ -175,12 +177,12 @@ const currentComponent = computed(() => componentRegistry[currentView.value])
 
 ## When to Use Each Approach
 
-| Scenario | Solution |
-|----------|----------|
-| Single dynamic component reference | `shallowRef` |
-| Component in reactive array/object | `markRaw` on component |
-| Component map/registry | `markRaw` each component |
-| Async components | `defineAsyncComponent` + `shallowRef` |
+| Scenario                           | Solution                              |
+| ---------------------------------- | ------------------------------------- |
+| Single dynamic component reference | `shallowRef`                          |
+| Component in reactive array/object | `markRaw` on component                |
+| Component map/registry             | `markRaw` each component              |
+| Async components                   | `defineAsyncComponent` + `shallowRef` |
 
 ## Common Mistakes
 

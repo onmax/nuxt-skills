@@ -78,6 +78,7 @@ fn()  // this === undefined (in strict mode) ✗
 ```
 
 Vue's event handler behavior:
+
 - `@click="store.increment"` - Vue receives `store.increment` as a function and calls it later
 - `@click="store.increment()"` - Vue evaluates `store.increment()` when the event fires
 
@@ -164,11 +165,13 @@ function increment() {
 ## When This Matters
 
 This gotcha specifically affects:
+
 - Hand-rolled reactive stores using `reactive()`
 - Methods that reference `this` inside them
 - Direct method references in templates without parentheses
 
 It does NOT affect:
+
 - Pinia stores (methods are auto-bound)
 - Arrow function methods (no `this` binding)
 - Methods that don't use `this`
@@ -176,16 +179,17 @@ It does NOT affect:
 
 ## Quick Reference
 
-| Pattern | Safe? | Notes |
-|---------|-------|-------|
-| `@click="store.method()"` | Yes | Explicit call preserves context |
-| `@click="store.method"` | No* | Context may be lost |
-| `@click="() => store.method()"` | Yes | Arrow wrapper preserves context |
-| `@click="localMethod"` | Yes | Component methods are auto-bound |
-| Pinia: `@click="store.action"` | Yes | Pinia handles binding |
+| Pattern                         | Safe? | Notes                            |
+| ------------------------------- | ----- | -------------------------------- |
+| `@click="store.method()"`       | Yes   | Explicit call preserves context  |
+| `@click="store.method"`         | No\*  | Context may be lost              |
+| `@click="() => store.method()"` | Yes   | Arrow wrapper preserves context  |
+| `@click="localMethod"`          | Yes   | Component methods are auto-bound |
+| Pinia: `@click="store.action"`  | Yes   | Pinia handles binding            |
 
-*Only problematic if the method uses `this`
+\*Only problematic if the method uses `this`
 
 ## Reference
+
 - [Vue.js State Management - Tip on Method Binding](https://vuejs.org/guide/scaling-up/state-management.html#simple-state-management-with-reactivity-api)
 - [MDN - this in JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this)

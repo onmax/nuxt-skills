@@ -27,6 +27,7 @@ Options:
 | `--theme` | - | Override theme |
 
 Examples:
+
 ```bash
 slidev --port 8080 --open
 slidev --remote mypassword
@@ -49,6 +50,7 @@ Options:
 | `--without-notes` | false | Exclude presenter notes |
 
 Examples:
+
 ```bash
 slidev build --base /my-repo/
 slidev build --download --out public
@@ -77,6 +79,7 @@ Options:
 | `--executable-path` | - | Browser path |
 
 Examples:
+
 ```bash
 slidev export
 slidev export --format pptx
@@ -110,6 +113,7 @@ Extracts theme to local directory for customization.
 ## npm Script Usage
 
 In package.json:
+
 ```json
 {
   "scripts": {
@@ -121,6 +125,7 @@ In package.json:
 ```
 
 With arguments (note `--`):
+
 ```bash
 npm run dev -- --port 8080 --open
 npm run export -- --format pptx

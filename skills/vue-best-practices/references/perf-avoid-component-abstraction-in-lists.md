@@ -21,6 +21,7 @@ Don't avoid abstraction entirely, but be mindful of component depth in frequentl
 - Focus optimization efforts on the most-rendered components
 
 **BAD:**
+
 ```vue
 <!-- BAD: Deep abstraction in list items -->
 <template>
@@ -47,6 +48,7 @@ Don't avoid abstraction entirely, but be mindful of component depth in frequentl
 ```
 
 **GOOD:**
+
 ```vue
 <!-- GOOD: Flattened structure in list items -->
 <template>
@@ -150,10 +152,10 @@ onMounted(() => {
 
 ## Impact Calculation
 
-| List Size | Components per Item | Total Instances | Memory Impact |
-|-----------|---------------------|-----------------|---------------|
-| 100 items | 1 (flat) | 100 | Baseline |
-| 100 items | 3 (nested) | 300 | ~3x memory |
-| 100 items | 5 (deeply nested) | 500 | ~5x memory |
-| 1000 items | 1 (flat) | 1000 | High |
-| 1000 items | 5 (deeply nested) | 5000 | Very High |
+| List Size  | Components per Item | Total Instances | Memory Impact |
+| ---------- | ------------------- | --------------- | ------------- |
+| 100 items  | 1 (flat)            | 100             | Baseline      |
+| 100 items  | 3 (nested)          | 300             | ~3x memory    |
+| 100 items  | 5 (deeply nested)   | 500             | ~5x memory    |
+| 1000 items | 1 (flat)            | 1000            | High          |
+| 1000 items | 5 (deeply nested)   | 5000            | Very High     |

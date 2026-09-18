@@ -41,10 +41,10 @@ Tune every layout, motion, and density choice against three dials (1 to 10):
 
 ### Two baselines
 
-| Baseline | VARIANCE | MOTION | DENSITY |
-|----------|----------|--------|---------|
-| Tooling | 2 to 3 | 2 to 3 | 7 to 9 |
-| Marketing | 7 to 8 | 5 to 7 | 3 to 4 |
+| Baseline  | VARIANCE | MOTION | DENSITY |
+| --------- | -------- | ------ | ------- |
+| Tooling   | 2 to 3   | 2 to 3 | 7 to 9  |
+| Marketing | 7 to 8   | 5 to 7 | 3 to 4  |
 
 - **Tooling** (the antfu default): devtools, dashboards, app shells. Information-dense and quiet: tight spacing, mono numbers, minimal motion.
 - **Marketing**: landing pages, portfolios, product pages. They breathe and move.
