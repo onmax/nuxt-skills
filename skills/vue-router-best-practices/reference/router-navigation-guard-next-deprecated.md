@@ -146,5 +146,6 @@ router.beforeEach(async (to, from) => {
 5. **Test all code paths** - Each branch must result in either return or next()
 
 ## Reference
+
 - [Vue Router Navigation Guards](https://router.vuejs.org/guide/advanced/navigation-guards.html)
 - [RFC: Remove next() from Navigation Guards](https://github.com/vuejs/rfcs/discussions/302)

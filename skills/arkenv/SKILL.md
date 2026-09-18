@@ -55,7 +55,7 @@ AI agents SHOULD always use the CLI for project initialization to ensure consist
 }
 ```
 
-- **`code`**: a stable identifier you can branch on. Refusal codes: `REQUIREMENTS_NOT_MET`, `GIT_TREE_DIRTY`, `NON_EMPTY_DIR`. A `code` of `INTERNAL` means the CLI *broke* rather than *refused* - retrying with flags will not help.
+- **`code`**: a stable identifier you can branch on. Refusal codes: `REQUIREMENTS_NOT_MET`, `GIT_TREE_DIRTY`, `NON_EMPTY_DIR`. A `code` of `INTERNAL` means the CLI _broke_ rather than _refused_ - retrying with flags will not help.
 - **`retryWith`**: the flag(s) that would bypass the check (e.g. `["--force"]`). Empty (`[]`) means the refusal is not bypassable.
 
 **Escalation pattern**: always run `init --agent` **without** `--force` first. If you get `status: "error"`, inspect `code` and `retryWith`. Only re-run with the flag(s) from `retryWith` (e.g. append `--force`) once you have deliberately decided the refusal is safe to bypass - do not add `--force` pre-emptively.

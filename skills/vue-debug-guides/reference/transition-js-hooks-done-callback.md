@@ -20,6 +20,7 @@ This is especially important when using animation libraries like GSAP, Anime.js,
 - [ ] Use `:css="false"` to prevent CSS rules from interfering with JS animations
 
 **Problematic Code:**
+
 ```vue
 <template>
   <!-- BAD: No done() callback - animation is skipped! -->
@@ -53,6 +54,7 @@ function onLeave(el) {
 ```
 
 **Correct Code:**
+
 ```vue
 <template>
   <!-- GOOD: done() callback signals animation completion -->
@@ -247,5 +249,6 @@ function onEnter(el, done) {
 ```
 
 ## Reference
+
 - [Vue.js Transition - JavaScript Hooks](https://vuejs.org/guide/built-ins/transition.html#javascript-hooks)
 - [GSAP with Vue](https://gsap.com/resources/vue/)

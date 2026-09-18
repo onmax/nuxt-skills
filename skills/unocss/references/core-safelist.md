@@ -74,12 +74,12 @@ blocklist: [
 
 ## Safelist vs Blocklist
 
-| Feature | Safelist | Blocklist |
-|---------|----------|-----------|
-| Purpose | Always include | Always exclude |
-| Strings | ✅ | ✅ |
-| Regex | ❌ | ✅ |
-| Functions | ✅ | ❌ |
+| Feature   | Safelist       | Blocklist      |
+| --------- | -------------- | -------------- |
+| Purpose   | Always include | Always exclude |
+| Strings   | ✅             | ✅             |
+| Regex     | ❌             | ✅             |
+| Functions | ✅             | ❌             |
 
 **Note:** Blocklist wins if utility is in both.
 

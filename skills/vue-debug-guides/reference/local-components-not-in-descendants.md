@@ -18,6 +18,7 @@ tags: [vue3, component-registration, local-registration, scope, nested-component
 - [ ] Use IDE auto-import features to simplify repeated imports
 
 **Incorrect:**
+
 ```vue
 <!-- ParentComponent.vue -->
 <script setup>
@@ -47,6 +48,7 @@ import ChildComponent from './ChildComponent.vue'
 ```
 
 **Correct:**
+
 ```vue
 <!-- ParentComponent.vue -->
 <script setup>
@@ -77,6 +79,7 @@ import Card from './Card.vue'
 ## Common Scenarios
 
 ### Scenario 1: Deeply Nested Components
+
 ```vue
 <!-- GrandchildComponent.vue -->
 <script setup>
@@ -94,6 +97,7 @@ import Button from '@/components/Button.vue'
 ```
 
 ### Scenario 2: Slot Content with Components
+
 ```vue
 <!-- Parent.vue -->
 <script setup>
@@ -124,6 +128,7 @@ import Form from './Form.vue'
 ```
 
 ### Scenario 3: Dynamic Components
+
 ```vue
 <!-- Container.vue -->
 <script setup>
@@ -143,9 +148,11 @@ const currentTab = shallowRef(TabA)
 ## Why This Design?
 
 Local registration provides:
+
 1. **Explicit dependencies** - You can see exactly what each component uses
 2. **Tree-shaking** - Unused components are removed from bundles
 3. **Clear scope** - No magic or implicit behavior
 
 ## Reference
+
 - [Vue.js Component Registration - Local Registration](https://vuejs.org/guide/components/registration.html#local-registration)

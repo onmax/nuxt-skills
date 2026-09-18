@@ -58,12 +58,12 @@ export default defineNuxtConfig({
 
 **Aliases** (Nuxt 4 defaults):
 
-| Alias | Resolves to |
-|-------|-------------|
-| `~` / `@` | `<rootDir>/app` (the srcDir) |
-| `~~` / `@@` | `<rootDir>` (project root) |
-| `#shared` | `<rootDir>/shared` |
-| `#server` | `<rootDir>/server` |
+| Alias       | Resolves to                  |
+| ----------- | ---------------------------- |
+| `~` / `@`   | `<rootDir>/app` (the srcDir) |
+| `~~` / `@@` | `<rootDir>` (project root)   |
+| `#shared`   | `<rootDir>/shared`           |
+| `#server`   | `<rootDir>/server`           |
 
 Because `~` now points at `app/`, reference root-level files (modules, server handlers) with `~~` or the dedicated aliases — e.g. `~~/server/handler.ts` or `#server/handler.ts`.
 
@@ -275,26 +275,26 @@ Reference in components:
 
 ## Special Files
 
-| File | Purpose |
-|------|---------|
-| `app.vue` | Root component (optional with pages/) |
-| `app.config.ts` | Runtime app configuration |
-| `error.vue` | Custom error page |
-| `nuxt.config.ts` | Build-time configuration |
-| `.nuxtignore` | Ignore files from Nuxt |
-| `.env` | Environment variables |
+| File             | Purpose                               |
+| ---------------- | ------------------------------------- |
+| `app.vue`        | Root component (optional with pages/) |
+| `app.config.ts`  | Runtime app configuration             |
+| `error.vue`      | Custom error page                     |
+| `nuxt.config.ts` | Build-time configuration              |
+| `.nuxtignore`    | Ignore files from Nuxt                |
+| `.env`           | Environment variables                 |
 
 ## File Naming Conventions
 
-| Pattern | Meaning |
-|---------|---------|
-| `[param]` | Dynamic route parameter |
-| `[[param]]` | Optional parameter |
-| `[...slug]` | Catch-all route |
-| `(group)` | Route group (not in URL) |
-| `.client.vue` | Client-only component |
-| `.server.vue` | Server-only component |
-| `.global.ts` | Global middleware |
+| Pattern       | Meaning                  |
+| ------------- | ------------------------ |
+| `[param]`     | Dynamic route parameter  |
+| `[[param]]`   | Optional parameter       |
+| `[...slug]`   | Catch-all route          |
+| `(group)`     | Route group (not in URL) |
+| `.client.vue` | Client-only component    |
+| `.server.vue` | Server-only component    |
+| `.global.ts`  | Global middleware        |
 
 <!--
 Source references:

@@ -22,6 +22,7 @@ Use `updated`/`onUpdated` sparingly for post-DOM-update operations that cannot b
 - Reserve updated for low-level DOM synchronization tasks
 
 **BAD:**
+
 ```javascript
 // BAD: API call in updated - fires on every re-render
 export default {
@@ -63,6 +64,7 @@ export default {
 ```
 
 **GOOD:**
+
 ```javascript
 import debounce from 'lodash-es/debounce'
 

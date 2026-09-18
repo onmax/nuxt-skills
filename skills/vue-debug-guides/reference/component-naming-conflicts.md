@@ -18,6 +18,7 @@ tags: [vue3, component-registration, naming-conflicts, global-local, debugging]
 - [ ] When overriding third-party components, document and test thoroughly
 
 **Incorrect:**
+
 ```javascript
 // main.js
 import { createApp } from 'vue'
@@ -54,6 +55,7 @@ import MyButton from './MyButton.vue'
 ```
 
 **Correct:**
+
 ```javascript
 // main.js - use prefixes for global components
 import { createApp } from 'vue'
@@ -147,13 +149,14 @@ import { Button as ElButton } from 'element-plus'
 
 ## Naming Convention Strategy
 
-| Component Type | Naming Pattern | Example |
-|----------------|---------------|---------|
-| Base/Global | `Base*` or `App*` prefix | `BaseButton`, `AppHeader` |
-| Domain-specific | Domain prefix | `UserCard`, `ProductList` |
-| Page components | `*Page` or `*View` suffix | `HomePage`, `UserView` |
-| Layout components | `*Layout` suffix | `DefaultLayout`, `AdminLayout` |
+| Component Type    | Naming Pattern            | Example                        |
+| ----------------- | ------------------------- | ------------------------------ |
+| Base/Global       | `Base*` or `App*` prefix  | `BaseButton`, `AppHeader`      |
+| Domain-specific   | Domain prefix             | `UserCard`, `ProductList`      |
+| Page components   | `*Page` or `*View` suffix | `HomePage`, `UserView`         |
+| Layout components | `*Layout` suffix          | `DefaultLayout`, `AdminLayout` |
 
 ## Reference
+
 - [Vue.js Component Registration](https://vuejs.org/guide/components/registration.html)
 - [GitHub Issue: Global component naming conflicts](https://github.com/vuejs/vue/issues/4434)

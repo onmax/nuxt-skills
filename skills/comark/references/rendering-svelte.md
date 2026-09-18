@@ -66,6 +66,7 @@ Map custom Svelte components to Comark elements:
 ### Component Resolution Order
 
 Components are resolved by checking these keys in order:
+
 1. `Prose{PascalTag}`, e.g., `ProseH1` for `<h1>` tags
 2. `PascalTag`, e.g., `Alert` for `::alert` components
 3. `tag`, e.g., `alert` for `::alert` components

@@ -88,11 +88,13 @@ router.afterEach(() => {
 ## When to Use defineAsyncComponent
 
 Use `defineAsyncComponent` for:
+
 - Components loaded conditionally within a page
 - Heavy components that aren't always needed
 - Modal dialogs or panels that load on demand
 
 Use Vue Router's lazy loading for:
+
 - Route-level components (views/pages)
 - Any component configured in route definitions
 

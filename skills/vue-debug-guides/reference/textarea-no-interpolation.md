@@ -20,6 +20,7 @@ Unlike v-model which provides two-way binding, interpolation only renders the in
 - [ ] Add linting rules to catch this pattern if possible
 
 **Incorrect:**
+
 ```html
 <script setup>
 import { ref } from 'vue'
@@ -39,6 +40,7 @@ const message = ref('Hello World')
 ```
 
 **Correct:**
+
 ```html
 <script setup>
 import { ref } from 'vue'
@@ -69,4 +71,5 @@ const message = ref('Hello World')
 ```
 
 ## Reference
+
 - [Vue.js Form Input Bindings - Multiline text](https://vuejs.org/guide/essentials/forms.html#multiline-text)

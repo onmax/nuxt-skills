@@ -19,6 +19,7 @@ tags: [vue3, events, components, emit, click, migration]
 - [ ] For multi-root components, explicitly bind `$attrs` or emit events
 
 **Incorrect:**
+
 ```html
 <!-- WRONG: Expecting native click to work on custom component -->
 <template>
@@ -46,6 +47,7 @@ tags: [vue3, events, components, emit, click, migration]
 ```
 
 **Correct:**
+
 ```html
 <!-- CORRECT: Child component emits the click event -->
 <!-- MyButton.vue -->
@@ -175,6 +177,7 @@ function handleClick(event) {
 ```
 
 ## Reference
+
 - [Vue.js Component Events](https://vuejs.org/guide/components/events.html)
 - [Vue.js Fallthrough Attributes](https://vuejs.org/guide/components/attrs.html)
 - [Vue 3 Migration - .native Modifier Removed](https://v3-migration.vuejs.org/breaking-changes/v-on-native-modifier-removed.html)

@@ -4,15 +4,15 @@
 
 Nuxt UI uses 7 semantic colors. Never use raw Tailwind palette colors in components — always use these semantic names.
 
-| Color | Default | When to use |
-|---|---|---|
-| `primary` | green | CTAs, active states, brand accent, links |
-| `secondary` | blue | Secondary actions, complementary highlights |
-| `success` | green | Success messages, confirmations, positive states |
-| `info` | blue | Informational alerts, tips, neutral highlights |
-| `warning` | yellow | Warnings, caution states, pending actions |
-| `error` | red | Errors, destructive actions, validation failures |
-| `neutral` | slate | Text, borders, backgrounds, disabled states, chrome |
+| Color       | Default | When to use                                         |
+| ----------- | ------- | --------------------------------------------------- |
+| `primary`   | green   | CTAs, active states, brand accent, links            |
+| `secondary` | blue    | Secondary actions, complementary highlights         |
+| `success`   | green   | Success messages, confirmations, positive states    |
+| `info`      | blue    | Informational alerts, tips, neutral highlights      |
+| `warning`   | yellow  | Warnings, caution states, pending actions           |
+| `error`     | red     | Errors, destructive actions, validation failures    |
+| `neutral`   | slate   | Text, borders, backgrounds, disabled states, chrome |
 
 ### Choosing colors for components
 
@@ -51,6 +51,7 @@ ui({
 Only colors that exist in your theme work — either Tailwind's defaults or custom colors defined with `@theme`.
 
 Available color palettes:
+
 - **Standard Tailwind**: red, orange, amber, yellow, lime, green, emerald, teal, cyan, sky, blue, indigo, violet, purple, fuchsia, pink, rose
 - **Neutral palettes** (for `neutral` key — pick one that matches the aesthetic):
   - `slate` — cool blue-gray, professional (default)
@@ -106,6 +107,7 @@ export default defineNuxtConfig({
 Use these everywhere instead of raw palette colors:
 
 ### Text
+
 - `text-default` — primary body text
 - `text-muted` — secondary text (descriptions, hints)
 - `text-toned` — medium-emphasis text (between muted and default)
@@ -114,6 +116,7 @@ Use these everywhere instead of raw palette colors:
 - `text-inverted` — text on inverted backgrounds (pair with `bg-inverted`)
 
 ### Backgrounds
+
 - `bg-default` — page background
 - `bg-muted` — subtle backgrounds (hover states, alternating rows)
 - `bg-elevated` — raised surfaces (cards, dropdowns)
@@ -121,6 +124,7 @@ Use these everywhere instead of raw palette colors:
 - `bg-inverted` — inverse background (dark on light, light on dark)
 
 ### Borders
+
 - `border-default` — standard borders
 - `border-muted` — subtle borders (dividers, separators)
 - `border-accented` — accent borders (active states)
@@ -130,14 +134,14 @@ Use these everywhere instead of raw palette colors:
 
 Most components accept a `variant` prop. Choose based on visual weight:
 
-| Variant | Weight | When to use |
-|---|---|---|
-| `solid` | Highest | Primary actions, main CTAs |
-| `outline` | Medium | Secondary actions, form fields |
-| `soft` | Medium-low | Tags, badges, subtle buttons |
-| `subtle` | Low | Background highlights, less prominent actions |
-| `ghost` | Lowest | Inline actions, icon buttons, navigation items |
-| `link` | Lowest | Text-only links inside content |
+| Variant   | Weight     | When to use                                    |
+| --------- | ---------- | ---------------------------------------------- |
+| `solid`   | Highest    | Primary actions, main CTAs                     |
+| `outline` | Medium     | Secondary actions, form fields                 |
+| `soft`    | Medium-low | Tags, badges, subtle buttons                   |
+| `subtle`  | Low        | Background highlights, less prominent actions  |
+| `ghost`   | Lowest     | Inline actions, icon buttons, navigation items |
+| `link`    | Lowest     | Text-only links inside content                 |
 
 ### Rules
 
@@ -157,6 +161,7 @@ Override theme **slots** on a single instance — wins over global config and va
 ```
 
 Rules for `ui` overrides:
+
 - **Prefer `defaultVariants`** over slot class overrides when possible (e.g., changing default button variant/size).
 - **Don't duplicate default classes** — check the generated theme file first to see what's already there.
 - Border radius defaults come from `--ui-radius`, but you can override with `rounded-*` classes in `ui` or `class` when you need a specific radius on a component.
@@ -172,6 +177,7 @@ Override the **root** (or `base`) slot only — simpler than `ui` for single-slo
 ### Finding slot names
 
 Read the generated theme file for any component:
+
 - **Nuxt**: `.nuxt/ui/<component>.ts`
 - **Vue**: `node_modules/.nuxt-ui/ui/<component>.ts`
 

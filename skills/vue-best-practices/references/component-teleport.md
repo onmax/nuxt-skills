@@ -23,6 +23,7 @@ tags: [vue3, teleport, modal, overlay, positioning, responsive]
 When an ancestor has `transform`, `filter`, or `perspective`, fixed-position overlays can behave like they are locally positioned. Teleport escapes that context.
 
 **BAD:**
+
 ```vue
 <template>
   <div class="animated-container">
@@ -47,6 +48,7 @@ When an ancestor has `transform`, `filter`, or `perspective`, fixed-position ove
 ```
 
 **GOOD:**
+
 ```vue
 <template>
   <div class="animated-container">

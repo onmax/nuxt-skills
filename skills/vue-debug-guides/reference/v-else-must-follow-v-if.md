@@ -23,6 +23,7 @@ In most modern Vue projects using Single File Components, this is caught at buil
 - [ ] If you need content between conditions, restructure using nested conditionals or computed
 
 **Incorrect:**
+
 ```html
 <!-- WRONG: v-else not immediately after v-if -->
 <template>
@@ -59,6 +60,7 @@ In most modern Vue projects using Single File Components, this is caught at buil
 ```
 
 **Correct:**
+
 ```html
 <!-- CORRECT: v-else immediately follows v-if -->
 <template>
@@ -133,4 +135,5 @@ In most modern Vue projects using Single File Components, this is caught at buil
 ```
 
 ## Reference
+
 - [Vue.js Conditional Rendering - v-else](https://vuejs.org/guide/essentials/conditional.html#v-else)

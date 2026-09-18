@@ -20,6 +20,7 @@ When using `ref()` in Vue 3's Composition API, the reactive value is wrapped in 
 - [ ] Use IDE/TypeScript to catch missing `.value` errors early
 
 **Incorrect:**
+
 ```javascript
 import { ref } from 'vue'
 
@@ -35,6 +36,7 @@ items.push(4)     // Error: push is not a function
 ```
 
 **Correct:**
+
 ```javascript
 import { ref } from 'vue'
 
@@ -58,4 +60,5 @@ items.value.push(4)     // Correctly adds 4 to the array
 ```
 
 ## Reference
+
 - [Vue.js Reactivity Fundamentals - ref()](https://vuejs.org/guide/essentials/reactivity-fundamentals.html#ref)
