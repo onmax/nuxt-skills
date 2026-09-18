@@ -24,10 +24,6 @@ const discoveredSources = (await discoverNuxtModuleSources()).map(source => ({
 })).filter(source => source.include.length)
 const sources = [...config.sources, ...discoveredSources]
 const currentSkillNames = new Set(sources.flatMap(source => source.include.map(entry => typeof entry === 'string' ? entry : entry.name)))
-for (const skillName of Object.keys(previousLock?.skills || {})) {
-  if (!currentSkillNames.has(skillName))
-    await rm(join(destination, skillName), { recursive: true, force: true })
-}
 try {
   for (const source of sources) {
     const checkout = join(tempRoot, source.name.replaceAll('/', '-'))
@@ -60,11 +56,15 @@ try {
       console.log(`bundled ${skillName} from ${source.name}`)
     }
   }
+  for (const skillName of Object.keys(previousLock?.skills || {})) {
+    if (!currentSkillNames.has(skillName))
+      await rm(join(destination, skillName), { recursive: true, force: true })
+  }
   await writeFile(join(root, 'ecosystem-skills.lock.json'), `${JSON.stringify(lock, null, 2)}\n`)
   await updateReadme(lock)
   let bundleChanged = true
   if (bumpPlugin) {
-    const { stdout } = await exec('git', ['status', '--porcelain', '--', 'skills', 'ecosystem-skills.lock.json'], { cwd: root })
+    const { stdout } = await exec('git', ['status', '--porcelain', '--', 'README.md', 'skills', 'ecosystem-skills.lock.json'], { cwd: root })
     bundleChanged = stdout.trim().length > 0
   }
   if (bumpPlugin && bundleChanged) {
@@ -141,6 +141,13 @@ async function fetchText(url) {
   }
 }
 
+async function fetchRequiredText(url) {
+  const text = await fetchText(url)
+  if (!text)
+    throw new Error(`Unable to fetch required ecosystem resource: ${url}`)
+  return text
+}
+
 async function readJsonFile(path) {
   try {
     return JSON.parse(await readFile(path, 'utf8'))
@@ -191,13 +198,13 @@ async function findSkillPath(repo, ref, candidate) {
 }
 
 async function discoverNuxtModuleSources() {
-  const html = await fetchText('https://nuxt.com/modules')
+  const html = await fetchRequiredText('https://nuxt.com/modules')
   const payloadPath = html?.match(/src="([^"]*modules\/_payload\.json[^"]*)"/)?.[1]
   if (!payloadPath)
-    return []
+    throw new Error('Nuxt module registry payload was not found')
   const payload = await fetchJson(`https://nuxt.com${payloadPath}`)
   if (!Array.isArray(payload))
-    return []
+    throw new Error('Nuxt module registry payload was invalid')
 
   const deref = value => typeof value === 'number' && value >= 0 && value < payload.length ? payload[value] : value
   const moduleIndex = payload.findIndex(value => value && typeof value === 'object' && !Array.isArray(value) && 'modules' in value)

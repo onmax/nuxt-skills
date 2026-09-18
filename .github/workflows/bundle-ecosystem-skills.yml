@@ -47,9 +47,8 @@ jobs:
             echo "No ecosystem skill changes"
             exit 0
           fi
-          node scripts/bump-plugin-version.mjs
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add .claude-plugin .codex-plugin ecosystem-skills.lock.json skills
+          git add .claude-plugin .codex-plugin README.md ecosystem-skills.lock.json skills
           git commit -m "chore: bundle ecosystem skills"
           git push
