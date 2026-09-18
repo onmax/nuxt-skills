@@ -70,20 +70,20 @@ Uses `@property` for better browser optimization:
 
 ### Theme Key Changes
 
-| preset-wind3 | preset-wind4 |
-|--------------|--------------|
-| `fontFamily` | `font` |
-| `fontSize` | `text.fontSize` |
-| `lineHeight` | `text.lineHeight` or `leading` |
-| `letterSpacing` | `text.letterSpacing` or `tracking` |
-| `borderRadius` | `radius` |
-| `easing` | `ease` |
-| `breakpoints` | `breakpoint` |
-| `verticalBreakpoints` | `verticalBreakpoint` |
-| `boxShadow` | `shadow` |
-| `transitionProperty` | `property` |
-| `container.maxWidth` | `containers.maxWidth` |
-| Size properties (`width`, `height`, etc.) | Unified to `spacing` |
+| preset-wind3                              | preset-wind4                       |
+| ----------------------------------------- | ---------------------------------- |
+| `fontFamily`                              | `font`                             |
+| `fontSize`                                | `text.fontSize`                    |
+| `lineHeight`                              | `text.lineHeight` or `leading`     |
+| `letterSpacing`                           | `text.letterSpacing` or `tracking` |
+| `borderRadius`                            | `radius`                           |
+| `easing`                                  | `ease`                             |
+| `breakpoints`                             | `breakpoint`                       |
+| `verticalBreakpoints`                     | `verticalBreakpoint`               |
+| `boxShadow`                               | `shadow`                           |
+| `transitionProperty`                      | `property`                         |
+| `container.maxWidth`                      | `containers.maxWidth`              |
+| Size properties (`width`, `height`, etc.) | Unified to `spacing`               |
 
 ## Options
 
@@ -153,11 +153,11 @@ presetWind4({
 
 ## Generated Layers
 
-| Layer | Description | Order |
-|-------|-------------|-------|
-| `properties` | CSS `@property` rules | -200 |
-| `theme` | Theme CSS variables | -150 |
-| `base` | Reset/preflight styles | -100 |
+| Layer        | Description            | Order |
+| ------------ | ---------------------- | ----- |
+| `properties` | CSS `@property` rules  | -200  |
+| `theme`      | Theme CSS variables    | -150  |
+| `base`       | Reset/preflight styles | -100  |
 
 ## Theme.defaults
 
@@ -230,12 +230,14 @@ theme: {
 ## When to Use Wind4
 
 Choose **preset-wind4** when:
+
 - Starting a new project
 - Targeting modern browsers
 - Want built-in reset and CSS variables
 - Following Tailwind v4 conventions
 
 Choose **preset-wind3** when:
+
 - Need legacy browser support
 - Migrating from Tailwind v3
 - Using presetLegacyCompat

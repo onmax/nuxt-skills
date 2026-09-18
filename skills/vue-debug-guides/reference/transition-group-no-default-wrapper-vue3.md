@@ -20,6 +20,7 @@ If your code relies on the wrapper element for styling or layout, you must expli
 - [ ] Consider if the wrapper element is actually needed in Vue 3
 
 **Vue 2 Behavior (wrapper element by default):**
+
 ```vue
 <template>
   <transition-group name="list">
@@ -35,6 +36,7 @@ If your code relies on the wrapper element for styling or layout, you must expli
 ```
 
 **Vue 3 Behavior (no wrapper by default):**
+
 ```vue
 <template>
   <TransitionGroup name="list">
@@ -49,6 +51,7 @@ If your code relies on the wrapper element for styling or layout, you must expli
 ```
 
 **Vue 3 - Explicitly specify wrapper:**
+
 ```vue
 <template>
   <!-- Use tag prop to specify wrapper element -->
@@ -69,6 +72,7 @@ If your code relies on the wrapper element for styling or layout, you must expli
 ### Layout Depending on Wrapper
 
 **Vue 2 code that breaks in Vue 3:**
+
 ```vue
 <template>
   <transition-group class="grid-container" name="list">
@@ -87,6 +91,7 @@ If your code relies on the wrapper element for styling or layout, you must expli
 In Vue 3, the class is not applied to anything because there's no wrapper element.
 
 **Fixed for Vue 3:**
+
 ```vue
 <template>
   <TransitionGroup class="grid-container" name="list" tag="div">
@@ -98,6 +103,7 @@ In Vue 3, the class is not applied to anything because there's no wrapper elemen
 ### Semantic HTML Lists
 
 **Vue 2:**
+
 ```vue
 <transition-group tag="ul" name="list">
   <li v-for="item in items" :key="item.id">{{ item }}</li>
@@ -105,6 +111,7 @@ In Vue 3, the class is not applied to anything because there's no wrapper elemen
 ```
 
 **Vue 3 (same syntax, but now tag is more important):**
+
 ```vue
 <TransitionGroup tag="ul" name="list">
   <li v-for="item in items" :key="item.id">{{ item }}</li>
@@ -148,5 +155,6 @@ When using in-DOM templates (not SFCs), remember to use kebab-case:
 ```
 
 ## Reference
+
 - [Vue 3 Migration Guide - TransitionGroup Root Element](https://v3-migration.vuejs.org/breaking-changes/transition-group.html)
 - [Vue.js TransitionGroup](https://vuejs.org/guide/built-ins/transition-group.html)

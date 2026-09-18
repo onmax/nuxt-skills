@@ -50,6 +50,7 @@ export default defineConfig({
 ### unplugin-vue
 
 Compiles `.vue` single-file components:
+
 - Transforms template to render functions
 - Handles scoped styles
 - Processes script setup
@@ -57,6 +58,7 @@ Compiles `.vue` single-file components:
 ### vue-tsc
 
 Generates TypeScript declarations:
+
 - Type-checks Vue components
 - Creates `.d.ts` files
 - Preserves component props types
@@ -342,11 +344,13 @@ Vue({
 ### Type Generation Fails
 
 Ensure vue-tsc is installed:
+
 ```bash
 pnpm add -D vue-tsc
 ```
 
 Enable in config:
+
 ```ts
 dts: { vue: true }
 ```
@@ -354,6 +358,7 @@ dts: { vue: true }
 ### Component Types Missing
 
 Check TypeScript config:
+
 ```json
 {
   "compilerOptions": {
@@ -366,6 +371,7 @@ Check TypeScript config:
 ### Vue Not Externalized
 
 Add to deps.neverBundle:
+
 ```ts
 deps: {
   neverBundle: ['vue'],
@@ -375,6 +381,7 @@ deps: {
 ### SFC Compilation Errors
 
 Check unplugin-vue version:
+
 ```bash
 pnpm add -D unplugin-vue@latest
 ```

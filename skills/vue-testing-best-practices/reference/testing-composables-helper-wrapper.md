@@ -21,6 +21,7 @@ Simple composables using only reactivity APIs can be tested directly. Complex co
 - [ ] Use `app.provide()` to mock injected dependencies
 
 **Simple Composable - Test Directly:**
+
 ```javascript
 // composables/useCounter.js
 import { ref, computed } from 'vue'
@@ -62,6 +63,7 @@ describe('useCounter', () => {
 ```
 
 **Complex Composable - Use Host Wrapper:**
+
 ```javascript
 // composables/useFetch.js
 import { ref, onMounted, onUnmounted, inject } from 'vue'
@@ -172,6 +174,7 @@ describe('useFetch', () => {
 ```
 
 ## Enhanced withSetup Helper with Provide Support
+
 ```javascript
 // test-utils.js
 export function withSetup(composable, options = {}) {
@@ -206,6 +209,7 @@ const [result, app] = withSetup(() => useMyComposable(), {
 ```
 
 ## Testing with @vue/test-utils mount
+
 ```javascript
 import { mount } from '@vue/test-utils'
 import { defineComponent } from 'vue'
@@ -234,5 +238,6 @@ test('useFetch in component context', async () => {
 ```
 
 ## Reference
+
 - [Vue.js Testing Guide - Testing Composables](https://vuejs.org/guide/scaling-up/testing#testing-composables)
 - [Vue Test Utils - Mounting Components](https://test-utils.vuejs.org/guide/)

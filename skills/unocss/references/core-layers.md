@@ -91,11 +91,11 @@ preflights: [
 
 ## preset-wind4 Layers
 
-| Layer | Description | Order |
-|-------|-------------|-------|
-| `properties` | CSS @property rules | -200 |
-| `theme` | Theme CSS variables | -150 |
-| `base` | Reset styles | -100 |
+| Layer        | Description         | Order |
+| ------------ | ------------------- | ----- |
+| `properties` | CSS @property rules | -200  |
+| `theme`      | Theme CSS variables | -150  |
+| `base`       | Reset styles        | -100  |
 
 <!--
 Source references:

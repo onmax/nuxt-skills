@@ -22,14 +22,14 @@ export const hooks = {
 
 ## Hook reference
 
-| Hook | When | Use |
-|------|------|-----|
-| `readPackage(pkg, ctx)` | after a dependency manifest is parsed | mutate a dependency's `package.json` (affects resolution) |
-| `afterAllResolved(lockfile, ctx)` | after resolution | mutate the lockfile before it's written |
-| `updateConfig(config)` | before install | mutate pnpm's settings (great with config dependencies) |
-| `beforePacking(pkg)` | before `pnpm pack`/`publish` tarball | customize the **published** manifest only |
-| `preResolution(opts)` | after reading lockfiles, before resolution | inspect/modify lockfile objects |
-| `importPackage(dir, opts)` | when writing to node_modules | change how packages are linked |
+| Hook                              | When                                       | Use                                                       |
+| --------------------------------- | ------------------------------------------ | --------------------------------------------------------- |
+| `readPackage(pkg, ctx)`           | after a dependency manifest is parsed      | mutate a dependency's `package.json` (affects resolution) |
+| `afterAllResolved(lockfile, ctx)` | after resolution                           | mutate the lockfile before it's written                   |
+| `updateConfig(config)`            | before install                             | mutate pnpm's settings (great with config dependencies)   |
+| `beforePacking(pkg)`              | before `pnpm pack`/`publish` tarball       | customize the **published** manifest only                 |
+| `preResolution(opts)`             | after reading lockfiles, before resolution | inspect/modify lockfile objects                           |
+| `importPackage(dir, opts)`        | when writing to node_modules               | change how packages are linked                            |
 
 ## readPackage
 
@@ -157,11 +157,11 @@ globalPnpmfile: ~/.pnpm/global_pnpmfile.mjs
 
 ## Hooks vs Overrides
 
-| | Hooks (.pnpmfile) | Overrides (pnpm-workspace.yaml) |
-|--|-------------------|---------------------------------|
-| Logic | JavaScript | declarative |
-| Scope | any manifest field, config, lockfile, packing | versions |
-| Use when | conditional/complex fixes | simple version pins |
+|          | Hooks (.pnpmfile)                             | Overrides (pnpm-workspace.yaml) |
+| -------- | --------------------------------------------- | ------------------------------- |
+| Logic    | JavaScript                                    | declarative                     |
+| Scope    | any manifest field, config, lockfile, packing | versions                        |
+| Use when | conditional/complex fixes                     | simple version pins             |
 
 Prefer `overrides`/`packageExtensions` for simple cases; use hooks for conditional logic, config sharing, or packing tweaks.
 

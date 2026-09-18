@@ -243,6 +243,7 @@ export function safelyUseStore() {
 ```
 
 ## Reference
+
 - [Vue Land FAQ - No Active Pinia](https://vue-land.github.io/faq/no-active-pinia)
 - [Pinia - Using a Store Outside of a Component](https://pinia.vuejs.org/core-concepts/outside-component-usage.html)
 - [Pinia - Getting Started](https://pinia.vuejs.org/getting-started.html)

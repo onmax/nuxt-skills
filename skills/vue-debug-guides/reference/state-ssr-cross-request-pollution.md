@@ -271,6 +271,7 @@ let requestCount = 0  // Shared across requests
 5. **Tested patterns** - Battle-tested SSR handling
 
 ## Reference
+
 - [Vue.js State Management - SSR Considerations](https://vuejs.org/guide/scaling-up/state-management.html#ssr-considerations)
 - [Pinia SSR Guide](https://pinia.vuejs.org/ssr/)
 - [Vue SSR Guide](https://vuejs.org/guide/scaling-up/ssr.html)

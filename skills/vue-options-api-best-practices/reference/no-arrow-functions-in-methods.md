@@ -19,6 +19,7 @@ Arrow functions lexically bind `this` from their enclosing scope, not from the o
 - [ ] Arrow functions ARE allowed inside methods for callbacks
 
 **Incorrect:**
+
 ```javascript
 export default {
   data() {
@@ -38,6 +39,7 @@ export default {
 ```
 
 **Correct:**
+
 ```javascript
 export default {
   data() {
@@ -65,4 +67,5 @@ export default {
 ```
 
 ## Reference
+
 - [Vue.js Methods - Avoid Arrow Functions](https://vuejs.org/guide/essentials/reactivity-fundamentals.html#methods)

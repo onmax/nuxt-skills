@@ -20,26 +20,26 @@ Title: {{ $slidev.configs.title }}
 
 Navigation state and controls:
 
-| Property | Type | Description |
-|----------|------|-------------|
-| `$nav.currentPage` | number | Current page (1-indexed) |
-| `$nav.currentLayout` | string | Current layout name |
-| `$nav.total` | number | Total slides |
-| `$nav.isPresenter` | boolean | In presenter mode |
-| `$nav.next()` | function | Next click/slide |
-| `$nav.prev()` | function | Previous click/slide |
-| `$nav.nextSlide()` | function | Next slide |
-| `$nav.prevSlide()` | function | Previous slide |
-| `$nav.go(n)` | function | Go to slide n |
+| Property             | Type     | Description              |
+| -------------------- | -------- | ------------------------ |
+| `$nav.currentPage`   | number   | Current page (1-indexed) |
+| `$nav.currentLayout` | string   | Current layout name      |
+| `$nav.total`         | number   | Total slides             |
+| `$nav.isPresenter`   | boolean  | In presenter mode        |
+| `$nav.next()`        | function | Next click/slide         |
+| `$nav.prev()`        | function | Previous click/slide     |
+| `$nav.nextSlide()`   | function | Next slide               |
+| `$nav.prevSlide()`   | function | Previous slide           |
+| `$nav.go(n)`         | function | Go to slide n            |
 
 ### $slidev
 
 Global context:
 
-| Property | Description |
-|----------|-------------|
-| `$slidev.configs` | Project config (title, etc.) |
-| `$slidev.themeConfigs` | Theme config |
+| Property               | Description                  |
+| ---------------------- | ---------------------------- |
+| `$slidev.configs`      | Project config (title, etc.) |
+| `$slidev.themeConfigs` | Theme config                 |
 
 ### $frontmatter
 
@@ -60,6 +60,7 @@ Current page number (1-indexed).
 ### $renderContext
 
 Current render context:
+
 - `'slide'` - Normal slide view
 - `'overview'` - Overview mode
 - `'presenter'` - Presenter mode

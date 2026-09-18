@@ -25,18 +25,21 @@ These issues do NOT apply to Single-File Components (SFCs) or string templates w
 HTML is case-insensitive. The browser lowercases everything before Vue sees it.
 
 **Incorrect (in-DOM template):**
+
 ```html
 <!-- Browser converts to: <blogpost posttitle="hello"> -->
 <BlogPost postTitle="hello" @updatePost="onUpdate"></BlogPost>
 ```
 
 **Correct (in-DOM template):**
+
 ```html
 <!-- Use kebab-case for everything -->
 <blog-post post-title="hello" @update-post="onUpdate"></blog-post>
 ```
 
 **In SFCs, PascalCase works fine:**
+
 ```vue
 <!-- BlogPost.vue - PascalCase recommended -->
 <template>
@@ -49,6 +52,7 @@ HTML is case-insensitive. The browser lowercases everything before Vue sees it.
 HTML only allows self-closing syntax for void elements (`<input>`, `<img>`, etc.). For all others, the browser expects closing tags.
 
 **Incorrect (in-DOM template):**
+
 ```html
 <!-- Browser thinks the tag never closed, breaks nesting -->
 <my-component />
@@ -56,6 +60,7 @@ HTML only allows self-closing syntax for void elements (`<input>`, `<img>`, etc.
 ```
 
 **Correct (in-DOM template):**
+
 ```html
 <!-- Explicit closing tags required -->
 <my-component></my-component>
@@ -63,6 +68,7 @@ HTML only allows self-closing syntax for void elements (`<input>`, `<img>`, etc.
 ```
 
 **In SFCs, self-closing works fine:**
+
 ```vue
 <template>
   <MyComponent />
@@ -75,12 +81,14 @@ HTML only allows self-closing syntax for void elements (`<input>`, `<img>`, etc.
 Some HTML elements have strict rules about valid children. Invalid elements are hoisted out by the browser before Vue sees the template.
 
 **Restricted parent elements:**
+
 - `<ul>`, `<ol>` - only allow `<li>`
 - `<table>` - only allows `<thead>`, `<tbody>`, `<tfoot>`, `<tr>`, `<caption>`, `<colgroup>`
 - `<tr>` - only allows `<td>`, `<th>`
 - `<select>` - only allows `<option>`, `<optgroup>`
 
 **Incorrect (in-DOM template):**
+
 ```html
 <!-- Browser hoists blog-post-row outside the table -->
 <table>
@@ -94,6 +102,7 @@ Some HTML elements have strict rules about valid children. Invalid elements are 
 ```
 
 **Correct (in-DOM template):**
+
 ```html
 <!-- Use is="vue:component-name" on a valid native element -->
 <table>
@@ -119,12 +128,12 @@ Some HTML elements have strict rules about valid children. Invalid elements are 
 
 ## When Do These Apply?
 
-| Template Type | Affected? | Example |
-|---------------|-----------|---------|
-| Single-File Component (`.vue`) | No | `<template>` section |
-| String template | No | `template: '<div>...</div>'` |
-| In-DOM template | **Yes** | `<div id="app">...</div>` |
-| `<script type="text/x-template">` | **Yes** | Browser parses the script content |
+| Template Type                     | Affected? | Example                           |
+| --------------------------------- | --------- | --------------------------------- |
+| Single-File Component (`.vue`)    | No        | `<template>` section              |
+| String template                   | No        | `template: '<div>...</div>'`      |
+| In-DOM template                   | **Yes**   | `<div id="app">...</div>`         |
+| `<script type="text/x-template">` | **Yes**   | Browser parses the script content |
 
 ## Best Practice: Use SFCs
 
@@ -146,4 +155,5 @@ import BlogPost from './BlogPost.vue'
 ```
 
 ## Reference
+
 - [Vue.js - In-DOM Template Parsing Caveats](https://vuejs.org/guide/essentials/component-basics.html#in-dom-template-parsing-caveats)

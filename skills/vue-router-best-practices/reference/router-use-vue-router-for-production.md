@@ -49,18 +49,18 @@ const currentView = computed(() => routes[currentPath.value])
 
 ### Features You'd Have to Implement Manually
 
-| Feature | Simple Routing | Vue Router |
-|---------|---------------|------------|
-| Navigation guards | Manual, error-prone | Built-in, composable |
-| Nested routes | Complex to implement | Native support |
-| Route params | Parse manually | Automatic extraction |
-| Lazy loading | DIY with dynamic imports | Built-in with code splitting |
-| History mode (clean URLs) | Requires server config + manual | Built-in |
-| Scroll behavior | Manual | Configurable |
-| Route transitions | DIY | Integrated with Transition |
-| Active link styling | Manual class toggling | `router-link-active` class |
-| Programmatic navigation | `location.hash = ...` | `router.push()`, `router.replace()` |
-| Route meta fields | N/A | Built-in |
+| Feature                   | Simple Routing                  | Vue Router                          |
+| ------------------------- | ------------------------------- | ----------------------------------- |
+| Navigation guards         | Manual, error-prone             | Built-in, composable                |
+| Nested routes             | Complex to implement            | Native support                      |
+| Route params              | Parse manually                  | Automatic extraction                |
+| Lazy loading              | DIY with dynamic imports        | Built-in with code splitting        |
+| History mode (clean URLs) | Requires server config + manual | Built-in                            |
+| Scroll behavior           | Manual                          | Configurable                        |
+| Route transitions         | DIY                             | Integrated with Transition          |
+| Active link styling       | Manual class toggling           | `router-link-active` class          |
+| Programmatic navigation   | `location.hash = ...`           | `router.push()`, `router.replace()` |
+| Route meta fields         | N/A                             | Built-in                            |
 
 ## Production Setup with Vue Router
 
@@ -178,6 +178,7 @@ const router = createRouter({
 6. **New features keep coming** - Data Loading API, View Transitions
 
 ## Reference
+
 - [Vue.js Routing Guide](https://vuejs.org/guide/scaling-up/routing.html)
 - [Vue Router Documentation](https://router.vuejs.org/)
 - [Vue Router Getting Started](https://router.vuejs.org/guide/)

@@ -82,11 +82,13 @@ const result = await parseMarkdown(content, {
 Auto-unwrap removes unnecessary paragraph wrappers from container components:
 
 **Without auto-unwrap:**
+
 ```json
 ["alert", {}, ["p", {}, "Text"]]
 ```
 
 **With auto-unwrap:**
+
 ```json
 ["alert", {}, "Text"]
 ```
@@ -117,6 +119,7 @@ const closedProps = autoCloseMarkdown(props)
 ```
 
 **Auto-close handles:**
+
 - Inline markers: `*`, `**`, `***`, `~~`, backticks
 - Brackets: `[`, `]`, `(`, `)`
 - Comark components: `::component`
@@ -233,11 +236,13 @@ type Node =
 ### Node Structure
 
 **Text Node:**
+
 ```json
 "plain text content"
 ```
 
 **Element Node:**
+
 ```json
 ["tag", { "prop": "value" }, ...children]
 ```
@@ -278,6 +283,7 @@ type Node =
 ### Complete Document Example
 
 **Input:**
+
 ```markdown
 ---
 title: Example
@@ -293,6 +299,7 @@ Warning message
 ```
 
 **AST:**
+
 ```json
 {
   "nodes": [
@@ -349,6 +356,7 @@ console.log(html)
 ```
 
 **Output:**
+
 ```html
 <h1 id="hello-world">Hello World</h1>
 <p>This is <strong>markdown</strong>.</p>
@@ -370,6 +378,7 @@ console.log(markdown)
 ```
 
 **Output:**
+
 ```markdown
 # Hello
 

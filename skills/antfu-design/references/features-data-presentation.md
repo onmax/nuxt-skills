@@ -7,16 +7,16 @@ description: Preferred rendering patterns for file paths, file icons, relative t
 
 ## Preference Matrix
 
-| Data | Preferred rendering | Class recipe |
-|------|----------------------|-------------|
-| File path | Mono, segmented emphasis, full value in tooltip | `font-mono truncate` + `title` + segment opacity (`op25/op50/op60`) |
-| File icon | Name-first then extension mapping, stable literal classes | literal `i-*` class + semantic tint (`color-blue-500`, `op-fade`) |
-| Time ago | Compact relative time in dense rows | `text-micro font-mono tabular-nums op-fade` |
-| Date/time | Absolute date in tooltip/detail | `title`/tooltip + `toLocaleString()` |
-| Number | Locale-formatted + tabular mono alignment | `text-micro font-mono tabular-nums` |
-| Badge | Small semantic chip with low-alpha background | `inline-flex items-center gap-1 px-1.5 py-px rounded border border-emerald-500/40 bg-emerald-500/10 text-micro uppercase tracking-wide` |
-| Button | Reuse semantic action shortcuts | `btn-action`, `btn-action-sm`, `btn-action-icon` |
-| Icon | Icon + label pair for non-trivial actions | `inline-flex items-center gap-1` |
+| Data      | Preferred rendering                                       | Class recipe                                                                                                                            |
+| --------- | --------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| File path | Mono, segmented emphasis, full value in tooltip           | `font-mono truncate` + `title` + segment opacity (`op25/op50/op60`)                                                                     |
+| File icon | Name-first then extension mapping, stable literal classes | literal `i-*` class + semantic tint (`color-blue-500`, `op-fade`)                                                                       |
+| Time ago  | Compact relative time in dense rows                       | `text-micro font-mono tabular-nums op-fade`                                                                                             |
+| Date/time | Absolute date in tooltip/detail                           | `title`/tooltip + `toLocaleString()`                                                                                                    |
+| Number    | Locale-formatted + tabular mono alignment                 | `text-micro font-mono tabular-nums`                                                                                                     |
+| Badge     | Small semantic chip with low-alpha background             | `inline-flex items-center gap-1 px-1.5 py-px rounded border border-emerald-500/40 bg-emerald-500/10 text-micro uppercase tracking-wide` |
+| Button    | Reuse semantic action shortcuts                           | `btn-action`, `btn-action-sm`, `btn-action-icon`                                                                                        |
+| Icon      | Icon + label pair for non-trivial actions                 | `inline-flex items-center gap-1`                                                                                                        |
 
 Use this matrix as default output behavior unless the host project already defines alternatives.
 

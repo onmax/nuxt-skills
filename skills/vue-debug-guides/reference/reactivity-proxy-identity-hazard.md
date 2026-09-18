@@ -20,6 +20,7 @@ When you wrap an object with `reactive()`, the returned proxy is NOT equal to th
 - [ ] Consider using primitive identifiers from database records for comparison
 
 **Incorrect:**
+
 ```javascript
 import { reactive } from 'vue'
 
@@ -49,6 +50,7 @@ if (listA[0] === listB[0]) {
 ```
 
 **Correct:**
+
 ```javascript
 import { reactive, toRaw } from 'vue'
 
@@ -92,5 +94,6 @@ function areEqual(a, b) {
 ```
 
 ## Reference
+
 - [Vue.js Reactivity in Depth](https://vuejs.org/guide/extras/reactivity-in-depth.html)
 - [Vue.js toRaw() API](https://vuejs.org/api/reactivity-advanced.html#toraw)

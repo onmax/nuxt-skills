@@ -34,6 +34,7 @@ export default defineConfig({
 ### Single Entry
 
 **Config:**
+
 ```ts
 export default defineConfig({
   entry: ['src/index.ts'],
@@ -44,6 +45,7 @@ export default defineConfig({
 ```
 
 **Generated in package.json:**
+
 ```json
 {
   "exports": {
@@ -59,6 +61,7 @@ export default defineConfig({
 ### Multiple Entries
 
 **Config:**
+
 ```ts
 export default defineConfig({
   entry: {
@@ -72,6 +75,7 @@ export default defineConfig({
 ```
 
 **Generated in package.json:**
+
 ```json
 {
   "exports": {
@@ -136,6 +140,7 @@ export default defineConfig({
 ```
 
 **Generated:**
+
 ```json
 {
   "exports": {
@@ -167,6 +172,7 @@ export default defineConfig({
 ```
 
 **Generated:**
+
 ```json
 {
   "exports": {
@@ -180,6 +186,7 @@ export default defineConfig({
 ```
 
 **Use with TypeScript customConditions:**
+
 ```json
 // tsconfig.json
 {

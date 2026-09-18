@@ -22,6 +22,7 @@ node .output/server/index.mjs
 ```
 
 Environment variables:
+
 - `PORT` or `NITRO_PORT` (default: 3000)
 - `HOST` or `NITRO_HOST` (default: 0.0.0.0)
 
@@ -70,6 +71,7 @@ vercel
 ```
 
 **Pros:**
+
 - Zero configuration for Nuxt (auto-detects)
 - Excellent preview deployments for PRs
 - Built-in analytics and speed insights
@@ -77,6 +79,7 @@ vercel
 - Great free tier for personal projects
 
 **Cons:**
+
 - Can get expensive at scale (bandwidth costs)
 - Vendor lock-in concerns
 - Limited build minutes on free tier
@@ -98,6 +101,7 @@ netlify deploy --prod
 ```
 
 **Pros:**
+
 - Great free tier with generous bandwidth
 - Built-in forms, identity, and functions
 - Excellent for static sites with some dynamic features
@@ -105,6 +109,7 @@ netlify deploy --prod
 - Split testing built-in
 
 **Cons:**
+
 - SSR/serverless functions can be slower than Vercel
 - Less optimized for full SSR apps
 - Build minutes can run out on free tier
@@ -123,6 +128,7 @@ NITRO_PRESET=cloudflare-pages nuxt build
 ```
 
 **Pros:**
+
 - Unlimited bandwidth on free tier
 - Excellent global edge network (fastest TTFB)
 - Workers for edge computing
@@ -130,6 +136,7 @@ NITRO_PRESET=cloudflare-pages nuxt build
 - D1, KV, R2 for data storage
 
 **Cons:**
+
 - Workers have execution limits (CPU time)
 - Some Node.js APIs not available in Workers
 - Less mature than Vercel/Netlify for frameworks
@@ -167,6 +174,7 @@ jobs:
 ```
 
 **Pros:**
+
 - Full control over build and deployment
 - No vendor lock-in
 - Can deploy anywhere (VPS, Docker, Kubernetes)
@@ -174,6 +182,7 @@ jobs:
 - Customizable workflows
 
 **Cons:**
+
 - Requires more setup and maintenance
 - Need to manage your own infrastructure
 - No built-in preview deployments
@@ -185,14 +194,14 @@ jobs:
 
 ## Quick Decision Guide
 
-| Need | Recommendation |
-|------|----------------|
-| Fastest setup, small team | **Vercel** |
-| Static site with forms | **Netlify** |
-| Cost-sensitive at scale | **Cloudflare Pages** |
-| Full control / enterprise | **GitHub Actions + VPS** |
-| Docker/Kubernetes | **GitHub Actions + Container Registry** |
-| Serverless APIs | **Vercel** or **AWS Lambda** |
+| Need                      | Recommendation                          |
+| ------------------------- | --------------------------------------- |
+| Fastest setup, small team | **Vercel**                              |
+| Static site with forms    | **Netlify**                             |
+| Cost-sensitive at scale   | **Cloudflare Pages**                    |
+| Full control / enterprise | **GitHub Actions + VPS**                |
+| Docker/Kubernetes         | **GitHub Actions + Container Registry** |
+| Serverless APIs           | **Vercel** or **AWS Lambda**            |
 
 ## Docker Deployment
 

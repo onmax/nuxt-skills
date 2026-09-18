@@ -63,6 +63,7 @@ const renderer = new Renderer({
 await renderer.renderAnimation(frames, { width: 1200, height: 630 })
 
 ```
+
 ✅ Pre-fetch images and pass as `fetchedResources` or `persistedImages` — passing a URL string as `img src` without pre-fetching the buffer causes `"Failed to get Buffer pointer and length"` crashes [source](./.skilld/issues/issue-349.md)
 
 ```ts

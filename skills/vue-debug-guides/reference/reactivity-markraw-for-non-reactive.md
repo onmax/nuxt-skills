@@ -21,6 +21,7 @@ Without `markRaw()`, placing these objects inside reactive state causes Vue to w
 - [ ] Remember: markRaw only affects the root level - nested objects may still be proxied
 
 **Incorrect:**
+
 ```javascript
 import { reactive, ref } from 'vue'
 import mapboxgl from 'mapbox-gl'
@@ -45,6 +46,7 @@ const elements = reactive({
 ```
 
 **Correct:**
+
 ```javascript
 import { reactive, markRaw, shallowRef } from 'vue'
 import mapboxgl from 'mapbox-gl'
@@ -70,6 +72,7 @@ const state = reactive({
 ```
 
 **Class instances with internal state:**
+
 ```javascript
 import { markRaw, reactive } from 'vue'
 
@@ -96,6 +99,7 @@ state.connection.on('message', handleMessage)
 ```
 
 **Gotcha: markRaw only affects root level:**
+
 ```javascript
 import { markRaw, reactive } from 'vue'
 
@@ -118,6 +122,7 @@ const safeContainer = shallowRef(rawObject)
 ```
 
 **Combining with shallowRef for best results:**
+
 ```javascript
 import { shallowRef, markRaw, onMounted, onUnmounted } from 'vue'
 
@@ -144,6 +149,7 @@ export function useMapbox(containerId) {
 ```
 
 ## Reference
+
 - [Vue.js markRaw() API](https://vuejs.org/api/reactivity-advanced.html#markraw)
 - [Vue.js Reducing Reactivity Overhead](https://vuejs.org/guide/best-practices/performance.html#reduce-reactivity-overhead-for-large-immutable-structures)
 - [Vue.js Reactivity in Depth](https://vuejs.org/guide/extras/reactivity-in-depth.html)

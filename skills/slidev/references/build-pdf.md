@@ -36,5 +36,6 @@ slidev build --download
 ## Export Options
 
 Configure PDF export settings via:
+
 - CLI: `slidev build --download --with-clicks --timeout 60000`
 - Headmatter: Set `exportFilename`, `withClicks`, etc.

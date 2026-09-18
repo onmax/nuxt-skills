@@ -59,6 +59,7 @@ Use this as a hard checklist before returning UI code.
 Run before returning UI code. If a box cannot be ticked honestly, it is not done.
 
 Foundations
+
 - design read declared, dials set from an appropriate baseline (core-design-read)
 - semantic shortcuts used in markup
 - light/dark-safe base tokens present
@@ -66,12 +67,14 @@ Foundations
 - class-only utilities (no Attributify)
 
 Data and type
+
 - long path/ID labels truncate with full value in `title`
 - technical values use mono + tabular-nums
 - one accent color, neutral base, no AI-purple default
 - serif only when justified; not Inter by reflex
 
 Polish
+
 - nested rounded elements use concentric radius
 - borders for dense or structural surfaces, layered shadows for elevated ones
 - enters split and staggered, exits subtle, no `transition: all`
@@ -80,12 +83,14 @@ Polish
 - motion above the static band honors `prefers-reduced-motion`
 
 Anti-slop
+
 - zero em-dash and en-dash characters anywhere visible
 - no generic names, fake-perfect numbers, filler verbs, or div-based fake screenshots
 - no decorative dots, scroll cues, or version stamps unless the brief calls for them
 - every visible string re-read in a copy self-audit
 
 Redesign (if applicable)
+
 - mode detected, audit done, IA, SEO, and nav labels preserved
 
 <!--

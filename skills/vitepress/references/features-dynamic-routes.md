@@ -34,6 +34,7 @@ export default {
 ```
 
 Generated pages:
+
 - `/packages/foo.html`
 - `/packages/bar.html`
 - `/packages/baz.html`

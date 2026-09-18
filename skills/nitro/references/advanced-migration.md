@@ -18,21 +18,22 @@ The `nitropack` package is renamed to `nitro`.
 
 Runtime utils moved to dedicated `nitro/*` subpaths:
 
-| Capability | v3 import |
-|---|---|
+| Capability                        | v3 import                                                                                                           |
+| --------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
 | Handlers, config, plugins, errors | `nitro` (`defineHandler`, `defineConfig`, `definePlugin`, `HTTPError`, `defineWebSocketHandler`, `defineRouteMeta`) |
-| Storage | `nitro/storage` (`useStorage`) |
-| Cache | `nitro/cache` (`defineCachedHandler`, `defineCachedFunction`) |
-| Runtime config | `nitro/runtime-config` (`useRuntimeConfig`) |
-| Database | `nitro/database` (`useDatabase`) |
-| Tasks | `nitro/task` (`runTask`) |
-| H3 utilities | `nitro/h3` |
-| Types | `nitro/types` |
-| Vite plugin | `nitro/vite` |
+| Storage                           | `nitro/storage` (`useStorage`)                                                                                      |
+| Cache                             | `nitro/cache` (`defineCachedHandler`, `defineCachedFunction`)                                                       |
+| Runtime config                    | `nitro/runtime-config` (`useRuntimeConfig`)                                                                         |
+| Database                          | `nitro/database` (`useDatabase`)                                                                                    |
+| Tasks                             | `nitro/task` (`runTask`)                                                                                            |
+| H3 utilities                      | `nitro/h3`                                                                                                          |
+| Types                             | `nitro/types`                                                                                                       |
+| Vite plugin                       | `nitro/vite`                                                                                                        |
 
 Removed: `nitropack/kit`, `nitropack/presets`, `nitropack/core` (use `nitro/builder`). Use `NitroModule` from `nitro/types` instead of `defineNitroModule`.
 
 Other renames:
+
 - `defineNitroPlugin` → `definePlugin`
 - `defineNitroConfig` → `defineConfig`
 - Node.js minimum is now **20**.
@@ -96,17 +97,17 @@ Also: `sendError` → `throw createError`/`HTTPError`; `sendNoContent` → `retu
 
 ## Preset renames
 
-| v2 | v3 |
-|---|---|
-| `node` | `node_middleware` (export is now `middleware`) |
-| `cloudflare`, `cloudflare_worker`, `cloudflare_module_legacy` | `cloudflare_module` |
-| `deno-server-legacy` / `deno` | `deno_server` (Deno v2) / `deno_deploy` |
-| `netlify-builder` | `netlify` or `netlify_edge` |
-| `vercel-edge` | `vercel` (Fluid compute) |
-| `azure`, `azure_functions` | `azure_swa` |
-| `firebase` | `firebase_app_hosting` |
-| `iis` | `iis_handler` |
-| `edgio`, `cli`, `service_worker` | removed/discontinued |
+| v2                                                            | v3                                             |
+| ------------------------------------------------------------- | ---------------------------------------------- |
+| `node`                                                        | `node_middleware` (export is now `middleware`) |
+| `cloudflare`, `cloudflare_worker`, `cloudflare_module_legacy` | `cloudflare_module`                            |
+| `deno-server-legacy` / `deno`                                 | `deno_server` (Deno v2) / `deno_deploy`        |
+| `netlify-builder`                                             | `netlify` or `netlify_edge`                    |
+| `vercel-edge`                                                 | `vercel` (Fluid compute)                       |
+| `azure`, `azure_functions`                                    | `azure_swa`                                    |
+| `firebase`                                                    | `firebase_app_hosting`                         |
+| `iis`                                                         | `iis_handler`                                  |
+| `edgio`, `cli`, `service_worker`                              | removed/discontinued                           |
 
 ## Hooks
 

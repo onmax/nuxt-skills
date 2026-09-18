@@ -20,6 +20,7 @@ The compiler transforms top-level await, and code after await runs in a differen
 - [ ] Test parent ref access when using async setup
 
 **Incorrect:**
+
 ```vue
 <!-- ChildComponent.vue -->
 <script setup>
@@ -72,6 +73,7 @@ onMounted(() => {
 ```
 
 **Correct:**
+
 ```vue
 <!-- ChildComponent.vue -->
 <script setup>
@@ -188,5 +190,6 @@ async setup() {
 ```
 
 ## Reference
+
 - [Vue.js Script Setup - defineExpose](https://vuejs.org/api/sfc-script-setup.html#defineexpose)
 - [Vue.js Async Components](https://vuejs.org/guide/components/async.html)
