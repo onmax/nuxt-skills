@@ -129,7 +129,7 @@ VueUse maintains its own current skill, so install it directly with `npx skills 
 ## Acknowledgments
 
 - **vue** skill gotchas from [vuejs-ai/skills](https://github.com/vuejs-ai/skills) vue-best-practices (200+ rules)
-- **vitest**, **vite**, **pnpm**, **tsdown** skills from [@antfu](https://github.com/antfu)'s [skills](https://github.com/antfu/skills)
+- **vitest**, **vite**, and **pnpm** skills from [@antfu](https://github.com/antfu)'s [skills](https://github.com/antfu/skills)
 
 ## License
 
@@ -162,8 +162,6 @@ Every skill in the plugin is listed below with its provenance. The table is rege
 | [`reka-ui`](skills/reka-ui/) | Manually written in this repository. |
 | [`solar-icons`](skills/solar-icons/) | [Bundled from nuxt-modules/saoudi-h/solar-icons](https://github.com/saoudi-h/solar-icons/tree/062d81307b64e2811c3e9d3f40ffb803f6930a7f/skills/solar-icons) |
 | [`ts-library`](skills/ts-library/) | Manually written in this repository. |
-| [`tsdown`](skills/tsdown/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/tsdown) |
-| [`turborepo`](skills/turborepo/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/turborepo) |
 | [`unocss`](skills/unocss/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/unocss) |
 | [`vite`](skills/vite/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/vite) |
 | [`vitepress`](skills/vitepress/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/vitepress) |
