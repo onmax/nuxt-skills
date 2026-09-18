@@ -31,7 +31,7 @@
     "logo": "./assets/nuxt-logo-dark.svg",
     "defaultPrompt": [
       "Use the right Nuxt skill for this task.",
-      "Build or debug this Vue or Nuxt feature.",
+      "Build or debug a Nuxt module or integration.",
       "Review this change against Nuxt conventions."
     ]
   }
