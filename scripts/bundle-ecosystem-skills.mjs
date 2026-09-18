@@ -120,7 +120,11 @@ async function normalizeMarkdown(dir) {
     }
     else if (entry.name.endsWith('.md')) {
       const content = await readFile(path, 'utf8')
-      await writeFile(path, content.replace(/[ \t]+$/gm, ''))
+      let normalized = content.replace(/[ \t]+$/gm, '')
+      if (entry.name === 'SKILL.md' && normalized.startsWith('---\n')) {
+        normalized = normalized.replace(/^(version|author):.*\n/gm, '')
+      }
+      await writeFile(path, normalized)
     }
   }
 }
