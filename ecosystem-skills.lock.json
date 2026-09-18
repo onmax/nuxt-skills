@@ -25,10 +25,6 @@
       "repository": "https://github.com/victorgarciaesgi/regle.git",
       "revision": "0df09b530955e2e54d0f3b931346ff33f8e19834"
     },
-    "nuxt-modules/saoudi-h/solar-icons": {
-      "repository": "https://github.com/saoudi-h/solar-icons.git",
-      "revision": "062d81307b64e2811c3e9d3f40ffb803f6930a7f"
-    },
     "nuxt-modules/nuxt/ui": {
       "repository": "https://github.com/nuxt/ui.git",
       "revision": "b3d4342d9b588b85c69410dd14f0f7bba4a83adb"
@@ -55,7 +51,6 @@
     "comark": "nuxt-modules/comarkdown/comark",
     "nuxt-users": "nuxt-modules/rrd108/nuxt-users",
     "regle": "nuxt-modules/victorgarciaesgi/regle",
-    "solar-icons": "nuxt-modules/saoudi-h/solar-icons",
     "nuxt-ui": "nuxt-modules/nuxt/ui",
     "nuxt-better-auth": "nuxt-modules/nuxt-modules/better-auth"
   }

@@ -158,7 +158,6 @@ Every skill in the plugin is listed below with its provenance. The table is rege
 | [`pinia`](skills/pinia/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/pinia) |
 | [`regle`](skills/regle/) | [Bundled from nuxt-modules/victorgarciaesgi/regle](https://github.com/victorgarciaesgi/regle/tree/0df09b530955e2e54d0f3b931346ff33f8e19834/skills/regle) |
 | [`reka-ui`](skills/reka-ui/) | Manually written in this repository. |
-| [`solar-icons`](skills/solar-icons/) | [Bundled from nuxt-modules/saoudi-h/solar-icons](https://github.com/saoudi-h/solar-icons/tree/062d81307b64e2811c3e9d3f40ffb803f6930a7f/skills/solar-icons) |
 | [`unocss`](skills/unocss/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/unocss) |
 | [`vite`](skills/vite/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/vite) |
 | [`vitest`](skills/vitest/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/vitest) |

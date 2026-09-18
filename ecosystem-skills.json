@@ -1,6 +1,7 @@
 {
   "version": 1,
   "exclude": [
+    "solar-icons",
     "workflow"
   ],
   "sources": [
