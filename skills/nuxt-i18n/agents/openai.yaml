@@ -1,0 +1,5 @@
+interface:
+  display_name: "Nuxt I18N"
+  short_description: "Internationalize Nuxt applications with @nuxtjs/i18n."
+policy:
+  allow_implicit_invocation: false

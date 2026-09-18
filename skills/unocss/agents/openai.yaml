@@ -1,0 +1,5 @@
+interface:
+  display_name: "Unocss"
+  short_description: "UnoCSS instant atomic CSS engine, superset of Tailwind CSS."
+policy:
+  allow_implicit_invocation: false

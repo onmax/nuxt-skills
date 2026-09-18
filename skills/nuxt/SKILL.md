@@ -1,56 +1,57 @@
 ---
 name: nuxt
-description: Nuxt application development and maintenance. Use for project structure, pages and routing, data fetching, SSR-safe state, middleware, plugins, server routes, runtime config, route rules, layers, built-in components, hydration, upgrades, and testing.
-license: MIT
+description: Nuxt full-stack Vue framework with SSR, auto-imports, and file-based routing. Use when working with Nuxt apps, server routes, useFetch, middleware, or hybrid rendering.
+metadata:
+  author: Anthony Fu
+  version: "2026.6.22"
+  source: Generated from https://github.com/nuxt/nuxt, scripts located at https://github.com/antfu/skills
 ---
 
-# Nuxt
+Nuxt is a full-stack Vue framework that provides server-side rendering, file-based routing, auto-imports, and a powerful module system. It uses Nitro as its server engine for universal deployment across Node.js, serverless, and edge platforms.
 
-Use Nuxt-owned primitives for Nuxt lifecycle, rendering, routing, and server behavior. Hand module-specific behavior to the matching module skill instead of reproducing its API here.
+> The skill is based on Nuxt 4.x, generated at 2026-06-22.
 
-## Start here
+> **Nuxt 4 note:** the default `srcDir` is `app/` — Vue app code (`app.vue`, `components/`, `composables/`, `pages/`, etc.) lives under `app/`, while `server/`, `shared/`, `public/`, `modules/`, `layers/` and `nuxt.config.ts` stay at the project root. The `~`/`@` aliases now point at `app/`; use `~~`/`@@` for the root.
 
-1. Inspect `package.json`, the lockfile, `nuxt.config.*`, and the directory layout before choosing an API. Nuxt features move, so verify the installed version instead of assuming the latest release.
-2. Open only the reference that owns the task.
-3. Prefer the smallest Nuxt primitive that preserves SSR, hydration, and generated types.
-4. Run `nuxt prepare` after config, module, alias, or generated-type changes, then verify the affected runtime path.
+## Core
 
-## Reference map
+| Topic | Description | Reference |
+|-------|-------------|-----------|
+| Directory Structure | Nuxt 4 `app/` srcDir, `shared/`, aliases, conventions | [core-directory-structure](references/core-directory-structure.md) |
+| Configuration | nuxt.config.ts, app.config.ts, aliases, compatibilityVersion, experimental | [core-config](references/core-config.md) |
+| CLI Commands | Dev server, build, generate, preview, and utility commands | [core-cli](references/core-cli.md) |
+| Routing | File-based routing, dynamic routes, named views, layout props, middleware | [core-routing](references/core-routing.md) |
+| Data Fetching | useFetch, useAsyncData, $fetch, createUseFetch factories, caching | [core-data-fetching](references/core-data-fetching.md) |
+| Modules | Creating and using Nuxt modules, Nuxt Kit utilities | [core-modules](references/core-modules.md) |
+| Deployment | Platform-agnostic deployment with Nitro, Vercel, Netlify, Cloudflare | [core-deployment](references/core-deployment.md) |
 
-- Project structure, upgrades, deployment mode, and testing: [project-setup.md](references/project-setup.md)
-- Data fetching, state, request context, cookies, head, and hydration: [nuxt-composables.md](references/nuxt-composables.md)
-- Pages, layouts, navigation, route metadata, and errors: [routing.md](references/routing.md)
-- Route middleware, app plugins, and runtime hooks: [middleware-plugins.md](references/middleware-plugins.md)
-- API routes, server middleware, validation, caching, and Nitro: [server.md](references/server.md)
-- Built-in components, assets, images, and lazy hydration: [nuxt-components.md](references/nuxt-components.md)
-- Nuxt config, runtime config, route rules, layers, modules, Vite, and Nitro options: [nuxt-config.md](references/nuxt-config.md)
+## Features
 
-## Ownership boundaries
+| Topic | Description | Reference |
+|-------|-------------|-----------|
+| Composables Auto-imports | Vue/Nuxt composables, custom composables, `shared/`, useAnnouncer | [features-composables](references/features-composables.md) |
+| Components Auto-imports | Component naming, lazy loading, hydration strategies | [features-components-autoimport](references/features-components-autoimport.md) |
+| Built-in Components | NuxtLink, NuxtPage, NuxtLayout, NuxtAnnouncer, ClientOnly, and more | [features-components](references/features-components.md) |
+| State Management | useState composable, SSR-friendly state, Pinia integration | [features-state](references/features-state.md) |
+| Server Routes | API routes, server middleware, Nitro server engine | [features-server](references/features-server.md) |
 
-- Use the `nuxt-modules` skill for authoring or publishing a Nuxt module.
-- Use the relevant module skill for Nuxt UI, Nuxt Content, Nuxt Studio, NuxtHub, Nuxt Image, Nuxt Scripts, Nuxt SEO, or another installed module.
-- Use official VueUse guidance for VueUse composables. When names overlap, Nuxt owns Nuxt lifecycle and SSR semantics; see [nuxt-composables.md](references/nuxt-composables.md#vueuse-boundary).
-- Use Vue guidance for component-local reactivity that has no Nuxt lifecycle or rendering concern.
+## Rendering
 
-## Baseline
+| Topic | Description | Reference |
+|-------|-------------|-----------|
+| Rendering Modes | Universal (SSR), client-side (SPA), hybrid rendering, route rules | [rendering-modes](references/rendering-modes.md) |
 
-```vue
-<script setup lang="ts">
-const { data: products, status, error } = await useFetch('/api/products')
+## Best Practices
 
-useSeoMeta({
-  title: 'Products',
-  description: 'Browse the product catalog.',
-})
-</script>
+| Topic | Description | Reference |
+|-------|-------------|-----------|
+| Data Fetching Patterns | Efficient fetching, caching, parallel requests, error handling | [best-practices-data-fetching](references/best-practices-data-fetching.md) |
+| SSR & Hydration | Avoiding context leaks, hydration mismatches, composable patterns | [best-practices-ssr](references/best-practices-ssr.md) |
 
-<template>
-  <main>
-    <p v-if="status === 'pending'">Loading…</p>
-    <p v-else-if="error">Could not load products.</p>
-    <ProductList v-else :products="products ?? []" />
-  </main>
-</template>
-```
+## Advanced
 
-`useFetch` integrates the request with Nuxt's SSR payload, while `useSeoMeta` participates in Nuxt's head lifecycle. Reach for lower-level primitives only when the task needs behavior these do not provide.
+| Topic | Description | Reference |
+|-------|-------------|-----------|
+| Layers | Extending applications with reusable layers | [advanced-layers](references/advanced-layers.md) |
+| Lifecycle Hooks | Build-time, runtime, and server hooks | [advanced-hooks](references/advanced-hooks.md) |
+| Module Authoring | Publishable modules with Nuxt Kit, keyed composables, dependencies | [advanced-module-authoring](references/advanced-module-authoring.md) |

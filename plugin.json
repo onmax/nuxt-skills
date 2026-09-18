@@ -1,0 +1,55 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "nuxt-skills",
+  "version": "1.3.1",
+  "description": "Vue, Nuxt, and NuxtHub skills for AI coding assistants.",
+  "author": {
+    "name": "onmax",
+    "email": "maximogarciamtnez@gmail.com",
+    "url": "https://github.com/onmax"
+  },
+  "homepage": "https://github.com/onmax/nuxt-skills",
+  "repository": "https://github.com/onmax/nuxt-skills",
+  "license": "MIT",
+  "keywords": [
+    "vue",
+    "nuxt",
+    "nitro",
+    "pinia",
+    "nuxthub",
+    "nuxt-modules",
+    "nuxt-content",
+    "nuxt-studio",
+    "nuxt-ui",
+    "nuxt-i18n",
+    "nuxt-seo",
+    "vite",
+    "vitest",
+    "unocss",
+    "vueuse"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Nuxt",
+        "shortDescription": "Vue, Nuxt, and ecosystem skills.",
+        "longDescription": "The public onmax/nuxt-skills collection, bundled for Codex with Vue, Nuxt, Nuxt modules, Nuxt UI, Nuxt Content, NuxtHub, tooling, testing, and documentation skills.",
+        "developerName": "Maxi",
+        "category": "Development",
+        "capabilities": [
+          "Read",
+          "Write",
+          "Review"
+        ],
+        "brandColor": "#00DC82",
+        "composerIcon": "./assets/nuxt-logo-dark.svg",
+        "logo": "./assets/nuxt-logo-dark.svg",
+        "defaultPrompt": [
+          "Help me build a Nuxt application",
+          "Help me configure a Nuxt module like Nuxt UI",
+          "Review this Vue component"
+        ]
+      }
+    }
+  }
+}

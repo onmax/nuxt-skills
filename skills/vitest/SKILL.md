@@ -1,74 +1,55 @@
 ---
 name: vitest
-description: Use when writing unit/integration tests for Vite projects - configure vitest.config.ts, write test suites with describe/it, create mock implementations with vi.fn and vi.mock, set up code coverage thresholds, and run tests in parallel
-license: MIT
+description: Vitest fast unit testing framework powered by Vite with Jest-compatible API. Use when writing tests, mocking, configuring coverage, or working with test filtering and fixtures.
+metadata:
+  author: Anthony Fu
+  version: "2026.6.22"
+  source: Generated from https://github.com/vitest-dev/vitest, scripts located at https://github.com/antfu/skills
 ---
 
-# Vitest
+Vitest is a next-generation testing framework powered by Vite. It provides a Jest-compatible API with native ESM, TypeScript, and JSX support out of the box. Vitest shares the same config, transformers, resolvers, and plugins with your Vite app.
 
-Vite-native testing framework with Jest-compatible API.
+**Key Features:**
+- Vite-native: Uses Vite's transformation pipeline for fast HMR-like test updates
+- Jest-compatible: Drop-in replacement for most Jest test suites
+- Smart watch mode: Only reruns affected tests based on module graph
+- Native ESM, TypeScript, JSX support without configuration
+- Multi-threaded workers for parallel test execution
+- Built-in coverage via V8 or Istanbul
+- Snapshot testing, mocking, and spy utilities
 
-## When to Use
+> The skill is based on Vitest 5.x (beta), generated at 2026-06-22.
 
-- Writing unit/integration tests for Vite projects
-- Testing Vue/React/Svelte components
-- Mocking modules, timers, or dates
-- Running concurrent/parallel tests
-- Type testing with TypeScript
+## Core
 
-## Quick Start
+| Topic | Description | Reference |
+|-------|-------------|-----------|
+| Configuration | Vitest and Vite config integration, defineConfig usage | [core-config](references/core-config.md) |
+| CLI | Command line interface, commands and options | [core-cli](references/core-cli.md) |
+| Test API | test/it function, modifiers like skip, only, concurrent | [core-test-api](references/core-test-api.md) |
+| Describe API | describe/suite for grouping tests and nested suites | [core-describe](references/core-describe.md) |
+| Expect API | Assertions with toBe, toEqual, matchers and asymmetric matchers | [core-expect](references/core-expect.md) |
+| Hooks | beforeEach, afterEach, beforeAll, afterAll, aroundEach | [core-hooks](references/core-hooks.md) |
 
-```bash
-npm i -D vitest
-```
+## Features
 
-```ts
-// vitest.config.ts
-import { defineConfig } from 'vitest/config'
+| Topic | Description | Reference |
+|-------|-------------|-----------|
+| Mocking | Mock functions, modules, timers, dates with vi utilities | [features-mocking](references/features-mocking.md) |
+| Snapshots | Snapshot testing with toMatchSnapshot and inline snapshots | [features-snapshots](references/features-snapshots.md) |
+| Coverage | Code coverage with V8 or Istanbul providers | [features-coverage](references/features-coverage.md) |
+| Test Context | Test fixtures, context.expect, test.extend for custom fixtures | [features-context](references/features-context.md) |
+| Concurrency | Concurrent tests, parallel execution, sharding | [features-concurrency](references/features-concurrency.md) |
+| Filtering | Filter tests by name, file patterns, tags | [features-filtering](references/features-filtering.md) |
+| Test Tags | Label tests with tags to filter runs and apply shared options | [features-test-tags](references/features-test-tags.md) |
+| Reporters | Built-in reporters, default selection, CI/output config | [features-reporters](references/features-reporters.md) |
+| Benchmarking | Write benchmarks with the bench fixture (Tinybench) | [features-benchmarking](references/features-benchmarking.md) |
 
-export default defineConfig({
-  test: {
-    globals: true,
-    environment: 'node',  // or 'jsdom' for DOM tests
-  },
-})
-```
+## Advanced
 
-```ts
-// example.test.ts
-import { describe, expect, it, vi } from 'vitest'
-
-describe('math', () => {
-  it('adds numbers', () => {
-    expect(1 + 1).toBe(2)
-  })
-})
-```
-
-## Reference Files
-
-| Task                                     | File                                    |
-| ---------------------------------------- | --------------------------------------- |
-| Configuration, CLI, projects             | [config.md](references/config.md)       |
-| test/describe, hooks, fixtures           | [test-api.md](references/test-api.md)   |
-| vi.fn, vi.mock, timers, spies            | [mocking.md](references/mocking.md)     |
-| expect, snapshots, coverage, filtering   | [utilities.md](references/utilities.md) |
-| Environments, type testing, browser mode | [advanced.md](references/advanced.md)   |
-
-## Loading Files
-
-**Consider loading these reference files based on your task:**
-
-- [ ] [references/config.md](references/config.md) - if setting up vitest.config.ts, CLI, or workspace projects
-- [ ] [references/test-api.md](references/test-api.md) - if writing test/describe blocks, using hooks, or test fixtures
-- [ ] [references/mocking.md](references/mocking.md) - if mocking modules, timers, dates, or using spies
-- [ ] [references/utilities.md](references/utilities.md) - if writing assertions, snapshots, or configuring coverage
-- [ ] [references/advanced.md](references/advanced.md) - if configuring test environments, type testing, or browser mode
-
-**DO NOT load all files at once.** Load only what's relevant to your current task.
-
-## Cross-Skill References
-
-- **Vue component testing** → Use `vue` skill for component patterns
-- **Library testing** → Use `ts-library` skill for library patterns
-- **Vite configuration** → Use `vite` skill for shared config
+| Topic | Description | Reference |
+|-------|-------------|-----------|
+| Vi Utilities | vi helper: mock, spyOn, fake timers, hoisted, waitFor | [advanced-vi](references/advanced-vi.md) |
+| Environments | Test environments: node, jsdom, happy-dom, custom | [advanced-environments](references/advanced-environments.md) |
+| Type Testing | Type-level testing with expectTypeOf and assertType | [advanced-type-testing](references/advanced-type-testing.md) |
+| Projects | Multi-project workspaces, different configs per project | [advanced-projects](references/advanced-projects.md) |

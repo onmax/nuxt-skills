@@ -1,0 +1,5 @@
+interface:
+  display_name: "Vueuse Functions"
+  short_description: "Apply VueUse composables where appropriate to build concise, maintainable Vue.js / Nuxt features."
+policy:
+  allow_implicit_invocation: false

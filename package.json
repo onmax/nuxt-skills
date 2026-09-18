@@ -8,8 +8,8 @@
     "lint:fix": "eslint . --fix",
     "typecheck": "tsc --noEmit",
     "generate:reka-ui": "tsx skills/reka-ui/scripts/generate-components.ts",
-    "generate:nuxt-ui": "tsx skills/nuxt-ui/scripts/generate-components.ts",
-    "generate": "pnpm generate:reka-ui && pnpm generate:nuxt-ui"
+    "generate": "pnpm generate:reka-ui",
+    "bundle:ecosystem": "node scripts/bundle-ecosystem-skills.mjs"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^4.11.0",

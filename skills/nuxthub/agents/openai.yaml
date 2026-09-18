@@ -1,0 +1,5 @@
+interface:
+  display_name: "Nuxthub"
+  short_description: "Use when building NuxtHub v0.10.6 applications - provides database (Drizzle ORM with sqlite/postgresql/mysql), KV storage,..."
+policy:
+  allow_implicit_invocation: false

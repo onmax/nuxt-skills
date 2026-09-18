@@ -1,0 +1,5 @@
+interface:
+  display_name: "Nuxt Studio"
+  short_description: "Configure and operate the self-hosted Nuxt Studio editor for Nuxt Content."
+policy:
+  allow_implicit_invocation: false

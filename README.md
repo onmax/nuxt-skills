@@ -56,6 +56,17 @@ An alternative for Claude Code users:
 
 Claude Code installs Nuxt Skills as one plugin and dynamically discovers all included skill entries.
 
+### Codex plugin marketplace
+
+Install the Codex plugin from this repository's marketplace source:
+
+```bash
+codex plugin marketplace add onmax/nuxt-skills
+codex plugin add nuxt-skills@nuxt-skills
+```
+
+See the [Codex plugin manifest](.codex-plugin/plugin.json) and [marketplace source](https://github.com/onmax/nuxt-skills) for the published metadata.
+
 ### Manual Installation
 
 Clone the repository and copy skill folders to your agent's skills directory:
@@ -70,27 +81,7 @@ Clone the repository and copy skill folders to your agent's skills directory:
 
 ## Skills
 
-| Skill                         | Description                                                                             |
-| ----------------------------- | --------------------------------------------------------------------------------------- |
-| **vue**                       | Vue 3 Composition API, components, composables, testing                                 |
-| **nuxt**                      | Nuxt 4+ server routes, routing, middleware, config                                      |
-| **nuxt-modules**              | Creating Nuxt modules with defineNuxtModule, Kit utilities, testing                     |
-| **nuxthub**                   | NuxtHub v0.10 database, KV, blob, cache, multi-cloud                                    |
-| **nuxt-content**              | Nuxt Content collections, schemas, queries, navigation, search, MDC, and deployment     |
-| **nuxt-studio**               | Nuxt Studio setup, auth, visual editing, drafts, media, AI, and Git publishing          |
-| **nuxt-ui**                   | Nuxt UI v4 components, theming, forms, overlays, composables                            |
-| **nuxt-i18n**                 | Nuxt I18n locales, messages, routing, language switching, fallbacks, and locale SEO     |
-| **reka-ui**                   | Reka UI headless Vue components, accessible primitives, props/emits/slots               |
-| **document-writer**           | Writing documentation for Nuxt ecosystem - MDC, style, structure, code examples         |
-| **ts-library**                | TypeScript library authoring - exports, tsdown, API patterns, type tricks, CI           |
-| **motion**                    | Motion Vue animations - motion component, composables, scroll, gestures                 |
-| **nuxt-seo**                  | Nuxt SEO meta-module - robots, sitemap, og-image, schema-org, site config               |
-| **vitest**                    | Vitest testing - test API, mocking, coverage, type testing, environments                |
-| **vite**                      | Vite build tool - config, plugins, HMR, SSR, library mode, performance                  |
-| **pnpm**                      | pnpm package manager - workspaces, catalogs, CLI commands, CI/CD                        |
-| **tsdown**                    | tsdown bundler - TypeScript libraries, DTS generation, package validation               |
-| **tresjs**                    | TresJS 3D framework - TresCanvas, Cientos helpers, post-processing effects              |
-| **writing-web-documentation** | Write and review developer docs - page types, house style, templates, web-project rules |
+The complete skill list, including provenance links for every bundled or hand-authored skill, is maintained in the generated [skill catalog](#skill-catalog) below.
 
 ## How Skills Work
 
@@ -112,43 +103,31 @@ Follows [agentskills](https://github.com/agentskills/agentskills) standard forma
 
 ```
 nuxt-skills/
-├── skills/                 # Skills (agentskills format)
-│   ├── vue/
-│   │   ├── SKILL.md        # Entry point with frontmatter
-│   │   └── references/     # Sub-files loaded on-demand
-│   ├── nuxt/
-│   ├── nuxt-modules/
-│   ├── nuxthub/
-│   ├── nuxt-content/
-│   ├── nuxt-studio/
-│   ├── nuxt-ui/
-│   ├── nuxt-i18n/
-│   ├── reka-ui/
-│   ├── document-writer/
-│   ├── ts-library/
-│   ├── motion/
-│   ├── nuxt-seo/
-│   ├── vitest/
-│   ├── vite/
-│   ├── pnpm/
-│   ├── tsdown/
-│   ├── tresjs/
-│   └── writing-web-documentation/
-└── .claude-plugin/
-    ├── plugin.json         # Claude Code plugin manifest
-    └── marketplace.json    # Claude Code marketplace
+├── plugin.json             # Portable Agent Plugins manifest
+├── mcp.json                # Portable Nuxt MCP configuration
+├── skills/                 # Materialized manual and ecosystem skills
+├── ecosystem-skills.json   # Upstream skill sources and selected paths
+├── .claude-plugin/         # Claude Code manifest and marketplace metadata
+└── .codex-plugin/          # Codex compatibility manifest
 ```
 
 ## Automated Maintenance
 
 Skills are kept up-to-date via GitHub Actions:
 
-| Workflow                  | Schedule              | Purpose                                                            |
-| ------------------------- | --------------------- | ------------------------------------------------------------------ |
-| **update-skills.yml**     | Weekly (Monday)       | Regenerates reka-ui and nuxt-ui docs from upstream                 |
-| **skill-maintenance.yml** | Biweekly (1st & 15th) | Claude analyzes upstream changelogs, creates PRs if updates needed |
+| Workflow                        | Schedule              | Purpose                                                                                             |
+| ------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------- |
+| **update-skills.yml**           | Weekly (Monday)       | Regenerates reka-ui docs from upstream                                                             |
+| **skill-maintenance.yml**       | Biweekly (1st & 15th) | Claude analyzes upstream changelogs, creates PRs if updates needed                                  |
+| **bundle-ecosystem-skills.yml** | Weekly (Monday)       | Replaces configured local skills with upstream ecosystem copies, validates them, and pushes changes |
 
 The maintenance workflow uses [claude-code-action](https://github.com/anthropics/claude-code-action) to intelligently detect breaking changes, new features, and deprecations from upstream sources.
+
+The ecosystem bundle is configured in [`ecosystem-skills.json`](ecosystem-skills.json). It records the upstream repositories and skill names included in the Claude and Codex plugin. `ecosystem-skills.lock.json` records the exact source revisions used for each bundle.
+
+## Nuxt module skill discovery
+
+The Nuxt-specific sources follow the discovery model used by [Nuxt Skill Hub](https://nuxt-skill.onmax.me/) and its [resolver](https://github.com/onmax/nuxt-skill-hub): prefer a skill shipped by the package, then check the package's `.well-known/skills` publication, then use a repository path or fallback path. Configured sources live in `ecosystem-skills.json`; discovered sources and exact revisions are recorded in `ecosystem-skills.lock.json` so CI can materialize the bundle reproducibly.
 
 ## Resources
 
@@ -164,8 +143,43 @@ VueUse maintains its own current skill, so install it directly with `npx skills 
 ## Acknowledgments
 
 - **vue** skill gotchas from [vuejs-ai/skills](https://github.com/vuejs-ai/skills) vue-best-practices (200+ rules)
-- **vitest**, **vite**, **pnpm**, **tsdown** skills from [@antfu](https://github.com/antfu)'s [skills](https://github.com/antfu/skills)
+- **vitest** and **vite** skills from [@antfu](https://github.com/antfu)'s [skills](https://github.com/antfu/skills)
 
 ## License
 
 MIT
+
+<!-- BEGIN GENERATED SKILL CATALOG -->
+## Skill catalog
+
+Every skill in the plugin is listed below with its provenance. The table is regenerated by `pnpm bundle:ecosystem`.
+
+| Skill | Provenance |
+| --- | --- |
+| [`arkenv`](skills/arkenv/) | [Bundled from nuxt-modules/yamcodes/arkenv](https://github.com/yamcodes/arkenv/tree/4465170dd36d9c0dddfdee4cf4134076785850df/skills/arkenv) |
+| [`comark`](skills/comark/) | [Bundled from nuxt-modules/comarkdown/comark](https://github.com/comarkdown/comark/tree/9bcbbfd427c647e5f7ebaf4a43b191ba01b747c1/docs/skills/comark) |
+| [`nitro`](skills/nitro/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/nitro) |
+| [`nuxt`](skills/nuxt/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/nuxt) |
+| [`nuxt-better-auth`](skills/nuxt-better-auth/) | [Bundled from nuxt-modules/nuxt-modules/better-auth](https://github.com/nuxt-modules/better-auth/tree/4e0b7cc20bd23ebaa721c4a1dfce51a281b9e750/docs/public/.well-known/skills/nuxt-better-auth) |
+| [`nuxt-content`](skills/nuxt-content/) | Manually written in this repository. |
+| [`nuxt-i18n`](skills/nuxt-i18n/) | Manually written in this repository. |
+| [`nuxt-modules`](skills/nuxt-modules/) | Manually written in this repository. |
+| [`nuxt-seo`](skills/nuxt-seo/) | Manually written in this repository. |
+| [`nuxt-studio`](skills/nuxt-studio/) | Manually written in this repository. |
+| [`nuxt-ui`](skills/nuxt-ui/) | [Bundled from nuxt-modules/nuxt/ui](https://github.com/nuxt/ui/tree/b3d4342d9b588b85c69410dd14f0f7bba4a83adb/skills/nuxt-ui) |
+| [`nuxt-users`](skills/nuxt-users/) | [Bundled from nuxt-modules/rrd108/nuxt-users](https://github.com/rrd108/nuxt-users/tree/ac0b122c6f92ec001ed30bdec5637939570f587f/skills/nuxt-users) |
+| [`nuxthub`](skills/nuxthub/) | Manually written in this repository. |
+| [`pinia`](skills/pinia/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/pinia) |
+| [`regle`](skills/regle/) | [Bundled from nuxt-modules/victorgarciaesgi/regle](https://github.com/victorgarciaesgi/regle/tree/0df09b530955e2e54d0f3b931346ff33f8e19834/skills/regle) |
+| [`reka-ui`](skills/reka-ui/) | Manually written in this repository. |
+| [`unocss`](skills/unocss/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/unocss) |
+| [`vite`](skills/vite/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/vite) |
+| [`vitest`](skills/vitest/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/vitest) |
+| [`vue`](skills/vue/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/vue) |
+| [`vue-best-practices`](skills/vue-best-practices/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/vue-best-practices) |
+| [`vue-debug-guides`](skills/vue-debug-guides/) | [Bundled from vuejs-ai/skills](https://github.com/vuejs-ai/skills/tree/c9d355ff23f654309dd02006be671859df0a134c/skills/vue-debug-guides) |
+| [`vue-router-best-practices`](skills/vue-router-best-practices/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/vue-router-best-practices) |
+| [`vue-testing-best-practices`](skills/vue-testing-best-practices/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/vue-testing-best-practices) |
+| [`vueuse-functions`](skills/vueuse-functions/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/vueuse-functions) |
+
+<!-- END GENERATED SKILL CATALOG -->

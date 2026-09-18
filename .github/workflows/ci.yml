@@ -7,10 +7,12 @@ on:
     branches: [main]
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   ci:
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -28,6 +30,7 @@ jobs:
 
       - name: Commit lint fixes
         uses: stefanzweifel/git-auto-commit-action@v5
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         with:
           commit_message: 'chore: auto-fix lint errors'
           file_pattern: '*.md skills/**/*.md'

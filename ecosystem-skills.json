@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "exclude": [
+    "solar-icons",
+    "workflow"
+  ],
+  "sources": [
+    {
+      "name": "antfu/skills",
+      "repository": "https://github.com/antfu/skills.git",
+      "root": "skills",
+      "include": [
+        "nitro",
+        "nuxt",
+        "pinia",
+        "unocss",
+        "vite",
+        "vitest",
+        "vue",
+        "vue-best-practices",
+        "vue-router-best-practices",
+        "vue-testing-best-practices",
+        "vueuse-functions"
+      ]
+    },
+    {
+      "name": "vuejs-ai/skills",
+      "repository": "https://github.com/vuejs-ai/skills.git",
+      "root": "skills",
+      "include": [
+        "vue-debug-guides"
+      ]
+    }
+  ]
+}
