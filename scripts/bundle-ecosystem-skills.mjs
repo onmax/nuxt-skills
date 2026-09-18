@@ -136,8 +136,8 @@ async function fetchText(url) {
       return null
     return await response.text()
   }
-  catch {
-    return null
+  catch (error) {
+    throw new Error(`Unable to fetch ecosystem resource: ${url}`, { cause: error })
   }
 }
 
