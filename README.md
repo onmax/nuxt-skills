@@ -103,9 +103,12 @@ Follows [agentskills](https://github.com/agentskills/agentskills) standard forma
 
 ```
 nuxt-skills/
+├── plugin.json             # Portable Agent Plugins manifest
+├── mcp.json                # Portable Nuxt MCP configuration
 ├── skills/                 # Materialized manual and ecosystem skills
 ├── ecosystem-skills.json   # Upstream skill sources and selected paths
-└── .codex-plugin/          # Codex plugin manifest
+├── .claude-plugin/         # Claude Code manifest and marketplace metadata
+└── .codex-plugin/          # Codex compatibility manifest
 ```
 
 ## Automated Maintenance

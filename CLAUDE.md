@@ -12,8 +12,10 @@ Follows [agentskills](https://github.com/agentskills/agentskills) standard forma
 
 - `skills/<name>/SKILL.md` - Entry point (frontmatter with name/description/license)
 - `skills/<name>/references/*.md` - Sub-files loaded on-demand
+- `plugin.json` and `mcp.json` - Portable Agent Plugins manifest and Nuxt MCP configuration
 - `.claude-plugin/plugin.json` - Claude Code plugin manifest
 - `.claude-plugin/marketplace.json` - Claude Code marketplace manifest
+- `.codex-plugin/plugin.json` - Codex compatibility manifest
 
 ## MANDATORY: Before Starting Work
 
