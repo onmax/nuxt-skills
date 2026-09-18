@@ -111,6 +111,10 @@ The maintenance workflow uses [claude-code-action](https://github.com/anthropics
 
 The ecosystem bundle is configured in [`ecosystem-skills.json`](ecosystem-skills.json). It records the upstream repositories and skill names included in the Claude and Codex plugin. `ecosystem-skills.lock.json` records the exact source revisions used for each bundle.
 
+## Nuxt module skill discovery
+
+The Nuxt-specific sources follow the discovery model used by [Nuxt Skill Hub](https://nuxt-skill.onmax.me/) and its [resolver](https://github.com/onmax/nuxt-skill-hub): prefer a skill shipped by the package, then check the package's `.well-known/skills` publication, then use a repository path or curated mapping. The bundle keeps each resolved path explicit in `ecosystem-skills.json` so CI can materialize it reproducibly and the catalog can link to the exact upstream source.
+
 ## Resources
 
 VueUse maintains its own current skill, so install it directly with `npx skills add vueuse/skills` instead of relying on a generated copy here.
@@ -141,11 +145,14 @@ Every skill in the plugin is listed below with its provenance. The table is rege
 | [`antfu-design`](skills/antfu-design/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/antfu-design) |
 | [`comark`](skills/comark/) | [Bundled from comarkdown/comark](https://github.com/comarkdown/comark/tree/9bcbbfd427c647e5f7ebaf4a43b191ba01b747c1/docs/skills/comark) |
 | [`document-writer`](skills/document-writer/) | Manually written in this repository. |
+| [`kane50613-takumi`](skills/kane50613-takumi/) | [Bundled from nuxt-modules/og-image](https://github.com/nuxt-modules/og-image/tree/417139e430612ee4a1dcba1fd08afe25411ac7e8/.claude/skills/kane50613-takumi) |
+| [`lightningcss-skilld`](skills/lightningcss-skilld/) | [Bundled from nuxt-modules/og-image](https://github.com/nuxt-modules/og-image/tree/417139e430612ee4a1dcba1fd08afe25411ac7e8/.claude/skills/lightningcss-skilld) |
 | [`migrate-mdc-to-comark`](skills/migrate-mdc-to-comark/) | [Bundled from comarkdown/comark](https://github.com/comarkdown/comark/tree/9bcbbfd427c647e5f7ebaf4a43b191ba01b747c1/docs/skills/migrate-mdc-to-comark) |
 | [`nitro`](skills/nitro/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/nitro) |
 | [`nuxt`](skills/nuxt/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/nuxt) |
 | [`nuxt-better-auth`](skills/nuxt-better-auth/) | [Bundled from nuxt-modules/better-auth](https://github.com/nuxt-modules/better-auth/tree/4e0b7cc20bd23ebaa721c4a1dfce51a281b9e750/docs/public/.well-known/skills/nuxt-better-auth) |
 | [`nuxt-content`](skills/nuxt-content/) | Manually written in this repository. |
+| [`nuxt-fonts`](skills/nuxt-fonts/) | [Bundled from nuxt-modules/og-image](https://github.com/nuxt-modules/og-image/tree/417139e430612ee4a1dcba1fd08afe25411ac7e8/.claude/skills/nuxt-fonts) |
 | [`nuxt-i18n`](skills/nuxt-i18n/) | Manually written in this repository. |
 | [`nuxt-modules`](skills/nuxt-modules/) | Manually written in this repository. |
 | [`nuxt-seo`](skills/nuxt-seo/) | Manually written in this repository. |
@@ -154,14 +161,20 @@ Every skill in the plugin is listed below with its provenance. The table is rege
 | [`nuxt-test-utils-skilld`](skills/nuxt-test-utils-skilld/) | [Bundled from nuxt-modules/sitemap](https://github.com/nuxt-modules/sitemap/tree/ce81e848e7fd40149ed6080a84f65340389aa7c7/.claude/skills/nuxt-test-utils-skilld) |
 | [`nuxt-ui`](skills/nuxt-ui/) | [Bundled from nuxt/ui](https://github.com/nuxt/ui/tree/b3d4342d9b588b85c69410dd14f0f7bba4a83adb/skills/nuxt-ui) |
 | [`nuxthub`](skills/nuxthub/) | Manually written in this repository. |
+| [`parcel-bundler-lightningcss`](skills/parcel-bundler-lightningcss/) | [Bundled from nuxt-modules/og-image](https://github.com/nuxt-modules/og-image/tree/417139e430612ee4a1dcba1fd08afe25411ac7e8/.claude/skills/parcel-bundler-lightningcss) |
 | [`pinia`](skills/pinia/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/pinia) |
 | [`pnpm`](skills/pnpm/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/pnpm) |
 | [`reka-ui`](skills/reka-ui/) | Manually written in this repository. |
+| [`satori-skilld`](skills/satori-skilld/) | [Bundled from nuxt-modules/og-image](https://github.com/nuxt-modules/og-image/tree/417139e430612ee4a1dcba1fd08afe25411ac7e8/.claude/skills/satori-skilld) |
 | [`slidev`](skills/slidev/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/slidev) |
+| [`takumi-rs-core-skilld`](skills/takumi-rs-core-skilld/) | [Bundled from nuxt-modules/og-image](https://github.com/nuxt-modules/og-image/tree/417139e430612ee4a1dcba1fd08afe25411ac7e8/.claude/skills/takumi-rs-core-skilld) |
 | [`ts-library`](skills/ts-library/) | Manually written in this repository. |
 | [`tsdown`](skills/tsdown/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/tsdown) |
 | [`turborepo`](skills/turborepo/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/turborepo) |
+| [`unjs-fontaine`](skills/unjs-fontaine/) | [Bundled from nuxt-modules/og-image](https://github.com/nuxt-modules/og-image/tree/417139e430612ee4a1dcba1fd08afe25411ac7e8/.claude/skills/unjs-fontaine) |
+| [`unjs-unifont`](skills/unjs-unifont/) | [Bundled from nuxt-modules/og-image](https://github.com/nuxt-modules/og-image/tree/417139e430612ee4a1dcba1fd08afe25411ac7e8/.claude/skills/unjs-unifont) |
 | [`unocss`](skills/unocss/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/unocss) |
+| [`vercel-satori`](skills/vercel-satori/) | [Bundled from nuxt-modules/og-image](https://github.com/nuxt-modules/og-image/tree/417139e430612ee4a1dcba1fd08afe25411ac7e8/.claude/skills/vercel-satori) |
 | [`vite`](skills/vite/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/vite) |
 | [`vitepress`](skills/vitepress/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/vitepress) |
 | [`vitest`](skills/vitest/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/vitest) |

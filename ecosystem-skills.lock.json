@@ -24,6 +24,10 @@
     "nuxt-modules/sitemap": {
       "repository": "https://github.com/nuxt-modules/sitemap.git",
       "revision": "ce81e848e7fd40149ed6080a84f65340389aa7c7"
+    },
+    "nuxt-modules/og-image": {
+      "repository": "https://github.com/nuxt-modules/og-image.git",
+      "revision": "417139e430612ee4a1dcba1fd08afe25411ac7e8"
     }
   }
 }
