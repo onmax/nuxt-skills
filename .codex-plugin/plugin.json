@@ -1,0 +1,38 @@
+{
+  "name": "nuxt-skills",
+  "version": "0.1.0",
+  "description": "Vue, Nuxt, and Nuxt ecosystem skills for Codex.",
+  "author": {
+    "name": "Maxi",
+    "url": "https://github.com/onmax"
+  },
+  "homepage": "https://github.com/onmax/nuxt-skills",
+  "repository": "https://github.com/onmax/nuxt-skills",
+  "keywords": [
+    "nuxt",
+    "vue",
+    "nitro",
+    "typescript"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Nuxt",
+    "shortDescription": "Vue, Nuxt, and ecosystem skills.",
+    "longDescription": "The public onmax/nuxt-skills collection, bundled for Codex with Vue, Nuxt, Nuxt modules, Nuxt UI, Nuxt Content, NuxtHub, tooling, testing, and documentation skills.",
+    "developerName": "Maxi",
+    "category": "Development",
+    "capabilities": [
+      "Read",
+      "Write",
+      "Review"
+    ],
+    "brandColor": "#00DC82",
+    "composerIcon": "./assets/nuxt-logo-dark.svg",
+    "logo": "./assets/nuxt-logo-dark.svg",
+    "defaultPrompt": [
+      "Use the right Nuxt skill for this task.",
+      "Build or debug this Vue or Nuxt feature.",
+      "Review this change against Nuxt conventions."
+    ]
+  }
+}
