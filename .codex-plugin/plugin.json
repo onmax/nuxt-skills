@@ -30,9 +30,9 @@
     "composerIcon": "./assets/nuxt-logo-dark.svg",
     "logo": "./assets/nuxt-logo-dark.svg",
     "defaultPrompt": [
-      "Use the right Nuxt skill for this task.",
-      "Build or debug a Nuxt module or integration.",
-      "Review this change against Nuxt conventions."
+      "Help me build a Nuxt application",
+      "Help me configure a Nuxt module like Nuxt UI",
+      "Review this Vue component"
     ]
   }
 }
