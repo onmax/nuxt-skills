@@ -33,10 +33,6 @@
       "repository": "https://github.com/nuxt/ui.git",
       "revision": "b3d4342d9b588b85c69410dd14f0f7bba4a83adb"
     },
-    "nuxt-modules/vercel/workflow": {
-      "repository": "https://github.com/vercel/workflow.git",
-      "revision": "636169a066e90c184667ad7b0306050afd8dd497"
-    },
     "nuxt-modules/nuxt-modules/better-auth": {
       "repository": "https://github.com/nuxt-modules/better-auth.git",
       "revision": "4e0b7cc20bd23ebaa721c4a1dfce51a281b9e750"
@@ -61,7 +57,6 @@
     "regle": "nuxt-modules/victorgarciaesgi/regle",
     "solar-icons": "nuxt-modules/saoudi-h/solar-icons",
     "nuxt-ui": "nuxt-modules/nuxt/ui",
-    "workflow": "nuxt-modules/vercel/workflow",
     "nuxt-better-auth": "nuxt-modules/nuxt-modules/better-auth"
   }
 }

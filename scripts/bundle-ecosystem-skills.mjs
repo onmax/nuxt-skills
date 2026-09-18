@@ -17,10 +17,14 @@ const tempRoot = await mkdtemp(join(process.env.TMPDIR || '/tmp', 'nuxt-skills-'
 const previousLock = await readJsonFile(join(root, 'ecosystem-skills.lock.json'))
 const lock = { version: config.version, sources: {}, skills: {} }
 const bumpPlugin = process.argv.includes('--bump-plugin')
+const excludedSkillNames = new Set(config.exclude || [])
 const configuredSkillNames = new Set(config.sources.flatMap(source => source.include.map(entry => typeof entry === 'string' ? entry : entry.name)))
 const discoveredSources = (await discoverNuxtModuleSources()).map(source => ({
   ...source,
-  include: source.include.filter(entry => !configuredSkillNames.has(typeof entry === 'string' ? entry : entry.name)),
+  include: source.include.filter((entry) => {
+    const name = typeof entry === 'string' ? entry : entry.name
+    return !configuredSkillNames.has(name) && !excludedSkillNames.has(name)
+  }),
 })).filter(source => source.include.length)
 const sources = [...config.sources, ...discoveredSources]
 const currentSkillNames = new Set(sources.flatMap(source => source.include.map(entry => typeof entry === 'string' ? entry : entry.name)))

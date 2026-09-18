@@ -168,6 +168,5 @@ Every skill in the plugin is listed below with its provenance. The table is rege
 | [`vue-router-best-practices`](skills/vue-router-best-practices/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/vue-router-best-practices) |
 | [`vue-testing-best-practices`](skills/vue-testing-best-practices/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/vue-testing-best-practices) |
 | [`vueuse-functions`](skills/vueuse-functions/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/vueuse-functions) |
-| [`workflow`](skills/workflow/) | [Bundled from nuxt-modules/vercel/workflow](https://github.com/vercel/workflow/tree/636169a066e90c184667ad7b0306050afd8dd497/skills/workflow) |
 
 <!-- END GENERATED SKILL CATALOG -->

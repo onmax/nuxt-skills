@@ -1,5 +1,8 @@
 {
   "version": 1,
+  "exclude": [
+    "workflow"
+  ],
   "sources": [
     {
       "name": "antfu/skills",
