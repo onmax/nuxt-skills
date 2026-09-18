@@ -76,17 +76,17 @@ export default defineComponent({
 
 ## Common DOM Event Types
 
-| Event Type      | Use For                                       |
-| --------------- | --------------------------------------------- |
-| `Event`         | Generic events, custom events                 |
-| `MouseEvent`    | click, dblclick, mouseenter, mouseleave, etc. |
-| `KeyboardEvent` | keydown, keyup, keypress                      |
-| `InputEvent`    | input (modern browsers)                       |
-| `FocusEvent`    | focus, blur                                   |
-| `SubmitEvent`   | form submit                                   |
-| `DragEvent`     | drag, drop, dragenter, dragover               |
-| `TouchEvent`    | touchstart, touchend, touchmove               |
-| `WheelEvent`    | wheel                                         |
+| Event Type | Use For |
+|------------|---------|
+| `Event` | Generic events, custom events |
+| `MouseEvent` | click, dblclick, mouseenter, mouseleave, etc. |
+| `KeyboardEvent` | keydown, keyup, keypress |
+| `InputEvent` | input (modern browsers) |
+| `FocusEvent` | focus, blur |
+| `SubmitEvent` | form submit |
+| `DragEvent` | drag, drop, dragenter, dragover |
+| `TouchEvent` | touchstart, touchend, touchmove |
+| `WheelEvent` | wheel |
 
 ## Type Assertions for event.target
 

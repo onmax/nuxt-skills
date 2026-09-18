@@ -20,7 +20,6 @@ notesAutoRuby:
 ## Example
 
 Notes:
-
 ```md
 <!--
 私は日本語を勉強しています。

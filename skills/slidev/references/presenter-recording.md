@@ -20,7 +20,6 @@ Click the camera icon in navigation bar to show camera overlay.
 Click the video icon in navigation bar.
 
 Options:
-
 - Camera embedded in slides
 - Separate video files for camera and slides
 

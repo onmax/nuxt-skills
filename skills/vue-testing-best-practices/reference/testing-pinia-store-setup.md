@@ -22,7 +22,6 @@ Use `@pinia/testing` package with `createTestingPinia` for component tests and `
 - [ ] Use `stubActions: false` when you need real action execution
 
 **Incorrect:**
-
 ```javascript
 import { mount } from '@vue/test-utils'
 import UserProfile from './UserProfile.vue'
@@ -45,7 +44,6 @@ test('user store actions', () => {
 ```
 
 **Correct - Component Testing:**
-
 ```javascript
 import { mount } from '@vue/test-utils'
 import { createTestingPinia } from '@pinia/testing'
@@ -90,7 +88,6 @@ test('calls logout action', async () => {
 ```
 
 **Correct - Store Unit Testing:**
-
 ```javascript
 import { describe, it, expect, beforeEach, vi } from 'vitest'
 import { setActivePinia, createPinia } from 'pinia'
@@ -226,7 +223,6 @@ test('subscription triggers on state change', () => {
 ```
 
 ## Reference
-
 - [Pinia Testing Guide](https://pinia.vuejs.org/cookbook/testing.html)
 - [@pinia/testing Package](https://www.npmjs.com/package/@pinia/testing)
 - [Vue Test Utils - Plugins](https://test-utils.vuejs.org/guide/advanced/plugins.html)

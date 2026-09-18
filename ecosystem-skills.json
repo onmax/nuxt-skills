@@ -38,12 +38,6 @@
       ]
     },
     {
-      "name": "nuxt/ui",
-      "repository": "https://github.com/nuxt/ui.git",
-      "root": "skills",
-      "include": ["nuxt-ui"]
-    },
-    {
       "name": "comarkdown/comark",
       "repository": "https://github.com/comarkdown/comark.git",
       "root": "docs/skills",

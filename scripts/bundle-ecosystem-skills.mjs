@@ -13,23 +13,37 @@ const configPath = join(root, 'ecosystem-skills.json')
 const config = JSON.parse(await readFile(configPath, 'utf8'))
 const destination = join(root, 'skills')
 const tempRoot = await mkdtemp(join(process.env.TMPDIR || '/tmp', 'nuxt-skills-'))
-const lock = { version: config.version, sources: {} }
+const previousLock = await readJsonFile(join(root, 'ecosystem-skills.lock.json'))
+const lock = { version: config.version, sources: {}, skills: {} }
 const bumpPlugin = process.argv.includes('--bump-plugin')
-
+const configuredSkillNames = new Set(config.sources.flatMap(source => source.include.map(entry => typeof entry === 'string' ? entry : entry.name)))
+const discoveredSources = (await discoverNuxtModuleSources()).map(source => ({
+  ...source,
+  include: source.include.filter(entry => !configuredSkillNames.has(typeof entry === 'string' ? entry : entry.name)),
+})).filter(source => source.include.length)
+const sources = [...config.sources, ...discoveredSources]
+const currentSkillNames = new Set(sources.flatMap(source => source.include.map(entry => typeof entry === 'string' ? entry : entry.name)))
+for (const skillName of Object.keys(previousLock?.skills || {})) {
+  if (!currentSkillNames.has(skillName))
+    await rm(join(destination, skillName), { recursive: true, force: true })
+}
 try {
-  for (const source of config.sources) {
+  for (const source of sources) {
     const checkout = join(tempRoot, source.name.replaceAll('/', '-'))
     await exec('git', ['clone', '--depth', '1', source.repository, checkout], { cwd: root })
     const { stdout: revision } = await exec('git', ['rev-parse', 'HEAD'], { cwd: checkout })
     lock.sources[source.name] = { repository: source.repository, revision: revision.trim() }
 
-    for (const skillName of source.include) {
-      const sourceDir = join(checkout, source.root, skillName)
+    for (const entry of source.include) {
+      const skillName = typeof entry === 'string' ? entry : entry.name
+      const sourcePath = typeof entry === 'string' ? entry : entry.path
+      const sourceDir = join(checkout, source.root, sourcePath)
       const skillFile = join(sourceDir, 'SKILL.md')
       if (!existsSync(skillFile))
-        throw new Error(`${source.name}: missing ${source.root}/${skillName}/SKILL.md`)
+        throw new Error(`${source.name}: missing ${source.root}/${sourcePath}/SKILL.md`)
 
       const targetDir = join(destination, skillName)
+      lock.skills[skillName] = source.name
       await rm(targetDir, { recursive: true, force: true })
       await cp(sourceDir, targetDir, {
         recursive: true,
@@ -83,12 +97,13 @@ async function updateReadme(bundleLock) {
   const readme = await readFile(readmePath, 'utf8')
   const rows = []
   const bundled = new Map()
-  for (const source of config.sources) {
+  for (const source of sources) {
     const revision = bundleLock.sources[source.name].revision
-    for (const skillName of source.include) {
+    for (const entry of source.include) {
+      const skillName = typeof entry === 'string' ? entry : entry.name
+      const sourcePath = typeof entry === 'string' ? entry.path || entry : entry.path
       const repository = source.repository.replace(/\.git$/, '')
-      const sourcePath = `${source.root}/${skillName}`
-      const sourceUrl = `${repository}/tree/${revision}/${sourcePath}`
+      const sourceUrl = `${repository}/tree/${revision}/${source.root === '.' ? '' : `${source.root}/`}${sourcePath}`
       bundled.set(skillName, `[Bundled from ${source.name}](${sourceUrl})`)
     }
   }
@@ -113,6 +128,152 @@ async function updateReadme(bundleLock) {
   await writeFile(readmePath, nextReadme)
 }
 
+async function fetchText(url) {
+  try {
+    const response = await fetch(url, { headers: { 'user-agent': 'nuxt-skills-bundler' } })
+    if (!response.ok)
+      return null
+    return await response.text()
+  }
+  catch {
+    return null
+  }
+}
+
+async function readJsonFile(path) {
+  try {
+    return JSON.parse(await readFile(path, 'utf8'))
+  }
+  catch {
+    return null
+  }
+}
+
+async function fetchJson(url) {
+  const text = await fetchText(url)
+  if (!text)
+    return null
+  try { return JSON.parse(text) }
+  catch { return null }
+}
+
+function githubRepo(value) {
+  if (typeof value !== 'string')
+    return null
+  const match = value.match(/github\.com[/:]([^/]+\/[^/#.]+?)(?:\.git|[#/]|$)/i)
+  return match?.[1] || null
+}
+
+function moduleSlug(npm) {
+  if (typeof npm !== 'string')
+    return null
+  const name = npm.split('/').pop()
+  return name?.startsWith('nuxt-') ? name : name ? `nuxt-${name}` : null
+}
+
+async function findSkillPath(repo, ref, candidate) {
+  const text = await fetchText(`https://raw.githubusercontent.com/${repo}/${ref}/${candidate}/SKILL.md`)
+  return text && /^---\s*\n/.test(text) && /^description:/m.test(text) ? candidate : null
+}
+
+async function discoverNuxtModuleSources() {
+  const html = await fetchText('https://nuxt.com/modules')
+  const payloadPath = html?.match(/src="([^"]*modules\/_payload\.json[^"]*)"/)?.[1]
+  if (!payloadPath)
+    return []
+  const payload = await fetchJson(`https://nuxt.com${payloadPath}`)
+  if (!Array.isArray(payload))
+    return []
+
+  const deref = value => typeof value === 'number' && value >= 0 && value < payload.length ? payload[value] : value
+  const moduleIndex = payload.findIndex(value => value && typeof value === 'object' && !Array.isArray(value) && 'modules' in value)
+  const moduleRefs = moduleIndex >= 0 ? deref(payload[moduleIndex].modules) : []
+  const modules = (Array.isArray(moduleRefs) ? moduleRefs : []).map(ref => deref(ref)).map(module => {
+    if (!module || typeof module !== 'object')
+      return null
+    return { ...module, npm: deref(module.npm), github: deref(module.github) }
+  }).filter(module => module && typeof module.github === 'string' && typeof module.npm === 'string')
+  const sources = []
+  const seen = new Set()
+  const uniqueModules = modules.filter(module => {
+    const repo = githubRepo(module.github)
+    if (!repo || seen.has(repo))
+      return false
+    seen.add(repo)
+    return true
+  })
+  const resolveModule = async (module) => {
+    const repo = githubRepo(module.github)
+    if (!repo)
+      return null
+    const refs = ['main', 'master']
+    let found = []
+    let foundRoot = '.'
+    for (const ref of refs) {
+      const pkg = await fetchJson(`https://raw.githubusercontent.com/${repo}/${ref}/package.json`)
+      const declarations = pkg?.agentskills?.skills
+      if (Array.isArray(declarations)) {
+        const candidates = declarations
+          .filter(skill => typeof skill?.name === 'string' && typeof skill?.path === 'string')
+        for (const skill of candidates) {
+          if (await findSkillPath(repo, ref, skill.path))
+            found.push({ name: skill.name, path: skill.path })
+        }
+        if (found.length)
+          break
+      }
+    }
+    if (!found.length) {
+      const indexRoots = ['.well-known/skills', 'docs/public/.well-known/skills', 'public/.well-known/skills']
+      for (const ref of refs) {
+        for (const indexRoot of indexRoots) {
+          const index = await fetchJson(`https://raw.githubusercontent.com/${repo}/${ref}/${indexRoot}/index.json`)
+          const entries = Array.isArray(index?.skills) ? index.skills : []
+          const skills = entries.filter(skill => typeof skill?.name === 'string' && Array.isArray(skill.files) && skill.files.includes('SKILL.md'))
+          if (skills.length) {
+            const available = []
+            for (const skill of skills) {
+              if (await findSkillPath(repo, ref, `${indexRoot}/${skill.name}`))
+                available.push({ name: skill.name, path: `${indexRoot}/${skill.name}` })
+            }
+            if (available.length) {
+              found = available
+              foundRoot = '.'
+              break
+            }
+          }
+        }
+        if (found.length)
+          break
+      }
+    }
+    if (!found.length) {
+      const slug = moduleSlug(module.npm)
+      for (const ref of refs) {
+        for (const path of [`skills/${slug}`, `.claude/skills/${slug}`, `.github/skills/${slug}`]) {
+          if (slug && await findSkillPath(repo, ref, path)) {
+            found.push({ name: slug, path })
+            break
+          }
+        }
+        if (found.length)
+          break
+      }
+    }
+    if (found.length) {
+      const source = { name: `nuxt-modules/${repo}`, repository: `https://github.com/${repo}.git`, root: foundRoot, include: found }
+      return source
+    }
+    return null
+  }
+  for (let index = 0; index < uniqueModules.length; index += 8) {
+    const batch = await Promise.all(uniqueModules.slice(index, index + 8).map(resolveModule))
+    sources.push(...batch.filter(Boolean))
+  }
+  console.log(`discovered ${sources.length} Nuxt module skill source(s) from ${modules.length} registered module(s)`)
+  return sources
+}
+
 async function normalizeMarkdown(dir) {
   for (const entry of await readdir(dir, { withFileTypes: true })) {
     const path = join(dir, entry.name)
@@ -121,7 +282,7 @@ async function normalizeMarkdown(dir) {
     }
     else if (entry.name.endsWith('.md')) {
       const content = await readFile(path, 'utf8')
-      let normalized = content.replace(/[ \t]+$/gm, '')
+      let normalized = content.replace(/[ \t]+$/gm, '').replace(/\n+$/, '\n')
       if (entry.name === 'SKILL.md' && normalized.startsWith('---\n')) {
         normalized = normalized.replace(/^(version|author):.*\n/gm, '')
       }

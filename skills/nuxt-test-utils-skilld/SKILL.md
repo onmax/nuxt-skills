@@ -28,7 +28,6 @@ skilld search "releases:deprecated" -p @nuxt/test-utils
 Filters: `docs:`, `issues:`, `releases:` prefix narrows by source type.
 
 <!-- skilld:api-changes -->
-
 ## API Changes
 
 This section documents version-specific API changes — prioritize recent major/minor releases.
@@ -62,11 +61,9 @@ This section documents version-specific API changes — prioritize recent major/
 - NEW: setupBun timeouts — v4.0 added support for setup and teardown timeouts configuration in `setupBun` (#1578) [source](./.skilld/releases/v4.0.0.md:L137)
 
 **Also changed:** Route sync emulation skipped when `NuxtPage` exists (v3.22) · Initial route change can be skipped via option (v3.22) · h3 v2 support (v3.23) · mount + render helpers unified logic (v3.22) · App context passed across mount + render helpers (v3.21)
-
 <!-- /skilld:api-changes -->
 
 <!-- skilld:best-practices -->
-
 ## Best Practices
 
 - Move Nuxt composable calls to `beforeAll` or `beforeEach` hooks, not describe block scope — Nuxt initialization moved to `beforeAll` in v4.0.0, causing describe-level composable calls to fail with "instance unavailable" error [source](./.skilld/releases/v4.0.0.md#later-environment-setup)

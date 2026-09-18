@@ -40,7 +40,6 @@ export default defineConfig({
 ```
 
 Responsive:
-
 ```html
 <article class="prose prose-sm md:prose-base lg:prose-lg">
   Responsive typography

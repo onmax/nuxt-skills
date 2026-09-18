@@ -111,11 +111,11 @@ wasm({
 })
 ```
 
-| Option        | Default             | Description                                                                        |
-| ------------- | ------------------- | ---------------------------------------------------------------------------------- |
-| `maxFileSize` | `14 * 1024`         | Max file size for inlining. Set to `0` to always copy.                             |
-| `fileName`    | `'[hash][extname]'` | Pattern for emitted WASM files                                                     |
-| `targetEnv`   | `'auto'`            | `'auto'` detects at runtime; `'browser'` omits Node builtins; `'node'` omits fetch |
+| Option | Default | Description |
+|--------|---------|-------------|
+| `maxFileSize` | `14 * 1024` | Max file size for inlining. Set to `0` to always copy. |
+| `fileName` | `'[hash][extname]'` | Pattern for emitted WASM files |
+| `targetEnv` | `'auto'` | `'auto'` detects at runtime; `'browser'` omits Node builtins; `'node'` omits fetch |
 
 ## Related Options
 

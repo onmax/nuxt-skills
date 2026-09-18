@@ -32,13 +32,11 @@ export default defineConfig({
 ### With Cleaning (Default)
 
 Before each build:
-
 1. All files in `outDir` are removed
 2. Fresh build starts with empty directory
 3. Only current build outputs remain
 
 **Benefits:**
-
 - No stale files
 - Predictable output
 - Clean slate each build
@@ -54,7 +52,6 @@ export default defineConfig({
 ```
 
 **Use when:**
-
 - Multiple builds to same directory
 - Incremental builds
 - Preserving other files
@@ -174,7 +171,6 @@ export default defineConfig((options) => ({
 ```
 
 **Result:**
-
 - First build: Clean
 - Subsequent rebuilds: Incremental
 

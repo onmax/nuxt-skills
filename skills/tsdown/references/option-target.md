@@ -36,12 +36,10 @@ export default defineConfig({
 ```
 
 **Result:**
-
 - No JavaScript downleveling
 - Modern features preserved (optional chaining `?.`, nullish coalescing `??`, etc.)
 
 **Use when:**
-
 - Targeting modern environments
 - Handling transformations elsewhere
 - Building libraries for further processing

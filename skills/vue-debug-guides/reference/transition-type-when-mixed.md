@@ -18,7 +18,6 @@ tags: [vue3, transition, animation, css, type, timing]
 - [ ] The type should match whichever animation/transition is longer or more important
 
 **Problematic Code:**
-
 ```vue
 <template>
   <!-- BAD: Both transition and animation present, Vue might pick wrong end event -->
@@ -63,7 +62,6 @@ tags: [vue3, transition, animation, css, type, timing]
 ```
 
 **Correct Code:**
-
 ```vue
 <template>
   <!-- GOOD: Explicitly specify that animation controls timing -->
@@ -110,7 +108,6 @@ tags: [vue3, transition, animation, css, type, timing]
 ## When to Use Each Type
 
 ### Use `type="animation"` when:
-
 - Your enter/leave effects use `@keyframes` animations
 - The animation is longer than any transitions
 - You want precise control over multi-step animations
@@ -133,7 +130,6 @@ tags: [vue3, transition, animation, css, type, timing]
 ```
 
 ### Use `type="transition"` when:
-
 - Your enter/leave effects use CSS `transition` property
 - You have decorative animations that shouldn't affect timing
 
@@ -173,5 +169,4 @@ tags: [vue3, transition, animation, css, type, timing]
 4. CSS classes remain applied after transition should be complete
 
 ## Reference
-
 - [Vue.js Transition Documentation](https://vuejs.org/guide/built-ins/transition.html#css-based-transitions)

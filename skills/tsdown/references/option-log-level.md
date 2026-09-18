@@ -43,12 +43,12 @@ export default defineConfig({
 
 ## Available Levels
 
-| Level    | Shows             | Use Case                   |
-| -------- | ----------------- | -------------------------- |
-| `silent` | Nothing           | CI/CD pipelines, scripting |
-| `error`  | Errors only       | Minimal output             |
-| `warn`   | Warnings + errors | Standard CI/CD             |
-| `info`   | All messages      | Development (default)      |
+| Level | Shows | Use Case |
+|-------|-------|----------|
+| `silent` | Nothing | CI/CD pipelines, scripting |
+| `error` | Errors only | Minimal output |
+| `warn` | Warnings + errors | Standard CI/CD |
+| `info` | All messages | Development (default) |
 
 ## Common Patterns
 

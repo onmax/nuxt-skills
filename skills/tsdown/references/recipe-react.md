@@ -74,7 +74,6 @@ export default defineConfig({
 ```
 
 **Characteristics:**
-
 - No `import React` needed
 - Smaller bundle size
 - React 17+ required
@@ -95,7 +94,6 @@ export default defineConfig({
 ```
 
 **Characteristics:**
-
 - Requires `import React from 'react'`
 - Compatible with older React versions
 

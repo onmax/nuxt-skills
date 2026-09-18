@@ -93,11 +93,11 @@ For pnpm, add before setup-node:
 
 Configure in dashboard:
 
-| Setting          | Value                  |
-| ---------------- | ---------------------- |
-| Build Command    | `npm run docs:build`   |
+| Setting | Value |
+|---------|-------|
+| Build Command | `npm run docs:build` |
 | Output Directory | `docs/.vitepress/dist` |
-| Node Version     | `20` (or above)        |
+| Node Version | `20` (or above) |
 
 **Warning:** Don't enable "Auto Minify" for HTML - it removes Vue hydration comments.
 
@@ -217,13 +217,13 @@ Place in `docs/public/_headers`:
 
 ## Other Platforms
 
-| Platform              | Guide                                                                        |
-| --------------------- | ---------------------------------------------------------------------------- |
-| Azure Static Web Apps | Set `app_location: /`, `output_location: docs/.vitepress/dist`               |
-| Surge                 | `npx surge docs/.vitepress/dist`                                             |
-| Heroku                | Use `heroku-buildpack-static`                                                |
-| Render                | Build: `npm run docs:build`, Publish: `docs/.vitepress/dist`                 |
-| Kinsta                | Follow [Kinsta docs](https://kinsta.com/docs/vitepress-static-site-example/) |
+| Platform | Guide |
+|----------|-------|
+| Azure Static Web Apps | Set `app_location: /`, `output_location: docs/.vitepress/dist` |
+| Surge | `npx surge docs/.vitepress/dist` |
+| Heroku | Use `heroku-buildpack-static` |
+| Render | Build: `npm run docs:build`, Publish: `docs/.vitepress/dist` |
+| Kinsta | Follow [Kinsta docs](https://kinsta.com/docs/vitepress-static-site-example/) |
 
 ## Key Points
 

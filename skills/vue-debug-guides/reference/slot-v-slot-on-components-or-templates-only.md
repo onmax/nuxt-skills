@@ -17,7 +17,6 @@ tags: [vue3, slots, v-slot, compilation-error, common-mistake]
 - [ ] For named slots, always use `<template #name>` syntax
 
 **Incorrect:**
-
 ```vue
 <template>
   <!-- BAD: v-slot on a native HTML element -->
@@ -40,7 +39,6 @@ tags: [vue3, slots, v-slot, compilation-error, common-mistake]
 These cause the error: `v-slot can only be used on components or <template> tags`
 
 **Correct:**
-
 ```vue
 <template>
   <!-- GOOD: v-slot on component element (default scoped slot) -->
@@ -73,7 +71,6 @@ These cause the error: `v-slot can only be used on components or <template> tags
 ## Common Scenarios
 
 ### Wrapping Slot Content in HTML
-
 If you need HTML wrappers around slot content, put them inside the template:
 
 ```vue
@@ -95,7 +92,6 @@ If you need HTML wrappers around slot content, put them inside the template:
 ```
 
 ### Multiple v-slot on Same Element
-
 Another error occurs when you have multiple v-slot directives - only the first is recognized:
 
 ```vue
@@ -113,15 +109,14 @@ Another error occurs when you have multiple v-slot directives - only the first i
 
 ## Valid v-slot Locations
 
-| Element Type     | v-slot Allowed? | Example                        |
-| ---------------- | --------------- | ------------------------------ |
-| Component        | Yes             | `<MyComponent v-slot="props">` |
-| `<template>`     | Yes             | `<template #header>`           |
-| `<div>`          | No              | Compilation error              |
-| `<span>`         | No              | Compilation error              |
-| Any HTML element | No              | Compilation error              |
+| Element Type | v-slot Allowed? | Example |
+|--------------|-----------------|---------|
+| Component | Yes | `<MyComponent v-slot="props">` |
+| `<template>` | Yes | `<template #header>` |
+| `<div>` | No | Compilation error |
+| `<span>` | No | Compilation error |
+| Any HTML element | No | Compilation error |
 
 ## Reference
-
 - [Vue.js Slots](https://vuejs.org/guide/components/slots.html)
 - [DeepScan - vue-misused-v-slot](https://deepscan.io/docs/rules/vue-misused-v-slot)

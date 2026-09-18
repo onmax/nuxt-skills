@@ -34,7 +34,6 @@ export default defineConfig({
 ### With Tree Shaking
 
 **Source:**
-
 ```ts
 // src/util.ts
 export function unused() {
@@ -51,7 +50,6 @@ hello(1)
 ```
 
 **Output:**
-
 ```js
 // dist/index.mjs
 function hello(x) {
@@ -65,7 +63,6 @@ hello(1)
 ### Without Tree Shaking
 
 **Output:**
-
 ```js
 // dist/index.mjs
 function unused() {
@@ -198,7 +195,6 @@ export default defineConfig({
 ```
 
 Users can import only what they need:
-
 ```ts
 import { onlyWhatINeed } from 'my-utils'
 ```

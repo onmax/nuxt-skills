@@ -484,13 +484,11 @@ import type {
 See the [test specifications](../../packages/comark/SPEC/) for examples of all supported syntax features.
 
 Run tests:
-
 ```bash
 pnpm test
 ```
 
 Run specific test:
-
 ```bash
 pnpm test -- tests/parse.test.ts
 ```
@@ -513,7 +511,6 @@ pnpm test -- tests/parse.test.ts
 5. **Developer Experience** - Full TypeScript support and comprehensive documentation
 
 **Choose Comark when you need:**
-
 - Markdown with custom components
 - Streaming/incremental parsing
 - Real-time markdown editors
@@ -524,7 +521,6 @@ pnpm test -- tests/parse.test.ts
 ---
 
 **Next Steps:**
-
 - 📝 [Learn Markdown Syntax](./references/markdown-syntax.md)
 - 🔧 [Master Parsing & AST](./references/parsing-ast.md)
 - ⚛️ [Explore Vue Rendering](./references/rendering-vue.md)

@@ -184,22 +184,20 @@ if (import.meta.env.DEV) {
 
 If you find yourself needing extensive debugging for state:
 
-| Use Provide/Inject          | Use Pinia                              |
-| --------------------------- | -------------------------------------- |
-| Component library internals | Application-wide state                 |
-| Theme/locale configuration  | User session data                      |
-| Form context                | Shopping cart                          |
-| Simple parent-child sharing | Complex state with actions             |
-| Plugin configuration        | State that needs time-travel debugging |
+| Use Provide/Inject | Use Pinia |
+|-------------------|-----------|
+| Component library internals | Application-wide state |
+| Theme/locale configuration | User session data |
+| Form context | Shopping cart |
+| Simple parent-child sharing | Complex state with actions |
+| Plugin configuration | State that needs time-travel debugging |
 
 Pinia provides excellent DevTools integration with:
-
 - State inspection
 - Time-travel debugging
 - Action logging
 - Hot module replacement
 
 ## Reference
-
 - [Vue DevTools](https://devtools.vuejs.org/)
 - [Pinia DevTools](https://pinia.vuejs.org/core-concepts/index.html#devtools)

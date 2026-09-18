@@ -78,7 +78,6 @@ const hello = 'world'
 ````
 
 With features:
-
 ````md
 ```ts {2,3}              // Line highlighting
 ```ts {1|2-3|all}        // Click-based highlighting
@@ -93,7 +92,6 @@ With features:
 Inline: `$E = mc^2$`
 
 Block:
-
 ```md
 $$
 \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
@@ -103,7 +101,6 @@ $$
 ## Diagrams
 
 Mermaid:
-
 ````md
 ```mermaid
 graph LR
@@ -112,7 +109,6 @@ graph LR
 ````
 
 PlantUML:
-
 ````md
 ```plantuml
 @startuml
@@ -152,7 +148,6 @@ src: ./pages/intro.md
 ```
 
 Import specific slides:
-
 ```md
 ---
 src: ./other.md#2,5-7

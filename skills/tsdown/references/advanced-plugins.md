@@ -34,10 +34,9 @@ export default defineConfig({
 })
 ```
 
-**Compatibility:** ✅ Most unplugin-\* plugins work
+**Compatibility:** ✅ Most unplugin-* plugins work
 
 **Examples:**
-
 - `unplugin-vue-components`
 - `unplugin-auto-import`
 - `unplugin-icons`

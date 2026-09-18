@@ -7,7 +7,6 @@
 ## Why This Matters
 
 In SSR applications, hydration mismatches cause:
-
 - Visual flickering as the client re-renders
 - Loss of state in affected components
 - Console warnings in development (silent failures in production)
@@ -136,12 +135,12 @@ onErrorCaptured((err) => {
 
 ## Common SSR + Suspense Issues
 
-| Issue                             | Cause                          | Solution                                |
-| --------------------------------- | ------------------------------ | --------------------------------------- |
-| Hydration mismatch                | Async chunk not loaded in time | Wrap with Suspense or use ClientOnly    |
-| Empty flash on Safari             | Slow chunk loading             | Preload critical chunks, use skeleton   |
-| useQuery after await error        | Vue context lost after await   | Put all useQuery calls before any await |
-| Immediate refetch after hydration | staleTime too low              | Set appropriate staleTime value         |
+| Issue | Cause | Solution |
+|-------|-------|----------|
+| Hydration mismatch | Async chunk not loaded in time | Wrap with Suspense or use ClientOnly |
+| Empty flash on Safari | Slow chunk loading | Preload critical chunks, use skeleton |
+| useQuery after await error | Vue context lost after await | Put all useQuery calls before any await |
+| Immediate refetch after hydration | staleTime too low | Set appropriate staleTime value |
 
 ## Key Points
 

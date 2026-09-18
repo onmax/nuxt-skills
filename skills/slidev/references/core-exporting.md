@@ -10,14 +10,12 @@ Export presentations to PDF, PPTX, PNG, or Markdown.
 ## Browser Exporter
 
 Access at `http://localhost:3030/export`:
-
 - Select format and options
 - Preview and download
 
 ## CLI Export
 
 Requires playwright:
-
 ```bash
 pnpm add -D playwright-chromium
 ```
@@ -53,7 +51,6 @@ slidev export --format md
 ### With Click Steps
 
 Export each click as separate page:
-
 ```bash
 slidev export --with-clicks
 ```
@@ -73,7 +70,6 @@ slidev export --range 1,4-7,10
 ### Table of Contents
 
 PDF with clickable outline:
-
 ```bash
 slidev export --with-toc
 ```
@@ -81,7 +77,6 @@ slidev export --with-toc
 ### Timeout
 
 For slow-rendering slides:
-
 ```bash
 slidev export --timeout 60000
 ```
@@ -89,7 +84,6 @@ slidev export --timeout 60000
 ### Wait
 
 Wait before capture:
-
 ```bash
 slidev export --wait 2000
 ```
@@ -97,7 +91,6 @@ slidev export --wait 2000
 ### Wait Until
 
 Wait condition:
-
 ```bash
 slidev export --wait-until networkidle   # Default
 slidev export --wait-until domcontentloaded
@@ -135,7 +128,6 @@ export:
 ### Missing Content
 
 Increase wait time:
-
 ```bash
 slidev export --wait 3000 --timeout 60000
 ```
@@ -151,7 +143,6 @@ Use system fonts or install emoji font on server.
 ### CI/CD Export
 
 Install playwright browsers:
-
 ```bash
 npx playwright install chromium
 ```

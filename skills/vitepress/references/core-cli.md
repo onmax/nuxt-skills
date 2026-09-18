@@ -24,14 +24,14 @@ vitepress dev docs
 
 **Options:**
 
-| Option          | Description                |
-| --------------- | -------------------------- |
-| `--open [path]` | Open browser on startup    |
-| `--port <port>` | Specify port number        |
-| `--base <path>` | Override base URL          |
-| `--cors`        | Enable CORS                |
-| `--strictPort`  | Exit if port is in use     |
-| `--force`       | Ignore cache and re-bundle |
+| Option | Description |
+|--------|-------------|
+| `--open [path]` | Open browser on startup |
+| `--port <port>` | Specify port number |
+| `--base <path>` | Override base URL |
+| `--cors` | Enable CORS |
+| `--strictPort` | Exit if port is in use |
+| `--force` | Ignore cache and re-bundle |
 
 ```bash
 vitepress dev docs --port 3000 --open
@@ -47,13 +47,13 @@ vitepress build docs
 
 **Options:**
 
-| Option                    | Description                             |
-| ------------------------- | --------------------------------------- |
-| `--base <path>`           | Override base URL                       |
-| `--target <target>`       | Transpile target (default: `modules`)   |
-| `--outDir <dir>`          | Output directory (relative to cwd)      |
-| `--assetsInlineLimit <n>` | Asset inline threshold in bytes         |
-| `--mpa`                   | Build in MPA mode (no client hydration) |
+| Option | Description |
+|--------|-------------|
+| `--base <path>` | Override base URL |
+| `--target <target>` | Transpile target (default: `modules`) |
+| `--outDir <dir>` | Output directory (relative to cwd) |
+| `--assetsInlineLimit <n>` | Asset inline threshold in bytes |
+| `--mpa` | Build in MPA mode (no client hydration) |
 
 ```bash
 vitepress build docs --outDir dist
@@ -69,10 +69,10 @@ vitepress preview docs
 
 **Options:**
 
-| Option          | Description         |
-| --------------- | ------------------- |
+| Option | Description |
+|--------|-------------|
 | `--port <port>` | Specify port number |
-| `--base <path>` | Override base URL   |
+| `--base <path>` | Override base URL |
 
 ```bash
 vitepress preview docs --port 4173
@@ -87,7 +87,6 @@ vitepress init
 ```
 
 This creates the basic file structure:
-
 - `.vitepress/config.js` - Configuration
 - `index.md` - Home page
 - Optional example pages

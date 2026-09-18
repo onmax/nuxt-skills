@@ -31,7 +31,6 @@ Hand-drawn style highlighting using Rough Notation.
 ```
 
 Custom color:
-
 ```html
 <span v-mark="{ color: '#234' }">Custom color</span>
 ```

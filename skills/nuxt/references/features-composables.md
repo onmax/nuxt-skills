@@ -292,7 +292,6 @@ export function useMyComposable() {
 ```
 
 **Valid contexts:**
-
 - `<script setup>` block
 - `setup()` function
 - `defineNuxtPlugin()` callback

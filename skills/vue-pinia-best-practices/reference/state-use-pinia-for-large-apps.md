@@ -21,7 +21,6 @@ tags: [vue3, pinia, state-management, devtools, architecture, scalability]
 ## When Hand-Rolled State is Acceptable
 
 Simple reactive state is fine for:
-
 - Prototypes and proof-of-concepts
 - Very small applications with minimal shared state
 - Single-developer projects with limited scope
@@ -46,7 +45,6 @@ Use Pinia when you have any of these requirements:
 ### 1. DevTools Integration
 
 Pinia provides rich Vue DevTools support:
-
 - Timeline of state changes
 - State inspection and editing
 - Time-travel debugging
@@ -167,17 +165,17 @@ export const useSettingsStore = defineStore('settings', {
 
 ## Pinia vs Hand-Rolled Comparison
 
-| Feature               | Hand-Rolled `reactive()` | Pinia           |
-| --------------------- | ------------------------ | --------------- |
-| DevTools integration  | No                       | Yes             |
-| TypeScript inference  | Manual                   | Automatic       |
-| HMR support           | No                       | Yes             |
-| SSR support           | Manual                   | Built-in        |
-| Plugins               | No                       | Yes             |
-| Time-travel debugging | No                       | Yes             |
-| Learning curve        | Lower                    | Slightly higher |
-| Bundle size           | Smaller                  | ~1KB            |
-| Team conventions      | None                     | Enforced        |
+| Feature | Hand-Rolled `reactive()` | Pinia |
+|---------|-------------------------|-------|
+| DevTools integration | No | Yes |
+| TypeScript inference | Manual | Automatic |
+| HMR support | No | Yes |
+| SSR support | Manual | Built-in |
+| Plugins | No | Yes |
+| Time-travel debugging | No | Yes |
+| Learning curve | Lower | Slightly higher |
+| Bundle size | Smaller | ~1KB |
+| Team conventions | None | Enforced |
 
 ## Migration from Vuex
 
@@ -205,7 +203,6 @@ export const useCounterStore = defineStore('counter', {
 ```
 
 **Pinia advantages over Vuex:**
-
 - No mutations (simpler mental model)
 - Better TypeScript support
 - No nested modules complexity
@@ -260,7 +257,6 @@ app.mount('#app')
 ```
 
 ## Reference
-
 - [Vue.js - State Management](https://vuejs.org/guide/scaling-up/state-management.html)
 - [Pinia Documentation](https://pinia.vuejs.org/)
 - [Pinia vs Vuex](https://pinia.vuejs.org/introduction.html#comparison-with-vuex)

@@ -80,7 +80,6 @@ visitor: {
 }
 
 ```
-
 ✅ Use `{ raw: string }` return type for injecting arbitrary CSS values — visitor return values accept `{ raw: '...' }` alongside typed AST nodes, which lightningcss will parse as CSS. Essential for `Variable` visitor substitutions [source](./../../.skilld/references/lightningcss@1.31.1/node_modules/lightningcss/node/index.d.ts)
 
 ✅ Beware whitespace stripping before visitors run when substituting variables — minification removes whitespace around `var()` before visitors execute, so `margin: var(--x) 0` becomes `margin:var(--x)0`, then after substitution `margin:2rem0` (invalid). No built-in fix; workaround: insert placeholder whitespace in `raw` values and post-process [source](./../../.skilld/references/lightningcss@1.31.1/issues/issue-976.md)
@@ -110,7 +109,7 @@ transform({
 })
 ```
 
-✅ `@property` must be at top-level — nesting `@property` inside `@layer` or other at-rules produces "Unknown at rule" warnings. v1.31.0 added support for nesting `@property` inside _some_ at-rules, but `@layer` remains unsupported per spec [source](./../../.skilld/references/lightningcss@1.31.1/issues/issue-968.md)
+✅ `@property` must be at top-level — nesting `@property` inside `@layer` or other at-rules produces "Unknown at rule" warnings. v1.31.0 added support for nesting `@property` inside *some* at-rules, but `@layer` remains unsupported per spec [source](./../../.skilld/references/lightningcss@1.31.1/issues/issue-968.md)
 
 ✅ Set `errorRecovery: true` to collect warnings instead of throwing — invalid rules/declarations are omitted from output and returned as `warnings[]` in the result. Essential when processing untrusted/third-party CSS [source](./../../.skilld/references/lightningcss@1.31.1/node_modules/lightningcss/node/index.d.ts)
 

@@ -29,13 +29,11 @@ Transforms all rem values to px:
 ```
 
 Without preset:
-
 ```css
 .p-4 { padding: 1rem; }
 ```
 
 With preset:
-
 ```css
 .p-4 { padding: 16px; }
 ```

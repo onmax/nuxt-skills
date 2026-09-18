@@ -18,7 +18,6 @@ tags: [vue3, teleport, scoped-styles, css]
 - [ ] Keep teleported content styles in a separate non-scoped style block
 
 **Problem - Scoped Styles Not Applied:**
-
 ```vue
 <template>
   <Teleport to="body">
@@ -42,7 +41,6 @@ tags: [vue3, teleport, scoped-styles, css]
 ```
 
 **Solution 1 - Use Non-Scoped Styles for Teleported Content:**
-
 ```vue
 <template>
   <Teleport to="body">
@@ -76,7 +74,6 @@ tags: [vue3, teleport, scoped-styles, css]
 ```
 
 **Solution 2 - Use :deep() Selector:**
-
 ```vue
 <template>
   <Teleport to="body">
@@ -99,7 +96,6 @@ tags: [vue3, teleport, scoped-styles, css]
 ```
 
 **Solution 3 - CSS Modules:**
-
 ```vue
 <template>
   <Teleport to="body">
@@ -191,6 +187,5 @@ import './modal-styles.css'
 ```
 
 ## Reference
-
 - [Vue.js SFC CSS Features - Scoped CSS](https://vuejs.org/api/sfc-css-features.html#scoped-css)
 - [GitHub Issue #2047 - Scoped styles and teleport](https://github.com/vuejs/core/issues/2047)

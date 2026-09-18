@@ -21,7 +21,6 @@ tags: [vue3, composables, composition-api, code-organization, api-design, readon
 ## Compose Composables from Smaller Primitives
 
 **BAD:**
-
 ```vue
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue'
@@ -46,7 +45,6 @@ onUnmounted(() => window.removeEventListener('mousemove', onMove))
 ```
 
 **GOOD:**
-
 ```javascript
 // composables/useEventListener.js
 import { onMounted, onUnmounted, toValue } from 'vue'
@@ -97,7 +95,6 @@ export function useMouseInElement(elementRef) {
 ## Use Options Object Pattern for Composable Parameters
 
 **BAD:**
-
 ```javascript
 export function useFetch(url, method, headers, timeout, retries, immediate) {
   // hard to read and easy to misorder
@@ -107,7 +104,6 @@ useFetch('/api/users', 'GET', null, 5000, 3, true)
 ```
 
 **GOOD:**
-
 ```javascript
 export function useFetch(url, options = {}) {
   const {
@@ -146,7 +142,6 @@ export function useCounter(options: UseCounterOptions = {}) {
 ## Return Readonly State with Explicit Actions
 
 **BAD:**
-
 ```javascript
 export function useCart() {
   const items = ref([])
@@ -159,7 +154,6 @@ items.value.push({ id: 1, price: 10 })
 ```
 
 **GOOD:**
-
 ```javascript
 import { ref, computed, readonly } from 'vue'
 
@@ -195,7 +189,6 @@ export function useCart() {
 ## Keep Utilities as Utilities
 
 **BAD:**
-
 ```javascript
 export function useFormatters() {
   const formatDate = (date) => new Intl.DateTimeFormat('en-US').format(date)
@@ -208,7 +201,6 @@ const { formatDate } = useFormatters()
 ```
 
 **GOOD:**
-
 ```javascript
 // utils/formatters.js
 export function formatDate(date) {
@@ -237,7 +229,6 @@ export function useInvoiceSummary(invoiceRef) {
 ## Organize Composable and Component Code by Feature Concern
 
 **BAD:**
-
 ```vue
 <script setup>
 import { ref, computed, watch, onMounted } from 'vue'
@@ -259,7 +250,6 @@ onMounted(() => { /* ... */ })
 ```
 
 **GOOD:**
-
 ```vue
 <script setup>
 import { useItems } from '@/composables/useItems'

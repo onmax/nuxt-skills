@@ -62,7 +62,6 @@ Filters: `docs:`, `issues:`, `releases:` prefix narrows by source type.
 }
 
 ```
-
 ✅ Set `provider: 'none'` on self-hosted fonts to skip provider resolution — prevents fontless from searching all providers for fonts you load manually [source](./pkg/README.md)
 
 ```ts

@@ -10,7 +10,6 @@ Create components that persist across slides.
 ## Layer Files
 
 Create in project root:
-
 - `global-top.vue` - Above all slides (single instance)
 - `global-bottom.vue` - Below all slides (single instance)
 - `slide-top.vue` - Above each slide (per-slide instance)

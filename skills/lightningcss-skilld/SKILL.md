@@ -27,7 +27,6 @@ skilld search "releases:deprecated" -p lightningcss
 Filters: `docs:`, `issues:`, `releases:` prefix narrows by source type.
 
 <!-- skilld:api-changes -->
-
 ## API Changes
 
 This section documents version-specific API changes in lightningcss v1.x — prioritize recent major/minor releases.
@@ -81,11 +80,9 @@ This section documents version-specific API changes in lightningcss v1.x — pri
 - DEPRECATED: `@value` at-rule — v1.28 emits error for deprecated CSS Modules `@value` at-rule (CSS spec uses `@property` instead) [source](./.skilld/releases/v1.28.0.md#added)
 
 **Also changed:** Granular CSS modules options (v1.25 — `grid`, `animation`, `customIdents` scoping flags) · `animation-timeline` property (v1.25) · `animation-range` properties (v1.26) · CSS module `[content-hash]` pattern (v1.27) · `@container` name hashing in CSS modules option (v1.28) · CustomAtRule.loc TypeScript type fix (v1.29) · skip unnecessary `@supports` rules when nested (v1.30) · color-scheme keyword serialization fixes (v1.32) · transform property serialization fixes (v1.32) · scale property percentage handling (v1.32)
-
 <!-- /skilld:api-changes -->
 
 <!-- skilld:best-practices -->
-
 ## Best Practices
 
 - Reuse the `targets` object across all files in a build process — computing targets is expensive, and reusing the same object eliminates redundant browser compatibility lookups [source](./.skilld/docs/transpilation.md#browser-targets:L15:L31)

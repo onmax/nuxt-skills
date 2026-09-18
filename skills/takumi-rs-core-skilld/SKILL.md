@@ -28,7 +28,6 @@ skilld search "releases:deprecated" -p @takumi-rs/core
 Filters: `docs:`, `issues:`, `releases:` prefix narrows by source type.
 
 <!-- skilld:api-changes -->
-
 ## API Changes
 
 This section documents version-specific API changes in @takumi-rs/core v1.0.0-beta.3. Focus on breaking changes and new APIs that differ from v0.x versions.
@@ -68,11 +67,9 @@ This section documents version-specific API changes in @takumi-rs/core v1.0.0-be
 In Rust, `RenderOptionsBuilder` removed in favor of `RenderOptions::builder()` for more robust builder pattern implementation.
 
 **Also changed:** WASM module import path changed · `@takumi-rs/wasm/next` for Next.js · `@takumi-rs/wasm/takumi_wasm_bg.wasm` for Workers · `renderer` parameter now accepts pre-instantiated Renderer · `module` parameter required for WASM environments · `signal` parameter for AbortSignal support added
-
 <!-- /skilld:api-changes -->
 
 <!-- skilld:best-practices -->
-
 ## Best Practices
 
 - Reuse the `Renderer` instance across multiple renders rather than creating new instances each time — significantly improves performance by maintaining resource caches. For Cloudflare Workers, initialize the renderer outside the `fetch()` handler to avoid repeated initialization on every request. [source](./.skilld/docs/content/docs/performance-and-optimization.mdx#the-renderer)

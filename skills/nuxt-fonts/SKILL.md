@@ -60,7 +60,6 @@ fonts: {
 }
 
 ```
-
 ✅ Use weight ranges (`'100 900'`) for variable fonts — individual weights like `[400, 700]` download separate static files instead of a single variable font file [source](./docs/content/1.get-started/2.configuration.md)
 
 ```ts

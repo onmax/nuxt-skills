@@ -18,7 +18,6 @@ tags: [vue3, computed, methods, parameters, common-mistake]
 - [ ] Prefer method calls in templates for parameterized operations
 
 **Incorrect:**
-
 ```vue
 <template>
   <!-- BAD: Computed properties don't accept parameters like this -->
@@ -56,7 +55,6 @@ export default {
 ```
 
 **Correct:**
-
 ```vue
 <template>
   <!-- GOOD: Use method for parameterized operations -->
@@ -123,13 +121,13 @@ const getItemsByStatus = computed(() => {
 
 ## When to Use Each Approach
 
-| Scenario                             | Approach                    | Caching |
-| ------------------------------------ | --------------------------- | ------- |
-| Fixed filter based on reactive state | Computed                    | Yes     |
-| Dynamic filter passed as argument    | Method                      | No      |
-| Filter options from user selection   | Computed + reactive param   | Yes     |
-| Formatting with variable parameters  | Method                      | No      |
-| Composed derivation with argument    | Computed returning function | Partial |
+| Scenario | Approach | Caching |
+|----------|----------|---------|
+| Fixed filter based on reactive state | Computed | Yes |
+| Dynamic filter passed as argument | Method | No |
+| Filter options from user selection | Computed + reactive param | Yes |
+| Formatting with variable parameters | Method | No |
+| Composed derivation with argument | Computed returning function | Partial |
 
 ## Make Parameters Reactive
 
@@ -157,6 +155,5 @@ function filterByStatus(status) {
 ```
 
 ## Reference
-
 - [Vue.js Computed Properties](https://vuejs.org/guide/essentials/computed.html)
 - [Vue.js Methods](https://vuejs.org/guide/essentials/reactivity-fundamentals.html#declaring-methods)

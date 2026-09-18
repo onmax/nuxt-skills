@@ -41,12 +41,12 @@ export default defineConfig({
 
 ## Support Status
 
-| Build Tool    | Nuxt 2 | Nuxt Bridge | Nuxt 3 |
-| ------------- | ------ | ----------- | ------ |
-| Webpack Dev   | ✅     | ✅          | 🚧     |
-| Webpack Build | ✅     | ✅          | ✅     |
-| Vite Dev      | -      | ✅          | ✅     |
-| Vite Build    | -      | ✅          | ✅     |
+| Build Tool | Nuxt 2 | Nuxt Bridge | Nuxt 3 |
+|------------|--------|-------------|--------|
+| Webpack Dev | ✅ | ✅ | 🚧 |
+| Webpack Build | ✅ | ✅ | ✅ |
+| Vite Dev | - | ✅ | ✅ |
+| Vite Build | - | ✅ | ✅ |
 
 ## Configuration
 

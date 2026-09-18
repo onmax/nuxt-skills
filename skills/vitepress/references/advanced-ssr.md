@@ -10,7 +10,6 @@ VitePress pre-renders pages on the server during build. All Vue code must be SSR
 ## The Rule
 
 Only access browser/DOM APIs in Vue lifecycle hooks:
-
 - `onMounted()`
 - `onBeforeMount()`
 

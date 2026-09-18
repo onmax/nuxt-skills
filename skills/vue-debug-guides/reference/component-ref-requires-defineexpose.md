@@ -21,7 +21,6 @@ This catches many developers off-guard when migrating from Options API, where `t
 - [ ] Call defineExpose before any await operation (see async caveat)
 
 **Incorrect:**
-
 ```vue
 <!-- ChildComponent.vue -->
 <script setup>
@@ -67,7 +66,6 @@ onMounted(() => {
 ```
 
 **Correct:**
-
 ```vue
 <!-- ChildComponent.vue -->
 <script setup>
@@ -174,6 +172,5 @@ const emit = defineEmits(['update:modelValue'])
 ```
 
 ## Reference
-
 - [Vue.js Component Refs](https://vuejs.org/guide/essentials/template-refs.html#ref-on-component)
 - [Script Setup - defineExpose](https://vuejs.org/api/sfc-script-setup.html#defineexpose)

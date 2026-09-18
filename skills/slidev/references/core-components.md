@@ -12,7 +12,6 @@ Ready-to-use components in Slidev.
 ### Link
 
 Navigate to slide:
-
 ```md
 <Link to="5">Go to slide 5</Link>
 <Link to="intro">Go to intro</Link>  <!-- with routeAlias -->
@@ -33,7 +32,6 @@ Slide <SlideCurrentNo /> of <SlidesTotal />
 ```
 
 Props:
-
 - `columns` - Number of columns
 - `maxDepth` / `minDepth` - Heading depth filter
 - `mode` - 'all' | 'onlyCurrentTree' | 'onlySiblings'
@@ -41,7 +39,6 @@ Props:
 ### TitleRenderer
 
 Render slide title:
-
 ```md
 <TitleRenderer no="3" />
 ```
@@ -91,7 +88,6 @@ Props: `x1`, `y1`, `x2`, `y2`, `width`, `color`, `two-way`
 ### VDragArrow
 
 Draggable arrow:
-
 ```md
 <VDragArrow />
 ```
@@ -101,7 +97,6 @@ Draggable arrow:
 ### Transform
 
 Scale elements:
-
 ```md
 <Transform :scale="0.5">
   <LargeContent />
@@ -113,7 +108,6 @@ Props: `scale`, `origin`
 ### AutoFitText
 
 Auto-sizing text:
-
 ```md
 <AutoFitText :max="200" :min="50" modelValue="Hello" />
 ```
@@ -164,7 +158,6 @@ Props: `controls`, `autoplay`, `autoreset`, `poster`, `timestamp`
 ```
 
 Context values:
-
 - `main` - Main presentation view
 - `visible` - Visible slides
 - `print` - Print/export mode
@@ -196,7 +189,6 @@ See [draggable](draggable.md) for details.
 ## Component Auto-Import
 
 Components from these sources are auto-imported:
-
 1. Built-in components
 2. Theme components
 3. Addon components

@@ -50,36 +50,36 @@ shortcuts: [
 
 ## Core References
 
-| Topic                 | Description                                                              | Reference                                                                  |
-| --------------------- | ------------------------------------------------------------------------ | -------------------------------------------------------------------------- |
-| Core Principles       | Semantic tokens, dark mode parity, z-index naming, class-first output    | [core-principles](references/core-principles.md)                           |
-| Starter Kit           | Copy-paste UnoCSS starter config and base light/dark styles              | [core-starter-kit](references/core-starter-kit.md)                         |
-| Tokens and Combos     | Token families, reusable class combinations, mobile-safe shell tokens    | [core-tokens-and-combinations](references/core-tokens-and-combinations.md) |
-| Design Read and Dials | Read the brief, declare a design read, set variance/motion/density dials | [core-design-read](references/core-design-read.md)                         |
+| Topic | Description | Reference |
+|-------|-------------|-----------|
+| Core Principles | Semantic tokens, dark mode parity, z-index naming, class-first output | [core-principles](references/core-principles.md) |
+| Starter Kit | Copy-paste UnoCSS starter config and base light/dark styles | [core-starter-kit](references/core-starter-kit.md) |
+| Tokens and Combos | Token families, reusable class combinations, mobile-safe shell tokens | [core-tokens-and-combinations](references/core-tokens-and-combinations.md) |
+| Design Read and Dials | Read the brief, declare a design read, set variance/motion/density dials | [core-design-read](references/core-design-read.md) |
 
 ## Best Practices
 
-| Topic                       | Description                                                     | Reference                                                                                                        |
-| --------------------------- | --------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| Strict Rules and Pre-Flight | Do/don't checklist and the consolidated pre-flight              | [best-practices-strict-rules](references/best-practices-strict-rules.md)                                         |
-| Class over Attributify      | Why generated code uses class utilities, with conversions       | [best-practices-class-utilities-over-attributify](references/best-practices-class-utilities-over-attributify.md) |
-| Anti-Slop Hygiene           | The dash ban and the AI-tell forbidden patterns                 | [best-practices-anti-slop](references/best-practices-anti-slop.md)                                               |
-| Bias Correction             | Typography, color, layout, and materiality defaults to override | [best-practices-bias-correction](references/best-practices-bias-correction.md)                                   |
+| Topic | Description | Reference |
+|-------|-------------|-----------|
+| Strict Rules and Pre-Flight | Do/don't checklist and the consolidated pre-flight | [best-practices-strict-rules](references/best-practices-strict-rules.md) |
+| Class over Attributify | Why generated code uses class utilities, with conversions | [best-practices-class-utilities-over-attributify](references/best-practices-class-utilities-over-attributify.md) |
+| Anti-Slop Hygiene | The dash ban and the AI-tell forbidden patterns | [best-practices-anti-slop](references/best-practices-anti-slop.md) |
+| Bias Correction | Typography, color, layout, and materiality defaults to override | [best-practices-bias-correction](references/best-practices-bias-correction.md) |
 
 ## Features
 
-| Topic                  | Description                                                         | Reference                                                                        |
-| ---------------------- | ------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| Data Presentation      | Paths, icons, time, date, numbers, badges, buttons                  | [features-data-presentation](references/features-data-presentation.md)           |
-| Micro-Interactions     | Radius, alignment, shadows, animation, numbers, outlines, hit areas | [features-micro-interactions](references/features-micro-interactions.md)         |
-| Floating Vue Overrides | Shared Floating Vue setup and popper styling                        | [features-floating-vue-overrides](references/features-floating-vue-overrides.md) |
+| Topic | Description | Reference |
+|-------|-------------|-----------|
+| Data Presentation | Paths, icons, time, date, numbers, badges, buttons | [features-data-presentation](references/features-data-presentation.md) |
+| Micro-Interactions | Radius, alignment, shadows, animation, numbers, outlines, hit areas | [features-micro-interactions](references/features-micro-interactions.md) |
+| Floating Vue Overrides | Shared Floating Vue setup and popper styling | [features-floating-vue-overrides](references/features-floating-vue-overrides.md) |
 
 ## Advanced
 
-| Topic              | Description                                   | Reference                                                                |
-| ------------------ | --------------------------------------------- | ------------------------------------------------------------------------ |
-| Pattern Vocabulary | Named UI patterns to recognize and reach for  | [advanced-pattern-vocabulary](references/advanced-pattern-vocabulary.md) |
-| Redesign Protocol  | Detect mode, audit first, preserve IA and SEO | [advanced-redesign-protocol](references/advanced-redesign-protocol.md)   |
+| Topic | Description | Reference |
+|-------|-------------|-----------|
+| Pattern Vocabulary | Named UI patterns to recognize and reach for | [advanced-pattern-vocabulary](references/advanced-pattern-vocabulary.md) |
+| Redesign Protocol | Detect mode, audit first, preserve IA and SEO | [advanced-redesign-protocol](references/advanced-redesign-protocol.md) |
 
 <!--
 Source references:

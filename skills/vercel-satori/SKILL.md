@@ -66,7 +66,6 @@ const fonts: SatoriOptions['fonts'] = [
 const svg = await satori(element, { width: 1200, height: 630, fonts })
 
 ```
-
 ✅ Use base64/ArrayBuffer for `<img>` src — satori fetches URL images at render time; inlining as `data:` URIs or passing `Buffer`/`ArrayBuffer` eliminates network I/O and avoids production-only "Unsupported image type: unknown" errors from CDN responses with wrong content-type headers [source](./.skilld/pkg/README.md) [source](./.skilld/issues/issue-626.md)
 
 ✅ Always set `width` and `height` on `<img>` — without explicit dimensions satori cannot determine image size and throws `Image size cannot be determined` [source](./.skilld/pkg/README.md)

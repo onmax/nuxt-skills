@@ -46,7 +46,6 @@ With depth for nested lists:
 ### Click Positioning
 
 Relative positioning:
-
 ```md
 <div v-click>1st (default)</div>
 <div v-click="+1">2nd</div>
@@ -54,7 +53,6 @@ Relative positioning:
 ```
 
 Absolute positioning:
-
 ```md
 <div v-click="3">Appears on click 3</div>
 <div v-click="[2,5]">Visible clicks 2-5</div>
@@ -180,7 +178,6 @@ Use: `transition: my-transition`
 ## CSS Classes
 
 Animation targets get these classes:
-
 - `.slidev-vclick-target` - Animated element
 - `.slidev-vclick-hidden` - Hidden state
 - `.slidev-vclick-current` - Current click target
