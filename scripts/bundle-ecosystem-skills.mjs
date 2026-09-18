@@ -135,7 +135,7 @@ async function updateReadme(bundleLock) {
 
 async function fetchText(url) {
   try {
-    const response = await fetch(url, { headers: { 'user-agent': 'nuxt-skills-bundler' } })
+    const response = await fetch(url, { headers: { 'user-agent': 'nuxt-skills-bundler' }, signal: AbortSignal.timeout(30_000) })
     if (!response.ok)
       return null
     return await response.text()

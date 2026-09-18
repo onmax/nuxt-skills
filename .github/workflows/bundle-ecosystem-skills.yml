@@ -43,7 +43,7 @@ jobs:
 
       - name: Commit and push when the bundle changed
         run: |
-          if git diff --quiet; then
+          if [ -z "$(git status --porcelain)" ]; then
             echo "No ecosystem skill changes"
             exit 0
           fi

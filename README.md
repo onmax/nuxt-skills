@@ -103,7 +103,7 @@ Skills are kept up-to-date via GitHub Actions:
 
 | Workflow                        | Schedule              | Purpose                                                                                             |
 | ------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------- |
-| **update-skills.yml**           | Weekly (Monday)       | Regenerates reka-ui and nuxt-ui docs from upstream                                                  |
+| **update-skills.yml**           | Weekly (Monday)       | Regenerates reka-ui docs from upstream                                                             |
 | **skill-maintenance.yml**       | Biweekly (1st & 15th) | Claude analyzes upstream changelogs, creates PRs if updates needed                                  |
 | **bundle-ecosystem-skills.yml** | Weekly (Monday)       | Replaces configured local skills with upstream ecosystem copies, validates them, and pushes changes |
 
@@ -113,7 +113,7 @@ The ecosystem bundle is configured in [`ecosystem-skills.json`](ecosystem-skills
 
 ## Nuxt module skill discovery
 
-The Nuxt-specific sources follow the discovery model used by [Nuxt Skill Hub](https://nuxt-skill.onmax.me/) and its [resolver](https://github.com/onmax/nuxt-skill-hub): prefer a skill shipped by the package, then check the package's `.well-known/skills` publication, then use a repository path or curated mapping. The bundle keeps each resolved path explicit in `ecosystem-skills.json` so CI can materialize it reproducibly and the catalog can link to the exact upstream source.
+The Nuxt-specific sources follow the discovery model used by [Nuxt Skill Hub](https://nuxt-skill.onmax.me/) and its [resolver](https://github.com/onmax/nuxt-skill-hub): prefer a skill shipped by the package, then check the package's `.well-known/skills` publication, then use a repository path or fallback path. Configured sources live in `ecosystem-skills.json`; discovered sources and exact revisions are recorded in `ecosystem-skills.lock.json` so CI can materialize the bundle reproducibly.
 
 ## Resources
 
