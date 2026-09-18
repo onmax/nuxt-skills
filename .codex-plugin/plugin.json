@@ -15,6 +15,7 @@
     "typescript"
   ],
   "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
   "interface": {
     "displayName": "Nuxt",
     "shortDescription": "Vue, Nuxt, and ecosystem skills.",
