@@ -84,7 +84,7 @@ From remote API:
 export default {
   async paths() {
     const packages = await fetch('https://api.example.com/packages').then(r => r.json())
-    
+
     return packages.map(pkg => ({
       params: {
         pkg: pkg.name,
@@ -128,7 +128,7 @@ For heavy content (raw markdown/HTML from CMS), use `content` instead of params 
 export default {
   async paths() {
     const posts = await fetch('https://cms.example.com/posts').then(r => r.json())
-    
+
     return posts.map(post => ({
       params: { slug: post.slug },
       content: post.content  // Raw markdown or HTML
@@ -161,10 +161,10 @@ export default {
     './templates/**/*.njk',
     '../data/**/*.json'
   ],
-  
+
   paths(watchedFiles) {
     const dataFiles = watchedFiles.filter(f => f.endsWith('.json'))
-    
+
     return dataFiles.map(file => {
       const data = JSON.parse(fs.readFileSync(file, 'utf-8'))
       return {
@@ -185,7 +185,7 @@ import matter from 'gray-matter'
 
 export default {
   watch: ['./posts/*.md'],
-  
+
   paths(files) {
     return files
       .filter(f => !f.includes('[slug]'))
@@ -193,9 +193,9 @@ export default {
         const content = fs.readFileSync(file, 'utf-8')
         const { data, content: body } = matter(content)
         const slug = file.match(/([^/]+)\.md$/)[1]
-        
+
         return {
-          params: { 
+          params: {
             slug,
             title: data.title,
             date: data.date

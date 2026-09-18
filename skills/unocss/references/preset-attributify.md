@@ -136,7 +136,7 @@ export default defineConfig({
 
 **Important:** Only use attributify if `uno.config.*` shows `presetAttributify()` is enabled.
 
-<!-- 
+<!--
 Source references:
 - https://unocss.dev/presets/attributify
 -->

@@ -89,7 +89,7 @@ presetTypography({
 })
 ```
 
-<!-- 
+<!--
 Source references:
 - https://unocss.dev/presets/typography
 -->

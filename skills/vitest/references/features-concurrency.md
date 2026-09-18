@@ -14,10 +14,10 @@ defineConfig({
   test: {
     // Run files in parallel (default: true)
     fileParallelism: true,
-    
+
     // Max concurrent workers (v4: replaces maxThreads/maxForks; minWorkers removed)
     maxWorkers: 4,
-    
+
     // Pool type: 'forks' (default), 'threads', 'vmForks', 'vmThreads'
     pool: 'forks',
   },
@@ -120,7 +120,7 @@ jobs:
         shard: [1, 2, 3]
     steps:
       - run: vitest run --shard=${{ matrix.shard }}/3 --reporter=blob
-      
+
   merge:
     needs: test
     steps:
@@ -148,13 +148,13 @@ defineConfig({
     sequence: {
       // Run tests in random order
       shuffle: true,
-      
+
       // Seed for reproducible shuffle
       seed: 12345,
-      
+
       // Hook execution order
       hooks: 'stack', // 'stack', 'list', 'parallel'
-      
+
       // All tests concurrent by default
       concurrent: true,
 
@@ -216,7 +216,7 @@ vitest --bail      # Stop on first failure (same as --bail 1)
 - `maxWorkers` (not `maxThreads`/`maxForks`); `poolOptions` removed in v4
 - Sharding splits tests across CI machines; `--merge-reports` combines blob results
 
-<!-- 
+<!--
 Source references:
 - https://vitest.dev/guide/parallelism.html
 - https://vitest.dev/guide/improving-performance.html

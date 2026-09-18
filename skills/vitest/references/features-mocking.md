@@ -162,10 +162,10 @@ test('dynamic mock', async () => {
   vi.doMock('./config', () => ({
     apiUrl: 'http://test.local',
   }))
-  
+
   const { apiUrl } = await import('./config')
   expect(apiUrl).toBe('http://test.local')
-  
+
   vi.doUnmock('./config')
 })
 ```
@@ -186,9 +186,9 @@ afterEach(() => {
 test('timers', () => {
   const fn = vi.fn()
   setTimeout(fn, 1000)
-  
+
   expect(fn).not.toHaveBeenCalled()
-  
+
   vi.advanceTimersByTime(1000)
   expect(fn).toHaveBeenCalled()
 })
@@ -204,10 +204,10 @@ vi.advanceTimersToNextTimer() // Advance to next timer
 ```ts
 test('async timers', async () => {
   vi.useFakeTimers()
-  
+
   let resolved = false
   setTimeout(() => Promise.resolve().then(() => { resolved = true }), 100)
-  
+
   await vi.advanceTimersByTimeAsync(100)
   expect(resolved).toBe(true)
 })
@@ -225,7 +225,7 @@ vi.useRealTimers() // Restore
 ## Mock Globals
 
 ```ts
-vi.stubGlobal('fetch', vi.fn(() => 
+vi.stubGlobal('fetch', vi.fn(() =>
   Promise.resolve({ json: () => ({ data: 'mock' }) })
 ))
 
@@ -306,7 +306,7 @@ test('hoisted mock', () => {
 - Use `{ spy: true }` to keep implementation but track calls
 - `vi.hoisted` lets you reference variables in mock factories
 
-<!-- 
+<!--
 Source references:
 - https://vitest.dev/guide/mocking.html
 - https://vitest.dev/api/vi.html

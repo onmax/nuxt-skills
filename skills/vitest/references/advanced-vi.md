@@ -280,7 +280,7 @@ vi.mocked(fn, { partial: true }).mockResolvedValue({ ok: true })
 - Fake timers require explicit setup and teardown
 - `vi.waitFor` retries until assertion passes
 
-<!-- 
+<!--
 Source references:
 - https://vitest.dev/api/vi.html
 -->

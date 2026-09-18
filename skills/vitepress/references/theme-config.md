@@ -15,11 +15,11 @@ export default {
     // Site title in nav (overrides config.title)
     siteTitle: 'My Docs',
     siteTitle: false,  // Hide title
-    
+
     // Logo
     logo: '/logo.svg',
     logo: { light: '/light-logo.svg', dark: '/dark-logo.svg', alt: 'Logo' },
-    
+
     // Nav links
     nav: [
       { text: 'Guide', link: '/guide/' },

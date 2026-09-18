@@ -189,7 +189,7 @@ describe.only.shuffle('only and shuffled', () => {})
 - Shuffle order depends on `sequence.seed` config
 - `describe.sequential` was removed in v5 — use `{ concurrent: false }`
 
-<!-- 
+<!--
 Source references:
 - https://vitest.dev/api/describe.html
 -->

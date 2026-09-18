@@ -189,7 +189,7 @@ pnpm install
    ```json
    // From Yarn
    "@myorg/utils": "*"
-   
+
    // To pnpm
    "@myorg/utils": "workspace:*"
    ```
@@ -208,7 +208,7 @@ pnpm -r run build
 # Lerna: run in specific package
 lerna run build --scope=@myorg/app
 
-# pnpm equivalent  
+# pnpm equivalent
 pnpm --filter @myorg/app run build
 
 # Lerna: publish
@@ -249,8 +249,8 @@ Most scripts work unchanged. Update pnpm-specific patterns:
     "build:all": "npm run build --workspaces",
     // pnpm: use -r flag
     "build:all": "pnpm -r run build",
-    
-    // npm: run in specific workspace  
+
+    // npm: run in specific workspace
     "dev:app": "npm run dev -w packages/app",
     // pnpm: use --filter
     "dev:app": "pnpm --filter @myorg/app run dev"

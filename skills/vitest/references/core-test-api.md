@@ -259,7 +259,7 @@ test('sort', async ({ bench }) => {
 - Function name is used as test name if passed as first arg
 - `test.sequential` was removed in v5 — use `{ concurrent: false }`
 
-<!-- 
+<!--
 Source references:
 - https://vitest.dev/api/test.html
 -->

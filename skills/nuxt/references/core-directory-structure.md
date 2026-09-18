@@ -296,7 +296,7 @@ Reference in components:
 | `.server.vue` | Server-only component |
 | `.global.ts` | Global middleware |
 
-<!-- 
+<!--
 Source references:
 - https://nuxt.com/docs/4.x/directory-structure
 - https://nuxt.com/docs/4.x/directory-structure/app

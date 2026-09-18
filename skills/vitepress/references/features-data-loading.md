@@ -105,7 +105,7 @@ export default createContentLoader('posts/*.md', {
   includeSrc: true,     // Include raw markdown
   render: true,         // Include rendered HTML
   excerpt: true,        // Include excerpt (content before first ---)
-  
+
   transform(rawData) {
     // Sort by date, newest first
     return rawData

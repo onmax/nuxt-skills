@@ -18,10 +18,10 @@ export default defineConfig({
   title: 'My Docs',
   description: 'Documentation site',
   lang: 'en-US',
-  
+
   // URL base path (for GitHub Pages: '/repo-name/')
   base: '/',
-  
+
   // Theme configuration
   themeConfig: {
     // See theme-config.md
@@ -37,7 +37,7 @@ export default defineConfig({
   titleTemplate: ':title - Docs', // Page title format (:title = h1)
   description: 'Site description', // Meta description
   lang: 'en-US',                 // HTML lang attribute
-  
+
   head: [
     ['link', { rel: 'icon', href: '/favicon.ico' }],
     ['meta', { name: 'theme-color', content: '#5f67ee' }],
@@ -52,24 +52,24 @@ export default defineConfig({
 export default defineConfig({
   // Source files directory (relative to project root)
   srcDir: './src',
-  
+
   // Exclude patterns from source
   srcExclude: ['**/README.md', '**/TODO.md'],
-  
+
   // Output directory
   outDir: './.vitepress/dist',
-  
+
   // Cache directory
   cacheDir: './.vitepress/cache',
-  
+
   // Clean URLs without .html extension (requires server support)
   cleanUrls: true,
-  
+
   // Ignore dead links during build
   ignoreDeadLinks: true,
   // Or specific patterns:
   ignoreDeadLinks: ['/playground', /^https?:\/\/localhost/],
-  
+
   // Get last updated timestamp from git
   lastUpdated: true
 })
@@ -84,7 +84,7 @@ export default defineConfig({
   rewrites: {
     // Static mapping
     'packages/pkg-a/src/index.md': 'pkg-a/index.md',
-    
+
     // Dynamic parameters
     'packages/:pkg/src/:slug*': ':pkg/:slug*'
   }
@@ -113,12 +113,12 @@ export default defineConfig({
     resolve: { alias: {} },
     css: { preprocessorOptions: {} }
   },
-  
+
   // Pass options to @vitejs/plugin-vue
   vue: {
     template: { compilerOptions: {} }
   },
-  
+
   // Configure markdown-it
   markdown: {
     lineNumbers: true,
@@ -144,12 +144,12 @@ export default defineConfig({
       'meta', { name: 'og:title', content: pageData.title }
     ])
   },
-  
+
   // Transform head before generating each page
   async transformHead(context) {
     return [['meta', { name: 'custom', content: context.page }]]
   },
-  
+
   // After build completes
   async buildEnd(siteConfig) {
     // Generate sitemap, RSS, etc.
@@ -164,7 +164,7 @@ For async configuration:
 ```ts
 export default async () => {
   const data = await fetch('https://api.example.com/data').then(r => r.json())
-  
+
   return defineConfig({
     title: data.title,
     themeConfig: {

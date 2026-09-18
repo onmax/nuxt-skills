@@ -257,7 +257,7 @@ export default defineNuxtConfig({
 })
 ```
 
-<!-- 
+<!--
 Source references:
 - https://nuxt.com/docs/getting-started/server
 - https://nuxt.com/docs/directory-structure/server

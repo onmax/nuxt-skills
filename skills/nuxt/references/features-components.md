@@ -280,7 +280,7 @@ assertive('Error: form is invalid') // interrupts immediately
 
 Props: `politeness` (`polite` | `assertive` | `off`, default `polite`), `atomic` (default `true`). Use `<NuxtRouteAnnouncer>` for route changes, `<NuxtAnnouncer>` for everything else.
 
-<!-- 
+<!--
 Source references:
 - https://nuxt.com/docs/4.x/api/components/nuxt-link
 - https://nuxt.com/docs/4.x/api/components/nuxt-page

@@ -214,7 +214,7 @@ my-monorepo/
         └── package.json
 ```
 
-<!-- 
+<!--
 Source references:
 - https://pnpm.io/workspaces
 - https://pnpm.io/filtering

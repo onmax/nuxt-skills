@@ -262,7 +262,7 @@ onBeforeRouteUpdate((to, from) => {
 </script>
 ```
 
-<!-- 
+<!--
 Source references:
 - https://nuxt.com/docs/4.x/getting-started/routing
 - https://nuxt.com/docs/4.x/directory-structure/app/pages

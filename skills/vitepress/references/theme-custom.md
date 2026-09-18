@@ -29,10 +29,10 @@ export default {
 interface Theme {
   // Required: Root layout component
   Layout: Component
-  
+
   // Optional: Enhance Vue app instance
   enhanceApp?: (ctx: EnhanceAppContext) => Awaitable<void>
-  
+
   // Optional: Extend another theme
   extends?: Theme
 }
@@ -60,21 +60,21 @@ const { page, frontmatter } = useData()
     <header>
       <nav>My Site</nav>
     </header>
-    
+
     <main>
       <div v-if="page.isNotFound">
         <h1>404 - Page Not Found</h1>
       </div>
-      
+
       <div v-else-if="frontmatter.layout === 'home'">
         <h1>Welcome!</h1>
       </div>
-      
+
       <article v-else>
         <Content />
       </article>
     </main>
-    
+
     <footer>
       <p>© 2024 My Site</p>
     </footer>
@@ -91,7 +91,7 @@ Access VitePress data in your theme:
 import { useData, useRoute, useRouter } from 'vitepress'
 
 // Page and site data
-const { 
+const {
   site,        // Site config (title, description, etc.)
   theme,       // Theme config
   page,        // Current page data
@@ -122,7 +122,7 @@ import { Content } from 'vitepress'
 <template>
   <!-- Renders markdown content -->
   <Content />
-  
+
   <!-- Renders slot only on client (SSR-safe) -->
   <ClientOnly>
     <NonSSRComponent />
@@ -158,10 +158,10 @@ export default {
   enhanceApp({ app }) {
     // Register global component
     app.component('GlobalComponent', GlobalComponent)
-    
+
     // Register plugin
     app.use(MyPlugin)
-    
+
     // Provide/inject
     app.provide('key', value)
   }

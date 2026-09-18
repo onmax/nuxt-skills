@@ -347,7 +347,7 @@ DevTools shows payload data and hydration state.
 | "window is not defined" | Browser API used during SSR |
 | "document is not defined" | DOM access during SSR |
 
-<!-- 
+<!--
 Source references:
 - https://nuxt.com/docs/guide/concepts/auto-imports#vue-and-nuxt-composables
 - https://nuxt.com/docs/guide/best-practices/hydration

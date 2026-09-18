@@ -277,7 +277,7 @@ export const classes = {
 }
 ```
 
-<!-- 
+<!--
 Source references:
 - https://unocss.dev/integrations/vite
 -->

@@ -38,7 +38,7 @@ Return cleanup function from `before*` hooks:
 ```ts
 beforeAll(async () => {
   const server = await startServer()
-  
+
   // Returned function runs as afterAll
   return async () => {
     await server.close()
@@ -47,7 +47,7 @@ beforeAll(async () => {
 
 beforeEach(async () => {
   const connection = await connect()
-  
+
   // Runs as afterEach
   return () => connection.close()
 })
@@ -60,12 +60,12 @@ Hooks apply to current suite and nested suites:
 ```ts
 describe('outer', () => {
   beforeEach(() => console.log('outer before'))
-  
+
   test('test 1', () => {}) // outer before → test
-  
+
   describe('inner', () => {
     beforeEach(() => console.log('inner before'))
-    
+
     test('test 2', () => {}) // outer before → inner before → test
   })
 })
@@ -142,15 +142,15 @@ import { onTestFailed, onTestFinished, test } from 'vitest'
 
 test('with cleanup', () => {
   const db = connect()
-  
+
   // Runs after test finishes (pass or fail)
   onTestFinished(() => db.close())
-  
+
   // Only runs if test fails
   onTestFailed(({ task }) => {
     console.log('Failed:', task.result?.errors)
   })
-  
+
   db.query('SELECT * FROM users')
 })
 ```
@@ -238,7 +238,7 @@ defineConfig({
 - `onTestFinished` always runs, even if test fails
 - Use context hooks for concurrent tests
 
-<!-- 
+<!--
 Source references:
 - https://vitest.dev/api/hooks.html
 -->

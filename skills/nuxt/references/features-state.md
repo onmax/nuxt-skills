@@ -186,7 +186,7 @@ useState('data', () => ({ name: 'John', age: 30 }))
 useState('items', () => ['a', 'b', 'c'])
 ```
 
-<!-- 
+<!--
 Source references:
 - https://nuxt.com/docs/getting-started/state-management
 - https://nuxt.com/docs/api/composables/use-state

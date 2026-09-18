@@ -254,7 +254,7 @@ npx nuxt dev --extends ./base-layer
 npx nuxt build --extends ./base-layer
 ```
 
-<!-- 
+<!--
 Source references:
 - https://nuxt.com/docs/api/commands/dev
 - https://nuxt.com/docs/api/commands/build

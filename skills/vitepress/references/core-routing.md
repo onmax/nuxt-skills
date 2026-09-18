@@ -94,7 +94,7 @@ export default {
     // Static mapping
     'packages/pkg-a/src/index.md': 'pkg-a/index.md',
     'packages/pkg-a/src/foo.md': 'pkg-a/foo.md',
-    
+
     // Dynamic parameters
     'packages/:pkg/src/:slug*': ':pkg/:slug*'
   }

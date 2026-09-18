@@ -56,11 +56,11 @@ catalogs:
   react17:
     react: ^17.0.2
     react-dom: ^17.0.2
-  
+
   react18:
     react: ^18.2.0
     react-dom: ^18.2.0
-  
+
   testing:
     vitest: ^1.0.0
     "@testing-library/react": ^14.0.0
@@ -180,7 +180,7 @@ catalog:
 # "dependencies": { "@myorg/utils": "workspace:^" }
 ```
 
-<!-- 
+<!--
 Source references:
 - https://pnpm.io/catalogs
 -->

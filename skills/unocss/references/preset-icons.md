@@ -178,7 +178,7 @@ Use `icon()` in CSS (requires transformer-directives):
 </a>
 ```
 
-<!-- 
+<!--
 Source references:
 - https://unocss.dev/presets/icons
 -->

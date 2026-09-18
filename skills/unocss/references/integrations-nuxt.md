@@ -193,7 +193,7 @@ In development, visit `/_nuxt/__unocss` to access the UnoCSS inspector.
 - All Vite plugin features available
 - Nuxt layers config merging available
 
-<!-- 
+<!--
 Source references:
 - https://unocss.dev/integrations/nuxt
 -->

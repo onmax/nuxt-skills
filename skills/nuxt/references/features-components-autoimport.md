@@ -321,7 +321,7 @@ export default defineNuxtModule({
 })
 ```
 
-<!-- 
+<!--
 Source references:
 - https://nuxt.com/docs/directory-structure/app/components
 - https://nuxt.com/docs/guide/concepts/auto-imports#auto-imported-components

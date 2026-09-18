@@ -157,7 +157,7 @@ test.aroundAll(async (run, { db }) => db.tx(run))
 - Use `test.override` (not `test.scoped`) to vary fixture values per suite
 - Use `{ injected: true }` + project `provide` for per-project values
 
-<!-- 
+<!--
 Source references:
 - https://vitest.dev/guide/test-context.html
 -->

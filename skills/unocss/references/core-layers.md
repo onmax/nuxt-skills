@@ -97,7 +97,7 @@ preflights: [
 | `theme` | Theme CSS variables | -150 |
 | `base` | Reset styles | -100 |
 
-<!-- 
+<!--
 Source references:
 - https://unocss.dev/config/layers
 - https://unocss.dev/config/preflights

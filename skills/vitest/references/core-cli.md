@@ -171,7 +171,7 @@ In watch mode, press:
 - Filter tests by tag with `--tagsFilter` (tags must be declared in config) — see [features-test-tags](features-test-tags.md)
 - `--merge-reports` and `--reporter=blob` do not work in watch mode
 
-<!-- 
+<!--
 Source references:
 - https://vitest.dev/guide/cli.html
 -->

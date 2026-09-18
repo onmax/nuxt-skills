@@ -292,7 +292,7 @@ export default defineAppConfig({
 })
 ```
 
-<!-- 
+<!--
 Source references:
 - https://nuxt.com/docs/getting-started/layers
 - https://nuxt.com/docs/guide/going-further/layers

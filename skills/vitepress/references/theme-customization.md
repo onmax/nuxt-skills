@@ -30,11 +30,11 @@ Override root CSS variables:
   --vp-c-brand-1: #646cff;
   --vp-c-brand-2: #747bff;
   --vp-c-brand-3: #9499ff;
-  
+
   /* Backgrounds */
   --vp-c-bg: #ffffff;
   --vp-c-bg-soft: #f6f6f7;
-  
+
   /* Text */
   --vp-c-text-1: #213547;
   --vp-c-text-2: #476582;
@@ -55,7 +55,7 @@ See [all CSS variables](https://github.com/vuejs/vitepress/blob/main/src/client/
   /* Gradient name color */
   --vp-home-hero-name-color: transparent;
   --vp-home-hero-name-background: linear-gradient(120deg, #bd34fe, #41d1ff);
-  
+
   /* Hero image glow */
   --vp-home-hero-image-background-image: linear-gradient(-45deg, #bd34fe 50%, #47caff 50%);
   --vp-home-hero-image-filter: blur(44px);
@@ -153,11 +153,11 @@ const { Layout } = DefaultTheme
     <template #aside-outline-before>
       <div>Above outline</div>
     </template>
-    
+
     <template #doc-before>
       <div>Before doc content</div>
     </template>
-    
+
     <template #doc-after>
       <div>After doc content</div>
     </template>

@@ -70,47 +70,7 @@ Clone the repository and copy skill folders to your agent's skills directory:
 
 ## Skills
 
-| Skill                         | Description                                                                             |
-| ----------------------------- | --------------------------------------------------------------------------------------- |
-| **vue**                       | Vue 3 Composition API, components, composables, testing                                 |
-| **nuxt**                      | Nuxt 4+ server routes, routing, middleware, config                                      |
-| **nuxt-modules**              | Creating Nuxt modules with defineNuxtModule, Kit utilities, testing                     |
-| **nuxthub**                   | NuxtHub v0.10 database, KV, blob, cache, multi-cloud                                    |
-| **nuxt-content**              | Nuxt Content collections, schemas, queries, navigation, search, MDC, and deployment     |
-| **nuxt-studio**               | Nuxt Studio setup, auth, visual editing, drafts, media, AI, and Git publishing          |
-| **nuxt-ui**                   | Nuxt UI v4 components, theming, forms, overlays, composables                            |
-| **nuxt-i18n**                 | Nuxt I18n locales, messages, routing, language switching, fallbacks, and locale SEO     |
-| **reka-ui**                   | Reka UI headless Vue components, accessible primitives, props/emits/slots               |
-| **document-writer**           | Writing documentation for Nuxt ecosystem - MDC, style, structure, code examples         |
-| **ts-library**                | TypeScript library authoring - exports, tsdown, API patterns, type tricks, CI           |
-| **nuxt-seo**                  | Nuxt SEO meta-module - robots, sitemap, og-image, schema-org, site config               |
-| **vitest**                    | Vitest testing - test API, mocking, coverage, type testing, environments                |
-| **vite**                      | Vite build tool - config, plugins, HMR, SSR, library mode, performance                  |
-| **pnpm**                      | pnpm package manager - workspaces, catalogs, CLI commands, CI/CD                        |
-| **tsdown**                    | tsdown bundler - TypeScript libraries, DTS generation, package validation               |
-| **writing-web-documentation** | Write and review developer docs - page types, house style, templates, web-project rules |
-| **nitro**                     | Nitro server engine patterns and deployment                                           |
-| **pinia**                     | Pinia stores and state management                                                      |
-| **antfu-design**              | Anthony Fu design and implementation conventions                                       |
-| **slidev**                    | Slidev presentation authoring                                                          |
-| **turborepo**                 | Turborepo monorepo workflows                                                           |
-| **unocss**                    | UnoCSS configuration and utility authoring                                             |
-| **vitepress**                 | VitePress documentation sites                                                          |
-| **vue-best-practices**        | Vue best practices                                                                     |
-| **vue-router-best-practices** | Vue Router best practices                                                              |
-| **vue-testing-best-practices** | Vue testing best practices                                                            |
-| **vueuse-functions**          | VueUse composable selection and usage                                                  |
-| **web-design-guidelines**     | Web interface review guidelines                                                        |
-| **vue-debug-guides**          | Vue debugging guides                                                                   |
-| **vue-jsx-best-practices**    | Vue JSX best practices                                                                 |
-| **vue-options-api-best-practices** | Vue Options API best practices                                                        |
-| **vue-pinia-best-practices**  | Vue and Pinia best practices                                                           |
-| **nuxt-better-auth**          | Better Auth integration for Nuxt                                                        |
-| **nuxt-test-utils-skilld**    | Nuxt Test Utils testing patterns                                                        |
-| **nuxt-site-config-skilld**   | Shared site configuration for Nuxt modules                                              |
-| **nuxt-ui**                   | Nuxt UI skill maintained by the Nuxt UI project                                         |
-| **comark**                    | Comark Markdown parsing and rendering                                                  |
-| **migrate-mdc-to-comark**     | Migration guidance from MDC to Comark                                                   |
+The complete skill list, including provenance links for every bundled or hand-authored skill, is maintained in the generated [skill catalog](#skill-catalog) below.
 
 ## How Skills Work
 
@@ -132,45 +92,9 @@ Follows [agentskills](https://github.com/agentskills/agentskills) standard forma
 
 ```
 nuxt-skills/
-├── skills/                 # Skills (agentskills format)
-│   ├── vue/
-│   │   ├── SKILL.md        # Entry point with frontmatter
-│   │   └── references/     # Sub-files loaded on-demand
-│   ├── nuxt/
-│   ├── nuxt-modules/
-│   ├── nuxthub/
-│   ├── nuxt-content/
-│   ├── nuxt-studio/
-│   ├── nuxt-ui/
-│   ├── nuxt-i18n/
-│   ├── reka-ui/
-│   ├── document-writer/
-│   ├── ts-library/
-│   ├── nuxt-seo/
-│   ├── vitest/
-│   ├── vite/
-│   ├── pnpm/
-│   ├── tsdown/
-│   ├── antfu-design/              # generated ecosystem skills
-│   ├── nitro/
-│   ├── pinia/
-│   ├── slidev/
-│   ├── turborepo/
-│   ├── unocss/
-│   ├── vitepress/
-│   ├── vue-best-practices/
-│   ├── vue-router-best-practices/
-│   ├── vue-testing-best-practices/
-│   ├── vueuse-functions/
-│   ├── web-design-guidelines/
-│   ├── vue-debug-guides/
-│   ├── vue-jsx-best-practices/
-│   ├── vue-options-api-best-practices/
-│   ├── vue-pinia-best-practices/
-│   └── writing-web-documentation/
-└── .claude-plugin/
-    ├── plugin.json         # Claude Code plugin manifest
-    └── marketplace.json    # Claude Code marketplace
+├── skills/                 # Materialized manual and ecosystem skills
+├── ecosystem-skills.json   # Upstream skill sources and selected paths
+└── .codex-plugin/          # Codex plugin manifest
 ```
 
 ## Automated Maintenance
@@ -206,3 +130,51 @@ VueUse maintains its own current skill, so install it directly with `npx skills 
 ## License
 
 MIT
+
+<!-- BEGIN GENERATED SKILL CATALOG -->
+## Skill catalog
+
+Every skill in the plugin is listed below with its provenance. The table is regenerated by `pnpm bundle:ecosystem`.
+
+| Skill | Provenance |
+| --- | --- |
+| [`antfu-design`](skills/antfu-design/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/antfu-design) |
+| [`comark`](skills/comark/) | [Bundled from comarkdown/comark](https://github.com/comarkdown/comark/tree/9bcbbfd427c647e5f7ebaf4a43b191ba01b747c1/docs/skills/comark) |
+| [`document-writer`](skills/document-writer/) | Manually written in this repository. |
+| [`migrate-mdc-to-comark`](skills/migrate-mdc-to-comark/) | [Bundled from comarkdown/comark](https://github.com/comarkdown/comark/tree/9bcbbfd427c647e5f7ebaf4a43b191ba01b747c1/docs/skills/migrate-mdc-to-comark) |
+| [`nitro`](skills/nitro/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/nitro) |
+| [`nuxt`](skills/nuxt/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/nuxt) |
+| [`nuxt-better-auth`](skills/nuxt-better-auth/) | [Bundled from nuxt-modules/better-auth](https://github.com/nuxt-modules/better-auth/tree/4e0b7cc20bd23ebaa721c4a1dfce51a281b9e750/docs/public/.well-known/skills/nuxt-better-auth) |
+| [`nuxt-content`](skills/nuxt-content/) | Manually written in this repository. |
+| [`nuxt-i18n`](skills/nuxt-i18n/) | Manually written in this repository. |
+| [`nuxt-modules`](skills/nuxt-modules/) | Manually written in this repository. |
+| [`nuxt-seo`](skills/nuxt-seo/) | Manually written in this repository. |
+| [`nuxt-site-config-skilld`](skills/nuxt-site-config-skilld/) | [Bundled from nuxt-modules/sitemap](https://github.com/nuxt-modules/sitemap/tree/ce81e848e7fd40149ed6080a84f65340389aa7c7/.claude/skills/nuxt-site-config-skilld) |
+| [`nuxt-studio`](skills/nuxt-studio/) | Manually written in this repository. |
+| [`nuxt-test-utils-skilld`](skills/nuxt-test-utils-skilld/) | [Bundled from nuxt-modules/sitemap](https://github.com/nuxt-modules/sitemap/tree/ce81e848e7fd40149ed6080a84f65340389aa7c7/.claude/skills/nuxt-test-utils-skilld) |
+| [`nuxt-ui`](skills/nuxt-ui/) | [Bundled from nuxt/ui](https://github.com/nuxt/ui/tree/b3d4342d9b588b85c69410dd14f0f7bba4a83adb/skills/nuxt-ui) |
+| [`nuxthub`](skills/nuxthub/) | Manually written in this repository. |
+| [`pinia`](skills/pinia/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/pinia) |
+| [`pnpm`](skills/pnpm/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/pnpm) |
+| [`reka-ui`](skills/reka-ui/) | Manually written in this repository. |
+| [`slidev`](skills/slidev/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/slidev) |
+| [`ts-library`](skills/ts-library/) | Manually written in this repository. |
+| [`tsdown`](skills/tsdown/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/tsdown) |
+| [`turborepo`](skills/turborepo/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/turborepo) |
+| [`unocss`](skills/unocss/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/unocss) |
+| [`vite`](skills/vite/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/vite) |
+| [`vitepress`](skills/vitepress/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/vitepress) |
+| [`vitest`](skills/vitest/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/vitest) |
+| [`vue`](skills/vue/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/vue) |
+| [`vue-best-practices`](skills/vue-best-practices/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/vue-best-practices) |
+| [`vue-debug-guides`](skills/vue-debug-guides/) | [Bundled from vuejs-ai/skills](https://github.com/vuejs-ai/skills/tree/c9d355ff23f654309dd02006be671859df0a134c/skills/vue-debug-guides) |
+| [`vue-jsx-best-practices`](skills/vue-jsx-best-practices/) | [Bundled from vuejs-ai/skills](https://github.com/vuejs-ai/skills/tree/c9d355ff23f654309dd02006be671859df0a134c/skills/vue-jsx-best-practices) |
+| [`vue-options-api-best-practices`](skills/vue-options-api-best-practices/) | [Bundled from vuejs-ai/skills](https://github.com/vuejs-ai/skills/tree/c9d355ff23f654309dd02006be671859df0a134c/skills/vue-options-api-best-practices) |
+| [`vue-pinia-best-practices`](skills/vue-pinia-best-practices/) | [Bundled from vuejs-ai/skills](https://github.com/vuejs-ai/skills/tree/c9d355ff23f654309dd02006be671859df0a134c/skills/vue-pinia-best-practices) |
+| [`vue-router-best-practices`](skills/vue-router-best-practices/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/vue-router-best-practices) |
+| [`vue-testing-best-practices`](skills/vue-testing-best-practices/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/vue-testing-best-practices) |
+| [`vueuse-functions`](skills/vueuse-functions/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/vueuse-functions) |
+| [`web-design-guidelines`](skills/web-design-guidelines/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/web-design-guidelines) |
+| [`writing-web-documentation`](skills/writing-web-documentation/) | Manually written in this repository. |
+
+<!-- END GENERATED SKILL CATALOG -->

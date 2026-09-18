@@ -28,16 +28,16 @@ defineConfig({
   test: {
     typecheck: {
       enabled: true,
-      
+
       // Only type check
       only: false,
-      
+
       // Checker: 'tsc' or 'vue-tsc'
       checker: 'tsc',
-      
+
       // Include patterns
       include: ['**/*.test-d.ts'],
-      
+
       // tsconfig to use
       tsconfig: './tsconfig.json',
     },
@@ -167,10 +167,10 @@ function getUser(): User | null {
 
 test('returns user', () => {
   const result = getUser()
-  
+
   // @ts-expect-error - should fail type check
   assertType<string>(result)
-  
+
   // Correct type
   assertType<User | null>(result)
 })
@@ -183,7 +183,7 @@ Test that code produces type error:
 ```ts
 test('rejects wrong types', () => {
   function requireString(s: string) {}
-  
+
   // @ts-expect-error - number not assignable to string
   requireString(123)
 })
@@ -232,7 +232,7 @@ describe('createUser', () => {
 - Use `@ts-expect-error` to test type errors
 - Run with `vitest typecheck` or `--typecheck`
 
-<!-- 
+<!--
 Source references:
 - https://vitest.dev/guide/testing-types.html
 - https://vitest.dev/api/expect-typeof.html

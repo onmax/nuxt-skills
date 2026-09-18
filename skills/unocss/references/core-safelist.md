@@ -42,7 +42,7 @@ safelist: [
   () => ['primary', 'secondary'].flatMap(c => [
     `bg-${c}`, `text-${c}`, `border-${c}`,
   ]),
-  
+
   // Component variants
   () => {
     const variants = ['primary', 'danger']
@@ -98,7 +98,7 @@ const sizes = {
 safelist: ['text-sm', 'text-base', 'p-2', 'p-4']
 ```
 
-<!-- 
+<!--
 Source references:
 - https://unocss.dev/config/safelist
 - https://unocss.dev/guide/extracting

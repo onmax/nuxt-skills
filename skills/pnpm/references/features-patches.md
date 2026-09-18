@@ -97,7 +97,7 @@ pnpm patch-commit <path>
 ```bash
 pnpm patch-remove <pkg>@<version>
 
-# Example  
+# Example
 pnpm patch-remove express@4.18.2
 ```
 

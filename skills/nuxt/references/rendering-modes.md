@@ -229,7 +229,7 @@ For components:
 </template>
 ```
 
-<!-- 
+<!--
 Source references:
 - https://nuxt.com/docs/guide/concepts/rendering
 - https://nuxt.com/docs/getting-started/prerendering

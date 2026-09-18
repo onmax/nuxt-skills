@@ -110,7 +110,7 @@ Render content to a different DOM location.
 ```vue
 <template>
   <button @click="open = true">Open Modal</button>
-  
+
   <Teleport to="body">
     <div v-if="open" class="modal">
       Modal content rendered at body

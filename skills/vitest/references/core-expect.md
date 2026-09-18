@@ -221,7 +221,7 @@ await expect.poll(
 ```ts
 test('async assertions', async () => {
   expect.assertions(2) // Exactly 2 assertions must run
-  
+
   await doAsync((data) => {
     expect(data).toBeDefined()
     expect(data.id).toBe(1)
@@ -241,7 +241,7 @@ expect.extend({
     const pass = received >= floor && received <= ceiling
     return {
       pass,
-      message: () => 
+      message: () =>
         `expected ${received} to be within range ${floor} - ${ceiling}`,
     }
   },
@@ -272,7 +272,7 @@ expect(() => throw new Error('fail')).toThrowErrorMatchingSnapshot()
 - Use `expect.soft` for non-critical assertions; reserve hard `expect` for must-pass conditions
 - Use `expect.assert` (not `toBeTruthy`) when you also need TypeScript narrowing
 
-<!-- 
+<!--
 Source references:
 - https://vitest.dev/api/expect.html
 - https://vitest.dev/guide/recipes/type-narrowing

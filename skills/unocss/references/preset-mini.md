@@ -116,16 +116,16 @@ presetMini({
 presetMini({
   // Dark mode: 'class' | 'media' | { light: string, dark: string }
   dark: 'class',
-  
+
   // Generate [group=""] instead of .group for attributify
   attributifyPseudo: false,
-  
+
   // CSS variable prefix (default: 'un-')
   variablePrefix: 'un-',
-  
+
   // Utility prefix
   prefix: undefined,
-  
+
   // Preflight generation: true | false | 'on-demand'
   preflight: true,
 })
@@ -152,7 +152,7 @@ export const myPreset: Preset = {
 }
 ```
 
-<!-- 
+<!--
 Source references:
 - https://unocss.dev/presets/mini
 -->

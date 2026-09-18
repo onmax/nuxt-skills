@@ -82,13 +82,13 @@ presetTagify({
 presetTagify({
   // Tag prefix
   prefix: '',
-  
+
   // Excluded tags (won't be processed)
   excludedTags: ['b', /^h\d+$/, 'table'],
-  
+
   // Extra CSS properties
   extraProperties: {},
-  
+
   // Enable default extractor
   defaultExtractor: true,
 })
@@ -128,7 +128,7 @@ presetTagify({
 - Some frameworks may not support all custom elements
 - Utilities without hyphens need the prefix option
 
-<!-- 
+<!--
 Source references:
 - https://unocss.dev/presets/tagify
 -->
