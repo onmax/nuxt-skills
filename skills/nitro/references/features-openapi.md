@@ -17,11 +17,11 @@ export default defineConfig({
 
 Dev endpoints once enabled:
 
-| Endpoint         | Description             |
-| ---------------- | ----------------------- |
+| Endpoint | Description |
+|---|---|
 | `/_openapi.json` | OpenAPI 3.1.0 JSON spec |
-| `/_scalar`       | Scalar API reference UI |
-| `/_swagger`      | Swagger UI              |
+| `/_scalar` | Scalar API reference UI |
+| `/_swagger` | Swagger UI |
 
 ## Route metadata
 
@@ -97,11 +97,11 @@ export default defineConfig({
 
 `production` values:
 
-| Value             | Behavior                                                           |
-| ----------------- | ------------------------------------------------------------------ |
-| `false` (default) | Disabled in production.                                            |
-| `"runtime"`       | Generated per request (allows middleware/dynamic info).            |
-| `"prerender"`     | Generated at build time, served as a static file (most efficient). |
+| Value | Behavior |
+|---|---|
+| `false` (default) | Disabled in production. |
+| `"runtime"` | Generated per request (allows middleware/dynamic info). |
+| `"prerender"` | Generated at build time, served as a static file (most efficient). |
 
 > If exposed in production, protect these endpoints with authentication.
 

@@ -37,13 +37,11 @@ const vFocus = {
 Directives apply to DOM elements. When used on components, they attach to the root element and can break if the root changes.
 
 **BAD:**
-
 ```vue
 <MyInput v-focus />
 ```
 
 **GOOD:**
-
 ```vue
 <!-- MyInput.vue -->
 <script setup>
@@ -97,7 +95,6 @@ const vFocus = (el) => el.focus()
 Use `Directive<Element, ValueType>` so `binding.value` is typed, and augment Vue's template types so directives are recognized in SFC templates.
 
 **BAD:**
-
 ```ts
 // Untyped directive value and no template type augmentation
 export const vHighlight = {
@@ -108,7 +105,6 @@ export const vHighlight = {
 ```
 
 **GOOD:**
-
 ```ts
 import type { Directive } from 'vue'
 
@@ -132,7 +128,6 @@ declare module 'vue' {
 Directive hooks such as `mounted` and `updated` do not run during SSR. If a directive sets attributes/classes that affect rendered HTML, provide an SSR equivalent via `getSSRProps` to avoid hydration mismatches.
 
 **BAD:**
-
 ```ts
 const vTooltip = {
   mounted(el, binding) {
@@ -143,7 +138,6 @@ const vTooltip = {
 ```
 
 **GOOD:**
-
 ```ts
 const vTooltip = {
   mounted(el, binding) {

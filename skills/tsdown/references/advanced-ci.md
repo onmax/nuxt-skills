@@ -10,11 +10,11 @@ tsdown detects CI from the `CI` environment variable. CI mode is enabled when `p
 
 Several options accept CI-aware string values:
 
-| Value          | Behavior                             |
-| -------------- | ------------------------------------ |
-| `true`         | Always enabled                       |
-| `false`        | Always disabled                      |
-| `'ci-only'`    | Enabled only in CI, disabled locally |
+| Value | Behavior |
+|-------|----------|
+| `true` | Always enabled |
+| `false` | Always disabled |
+| `'ci-only'` | Enabled only in CI, disabled locally |
 | `'local-only'` | Enabled only locally, disabled in CI |
 
 ## Supported Options

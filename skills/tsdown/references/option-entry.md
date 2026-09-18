@@ -52,7 +52,6 @@ export default defineConfig({
 ```
 
 Output files will match the keys:
-
 - `dist/main.mjs`
 - `dist/utils.mjs`
 - `dist/cli.mjs`
@@ -200,7 +199,6 @@ export default defineConfig({
 ```
 
 This will output files matching the source structure:
-
 - `src/index.ts` → `dist/index.mjs`
 - `src/utils/helper.ts` → `dist/utils/helper.mjs`
 

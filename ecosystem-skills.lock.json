@@ -43,12 +43,10 @@
     }
   },
   "skills": {
-    "antfu-design": "antfu/skills",
     "nitro": "antfu/skills",
     "nuxt": "antfu/skills",
     "pinia": "antfu/skills",
     "pnpm": "antfu/skills",
-    "slidev": "antfu/skills",
     "tsdown": "antfu/skills",
     "turborepo": "antfu/skills",
     "unocss": "antfu/skills",

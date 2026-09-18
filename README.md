@@ -142,7 +142,6 @@ Every skill in the plugin is listed below with its provenance. The table is rege
 
 | Skill | Provenance |
 | --- | --- |
-| [`antfu-design`](skills/antfu-design/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/antfu-design) |
 | [`arkenv`](skills/arkenv/) | [Bundled from nuxt-modules/yamcodes/arkenv](https://github.com/yamcodes/arkenv/tree/4465170dd36d9c0dddfdee4cf4134076785850df/skills/arkenv) |
 | [`comark`](skills/comark/) | [Bundled from nuxt-modules/comarkdown/comark](https://github.com/comarkdown/comark/tree/9bcbbfd427c647e5f7ebaf4a43b191ba01b747c1/docs/skills/comark) |
 | [`document-writer`](skills/document-writer/) | Manually written in this repository. |
@@ -161,7 +160,6 @@ Every skill in the plugin is listed below with its provenance. The table is rege
 | [`pnpm`](skills/pnpm/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/pnpm) |
 | [`regle`](skills/regle/) | [Bundled from nuxt-modules/victorgarciaesgi/regle](https://github.com/victorgarciaesgi/regle/tree/0df09b530955e2e54d0f3b931346ff33f8e19834/skills/regle) |
 | [`reka-ui`](skills/reka-ui/) | Manually written in this repository. |
-| [`slidev`](skills/slidev/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/slidev) |
 | [`solar-icons`](skills/solar-icons/) | [Bundled from nuxt-modules/saoudi-h/solar-icons](https://github.com/saoudi-h/solar-icons/tree/062d81307b64e2811c3e9d3f40ffb803f6930a7f/skills/solar-icons) |
 | [`ts-library`](skills/ts-library/) | Manually written in this repository. |
 | [`tsdown`](skills/tsdown/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/a74f281a27dadc02397bc1a174b0f2c97531b6ae/skills/tsdown) |

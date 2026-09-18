@@ -30,7 +30,6 @@ Patterns for headers, sidebars, breadcrumbs, and tab navigation.
 ## Sidebar navigation (dashboard)
 
 See [dashboard layout](../layouts/dashboard.md) for the full sidebar pattern with `UDashboardSidebar` + `UNavigationMenu`. Key points:
-
 - Pass `:collapsed="collapsed"` to `UNavigationMenu` inside collapsible sidebars
 - Use `NavigationMenuItem[][]` (nested arrays) for separate nav groups
 - Use `#footer` slot for user menu with `UDropdownMenu`

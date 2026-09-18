@@ -41,7 +41,6 @@ export default defineConfig({
 When your module has **only a single default export**, tsdown transforms:
 
 **Source:**
-
 ```ts
 // src/index.ts
 export default function greet() {
@@ -50,7 +49,6 @@ export default function greet() {
 ```
 
 **Generated CJS:**
-
 ```js
 // dist/index.cjs
 function greet() {
@@ -60,7 +58,6 @@ module.exports = greet
 ```
 
 **Generated Declaration:**
-
 ```ts
 // dist/index.d.cts
 declare function greet(): void

@@ -19,7 +19,6 @@ When a component is reused (e.g., in v-for), each instance needs its own debounc
 - [ ] Always clean up (cancel timers) in `unmounted()`
 
 **Incorrect:**
-
 ```javascript
 import { debounce } from 'lodash-es'
 
@@ -35,7 +34,6 @@ export default {
 ```
 
 **Correct:**
-
 ```javascript
 import { debounce } from 'lodash-es'
 
@@ -60,5 +58,4 @@ export default {
 ```
 
 ## Reference
-
 - [Vue.js Reactivity Fundamentals - Stateful Methods](https://vuejs.org/guide/essentials/reactivity-fundamentals.html#stateful-methods)

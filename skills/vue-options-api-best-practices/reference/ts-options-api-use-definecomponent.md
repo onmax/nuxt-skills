@@ -21,7 +21,6 @@ tags: [vue3, typescript, options-api, defineComponent, type-inference]
 Vue's Options API relies heavily on the `this` context, which TypeScript cannot automatically type without `defineComponent`:
 
 **BAD - No type inference:**
-
 ```typescript
 // No defineComponent - 'this' is typed as 'any'
 export default {
@@ -44,7 +43,6 @@ export default {
 ```
 
 **GOOD - Full type inference:**
-
 ```typescript
 import { defineComponent } from 'vue'
 
@@ -120,10 +118,10 @@ This means there's zero runtime cost to using `defineComponent`.
 
 ## When to Use defineComponent vs script setup
 
-| Approach          | Use Case                                                |
-| ----------------- | ------------------------------------------------------- |
-| `defineComponent` | Options API, Class-based migration, JSX/TSX components  |
-| `<script setup>`  | New components, better type inference, less boilerplate |
+| Approach | Use Case |
+|----------|----------|
+| `defineComponent` | Options API, Class-based migration, JSX/TSX components |
+| `<script setup>` | New components, better type inference, less boilerplate |
 
 **Official recommendation**: "While Vue does support TypeScript usage with Options API, it is recommended to use Vue with TypeScript via Composition API as it offers simpler, more efficient and more robust type inference."
 

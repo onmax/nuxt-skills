@@ -111,7 +111,6 @@ pnpm -r --parallel run build
 ```
 
 Control concurrency:
-
 ```yaml title="pnpm-workspace.yaml"
 workspaceConcurrency: 8
 ```
@@ -143,7 +142,6 @@ pnpm -r run build
 ```
 
 For explicit sequential builds:
-
 ```bash
 pnpm -r --workspace-concurrency=1 run build
 ```
@@ -174,7 +172,6 @@ sharedWorkspaceLockfile: true
 ```
 
 Benefits:
-
 - Single source of truth
 - Faster resolution
 - Consistent versions across workspace
@@ -244,15 +241,15 @@ enableGlobalVirtualStore: true
 
 ## Quick Reference
 
-| Scenario              | Command/Setting                              |
-| --------------------- | -------------------------------------------- |
-| CI installs           | `pnpm ci` / `pnpm install --frozen-lockfile` |
-| Offline development   | `--prefer-offline`                           |
-| Control native builds | `allowBuilds` map                            |
-| Parallel workspace    | `pnpm -r --parallel run build`               |
-| Build changed only    | `pnpm --filter "...[origin/main]" build`     |
-| Clean store           | `pnpm store prune`                           |
-| Many worktrees/agents | `enableGlobalVirtualStore: true`             |
+| Scenario | Command/Setting |
+|----------|-----------------|
+| CI installs | `pnpm ci` / `pnpm install --frozen-lockfile` |
+| Offline development | `--prefer-offline` |
+| Control native builds | `allowBuilds` map |
+| Parallel workspace | `pnpm -r --parallel run build` |
+| Build changed only | `pnpm --filter "...[origin/main]" build` |
+| Clean store | `pnpm store prune` |
+| Many worktrees/agents | `enableGlobalVirtualStore: true` |
 
 <!--
 Source references:

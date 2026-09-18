@@ -6,12 +6,10 @@
       "repository": "https://github.com/antfu/skills.git",
       "root": "skills",
       "include": [
-        "antfu-design",
         "nitro",
         "nuxt",
         "pinia",
         "pnpm",
-        "slidev",
         "tsdown",
         "turborepo",
         "unocss",

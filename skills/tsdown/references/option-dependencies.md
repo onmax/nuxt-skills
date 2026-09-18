@@ -90,7 +90,6 @@ export default defineConfig({
 ```
 
 **Behavior:**
-
 - **Array** (`['cac', /^my-/]`): Only matching dependencies can be bundled. Error for others.
 - **`false`**: Suppress all warnings about bundled dependencies.
 - **Not set** (default): Warns if any node_modules dependencies are bundled.
@@ -210,7 +209,6 @@ export default defineConfig({
 ```
 
 **When to use `tsc` resolver:**
-
 - Types in `@types/*` packages with non-standard naming (e.g., `@types/babel__generator`)
 - Complex type dependencies
 - Issues with default Oxc resolver
@@ -234,12 +232,12 @@ tsdown --deps.skip-node-modules-bundle
 
 ## Migration from Deprecated Options
 
-| Deprecated Option       | New Option                   |
-| ----------------------- | ---------------------------- |
-| `external`              | `deps.neverBundle`           |
-| `noExternal`            | `deps.alwaysBundle`          |
-| `inlineOnly`            | `deps.onlyBundle`            |
-| `deps.onlyAllowBundle`  | `deps.onlyBundle`            |
+| Deprecated Option | New Option |
+|---|---|
+| `external` | `deps.neverBundle` |
+| `noExternal` | `deps.alwaysBundle` |
+| `inlineOnly` | `deps.onlyBundle` |
+| `deps.onlyAllowBundle` | `deps.onlyBundle` |
 | `skipNodeModulesBundle` | `deps.skipNodeModulesBundle` |
 
 ## Examples by Use Case
@@ -357,19 +355,16 @@ export default defineConfig({
 ## Summary
 
 **Default behavior:**
-
 - `dependencies`, `peerDependencies`, & `optionalDependencies` → External
 - `devDependencies` & phantom deps → Bundled if imported
 
 **Override (under `deps`):**
-
 - `neverBundle` → Force external
 - `alwaysBundle` → Force bundled
 - `onlyBundle` → Whitelist bundled deps
 - `skipNodeModulesBundle` → Skip all node_modules
 
 **Declaration files:**
-
 - Same bundling logic as JavaScript
 - Use `resolver: 'tsc'` for complex types
 

@@ -22,7 +22,6 @@ Debug hooks only work in development mode and are stripped in production builds.
 > **Note:** `onTrack` and `onTrigger` are development-only hooks. They are stripped from production builds and may not fire in test environments (e.g., Vitest, Jest) depending on how Vue is bundled. If you need to verify reactivity behavior in tests, use direct assertions on reactive state changes rather than relying on these debug callbacks.
 
 **Debugging computed properties:**
-
 ```javascript
 import { ref, computed } from 'vue'
 
@@ -44,7 +43,6 @@ const doubled = computed(() => count.value * 2, {
 ```
 
 **Debugging watchers:**
-
 ```javascript
 import { ref, watch, watchEffect } from 'vue'
 
@@ -76,7 +74,6 @@ watchEffect(() => {
 ```
 
 **Debugging component renders:**
-
 ```vue
 <script setup>
 import { onRenderTracked, onRenderTriggered, ref } from 'vue'
@@ -100,7 +97,6 @@ onRenderTriggered((event) => {
 ```
 
 **Options API equivalent:**
-
 ```javascript
 export default {
   data() {
@@ -118,7 +114,6 @@ export default {
 ```
 
 **Debug event properties:**
-
 ```javascript
 // The event object contains:
 {
@@ -132,7 +127,6 @@ export default {
 ```
 
 ## Reference
-
 - [Vue.js Reactivity in Depth - Debugging](https://vuejs.org/guide/extras/reactivity-in-depth.html#reactivity-debugging)
 - [Vue.js computed() API](https://vuejs.org/api/reactivity-core.html#computed)
 - [Vue.js onRenderTracked()](https://vuejs.org/api/composition-api-lifecycle.html#onrendertracked)

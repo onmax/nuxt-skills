@@ -14,7 +14,6 @@ pnpm add -D typescript
 ```
 
 **Requirements:**
-
 - Node.js 22.18.0 or higher **to run tsdown** (build-time only)
 - Experimental support for Deno and Bun
 
@@ -32,7 +31,6 @@ pnpm create tsdown@latest
 ```
 
 Provides templates for:
-
 - Pure TypeScript libraries
 - React component libraries
 - Vue component libraries

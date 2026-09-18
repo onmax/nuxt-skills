@@ -193,17 +193,17 @@ export const useProductFiltersStore = defineStore('productFilters', () => {
 
 ## What Goes in URL vs Store
 
-| State Type       | URL   | Store    | Notes                   |
-| ---------------- | ----- | -------- | ----------------------- |
-| Filters          | Yes   | Optional | Shareable, bookmarkable |
-| Search query     | Yes   | Optional | SEO benefit             |
-| Pagination       | Yes   | Optional | Deep linking            |
-| Sort order       | Yes   | Optional | User expectation        |
-| Selected tab     | Yes   | Optional | Deep linking            |
-| Modal open state | Maybe | Yes      | Usually not shareable   |
-| Form draft       | No    | Yes      | Private, temporary      |
-| User session     | No    | Yes      | Security                |
-| Shopping cart    | No    | Yes      | Persistence needed      |
+| State Type | URL | Store | Notes |
+|------------|-----|-------|-------|
+| Filters | Yes | Optional | Shareable, bookmarkable |
+| Search query | Yes | Optional | SEO benefit |
+| Pagination | Yes | Optional | Deep linking |
+| Sort order | Yes | Optional | User expectation |
+| Selected tab | Yes | Optional | Deep linking |
+| Modal open state | Maybe | Yes | Usually not shareable |
+| Form draft | No | Yes | Private, temporary |
+| User session | No | Yes | Security |
+| Shopping cart | No | Yes | Persistence needed |
 
 ## Benefits of URL State
 
@@ -233,7 +233,6 @@ const sort = useRouteQuery('sort', 'newest')
 ```
 
 ## Reference
-
 - [VueUse - useRouteQuery](https://vueuse.org/router/useRouteQuery/)
 - [Vue Router - Query Parameters](https://router.vuejs.org/guide/essentials/passing-props.html#passing-props-to-route-components)
 - [Mastering Pinia - URL State](https://masteringpinia.com/blog/top-5-mistakes-to-avoid-when-using-pinia)

@@ -36,7 +36,6 @@ props: {
 ## Using PropType for Complex Types
 
 **Import and use PropType:**
-
 ```typescript
 import { defineComponent, PropType } from 'vue'
 // or

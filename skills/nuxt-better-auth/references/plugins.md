@@ -29,11 +29,11 @@ export default defineClientAuth({
 
 ## Common plugin pairs
 
-| Server           | Client                 |
-| ---------------- | ---------------------- |
-| `admin()`        | `adminClient()`        |
-| `twoFactor()`    | `twoFactorClient()`    |
-| `passkey()`      | `passkeyClient()`      |
+| Server | Client |
+| --- | --- |
+| `admin()` | `adminClient()` |
+| `twoFactor()` | `twoFactorClient()` |
+| `passkey()` | `passkeyClient()` |
 | `multiSession()` | `multiSessionClient()` |
 
 Without the matching client plugin, client-side methods and inferred types for that feature are incomplete.

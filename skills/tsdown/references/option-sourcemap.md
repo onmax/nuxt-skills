@@ -39,12 +39,10 @@ export default defineConfig({
 ```
 
 **Output:**
-
 - `dist/index.mjs`
 - `dist/index.mjs.map`
 
 **Pros:**
-
 - Smaller bundle size
 - Can be excluded from production
 - Faster parsing
@@ -60,16 +58,13 @@ export default defineConfig({
 ```
 
 **Output:**
-
 - `dist/index.mjs` (includes source map as data URL)
 
 **Pros:**
-
 - Single file deployment
 - Guaranteed to be available
 
 **Cons:**
-
 - Larger bundle size
 - Exposed in production
 
@@ -84,12 +79,10 @@ export default defineConfig({
 ```
 
 **Output:**
-
 - `dist/index.mjs` (no `//# sourceMappingURL` comment)
 - `dist/index.mjs.map`
 
 **Use when:**
-
 - You want maps for error reporting tools
 - But don't want them exposed to users
 
@@ -175,7 +168,6 @@ export default defineConfig({
 ```
 
 **Output:**
-
 - `dist/index.mjs` + `dist/index.mjs.map`
 - `dist/index.cjs` + `dist/index.cjs.map`
 - `dist/index.d.ts` + `dist/index.d.ts.map`
@@ -196,12 +188,12 @@ export default defineConfig({
 
 ## Performance Impact
 
-| Type     | Bundle Size | Parse Speed | Debugging  |
-| -------- | ----------- | ----------- | ---------- |
-| None     | Smallest    | Fastest     | Hard       |
-| External | Small       | Fast        | Easy       |
-| Inline   | Largest     | Slower      | Easy       |
-| Hidden   | Small       | Fast        | Tools only |
+| Type | Bundle Size | Parse Speed | Debugging |
+|------|-------------|-------------|-----------|
+| None | Smallest | Fastest | Hard |
+| External | Small | Fast | Easy |
+| Inline | Largest | Slower | Easy |
+| Hidden | Small | Fast | Tools only |
 
 ## CLI Examples
 

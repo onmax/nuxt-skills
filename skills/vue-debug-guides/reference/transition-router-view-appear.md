@@ -18,7 +18,6 @@ tags: [vue3, transition, vue-router, appear, initial-load, navigation]
 - [ ] Consider whether initial animation is desired for your UX
 
 **Expected Behavior (Normal Transition):**
-
 ```vue
 <template>
   <!-- Without appear: No animation on initial render -->
@@ -34,7 +33,6 @@ tags: [vue3, transition, vue-router, appear, initial-load, navigation]
 ```
 
 **RouterView Behavior (Different!):**
-
 ```vue
 <template>
   <!-- RouterView transitions ALWAYS animate on initial load -->
@@ -191,6 +189,5 @@ const routes = [
 ```
 
 ## Reference
-
 - [Vue Router Transitions](https://router.vuejs.org/guide/advanced/transitions.html)
 - [Vue.js Transition appear](https://vuejs.org/guide/built-ins/transition.html#transition-on-appear)

@@ -18,7 +18,6 @@ tags: [vue3, animation, key, autoanimate, rerender, dom]
 - [ ] Apply `v-auto-animate` to the parent element of keyed children
 
 **Problematic Code:**
-
 ```vue
 <template>
   <!-- BAD: Text changes but no animation occurs -->
@@ -47,7 +46,6 @@ const imageUrl = ref('/images/photo1.jpg')
 ```
 
 **Correct Code:**
-
 ```vue
 <template>
   <!-- GOOD: Key forces re-render, triggering animation -->
@@ -80,13 +78,11 @@ function updateMessage() {
 ## Why This Works
 
 When Vue sees a `:key` change:
-
 1. It considers the old element and new element as different
 2. The old element is removed (triggering leave animation)
 3. A new element is created (triggering enter animation)
 
 Without `:key`:
-
 1. Vue sees the same element type in the same position
 2. It updates the element's properties in place
 3. No DOM addition/removal occurs, so no animation triggers
@@ -148,7 +144,6 @@ The same principle applies to Vue's `<Transition>` component:
 ## Caution: Performance Implications
 
 Using `:key` forces full component re-creation. For frequently changing data:
-
 - The entire component tree under the keyed element is destroyed and recreated
 - Any component state is lost
 - Consider whether the animation is worth the performance cost
@@ -160,7 +155,6 @@ Using `:key` forces full component re-creation. For frequently changing data:
 ```
 
 ## Reference
-
 - [Vue.js Animation Techniques](https://vuejs.org/guide/extras/animation.html)
 - [AutoAnimate with Vue](https://auto-animate.formkit.com/#usage-vue)
 - [Vue.js v-for with key](https://vuejs.org/guide/essentials/list.html#maintaining-state-with-key)
