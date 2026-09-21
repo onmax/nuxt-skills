@@ -12,7 +12,6 @@ metadata:
 Nitro is a framework-agnostic, deployment-agnostic server toolkit powered by [H3](https://h3.dev) v2, [unstorage](https://unstorage.unjs.io), and Vite/Rolldown/Rollup. It powers Nuxt and works standalone. From one codebase it builds optimized output for Node.js, Bun, Deno, Cloudflare, Vercel, Netlify, and more.
 
 Key capabilities:
-
 - **Filesystem routing** with H3 v2 event handlers, dynamic params, and method suffixes.
 - **Route rules** for declarative caching, headers, redirects, proxying, and auth.
 - **Caching** layer (cached handlers/functions, SWR) on top of **unstorage** KV.
@@ -24,28 +23,28 @@ Key capabilities:
 
 ## Core
 
-| Topic         | Description                                                                 | Reference                                              |
-| ------------- | --------------------------------------------------------------------------- | ------------------------------------------------------ |
-| Routing       | File-based routes, `defineHandler`, params, middleware, route rules, errors | [core-routing](references/core-routing.md)             |
-| Configuration | `nitro.config.ts`, `defineConfig`, key options, runtime config              | [core-configuration](references/core-configuration.md) |
-| Storage       | unstorage KV, mount points, drivers, dynamic mounts                         | [core-storage](references/core-storage.md)             |
-| Cache         | `defineCachedHandler`, `defineCachedFunction`, SWR, invalidation            | [core-cache](references/core-cache.md)                 |
-| Assets        | Public assets, compression, server assets via storage                       | [core-assets](references/core-assets.md)               |
-| Rendering     | Renderer (HTML/SSR), server entry, framework integration                    | [core-rendering](references/core-rendering.md)         |
+| Topic | Description | Reference |
+|-------|-------------|-----------|
+| Routing | File-based routes, `defineHandler`, params, middleware, route rules, errors | [core-routing](references/core-routing.md) |
+| Configuration | `nitro.config.ts`, `defineConfig`, key options, runtime config | [core-configuration](references/core-configuration.md) |
+| Storage | unstorage KV, mount points, drivers, dynamic mounts | [core-storage](references/core-storage.md) |
+| Cache | `defineCachedHandler`, `defineCachedFunction`, SWR, invalidation | [core-cache](references/core-cache.md) |
+| Assets | Public assets, compression, server assets via storage | [core-assets](references/core-assets.md) |
+| Rendering | Renderer (HTML/SSR), server entry, framework integration | [core-rendering](references/core-rendering.md) |
 
 ## Features
 
-| Topic           | Description                                                  | Reference                                              |
-| --------------- | ------------------------------------------------------------ | ------------------------------------------------------ |
-| Plugins & Hooks | `definePlugin`, runtime lifecycle hooks, error capture       | [features-plugins](references/features-plugins.md)     |
-| Tasks           | On-demand & scheduled (cron) tasks, `runTask`                | [features-tasks](references/features-tasks.md)         |
+| Topic | Description | Reference |
+|-------|-------------|-----------|
+| Plugins & Hooks | `definePlugin`, runtime lifecycle hooks, error capture | [features-plugins](references/features-plugins.md) |
+| Tasks | On-demand & scheduled (cron) tasks, `runTask` | [features-tasks](references/features-tasks.md) |
 | WebSocket & SSE | `defineWebSocketHandler`, pub/sub, namespaces, event streams | [features-websocket](references/features-websocket.md) |
-| Database        | Built-in SQL layer via db0, `useDatabase`, connectors        | [features-database](references/features-database.md)   |
-| OpenAPI         | Auto spec from `defineRouteMeta`, Scalar/Swagger UIs         | [features-openapi](references/features-openapi.md)     |
+| Database | Built-in SQL layer via db0, `useDatabase`, connectors | [features-database](references/features-database.md) |
+| OpenAPI | Auto spec from `defineRouteMeta`, Scalar/Swagger UIs | [features-openapi](references/features-openapi.md) |
 
 ## Advanced / Deployment
 
-| Topic              | Description                                                     | Reference                                              |
-| ------------------ | --------------------------------------------------------------- | ------------------------------------------------------ |
-| Deployment Presets | Runtimes & providers, compatibility dates, platform integration | [deploy-presets](references/deploy-presets.md)         |
-| v2 → v3 Migration  | Package rename, `nitro/*` imports, H3 v2 API, preset changes    | [advanced-migration](references/advanced-migration.md) |
+| Topic | Description | Reference |
+|-------|-------------|-----------|
+| Deployment Presets | Runtimes & providers, compatibility dates, platform integration | [deploy-presets](references/deploy-presets.md) |
+| v2 → v3 Migration | Package rename, `nitro/*` imports, H3 v2 API, preset changes | [advanced-migration](references/advanced-migration.md) |

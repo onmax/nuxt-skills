@@ -21,7 +21,6 @@ On the server, only `beforeCreate`, `created`, and their Composition API equival
 - [ ] Check for browser environment before using browser APIs
 
 **Incorrect:**
-
 ```javascript
 // WRONG: Accessing browser APIs in created - breaks SSR
 export default {
@@ -48,7 +47,6 @@ export default {
 ```
 
 **Correct:**
-
 ```javascript
 // CORRECT: Data fetching in created (runs on server), DOM in mounted
 export default {
@@ -181,7 +179,6 @@ onMounted(() => {
 ```
 
 ## Reference
-
 - [Vue.js SSR Guide](https://vuejs.org/guide/scaling-up/ssr.html)
 - [Nuxt.js Lifecycle](https://nuxt.com/docs/api/composables/use-nuxt-app#lifecycle-hooks)
 - [Vue SSR Hydration](https://vuejs.org/guide/scaling-up/ssr.html#client-hydration)

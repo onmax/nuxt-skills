@@ -20,7 +20,6 @@ tags: [vue3, typescript, props, withDefaults, mutable-types]
 ## The Problem: Shared Mutable References
 
 **WRONG - Shared reference across instances:**
-
 ```vue
 <script setup lang="ts">
 interface Props {
@@ -36,7 +35,6 @@ const props = withDefaults(defineProps<Props>(), {
 ```
 
 When you have multiple instances of this component:
-
 ```vue
 <template>
   <!-- Both share the SAME items array! -->
@@ -53,7 +51,6 @@ comp1.value.items.push('new item')  // comp2 also has 'new item' now
 ## The Solution: Factory Functions
 
 **CORRECT - Unique instance per component:**
-
 ```vue
 <script setup lang="ts">
 interface Props {
@@ -72,17 +69,17 @@ const props = withDefaults(defineProps<Props>(), {
 
 ## When Factory Functions Are Required
 
-| Type       | Factory Required | Example Default    |
-| ---------- | ---------------- | ------------------ |
-| `string`   | No               | `'hello'`          |
-| `number`   | No               | `42`               |
-| `boolean`  | No               | `false`            |
-| `string[]` | **Yes**          | `() => []`         |
-| `number[]` | **Yes**          | `() => [1, 2, 3]`  |
-| `object`   | **Yes**          | `() => ({})`       |
-| `Map`      | **Yes**          | `() => new Map()`  |
-| `Set`      | **Yes**          | `() => new Set()`  |
-| `Date`     | **Yes**          | `() => new Date()` |
+| Type | Factory Required | Example Default |
+|------|-----------------|-----------------|
+| `string` | No | `'hello'` |
+| `number` | No | `42` |
+| `boolean` | No | `false` |
+| `string[]` | **Yes** | `() => []` |
+| `number[]` | **Yes** | `() => [1, 2, 3]` |
+| `object` | **Yes** | `() => ({})` |
+| `Map` | **Yes** | `() => new Map()` |
+| `Set` | **Yes** | `() => new Set()` |
+| `Date` | **Yes** | `() => new Date()` |
 
 ## Complete Example
 
@@ -163,7 +160,6 @@ const props = withDefaults(defineProps<Props>(), {
 Users report: "Selecting a row in one table selects it in all tables!"
 
 **Fix:**
-
 ```typescript
 const props = withDefaults(defineProps<Props>(), {
   selectedRows: () => []  // Now each instance has its own array
@@ -171,6 +167,5 @@ const props = withDefaults(defineProps<Props>(), {
 ```
 
 ## Reference
-
 - [Vue.js TypeScript with Composition API - Default Props](https://vuejs.org/guide/typescript/composition-api.html#props-default-values)
 - [Vue RFC - Reactive Props Destructure](https://github.com/vuejs/rfcs/discussions/502)

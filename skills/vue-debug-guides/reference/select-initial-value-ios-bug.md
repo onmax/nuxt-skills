@@ -20,7 +20,6 @@ This is a platform-specific bug that only manifests on iOS Safari. Desktop brows
 - [ ] Consider this for any user-facing forms, especially on mobile-first apps
 
 **Problem - iOS users cannot select first option:**
-
 ```html
 <script setup>
 import { ref } from 'vue'
@@ -43,7 +42,6 @@ const selected = ref('')
 ```
 
 **Solution - Add disabled placeholder option:**
-
 ```html
 <script setup>
 import { ref } from 'vue'
@@ -90,5 +88,4 @@ const country = ref('us')  // Pre-selects "United States"
 ```
 
 ## Reference
-
 - [Vue.js Form Input Bindings - Select](https://vuejs.org/guide/essentials/forms.html#select)

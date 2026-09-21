@@ -1,5 +1,0 @@
-interface:
-  display_name: "Arkenv"
-  short_description: "Answer questions about ArkEnv and help implement environment variable validation."
-policy:
-  allow_implicit_invocation: false

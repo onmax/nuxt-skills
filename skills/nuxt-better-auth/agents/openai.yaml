@@ -1,5 +1,0 @@
-interface:
-  display_name: "Nuxt Better Auth"
-  short_description: "Guides authentication in Nuxt apps using @nuxtjs/better-auth."
-policy:
-  allow_implicit_invocation: false

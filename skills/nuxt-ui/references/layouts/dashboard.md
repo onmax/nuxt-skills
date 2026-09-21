@@ -121,21 +121,21 @@ definePageMeta({ layout: 'dashboard' })
 
 Root wrapper. Manages sidebar state and persistence.
 
-| Prop          | Default       | Purpose                               |
-| ------------- | ------------- | ------------------------------------- |
-| `storage`     | `'cookie'`    | `'cookie'`, `'localStorage'`, `false` |
-| `storage-key` | `'dashboard'` | Storage key name                      |
+| Prop | Default | Purpose |
+|---|---|---|
+| `storage` | `'cookie'` | `'cookie'`, `'localStorage'`, `false` |
+| `storage-key` | `'dashboard'` | Storage key name |
 
 ### DashboardSidebar
 
 Resizable, collapsible sidebar. Must be inside `DashboardGroup`.
 
-| Prop          | Default       | Purpose                                      |
-| ------------- | ------------- | -------------------------------------------- |
-| `resizable`   | `false`       | Drag to resize                               |
-| `collapsible` | `false`       | Collapse when dragged to edge                |
-| `side`        | `'left'`      | `'left'` or `'right'`                        |
-| `mode`        | `'slideover'` | Mobile: `'modal'`, `'slideover'`, `'drawer'` |
+| Prop | Default | Purpose |
+|---|---|---|
+| `resizable` | `false` | Drag to resize |
+| `collapsible` | `false` | Collapse when dragged to edge |
+| `side` | `'left'` | `'left'` or `'right'` |
+| `mode` | `'slideover'` | Mobile: `'modal'`, `'slideover'`, `'drawer'` |
 
 All slots receive `{ collapsed, collapse }` — `collapsed` is the boolean state, `collapse(value)` toggles it programmatically. Use `v-model:collapsed` and `v-model:open` (mobile) for state control.
 

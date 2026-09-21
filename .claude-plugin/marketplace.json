@@ -1,14 +1,38 @@
 {
   "name": "nuxt-skills",
-  "owner": { "name": "onmax", "email": "maximogarciamtnez@gmail.com" },
-  "metadata": { "description": "Vue, Nuxt, and NuxtHub skills for AI coding assistants" },
+  "owner": {
+    "name": "onmax",
+    "email": "maximogarciamtnez@gmail.com"
+  },
+  "metadata": {
+    "description": "Vue, Nuxt, and NuxtHub skills for AI coding assistants"
+  },
   "plugins": [
     {
       "name": "nuxt-skills",
       "source": "./",
-      "version": "1.3.1",
+      "version": "1.3.2",
       "description": "Vue, Nuxt, and NuxtHub skills for AI coding assistants",
-      "keywords": ["vue", "nuxt", "nitro", "pinia", "nuxthub", "nuxt-modules", "nuxt-content", "nuxt-studio", "nuxt-ui", "nuxt-i18n", "nuxt-seo", "vite", "vitepress", "vitest", "pnpm", "tsdown", "unocss", "vueuse"],
+      "keywords": [
+        "vue",
+        "nuxt",
+        "nitro",
+        "pinia",
+        "nuxthub",
+        "nuxt-modules",
+        "nuxt-content",
+        "nuxt-studio",
+        "nuxt-ui",
+        "nuxt-i18n",
+        "nuxt-seo",
+        "vite",
+        "vitepress",
+        "vitest",
+        "pnpm",
+        "tsdown",
+        "unocss",
+        "vueuse"
+      ],
       "category": "frontend"
     }
   ]

@@ -1,5 +1,0 @@
-interface:
-  display_name: "Nuxt Users"
-  short_description: "Configure and use the nuxt-users module for Nuxt 3 and Nuxt 4."
-policy:
-  allow_implicit_invocation: false

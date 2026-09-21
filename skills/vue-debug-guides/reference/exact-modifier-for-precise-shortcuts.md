@@ -18,7 +18,6 @@ tags: [vue3, events, keyboard, modifiers, shortcuts, accessibility]
 - [ ] Use `@click.exact` for plain clicks with no modifiers
 
 **Incorrect:**
-
 ```html
 <!-- WRONG: Fires even with additional modifiers -->
 <template>
@@ -42,7 +41,6 @@ tags: [vue3, events, keyboard, modifiers, shortcuts, accessibility]
 ```
 
 **Correct:**
-
 ```html
 <!-- CORRECT: Precise modifier matching with .exact -->
 <template>
@@ -154,5 +152,4 @@ function addRangeToSelection(file) {
 ```
 
 ## Reference
-
 - [Vue.js Event Handling - .exact Modifier](https://vuejs.org/guide/essentials/event-handling.html#exact-modifier)

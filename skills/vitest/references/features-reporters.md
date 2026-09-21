@@ -29,20 +29,20 @@ When `reporters` is unset, Vitest auto-selects:
 
 ## Built-in Reporters
 
-| Reporter            | Use                                                                                        |
-| ------------------- | ------------------------------------------------------------------------------------------ |
-| `default`           | Summary + collapses passing files; prints full tree for single/failing file                |
-| `verbose`           | One line per finished test (flat list in v4); only reporter that shows annotations on pass |
-| `tree`              | Like `default` but always shows each test (the old v3 verbose)                             |
-| `dot`               | One dot per test; details only for failures                                                |
-| `minimal` / `agent` | Failures only; best for AI/LLM workflows                                                   |
-| `junit`             | JUnit XML (templated, see below)                                                           |
-| `json`              | Jest-compatible JSON; includes `coverageMap` when coverage enabled                         |
-| `tap` / `tap-flat`  | TAP (nested / flat)                                                                        |
-| `html`              | Interactive UI report (needs `@vitest/ui`)                                                 |
-| `blob`              | Serialized results for `--merge-reports`                                                   |
-| `github-actions`    | Workflow annotations + job summary                                                         |
-| `hanging-process`   | Lists processes preventing exit (debugging)                                                |
+| Reporter | Use |
+|----------|-----|
+| `default` | Summary + collapses passing files; prints full tree for single/failing file |
+| `verbose` | One line per finished test (flat list in v4); only reporter that shows annotations on pass |
+| `tree` | Like `default` but always shows each test (the old v3 verbose) |
+| `dot` | One dot per test; details only for failures |
+| `minimal` / `agent` | Failures only; best for AI/LLM workflows |
+| `junit` | JUnit XML (templated, see below) |
+| `json` | Jest-compatible JSON; includes `coverageMap` when coverage enabled |
+| `tap` / `tap-flat` | TAP (nested / flat) |
+| `html` | Interactive UI report (needs `@vitest/ui`) |
+| `blob` | Serialized results for `--merge-reports` |
+| `github-actions` | Workflow annotations + job summary |
+| `hanging-process` | Lists processes preventing exit (debugging) |
 
 > v4 removed the `basic` reporter (equivalent to `['default', { summary: false }]`). The old `verbose` flat behavior moved here; use `tree` for the nested view.
 

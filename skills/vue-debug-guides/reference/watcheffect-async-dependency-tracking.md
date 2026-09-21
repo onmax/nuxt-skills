@@ -20,7 +20,6 @@ For async operations, either access all dependencies before the await, or use `w
 - [ ] Be aware that dependencies after await are invisible to Vue
 
 **Incorrect:**
-
 ```vue
 <script setup>
 import { ref, watchEffect } from 'vue'
@@ -55,7 +54,6 @@ watchEffect(async () => {
 ```
 
 **Correct:**
-
 ```vue
 <script setup>
 import { ref, watchEffect, watch } from 'vue'
@@ -171,6 +169,5 @@ watchEffect(async () => {
 ```
 
 ## Reference
-
 - [Vue.js Watchers - watchEffect](https://vuejs.org/guide/essentials/watchers.html#watcheffect)
 - [Vue.js API - watchEffect](https://vuejs.org/api/reactivity-core.html#watcheffect)

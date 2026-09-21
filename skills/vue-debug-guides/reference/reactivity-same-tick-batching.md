@@ -20,7 +20,6 @@ Understanding this behavior is essential for debugging scenarios where you expec
 - [ ] For intermediate value tracking, consider logging or explicit state snapshots
 
 **Example of batching behavior:**
-
 ```javascript
 import { ref, watch } from 'vue'
 
@@ -44,7 +43,6 @@ multipleUpdates()
 ```
 
 **The console logs you WON'T see:**
-
 ```javascript
 const items = reactive([])
 
@@ -62,7 +60,6 @@ items.push('c')  // length: 3
 ```
 
 **Using flush: 'sync' for immediate watching (use with caution):**
-
 ```javascript
 import { ref, watch } from 'vue'
 
@@ -82,7 +79,6 @@ count.value = 3  // Logs: "Immediate: 3"
 ```
 
 **Using nextTick to separate batches:**
-
 ```javascript
 import { ref, watch, nextTick } from 'vue'
 
@@ -107,7 +103,6 @@ async function separatedUpdates() {
 ```
 
 **Practical example - form validation:**
-
 ```javascript
 const formData = reactive({
   email: '',
@@ -131,7 +126,6 @@ function populateFromSavedData(saved) {
 ```
 
 **When batching helps performance:**
-
 ```javascript
 // Without batching, this would trigger 1000 watcher/render cycles
 const list = reactive([])
@@ -146,7 +140,6 @@ function addManyItems() {
 ```
 
 **Debugging intermediate states:**
-
 ```javascript
 // If you need to observe every change for debugging:
 import { ref, watch } from 'vue'
@@ -168,7 +161,6 @@ Object.defineProperty(count, 'value', {
 ```
 
 ## Reference
-
 - [Vue.js Reactivity in Depth](https://vuejs.org/guide/extras/reactivity-in-depth.html)
 - [Vue.js Watchers - Callback Flush Timing](https://vuejs.org/guide/essentials/watchers.html#callback-flush-timing)
 - [Vue.js nextTick()](https://vuejs.org/api/general.html#nexttick)

@@ -21,7 +21,6 @@ Use `await` with triggers and `setValue`, use `nextTick` for reactive updates, a
 - [ ] Consider using `waitFor` from testing-library for polling assertions
 
 **Incorrect:**
-
 ```javascript
 import { mount } from '@vue/test-utils'
 import SearchComponent from './SearchComponent.vue'
@@ -49,7 +48,6 @@ test('loads data from API', async () => {
 ```
 
 **Correct:**
-
 ```javascript
 import { mount, flushPromises } from '@vue/test-utils'
 import { nextTick } from 'vue'
@@ -80,7 +78,6 @@ test('loads data from API', async () => {
 ## When to Use Each Method
 
 ### `await trigger()` / `await setValue()` - User Interactions
-
 ```javascript
 // These methods return nextTick internally
 await wrapper.find('button').trigger('click')
@@ -89,7 +86,6 @@ await wrapper.find('form').trigger('submit')
 ```
 
 ### `await nextTick()` - Programmatic Reactive Updates
-
 ```javascript
 import { nextTick } from 'vue'
 
@@ -106,7 +102,6 @@ test('reflects programmatic state changes', async () => {
 ```
 
 ### `await flushPromises()` - External Async Operations
-
 ```javascript
 import { flushPromises } from '@vue/test-utils'
 
@@ -133,7 +128,6 @@ test('processes data after fetch', async () => {
 ```
 
 ## Common Pattern: Combining Methods
-
 ```javascript
 test('submits form and shows success', async () => {
   const wrapper = mount(ContactForm)
@@ -154,7 +148,6 @@ test('submits form and shows success', async () => {
 ```
 
 ## Testing with MSW or Mock APIs
-
 ```javascript
 import { flushPromises } from '@vue/test-utils'
 import { rest } from 'msw'
@@ -178,6 +171,5 @@ test('displays user data', async () => {
 ```
 
 ## Reference
-
 - [Vue Test Utils - Asynchronous Behavior](https://test-utils.vuejs.org/guide/advanced/async-suspense)
 - [Vue.js Testing Guide](https://vuejs.org/guide/scaling-up/testing)

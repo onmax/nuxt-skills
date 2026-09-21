@@ -22,7 +22,6 @@ tags: [vue3, render-function, h, v-model, directives, performance, jsx]
 ## Prefer templates over render functions
 
 **BAD:**
-
 ```vue
 <script setup>
 import { h, ref } from 'vue'
@@ -33,7 +32,6 @@ const render = () => h('div', `Count: ${count.value}`)
 ```
 
 **GOOD:**
-
 ```vue
 <script setup>
 import { ref } from 'vue'
@@ -49,7 +47,6 @@ const count = ref(0)
 ## Always add keys for list rendering
 
 **BAD:**
-
 ```javascript
 import { h, ref } from 'vue'
 
@@ -65,7 +62,6 @@ export default {
 ```
 
 **GOOD:**
-
 ```javascript
 import { h, ref } from 'vue'
 
@@ -83,7 +79,6 @@ export default {
 ## Use `withModifiers` / `withKeys` for event modifiers
 
 **BAD:**
-
 ```javascript
 import { h } from 'vue'
 
@@ -100,7 +95,6 @@ export default {
 ```
 
 **GOOD:**
-
 ```javascript
 import { h, withModifiers, withKeys } from 'vue'
 
@@ -124,7 +118,6 @@ export default {
 ## Implement `v-model` explicitly
 
 **BAD:**
-
 ```javascript
 import { h, ref } from 'vue'
 import CustomInput from './CustomInput.vue'
@@ -138,7 +131,6 @@ export default {
 ```
 
 **GOOD:**
-
 ```javascript
 import { h, ref } from 'vue'
 import CustomInput from './CustomInput.vue'
@@ -157,7 +149,6 @@ export default {
 ## Use `withDirectives` for custom directives
 
 **BAD:**
-
 ```javascript
 import { h } from 'vue'
 
@@ -171,7 +162,6 @@ export default {
 ```
 
 **GOOD:**
-
 ```javascript
 import { h, withDirectives } from 'vue'
 
@@ -187,7 +177,6 @@ export default {
 ## Prefer functional components for stateless UI
 
 **BAD:**
-
 ```javascript
 import { h } from 'vue'
 
@@ -199,7 +188,6 @@ export default {
 ```
 
 **GOOD:**
-
 ```javascript
 import { h } from 'vue'
 

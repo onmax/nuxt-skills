@@ -76,7 +76,6 @@ npx nuxt dev --tunnel
 | `--clear` | Clear console on restart |
 
 **Environment Variables:**
-
 - `NUXT_PORT` or `PORT` - Default port
 - `NUXT_HOST` or `HOST` - Default host
 

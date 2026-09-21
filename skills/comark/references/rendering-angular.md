@@ -108,7 +108,6 @@ export class AppComponent {
 ### Component Resolution Order
 
 Components are resolved by checking these keys in order:
-
 1. `Prose{PascalTag}`, e.g., `ProseH1` for `<h1>` tags
 2. `PascalTag`, e.g., `Alert` for `::alert` components
 3. `tag`, e.g., `alert` for `::alert` components
@@ -573,7 +572,7 @@ export class AppComponent {
 
 ### Mermaid
 
-````typescript
+```typescript
 import { Component } from '@angular/core'
 import { Markdown } from '@comark/angular'
 import mermaid, { Mermaid } from '@comark/angular/plugins/mermaid'
@@ -591,7 +590,7 @@ export class AppComponent {
   plugins = [mermaid()]
   components = { Mermaid }
 }
-````
+```
 
 The Mermaid component includes automatic dark mode support: it watches the `<html>` element for `.dark` class changes and re-renders diagrams accordingly.
 

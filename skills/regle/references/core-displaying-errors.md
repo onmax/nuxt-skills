@@ -14,7 +14,6 @@ Regle is headless -- display errors any way you choose.
 ```
 
 Errors are accessible via:
-
 - `r$.$errors.fieldName` -- shortcut (only when dirty)
 - `r$.fieldName.$errors` -- same, from the field status
 - `r$.fieldName.$silentErrors` -- all errors regardless of dirty state

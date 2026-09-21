@@ -1,5 +1,0 @@
-interface:
-  display_name: "Vue Debug Guides"
-  short_description: "Vue 3 debugging and error handling for runtime errors, warnings, async failures, and SSR/hydration issues."
-policy:
-  allow_implicit_invocation: false

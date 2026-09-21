@@ -28,7 +28,6 @@ export default defineConfig({
 ## Usage
 
 Two naming conventions:
-
 - `<prefix><collection>-<icon>` → `i-ph-anchor-simple-thin`
 - `<prefix><collection>:<icon>` → `i-ph:anchor-simple-thin`
 

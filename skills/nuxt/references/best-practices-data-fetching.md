@@ -9,13 +9,13 @@ Effective data fetching patterns for SSR-friendly, performant Nuxt applications.
 
 ## Choose the Right Tool
 
-| Scenario                                 | Use                                 |
-| ---------------------------------------- | ----------------------------------- |
-| Component initial data                   | `useFetch` or `useAsyncData`        |
-| User interactions (clicks, forms)        | `$fetch`                            |
-| Third-party SDK/API                      | `useAsyncData` with custom function |
-| Multiple parallel requests               | `useAsyncData` with `Promise.all`   |
-| Reusable API client with shared defaults | `createUseFetch` factory            |
+| Scenario | Use |
+|----------|-----|
+| Component initial data | `useFetch` or `useAsyncData` |
+| User interactions (clicks, forms) | `$fetch` |
+| Third-party SDK/API | `useAsyncData` with custom function |
+| Multiple parallel requests | `useAsyncData` with `Promise.all` |
+| Reusable API client with shared defaults | `createUseFetch` factory |
 
 ## Await vs Non-Await Usage
 
@@ -60,11 +60,11 @@ const { data, status } = useLazyFetch('/api/posts')
 
 ### When to Use Each
 
-| Pattern                    | Use Case                                        |
-| -------------------------- | ----------------------------------------------- |
-| `await useFetch()`         | Critical data needed for SEO/initial render     |
+| Pattern | Use Case |
+|---------|----------|
+| `await useFetch()` | Critical data needed for SEO/initial render |
 | `useFetch({ lazy: true })` | Non-critical data, better perceived performance |
-| `await useLazyFetch()`     | Same as lazy, await only ensures initialization |
+| `await useLazyFetch()` | Same as lazy, await only ensures initialization |
 
 ## Avoid Double Fetching
 

@@ -20,7 +20,6 @@ tags: [vue3, provide-inject, composition-api, async, setup]
 ## The Gotcha: Async Provide Fails Silently
 
 **Wrong - Provide after async operation:**
-
 ```vue
 <script setup>
 import { provide } from 'vue'
@@ -34,7 +33,6 @@ onMounted(async () => {
 ```
 
 **Wrong - Provide inside callback:**
-
 ```vue
 <script setup>
 import { provide } from 'vue'
@@ -47,7 +45,6 @@ setTimeout(() => {
 ```
 
 **Wrong - Provide after await in setup:**
-
 ```vue
 <script setup>
 import { provide } from 'vue'
@@ -63,7 +60,6 @@ provide('config', config) // May not work reliably
 ## Solution: Provide Synchronously, Update Async
 
 **Correct - Provide ref immediately, update later:**
-
 ```vue
 <script setup>
 import { provide, ref, onMounted } from 'vue'
@@ -235,6 +231,5 @@ fetchConfig().then(config => {
 But once the app is mounted, `app.provide()` should not be called.
 
 ## Reference
-
 - [Vue.js Composition API - provide()](https://vuejs.org/api/composition-api-dependency-injection.html#provide)
 - [Vue.js Provide/Inject Guide](https://vuejs.org/guide/components/provide-inject.html)

@@ -15,39 +15,39 @@ Pinia is the official state management library for Vue, designed to be intuitive
 
 ## Core References
 
-| Topic  | Description                                                          | Reference                                |
-| ------ | -------------------------------------------------------------------- | ---------------------------------------- |
+| Topic | Description | Reference |
+|-------|-------------|-----------|
 | Stores | Defining stores, state, getters, actions, storeToRefs, subscriptions | [core-stores](references/core-stores.md) |
 
 ## Features
 
 ### Extensibility
 
-| Topic   | Description                                               | Reference                                          |
-| ------- | --------------------------------------------------------- | -------------------------------------------------- |
+| Topic | Description | Reference |
+|-------|-------------|-----------|
 | Plugins | Extend stores with custom properties, state, and behavior | [features-plugins](references/features-plugins.md) |
 
 ### Composability
 
-| Topic            | Description                                                  | Reference                                                            |
-| ---------------- | ------------------------------------------------------------ | -------------------------------------------------------------------- |
-| Composables      | Using Vue composables within stores (VueUse, etc.)           | [features-composables](references/features-composables.md)           |
+| Topic | Description | Reference |
+|-------|-------------|-----------|
+| Composables | Using Vue composables within stores (VueUse, etc.) | [features-composables](references/features-composables.md) |
 | Composing Stores | Store-to-store communication, avoiding circular dependencies | [features-composing-stores](references/features-composing-stores.md) |
 
 ## Best Practices
 
-| Topic              | Description                                             | Reference                                                                          |
-| ------------------ | ------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| Testing            | Unit testing with @pinia/testing, mocking, stubbing     | [best-practices-testing](references/best-practices-testing.md)                     |
+| Topic | Description | Reference |
+|-------|-------------|-----------|
+| Testing | Unit testing with @pinia/testing, mocking, stubbing | [best-practices-testing](references/best-practices-testing.md) |
 | Outside Components | Using stores in navigation guards, plugins, middlewares | [best-practices-outside-component](references/best-practices-outside-component.md) |
 
 ## Advanced
 
-| Topic | Description                                        | Reference                                    |
-| ----- | -------------------------------------------------- | -------------------------------------------- |
-| SSR   | Server-side rendering, state hydration             | [advanced-ssr](references/advanced-ssr.md)   |
-| Nuxt  | Nuxt integration, auto-imports, SSR best practices | [advanced-nuxt](references/advanced-nuxt.md) |
-| HMR   | Hot module replacement for development             | [advanced-hmr](references/advanced-hmr.md)   |
+| Topic | Description | Reference |
+|-------|-------------|-----------|
+| SSR | Server-side rendering, state hydration | [advanced-ssr](references/advanced-ssr.md) |
+| Nuxt | Nuxt integration, auto-imports, SSR best practices | [advanced-nuxt](references/advanced-nuxt.md) |
+| HMR | Hot module replacement for development | [advanced-hmr](references/advanced-hmr.md) |
 
 ## Key Recommendations
 

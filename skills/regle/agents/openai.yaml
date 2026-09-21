@@ -1,5 +1,0 @@
-interface:
-  display_name: "Regle"
-  short_description: "Core Regle form validation in Vue 3 — setup with `useRegle`, the reactive `r$` object, validation properties, displaying..."
-policy:
-  allow_implicit_invocation: false

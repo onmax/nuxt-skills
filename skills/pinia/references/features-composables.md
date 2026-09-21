@@ -23,12 +23,10 @@ export const useAuthStore = defineStore('auth', {
 ```
 
 **Works:** Composables returning `ref()`:
-
 - `useLocalStorage`
 - `useAsyncState`
 
 **Doesn't work in Option Stores:**
-
 - Composables exposing functions
 - Composables exposing readonly data
 

@@ -20,7 +20,6 @@ export default defineCachedHandler((event) => {
 ```
 
 Behavior:
-
 - Only `GET`/`HEAD` are cached; other methods bypass and call the handler.
 - Auto-manages `etag`, `last-modified`, and `cache-control` headers, plus `304 Not Modified` for conditional requests.
 - Concurrent requests for the same key are deduplicated (handler runs once).
@@ -79,18 +78,18 @@ Route-rule handlers use the group `nitro/route-rules`.
 
 Shared (`defineCachedHandler` + `defineCachedFunction`):
 
-| Option                                        | Default                              | Description                                                                     |
-| --------------------------------------------- | ------------------------------------ | ------------------------------------------------------------------------------- |
-| `maxAge`                                      | `1`                                  | Seconds the cache is valid.                                                     |
-| `swr`                                         | `true`                               | Serve stale while revalidating in background.                                   |
-| `staleMaxAge`                                 | `0`                                  | Extra seconds a stale value is served. `-1` keeps serving stale during refresh. |
-| `base`                                        | `cache`                              | Storage mountpoint.                                                             |
-| `name`                                        | inferred                             | Cache namespace.                                                                |
-| `group`                                       | `nitro/handlers` / `nitro/functions` | Key group.                                                                      |
-| `getKey(...args)`                             | hash                                 | Compute cache key.                                                              |
-| `integrity`                                   | code hash                            | Invalidate when changed.                                                        |
-| `shouldInvalidateCache` / `shouldBypassCache` | —                                    | Per-call predicates.                                                            |
-| `onError(err)`                                | log                                  | Custom error handling.                                                          |
+| Option | Default | Description |
+|---|---|---|
+| `maxAge` | `1` | Seconds the cache is valid. |
+| `swr` | `true` | Serve stale while revalidating in background. |
+| `staleMaxAge` | `0` | Extra seconds a stale value is served. `-1` keeps serving stale during refresh. |
+| `base` | `cache` | Storage mountpoint. |
+| `name` | inferred | Cache namespace. |
+| `group` | `nitro/handlers` / `nitro/functions` | Key group. |
+| `getKey(...args)` | hash | Compute cache key. |
+| `integrity` | code hash | Invalidate when changed. |
+| `shouldInvalidateCache` / `shouldBypassCache` | — | Per-call predicates. |
+| `onError(err)` | log | Custom error handling. |
 
 Handler-only: `varies` (header names to include in the key / keep on request), `headersOnly` (only do conditional-request handling). Function-only: `transform(entry, ...args)`, `validate(entry, ...args)`.
 

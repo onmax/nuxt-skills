@@ -1,249 +1,250 @@
 ---
 name: arkenv
-description: "Answer questions about ArkEnv and help implement environment variable validation. Use when developers: (1) Ask about environment variable validation or typesafety, (2) Want to setup ArkEnv in a project, (3) Need to define or update schemas using ArkType or Standard Schema, (4) Are integrating with Vite, Bun, or other runtimes. Triggers on: 'ArkEnv', 'env validation', 'typesafe env', 'createEnv', 'env.ts', '@arkenv/cli'."
+description: "Answer questions about ArkEnv and help implement environment variable validation. Use when developers: (1) Ask about environment variable validation or typesafety, (2) Want to setup ArkEnv in a project, (3) Need to define or update schemas using ArkType or Standard Schema, (4) Are integrating with Next.js, Nuxt, Vite, Bun, or Node.js runtimes. Triggers on: 'ArkEnv', 'env validation', 'typesafe env', 'createEnv', 'env.ts', 'arkenv'."
 ---
 
 # ArkEnv
 
-ArkEnv is a typesafe environment variable validator for modern JavaScript runtimes. It uses `ArkType` by default for schema definition but supports any `Standard Schema` validator (like `Zod` or `Valibot`).
+ArkEnv is a typesafe environment variable validation library for modern JavaScript and TypeScript frameworks. It provides a **single canonical surface across all frameworks: `import { env } from "./env"`**.
+
+In v1, ArkEnv offers two first-class validation engines:
+- **`@arkenv/core`**: Built-in ArkType DSL engine for high-performance schema definition and automatic coercion.
+- **`@arkenv/standard`**: Standard Schema engine supporting any compliant validator (Zod, Valibot, etc.).
+
+---
 
 ## Capabilities
 
 ### Core usage
 
-- Define typesafe schemas using `ArkType` notation or any `Standard Schema` validator.
-- Implement complex types, arrays, and unions.
-- Configure automatic coercion and default values.
-- Follow best practices for schema organization.
+- Define typesafe schemas using `@arkenv/core` ArkType DSL strings or `@arkenv/standard` with Zod / Valibot.
+- Automatic coercion (`string.numeric`, `number.port`, booleans, JSON objects, arrays) and default values (`"boolean = true"`).
+- Single, uniform developer experience: import `env` directly across frontend and backend code.
 
 ### Framework integration
 
-- **Next.js**: Build-time/runtime validation and `process.env` type augmentation via `@arkenv/nextjs`. Supports automatic codegen (`env.gen.ts`) using the `withArkEnv` configuration wrapper in `next.config.ts`.
-- **Vite**: Build-time validation and `import.meta.env` type augmentation via `@arkenv/vite-plugin`.
-- **Bun**: Build-time/Runtime validation and `process.env` type augmentation via `@arkenv/bun-plugin`.
-- **Node.js**: Standard `process.env` validation and coercion.
+- **Vite** (`@arkenv/vite-plugin`): Plugin operates in transform mode, rewriting imports from `env.ts` in the client graph to inline public `VITE_*` literals and replacing private server keys with throwing runtime guards.
+- **Bun** (`@arkenv/bun-plugin`): Plugin intercepts `env.ts` imports in `Bun.build` / `Bun.serve` to inline public `BUN_PUBLIC_*` values while guarding server secrets.
+- **Next.js** (`@arkenv/nextjs`): Build-time and runtime validation with automatic client/server isolation proxy.
+- **Nuxt** (`@arkenv/nuxt`): Nuxt module with Nitro boot validation and runtime proxy guard.
+- **Node.js**: Direct boot-time validation via `@arkenv/core` or `@arkenv/standard`.
 
 ### CLI (setup & DevOps)
 
-- Initialize ArkEnv in new or existing projects using `pnpm dlx @arkenv/cli@latest init`.
-- Scaffold schema files and detect framework-specific configurations (`Next.js`, `Vite`, `Bun`, etc.).
-- Support layout selection (`--strict` for 3-file split vs `--simple` for a single file).
-- Support option to skip codegen (`--no-codegen`).
-- Automatically configure `tsconfig.json` and environment types for optimal typesafety.
+- Initialize ArkEnv in new or existing projects using `pnpm dlx arkenv init` (or `npx arkenv init`).
+- Automatically detect frameworks (`Next.js`, `Nuxt`, `Vite`, `Bun`, etc.) and scaffold `env.ts`.
+- Select hosting provider preset during init (`--preset, -P <provider>` or `--host-preset, -H <provider>`).
+- Automatically configure `tsconfig.json` when needed. Schema discovery for CLI commands uses `--schema` or convention paths (`env.ts`, `src/env.ts`, …) — not a `package.json` `"arkenv"` field.
+
+### Hosting presets
+
+ArkEnv is **code-first**. You can select a hosting provider preset during initial project setup (`--preset vercel`, `netlify`, `cloudflare`, `railway`, `render`, `fly`) or copy-paste provider fields directly into `./env.ts` from the documentation (`/docs/core-concepts/hosting-presets`). There are no machine-managed comment blocks or CLI mutation commands.
 
 ### Agent setup (machine-readable)
 
 AI agents SHOULD always use the CLI for project initialization to ensure consistency and reliability. Use the `--agent` flag for a fully automated, machine-readable experience.
 
-- **Command**: `pnpm dlx @arkenv/cli@latest init --agent`
+- **Command**: `pnpm dlx arkenv init --agent`
 - **Behavior**: The `--agent` flag automatically enables the following behaviors:
   - **`--yes`**: Bypasses all interactive prompts and uses recommended defaults.
   - **`--quiet`**: Suppresses spinners and ANSI formatting for cleaner terminal logs.
   - **`--json`**: Emits a structured JSON summary to `stdout` upon completion (all other output is sent to `stderr`).
-- **Success Verification**: Parse the JSON output to verify `status: "success"` and retrieve details like the scaffolded file path.
+- **Success Verification**: Parse the JSON settlement envelope on `stdout`. Success is `ok: true` with `commandId: "init"`; details (e.g. scaffolded paths) live under `result`.
 
-#### Handling refusals (`status: "error"`)
+#### Handling refusals (`ok: false`)
 
-`--agent` **never** implies `--force`. When a safety check trips, the CLI refuses and emits a machine-actionable JSON payload to `stdout`:
+`--agent` **never** implies `--force`. When a safety check trips, the CLI refuses and emits an errored settlement envelope to `stdout`:
 
 ```json
 {
-  "status": "error",
-  "code": "GIT_TREE_DIRTY",
-  "message": "Git working tree is not clean.",
-  "retryWith": ["--force"]
+  "ok": false,
+  "commandId": "init",
+  "error": {
+    "code": "CLI.GIT_TREE_DIRTY",
+    "severity": "error",
+    "summary": "Git working tree is not clean.",
+    "why": "Commit or stash your changes before running arkenv init.",
+    "nextActions": [
+      {
+        "kind": "run-command",
+        "label": "Re-run with --force to bypass git working tree check",
+        "command": "arkenv init --force"
+      }
+    ]
+  },
+  "diagnostics": [],
+  "nextActions": [
+    {
+      "kind": "run-command",
+      "label": "Re-run with --force to bypass git working tree check",
+      "command": "arkenv init --force"
+    }
+  ]
 }
 ```
 
-- **`code`**: a stable identifier you can branch on. Refusal codes: `REQUIREMENTS_NOT_MET`, `GIT_TREE_DIRTY`, `NON_EMPTY_DIR`. A `code` of `INTERNAL` means the CLI _broke_ rather than _refused_ - retrying with flags will not help.
-- **`retryWith`**: the flag(s) that would bypass the check (e.g. `["--force"]`). Empty (`[]`) means the refusal is not bypassable.
+- **`error.code`**: a stable dotted identifier you can branch on (`CLI.REQUIREMENTS_NOT_MET`, `CLI.GIT_TREE_DIRTY`, `CLI.NON_EMPTY_DIR`, …). `CLI.INTERNAL_ERROR` means the CLI *broke* rather than *refused* — retrying with flags will not help.
+- **`nextActions`**: remediation steps. A `run-command` action that includes `--force` means the refusal is bypassable; empty `nextActions` means it is not. Prefer `nextActions` over any legacy `retryWith` field.
 
-**Escalation pattern**: always run `init --agent` **without** `--force` first. If you get `status: "error"`, inspect `code` and `retryWith`. Only re-run with the flag(s) from `retryWith` (e.g. append `--force`) once you have deliberately decided the refusal is safe to bypass - do not add `--force` pre-emptively.
+**Escalation pattern**: always run `init --agent` **without** `--force` first. If you get `ok: false`, inspect `error.code` and `nextActions`. Only re-run with `--force` (or the command from a `run-command` action) once you have deliberately decided the refusal is safe to bypass — do not add `--force` pre-emptively.
 
-## Operational logic
-
-1. **Detection**:
-   - Look for `env.ts` (simple layout) or an `env/` directory containing split files: `env/client.ts`, `env/server.ts`, and `env/internal/shared.ts` (strict layout).
-   - Check for framework config files (`next.config.ts`, `next.config.js`, `vite.config.ts`, `bunfig.toml`, `package.json` scripts) to recommend appropriate plugins.
-2. **Setup**:
-   - If ArkEnv is not present or a fresh setup is requested, trigger the **Setup Workflow**.
-   - Prefer using the CLI for initialization: `pnpm dlx @arkenv/cli@latest init`.
-   - If the CLI cannot be used or fails, fall back to manual configuration.
-
-## Setup workflow
-
-When setting up ArkEnv, follow these steps:
-
-1. **Initialize**: Run `pnpm dlx @arkenv/cli@latest init --agent` (optionally appending `--strict` or `--simple` based on layout preference). This will detect the environment, install dependencies, and scaffold schemas.
-2. **Review & Refine Schemas**:
-   - **Simple Layout**: Inspect and refine the generated `env.ts`. Ensure it captures the required environment variables.
-   - **Strict Layout**: Inspect and refine the generated files under the `env/` directory: `client.ts` (client-only variables), `server.ts` (server-only variables), and `internal/shared.ts` (variables shared between client and server).
-   - Refine types (e.g., change `string` to `number.port` or specific union types).
-3. **Manual Plugin Configuration**:
-   - The CLI installs plugins but might not update config files.
-   - **Next.js**: Wrap `next.config.ts` (or `next.config.js`) using the `withArkEnv` configuration helper from `@arkenv/nextjs/config`. (Skip if scaffolded with `--no-codegen`).
-   - **Vite**: Update `vite.config.ts` to import and include the `@arkenv/vite-plugin` plugin.
-   - **Bun**: Configure `bunfig.toml` or add the plugin to the runtime if necessary.
-4. **Typesafety & Augmentation**:
-   - **Next.js (Codegen)**: Import `createEnv` from `./generated/env.gen` instead of core `@arkenv/nextjs`. The codegen file automatically handles the runtime mapping and type definitions.
-   - **Vite**: Add type augmentation to `src/vite-env.d.ts` or a new `env.d.ts`.
-     ```ts
-     interface ImportMetaEnv extends import("@arkenv/vite-plugin").ImportMetaEnvAugmented<typeof import("./env").Env> {}
-     ```
-   - **Bun**: Create a `bun-env.d.ts` file (or update an existing one) with the following pattern:
-     ```ts
-     /// <reference types="bun-types" />
-     type ProcessEnvAugmented = import("@arkenv/bun-plugin").ProcessEnvAugmented<typeof import("./src/env").default>;
-     declare namespace NodeJS {
-       interface ProcessEnv extends ProcessEnvAugmented {}
-     }
-     ```
-   - Ensure `tsconfig.json` has `strict: true` (the CLI tries to do this, but verify).
-5. **Usage Update**: Scan the codebase for existing environment variable usage (`process.env` or `import.meta.env`) and ensure they are now typesafe via the augmentations.
-6. **Validation**: Run `pnpm check` (or equivalent) or a build to confirm everything is typesafe and valid.
-
-## Core concepts
-
-### Defining a schema
-
-#### Simple Layout
-
-The best practice is to export a schema definition using `type`.
-
-```ts
-import { type } from 'arkenv';
-
-export const Env = type({
-  NODE_ENV: "'development' | 'production' | 'test' = 'development'",
-  VITE_API_URL: "string",
-  PORT: "number.port = 3000"
-});
-```
-
-#### Strict Layout (split-file)
-
-Split files isolate environment variable definitions to prevent server secrets from leaking to client-side.
-
-- **`env/internal/shared.ts`** (Shared):
-  ```ts
-  import { type } from "arkenv";
-  export const SharedSchema = type({
-    NODE_ENV: "'development' | 'production' | 'test' = 'development'",
-  });
-  ```
-- **`env/client.ts`** (Client-side, prefixed with `NEXT_PUBLIC_` for Next.js):
-  ```ts
-  import arkenv from "./internal/shared";
-  export const env = arkenv({
-    NEXT_PUBLIC_API_URL: "string",
-  });
-  ```
-- **`env/server.ts`** (Server-side):
-  ```ts
-  import arkenv from "./client";
-  export const env = arkenv({
-    DATABASE_URL: "string",
-  });
-  export default env;
-  ```
-
-### Usage: Next.js (with Codegen)
-
-Wrap `next.config.ts` to enable automatic `env.gen.ts` generation:
-
-```ts
-import { withArkEnv } from "@arkenv/nextjs/config";
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {};
-
-export default withArkEnv(nextConfig);
-```
-
-Then import and use the generated `env` object:
-
-```ts
-import env from "./env/generated/env.gen"; // For strict layout baseDir
-// or import env from "./generated/env.gen"; for simple layout
-```
-
-### Usage: Node.js (standard)
-
-In Node.js, you validate the environment at runtime and export the result.
-
-```ts
-import arkenv from 'arkenv';
-import { Env } from './env';
-
-export const env = arkenv(Env);
-
-// Usage
-const port = env.PORT; // typed as number
-```
-
-### Usage: Vite (frontend)
-
-Vite requires build-time injection. Use the plugin in `vite.config.ts` and augment `ImportMetaEnv`.
-
-```ts
-// vite.config.ts
-import arkenv from '@arkenv/vite-plugin';
-import { Env } from './env';
-
-export default defineConfig({
-  plugins: [arkenv(Env)]
-});
-```
-
-```ts
-// src/vite-env.d.ts
-import type { ImportMetaEnvAugmented } from "@arkenv/vite-plugin";
-import type { Env } from "../env";
-
-interface ImportMetaEnv extends ImportMetaEnvAugmented<typeof Env> {}
-```
-
-### Usage: Bun
-
-Bun can use either runtime validation or a plugin for type augmentation.
-
-```ts
-// src/env.d.ts
-import type { ProcessEnvAugmented } from "@arkenv/bun-plugin";
-import type { Env } from "./env";
-
-declare global {
-  namespace NodeJS {
-    interface ProcessEnv extends ProcessEnvAugmented<typeof Env> {}
-  }
-}
-```
+---
 
 ## CLI commands
 
 ### `init`
 
-Set up ArkEnv in your project. It detects your framework and configures the appropriate plugin and type augmentations.
+Set up ArkEnv in your project. It detects your framework and configures the appropriate plugin and schema.
 
 ```bash
-pnpm dlx @arkenv/cli@latest init [options]
+pnpm dlx arkenv init [options]
 ```
 
 #### Options:
+- `--preset, -P <preset>`: Specify hosting provider preset (none, vercel, netlify, cloudflare, railway, render, fly).
+- `--no-codegen`: Disable Next.js codegen configuration setup.
+- `--force, -f`: Bypass clean git working tree safety check.
 
-- `--strict`: Use strict 3-file split layout.
-- `--simple`: Use simple 1-file layout (default).
-- `--no-codegen`: Disable Next.js codegen/`withArkEnv` configuration setup.
+### `check`
 
-## Best practices
+Validate the environment against your schema file.
 
-1. **Prefer Native Primitives**: To leverage the full power of ArkEnv plugins, you should access environment variables through the runtime's native primitives.
-   - **Vite**: Use `import.meta.env`.
-   - **Bun**: Use `process.env`.
-   - This ensures that build-time validation, static replacement (Vite), and runtime optimizations (Bun) work as intended while remaining fully typesafe via type augmentation.
-2. **Avoid `import { env }` in Plugin-managed Projects**: In projects using `@arkenv/vite-plugin` or `@arkenv/bun-plugin`, you should generally avoid importing a runtime-validated `env` object. Using native primitives is the "cleanest" way to get typesafety and ensures consistency with framework-specific behavior.
-3. **Use Codegen in Next.js**: For Next.js projects, prefer using the `withArkEnv` wrapper and importing `createEnv` / `env` from the generated `generated/env.gen.ts` file. This automates the destructuring of `runtimeEnv` to allow static inlining on the client side without leaking secrets.
-4. **Commit Generated Code for CI/CD**: Commit `generated/env.gen.ts` to source control to ensure compatibility with CI/CD pipelines.
-5. **Use Type Augmentation**: This is the recommended way to make `import.meta.env` or `process.env` typesafe. It connects your schema definition to the native primitives without adding runtime overhead to your application logic.
-6. **Re-use Schema**: Define your schema once and use it for both the plugin (build-time/config) and runtime validation if needed.
-7. **Coercion**: ArkEnv automatically coerces strings from `.env` files (e.g., `"3000"` becomes `3000`).
+```bash
+pnpm arkenv check [options]
+```
+
+#### Options:
+- `--schema, -s <path>`: Explicit path to the schema module (overrides convention discovery).
+- `--verify-example [file]`: Verify that all declared schema keys are present in `.env.example` (or a custom example file path) without mutating files.
+- `--env-file <path>`: Specify one or more custom environment files to load.
+- `--json`: Output structured JSON diagnostics to stdout.
+
+---
+
+## Defining Schemas & Importing `env`
+
+### `@arkenv/core` (ArkType DSL)
+
+```ts title="src/env.ts"
+import arkenv from "@arkenv/core";
+
+export const env = arkenv({
+  PORT: "number.port = 3000",
+  DATABASE_URL: "string",
+  VITE_API_URL: "string",
+  NODE_ENV: "'development' | 'production' | 'test' = 'development'",
+});
+```
+
+### `@arkenv/standard` (Standard Schema: Zod, Valibot)
+
+```ts title="src/env.ts"
+import arkenv from "@arkenv/standard";
+import * as z from "zod";
+
+export const env = arkenv({
+  PORT: z.number().default(3000),
+  DATABASE_URL: z.string(),
+  VITE_API_URL: z.url(),
+  NODE_ENV: z.enum(["development", "production", "test"]).default("development"),
+});
+```
+
+Valibot uses the `/valibot` subpath (install `@valibot/to-json-schema` as well):
+
+```ts title="src/env.ts"
+import { arkenv } from "@arkenv/standard/valibot";
+import * as v from "valibot";
+
+export const env = arkenv({
+  PORT: v.optional(v.number(), 3000),
+  DATABASE_URL: v.pipe(v.string(), v.url()),
+});
+```
+
+### Consuming `env` in Application Code
+
+Always import and read properties directly from the canonical `env` object:
+
+```tsx title="src/App.tsx"
+import { env } from "./env";
+
+export default function App() {
+  const apiUrl = env.VITE_API_URL; // string
+  return <div>API URL: {apiUrl}</div>;
+}
+```
+
+---
+
+## Framework Setup Patterns
+
+### 1. Vite (`@arkenv/vite-plugin`)
+
+Register the plugin in `vite.config.ts` without schema arguments:
+
+```ts title="vite.config.ts"
+import { defineConfig } from "vite";
+import arkenv from "@arkenv/vite-plugin";
+
+export default defineConfig({
+  plugins: [arkenv()],
+});
+```
+
+If you need environment variables inside `vite.config.ts` itself (e.g. `server.port`), validate them with `loadEnv`:
+
+```ts title="vite.config.ts"
+import { defineConfig, loadEnv } from "vite";
+import arkenvPlugin from "@arkenv/vite-plugin";
+import arkenv, { type } from "@arkenv/core";
+
+export const Env = type({
+  PORT: "number.port = 5173",
+  VITE_API_URL: "string",
+});
+
+export default defineConfig(({ mode }) => {
+  const env = arkenv(Env, { env: loadEnv(mode, process.cwd(), "") });
+  return {
+    plugins: [arkenvPlugin()],
+    server: { port: env.PORT },
+  };
+});
+```
+
+### 2. Bun (`@arkenv/bun-plugin`)
+
+In `bunfig.toml`:
+
+```toml
+[serve.static]
+plugins = ["@arkenv/bun-plugin"]
+```
+
+In `Bun.build`:
+
+```ts
+import arkenv from "@arkenv/bun-plugin";
+
+await Bun.build({
+  entrypoints: ["./src/index.tsx"],
+  outdir: "./dist",
+  plugins: [arkenv()],
+});
+```
+
+---
+
+## Security Boundaries & Layouts
+
+- **Flat layout (default)**: `src/env.ts` contains all keys. Server graph runs full validation at boot; client graph receives inlined public literals while access to private server keys throws a runtime error.
+- **Optional two-module recipe**: When secret names/types must stay off the client type graph, use two modules (client + server) with two imports and optional `extends: [clientEnv]`. Next can use `import "server-only"` + `@arkenv/core` for the server module. Nuxt: never import the server module from client code. Not a CLI `--strict` flag or package `/client` `/server` surface.
+
+---
+
+## Best Practices & Rules
+
+1. **Always use `import { env } from "./env"`**: Never use `import.meta.env` or `process.env` directly for application environment variables in v1.
+2. **Never create ambient `.d.ts` augmentations**: `ImportMetaEnvAugmented` and `ProcessEnvAugmented` are legacy v0 patterns dropped in v1.
+3. **Keep secrets on the server**: Never prefix server secrets (`DATABASE_URL`, `API_SECRET_KEY`) with client prefixes (`VITE_`, `NEXT_PUBLIC_`, `BUN_PUBLIC_`, `NUXT_PUBLIC_`).

@@ -21,7 +21,6 @@ When using custom events, timers, WebSocket connections, or third-party librarie
 - [ ] Use `onBeforeUnmount` if cleanup must happen before DOM removal
 
 **Incorrect:**
-
 ```javascript
 // Composition API - WRONG: No cleanup
 import { onMounted } from 'vue'
@@ -50,7 +49,6 @@ export default {
 ```
 
 **Correct:**
-
 ```javascript
 // Composition API - CORRECT: Proper cleanup
 import { onMounted, onUnmounted, ref } from 'vue'
@@ -170,6 +168,5 @@ export default {
 ```
 
 ## Reference
-
 - [Vue.js Lifecycle Hooks](https://vuejs.org/guide/essentials/lifecycle.html)
 - [VueUse - useEventListener](https://vueuse.org/core/useEventListener/)

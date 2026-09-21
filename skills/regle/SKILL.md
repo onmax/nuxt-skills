@@ -13,11 +13,12 @@ metadata:
 
 Regle is a type-safe, model-based, headless form validation library for Vue 3. It provides full TypeScript inference, reactive validation, and works with any UI framework or design system.
 
+
 ## MCP Server
 
 Regle provides an MCP server that can be used to get documentation and autocomplete for Regle. If it's available, use it to get up-to-date information on the API.
 
-````json
+```json
 {
   "mcpServers": {
     "regle": {
@@ -35,7 +36,7 @@ pnpm add @regle/core @regle/rules
 
 # Optional: schema support (Zod, Valibot, ArkType)
 pnpm add @regle/schemas
-````
+```
 
 Requires Vue 3.3+ and TypeScript 5.1+.
 
@@ -74,12 +75,12 @@ const { r$ } = useRegle(
 
 ## Core
 
-| Topic                 | Description                                                                                       | Reference                                                              |
-| --------------------- | ------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| useRegle              | State definition, rules declaration, dynamic rules, `r$` object                                   | [core-use-regle](references/core-use-regle.md)                         |
-| Validation Properties | `$invalid`, `$dirty`, `$error`, `$errors`, `$pending`, `$validate`, `$touch`, `$reset`            | [core-validation-properties](references/core-validation-properties.md) |
-| Displaying Errors     | Showing errors, custom messages, `getErrors`, `flatErrors`                                        | [core-displaying-errors](references/core-displaying-errors.md)         |
-| Modifiers             | `autoDirty`, `lazy`, `silent`, `rewardEarly`, `disabled`, `validationGroups`, per-field modifiers | [core-modifiers](references/core-modifiers.md)                         |
+| Topic | Description | Reference |
+|-------|-------------|-----------|
+| useRegle | State definition, rules declaration, dynamic rules, `r$` object | [core-use-regle](references/core-use-regle.md) |
+| Validation Properties | `$invalid`, `$dirty`, `$error`, `$errors`, `$pending`, `$validate`, `$touch`, `$reset` | [core-validation-properties](references/core-validation-properties.md) |
+| Displaying Errors | Showing errors, custom messages, `getErrors`, `flatErrors` | [core-displaying-errors](references/core-displaying-errors.md) |
+| Modifiers | `autoDirty`, `lazy`, `silent`, `rewardEarly`, `disabled`, `validationGroups`, per-field modifiers | [core-modifiers](references/core-modifiers.md) |
 
 ## Related skills
 

@@ -1,5 +1,0 @@
-interface:
-  display_name: "Vue Testing Best Practices"
-  short_description: "Use for Vue.js testing."
-policy:
-  allow_implicit_invocation: false

@@ -1,5 +1,0 @@
-interface:
-  display_name: "Vite"
-  short_description: "Vite build tool configuration, plugin API, SSR, and Vite 8 Rolldown migration."
-policy:
-  allow_implicit_invocation: false

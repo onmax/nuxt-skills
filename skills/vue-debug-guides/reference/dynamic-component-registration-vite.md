@@ -18,7 +18,6 @@ tags: [vue3, component-registration, vite, dynamic-import, migration, webpack]
 - [ ] Handle async components appropriately with `defineAsyncComponent`
 
 **Incorrect (Webpack pattern - doesn't work in Vite):**
-
 ```javascript
 // main.js - WRONG for Vite
 import { createApp } from 'vue'
@@ -47,7 +46,6 @@ app.mount('#app')
 ```
 
 **Correct (Vite pattern):**
-
 ```javascript
 // main.js - Correct for Vite
 import { createApp } from 'vue'
@@ -137,14 +135,13 @@ app.mount('#app')
 
 ## Migration Checklist (Webpack to Vite)
 
-| Webpack                                  | Vite                                 |
-| ---------------------------------------- | ------------------------------------ |
+| Webpack | Vite |
+|---------|------|
 | `require.context(dir, recursive, regex)` | `import.meta.glob(pattern, options)` |
-| Synchronous by default                   | Use `{ eager: true }` for sync       |
-| `.keys()` returns array                  | Returns object with paths as keys    |
-| Returns module directly                  | Access via `.default` for ES modules |
+| Synchronous by default | Use `{ eager: true }` for sync |
+| `.keys()` returns array | Returns object with paths as keys |
+| Returns module directly | Access via `.default` for ES modules |
 
 ## Reference
-
 - [Vite - Glob Import](https://vitejs.dev/guide/features.html#glob-import)
 - [Vue.js Component Registration](https://vuejs.org/guide/components/registration.html)

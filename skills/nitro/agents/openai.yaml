@@ -1,5 +1,0 @@
-interface:
-  display_name: "Nitro"
-  short_description: "Nitro is the framework-agnostic server toolkit (powering Nuxt) for building and deploying web servers anywhere."
-policy:
-  allow_implicit_invocation: false

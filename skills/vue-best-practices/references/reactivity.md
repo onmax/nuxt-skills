@@ -34,14 +34,12 @@ This reference covers the core reactivity decisions for local state, external da
 ### Always use `shallowRef()` instead of `ref()` for primitive values (string, number, boolean, null, etc.) for better performance.
 
 **Incorrect:**
-
 ```ts
 import { ref } from 'vue'
 const count = ref(0)
 ```
 
 **Correct:**
-
 ```ts
 import { shallowRef } from 'vue'
 const count = shallowRef(0)
@@ -151,7 +149,6 @@ watch(() => state.count, () => { /* ... */ }) // ✅
 ### Prefer `computed` over watcher-assigned derived refs
 
 **BAD:**
-
 ```ts
 import { ref, watchEffect } from 'vue'
 
@@ -164,7 +161,6 @@ watchEffect(() => {
 ```
 
 **GOOD:**
-
 ```ts
 import { ref, computed } from 'vue'
 
@@ -177,7 +173,6 @@ const total = computed(() =>
 ### Keep filtered/sorted derivations out of templates
 
 **BAD:**
-
 ```vue
 <template>
   <li v-for="item in items.filter(item => item.active)" :key="item.id">
@@ -204,7 +199,6 @@ function getSortedItems() {
 ```
 
 **GOOD:**
-
 ```vue
 <script setup>
 import { ref, computed } from 'vue'
@@ -231,7 +225,6 @@ const visibleItems = computed(() =>
 ### Use `computed` for reusable class/style logic
 
 **BAD:**
-
 ```vue
 <template>
   <button :class="{ btn: true, 'btn-primary': type === 'primary' && !disabled, 'btn-disabled': disabled }">
@@ -241,7 +234,6 @@ const visibleItems = computed(() =>
 ```
 
 **GOOD:**
-
 ```vue
 <script setup>
 import { computed } from 'vue'
@@ -303,7 +295,6 @@ watch(count, (value) => {
 ### Use `immediate: true` instead of duplicate initial calls
 
 **BAD:**
-
 ```ts
 import { ref, watch, onMounted } from 'vue'
 
@@ -318,7 +309,6 @@ watch(userId, (id) => loadUser(id))
 ```
 
 **GOOD:**
-
 ```ts
 import { ref, watch } from 'vue'
 

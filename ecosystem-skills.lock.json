@@ -11,11 +11,11 @@
     },
     "nuxt-modules/yamcodes/arkenv": {
       "repository": "https://github.com/yamcodes/arkenv.git",
-      "revision": "4465170dd36d9c0dddfdee4cf4134076785850df"
+      "revision": "a98f6c03cfeea73af60fda2874c667f276f5659b"
     },
     "nuxt-modules/comarkdown/comark": {
       "repository": "https://github.com/comarkdown/comark.git",
-      "revision": "9bcbbfd427c647e5f7ebaf4a43b191ba01b747c1"
+      "revision": "b188a6d37bdf171e4babaf74de4a29270656b0b1"
     },
     "nuxt-modules/rrd108/nuxt-users": {
       "repository": "https://github.com/rrd108/nuxt-users.git",
@@ -23,11 +23,11 @@
     },
     "nuxt-modules/victorgarciaesgi/regle": {
       "repository": "https://github.com/victorgarciaesgi/regle.git",
-      "revision": "0df09b530955e2e54d0f3b931346ff33f8e19834"
+      "revision": "cfce4b9dcef7c8531cafc4536409422e63223560"
     },
     "nuxt-modules/nuxt/ui": {
       "repository": "https://github.com/nuxt/ui.git",
-      "revision": "b3d4342d9b588b85c69410dd14f0f7bba4a83adb"
+      "revision": "a581357a7890b07b7446273769491929fc24779b"
     },
     "nuxt-modules/nuxt-modules/better-auth": {
       "repository": "https://github.com/nuxt-modules/better-auth.git",

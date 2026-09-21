@@ -188,15 +188,15 @@ async function submitForm() {
 
 All composables return:
 
-| Property  | Type                                               | Description                                       |
-| --------- | -------------------------------------------------- | ------------------------------------------------- |
-| `data`    | `Ref<T>`                                           | Fetched data (`undefined` until resolved)         |
-| `error`   | `Ref<Error>`                                       | Error if request failed                           |
-| `status`  | `Ref<'idle' \| 'pending' \| 'success' \| 'error'>` | Request status                                    |
-| `pending` | `Ref<boolean>`                                     | Whether a request is in progress                  |
-| `refresh` | `() => Promise`                                    | Refetch data                                      |
-| `execute` | `() => Promise`                                    | Alias for refresh                                 |
-| `clear`   | `() => void`                                       | Reset to default/idle and cancel pending requests |
+| Property | Type | Description |
+|----------|------|-------------|
+| `data` | `Ref<T>` | Fetched data (`undefined` until resolved) |
+| `error` | `Ref<Error>` | Error if request failed |
+| `status` | `Ref<'idle' \| 'pending' \| 'success' \| 'error'>` | Request status |
+| `pending` | `Ref<boolean>` | Whether a request is in progress |
+| `refresh` | `() => Promise` | Refetch data |
+| `execute` | `() => Promise` | Alias for refresh |
+| `clear` | `() => void` | Reset to default/idle and cancel pending requests |
 
 > Prefer `status` over `pending` for fine-grained state. `useFetch` no longer accepts a top-level `timeout` option (still available on `useAsyncData`); use a `cache` option (`'default'`, `'no-store'`, `false`, etc.) for Fetch cache control.
 

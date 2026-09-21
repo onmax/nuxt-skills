@@ -19,13 +19,11 @@ export default defineNuxtConfig({
 ```
 
 **Benefits:**
-
 - Fast initial page load (HTML is ready)
 - SEO-friendly (content is in HTML)
 - Works without JavaScript initially
 
 **How it works:**
-
 1. Server executes Vue code, generates HTML
 2. Browser displays HTML immediately
 3. JavaScript loads and hydrates the page
@@ -43,13 +41,11 @@ export default defineNuxtConfig({
 ```
 
 **Benefits:**
-
 - Simpler development (no SSR constraints)
 - Cheaper hosting (static files only)
 - Works offline
 
 **Use cases:**
-
 - Admin dashboards
 - SaaS applications
 - Apps behind authentication
@@ -115,16 +111,16 @@ export default defineNuxtConfig({
 
 ### Route Rules Reference
 
-| Rule                        | Description                     |
-| --------------------------- | ------------------------------- |
-| `prerender: true`           | Pre-render at build time        |
-| `ssr: false`                | Client-side only                |
-| `swr: number \| true`       | Stale-while-revalidate caching  |
-| `isr: number \| true`       | Incremental static regeneration |
-| `cache: { maxAge: number }` | Cache with TTL                  |
-| `redirect: string`          | Redirect to another path        |
-| `cors: true`                | Add CORS headers                |
-| `headers: object`           | Custom response headers         |
+| Rule | Description |
+|------|-------------|
+| `prerender: true` | Pre-render at build time |
+| `ssr: false` | Client-side only |
+| `swr: number \| true` | Stale-while-revalidate caching |
+| `isr: number \| true` | Incremental static regeneration |
+| `cache: { maxAge: number }` | Cache with TTL |
+| `redirect: string` | Redirect to another path |
+| `cors: true` | Add CORS headers |
+| `headers: object` | Custom response headers |
 
 ### Inline Route Rules
 
@@ -198,7 +194,6 @@ export default defineNuxtConfig({
 ```
 
 Supported platforms:
-
 - Cloudflare Pages/Workers
 - Vercel Edge Functions
 - Netlify Edge Functions

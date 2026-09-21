@@ -1,5 +1,0 @@
-interface:
-  display_name: "Pinia"
-  short_description: "Pinia official Vue state management library, type-safe and extensible."
-policy:
-  allow_implicit_invocation: false
