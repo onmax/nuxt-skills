@@ -22,6 +22,7 @@ This is a common bug when wrapping native elements or migrating from Vue 2 to Vu
 ## The Problem
 
 **Incorrect - Undeclared emit causes double firing:**
+
 ```vue
 <!-- MyButton.vue -->
 <script setup>
@@ -52,6 +53,7 @@ function handleClick() {
 ```
 
 **What happens:**
+
 1. User clicks the button
 2. Native click event fires on the button element
 3. `@click` falls through to button (because 'click' isn't in emits), triggering `handleClick`
@@ -61,6 +63,7 @@ function handleClick() {
 ## The Solution
 
 **Correct - Declare the emit:**
+
 ```vue
 <!-- MyButton.vue -->
 <script setup>
@@ -85,6 +88,7 @@ const emit = defineEmits(['click'])
 ```
 
 When you declare `click` in `emits`:
+
 - Vue knows `@click` on the component is listening for a component event
 - The listener does NOT fall through to the root element
 - Only your explicit `emit('click')` triggers the parent's handler
@@ -92,6 +96,7 @@ When you declare `click` in `emits`:
 ## Options API Version
 
 **Correct - Using emits option:**
+
 ```vue
 <script>
 export default {
@@ -171,6 +176,7 @@ const emit = defineEmits(['custom-action'])
 ```
 
 This works because:
+
 - You don't re-emit 'click' explicitly
 - The native click listener falls through to the single root button
 - Native click fires once when button is clicked
@@ -190,6 +196,7 @@ function handleClick(event) {
 If you see two stack traces with different origins, you have the double-firing issue.
 
 ## Reference
+
 - [Vue 3 Migration - emits Option](https://v3-migration.vuejs.org/breaking-changes/emits-option)
 - [Vue.js Component Events](https://vuejs.org/guide/components/events.html)
 - [Vue.js Fallthrough Attributes](https://vuejs.org/guide/components/attrs.html)

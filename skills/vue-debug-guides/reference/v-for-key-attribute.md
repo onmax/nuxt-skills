@@ -21,6 +21,7 @@ The `key` attribute tells Vue how your data relates to the DOM elements it rende
 - [ ] When using components in v-for, keys are mandatory, not optional
 
 **Incorrect:**
+
 ```html
 <!-- WRONG: No key provided -->
 <li v-for="item in items">{{ item.name }}</li>
@@ -47,6 +48,7 @@ The `key` attribute tells Vue how your data relates to the DOM elements it rende
 ```
 
 **Correct:**
+
 ```html
 <!-- CORRECT: Unique identifier as key -->
 <li v-for="item in items" :key="item.id">
@@ -79,6 +81,7 @@ The `key` attribute tells Vue how your data relates to the DOM elements it rende
 ## When Keys Are Critical
 
 Keys are absolutely required when v-for loops contain:
+
 - Components with local state
 - Form elements (`<input>`, `<select>`, `<textarea>`)
 - Elements with initialization logic (mounted/created hooks)
@@ -86,5 +89,6 @@ Keys are absolutely required when v-for loops contain:
 - Direct DOM manipulation
 
 ## Reference
+
 - [Vue.js List Rendering - Key](https://vuejs.org/guide/essentials/list.html#maintaining-state-with-key)
 - [Vue 3 Migration Guide - Key on Template](https://v3-migration.vuejs.org/breaking-changes/key-attribute)

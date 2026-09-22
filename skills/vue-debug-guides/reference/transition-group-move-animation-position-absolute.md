@@ -20,6 +20,7 @@ The fix is to set `position: absolute` on the `leave-active` class so leaving it
 - [ ] Test with rapid add/remove operations to verify smooth animations
 
 **Incorrect - Items jump instead of moving:**
+
 ```vue
 <template>
   <TransitionGroup name="list" tag="ul">
@@ -45,6 +46,7 @@ The fix is to set `position: absolute` on the `leave-active` class so leaving it
 ```
 
 **Correct - Smooth move transitions:**
+
 ```vue
 <template>
   <TransitionGroup name="list" tag="ul">
@@ -126,5 +128,6 @@ With position: absolute:
 ```
 
 ## Reference
+
 - [Vue.js TransitionGroup Move Transitions](https://vuejs.org/guide/built-ins/transition-group.html#move-transitions)
 - [FLIP Animation Technique](https://aerotwist.com/blog/flip-your-animations/)

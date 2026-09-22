@@ -21,6 +21,7 @@ Always use `onWatcherCleanup` or the `onCleanup` callback parameter to cancel pe
 - [ ] Consider debouncing rapid changes before fetching
 
 **Incorrect:**
+
 ```javascript
 import { ref, watch } from 'vue'
 
@@ -45,6 +46,7 @@ watch(searchQuery, (query) => {
 ```
 
 **Correct:**
+
 ```javascript
 import { ref, watch, onWatcherCleanup } from 'vue'
 
@@ -176,5 +178,6 @@ watchEffect(async () => {
 ```
 
 ## Reference
+
 - [Vue.js Watchers - Callback Flush Timing](https://vuejs.org/guide/essentials/watchers.html#callback-flush-timing)
 - [Vue.js Watchers - Side Effect Cleanup](https://vuejs.org/api/reactivity-core.html#watcheffect)

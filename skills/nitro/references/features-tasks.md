@@ -62,6 +62,7 @@ export default defineConfig({
 ```
 
 Platform support:
+
 - `dev`, `node_server`, `node_cluster`, `node_middleware`, `bun`, `deno_server` → [croner](https://croner.56k.guru/) engine.
 - `cloudflare_module` / `cloudflare_pages` → native Cron Triggers (wrangler config auto-generated).
 - `vercel` → native Cron Jobs (config auto-generated; secure with `CRON_SECRET`).
@@ -97,6 +98,7 @@ export default defineTask({
 ## Dev server tools
 
 While `nitro dev` runs:
+
 - `GET /_nitro/tasks` — list available tasks + scheduled tasks.
 - `GET|POST /_nitro/tasks/:name` — execute (payload from query and/or JSON body under `"payload"`).
 - CLI: `nitro task list` and `nitro task run db:migrate --payload "{}"`.

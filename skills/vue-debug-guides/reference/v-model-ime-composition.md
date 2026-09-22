@@ -20,6 +20,7 @@ IME (Input Method Editor) allows users to compose complex characters by typing m
 - [ ] Document expected behavior for international users
 
 **Problem - v-model waits for composition:**
+
 ```html
 <script setup>
 import { ref } from 'vue'
@@ -39,6 +40,7 @@ const charCount = ref(0)
 ```
 
 **Solution - Manual event binding for real-time updates:**
+
 ```html
 <script setup>
 import { ref } from 'vue'
@@ -71,6 +73,7 @@ function handleInput(event) {
 ```
 
 **When v-model behavior IS correct:**
+
 ```html
 <!-- For form submission, waiting for composition IS usually better -->
 <!-- User expects to confirm their character selection before it's "official" -->
@@ -80,4 +83,5 @@ function handleInput(event) {
 ```
 
 ## Reference
+
 - [Vue.js Form Input Bindings](https://vuejs.org/guide/essentials/forms.html)

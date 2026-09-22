@@ -13,17 +13,17 @@ const { r$ } = useRegle({}, {}, {
 });
 ```
 
-| Modifier | Type | Default | Description |
-|----------|------|---------|-------------|
-| `autoDirty` | `boolean` | `true` | Automatically set dirty state on value change |
-| `immediateDirty` | `boolean \| 'eager' \| 'non-empty' \| 'lazy-non-empty'` | `false` | Set dirty on init. `true`/`'eager'` touches all fields, `'non-empty'` touches all fields when any active field has a non-empty initial value (inactive fields without rules are ignored), and `'lazy-non-empty'` only touches non-empty fields |
-| `silent` | `boolean` | `false` | Only show errors after manual `$touch` or `$validate` |
-| `lazy` | `boolean` | `false` | Only run rules when the field is dirty |
-| `rewardEarly` | `boolean` | `false` | Once valid, stay valid until `$validate` (reward-early-punish-late). Disables `autoDirty` |
-| `disabled` | `boolean` | `false` | Pause Regle watchers/computed and validation computation. State updates continue and validation resumes when re-enabled |
-| `externalErrors` | `RegleExternalErrorTree` | -- | Server-side errors. See server errors reference |
-| `clearExternalErrorsOnChange` | `boolean` | `true` | Clear external errors on value change |
-| `clearExternalErrorsOnValidate` | `boolean` | `false` | Clear external errors when `$validate` / `$validateSync` runs |
+| Modifier                        | Type                                                    | Default | Description                                                                                                                                                                                                                                    |
+| ------------------------------- | ------------------------------------------------------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `autoDirty`                     | `boolean`                                               | `true`  | Automatically set dirty state on value change                                                                                                                                                                                                  |
+| `immediateDirty`                | `boolean \| 'eager' \| 'non-empty' \| 'lazy-non-empty'` | `false` | Set dirty on init. `true`/`'eager'` touches all fields, `'non-empty'` touches all fields when any active field has a non-empty initial value (inactive fields without rules are ignored), and `'lazy-non-empty'` only touches non-empty fields |
+| `silent`                        | `boolean`                                               | `false` | Only show errors after manual `$touch` or `$validate`                                                                                                                                                                                          |
+| `lazy`                          | `boolean`                                               | `false` | Only run rules when the field is dirty                                                                                                                                                                                                         |
+| `rewardEarly`                   | `boolean`                                               | `false` | Once valid, stay valid until `$validate` (reward-early-punish-late). Disables `autoDirty`                                                                                                                                                      |
+| `disabled`                      | `boolean`                                               | `false` | Pause Regle watchers/computed and validation computation. State updates continue and validation resumes when re-enabled                                                                                                                        |
+| `externalErrors`                | `RegleExternalErrorTree`                                | --      | Server-side errors. See server errors reference                                                                                                                                                                                                |
+| `clearExternalErrorsOnChange`   | `boolean`                                               | `true`  | Clear external errors on value change                                                                                                                                                                                                          |
+| `clearExternalErrorsOnValidate` | `boolean`                                               | `false` | Clear external errors when `$validate` / `$validateSync` runs                                                                                                                                                                                  |
 
 ### Validation groups
 
@@ -64,15 +64,15 @@ const { r$ } = useRegle({ name: '' }, {
 });
 ```
 
-| Modifier | Type | Description |
-|----------|------|-------------|
-| `$autoDirty` | `boolean` | Override global `autoDirty` |
-| `$lazy` | `boolean` | Override global `lazy` |
-| `$silent` | `boolean` | Override global `silent` |
-| `$rewardEarly` | `boolean` | Override global `rewardEarly` |
-| `$immediateDirty` | `boolean \| 'eager' \| 'non-empty' \| 'lazy-non-empty'` | Override global `immediateDirty` |
-| `$debounce` | `number` | Debounce rule execution (ms). Async rules default to 200ms |
-| `$isEdited` | `(current, initial, defaultFn) => boolean` | Custom `$edited` comparison |
+| Modifier          | Type                                                    | Description                                                |
+| ----------------- | ------------------------------------------------------- | ---------------------------------------------------------- |
+| `$autoDirty`      | `boolean`                                               | Override global `autoDirty`                                |
+| `$lazy`           | `boolean`                                               | Override global `lazy`                                     |
+| `$silent`         | `boolean`                                               | Override global `silent`                                   |
+| `$rewardEarly`    | `boolean`                                               | Override global `rewardEarly`                              |
+| `$immediateDirty` | `boolean \| 'eager' \| 'non-empty' \| 'lazy-non-empty'` | Override global `immediateDirty`                           |
+| `$debounce`       | `number`                                                | Debounce rule execution (ms). Async rules default to 200ms |
+| `$isEdited`       | `(current, initial, defaultFn) => boolean`              | Custom `$edited` comparison                                |
 
 ## Array-specific modifier
 

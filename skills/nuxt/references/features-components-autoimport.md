@@ -59,6 +59,7 @@ export default defineNuxtConfig({
 ```
 
 With `pathPrefix: false`:
+
 ```
 components/base/Button.vue → <Button />
 ```
@@ -80,6 +81,7 @@ const showChart = ref(false)
 ```
 
 Benefits:
+
 - Reduces initial bundle size
 - Code-splits component into separate chunk
 - Loads on-demand

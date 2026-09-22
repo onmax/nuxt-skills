@@ -19,6 +19,7 @@ This gotcha commonly causes off-by-one errors when the generated numbers are use
 - [ ] Consider creating a computed array if you need 0-based indices
 
 **Incorrect Assumption:**
+
 ```html
 <!-- Developer expects 0-9, but gets 1-10 -->
 <span v-for="n in 10">{{ n }}</span>
@@ -31,6 +32,7 @@ This gotcha commonly causes off-by-one errors when the generated numbers are use
 ```
 
 **Correct:**
+
 ```html
 <!-- Correct understanding: 1-based range -->
 <span v-for="n in 10" :key="n">{{ n }}</span>
@@ -63,4 +65,5 @@ This gotcha commonly causes off-by-one errors when the generated numbers are use
 - Repeating template structures a set number of times
 
 ## Reference
+
 - [Vue.js List Rendering - v-for with a Range](https://vuejs.org/guide/essentials/list.html#v-for-with-a-range)

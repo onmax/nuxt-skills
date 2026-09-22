@@ -38,18 +38,19 @@ const routes = [
 ```
 
 **Scenario:**
+
 1. User navigates from `/products` to `/orders/1` - beforeEnter runs, access checked
 2. User navigates from `/orders/1` to `/orders/2` - beforeEnter DOES NOT run!
 3. User might access order they don't have permission for!
 
 ## What Triggers beforeEnter vs. What Doesn't
 
-| Navigation | beforeEnter fires? |
-|------------|-------------------|
-| `/products` → `/orders/1` | YES |
-| `/orders/1` → `/orders/2` | NO |
-| `/orders/1` → `/orders/1?tab=details` | NO |
-| `/orders/1#section` → `/orders/1#other` | NO |
+| Navigation                              | beforeEnter fires?            |
+| --------------------------------------- | ----------------------------- |
+| `/products` → `/orders/1`               | YES                           |
+| `/orders/1` → `/orders/2`               | NO                            |
+| `/orders/1` → `/orders/1?tab=details`   | NO                            |
+| `/orders/1#section` → `/orders/1#other` | NO                            |
 | `/orders/1` → `/products` → `/orders/2` | YES (leaving and re-entering) |
 
 ## Solution 1: Add In-Component Guard
@@ -163,5 +164,6 @@ For param/query changes on same route:
 5. **Consider security implications** - Param-based access control needs both guards
 
 ## Reference
+
 - [Vue Router Navigation Guards](https://router.vuejs.org/guide/advanced/navigation-guards.html)
 - [Vue Router Per-Route Guards](https://router.vuejs.org/guide/advanced/navigation-guards.html#per-route-guard)

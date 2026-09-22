@@ -20,6 +20,7 @@ Vue's `reactive()` uses JavaScript Proxies to track property access. When you de
 - [ ] When importing state from composables, check if it's reactive before destructuring
 
 **Incorrect:**
+
 ```javascript
 import { reactive } from 'vue'
 
@@ -49,6 +50,7 @@ const { count } = useCounter()  // count is now a non-reactive primitive
 ```
 
 **Correct:**
+
 ```javascript
 import { reactive, toRefs } from 'vue'
 
@@ -85,5 +87,6 @@ const name = ref('Vue')
 ```
 
 ## Reference
+
 - [Vue.js Reactivity Fundamentals - reactive()](https://vuejs.org/guide/essentials/reactivity-fundamentals.html#reactive)
 - [Vue.js Reactivity API - toRefs()](https://vuejs.org/api/reactivity-utilities.html#torefs)

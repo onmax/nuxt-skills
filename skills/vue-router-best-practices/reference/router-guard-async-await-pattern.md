@@ -223,5 +223,6 @@ router.beforeEach(async (to, from) => {
 6. **Parallelize independent checks** - Use Promise.all for better performance
 
 ## Reference
+
 - [Vue Router Navigation Guards](https://router.vuejs.org/guide/advanced/navigation-guards.html)
 - [Vue Router Navigation Failures](https://router.vuejs.org/guide/advanced/navigation-failures.html)

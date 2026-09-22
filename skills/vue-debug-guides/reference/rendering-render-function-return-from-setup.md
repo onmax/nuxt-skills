@@ -17,6 +17,7 @@ tags: [vue3, render-function, composition-api, setup, reactivity]
 - [ ] Ensure reactive values are accessed inside the returned function
 
 **Incorrect:**
+
 ```js
 import { h, ref } from 'vue'
 
@@ -36,6 +37,7 @@ export default {
 ```
 
 **Correct:**
+
 ```js
 import { h, ref } from 'vue'
 
@@ -144,5 +146,6 @@ export default {
 ```
 
 ## Reference
+
 - [Vue.js Render Functions with Composition API](https://vuejs.org/guide/extras/render-function.html#render-functions-jsx)
 - [Vue.js Composition API setup()](https://vuejs.org/api/composition-api-setup.html)

@@ -56,6 +56,7 @@ UnoCSS automatically looks for `uno.config.{js,ts,mjs,mts}` or `unocss.config.{j
 ## Key Configuration Options
 
 ### rules
+
 Define CSS utility rules. Later entries have higher priority.
 
 ```ts
@@ -66,6 +67,7 @@ rules: [
 ```
 
 ### shortcuts
+
 Combine multiple rules into a single shorthand.
 
 ```ts
@@ -75,6 +77,7 @@ shortcuts: {
 ```
 
 ### theme
+
 Theme object for design tokens shared between rules.
 
 ```ts
@@ -90,6 +93,7 @@ theme: {
 ```
 
 ### presets
+
 Predefined configurations bundling rules, variants, and themes.
 
 ```ts
@@ -100,6 +104,7 @@ presets: [
 ```
 
 ### transformers
+
 Transform source code to support special syntax.
 
 ```ts
@@ -110,15 +115,19 @@ transformers: [
 ```
 
 ### variants
+
 Preprocess selectors with ability to rewrite CSS output.
 
 ### extractors
+
 Handle source files and extract utility class names.
 
 ### preflights
+
 Inject raw CSS globally.
 
 ### layers
+
 Control the order of CSS layers. Default is `0`.
 
 ```ts
@@ -130,6 +139,7 @@ layers: {
 ```
 
 ### safelist
+
 Utilities that are always included in output.
 
 ```ts
@@ -137,6 +147,7 @@ safelist: ['p-1', 'p-2', 'p-3']
 ```
 
 ### blocklist
+
 Utilities that are always excluded.
 
 ```ts
@@ -144,6 +155,7 @@ blocklist: ['p-1', /^p-[2-4]$/]
 ```
 
 ### content
+
 Configure where to extract utilities from.
 
 ```ts
@@ -156,9 +168,11 @@ content: {
 ```
 
 ### separators
+
 Variant separator characters. Default: `[':', '-']`
 
 ### outputToCssLayers
+
 Output UnoCSS layers as CSS Cascade Layers.
 
 ```ts

@@ -18,6 +18,7 @@ tags: [vue3, events, modifiers, scroll, touch, performance]
 - [ ] If you need conditional prevention, handle it in JavaScript without `.passive`
 
 **Incorrect:**
+
 ```html
 <!-- WRONG: Conflicting modifiers -->
 <template>
@@ -47,6 +48,7 @@ tags: [vue3, events, modifiers, scroll, touch, performance]
 ```
 
 **Correct:**
+
 ```html
 <!-- CORRECT: Use .passive for performance (no prevention needed) -->
 <template>
@@ -131,11 +133,13 @@ element.addEventListener('scroll', handler, { passive: true })
 ## Browser Warning
 
 When you combine `.passive` and `.prevent`, the browser console shows:
+
 ```
 [Intervention] Unable to preventDefault inside passive event listener
 due to target being treated as passive.
 ```
 
 ## Reference
+
 - [Vue.js Event Handling - Event Modifiers](https://vuejs.org/guide/essentials/event-handling.html#event-modifiers)
 - [MDN - Improving scroll performance with passive listeners](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#improving_scrolling_performance_with_passive_listeners)

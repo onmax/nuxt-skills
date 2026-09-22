@@ -21,15 +21,15 @@ metadata:
 
 ## Core
 
-| Topic | Description | Reference |
-|-------|-------------|-----------|
-| Script Setup & Macros | `<script setup>`, defineProps, defineEmits, defineModel, defineExpose, defineOptions, defineSlots, generics | [script-setup-macros](references/script-setup-macros.md) |
-| Reactivity & Lifecycle | ref, shallowRef, computed, watch, watchEffect, effectScope, lifecycle hooks, composables | [core-new-apis](references/core-new-apis.md) |
+| Topic                  | Description                                                                                                 | Reference                                                |
+| ---------------------- | ----------------------------------------------------------------------------------------------------------- | -------------------------------------------------------- |
+| Script Setup & Macros  | `<script setup>`, defineProps, defineEmits, defineModel, defineExpose, defineOptions, defineSlots, generics | [script-setup-macros](references/script-setup-macros.md) |
+| Reactivity & Lifecycle | ref, shallowRef, computed, watch, watchEffect, effectScope, lifecycle hooks, composables                    | [core-new-apis](references/core-new-apis.md)             |
 
 ## Features
 
-| Topic | Description | Reference |
-|-------|-------------|-----------|
+| Topic                            | Description                                                          | Reference                                            |
+| -------------------------------- | -------------------------------------------------------------------- | ---------------------------------------------------- |
 | Built-in Components & Directives | Transition, Teleport, Suspense, KeepAlive, v-memo, custom directives | [advanced-patterns](references/advanced-patterns.md) |
 
 ## Quick Reference
