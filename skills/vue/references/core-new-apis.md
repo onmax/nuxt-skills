@@ -255,6 +255,39 @@ return { x, y }
 return reactive({ x, y })
 ```
 
+## Newer APIs (3.5+)
+
+### useTemplateRef & useId
+
+```vue
+<script setup lang="ts">
+import { useTemplateRef, useId } from 'vue'
+
+const input = useTemplateRef<HTMLInputElement>('input') // matches ref="input" in template
+const id = useId() // SSR-stable, unique per app
+</script>
+
+<template>
+  <label :for="id">Name</label>
+  <input :id="id" ref="input">
+</template>
+```
+
+### Lazy Hydration (SSR)
+
+```ts
+import { defineAsyncComponent, hydrateOnVisible } from 'vue'
+
+const Comments = defineAsyncComponent({
+  loader: () => import('./Comments.vue'),
+  hydrate: hydrateOnVisible(), // also: hydrateOnIdle(), hydrateOnInteraction('click'), hydrateOnMediaQuery(query)
+})
+```
+
+### Vapor Mode (3.6 release candidate, experimental)
+
+Vue 3.6 is in RC (`3.6.0-rc.10`); stable is 3.5.x. Vapor Mode is an opt-in, no-virtual-DOM compilation strategy for `<script setup>` components (`<script setup vapor>`) and can interop with VDOM components. Don't recommend it for production until 3.6 is stable.
+
 <!--
 Source references:
 - https://vuejs.org/api/reactivity-core.html
