@@ -8,7 +8,7 @@ license: MIT
 
 Unstyled, accessible Vue 3 component primitives. WAI-ARIA compliant. Previously Radix Vue.
 
-**Current version:** v2.8.0 (January 2026)
+**Current version:** v2.10.5 (September 2026)
 
 ## When to Use
 
@@ -119,8 +119,21 @@ const open = ref(false)
 </DialogTrigger>
 ```
 
-## Recent Updates (v2.6.0-v2.8.0)
+## Recent Updates (v2.6.0-v2.10.5)
 
+- **New components**: Drawer with swipe gestures (v2.10.0), Autocomplete, TimeRangeField, Color components (ColorArea etc.), MonthPicker/YearPicker (v2.9.0)
+- **DropdownMenu**: filter component (v2.9.0)
+- **Checkbox/Switch**: custom true/false values (v2.9.0)
+- **Splitter**: pixel sizing and constraints (v2.9.0)
+- **Tooltip**: global content configuration (v2.9.0)
+- **ConfigProvider**: `teleportTo` global teleport target (v2.10.0)
+- **Dialog**: `unmountOnHide` prop (v2.10.0)
+- **HoverCard**: `enableTouch` prop (v2.10.0)
+- **Select**: `nullableValue` prop (v2.10.0)
+- **Popper**: `dir` prop for RTL/LTR (v2.10.0)
+- **DateField**: `stepSnapping` (v2.10.0)
+- **TreeItem**: `disabled` prop; **Tabs**: `--reka-tabs-indicator-thickness` CSS var (v2.10.0)
+- **Rating**: exposed and documented (v2.10.0)
 - **New component**: Rating (v2.8.0)
 - **ScrollArea**: Added "glimpse" scrollbar mode (v2.8.0)
 - **PopperContent**: Added `hideShiftedArrow` prop (v2.8.0)
