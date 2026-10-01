@@ -278,6 +278,23 @@ export default defineNuxtConfig({
 })
 ```
 
+### `theme.unstyled`
+
+Build-time option (v4.9+) that strips every default theme class from all components, keeping only structure from your `class`, `ui` or `app.config.ui`. Use it to bring your own design system.
+
+```ts
+// nuxt.config.ts
+export default defineNuxtConfig({
+  ui: {
+    theme: {
+      unstyled: true
+    }
+  }
+})
+```
+
+It also removes structural classes (positioning, transitions, flex/grid), so layout-heavy components like `Modal`, `Drawer` and `Calendar` need their layout re-supplied.
+
 ### `theme.prefix`
 
 When using Tailwind CSS with a prefix, configure the same prefix in Nuxt UI so component classes match:
@@ -301,7 +318,7 @@ export default defineNuxtConfig({
 
 ### Tree-shaking with `experimental.componentDetection`
 
-Enable automatic component detection to only generate CSS for components you actually use:
+Enable automatic component detection (Nuxt, and Vue via the `@nuxt/ui/vite` plugin since v4.11) to only generate CSS for components you actually use:
 
 ```ts
 // nuxt.config.ts

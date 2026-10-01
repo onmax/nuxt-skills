@@ -61,6 +61,7 @@ Quick-reference index of all 125+ components. For full API docs (props, slots, e
 | `UInputTime`     | Time picker (12/24h)                           |
 | `UInputTags`     | Tag/chip input                                 |
 | `UPinInput`      | Verification code input                        |
+| `UInputRating`   | Star rating input (half-steps, custom icons)   |
 | `UCheckbox`      | Single boolean checkbox                        |
 | `UCheckboxGroup` | Multiple checkboxes                            |
 | `URadioGroup`    | Radio button group                             |
