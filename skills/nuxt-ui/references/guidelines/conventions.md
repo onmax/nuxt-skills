@@ -207,6 +207,29 @@ const instance = modal.open({ title: 'Confirm?' })
 if (await instance.result) { /* confirmed */ }
 ```
 
+### useTour
+
+Guided tours (v4.9+): one `UPopover` re-anchored across steps. Each step's `target` (selector, element getter, or `null`) resolves into a `reference` to bind to the popover; you own the content and buttons.
+
+```vue
+<script setup lang="ts">
+const tour = useTour([
+  { target: '#cta', title: 'Get started' },
+  { target: null, title: 'All set' }
+])
+</script>
+
+<template>
+  <UButton @click="tour.start()">Start tour</UButton>
+  <UPopover :open="tour.open.value" :reference="tour.reference.value" :dismissible="false">
+    <template #content>
+      <UButton :disabled="!tour.hasPrev.value" @click="tour.prev()">Back</UButton>
+      <UButton @click="tour.next()">{{ tour.hasNext.value ? 'Next' : 'Finish' }}</UButton>
+    </template>
+  </UPopover>
+</template>
+```
+
 ### defineShortcuts
 
 ```ts
