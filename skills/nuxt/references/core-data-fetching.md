@@ -56,6 +56,9 @@ const { data } = await useFetch('/api/posts', {
   lazy: true,
   // Don't fetch immediately
   immediate: false,
+  // Gate the request (Nuxt 4.5+): blocks initial fetch, execute/refresh and watch
+  // triggers while false; true -> false cancels in-flight requests, keeps data
+  enabled: isLoggedIn,
   // Default value
   default: () => [],
 })
