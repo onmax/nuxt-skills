@@ -46,6 +46,8 @@ When `reporters` is unset, Vitest auto-selects:
 
 > v4 removed the `basic` reporter (equivalent to `['default', { summary: false }]`). The old `verbose` flat behavior moved here; use `tree` for the nested view.
 
+> **v5:** the `json` and `junit` reporters now **write to a file by default** (`.vitest/json/output.json`, `.vitest/junit/output.xml`) instead of stdout. If you piped output (`vitest --reporter=json | jq`), read the artifact instead or opt back in with `reporters: [['json', { stdout: true }]]`. An explicit `outputFile` is still respected.
+
 ## Output Files
 
 ```bash
