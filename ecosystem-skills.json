@@ -16,11 +16,7 @@
         "unocss",
         "vite",
         "vitest",
-        "vue",
-        "vue-best-practices",
-        "vue-router-best-practices",
-        "vue-testing-best-practices",
-        "vueuse-functions"
+        "vue"
       ]
     },
     {
@@ -28,7 +24,18 @@
       "repository": "https://github.com/vuejs-ai/skills.git",
       "root": "skills",
       "include": [
-        "vue-debug-guides"
+        "vue-best-practices",
+        "vue-debug-guides",
+        "vue-router-best-practices",
+        "vue-testing-best-practices"
+      ]
+    },
+    {
+      "name": "vueuse/skills",
+      "repository": "https://github.com/vueuse/skills.git",
+      "root": "skills",
+      "include": [
+        "vueuse-functions"
       ]
     }
   ]
