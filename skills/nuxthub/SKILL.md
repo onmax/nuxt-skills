@@ -1,10 +1,10 @@
 ---
 name: nuxthub
-description: Use when building NuxtHub v0.10.6 applications - provides database (Drizzle ORM with sqlite/postgresql/mysql), KV storage, blob storage, and cache APIs. Covers configuration, schema definition, migrations, multi-cloud deployment (Cloudflare, Vercel), and the new hub:db, hub:kv, hub:blob virtual module imports.
+description: Use when building NuxtHub v0.10.8 applications - provides database (Drizzle ORM with sqlite/postgresql/mysql), KV storage, blob storage, and cache APIs. Covers configuration, schema definition, migrations, multi-cloud deployment (Cloudflare, Vercel), and the new hub:db, hub:kv, hub:blob virtual module imports.
 license: MIT
 ---
 
-# NuxtHub v0.10.6
+# NuxtHub v0.10.8
 
 Full-stack Nuxt framework with database, KV, blob, and cache. Multi-cloud support (Cloudflare, Vercel, Deno, Netlify).
 
@@ -53,6 +53,7 @@ hub: {
     casing: 'snake_case',  // camelCase JS -> snake_case DB (v0.10.3+)
     migrationsDirs: ['server/db/custom-migrations/'],
     applyMigrationsDuringBuild: true, // default
+    applyMigrationsDuringDev: true, // apply migrations in dev (v0.10.7+)
     replica: { // Read replica support (v0.10.6+)
       connection: { connectionString: process.env.DATABASE_REPLICA_URL }
     }
@@ -125,7 +126,7 @@ npx nuxt db generate                  # Generate migrations from schema
 npx nuxt db migrate                   # Apply pending migrations
 npx nuxt db sql "SELECT * FROM users" # Execute raw SQL
 npx nuxt db drop <TABLE>              # Drop a specific table
-npx nuxt db drop-all                  # Drop all tables (v0.10+)
+npx nuxt db drop-all [--force]        # Drop all tables; --force skips confirmation (v0.10.7+)
 npx nuxt db squash                    # Squash migrations into one (v0.10+)
 npx nuxt db mark-as-migrated [NAME]   # Mark as migrated without running
 ```
