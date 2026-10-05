@@ -599,4 +599,4 @@ Comark supports GitHub Flavored Markdown tables:
 
 ---
 
-[← Back to Main Skills Guide](../../SKILLS.md)
+← Back to Main Skills Guide

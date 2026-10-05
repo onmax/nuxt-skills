@@ -481,7 +481,7 @@ import type {
 
 ## Contributing & Testing
 
-See the [test specifications](../../packages/comark/SPEC/) for examples of all supported syntax features.
+See the test specifications for examples of all supported syntax features.
 
 Run tests:
 
@@ -497,8 +497,8 @@ pnpm test -- tests/parse.test.ts
 
 ## Resources
 
-- **README:** [README.md](../../README.md) - Installation and quick start
-- **Specifications:** [SPEC/](../../packages/comark/SPEC/) - Complete syntax test cases
+- **README:** [README.md](https://github.com/comarkdown/comark/blob/b188a6d37bdf171e4babaf74de4a29270656b0b1/docs/README.md) - Installation and quick start
+- **Specifications:** SPEC/ - Complete syntax test cases
 
 ---
 

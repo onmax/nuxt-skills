@@ -195,7 +195,7 @@ Three workflows for complete CI/CD:
 | `pkg.yml`     | push/PR  | preview packages via pkg-pr-new |
 | `release.yml` | tag `v*` | npm publish + GitHub release    |
 
-**Copy templates from:** [references/ci-workflows.md](references/ci-workflows.md)
+**Copy templates from:** [ci-workflows.md](ci-workflows.md)
 
 ---
 

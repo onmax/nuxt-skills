@@ -27,6 +27,7 @@ jobs:
       - run: pnpm install
       - run: pnpm lint --fix
       - run: pnpm typecheck
+      - run: pnpm check:links
 
       - name: Commit lint fixes
         uses: stefanzweifel/git-auto-commit-action@v5

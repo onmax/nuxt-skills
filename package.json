@@ -9,7 +9,8 @@
     "typecheck": "tsc --noEmit",
     "generate:reka-ui": "tsx skills/reka-ui/scripts/generate-components.ts",
     "generate": "pnpm generate:reka-ui",
-    "bundle:ecosystem": "node scripts/bundle-ecosystem-skills.mjs"
+    "bundle:ecosystem": "node scripts/bundle-ecosystem-skills.mjs",
+    "check:links": "node scripts/check-skill-links.mjs"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^4.11.0",
