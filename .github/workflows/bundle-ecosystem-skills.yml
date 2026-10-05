@@ -35,6 +35,9 @@ jobs:
             skills-ref validate "$skill"
           done
 
+      - name: Check skill links
+        run: node scripts/check-skill-links.mjs
+
       - name: Validate plugin manifests
         run: |
           python3 -m json.tool .codex-plugin/plugin.json >/dev/null

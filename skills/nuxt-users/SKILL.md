@@ -140,7 +140,7 @@ Run from the project root so `nuxt.config.ts` (and optionally `.env`) are found.
 
 ## File references
 
-- Project LLM context and config types: [llms.txt](../../llms.txt) in the repo root
+- Project LLM context and config types: [llms.txt](https://github.com/rrd108/nuxt-users/blob/ac0b122c6f92ec001ed30bdec5637939570f587f/llms.txt) in the repo root
 - Full docs: [https://nuxt-users.webmania.cc/](https://nuxt-users.webmania.cc/)
 - Getting started and examples: `../../docs/user-guide/getting-started.md`, `../../docs/examples/basic-setup.md`
 - Authorization: `../../docs/user-guide/authorization.md`

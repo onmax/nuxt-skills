@@ -396,4 +396,4 @@ Message
 
 ---
 
-[← Back to Main Skills Guide](../../SKILLS.md)
+← Back to Main Skills Guide

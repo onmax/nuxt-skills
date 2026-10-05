@@ -1,12 +1,13 @@
 #!/usr/bin/env node
-import { cp, mkdtemp, readFile, readdir, rm, writeFile } from 'node:fs/promises'
-import { existsSync } from 'node:fs'
 import { execFile } from 'node:child_process'
-import process from 'node:process'
 import { createHash } from 'node:crypto'
-import { promisify } from 'node:util'
+import { existsSync } from 'node:fs'
+import { cp, mkdtemp, readdir, readFile, rm, writeFile } from 'node:fs/promises'
 import { dirname, join, relative, resolve } from 'node:path'
+import process from 'node:process'
 import { fileURLToPath } from 'node:url'
+import { promisify } from 'node:util'
+import { bundleRelativeLinks } from './markdown-links.mjs'
 
 const exec = promisify(execFile)
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
@@ -56,6 +57,7 @@ try {
           return true
         },
       })
+      await bundleRelativeLinks({ sourceDir, targetDir, checkout, upstreamUrl: source.repository.replace(/\.git$/, ''), revision: revision.trim() })
       await normalizeMarkdown(targetDir)
       console.log(`bundled ${skillName} from ${source.name}`)
     }
@@ -93,7 +95,8 @@ try {
     }
     console.log(`plugin version: ${current} -> ${version}`)
   }
-} finally {
+}
+finally {
   await rm(tempRoot, { recursive: true, force: true })
 }
 
@@ -176,7 +179,7 @@ async function fetchJson(url) {
 function githubRepo(value) {
   if (typeof value !== 'string')
     return null
-  const match = value.match(/github\.com[/:]([^/]+\/[^/#.]+?)(?:\.git|[#/]|$)/i)
+  const match = value.match(/github\.com[/:]([^/]+\/[^/#.]+)(?:\.git|[#/]|$)/i)
   return match?.[1] || null
 }
 
@@ -213,14 +216,14 @@ async function discoverNuxtModuleSources() {
   const deref = value => typeof value === 'number' && value >= 0 && value < payload.length ? payload[value] : value
   const moduleIndex = payload.findIndex(value => value && typeof value === 'object' && !Array.isArray(value) && 'modules' in value)
   const moduleRefs = moduleIndex >= 0 ? deref(payload[moduleIndex].modules) : []
-  const modules = (Array.isArray(moduleRefs) ? moduleRefs : []).map(ref => deref(ref)).map(module => {
+  const modules = (Array.isArray(moduleRefs) ? moduleRefs : []).map(ref => deref(ref)).map((module) => {
     if (!module || typeof module !== 'object')
       return null
     return { ...module, name: deref(module.name), npm: deref(module.npm), github: deref(module.github) }
   }).filter(module => module && typeof module.github === 'string' && typeof module.npm === 'string')
   const sources = []
   const seen = new Set()
-  const uniqueModules = modules.filter(module => {
+  const uniqueModules = modules.filter((module) => {
     const repo = githubRepo(module.github)
     if (!repo || seen.has(repo))
       return false

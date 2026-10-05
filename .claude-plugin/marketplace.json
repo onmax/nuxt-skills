@@ -11,7 +11,7 @@
     {
       "name": "nuxt-skills",
       "source": "./",
-      "version": "1.3.2",
+      "version": "1.3.3",
       "description": "Vue, Nuxt, and NuxtHub skills for AI coding assistants",
       "keywords": [
         "vue",
