@@ -120,9 +120,21 @@ Rolldown unlocks features not possible before:
 - More flexible chunk splitting
 - Module Federation support
 
+## TypeScript Paths
+
+Vite 8 can resolve tsconfig `paths` natively:
+
+```ts
+export default defineConfig({
+  resolve: { tsconfigPaths: true },
+})
+```
+
+Other Vite 8 additions: Vite Devtools integration, `emitDecoratorMetadata` support, `.wasm?init` in SSR, and browser console forwarding to the terminal.
+
 ## Gradual Migration
 
-For large projects, migrate via `rolldown-vite` first:
+Vite 8 is stable (released 2026-03-12). For large projects on Vite 7, the `rolldown-vite` preview package can still be used as an intermediate step:
 
 ```bash
 # Step 1: Test with rolldown-vite
@@ -143,7 +155,7 @@ When framework depends on older Vite:
 {
   "pnpm": {
     "overrides": {
-      "vite": "8.0.0"
+      "vite": "^8.0.0"
     }
   }
 }
@@ -151,7 +163,7 @@ When framework depends on older Vite:
 
 <!--
 Source references:
-- https://vite.dev/blog/announcing-vite8-beta
+- https://vite.dev/blog/announcing-vite8
 - https://vite.dev/blog/announcing-vite7
 - https://vite.dev/config/shared-options#oxc
 -->
