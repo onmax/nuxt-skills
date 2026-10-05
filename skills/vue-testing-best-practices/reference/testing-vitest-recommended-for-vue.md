@@ -31,7 +31,6 @@ npm install -D vitest @vue/test-utils jsdom
 ```
 
 **vite.config.js:**
-
 ```javascript
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
@@ -50,7 +49,6 @@ export default defineConfig({
 ```
 
 **package.json:**
-
 ```json
 {
   "scripts": {
@@ -62,7 +60,6 @@ export default defineConfig({
 ```
 
 **tsconfig.json (if using TypeScript):**
-
 ```json
 {
   "compilerOptions": {
@@ -99,14 +96,14 @@ describe('Counter', () => {
 
 ## Vitest vs Jest Comparison
 
-| Feature          | Vitest                 | Jest             |
-| ---------------- | ---------------------- | ---------------- |
-| Vite Integration | Native                 | Requires config  |
-| Speed            | Very fast (ESM native) | Slower with Vite |
-| Watch Mode       | Excellent              | Good             |
-| Vue SFC Support  | Works with Vite        | Needs vue-jest   |
-| Config Sharing   | Same as vite.config    | Separate         |
-| API              | Jest-compatible        | Standard         |
+| Feature | Vitest | Jest |
+|---------|--------|------|
+| Vite Integration | Native | Requires config |
+| Speed | Very fast (ESM native) | Slower with Vite |
+| Watch Mode | Excellent | Good |
+| Vue SFC Support | Works with Vite | Needs vue-jest |
+| Config Sharing | Same as vite.config | Separate |
+| API | Jest-compatible | Standard |
 
 ## Using with Testing Library
 
@@ -170,7 +167,6 @@ export default defineConfig({
 ## Common Patterns
 
 ### Mocking Modules
-
 ```javascript
 import { vi } from 'vitest'
 
@@ -180,7 +176,6 @@ vi.mock('@/api/users', () => ({
 ```
 
 ### Testing with Fake Timers
-
 ```javascript
 import { vi, beforeEach, afterEach } from 'vitest'
 
@@ -204,7 +199,6 @@ test('debounced search', async () => {
 ```
 
 ## Reference
-
 - [Vitest Documentation](https://vitest.dev/)
 - [Vue.js Testing Guide](https://vuejs.org/guide/scaling-up/testing)
 - [Vue Test Utils](https://test-utils.vuejs.org/)

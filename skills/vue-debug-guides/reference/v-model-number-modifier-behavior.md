@@ -21,16 +21,15 @@ Understanding these differences is crucial when working with numeric forms, espe
 
 **Key Differences:**
 
-| Scenario    | `.number` modifier        | Native `valueAsNumber` |
-| ----------- | ------------------------- | ---------------------- |
-| Empty input | `''` (empty string)       | `NaN`                  |
-| `"123"`     | `123`                     | `123`                  |
-| `"123.45"`  | `123.45`                  | `123.45`               |
-| `"123abc"`  | `123`                     | `NaN`                  |
-| `"abc"`     | `'abc'` (original string) | `NaN`                  |
+| Scenario | `.number` modifier | Native `valueAsNumber` |
+|----------|-------------------|----------------------|
+| Empty input | `''` (empty string) | `NaN` |
+| `"123"` | `123` | `123` |
+| `"123.45"` | `123.45` | `123.45` |
+| `"123abc"` | `123` | `NaN` |
+| `"abc"` | `'abc'` (original string) | `NaN` |
 
 **Problem - Unexpected types:**
-
 ```html
 <script setup>
 import { ref, computed } from 'vue'
@@ -60,7 +59,6 @@ function validatePrice() {
 ```
 
 **Solution - Handle empty string explicitly:**
-
 ```html
 <script setup>
 import { ref, computed } from 'vue'
@@ -88,7 +86,6 @@ const safePrice = computed(() => {
 ```
 
 **Solution - Custom input handling for strict parsing:**
-
 ```html
 <script setup>
 import { ref } from 'vue'
@@ -124,5 +121,4 @@ function handlePriceInput(event) {
 ```
 
 ## Reference
-
 - [Vue.js Form Input Bindings - .number](https://vuejs.org/guide/essentials/forms.html#number)

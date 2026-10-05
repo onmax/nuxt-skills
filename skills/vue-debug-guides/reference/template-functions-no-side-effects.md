@@ -22,7 +22,6 @@ Template expressions including function calls are evaluated whenever the compone
 - [ ] Avoid expensive computations; use computed properties for caching
 
 **Incorrect:**
-
 ```vue
 <template>
   <!-- BAD: Modifies state on every render -->
@@ -85,7 +84,6 @@ function getRandomGreeting() {
 ```
 
 **Correct:**
-
 ```vue
 <template>
   <!-- OK: Pure formatting function -->
@@ -149,7 +147,6 @@ const greeting = ref(greetings[Math.floor(Math.random() * greetings.length)])
 ## Pure Function Guidelines
 
 A pure function:
-
 1. Given the same inputs, always returns the same output
 2. Does not modify any external state
 3. Does not perform I/O operations (network, console, file system)
@@ -186,6 +183,5 @@ function updateAndReturn(obj, key, value) {
 ```
 
 ## Reference
-
 - [Vue.js Template Syntax - Calling Functions](https://vuejs.org/guide/essentials/template-syntax.html#calling-functions)
 - [Vue.js Computed Properties](https://vuejs.org/guide/essentials/computed.html)

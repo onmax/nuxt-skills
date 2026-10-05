@@ -66,7 +66,6 @@ Recommended `.vscode/settings.json` for Tailwind IntelliSense autocomplete with 
 ## UApp wrapper
 
 Always wrap your app in `UApp` — it provides:
-
 - Toast container (`useToast`)
 - Tooltip provider
 - Programmatic overlay context (`useOverlay`)
@@ -134,17 +133,17 @@ export default defineAppConfig({
 
 Most components follow consistent slot naming:
 
-| Slot        | Used by                                | Purpose                         |
-| ----------- | -------------------------------------- | ------------------------------- |
-| `#header`   | Card, Modal, Slideover, DashboardPanel | Top section                     |
-| `#body`     | DashboardPanel                         | Scrollable content area         |
-| `#footer`   | Card, Modal, Slideover, DashboardPanel | Bottom section                  |
-| `#left`     | Page, DashboardNavbar                  | Left sidebar or content         |
-| `#right`    | Page, DashboardNavbar, Header          | Right sidebar or content        |
-| `#leading`  | Input, Button, Alert                   | Before main content (icon area) |
-| `#trailing` | Input, Button                          | After main content (icon area)  |
-| `#content`  | Modal, Slideover, Popover, Tooltip     | Full content override           |
-| `#default`  | Most components                        | Main content area               |
+| Slot | Used by | Purpose |
+|---|---|---|
+| `#header` | Card, Modal, Slideover, DashboardPanel | Top section |
+| `#body` | DashboardPanel | Scrollable content area |
+| `#footer` | Card, Modal, Slideover, DashboardPanel | Bottom section |
+| `#left` | Page, DashboardNavbar | Left sidebar or content |
+| `#right` | Page, DashboardNavbar, Header | Right sidebar or content |
+| `#leading` | Input, Button, Alert | Before main content (icon area) |
+| `#trailing` | Input, Button | After main content (icon area) |
+| `#content` | Modal, Slideover, Popover, Tooltip | Full content override |
+| `#default` | Most components | Main content area |
 
 ## Items arrays
 
@@ -205,29 +204,6 @@ const overlay = useOverlay()
 const modal = overlay.create(MyComponent)
 const instance = modal.open({ title: 'Confirm?' })
 if (await instance.result) { /* confirmed */ }
-```
-
-### useTour
-
-Guided tours (v4.9+): one `UPopover` re-anchored across steps. Each step's `target` (selector, element getter, or `null`) resolves into a `reference` to bind to the popover; you own the content and buttons.
-
-```vue
-<script setup lang="ts">
-const tour = useTour([
-  { target: '#cta', title: 'Get started' },
-  { target: null, title: 'All set' }
-])
-</script>
-
-<template>
-  <UButton @click="tour.start()">Start tour</UButton>
-  <UPopover :open="tour.open.value" :reference="tour.reference.value" :dismissible="false">
-    <template #content>
-      <UButton :disabled="!tour.hasPrev.value" @click="tour.prev()">Back</UButton>
-      <UButton @click="tour.next()">{{ tour.hasNext.value ? 'Next' : 'Finish' }}</UButton>
-    </template>
-  </UPopover>
-</template>
 ```
 
 ### defineShortcuts
@@ -348,7 +324,6 @@ Each locale has a `dir` property (`'ltr'` or `'rtl'`). `UApp` uses it to set dir
 ## Color mode
 
 Nuxt UI registers `@nuxtjs/color-mode` automatically. Built-in components for switching:
-
 - `UColorModeButton` — single button toggle (light/dark)
 - `UColorModeSwitch` — toggle switch
 - `UColorModeSelect` — dropdown with system/light/dark options
@@ -382,16 +357,16 @@ const isDark = computed({
 Bootstrap a project from a template instead of starting from scratch:
 
 ```bash
-npx nuxi@latest init -t ui              # Starter
-npx nuxi@latest init -t ui/dashboard    # Dashboard
-npx nuxi@latest init -t ui/docs         # Docs (Nuxt Content)
-npx nuxi@latest init -t ui/landing      # Landing page
-npx nuxi@latest init -t ui/saas         # SaaS (landing + pricing + docs + blog)
-npx nuxi@latest init -t ui/chat         # AI chat (Vercel AI SDK)
-npx nuxi@latest init -t ui/editor       # Rich text editor
-npx nuxi@latest init -t ui/portfolio    # Portfolio
-npx nuxi@latest init -t ui/changelog    # Changelog
-npx nuxi@latest init -t ui/calendar     # Calendar
+npm create nuxt@latest -- -t ui            # Starter
+npm create nuxt@latest -- -t ui/dashboard  # Dashboard
+npm create nuxt@latest -- -t ui/docs       # Docs (Nuxt Content)
+npm create nuxt@latest -- -t ui/landing    # Landing page
+npm create nuxt@latest -- -t ui/saas       # SaaS (landing + pricing + docs + blog)
+npm create nuxt@latest -- -t ui/chat       # AI chat (Vercel AI SDK)
+npm create nuxt@latest -- -t ui/editor     # Rich text editor
+npm create nuxt@latest -- -t ui/portfolio  # Portfolio
+npm create nuxt@latest -- -t ui/changelog  # Changelog
+npm create nuxt@latest -- -t ui/calendar   # Calendar
 ```
 
 ## Responsive patterns

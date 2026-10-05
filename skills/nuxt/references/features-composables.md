@@ -93,20 +93,6 @@ async function submit() {
 
 Use `useRouteAnnouncer` (with `<NuxtRouteAnnouncer>`) instead for automatic route-change announcements based on the page `<title>`.
 
-### useLayout
-
-Returns a read-only computed ref with the layout resolved for the current route (page `layout` meta, then route rules, then `'default'`), or `false` when disabled. Updates on navigation. Nuxt 4.5+.
-
-```vue
-<script setup lang="ts">
-const layout = useLayout()
-</script>
-
-<template>
-  <CommandPalette v-if="layout !== 'minimal'" />
-</template>
-```
-
 ## Custom Composables (`app/composables/`)
 
 ### Creating Composables
@@ -306,7 +292,6 @@ export function useMyComposable() {
 ```
 
 **Valid contexts:**
-
 - `<script setup>` block
 - `setup()` function
 - `defineNuxtPlugin()` callback

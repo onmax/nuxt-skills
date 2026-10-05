@@ -19,23 +19,23 @@ export default definePlugin((nitroApp) => {
 
 ## The `nitroApp` context
 
-| Property                   | Description                                                                            |
-| -------------------------- | -------------------------------------------------------------------------------------- |
-| `hooks`                    | [hookable](https://github.com/unjs/hookable) instance to register lifecycle callbacks. |
-| `h3`                       | The underlying H3 app instance.                                                        |
-| `fetch(req)`               | The app's internal fetch handler.                                                      |
-| `captureError(error, ctx)` | Feed errors into the error hook pipeline.                                              |
+| Property | Description |
+|---|---|
+| `hooks` | [hookable](https://github.com/unjs/hookable) instance to register lifecycle callbacks. |
+| `h3` | The underlying H3 app instance. |
+| `fetch(req)` | The app's internal fetch handler. |
+| `captureError(error, ctx)` | Feed errors into the error hook pipeline. |
 
 ## Runtime hooks
 
 Register lifecycle callbacks inside a plugin. `hook()` returns an unregister function.
 
-| Hook       | Signature                                   | When                                   |
-| ---------- | ------------------------------------------- | -------------------------------------- |
-| `request`  | `(event) => void \| Promise`                | Start of each request, before routing. |
-| `response` | `(res: Response, event) => void \| Promise` | After the response is created.         |
-| `error`    | `(error, { event?, tags? }) => void`        | When any error is captured.            |
-| `close`    | `() => void`                                | On server shutdown.                    |
+| Hook | Signature | When |
+|---|---|---|
+| `request` | `(event) => void \| Promise` | Start of each request, before routing. |
+| `response` | `(res: Response, event) => void \| Promise` | After the response is created. |
+| `error` | `(error, { event?, tags? }) => void` | When any error is captured. |
+| `close` | `() => void` | On server shutdown. |
 
 ```ts [plugins/lifecycle.ts]
 import { definePlugin } from "nitro";
@@ -77,14 +77,16 @@ export default definePlugin((nitroApp) => {
 
 ## Notes
 
-- `runtimeHooks` are auto-enabled when at least one plugin exists; force with `features.runtimeHooks: true`.
+- `features.runtimeHooks` is auto-enabled when at least one plugin exists; force with `features.runtimeHooks: true`.
 - `NitroRuntimeHooks` is augmentable — presets add platform hooks (e.g. Cloudflare `cloudflare:scheduled`, `cloudflare:email`; Vercel `vercel:queue`).
-- Outside plugins, use `useNitroHooks()` (instead of `useNitroApp().hooks`) to guarantee a hooks instance.
+- `useNitroApp`, `useNitroHooks`, and `getRouteRules` are imported from `nitro/app` (no auto-imports in v3). Outside plugins, prefer `useNitroHooks()` over `useNitroApp().hooks` to guarantee a hooks instance.
+- The `hook()` method returns an unregister function.
+- For internal requests to your own server, use `serverFetch` from `nitro` (v2 `localFetch` is gone).
 
 ## Key Points
 
 - Plugins run once at startup; use them to init resources and register hooks.
-- Import `definePlugin` from `nitro` (not `defineNitroPlugin`).
+- Import `definePlugin` from `nitro` (not `defineNitroPlugin`); `useNitroApp`/`useNitroHooks` from `nitro/app`.
 - Use `request`/`response`/`error`/`close` hooks for cross-cutting runtime behavior.
 - Customize response headers in the `response` hook via `res.headers`.
 

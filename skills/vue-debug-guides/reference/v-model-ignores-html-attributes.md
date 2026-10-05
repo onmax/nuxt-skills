@@ -20,7 +20,6 @@ Vue's v-model always treats the bound JavaScript state as the single source of t
 - [ ] Audit existing forms for hardcoded HTML default values that may be silently ignored
 
 **Incorrect:**
-
 ```html
 <script setup>
 import { ref } from 'vue'
@@ -44,7 +43,6 @@ const country = ref('')  // No default selection!
 ```
 
 **Correct:**
-
 ```html
 <script setup>
 import { ref } from 'vue'
@@ -82,5 +80,4 @@ export default {
 ```
 
 ## Reference
-
 - [Vue.js Form Input Bindings](https://vuejs.org/guide/essentials/forms.html)

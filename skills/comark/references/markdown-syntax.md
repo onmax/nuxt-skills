@@ -29,7 +29,7 @@ Comark supports all standard CommonMark and GitHub Flavored Markdown (GFM) featu
 ###### Heading 6
 ```
 
-**Note:** All headings automatically get ID attributes generated from their content for linking (e.g., `# Hello World` becomes `<h1 id="hello-world">`). Set `headingIds: false` in parse options to disable auto-generated ids.
+**Note:** All headings automatically get ID attributes generated from their content for linking (e.g., `# Hello World` becomes `<h1 id="hello-world">`). Unicode letters, marks, and numbers are kept (`## Café` → `café`); punctuation and symbols are stripped, and a heading that slugifies to nothing gets no id. Set `headingIds: false` in parse options to disable auto-generated ids.
 
 ### Text Formatting
 
@@ -311,13 +311,11 @@ hello
 ```
 
 **Without `#default`**: content becomes direct children (auto-unwrapped):
-
 ```json
 ["component", {}, "hello"]
 ```
 
 **With `#default`**: content is wrapped in an explicit template node:
-
 ```json
 ["component", {}, ["template", { "name": "default" }, "hello"]]
 ```
@@ -466,7 +464,6 @@ function hello() {
 ````
 
 **Metadata Order:** Any order is supported:
-
 - `language {highlights} [filename] meta`
 - `language [filename] {highlights} meta`
 - etc.

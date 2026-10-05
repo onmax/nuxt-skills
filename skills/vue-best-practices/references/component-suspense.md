@@ -25,7 +25,6 @@ tags: [vue3, suspense, async-components, async-setup, loading, fallback, router,
 Suspense tracks a single immediate child in both slots. Wrap multiple elements in a single element or component.
 
 **BAD:**
-
 ```vue
 <template>
   <Suspense>
@@ -41,7 +40,6 @@ Suspense tracks a single immediate child in both slots. Wrap multiple elements i
 ```
 
 **GOOD:**
-
 ```vue
 <template>
   <Suspense>
@@ -65,7 +63,6 @@ Suspense tracks a single immediate child in both slots. Wrap multiple elements i
 When Suspense is already resolved and new async work starts, the previous content remains visible until the timeout elapses. Use `timeout="0"` for immediate fallback or a short delay to avoid flicker.
 
 **BAD:**
-
 ```vue
 <template>
   <Suspense>
@@ -79,7 +76,6 @@ When Suspense is already resolved and new async work starts, the previous conten
 ```
 
 **GOOD:**
-
 ```vue
 <template>
   <Suspense :timeout="200">
@@ -97,7 +93,6 @@ When Suspense is already resolved and new async work starts, the previous conten
 Once resolved, Suspense only re-enters pending when the root node of the default slot changes. If async work happens deeper in the tree, no fallback appears.
 
 **BAD:**
-
 ```vue
 <template>
   <Suspense>
@@ -114,7 +109,6 @@ Once resolved, Suspense only re-enters pending when the root node of the default
 ```
 
 **GOOD:**
-
 ```vue
 <template>
   <Suspense>
@@ -132,7 +126,6 @@ Once resolved, Suspense only re-enters pending when the root node of the default
 Nested Suspense boundaries need `suspensible` on the inner boundary so the parent can coordinate loading state. Without it, inner async content may render empty nodes until resolved.
 
 **BAD:**
-
 ```vue
 <template>
   <Suspense>
@@ -149,7 +142,6 @@ Nested Suspense boundaries need `suspensible` on the inner boundary so the paren
 ```
 
 **GOOD:**
-
 ```vue
 <template>
   <Suspense>
@@ -201,7 +193,6 @@ const onResolve = () => {
 When combining these components, the nesting order should be `RouterView` -> `Transition` -> `KeepAlive` -> `Suspense` so each wrapper works correctly.
 
 **BAD:**
-
 ```vue
 <template>
   <RouterView v-slot="{ Component }">
@@ -217,7 +208,6 @@ When combining these components, the nesting order should be `RouterView` -> `Tr
 ```
 
 **GOOD:**
-
 ```vue
 <template>
   <RouterView v-slot="{ Component }">

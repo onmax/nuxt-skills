@@ -21,7 +21,6 @@ This is a known edge case that occurs when the timing is specific - if a parent 
 - [ ] Test component replacement scenarios during development
 
 **Problematic Scenario:**
-
 ```vue
 <!-- Parent component with lazy-loaded child in transition -->
 <template>
@@ -55,7 +54,6 @@ export default {
 ```
 
 **Safer Patterns:**
-
 ```vue
 <!-- SAFER: Use out-in mode to ensure proper sequencing -->
 <template>
@@ -146,7 +144,6 @@ async function testUnmountHooks() {
 ```
 
 ## Reference
-
 - [Vue.js GitHub Issue #6260](https://github.com/vuejs/core/issues/6260)
 - [Vue.js Transition](https://vuejs.org/guide/built-ins/transition.html)
 - [Vue.js Lifecycle Hooks](https://vuejs.org/guide/essentials/lifecycle.html)

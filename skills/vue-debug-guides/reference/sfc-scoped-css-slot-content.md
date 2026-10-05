@@ -18,7 +18,6 @@ tags: [vue3, sfc, scoped-css, slots, deep-selector]
 - [ ] Document expected slot content structure when styling assumptions exist
 
 **Problematic Code:**
-
 ```vue
 <!-- Card.vue (child component) -->
 <template>
@@ -58,7 +57,6 @@ tags: [vue3, sfc, scoped-css, slots, deep-selector]
 ```
 
 **Correct Code:**
-
 ```vue
 <!-- Card.vue - Using :slotted() -->
 <template>
@@ -240,6 +238,5 @@ For complex slot styling, unscoped styles may be cleaner:
 ```
 
 ## Reference
-
 - [Vue.js Scoped CSS - Slotted Selectors](https://vuejs.org/api/sfc-css-features.html#slotted-selectors)
 - [Vue.js Deep Selectors](https://vuejs.org/api/sfc-css-features.html#deep-selectors)

@@ -20,7 +20,6 @@ This subtle bug can cause confusing behavior where the parent component shows on
 - [ ] Test components with and without v-model props provided
 
 **Problem - Parent and child out of sync:**
-
 ```html
 <!-- ChildComponent.vue -->
 <script setup>
@@ -55,7 +54,6 @@ const myValue = ref()  // undefined
 ```
 
 **Solution 1 - Always provide initial value from parent:**
-
 ```html
 <!-- ParentComponent.vue -->
 <script setup>
@@ -73,7 +71,6 @@ const myValue = ref(1)  // Match the expected default
 ```
 
 **Solution 2 - Child emits default on mount (if parent control not possible):**
-
 ```html
 <!-- ChildComponent.vue -->
 <script setup>
@@ -96,7 +93,6 @@ onMounted(() => {
 ```
 
 **Solution 3 - Use required prop or explicit undefined handling:**
-
 ```html
 <!-- ChildComponent.vue -->
 <script setup>
@@ -118,7 +114,6 @@ const safeModel = computed({
 ```
 
 **Best Practice - Document expected initial values:**
-
 ```html
 <!-- ChildComponent.vue -->
 <script setup>
@@ -140,6 +135,5 @@ const model = defineModel({
 ```
 
 ## Reference
-
 - [Vue.js Component v-model](https://vuejs.org/guide/components/v-model.html)
 - [Vue School - defineModel Guide](https://vueschool.io/articles/vuejs-tutorials/v-model-and-definemodel-a-comprehensive-guide-to-two-way-binding-in-vue-js-3/)

@@ -18,26 +18,60 @@ The `nitropack` package is renamed to `nitro`.
 
 Runtime utils moved to dedicated `nitro/*` subpaths:
 
-| Capability                        | v3 import                                                                                                           |
-| --------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
-| Handlers, config, plugins, errors | `nitro` (`defineHandler`, `defineConfig`, `definePlugin`, `HTTPError`, `defineWebSocketHandler`, `defineRouteMeta`) |
-| Storage                           | `nitro/storage` (`useStorage`)                                                                                      |
-| Cache                             | `nitro/cache` (`defineCachedHandler`, `defineCachedFunction`)                                                       |
-| Runtime config                    | `nitro/runtime-config` (`useRuntimeConfig`)                                                                         |
-| Database                          | `nitro/database` (`useDatabase`)                                                                                    |
-| Tasks                             | `nitro/task` (`runTask`)                                                                                            |
-| H3 utilities                      | `nitro/h3`                                                                                                          |
-| Types                             | `nitro/types`                                                                                                       |
-| Vite plugin                       | `nitro/vite`                                                                                                        |
+| Capability | v3 import |
+|---|---|
+| Handlers, config, plugins, errors | `nitro` (`defineHandler`, `defineConfig`, `definePlugin`, `defineErrorHandler`, `HTTPError`, `defineWebSocketHandler`, `defineRouteMeta`, `defineServerEntry`, `serverFetch`) |
+| KV storage | `nitro/kv` (`useKV`, formerly `useStorage` from `nitro/storage`) |
+| Cache | `nitro/cache` (`defineCachedHandler`, `defineCachedFunction`) |
+| Runtime config | `nitro/runtime-config` (`useRuntimeConfig`) |
+| Database | `nitro/database` (`useDatabase`) |
+| Tasks | `nitro/task` (`defineTask`, `runTask`) |
+| App / hooks | `nitro/app` (`useNitroApp`, `useNitroHooks`, `getRouteRules`) |
+| H3 utilities | `nitro/h3` |
+| Types | `nitro/types` |
+| Vite plugin | `nitro/vite` |
 
 Removed: `nitropack/kit`, `nitropack/presets`, `nitropack/core` (use `nitro/builder`). Use `NitroModule` from `nitro/types` instead of `defineNitroModule`.
 
 Other renames:
-
 - `defineNitroPlugin` → `definePlugin`
 - `defineNitroConfig` → `defineConfig`
+- `defineNitroErrorHandler` → `defineErrorHandler`
 - Node.js minimum is now **20**.
 - App config (`app.config.ts` + `useAppConfig()`) was **removed** — import a regular `.ts` module instead.
+
+## Auto-imports are removed
+
+v2 auto-imported `defineEventHandler`, `useStorage`, `useRuntimeConfig`, `defineCachedFunction`, `defineNitroPlugin`, `#imports`, and your `server/utils/`. **All gone in v3** — the `imports` option, `#imports`, and `nitro-imports.d.ts` no longer exist. Add explicit imports everywhere, including relative imports from your own `utils/`:
+
+```ts
+import { defineHandler, definePlugin, defineErrorHandler, HTTPError, serverFetch } from "nitro";
+import { useKV } from "nitro/kv";
+import { useRuntimeConfig } from "nitro/runtime-config";
+import { defineCachedFunction, defineCachedHandler } from "nitro/cache";
+import { useDatabase } from "nitro/database";
+import { defineTask, runTask } from "nitro/task";
+import { useNitroApp, useNitroHooks } from "nitro/app";
+import { getQuery, getCookie } from "nitro/h3";
+```
+
+## Server directory scanning is opt-in
+
+`srcDir` is deprecated for `serverDir`, which defaults to **`false`** — nothing (`routes/`, `api/`, `middleware/`, `plugins/`, `tasks/`) is scanned until you set it. Set `serverDir: "./server"` (or `"."` for the v2 root layout; `true` = `"server"`).
+
+## Storage & cache config renames
+
+- `useStorage` → `useKV` (`nitro/storage` → `nitro/kv`).
+- `storage` config option → `kv`; `devStorage` → `kv` inside `$development` (and `$prerender`).
+- Cache: `swr` now defaults to `false` (was `true`); persist cache by mounting a `cache` point under `kv`.
+
+## Internal server fetch
+
+`useNitroApp().localFetch` → `serverFetch` from `nitro` (returns a web `Response`). There is also a `fetch` export routing absolute (`/`) paths to the server.
+
+## Route rule types
+
+`NitroRouteConfig`/`NitroRouteRules` are deprecated for `RouteRuleConfig`/`RouteRules` (from `nitro/types`). `redirect`, `proxy`, `cors`, `headers`, `cache`, `swr` are now defined by [h3-rules](https://github.com/h3js/h3-rules); `isr`, `prerender`, `static` remain Nitro-specific. There is no `auth`/`basicAuth` route rule.
 
 ## H3 v2 API
 
@@ -97,17 +131,17 @@ Also: `sendError` → `throw createError`/`HTTPError`; `sendNoContent` → `retu
 
 ## Preset renames
 
-| v2                                                            | v3                                             |
-| ------------------------------------------------------------- | ---------------------------------------------- |
-| `node`                                                        | `node_middleware` (export is now `middleware`) |
-| `cloudflare`, `cloudflare_worker`, `cloudflare_module_legacy` | `cloudflare_module`                            |
-| `deno-server-legacy` / `deno`                                 | `deno_server` (Deno v2) / `deno_deploy`        |
-| `netlify-builder`                                             | `netlify` or `netlify_edge`                    |
-| `vercel-edge`                                                 | `vercel` (Fluid compute)                       |
-| `azure`, `azure_functions`                                    | `azure_swa`                                    |
-| `firebase`                                                    | `firebase_app_hosting`                         |
-| `iis`                                                         | `iis_handler`                                  |
-| `edgio`, `cli`, `service_worker`                              | removed/discontinued                           |
+| v2 | v3 |
+|---|---|
+| `node` | `node_middleware` (export is now `middleware`) |
+| `cloudflare`, `cloudflare_worker`, `cloudflare_module_legacy` | `cloudflare_module` |
+| `deno-server-legacy` / `deno` | `deno_server` (Deno v2) / `deno_deploy` |
+| `netlify-builder` | `netlify` or `netlify_edge` |
+| `vercel-edge` | `vercel` (Fluid compute) |
+| `azure`, `azure_functions` | `azure_swa` |
+| `firebase` | `firebase_app_hosting` |
+| `iis` | `iis_handler` |
+| `edgio`, `cli`, `service_worker` | removed/discontinued |
 
 ## Hooks
 
@@ -116,8 +150,10 @@ If you accessed `useNitroApp().hooks` outside a plugin it may be undefined — u
 ## Key Points
 
 - Replace `nitropack` with `nitro` and split imports into `nitro/*` subpaths.
+- **Auto-imports are gone** — import everything explicitly; set `serverDir` or nothing is scanned.
+- `useStorage`→`useKV` (`nitro/kv`), `storage`→`kv`, `devStorage`→`$development.kv`.
 - Handlers **return**/**throw**; use `event.req.json()` and web `Headers` (no `send*`/`readBody`/`getHeader`).
-- Use `HTTPError` instead of `createError`; `definePlugin`/`defineHandler`/`defineConfig` instead of v2 names.
+- Use `HTTPError` instead of `createError`; `definePlugin`/`defineHandler`/`defineConfig`/`defineErrorHandler` instead of v2 names.
 - Cloudflare bindings moved to `event.req.runtime.cloudflare.env`.
 - Many presets were renamed/removed — update `preset` accordingly.
 

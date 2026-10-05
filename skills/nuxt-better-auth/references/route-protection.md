@@ -43,6 +43,7 @@ export default defineNuxtConfig({
       guest: '/',
       authenticated: '/app',
       logout: '/goodbye',
+      sessionExpired: '/login',
     },
     preserveRedirect: true,
     redirectQueryKey: 'redirect',
@@ -53,6 +54,7 @@ export default defineNuxtConfig({
 - Per-route `redirectTo` takes precedence over `auth.redirects.login` and `auth.redirects.guest`.
 - A validated local redirect query takes precedence over `auth.redirects.authenticated` after sign-in or sign-up.
 - `auth.redirects.logout` applies after sign-out unless the caller supplies `onSuccess`.
+- `auth.redirects.sessionExpired` applies when a previously authenticated client session expires or is revoked.
 
 ## Broad rules and internals
 

@@ -4,15 +4,15 @@
 
 Nuxt UI uses 7 semantic colors. Never use raw Tailwind palette colors in components — always use these semantic names.
 
-| Color       | Default | When to use                                         |
-| ----------- | ------- | --------------------------------------------------- |
-| `primary`   | green   | CTAs, active states, brand accent, links            |
-| `secondary` | blue    | Secondary actions, complementary highlights         |
-| `success`   | green   | Success messages, confirmations, positive states    |
-| `info`      | blue    | Informational alerts, tips, neutral highlights      |
-| `warning`   | yellow  | Warnings, caution states, pending actions           |
-| `error`     | red     | Errors, destructive actions, validation failures    |
-| `neutral`   | slate   | Text, borders, backgrounds, disabled states, chrome |
+| Color | Default | When to use |
+|---|---|---|
+| `primary` | green | CTAs, active states, brand accent, links |
+| `secondary` | blue | Secondary actions, complementary highlights |
+| `success` | green | Success messages, confirmations, positive states |
+| `info` | blue | Informational alerts, tips, neutral highlights |
+| `warning` | yellow | Warnings, caution states, pending actions |
+| `error` | red | Errors, destructive actions, validation failures |
+| `neutral` | slate | Text, borders, backgrounds, disabled states, chrome |
 
 ### Choosing colors for components
 
@@ -51,7 +51,6 @@ ui({
 Only colors that exist in your theme work — either Tailwind's defaults or custom colors defined with `@theme`.
 
 Available color palettes:
-
 - **Standard Tailwind**: red, orange, amber, yellow, lime, green, emerald, teal, cyan, sky, blue, indigo, violet, purple, fuchsia, pink, rose
 - **Neutral palettes** (for `neutral` key — pick one that matches the aesthetic):
   - `slate` — cool blue-gray, professional (default)
@@ -107,7 +106,6 @@ export default defineNuxtConfig({
 Use these everywhere instead of raw palette colors:
 
 ### Text
-
 - `text-default` — primary body text
 - `text-muted` — secondary text (descriptions, hints)
 - `text-toned` — medium-emphasis text (between muted and default)
@@ -116,7 +114,6 @@ Use these everywhere instead of raw palette colors:
 - `text-inverted` — text on inverted backgrounds (pair with `bg-inverted`)
 
 ### Backgrounds
-
 - `bg-default` — page background
 - `bg-muted` — subtle backgrounds (hover states, alternating rows)
 - `bg-elevated` — raised surfaces (cards, dropdowns)
@@ -124,7 +121,6 @@ Use these everywhere instead of raw palette colors:
 - `bg-inverted` — inverse background (dark on light, light on dark)
 
 ### Borders
-
 - `border-default` — standard borders
 - `border-muted` — subtle borders (dividers, separators)
 - `border-accented` — accent borders (active states)
@@ -134,14 +130,14 @@ Use these everywhere instead of raw palette colors:
 
 Most components accept a `variant` prop. Choose based on visual weight:
 
-| Variant   | Weight     | When to use                                    |
-| --------- | ---------- | ---------------------------------------------- |
-| `solid`   | Highest    | Primary actions, main CTAs                     |
-| `outline` | Medium     | Secondary actions, form fields                 |
-| `soft`    | Medium-low | Tags, badges, subtle buttons                   |
-| `subtle`  | Low        | Background highlights, less prominent actions  |
-| `ghost`   | Lowest     | Inline actions, icon buttons, navigation items |
-| `link`    | Lowest     | Text-only links inside content                 |
+| Variant | Weight | When to use |
+|---|---|---|
+| `solid` | Highest | Primary actions, main CTAs |
+| `outline` | Medium | Secondary actions, form fields |
+| `soft` | Medium-low | Tags, badges, subtle buttons |
+| `subtle` | Low | Background highlights, less prominent actions |
+| `ghost` | Lowest | Inline actions, icon buttons, navigation items |
+| `link` | Lowest | Text-only links inside content |
 
 ### Rules
 
@@ -161,7 +157,6 @@ Override theme **slots** on a single instance — wins over global config and va
 ```
 
 Rules for `ui` overrides:
-
 - **Prefer `defaultVariants`** over slot class overrides when possible (e.g., changing default button variant/size).
 - **Don't duplicate default classes** — check the generated theme file first to see what's already there.
 - Border radius defaults come from `--ui-radius`, but you can override with `rounded-*` classes in `ui` or `class` when you need a specific radius on a component.
@@ -177,7 +172,6 @@ Override the **root** (or `base`) slot only — simpler than `ui` for single-slo
 ### Finding slot names
 
 Read the generated theme file for any component:
-
 - **Nuxt**: `.nuxt/ui/<component>.ts`
 - **Vue**: `node_modules/.nuxt-ui/ui/<component>.ts`
 
@@ -239,7 +233,7 @@ export default defineAppConfig({
 Override theme for a section of the component tree without affecting the rest of the app. Renders no DOM element — uses `provide`/`inject`:
 
 ```vue
-<UTheme :ui="{ button: { slots: { base: 'rounded-full' } } }">
+<UTheme :ui="{ button: { base: 'rounded-full' } }">
   <UButton label="Rounded" />
   <UButton label="Also rounded" />
 </UTheme>
@@ -278,23 +272,6 @@ export default defineNuxtConfig({
 })
 ```
 
-### `theme.unstyled`
-
-Build-time option (v4.9+) that strips every default theme class from all components, keeping only structure from your `class`, `ui` or `app.config.ui`. Use it to bring your own design system.
-
-```ts
-// nuxt.config.ts
-export default defineNuxtConfig({
-  ui: {
-    theme: {
-      unstyled: true
-    }
-  }
-})
-```
-
-It also removes structural classes (positioning, transitions, flex/grid), so layout-heavy components like `Modal`, `Drawer` and `Calendar` need their layout re-supplied.
-
 ### `theme.prefix`
 
 When using Tailwind CSS with a prefix, configure the same prefix in Nuxt UI so component classes match:
@@ -318,7 +295,7 @@ export default defineNuxtConfig({
 
 ### Tree-shaking with `experimental.componentDetection`
 
-Enable automatic component detection (Nuxt, and Vue via the `@nuxt/ui/vite` plugin since v4.11) to only generate CSS for components you actually use:
+Enable automatic component detection to only generate CSS for components you actually use:
 
 ```ts
 // nuxt.config.ts
@@ -334,7 +311,7 @@ export default defineNuxtConfig({
 For dynamic components (e.g., `<component :is="...">`), pass an array of component names to guarantee they're included:
 
 ```ts
-componentDetection: ['Modal', 'Dropdown', 'Popover']
+componentDetection: ['Modal', 'DropdownMenu', 'Popover']
 ```
 
 ## CSS `@theme` customization

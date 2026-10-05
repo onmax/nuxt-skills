@@ -3,13 +3,13 @@ name: vue
 description: Vue 3 Composition API, script setup macros, reactivity system, and built-in components. Use when writing Vue SFCs, defineProps/defineEmits/defineModel, watchers, or using Transition/Teleport/Suspense/KeepAlive.
 metadata:
   author: Anthony Fu
-  version: "2026.1.31"
+  version: "2026.9.25"
   source: Generated from https://github.com/vuejs/docs, scripts at https://github.com/antfu/skills
 ---
 
 # Vue
 
-> Based on Vue 3.5 (3.6 / Vapor Mode is RC, experimental). Always use Composition API with `<script setup lang="ts">`.
+> Based on Vue 3.5, generated at 2026-09-25. Always use Composition API with `<script setup lang="ts">`.
 
 ## Preferences
 
@@ -21,15 +21,15 @@ metadata:
 
 ## Core
 
-| Topic                  | Description                                                                                                 | Reference                                                |
-| ---------------------- | ----------------------------------------------------------------------------------------------------------- | -------------------------------------------------------- |
-| Script Setup & Macros  | `<script setup>`, defineProps, defineEmits, defineModel, defineExpose, defineOptions, defineSlots, generics | [script-setup-macros](references/script-setup-macros.md) |
-| Reactivity & Lifecycle | ref, shallowRef, computed, watch, watchEffect, effectScope, lifecycle hooks, composables                    | [core-new-apis](references/core-new-apis.md)             |
+| Topic | Description | Reference |
+|-------|-------------|-----------|
+| Script Setup & Macros | `<script setup>`, defineProps, defineEmits, defineModel, defineExpose, defineOptions, defineSlots, generics | [script-setup-macros](references/script-setup-macros.md) |
+| Reactivity & Lifecycle | ref, shallowRef, computed, watch, watchEffect, effectScope, lifecycle hooks, composables | [core-new-apis](references/core-new-apis.md) |
 
 ## Features
 
-| Topic                            | Description                                                          | Reference                                            |
-| -------------------------------- | -------------------------------------------------------------------- | ---------------------------------------------------- |
+| Topic | Description | Reference |
+|-------|-------------|-----------|
 | Built-in Components & Directives | Transition, Teleport, Suspense, KeepAlive, v-memo, custom directives | [advanced-patterns](references/advanced-patterns.md) |
 
 ## Quick Reference

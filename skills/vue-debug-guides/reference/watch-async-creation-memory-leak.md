@@ -21,7 +21,6 @@ Always manually stop watchers that are created asynchronously, or restructure yo
 - [ ] Watch for this pattern in setTimeout, Promise callbacks, and after await
 
 **Incorrect:**
-
 ```vue
 <script setup>
 import { ref, watch, watchEffect, onMounted } from 'vue'
@@ -57,7 +56,6 @@ fetch('/api/config').then(() => {
 ```
 
 **Correct:**
-
 ```vue
 <script setup>
 import { ref, watch, watchEffect, onMounted, onUnmounted } from 'vue'
@@ -175,5 +173,4 @@ onUnmounted(() => {
 ```
 
 ## Reference
-
 - [Vue.js Watchers - Stopping a Watcher](https://vuejs.org/guide/essentials/watchers.html#stopping-a-watcher)

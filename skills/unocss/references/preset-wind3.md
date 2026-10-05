@@ -157,11 +157,11 @@ theme: {
 
 ## Differences from Windi CSS
 
-| Windi CSS | UnoCSS      |
-| --------- | ----------- |
+| Windi CSS | UnoCSS |
+|-----------|--------|
 | `<sm:p-1` | `lt-sm:p-1` |
 | `@lg:p-1` | `at-lg:p-1` |
-| `>xl:p-1` | `xl:p-1`    |
+| `>xl:p-1` | `xl:p-1` |
 
 Bracket syntax uses `_` instead of `,`:
 
@@ -182,7 +182,6 @@ Addresses sticky hover on touch devices:
 ```
 
 Generates:
-
 ```css
 @media (hover: hover) and (pointer: fine) {
   .\@hover-text-red:hover { ... }

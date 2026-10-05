@@ -20,7 +20,6 @@ The ESLint rule `vue/no-use-v-if-with-v-for` enforces this best practice.
 - [ ] Enable eslint-plugin-vue rule `vue/no-use-v-if-with-v-for`
 
 **Incorrect:**
-
 ```html
 <!-- WRONG: v-if and v-for on same element - ambiguous precedence -->
 <template>
@@ -52,7 +51,6 @@ The ESLint rule `vue/no-use-v-if-with-v-for` enforces this best practice.
 ```
 
 **Correct:**
-
 ```html
 <!-- CORRECT: Filter with computed property -->
 <template>
@@ -133,7 +131,6 @@ const filteredUsers = computed(() =>
 ```
 
 ## Reference
-
 - [Vue.js Style Guide - Avoid v-if with v-for](https://vuejs.org/style-guide/rules-essential.html#avoid-v-if-with-v-for)
 - [Vue 3 Migration Guide - v-if vs v-for Precedence](https://v3-migration.vuejs.org/breaking-changes/v-if-v-for)
 - [ESLint Plugin Vue - no-use-v-if-with-v-for](https://eslint.vuejs.org/rules/no-use-v-if-with-v-for)

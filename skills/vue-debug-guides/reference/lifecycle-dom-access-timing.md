@@ -21,7 +21,6 @@ The component's DOM is only available starting from the `mounted` hook (Options 
 - [ ] Use `$nextTick` if you need DOM after reactive data changes
 
 **Incorrect:**
-
 ```javascript
 // WRONG: Accessing DOM in created hook
 export default {
@@ -64,7 +63,6 @@ myInput.value.focus() // Error: Cannot read property 'focus' of null
 ```
 
 **Correct:**
-
 ```javascript
 // CORRECT: Use created for data, mounted for DOM
 export default {
@@ -213,7 +211,6 @@ export default {
 ```
 
 ## Reference
-
 - [Vue.js Lifecycle Hooks](https://vuejs.org/guide/essentials/lifecycle.html)
 - [Vue.js Template Refs](https://vuejs.org/guide/essentials/template-refs.html)
 - [Vue.js nextTick](https://vuejs.org/api/general.html#nexttick)

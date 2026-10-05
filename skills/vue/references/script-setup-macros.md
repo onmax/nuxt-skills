@@ -37,6 +37,11 @@ const props = defineProps<{
   items: string[]
 }>()
 
+// Imported/aliased interfaces are supported (relative import, path alias like
+// @/types, or a node_modules dependency). Requires TypeScript as a peer dep.
+import type { Props } from './types'
+const props = defineProps<Props>()
+
 // With defaults (Vue 3.5+)
 const { title, count = 0 } = defineProps<{
   title: string
@@ -95,7 +100,6 @@ const [value, modifiers] = defineModel({
 ```
 
 Parent usage:
-
 ```vue
 <Child v-model="name" />
 <Child v-model:count="total" />
@@ -119,7 +123,6 @@ defineExpose({
 ```
 
 Parent access:
-
 ```ts
 const childRef = ref<{ count: number; reset: () => void }>()
 childRef.value?.reset()
@@ -161,7 +164,6 @@ defineProps<{
 ```
 
 Multiple generics with constraints:
-
 ```vue
 <script setup lang="ts" generic="T, U extends Record<string, T>">
 import type { Item } from './types'

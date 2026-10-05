@@ -21,12 +21,10 @@ tags: [vue3, plugins, provide-inject, typescript, dependency-injection]
 ## Structure Plugins for `app.use()`
 
 A Vue plugin must be either:
-
 - An object with `install(app, options?)`
 - A function with the same signature
 
 **BAD:**
-
 ```ts
 const notAPlugin = {
   doSomething() {}
@@ -36,7 +34,6 @@ app.use(notAPlugin)
 ```
 
 **GOOD:**
-
 ```ts
 import type { App } from 'vue'
 
@@ -61,7 +58,6 @@ app.use(myPlugin, { prefix: 'custom', debug: true })
 ```
 
 **GOOD:**
-
 ```ts
 import type { App } from 'vue'
 
@@ -75,14 +71,12 @@ app.use(simplePlugin, { message: 'Welcome!' })
 ## Register Capabilities Explicitly in `install()`
 
 Inside `install()`, wire behavior through Vue application APIs:
-
 - `app.component()` for global components
 - `app.directive()` for global directives
 - `app.provide()` for injectable services and config
 - `app.config.globalProperties` for optional global helpers (sparingly)
 
 **BAD:**
-
 ```ts
 const uselessPlugin = {
   install(app, options) {
@@ -92,7 +86,6 @@ const uselessPlugin = {
 ```
 
 **GOOD:**
-
 ```ts
 const usefulPlugin = {
   install(app, options) {
@@ -125,7 +118,6 @@ const myPlugin: Plugin<[MyOptions]> = {
 String keys can collide (`'http'`, `'config'`, `'i18n'`). Use symbol keys with `InjectionKey<T>` so injections are unique and typed.
 
 **BAD:**
-
 ```ts
 export default {
   install(app) {
@@ -136,7 +128,6 @@ export default {
 ```
 
 **GOOD:**
-
 ```ts
 import type { InjectionKey } from 'vue'
 import type { AxiosInstance } from 'axios'

@@ -20,7 +20,6 @@ In Vue 3's Composition API, lifecycle hooks like `onMounted`, `onUnmounted`, `on
 - [ ] Hooks CAN be in external functions if called synchronously from setup
 
 **Incorrect:**
-
 ```javascript
 // WRONG: Hook registered asynchronously - will NEVER execute
 import { onMounted } from 'vue'
@@ -71,7 +70,6 @@ export default {
 ```
 
 **Correct:**
-
 ```javascript
 // CORRECT: Hook registered synchronously at top level
 import { onMounted, ref } from 'vue'
@@ -154,6 +152,5 @@ export default {
 ```
 
 ## Reference
-
 - [Vue.js Lifecycle Hooks](https://vuejs.org/guide/essentials/lifecycle.html)
 - [Composition API Lifecycle Hooks](https://vuejs.org/api/composition-api-lifecycle.html)

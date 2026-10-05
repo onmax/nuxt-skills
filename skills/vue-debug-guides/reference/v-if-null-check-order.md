@@ -18,7 +18,6 @@ tags: [vue3, conditional-rendering, v-if, null-check, defensive-programming]
 - [ ] Handle loading states explicitly rather than relying on undefined checks
 
 **Incorrect:**
-
 ```html
 <!-- WRONG: Accessing property before checking object exists -->
 <template>
@@ -50,7 +49,6 @@ tags: [vue3, conditional-rendering, v-if, null-check, defensive-programming]
 ```
 
 **Correct:**
-
 ```html
 <!-- CORRECT: Check object exists first with && -->
 <template>
@@ -169,6 +167,5 @@ onMounted(async () => {
 ```
 
 ## Reference
-
 - [Vue.js Conditional Rendering](https://vuejs.org/guide/essentials/conditional.html)
 - [MDN - Optional Chaining](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining)

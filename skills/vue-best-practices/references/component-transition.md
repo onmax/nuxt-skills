@@ -22,7 +22,6 @@ tags: [vue3, transition, animation, performance, keys]
 `<Transition>` only supports one direct child. Wrap multiple nodes in a single element or component.
 
 **BAD:**
-
 ```vue
 <template>
   <Transition name="fade">
@@ -33,7 +32,6 @@ tags: [vue3, transition, animation, performance, keys]
 ```
 
 **GOOD:**
-
 ```vue
 <template>
   <Transition name="fade">
@@ -50,7 +48,6 @@ tags: [vue3, transition, animation, performance, keys]
 Vue reuses the same DOM element when the tag type does not change. Add `key` so Vue treats it as a new element and triggers enter/leave.
 
 **BAD:**
-
 ```vue
 <template>
   <Transition name="fade">
@@ -61,7 +58,6 @@ Vue reuses the same DOM element when the tag type does not change. Add `key` so 
 ```
 
 **GOOD:**
-
 ```vue
 <template>
   <Transition name="fade" mode="out-in">
@@ -76,7 +72,6 @@ Vue reuses the same DOM element when the tag type does not change. Add `key` so 
 When swapping components or views, use `mode="out-in"` to prevent both from being visible at the same time.
 
 **BAD:**
-
 ```vue
 <template>
   <Transition name="fade">
@@ -86,7 +81,6 @@ When swapping components or views, use `mode="out-in"` to prevent both from bein
 ```
 
 **GOOD:**
-
 ```vue
 <template>
   <Transition name="fade" mode="out-in">
@@ -100,7 +94,6 @@ When swapping components or views, use `mode="out-in"` to prevent both from bein
 Avoid layout-triggering properties such as `height`, `margin`, or `top`. Use `transform` and `opacity` for smooth, GPU-friendly transitions.
 
 **BAD:**
-
 ```css
 .slide-enter-active,
 .slide-leave-active {
@@ -114,7 +107,6 @@ Avoid layout-triggering properties such as `height`, `margin`, or `top`. Use `tr
 ```
 
 **GOOD:**
-
 ```css
 .slide-enter-active,
 .slide-leave-active {

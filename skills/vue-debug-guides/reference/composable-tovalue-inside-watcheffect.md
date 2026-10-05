@@ -20,7 +20,6 @@ This is a subtle but critical mistake that leads to composables that work with i
 - [ ] Test that composables update when their inputs change
 
 **Incorrect:**
-
 ```javascript
 import { ref, watchEffect, toValue } from 'vue'
 
@@ -54,7 +53,6 @@ apiUrl.value = '/api/products'  // useFetch will NOT refetch!
 ```
 
 **Correct:**
-
 ```javascript
 import { ref, watchEffect, toValue } from 'vue'
 
@@ -180,6 +178,5 @@ export function useMyComposable(input) {
 ```
 
 ## Reference
-
 - [Vue.js Reactivity API - toValue](https://vuejs.org/api/reactivity-utilities.html#tovalue)
 - [Vue.js Composables - Accepting Ref Arguments](https://vuejs.org/guide/reusability/composables.html#accepting-reactive-state)

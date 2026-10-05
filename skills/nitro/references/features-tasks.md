@@ -5,21 +5,24 @@ description: On-demand and scheduled (cron) tasks in Nitro, defineTask, runTask,
 
 # Tasks
 
-Tasks are one-off runtime operations (migrations, cleanups, cache refresh). **Experimental** — enable the flag first.
+Tasks are one-off runtime operations (migrations, cleanups, cache refresh). **Experimental** — enable the flag first. Tasks are scanned from `serverDir`, which must also be set.
 
 ```ts [nitro.config.ts]
 import { defineConfig } from "nitro";
 
 export default defineConfig({
+  serverDir: "./server",
   experimental: { tasks: true },
 });
 ```
 
 ## Defining tasks
 
-Files in `tasks/[name].ts`. Nested dirs join with `:` (e.g. `tasks/db/migrate.ts` → `db:migrate`). `defineTask` is auto-imported.
+Files in `<serverDir>/tasks/[name].ts`. Nested dirs join with `:` (e.g. `tasks/db/migrate.ts` → `db:migrate`). Import `defineTask` from `nitro/task` (no auto-imports in v3).
 
-```ts [tasks/db/migrate.ts]
+```ts [server/tasks/db/migrate.ts]
+import { defineTask } from "nitro/task";
+
 export default defineTask({
   meta: {
     name: "db:migrate",
@@ -37,10 +40,18 @@ export default defineTask({
 Tasks can also be registered in config (config `handler` wins over a scanned file of the same name):
 
 ```ts [nitro.config.ts]
+import { fileURLToPath } from "node:url";
+
 export default defineConfig({
+  serverDir: "./server",
   experimental: { tasks: true },
   tasks: {
-    "db:migrate": { handler: "./tasks/custom-migrate.ts", description: "Migrations" },
+    "db:migrate": { description: "Describe a scanned task" },
+    // A config handler is imported as-is (NOT resolved against rootDir) — use an absolute path:
+    "db:seed": {
+      handler: fileURLToPath(new URL("scripts/seed.ts", import.meta.url)),
+      description: "Seed the database",
+    },
   },
 });
 ```
@@ -62,7 +73,6 @@ export default defineConfig({
 ```
 
 Platform support:
-
 - `dev`, `node_server`, `node_cluster`, `node_middleware`, `bun`, `deno_server` → [croner](https://croner.56k.guru/) engine.
 - `cloudflare_module` / `cloudflare_pages` → native Cron Triggers (wrangler config auto-generated).
 - `vercel` → native Cron Jobs (config auto-generated; secure with `CRON_SECRET`).
@@ -86,6 +96,8 @@ export default defineHandler(async (event) => {
 ## Background work with `waitUntil`
 
 ```ts [tasks/sync.ts]
+import { defineTask } from "nitro/task";
+
 export default defineTask({
   run({ context }) {
     const promise = fetch("https://api.example.com/sync");
@@ -98,14 +110,13 @@ export default defineTask({
 ## Dev server tools
 
 While `nitro dev` runs:
-
 - `GET /_nitro/tasks` — list available tasks + scheduled tasks.
 - `GET|POST /_nitro/tasks/:name` — execute (payload from query and/or JSON body under `"payload"`).
 - CLI: `nitro task list` and `nitro task run db:migrate --payload "{}"`.
 
 ## Key Points
 
-- Requires `experimental.tasks: true`; `defineTask` is auto-imported, `runTask` comes from `nitro/task`.
+- Requires `experimental.tasks: true` **and** `serverDir` set; `defineTask` and `runTask` both come from `nitro/task` (no auto-imports in v3).
 - Each task has one running instance — parallel calls of the same name share a single run/result.
 - `scheduledTasks` cron config is translated to native triggers on Cloudflare and Vercel automatically.
 

@@ -20,7 +20,6 @@ This is a subtle but common source of bugs, especially with short-circuit evalua
 - [ ] Test computed properties with different initial states
 
 **Incorrect:**
-
 ```vue
 <script setup>
 import { ref, computed } from 'vue'
@@ -60,7 +59,6 @@ const canEdit = computed(() => {
 ```
 
 **Correct:**
-
 ```vue
 <script setup>
 import { ref, computed } from 'vue'
@@ -145,6 +143,5 @@ const result = computed(() => {
 ```
 
 ## Reference
-
 - [Vue.js Reactivity in Depth](https://vuejs.org/guide/extras/reactivity-in-depth.html)
 - [GitHub Discussion: Dependency collection gotcha with conditionals](https://github.com/vuejs/Discussion/issues/15)

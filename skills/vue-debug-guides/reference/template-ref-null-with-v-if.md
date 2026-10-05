@@ -20,7 +20,6 @@ This is especially tricky with `watchEffect` since it runs automatically and may
 - [ ] Use optional chaining (?.) when accessing ref properties in uncertain contexts
 
 **Incorrect:**
-
 ```vue
 <script setup>
 import { ref, watchEffect } from 'vue'
@@ -41,7 +40,6 @@ watchEffect(() => {
 ```
 
 **Correct:**
-
 ```vue
 <script setup>
 import { ref, watchEffect } from 'vue'
@@ -122,5 +120,4 @@ const showInput = ref(true)
 ```
 
 ## Reference
-
 - [Vue.js Template Refs](https://vuejs.org/guide/essentials/template-refs.html)

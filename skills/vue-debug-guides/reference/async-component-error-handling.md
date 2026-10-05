@@ -90,12 +90,12 @@ const AsyncWidget = defineAsyncComponent(() =>
 
 The `onError` callback receives four arguments:
 
-| Parameter  | Type       | Description                             |
-| ---------- | ---------- | --------------------------------------- |
-| `error`    | `Error`    | The error that caused the load to fail  |
-| `retry`    | `Function` | Call to retry loading the component     |
-| `fail`     | `Function` | Call to give up and show errorComponent |
-| `attempts` | `number`   | Number of load attempts so far          |
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `error` | `Error` | The error that caused the load to fail |
+| `retry` | `Function` | Call to retry loading the component |
+| `fail` | `Function` | Call to give up and show errorComponent |
+| `attempts` | `number` | Number of load attempts so far |
 
 ## Key Points
 

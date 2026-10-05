@@ -8,7 +8,6 @@ description: "Answer questions about ArkEnv and help implement environment varia
 ArkEnv is a typesafe environment variable validation library for modern JavaScript and TypeScript frameworks. It provides a **single canonical surface across all frameworks: `import { env } from "./env"`**.
 
 In v1, ArkEnv offers two first-class validation engines:
-
 - **`@arkenv/core`**: Built-in ArkType DSL engine for high-performance schema definition and automatic coercion.
 - **`@arkenv/standard`**: Standard Schema engine supporting any compliant validator (Zod, Valibot, etc.).
 
@@ -34,8 +33,8 @@ In v1, ArkEnv offers two first-class validation engines:
 
 - Initialize ArkEnv in new or existing projects using `pnpm dlx arkenv init` (or `npx arkenv init`).
 - Automatically detect frameworks (`Next.js`, `Nuxt`, `Vite`, `Bun`, etc.) and scaffold `env.ts`.
-- Select hosting provider preset during init (`--preset, -P <provider>` or `--host-preset, -H <provider>`).
-- Automatically configure `tsconfig.json` when needed. Schema discovery for CLI commands uses `--schema` or convention paths (`env.ts`, `src/env.ts`, …) — not a `package.json` `"arkenv"` field.
+- Select hosting provider preset during init (`--preset, -P <provider>`).
+- Automatically configure `tsconfig.json` when needed. Schema discovery for CLI commands uses `--schema` or flat convention paths (`env.ts`, `src/env.ts`) — not a `package.json` `"arkenv"` field, and not leftover split-layout filenames such as `env/server.ts`.
 
 ### Hosting presets
 
@@ -84,8 +83,8 @@ AI agents SHOULD always use the CLI for project initialization to ensure consist
 }
 ```
 
-- **`error.code`**: a stable dotted identifier you can branch on (`CLI.REQUIREMENTS_NOT_MET`, `CLI.GIT_TREE_DIRTY`, `CLI.NON_EMPTY_DIR`, …). `CLI.INTERNAL_ERROR` means the CLI _broke_ rather than _refused_ — retrying with flags will not help.
-- **`nextActions`**: remediation steps. A `run-command` action that includes `--force` means the refusal is bypassable; empty `nextActions` means it is not. Prefer `nextActions` over any legacy `retryWith` field.
+- **`error.code`**: a stable dotted identifier you can branch on (`CLI.REQUIREMENTS_NOT_MET`, `CLI.GIT_TREE_DIRTY`, `CLI.NON_EMPTY_DIR`, …). `CLI.INTERNAL_ERROR` means the CLI *broke* rather than *refused* — retrying with flags will not help.
+- **`nextActions`**: remediation steps. A `run-command` action that includes `--force` means the refusal is bypassable; empty `nextActions` means it is not.
 
 **Escalation pattern**: always run `init --agent` **without** `--force` first. If you get `ok: false`, inspect `error.code` and `nextActions`. Only re-run with `--force` (or the command from a `run-command` action) once you have deliberately decided the refusal is safe to bypass — do not add `--force` pre-emptively.
 
@@ -102,7 +101,6 @@ pnpm dlx arkenv init [options]
 ```
 
 #### Options:
-
 - `--preset, -P <preset>`: Specify hosting provider preset (none, vercel, netlify, cloudflare, railway, render, fly).
 - `--no-codegen`: Disable Next.js codegen configuration setup.
 - `--force, -f`: Bypass clean git working tree safety check.
@@ -116,7 +114,6 @@ pnpm arkenv check [options]
 ```
 
 #### Options:
-
 - `--schema, -s <path>`: Explicit path to the schema module (overrides convention discovery).
 - `--verify-example [file]`: Verify that all declared schema keys are present in `.env.example` (or a custom example file path) without mutating files.
 - `--env-file <path>`: Specify one or more custom environment files to load.
@@ -188,10 +185,10 @@ Register the plugin in `vite.config.ts` without schema arguments:
 
 ```ts title="vite.config.ts"
 import { defineConfig } from "vite";
-import arkenv from "@arkenv/vite-plugin";
+import arkenvPlugin from "@arkenv/vite-plugin";
 
 export default defineConfig({
-  plugins: [arkenv()],
+  plugins: [arkenvPlugin()],
 });
 ```
 
@@ -228,12 +225,12 @@ plugins = ["@arkenv/bun-plugin"]
 In `Bun.build`:
 
 ```ts
-import arkenv from "@arkenv/bun-plugin";
+import arkenvPlugin from "@arkenv/bun-plugin";
 
 await Bun.build({
   entrypoints: ["./src/index.tsx"],
   outdir: "./dist",
-  plugins: [arkenv()],
+  plugins: [arkenvPlugin],
 });
 ```
 
