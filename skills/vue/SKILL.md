@@ -9,7 +9,7 @@ metadata:
 
 # Vue
 
-> Based on Vue 3.5. Always use Composition API with `<script setup lang="ts">`.
+> Based on Vue 3.5 (3.6 / Vapor Mode is RC, experimental). Always use Composition API with `<script setup lang="ts">`.
 
 ## Preferences
 
