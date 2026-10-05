@@ -66,11 +66,12 @@ Auto-imports don't work in `node_modules`. Runtime files must explicitly import:
 ```ts
 // src/runtime/composables/useMyFeature.ts
 
-// Wrong - won't work in published module
+// Wrong - auto-import won't work in published module
+// const route = useRoute()
+
 // Right - explicit import
 import { useRoute } from '#imports'
 
-const route = useRoute()
 const route = useRoute()
 ```
 
