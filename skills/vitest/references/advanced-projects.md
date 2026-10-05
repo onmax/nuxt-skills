@@ -10,7 +10,7 @@ Run different test configurations in the same Vitest process.
 ## v5 Config Inheritance & Nested Projects
 
 - **Inline projects inherit the root config by default** — `extends` now defaults to `true`, so root Vite options (`plugins`, `resolve.alias`) and test options are inherited. Arrays like `setupFiles` are appended, not replaced. Opt out with `extends: false`, or inherit from another file with `extends: './vitest.shared.ts'`. Projects referenced as config files/directories still don't inherit the root.
-- **Referenced config files can declare their own `projects`** — such a config acts as a container providing *nested projects* named `app (unit)`, `app (e2e)`, etc. In v4 a referenced config's `projects` field was silently ignored, so audit merged configs that pull one in.
+- **Referenced config files can declare their own `projects`** — such a config acts as a container providing _nested projects_ named `app (unit)`, `app (e2e)`, etc. In v4 a referenced config's `projects` field was silently ignored, so audit merged configs that pull one in.
 - **Inline projects share the declaring config's Vite server by default** ([`sharedViteServer`](core-config.md)) — the declaring config runs once, so plugin `config` hooks no longer run per project. A project gets its own server only when it changes the Vite config (`plugins`, `alias`, `css`, `deps.optimizer`, `root`, `browser`, `mode`). Set `sharedViteServer: false` if a plugin must be re-instantiated per project.
 
 ```ts
