@@ -212,6 +212,7 @@ Suite-level hooks (`beforeAll`/`afterAll`/`aroundAll`) only see **file/worker-sc
 ## Hook Execution Order
 
 Default order (stack):
+
 1. `beforeAll` (in order)
 2. `beforeEach` (in order)
 3. Test

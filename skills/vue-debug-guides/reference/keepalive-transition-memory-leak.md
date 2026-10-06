@@ -31,6 +31,7 @@ tags: [vue3, keepalive, transition, memory-leak, animation]
 ```
 
 When switching between components repeatedly:
+
 - Component instances accumulate in memory
 - References prevent garbage collection
 - Memory usage grows with each switch
@@ -139,6 +140,7 @@ npm update vue
 5. **Keep Vue updated** - Bug fixes are released periodically
 
 ## Reference
+
 - [GitHub Issue #9842: Memory leak with transition and keep-alive](https://github.com/vuejs/vue/issues/9842)
 - [GitHub Issue #9840: Memory leak with transition and keep-alive](https://github.com/vuejs/vue/issues/9840)
 - [Vue.js KeepAlive Documentation](https://vuejs.org/guide/built-ins/keep-alive.html)

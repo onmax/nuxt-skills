@@ -18,6 +18,7 @@ tags: [vue3, computed, arrays, mutation, sort, reverse]
 - [ ] Be aware which array methods mutate vs return new arrays
 
 **Incorrect:**
+
 ```vue
 <script setup>
 import { ref, computed } from 'vue'
@@ -56,6 +57,7 @@ const sortedUsers = computed(() => {
 ```
 
 **Correct:**
+
 ```vue
 <script setup>
 import { ref, computed } from 'vue'
@@ -102,16 +104,16 @@ const reversedItemsModern = computed(() => {
 
 ## Mutating vs Non-Mutating Array Methods
 
-| Mutating (Avoid in Computed) | Non-Mutating (Safe) |
-|------------------------------|---------------------|
-| `sort()` | `toSorted()` (ES2023) |
-| `reverse()` | `toReversed()` (ES2023) |
-| `splice()` | `toSpliced()` (ES2023) |
-| `push()` | `concat()` |
-| `pop()` | `slice(0, -1)` |
-| `shift()` | `slice(1)` |
-| `unshift()` | `[item, ...array]` |
-| `fill()` | `map()` with new values |
+| Mutating (Avoid in Computed) | Non-Mutating (Safe)     |
+| ---------------------------- | ----------------------- |
+| `sort()`                     | `toSorted()` (ES2023)   |
+| `reverse()`                  | `toReversed()` (ES2023) |
+| `splice()`                   | `toSpliced()` (ES2023)  |
+| `push()`                     | `concat()`              |
+| `pop()`                      | `slice(0, -1)`          |
+| `shift()`                    | `slice(1)`              |
+| `unshift()`                  | `[item, ...array]`      |
+| `fill()`                     | `map()` with new values |
 
 ## ES2023 Non-Mutating Alternatives
 
@@ -144,5 +146,6 @@ const deepCopied = computed(() => {
 ```
 
 ## Reference
+
 - [Vue.js Computed Properties - Avoid Mutating Computed Value](https://vuejs.org/guide/essentials/computed.html#avoid-mutating-computed-value)
 - [MDN Array Methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)

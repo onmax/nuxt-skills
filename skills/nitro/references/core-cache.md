@@ -22,6 +22,7 @@ export default defineCachedHandler((event) => {
 ```
 
 Behavior:
+
 - Only `GET`/`HEAD` are cached (stored under **separate** entries); other methods and requests with a `Range` header bypass and call the handler.
 - Auto-manages `etag` (weak, from body hash), `cache-control` (synthesized from the enforced lifetime), `vary`, and `x-cache` (`HIT`/`STALE`/`REVALIDATED`/`MISS`) headers, plus `304 Not Modified` for conditional requests.
 - Concurrent requests for the same key are deduplicated (handler runs once), bounded by `maxResolveTime` (30s default).
@@ -90,22 +91,22 @@ Route-rule handlers use the group `nitro/route-rules`, and the generated `name` 
 
 ### Shared (`defineCachedHandler` + `defineCachedFunction`)
 
-| Option | Default | Description |
-|---|---|---|
-| `maxAge` | `1` | Seconds the cache is valid. `0` disables caching. |
-| `swr` | `false` | Serve stale while revalidating in background. |
-| `staleMaxAge` | — | Extra seconds a stale value is served (only with `swr`). `0` = never stale; unset = no TTL written. |
-| `base` | `/cache` | Storage base (→ `cache:` prefix). An array enables multi-tier reads/writes. |
-| `name` | inferred | Cache namespace (falls back to a hash of the function source). |
-| `group` | `nitro/handlers` / `nitro/functions` | Key group. |
-| `getKey(...args)` | hash | Compute cache key (does not change request narrowing). |
-| `integrity` | code+options hash | Invalidate when changed. |
-| `getMaxAge(entry)` | — | Derive lifetime per entry from the resolved value. |
-| `maxResolveTime` | `30` | Deadline (s) for one shared resolution. |
-| `storage` | cache storage | Override the backend for this handler/function. |
-| `waitUntil(promise)` | — | Hand background work to the host runtime. |
-| `shouldInvalidateCache` / `shouldBypassCache` | — | Per-call predicates. |
-| `onError(err)` | log | Custom error handling. |
+| Option                                        | Default                              | Description                                                                                         |
+| --------------------------------------------- | ------------------------------------ | --------------------------------------------------------------------------------------------------- |
+| `maxAge`                                      | `1`                                  | Seconds the cache is valid. `0` disables caching.                                                   |
+| `swr`                                         | `false`                              | Serve stale while revalidating in background.                                                       |
+| `staleMaxAge`                                 | —                                    | Extra seconds a stale value is served (only with `swr`). `0` = never stale; unset = no TTL written. |
+| `base`                                        | `/cache`                             | Storage base (→ `cache:` prefix). An array enables multi-tier reads/writes.                         |
+| `name`                                        | inferred                             | Cache namespace (falls back to a hash of the function source).                                      |
+| `group`                                       | `nitro/handlers` / `nitro/functions` | Key group.                                                                                          |
+| `getKey(...args)`                             | hash                                 | Compute cache key (does not change request narrowing).                                              |
+| `integrity`                                   | code+options hash                    | Invalidate when changed.                                                                            |
+| `getMaxAge(entry)`                            | —                                    | Derive lifetime per entry from the resolved value.                                                  |
+| `maxResolveTime`                              | `30`                                 | Deadline (s) for one shared resolution.                                                             |
+| `storage`                                     | cache storage                        | Override the backend for this handler/function.                                                     |
+| `waitUntil(promise)`                          | —                                    | Hand background work to the host runtime.                                                           |
+| `shouldInvalidateCache` / `shouldBypassCache` | —                                    | Per-call predicates.                                                                                |
+| `onError(err)`                                | log                                  | Custom error handling.                                                                              |
 
 ### Handler-only
 

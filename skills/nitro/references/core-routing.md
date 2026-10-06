@@ -174,6 +174,7 @@ export default defineConfig({
 Route rule keys: `headers`, `redirect`, `proxy`, `cors`, `cache`, `swr`, `static`, `prerender`, `isr`. `swr: true` = `cache: { swr: true }` (1s default `maxAge`); `swr: <n>` adds `maxAge: <n>`. Rules can also be supplied via `runtimeConfig.nitro.routeRules` for env-var overrides without rebuilding.
 
 > **No `auth`/`basicAuth` route rule.** Auth needs executable logic → use [middleware](#middleware). For a single route use h3's `basicAuth` from `nitro/h3` in the handler's `middleware` array:
+>
 > ```ts
 > import { defineHandler } from "nitro";
 > import { basicAuth } from "nitro/h3";

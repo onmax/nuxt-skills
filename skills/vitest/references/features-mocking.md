@@ -137,7 +137,7 @@ test('spy on module', () => {
 })
 ```
 
-### Manual Mocks (__mocks__)
+### Manual Mocks (**mocks**)
 
 ```
 src/

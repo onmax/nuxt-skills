@@ -18,12 +18,14 @@ tags: [vue3, animation, css, class-binding, state]
 - Consider using `setTimeout` to auto-remove animation classes
 
 **When to Use Class-based Animations:**
+
 - User feedback (shake on error, pulse on success)
 - Attention-grabbing effects (highlight changes)
 - Hover/focus states that need more than CSS transitions
 - Any animation where the element stays mounted
 
 **When to Use Transition Component:**
+
 - Elements entering/leaving the DOM (v-if/v-show)
 - Route transitions
 - List item additions/removals

@@ -59,6 +59,7 @@ Vue has special "boolean casting" behavior inherited from HTML boolean attribute
 ```
 
 This is by design to match how HTML works:
+
 ```html
 <!-- HTML: presence means true, absence means false -->
 <button disabled>Can't click</button>
@@ -220,6 +221,7 @@ const props = defineProps<Props>()
 ```
 
 ## Reference
+
 - [Vue.js Props - Boolean Casting](https://vuejs.org/guide/components/props.html#boolean-casting)
 - [GitHub Issue: Boolean props default to false](https://github.com/vuejs/core/issues/8576)
 - [TypeScript Vue 3 Props](https://madewithlove.com/blog/typescript-vue-3-and-strongly-typed-props/)

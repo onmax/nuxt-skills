@@ -37,6 +37,7 @@ rules: [
 ```
 
 The function receives:
+
 1. RegExp match result (destructure to get captured groups)
 2. Context object with `theme`, `symbols`, etc.
 
@@ -72,16 +73,16 @@ rules: [
 
 ### Available Symbols
 
-| Symbol | Description |
-|--------|-------------|
-| `symbols.parent` | Parent wrapper (e.g., `@supports`, `@media`) |
-| `symbols.selector` | Function to modify the selector |
-| `symbols.layer` | Set the UnoCSS layer |
-| `symbols.variants` | Array of variant handlers |
-| `symbols.shortcutsNoMerge` | Disable merging in shortcuts |
-| `symbols.noMerge` | Disable rule merging |
-| `symbols.sort` | Override sorting order |
-| `symbols.body` | Full control of CSS body |
+| Symbol                     | Description                                  |
+| -------------------------- | -------------------------------------------- |
+| `symbols.parent`           | Parent wrapper (e.g., `@supports`, `@media`) |
+| `symbols.selector`         | Function to modify the selector              |
+| `symbols.layer`            | Set the UnoCSS layer                         |
+| `symbols.variants`         | Array of variant handlers                    |
+| `symbols.shortcutsNoMerge` | Disable merging in shortcuts                 |
+| `symbols.noMerge`          | Disable rule merging                         |
+| `symbols.sort`             | Override sorting order                       |
+| `symbols.body`             | Full control of CSS body                     |
 
 ## Multi-Selector Rules
 
@@ -154,6 +155,7 @@ UnoCSS merges rules with identical CSS bodies:
 ```
 
 Generates:
+
 ```css
 .hover\:m2:hover, .m-2 { margin: 0.5rem; }
 ```

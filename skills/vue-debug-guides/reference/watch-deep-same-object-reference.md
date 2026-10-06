@@ -21,6 +21,7 @@ Don't rely on comparing `newValue` to `oldValue` in deep watchers for detecting 
 - [ ] The values differ only when the entire object is replaced
 
 **Incorrect:**
+
 ```javascript
 import { reactive, watch } from 'vue'
 
@@ -54,6 +55,7 @@ state.user.name = 'Jane'
 ```
 
 **Correct:**
+
 ```javascript
 import { reactive, watch, ref } from 'vue'
 
@@ -162,4 +164,5 @@ watch(
 ```
 
 ## Reference
+
 - [Vue.js Watchers - Deep Watchers](https://vuejs.org/guide/essentials/watchers.html#deep-watchers)

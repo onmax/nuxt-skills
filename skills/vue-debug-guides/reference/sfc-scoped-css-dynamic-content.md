@@ -18,6 +18,7 @@ tags: [vue3, sfc, scoped-css, dynamic-content, v-html]
 - [ ] Consider CSS modules for content that mixes static and dynamic elements
 
 **Problematic Code:**
+
 ```vue
 <script setup>
 import { ref } from 'vue'
@@ -41,6 +42,7 @@ const htmlContent = ref('<p class="dynamic">This is dynamic content</p>')
 ```
 
 **Correct Code:**
+
 ```vue
 <script setup>
 import { ref } from 'vue'
@@ -66,6 +68,7 @@ const htmlContent = ref('<p class="dynamic">This is dynamic content</p>')
 ## Why This Happens
 
 Vue scoped CSS adds a unique data attribute (e.g., `data-v-7ba5bd90`) to:
+
 1. All elements in the component's template (at compile time)
 2. All CSS selectors
 
@@ -189,5 +192,6 @@ const items = ref([
 ```
 
 ## Reference
+
 - [Vue.js Scoped CSS](https://vuejs.org/api/sfc-css-features.html#scoped-css)
 - [GitHub Issue: Scoped CSS not applied for programmatically added elements](https://github.com/vuejs/vue/issues/7649)

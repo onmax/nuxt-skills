@@ -20,6 +20,7 @@ This is a CSS limitation, not a Vue bug. CSS transforms (which FLIP uses interna
 - [ ] Check if inherited styles are setting `display: inline`
 
 **Incorrect - Inline elements break move animations:**
+
 ```vue
 <template>
   <!-- BROKEN: span elements are inline by default -->
@@ -39,6 +40,7 @@ This is a CSS limitation, not a Vue bug. CSS transforms (which FLIP uses interna
 ```
 
 **Correct - Use inline-block:**
+
 ```vue
 <template>
   <TransitionGroup name="tag" tag="div" class="tag-container">
@@ -60,6 +62,7 @@ This is a CSS limitation, not a Vue bug. CSS transforms (which FLIP uses interna
 ```
 
 **Correct - Use flexbox container:**
+
 ```vue
 <template>
   <TransitionGroup name="tag" tag="div" class="tag-container">
@@ -84,6 +87,7 @@ This is a CSS limitation, not a Vue bug. CSS transforms (which FLIP uses interna
 ```
 
 **Correct - Use block elements:**
+
 ```vue
 <template>
   <!-- div elements are block by default -->
@@ -148,5 +152,6 @@ The `.move` class must have `transform` in its `transition` property:
 ```
 
 ## Reference
+
 - [Vue.js TransitionGroup Move Transitions](https://vuejs.org/guide/built-ins/transition-group.html#move-transitions)
 - [MDN CSS Transform - Formal Definition](https://developer.mozilla.org/en-US/docs/Web/CSS/transform#formal_definition)

@@ -20,6 +20,7 @@ Vue only auto-unwraps refs when they are properties of reactive objects. When re
 - [ ] Be aware of this when iterating over arrays containing refs
 
 **Incorrect:**
+
 ```javascript
 import { ref, reactive } from 'vue'
 
@@ -36,6 +37,7 @@ counts.get('clicks')++                // Does nothing useful
 ```
 
 **Correct:**
+
 ```javascript
 import { ref, reactive } from 'vue'
 
@@ -78,4 +80,5 @@ counts.set('clicks', counts.get('clicks') + 1)  // Works
 ```
 
 ## Reference
+
 - [Vue.js Reactivity Fundamentals - Caveat in Arrays and Collections](https://vuejs.org/guide/essentials/reactivity-fundamentals.html#caveat-in-arrays-and-collections)

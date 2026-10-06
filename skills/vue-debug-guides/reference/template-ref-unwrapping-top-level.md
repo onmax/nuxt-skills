@@ -20,6 +20,7 @@ This caveat trips up developers when they store refs inside reactive objects or 
 - [ ] Consider restructuring data to avoid nested refs in templates
 
 **Incorrect:**
+
 ```vue
 <script setup>
 import { ref } from 'vue'
@@ -40,6 +41,7 @@ const object = { id: ref(1) }
 ```
 
 **Correct:**
+
 ```vue
 <script setup>
 import { ref } from 'vue'
@@ -101,4 +103,5 @@ const object = reactive({ id: 1 })
 ```
 
 ## Reference
+
 - [Vue.js Reactivity Fundamentals - Caveat when Unwrapping in Templates](https://vuejs.org/guide/essentials/reactivity-fundamentals.html#caveat-when-unwrapping-in-templates)

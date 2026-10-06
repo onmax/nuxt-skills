@@ -75,6 +75,7 @@ defineProps<ConditionalProps<string>>()
 ```
 
 **Workaround:**
+
 ```vue
 <script setup lang="ts">
 // Define the resolved type directly
@@ -122,6 +123,7 @@ defineProps<{
 ```
 
 **Workaround:**
+
 ```typescript
 // types/user.ts - Use explicit export
 export interface GlobalUser {
@@ -167,6 +169,7 @@ defineProps<{
 ```
 
 **Workaround:**
+
 ```typescript
 // Resolve the type explicitly
 export interface ReadonlyUser {
@@ -195,6 +198,7 @@ defineProps<{
 ```
 
 **Workaround:**
+
 ```typescript
 // Define the union in the types file
 export type AnyInput = TextInput | NumberInput
@@ -267,15 +271,16 @@ defineProps<ResolvedProps>()
 
 ## Version-Specific Behavior
 
-| Vue Version | Imported Types | Complex Types |
-|-------------|---------------|---------------|
-| 3.2 | Not supported | Not supported |
-| 3.3 | Supported | Limited |
-| 3.4+ | Supported | Better support |
+| Vue Version | Imported Types | Complex Types  |
+| ----------- | -------------- | -------------- |
+| 3.2         | Not supported  | Not supported  |
+| 3.3         | Supported      | Limited        |
+| 3.4+        | Supported      | Better support |
 
 Always check the Vue changelog for updates to type support in defineProps.
 
 ## Reference
+
 - [Vue.js TypeScript with Composition API](https://vuejs.org/guide/typescript/composition-api.html)
 - [GitHub Issue: defineProps with imported interfaces](https://github.com/vuejs/core/issues/8612)
 - [GitHub Issue: Union types in defineProps](https://github.com/vuejs/core/issues/5804)

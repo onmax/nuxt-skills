@@ -97,6 +97,7 @@ presetTagify({
 ## Excluded Tags
 
 By default, these tags are excluded:
+
 - `b` (bold)
 - `h1` through `h6` (headings)
 - `table`

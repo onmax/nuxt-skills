@@ -29,6 +29,7 @@ The main principle of data flow in Vue.js is **Props Down / Events Up**. This is
 Props are inputs. Do not mutate them in the child.
 
 **BAD:**
+
 ```vue
 <script setup>
 const props = defineProps({ count: Number })
@@ -46,6 +47,7 @@ If state needs to change, emit an event, use `v-model` or create a local copy.
 ## Prefer props/emit over component refs
 
 **BAD:**
+
 ```vue
 <script setup>
 import { ref } from 'vue'
@@ -67,6 +69,7 @@ function submitForm() {
 ```
 
 **GOOD:**
+
 ```vue
 <script setup>
 import UserForm from './UserForm.vue'
@@ -86,6 +89,7 @@ function handleSubmit(formData) {
 Prefer props/emits by default. When a parent must call an exposed child method, type the ref explicitly and expose only the intended API from the child with `defineExpose`.
 
 **BAD:**
+
 ```vue
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
@@ -104,6 +108,7 @@ onMounted(() => {
 ```
 
 **GOOD:**
+
 ```vue
 <!-- DialogPanel.vue -->
 <script setup lang="ts">
@@ -140,12 +145,14 @@ onMounted(() => {
 Component events do not bubble. If a parent needs to know about an event, re-emit it explicitly.
 
 **BAD:**
+
 ```vue
 <!-- Parent expects "saved" from grandchild, but it won't bubble -->
 <Child @saved="onSaved" />
 ```
 
 **GOOD:**
+
 ```vue
 <!-- Child.vue -->
 <script setup>
@@ -162,6 +169,7 @@ function onGrandchildSaved(payload) {
 ```
 
 **Event naming:** use kebab-case in templates and camelCase in script:
+
 ```vue
 <script setup>
 const emit = defineEmits(['updateUser'])
@@ -177,6 +185,7 @@ const emit = defineEmits(['updateUser'])
 Use `defineModel` by default for component bindings and emit updates on input. Only use the `modelValue` + `update:modelValue` pattern if you are on Vue < 3.4.
 
 **BAD:**
+
 ```vue
 <script setup>
 const props = defineProps({ value: String })
@@ -188,6 +197,7 @@ const props = defineProps({ value: String })
 ```
 
 **GOOD (Vue 3.4+):**
+
 ```vue
 <script setup>
 const model = defineModel({ type: String })
@@ -199,6 +209,7 @@ const model = defineModel({ type: String })
 ```
 
 **GOOD (Vue < 3.4):**
+
 ```vue
 <script setup>
 const props = defineProps({ modelValue: String })
@@ -220,6 +231,7 @@ If you need the updated value immediately after a change, use the input event va
 Use provide/inject for cross-tree state, but keep mutations centralized in the provider and expose explicit actions.
 
 **BAD:**
+
 ```vue
 // Provider.vue
 provide('theme', reactive({ dark: false }))
@@ -231,6 +243,7 @@ theme.dark = true
 ```
 
 **GOOD:**
+
 ```vue
 // Provider.vue
 const theme = reactive({ dark: false })
@@ -245,6 +258,7 @@ const { toggleTheme } = inject(themeActionsKey)
 ```
 
 Use symbols for keys to avoid collisions in large apps:
+
 ```ts
 export const themeKey = Symbol('theme')
 export const themeActionsKey = Symbol('theme-actions')
@@ -255,6 +269,7 @@ export const themeActionsKey = Symbol('theme-actions')
 In TypeScript projects, type component boundaries directly with `defineProps`, `defineEmits`, and `InjectionKey` so invalid payloads and mismatched injections fail at compile time.
 
 **BAD:**
+
 ```vue
 <script setup lang="ts">
 import { inject } from 'vue'
@@ -275,6 +290,7 @@ settings?.theme = 'dark'
 ```
 
 **GOOD:**
+
 ```vue
 <script setup lang="ts">
 import { inject, provide } from 'vue'

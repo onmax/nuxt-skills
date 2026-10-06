@@ -22,6 +22,7 @@ Use snapshots sparingly for regression detection. Prefer behavioral assertions t
 - [ ] Consider inline snapshots for small, critical structures
 
 **Incorrect:**
+
 ```javascript
 import { mount } from '@vue/test-utils'
 import UserCard from './UserCard.vue'
@@ -43,6 +44,7 @@ test('UserCard renders correctly', () => {
 ```
 
 **Correct:**
+
 ```javascript
 import { mount } from '@vue/test-utils'
 import UserCard from './UserCard.vue'
@@ -82,6 +84,7 @@ test('UserCard emits select event when clicked', async () => {
 ## When Snapshots ARE Useful
 
 ### Regression Detection for Stable Components
+
 ```javascript
 // ACCEPTABLE: Snapshot as additional check, not the only check
 test('ErrorBoundary renders error message', () => {
@@ -99,6 +102,7 @@ test('ErrorBoundary renders error message', () => {
 ```
 
 ### Inline Snapshots for Small Structures
+
 ```javascript
 // ACCEPTABLE: Inline snapshot for small, critical structure
 test('generates correct list markup', () => {
@@ -111,6 +115,7 @@ test('generates correct list markup', () => {
 ```
 
 ### Complex SVG or Icon Output
+
 ```javascript
 // ACCEPTABLE: Snapshot for complex generated content
 test('renders correct chart SVG', () => {
@@ -129,6 +134,7 @@ test('renders correct chart SVG', () => {
 ## Better Alternatives to Snapshots
 
 ### Test Specific Elements
+
 ```javascript
 // Instead of snapshotting entire component
 test('renders product with all required fields', () => {
@@ -143,6 +149,7 @@ test('renders product with all required fields', () => {
 ```
 
 ### Test CSS Classes for Styling
+
 ```javascript
 test('applies danger styling for errors', () => {
   const wrapper = mount(Alert, {
@@ -155,6 +162,7 @@ test('applies danger styling for errors', () => {
 ```
 
 ### Use Testing Library Queries
+
 ```javascript
 import { render, screen } from '@testing-library/vue'
 
@@ -192,6 +200,7 @@ test('button works', async () => {
 ```
 
 ## Reference
+
 - [Vue.js Testing Guide - What Not to Test](https://vuejs.org/guide/scaling-up/testing)
 - [Effective Snapshot Testing](https://kentcdodds.com/blog/effective-snapshot-testing)
 - [Vitest Snapshot Testing](https://vitest.dev/guide/snapshot.html)

@@ -21,6 +21,7 @@ When a composable has unexpected side effects, consumers can't reason about what
 - [ ] Keep composables focused on returning reactive state and methods
 
 **Incorrect:**
+
 ```javascript
 // WRONG: Hidden provide/inject dependency
 export function useTheme() {
@@ -66,6 +67,7 @@ export function useFormContext() {
 ```
 
 **Correct:**
+
 ```javascript
 // CORRECT: Explicit dependency injection
 export function useTheme(injectedTheme) {
@@ -204,5 +206,6 @@ const { data, fetch } = useDataFetcher(apiClient, cache)
 ```
 
 ## Reference
+
 - [Vue.js Composables](https://vuejs.org/guide/reusability/composables.html)
 - [Common Mistakes Creating Composition Functions](https://www.telerik.com/blogs/common-mistakes-creating-composition-functions-vue)

@@ -22,6 +22,7 @@ Follow Kent C. Dodds' testing philosophy: "The more your tests resemble how your
 - [ ] Use data-testid attributes for elements without semantic meaning
 
 **Incorrect:**
+
 ```javascript
 import { mount } from '@vue/test-utils'
 import Counter from './Counter.vue'
@@ -50,6 +51,7 @@ test('has increment button', () => {
 ```
 
 **Correct:**
+
 ```javascript
 import { mount } from '@vue/test-utils'
 import Counter from './Counter.vue'
@@ -104,6 +106,7 @@ test('increments counter on button click', async () => {
 ## What to Test vs What Not to Test
 
 ### DO Test (Public Interface)
+
 ```javascript
 // Props affect rendered output
 test('shows title from props', () => {
@@ -130,6 +133,7 @@ test('emits close event when X clicked', async () => {
 ```
 
 ### DON'T Test (Implementation Details)
+
 ```javascript
 // Don't test internal computed properties
 // Don't test internal methods
@@ -139,6 +143,7 @@ test('emits close event when X clicked', async () => {
 ```
 
 ## Reference
+
 - [Vue.js Testing Guide](https://vuejs.org/guide/scaling-up/testing)
 - [Vue Test Utils - Testing Philosophy](https://test-utils.vuejs.org/guide/)
 - [Testing Library Guiding Principles](https://testing-library.com/docs/guiding-principles)

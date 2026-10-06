@@ -21,6 +21,7 @@ The `.mount()` method should always be called after all app configurations and a
 - [ ] Call `.mount()` as the final step in app initialization
 
 **Incorrect:**
+
 ```javascript
 import { createApp } from 'vue'
 import App from './App.vue'
@@ -40,6 +41,7 @@ app.component('GlobalButton', GlobalButton)
 ```
 
 **Correct:**
+
 ```javascript
 import { createApp } from 'vue'
 import App from './App.vue'
@@ -85,5 +87,6 @@ createApp(App)
 ```
 
 ## Reference
+
 - [Vue.js - Creating a Vue Application](https://vuejs.org/guide/essentials/application.html)
 - [Vue.js Application API](https://vuejs.org/api/application.html)

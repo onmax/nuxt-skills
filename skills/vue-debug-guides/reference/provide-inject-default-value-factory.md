@@ -20,6 +20,7 @@ tags: [vue3, provide-inject, composition-api, memory, shared-state]
 ## The Gotcha: Shared Default References
 
 **Wrong - Object literal creates shared reference:**
+
 ```vue
 <script setup>
 import { inject } from 'vue'
@@ -35,6 +36,7 @@ config.debug = true
 ```
 
 **Correct - Factory function creates unique instance:**
+
 ```vue
 <script setup>
 import { inject } from 'vue'
@@ -240,5 +242,6 @@ it('test with provider', () => {
 ```
 
 ## Reference
+
 - [Vue.js inject() API Reference](https://vuejs.org/api/composition-api-dependency-injection.html#inject)
 - [Vue.js Provide/Inject Guide](https://vuejs.org/guide/components/provide-inject.html)

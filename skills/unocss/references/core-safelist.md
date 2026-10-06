@@ -126,13 +126,13 @@ blocklist: [
 
 ## Safelist vs Blocklist
 
-| Feature | Safelist | Blocklist |
-|---------|----------|-----------|
-| Purpose | Always include | Always exclude |
-| Strings | ✅ | ✅ |
-| Regex | ❌ | ✅ |
-| Functions | ✅ | ✅ (returns truthy to block) |
-| Messages | ❌ | ✅ |
+| Feature   | Safelist       | Blocklist                    |
+| --------- | -------------- | ---------------------------- |
+| Purpose   | Always include | Always exclude               |
+| Strings   | ✅             | ✅                           |
+| Regex     | ❌             | ✅                           |
+| Functions | ✅             | ✅ (returns truthy to block) |
+| Messages  | ❌             | ✅                           |
 
 **Note:** Blocklist wins if utility is in both.
 

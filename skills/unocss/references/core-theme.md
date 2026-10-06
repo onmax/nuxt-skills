@@ -143,17 +143,17 @@ extendTheme: (theme) => {
 
 ### preset-wind3 vs preset-wind4
 
-| preset-wind3 | preset-wind4 |
-|--------------|--------------|
-| `fontFamily` | `font` |
-| `fontSize` | `text.fontSize` |
-| `lineHeight` | `text.lineHeight` or `leading` |
-| `letterSpacing` | `text.letterSpacing` or `tracking` |
-| `borderRadius` | `radius` |
-| `easing` | `ease` |
-| `breakpoints` | `breakpoint` |
-| `boxShadow` | `shadow` |
-| `transitionProperty` | `property` |
+| preset-wind3         | preset-wind4                       |
+| -------------------- | ---------------------------------- |
+| `fontFamily`         | `font`                             |
+| `fontSize`           | `text.fontSize`                    |
+| `lineHeight`         | `text.lineHeight` or `leading`     |
+| `letterSpacing`      | `text.letterSpacing` or `tracking` |
+| `borderRadius`       | `radius`                           |
+| `easing`             | `ease`                             |
+| `breakpoints`        | `breakpoint`                       |
+| `boxShadow`          | `shadow`                           |
+| `transitionProperty` | `property`                         |
 
 ## Common Theme Keys
 

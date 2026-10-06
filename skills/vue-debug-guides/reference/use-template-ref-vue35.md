@@ -20,6 +20,7 @@ The legacy pattern causes no errors or warnings when names don't match - the ref
 - [ ] TypeScript automatically infers the element type
 
 **Incorrect (Legacy Pattern):**
+
 ```vue
 <script setup>
 import { ref, onMounted } from 'vue'
@@ -57,6 +58,7 @@ const inupt = ref(null)
 ```
 
 **Correct (Vue 3.5+):**
+
 ```vue
 <script setup>
 import { useTemplateRef, onMounted } from 'vue'
@@ -154,5 +156,6 @@ const element = useTemplateRef('my-element') // Any variable name
 ```
 
 ## Reference
+
 - [Vue.js Template Refs - Composition API](https://vuejs.org/guide/essentials/template-refs.html#accessing-the-refs)
 - [Vue 3.5 Release Notes](https://blog.vuejs.org/posts/vue-3-5)

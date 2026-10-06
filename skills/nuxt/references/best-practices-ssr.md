@@ -37,6 +37,7 @@ export function useMyComposable() {
 ### Valid Contexts for Composables
 
 Nuxt composables work in:
+
 - `<script setup>` blocks
 - `setup()` function
 - `defineNuxtPlugin()` callbacks
@@ -81,6 +82,7 @@ export function useUser() {
 ### Why This Matters
 
 On the server, module-level state persists across requests, causing:
+
 - Data leaking between users
 - Security vulnerabilities
 - Memory leaks
@@ -340,12 +342,12 @@ DevTools shows payload data and hydration state.
 
 ### Common Error Messages
 
-| Error | Cause |
-|-------|-------|
+| Error                       | Cause                                   |
+| --------------------------- | --------------------------------------- |
 | "Nuxt instance unavailable" | Composable called outside setup context |
-| "Hydration mismatch" | Server/client HTML differs |
-| "window is not defined" | Browser API used during SSR |
-| "document is not defined" | DOM access during SSR |
+| "Hydration mismatch"        | Server/client HTML differs              |
+| "window is not defined"     | Browser API used during SSR             |
+| "document is not defined"   | DOM access during SSR                   |
 
 <!--
 Source references:

@@ -17,6 +17,7 @@ tags: [vue3, slots, scoped-slots, reserved-props, naming]
 - [ ] Remember only explicitly bound attributes become slot props
 
 **Incorrect Expectation:**
+
 ```vue
 <!-- ChildComponent.vue -->
 <template>
@@ -39,6 +40,7 @@ tags: [vue3, slots, scoped-slots, reserved-props, naming]
 ```
 
 **If You Need to Pass a "Name" Value:**
+
 ```vue
 <!-- ChildComponent.vue -->
 <template>
@@ -66,13 +68,13 @@ const title = 'Welcome'
 
 ## What Gets Passed as Slot Props
 
-| Attribute on `<slot>` | Passed to Parent? |
-|----------------------|-------------------|
-| `name` | No (reserved for slot identification) |
-| `:text="message"` | Yes, as `text` |
-| `:count="5"` | Yes, as `count` |
-| `v-bind="object"` | Yes, spreads object properties |
-| `class="..."` | No (not bound with `:`) |
+| Attribute on `<slot>` | Passed to Parent?                     |
+| --------------------- | ------------------------------------- |
+| `name`                | No (reserved for slot identification) |
+| `:text="message"`     | Yes, as `text`                        |
+| `:count="5"`          | Yes, as `count`                       |
+| `v-bind="object"`     | Yes, spreads object properties        |
+| `class="..."`         | No (not bound with `:`)               |
 
 ## Multiple Named Slots Example
 
@@ -106,4 +108,5 @@ const activeTab = ref(1)
 ```
 
 ## Reference
+
 - [Vue.js Slots - Scoped Slots](https://vuejs.org/guide/components/slots.html#scoped-slots)

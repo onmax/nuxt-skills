@@ -47,6 +47,7 @@ const routes = [
 ```
 
 **Symptoms:**
+
 - `onMounted` called twice in child component
 - Duplicate API requests
 - State initialization runs twice
@@ -217,6 +218,7 @@ const routes = [
 5. **Test thoroughly** - This issue may not appear immediately
 
 ## Reference
+
 - [Vue Router Issue #626: keep-alive in nested route mounted twice](https://github.com/vuejs/router/issues/626)
 - [GitHub: vue3-keep-alive-component workaround](https://github.com/emiyalee1005/vue3-keep-alive-component)
 - [Vue.js KeepAlive Documentation](https://vuejs.org/guide/built-ins/keep-alive.html)

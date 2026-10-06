@@ -34,6 +34,7 @@ function handleClick() {
 ```
 
 Vue warns:
+
 ```
 [Vue warn]: Component emitted event "select" but it is neither declared
 in the emits option nor as an "onSelect" prop.
@@ -42,6 +43,7 @@ in the emits option nor as an "onSelect" prop.
 ## Basic Declaration
 
 **Correct - Array syntax:**
+
 ```vue
 <script setup>
 const emit = defineEmits(['submit', 'cancel', 'update'])
@@ -57,6 +59,7 @@ function handleCancel() {
 ```
 
 **Correct - Options API:**
+
 ```js
 export default {
   emits: ['submit', 'cancel', 'update'],
@@ -72,6 +75,7 @@ export default {
 ## TypeScript Typed Emits
 
 **Correct - Type-based declaration (recommended for TypeScript):**
+
 ```vue
 <script setup lang="ts">
 interface User {
@@ -95,6 +99,7 @@ emit('unknown') // Error: Unknown event
 ```
 
 **Alternative syntax (Vue 3.3+):**
+
 ```vue
 <script setup lang="ts">
 const emit = defineEmits<{
@@ -110,6 +115,7 @@ const emit = defineEmits<{
 You can validate event payloads at runtime:
 
 **Correct - Validation functions:**
+
 ```vue
 <script setup>
 const emit = defineEmits({
@@ -178,6 +184,7 @@ const emit = defineEmits<{
 ### 3. IDE Support
 
 With declarations, your IDE can:
+
 - Autocomplete event names when using the component
 - Show event payload types
 - Warn about typos in event names
@@ -207,6 +214,7 @@ function handleSubmit() {
 ```
 
 ## Reference
+
 - [Vue.js Component Events - Declaring Emitted Events](https://vuejs.org/guide/components/events.html#declaring-emitted-events)
 - [Vue.js Component Events - Events Validation](https://vuejs.org/guide/components/events.html#events-validation)
 - [Vue 3 Migration - emits Option](https://v3-migration.vuejs.org/breaking-changes/emits-option)

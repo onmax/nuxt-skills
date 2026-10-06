@@ -100,6 +100,7 @@ const [value, modifiers] = defineModel({
 ```
 
 Parent usage:
+
 ```vue
 <Child v-model="name" />
 <Child v-model:count="total" />
@@ -123,6 +124,7 @@ defineExpose({
 ```
 
 Parent access:
+
 ```ts
 const childRef = ref<{ count: number; reset: () => void }>()
 childRef.value?.reset()
@@ -164,6 +166,7 @@ defineProps<{
 ```
 
 Multiple generics with constraints:
+
 ```vue
 <script setup lang="ts" generic="T, U extends Record<string, T>">
 import type { Item } from './types'

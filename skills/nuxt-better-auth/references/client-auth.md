@@ -2,16 +2,16 @@
 
 ## Choose an API
 
-| Need | API |
-| --- | --- |
-| Session state and lifecycle actions | `useUserSession()` |
-| Direct Better Auth client or plugin methods | `useAuthClient()` |
-| Sign-in or sign-up form state | `useSignIn()` or `useSignUp()` |
-| Action state for a client or plugin method | `useAuthClientAction()` |
-| Action state for any async function | `useAction()` |
-| Refresh session state after a custom auth endpoint | `runWithSessionRefresh()` |
-| Request-scoped auth fetch with typed endpoints | `useAuthRequestFetch()` |
-| SSR-safe auth-bound data | `useAuthAsyncData()` |
+| Need                                               | API                            |
+| -------------------------------------------------- | ------------------------------ |
+| Session state and lifecycle actions                | `useUserSession()`             |
+| Direct Better Auth client or plugin methods        | `useAuthClient()`              |
+| Sign-in or sign-up form state                      | `useSignIn()` or `useSignUp()` |
+| Action state for a client or plugin method         | `useAuthClientAction()`        |
+| Action state for any async function                | `useAction()`                  |
+| Refresh session state after a custom auth endpoint | `runWithSessionRefresh()`      |
+| Request-scoped auth fetch with typed endpoints     | `useAuthRequestFetch()`        |
+| SSR-safe auth-bound data                           | `useAuthAsyncData()`           |
 
 `useUserSessionState()` is a deprecated alias for `useUserSession()`.
 

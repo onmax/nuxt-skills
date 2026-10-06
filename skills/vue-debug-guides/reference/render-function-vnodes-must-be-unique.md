@@ -20,6 +20,7 @@ Every vnode in a component's render tree must be unique. You cannot use the same
 - [ ] Be especially careful when extracting vnode creation into helper functions
 
 **Incorrect:**
+
 ```javascript
 import { h } from 'vue'
 
@@ -52,6 +53,7 @@ export default {
 ```
 
 **Correct:**
+
 ```javascript
 import { h } from 'vue'
 
@@ -120,14 +122,17 @@ export default {
 ## Why VNodes Must Be Unique
 
 VNodes are lightweight JavaScript objects that Vue's virtual DOM algorithm uses for diffing and patching. When the same vnode reference appears multiple times:
+
 - Vue cannot differentiate between the instances
 - The diffing algorithm produces incorrect results
 - Only one instance may render, or updates may corrupt the DOM
 
 Each vnode maintains its own identity and position in the tree, which is essential for:
+
 - Correct DOM patching during updates
 - Proper lifecycle hook execution
 - Accurate key-based reconciliation in lists
 
 ## Reference
+
 - [Vue.js Render Functions - Vnodes Must Be Unique](https://vuejs.org/guide/extras/render-function.html#vnodes-must-be-unique)

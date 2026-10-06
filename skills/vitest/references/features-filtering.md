@@ -153,6 +153,7 @@ defineConfig({
 ## Watch Mode Filtering
 
 In watch mode, press:
+
 - `p` - Filter by filename pattern
 - `t` - Filter by test name pattern
 - `a` - Run all tests

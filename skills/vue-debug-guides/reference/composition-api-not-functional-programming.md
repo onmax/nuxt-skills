@@ -20,6 +20,7 @@ Vue's Composition API leverages imported functions to organize code, but the und
 - [ ] Use Vue's reactivity as intended: direct mutation with automatic tracking
 
 **Incorrect:**
+
 ```javascript
 import { ref } from 'vue'
 
@@ -47,6 +48,7 @@ function updateName(newName) {
 ```
 
 **Correct:**
+
 ```javascript
 import { ref, reactive } from 'vue'
 
@@ -116,5 +118,6 @@ a1.value = 20  // b1 automatically becomes 40
 ```
 
 ## Reference
+
 - [Composition API FAQ](https://vuejs.org/guide/extras/composition-api-faq.html)
 - [Reactivity Fundamentals](https://vuejs.org/guide/essentials/reactivity-fundamentals.html)

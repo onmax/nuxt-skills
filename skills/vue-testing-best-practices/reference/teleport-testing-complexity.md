@@ -17,6 +17,7 @@ tags: [vue3, teleport, testing, vue-test-utils]
 - [ ] Consider using `getComponent()` instead of DOM queries for teleported components
 
 **Problem - Standard Testing Fails:**
+
 ```vue
 <!-- Modal.vue -->
 <template>
@@ -44,6 +45,7 @@ test('modal input exists', async () => {
 ```
 
 **Solution 1 - Stub Teleport:**
+
 ```ts
 import { mount } from '@vue/test-utils'
 import Modal from './Modal.vue'
@@ -66,6 +68,7 @@ test('modal input exists', async () => {
 ```
 
 **Solution 2 - Query Document Body:**
+
 ```ts
 import { mount } from '@vue/test-utils'
 import Modal from './Modal.vue'
@@ -90,6 +93,7 @@ test('modal renders to body', async () => {
 ```
 
 **Solution 3 - Custom Teleport Stub with Content Access:**
+
 ```ts
 import { mount, config } from '@vue/test-utils'
 import { h, Teleport } from 'vue'
@@ -154,5 +158,6 @@ it('opens modal', () => {
 ```
 
 ## Reference
+
 - [Vue Test Utils - Teleport](https://test-utils.vuejs.org/guide/advanced/teleport)
 - [Vue Test Utils - Stubs](https://test-utils.vuejs.org/guide/advanced/stubs-shallow-mount)

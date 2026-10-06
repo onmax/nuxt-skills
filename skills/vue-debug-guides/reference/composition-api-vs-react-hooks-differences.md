@@ -21,6 +21,7 @@ Understanding this fundamental difference is crucial for writing idiomatic Vue c
 - [ ] Don't worry about "call order" - Vue composables can be conditional
 
 **React Patterns to Avoid in Vue:**
+
 ```javascript
 // These patterns are UNNECESSARY in Vue - they solve React-specific problems
 
@@ -55,6 +56,7 @@ function useData() {
 ```
 
 **Correct Vue Patterns:**
+
 ```javascript
 import { ref, computed, watchEffect } from 'vue'
 
@@ -152,5 +154,6 @@ watchEffect(() => {
 ```
 
 ## Reference
+
 - [Composition API FAQ - Relationship with React Hooks](https://vuejs.org/guide/extras/composition-api-faq.html#relationship-with-react-hooks)
 - [Reactivity Fundamentals](https://vuejs.org/guide/essentials/reactivity-fundamentals.html)

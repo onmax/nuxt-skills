@@ -35,6 +35,7 @@ Subset of `preset-wind3` with essential utilities aligned to CSS properties:
 ## What's NOT Included
 
 Opinionated or complex Tailwind utilities:
+
 - `container`
 - Complex animations
 - Gradients
@@ -62,6 +63,7 @@ presetMini({
 ```
 
 Class-based:
+
 ```css
 .dark .dark\:bg-red\:10 {
   background-color: rgb(248 113 113 / 0.1);
@@ -69,6 +71,7 @@ Class-based:
 ```
 
 Media query:
+
 ```css
 @media (prefers-color-scheme: dark) {
   .dark\:bg-red\:10 {

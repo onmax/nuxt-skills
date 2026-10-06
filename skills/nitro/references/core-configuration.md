@@ -58,33 +58,33 @@ export default defineConfig({
 
 ## Key options
 
-| Option | Purpose |
-|---|---|
-| `preset` / `defaultPreset` | Deployment target (or `NITRO_PRESET` / `--preset`); `defaultPreset` is the fallback. |
-| `compatibilityDate` | Lock preset runtime behavior to a `YYYY-MM-DD` date. |
-| `runtimeConfig` | Runtime values overridable via `NITRO_*` env vars. |
-| `kv` | unstorage mounts (v2 `storage`). Override in dev/prerender via `$development.kv` / `$prerender.kv`. |
-| `database` / `devDatabase` | DB connections (requires `experimental.database`). |
-| `routeRules` | Per-route caching, headers, redirects, proxy, CORS. |
-| `serverDir` | Scan dir (default `false`). `"./"` or `"./server"`; `scanDirs` adds more. |
-| `serverEntry` / `renderer` | Catch-all fetch handler / catch-all renderer. |
-| `errorHandler` / `devErrorHandler` | Custom error handler path(s) / dev-only handler fn. |
-| `features` | Built-in features (`websocket`, `runtimeHooks`). |
-| `experimental` | Opt-in features (`tasks`, `database`, `openAPI`, `asyncContext`, `envExpansion`). |
-| `prerender` | `{ routes, crawlLinks, failOnError, concurrency, autoSubfolderIndex }`. |
-| `minify`, `sourcemap`, `inlineDynamicImports` | Build output tuning. |
-| `builder` | `"rollup"` \| `"rolldown"` \| `"vite"` (auto-detected; or `NITRO_BUILDER`). |
-| `output` | `{ dir, serverDir, publicDir }` (defaults under `.output/`). |
+| Option                                        | Purpose                                                                                             |
+| --------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| `preset` / `defaultPreset`                    | Deployment target (or `NITRO_PRESET` / `--preset`); `defaultPreset` is the fallback.                |
+| `compatibilityDate`                           | Lock preset runtime behavior to a `YYYY-MM-DD` date.                                                |
+| `runtimeConfig`                               | Runtime values overridable via `NITRO_*` env vars.                                                  |
+| `kv`                                          | unstorage mounts (v2 `storage`). Override in dev/prerender via `$development.kv` / `$prerender.kv`. |
+| `database` / `devDatabase`                    | DB connections (requires `experimental.database`).                                                  |
+| `routeRules`                                  | Per-route caching, headers, redirects, proxy, CORS.                                                 |
+| `serverDir`                                   | Scan dir (default `false`). `"./"` or `"./server"`; `scanDirs` adds more.                           |
+| `serverEntry` / `renderer`                    | Catch-all fetch handler / catch-all renderer.                                                       |
+| `errorHandler` / `devErrorHandler`            | Custom error handler path(s) / dev-only handler fn.                                                 |
+| `features`                                    | Built-in features (`websocket`, `runtimeHooks`).                                                    |
+| `experimental`                                | Opt-in features (`tasks`, `database`, `openAPI`, `asyncContext`, `envExpansion`).                   |
+| `prerender`                                   | `{ routes, crawlLinks, failOnError, concurrency, autoSubfolderIndex }`.                             |
+| `minify`, `sourcemap`, `inlineDynamicImports` | Build output tuning.                                                                                |
+| `builder`                                     | `"rollup"` \| `"rolldown"` \| `"vite"` (auto-detected; or `NITRO_BUILDER`).                         |
+| `output`                                      | `{ dir, serverDir, publicDir }` (defaults under `.output/`).                                        |
 
 ### Directory defaults
 
-| Option | Default |
-|---|---|
-| `rootDir` | `.` |
-| `serverDir` | `false` |
-| `buildDir` | `node_modules/.nitro` |
-| `output.dir` | `.output` |
-| `apiDir` / `routesDir` | `api` / `routes` |
+| Option                 | Default               |
+| ---------------------- | --------------------- |
+| `rootDir`              | `.`                   |
+| `serverDir`            | `false`               |
+| `buildDir`             | `node_modules/.nitro` |
+| `output.dir`           | `.output`             |
+| `apiDir` / `routesDir` | `api` / `routes`      |
 
 ## Runtime config
 
@@ -127,14 +127,14 @@ NITRO_DATABASE_PORT="5433"
 
 ## Environment variables (built-in)
 
-| Variable | Effect |
-|---|---|
-| `NITRO_PRESET` | Override deployment preset. |
-| `NITRO_COMPATIBILITY_DATE` | Set compatibility date. |
-| `NITRO_APP_BASE_URL` | Override base URL (default `/`). |
-| `NITRO_BUILDER` | Select the bundler (`rollup` / `rolldown` / `vite`). |
-| `NITRO_ENV_PREFIX` | Secondary prefix for runtime-config overrides (default `_`). |
-| `NITRO_ENV_EXPANSION` | Enable env expansion in runtime config values. |
+| Variable                   | Effect                                                       |
+| -------------------------- | ------------------------------------------------------------ |
+| `NITRO_PRESET`             | Override deployment preset.                                  |
+| `NITRO_COMPATIBILITY_DATE` | Set compatibility date.                                      |
+| `NITRO_APP_BASE_URL`       | Override base URL (default `/`).                             |
+| `NITRO_BUILDER`            | Select the bundler (`rollup` / `rolldown` / `vite`).         |
+| `NITRO_ENV_PREFIX`         | Secondary prefix for runtime-config overrides (default `_`). |
+| `NITRO_ENV_EXPANSION`      | Enable env expansion in runtime config values.               |
 
 ## Key Points
 

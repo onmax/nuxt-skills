@@ -22,6 +22,7 @@ This applies to all Vue macros: `defineProps`, `defineEmits`, `defineExpose`, `d
 ## The Problem
 
 **Incorrect - Inside a function:**
+
 ```vue
 <script setup>
 function useEvents() {
@@ -35,6 +36,7 @@ const emit = useEvents() // This fails at compile time
 ```
 
 **Incorrect - Inside a conditional:**
+
 ```vue
 <script setup>
 if (someCondition) {
@@ -47,6 +49,7 @@ if (someCondition) {
 ```
 
 **Incorrect - Referencing local variables:**
+
 ```vue
 <script setup>
 const eventNames = ['submit', 'cancel']
@@ -59,6 +62,7 @@ const emit = defineEmits(eventNames)
 ## Correct Usage
 
 **Correct - Top level declaration:**
+
 ```vue
 <script setup>
 // CORRECT: defineEmits at top level of script setup
@@ -75,6 +79,7 @@ function handleCancel() {
 ```
 
 **Correct - With TypeScript types:**
+
 ```vue
 <script setup lang="ts">
 // CORRECT: Type-based declaration at top level
@@ -91,6 +96,7 @@ function handleSubmit(data: FormData) {
 ```
 
 **Correct - Using constant arrays (compile-time constant):**
+
 ```vue
 <script setup>
 // CORRECT: Literal array is fine
@@ -114,6 +120,7 @@ Since the macro is hoisted out of `<script setup>` during compilation, it cannot
 If you want to share emit logic in a composable, pass the emit function as an argument:
 
 **Correct - Pass emit to composable:**
+
 ```vue
 <script setup>
 const emit = defineEmits(['submit', 'cancel', 'validate'])
@@ -154,11 +161,13 @@ export default [
 ```
 
 This rule reports:
+
 - `defineEmits` used inside functions
 - `defineEmits` referencing local variables
 - Multiple `defineEmits` calls in the same component
 - `defineEmits` used outside `<script setup>`
 
 ## Reference
+
 - [Vue.js SFC script setup](https://vuejs.org/api/sfc-script-setup.html#defineprops-defineemits)
 - [ESLint vue/valid-define-emits](https://eslint.vuejs.org/rules/valid-define-emits)

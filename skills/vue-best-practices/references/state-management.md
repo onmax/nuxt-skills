@@ -27,6 +27,7 @@ tags: [vue3, state-management, pinia, composables, ssr, vueuse]
 ## Avoid Exporting Mutable Module State
 
 **BAD:**
+
 ```ts
 // store/cart.ts
 import { reactive } from 'vue'
@@ -37,6 +38,7 @@ export const cart = reactive({
 ```
 
 **GOOD:**
+
 ```ts
 // composables/useCartStore.ts
 import { reactive, readonly } from 'vue'
@@ -74,6 +76,7 @@ export function useCartStore() {
 Module singletons live for the runtime lifetime. In SSR this can leak state between requests.
 
 **BAD:**
+
 ```ts
 // shared singleton reused across requests
 const cartStore = useCartStore()

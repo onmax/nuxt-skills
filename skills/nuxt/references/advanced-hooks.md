@@ -59,20 +59,20 @@ export default defineNuxtModule({
 
 ### Common Build Hooks
 
-| Hook | When |
-|------|------|
-| `ready` | Nuxt initialization complete |
-| `close` | Nuxt is closing |
-| `modules:done` | All modules installed |
-| `build:before` | Before build starts |
-| `build:done` | Build complete |
-| `pages:extend` | Add/modify routes (before meta scan) |
-| `pages:resolved` | After page meta is scanned (with `scanPageMeta`) |
-| `components:dirs` | Component dirs being resolved |
-| `imports:extend` | Auto-imports being resolved |
-| `nitro:config` | Before Nitro config finalized |
-| `vite:extend` | Vite context created |
-| `vite:extendConfig` | Before Vite config finalized |
+| Hook                | When                                             |
+| ------------------- | ------------------------------------------------ |
+| `ready`             | Nuxt initialization complete                     |
+| `close`             | Nuxt is closing                                  |
+| `modules:done`      | All modules installed                            |
+| `build:before`      | Before build starts                              |
+| `build:done`        | Build complete                                   |
+| `pages:extend`      | Add/modify routes (before meta scan)             |
+| `pages:resolved`    | After page meta is scanned (with `scanPageMeta`) |
+| `components:dirs`   | Component dirs being resolved                    |
+| `imports:extend`    | Auto-imports being resolved                      |
+| `nitro:config`      | Before Nitro config finalized                    |
+| `vite:extend`       | Vite context created                             |
+| `vite:extendConfig` | Before Vite config finalized                     |
 
 ## App Hooks (Runtime)
 
@@ -111,16 +111,16 @@ export default defineNuxtPlugin((nuxtApp) => {
 
 ### Common App Hooks
 
-| Hook | When |
-|------|------|
-| `app:created` | Vue app created |
-| `app:mounted` | Vue app mounted (client only) |
-| `app:error` | Fatal error occurred |
-| `page:start` | Page navigation starting |
-| `page:finish` | Page navigation finished |
+| Hook                 | When                          |
+| -------------------- | ----------------------------- |
+| `app:created`        | Vue app created               |
+| `app:mounted`        | Vue app mounted (client only) |
+| `app:error`          | Fatal error occurred          |
+| `page:start`         | Page navigation starting      |
+| `page:finish`        | Page navigation finished      |
 | `page:loading:start` | Loading indicator should show |
-| `page:loading:end` | Loading indicator should hide |
-| `link:prefetch` | Link is being prefetched |
+| `page:loading:end`   | Loading indicator should hide |
+| `link:prefetch`      | Link is being prefetched      |
 
 ### Using Runtime Hooks
 
@@ -166,13 +166,13 @@ export default definePlugin((nitroApp) => {
 
 ### Common Nitro Hooks
 
-| Hook | When |
-|------|------|
-| `request` | Request received |
-| `response` | Before/around sending response (replaces `beforeResponse`/`afterResponse`) |
-| `render:html` | Before HTML is sent |
-| `render:response` | Before response is finalized |
-| `error` | Error occurred |
+| Hook              | When                                                                       |
+| ----------------- | -------------------------------------------------------------------------- |
+| `request`         | Request received                                                           |
+| `response`        | Before/around sending response (replaces `beforeResponse`/`afterResponse`) |
+| `render:html`     | Before HTML is sent                                                        |
+| `render:response` | Before response is finalized                                               |
+| `error`           | Error occurred                                                             |
 
 > **Nitro v3:** `beforeResponse`/`afterResponse` are merged into `response`. The compatibility layer re-emits them from `response` when active.
 

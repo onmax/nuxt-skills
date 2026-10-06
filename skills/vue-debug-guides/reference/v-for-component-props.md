@@ -20,6 +20,7 @@ This isolation is intentional - it keeps components reusable and their data depe
 - [ ] Define corresponding props in the child component to receive the data
 
 **Incorrect:**
+
 ```html
 <!-- WRONG: Component cannot access 'todo' - it's not in scope -->
 <TodoItem v-for="todo in todos" :key="todo.id" />
@@ -37,6 +38,7 @@ This isolation is intentional - it keeps components reusable and their data depe
 ```
 
 **Correct:**
+
 ```html
 <!-- CORRECT: Explicitly pass the item as a prop -->
 <TodoItem
@@ -92,4 +94,5 @@ defineProps({
 4. **Maintainability**: Easier to understand what data a component needs
 
 ## Reference
+
 - [Vue.js List Rendering - v-for with Components](https://vuejs.org/guide/essentials/list.html#v-for-with-a-component)

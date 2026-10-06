@@ -187,10 +187,12 @@ const map = reactive<Map<string, number>>(new Map())
 ```
 
 The issue only arises when:
+
 1. You have nested Ref types in your interface
 2. You're using generic type parameters that might contain refs
 
 ## Reference
+
 - [Vue.js TypeScript with Composition API - Typing reactive()](https://vuejs.org/guide/typescript/composition-api.html#typing-reactive)
 - [GitHub Issue: ref with generic type](https://github.com/vuejs/core/discussions/9564)
 - [Vue TypeScript Caveats Gist](https://gist.github.com/LinusBorg/e041ff635994b50b7cec9383c3a067f1)

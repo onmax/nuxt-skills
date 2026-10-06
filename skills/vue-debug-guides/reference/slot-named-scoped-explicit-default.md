@@ -17,6 +17,7 @@ tags: [vue3, slots, scoped-slots, named-slots, compilation-error]
 - [ ] Keep slot scope clear and unambiguous
 
 **Incorrect:**
+
 ```vue
 <script setup>
 import MyComponent from './MyComponent.vue'
@@ -36,10 +37,12 @@ import MyComponent from './MyComponent.vue'
 ```
 
 This causes a compilation error because Vue cannot determine:
+
 1. Whether `message` from the default slot should be available in the footer slot
 2. Which scope applies to the non-template content
 
 **Correct:**
+
 ```vue
 <script setup>
 import MyComponent from './MyComponent.vue'
@@ -61,6 +64,7 @@ import MyComponent from './MyComponent.vue'
 ```
 
 **Correct - When Footer Also Has Props:**
+
 ```vue
 <script setup>
 import MyComponent from './MyComponent.vue'
@@ -84,12 +88,13 @@ import MyComponent from './MyComponent.vue'
 
 When you have **any** named slots (`<template #name>`), always use explicit templates for **all** slots, including the default slot. This makes scope boundaries clear and prevents compilation errors.
 
-| Pattern | Valid? | Notes |
-|---------|--------|-------|
-| `v-slot` on component only | Yes | Single default scoped slot |
-| Named templates only | Yes | Multiple named slots |
-| `v-slot` on component + named templates | No | Ambiguous scope |
-| All explicit templates | Yes | Clear scope for each slot |
+| Pattern                                 | Valid? | Notes                      |
+| --------------------------------------- | ------ | -------------------------- |
+| `v-slot` on component only              | Yes    | Single default scoped slot |
+| Named templates only                    | Yes    | Multiple named slots       |
+| `v-slot` on component + named templates | No     | Ambiguous scope            |
+| All explicit templates                  | Yes    | Clear scope for each slot  |
 
 ## Reference
+
 - [Vue.js Slots - Named Scoped Slots](https://vuejs.org/guide/components/slots.html#named-scoped-slots)

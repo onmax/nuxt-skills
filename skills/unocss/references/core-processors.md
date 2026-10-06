@@ -5,7 +5,7 @@ description: Transform generated CSS layers after generation
 
 # Processors
 
-Processors are hooks that transform generated CSS. Unlike transformers (which modify source code *before* extraction), processors run *after* UnoCSS has generated its CSS layers.
+Processors are hooks that transform generated CSS. Unlike transformers (which modify source code _before_ extraction), processors run _after_ UnoCSS has generated its CSS layers.
 
 ## Define a Processor
 

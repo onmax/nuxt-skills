@@ -97,7 +97,7 @@ const wrapper = mount(Counter, {
 
 ### Stubbing Limitations in Setup Stores
 
-`stubActions` only replaces actions on the store *instance*. In a **Setup store**, an action that calls another action via its closed-over function reference bypasses the stub:
+`stubActions` only replaces actions on the store _instance_. In a **Setup store**, an action that calls another action via its closed-over function reference bypasses the stub:
 
 ```js
 export const useCounterStore = defineStore('counter', () => {

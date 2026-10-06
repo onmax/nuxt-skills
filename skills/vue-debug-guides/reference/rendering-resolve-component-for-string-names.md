@@ -19,6 +19,7 @@ tags: [vue3, render-function, components, resolveComponent, migration]
 - [ ] Handle the case when component is not found
 
 **Incorrect:**
+
 ```js
 import { h } from 'vue'
 
@@ -34,6 +35,7 @@ export default {
 ```
 
 **Correct (Direct Import - Preferred):**
+
 ```js
 import { h } from 'vue'
 import MyComponent from './MyComponent.vue'
@@ -50,6 +52,7 @@ export default {
 ```
 
 **Correct (resolveComponent for Registered Components):**
+
 ```js
 import { h, resolveComponent } from 'vue'
 
@@ -84,11 +87,11 @@ export default {
 
 ## When to Use Each Approach
 
-| Approach | Use When |
-|----------|----------|
-| Direct Import | Component is known at build time (most common) |
+| Approach             | Use When                                            |
+| -------------------- | --------------------------------------------------- |
+| Direct Import        | Component is known at build time (most common)      |
 | `resolveComponent()` | Component is registered globally or locally by name |
-| `resolveComponent()` | Dynamic component selection from registered set |
+| `resolveComponent()` | Dynamic component selection from registered set     |
 
 ## Handling Missing Components
 
@@ -227,5 +230,6 @@ render() {
 ```
 
 ## Reference
+
 - [Vue 3 Migration - Render Function API](https://v3-migration.vuejs.org/breaking-changes/render-function-api.html)
 - [Vue.js Render Function API - resolveComponent](https://vuejs.org/api/render-function.html#resolvecomponent)

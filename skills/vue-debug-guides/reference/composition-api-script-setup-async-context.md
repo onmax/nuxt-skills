@@ -21,6 +21,7 @@ Vue's compiler automatically injects context restoration after each top-level aw
 - [ ] Register hooks synchronously, then do async work inside them
 
 **Top-Level await Works (script setup only):**
+
 ```vue
 <script setup>
 import { ref, onMounted, watch } from 'vue'
@@ -55,6 +56,7 @@ onMounted(() => {
 ```
 
 **Nested Async Breaks Context:**
+
 ```vue
 <script setup>
 import { ref, onMounted, watch } from 'vue'
@@ -89,6 +91,7 @@ setTimeout(async () => {
 ```
 
 **Correct Patterns:**
+
 ```vue
 <script setup>
 import { ref, onMounted, watch } from 'vue'
@@ -121,6 +124,7 @@ onMounted(() => {
 ```
 
 **setup() Function (Not script setup):**
+
 ```javascript
 // In regular setup(), await ALWAYS breaks context
 export default {
@@ -198,6 +202,7 @@ function setup() {
 ```
 
 ## Reference
+
 - [Composition API FAQ - Async Setup](https://vuejs.org/guide/extras/composition-api-faq.html)
 - [Composables - Async Without Await](https://antfu.me/posts/async-with-composition-api)
 - [Suspense](https://vuejs.org/guide/built-ins/suspense.html)

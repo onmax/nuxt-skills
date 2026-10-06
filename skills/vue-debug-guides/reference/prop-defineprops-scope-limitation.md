@@ -20,6 +20,7 @@ This commonly surprises developers trying to use imported constants or computed 
 - [ ] For dynamic validation, use watchers instead of prop validators
 
 **Incorrect:**
+
 ```vue
 <script setup>
 import { ref } from 'vue'
@@ -44,6 +45,7 @@ defineProps({
 ```
 
 **Correct:**
+
 ```vue
 <script>
 // Define constants in regular <script> block (module scope)
@@ -158,4 +160,5 @@ export default {
 ```
 
 ## Reference
+
 - [Vue.js Script Setup - defineProps](https://vuejs.org/api/sfc-script-setup.html#defineprops-defineemits)
