@@ -3,6 +3,11 @@ set -euo pipefail
 
 # Copy this repository's skills and remove only stale directories previously managed by this script.
 for target in "$HOME/.claude/skills" "$HOME/.codex/skills"; do
+  # A symlinked target points at a shared skills folder (often a Git repo); don't copy into it.
+  if [[ -L "$target" ]]; then
+    echo "↷ Skipped $target: symlink to $(readlink -f "$target")"
+    continue
+  fi
   mkdir -p "$target"
   manifest="$target/.nuxt-skills-managed"
   current=$(mktemp)
