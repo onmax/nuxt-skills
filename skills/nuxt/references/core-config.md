@@ -233,6 +233,8 @@ Many former experimental flags are now on by default. Each can be reverted via t
 
 ## Other Experimental Flags
 
+> Node requirement: `22.21+`, `24.11+` or `26+` (Nuxt 4.5+). Errors carry stable codes (e.g. `NUXT_E1001`) documented with cause and fix. Mixing auto-imported h3 v1 helpers with `nuxt/server` helpers raises `NUXT_E8012`.
+
 Notable opt-in flags under `experimental` (see source for the full list):
 
 ```ts
