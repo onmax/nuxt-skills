@@ -177,5 +177,8 @@ app.mount('#app')
 </template>
 ```
 
+> Icons (v4.10+) are bundled into the build for SSR/offline use when the collection is installed locally (`@iconify-json/lucide`). On Vue, use `ui({ icon: { clientBundle: { scan: true } } })`.
+> Set `ui: { theme: { unstyled: true } }` (v4.9+) in `nuxt.config.ts` to strip default theme classes and bring your own design system.
+
 > Add `class="isolate"` to your root `<div id="app">` in `index.html`.
 > For Inertia: use `ui({ router: 'inertia' })` in `vite.config.ts`.

@@ -34,7 +34,7 @@ Quick-reference index of all 125+ components. For full API docs (props, slots, e
 | `UProgress`      | Progress bar                                                |
 | `UProgressGroup` | Segmented progress bar with a list of items                 |
 | `UToast`         | Toast notification (shown via `useToast`)                   |
-| `UCalendar`      | Date calendar (single, range, multiple)                     |
+| `UCalendar`      | Date calendar (single, range, multiple; `type="date\|month\|year"`) |
 | `UCollapsible`   | Animated expand/collapse                                    |
 | `UFieldGroup`    | Group form inputs horizontally                              |
 | `UMarquee`       | Scrolling content ticker                                    |
