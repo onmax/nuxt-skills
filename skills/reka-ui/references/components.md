@@ -8,6 +8,7 @@
 | --------------- | ------------------------------------------- | ---------------------------- |
 | **checkbox**    | Selection control with indeterminate state  | `components/checkbox.md`     |
 | **combobox**    | Searchable dropdown with filtering          | `components/combobox.md`     |
+| **field**       | Field with label, control, and validation (v2.11) | `components/field.md`  |
 | **editable**    | Inline text editing with preview/edit modes | `components/editable.md`     |
 | **label**       | Accessible form label                       | `components/label.md`        |
 | **listbox**     | Accessible list selection                   | `components/listbox.md`      |
@@ -18,6 +19,7 @@
 | **slider**      | Range input control                         | `components/slider.md`       |
 | **switch**      | Toggle between two states                   | `components/switch.md`       |
 | **tagsInput**   | Multiple tag entry and management           | `components/tags-input.md`   |
+| **tagGroup**    | Removable, selectable tag grid (v2.11)      | `components/tag-group.md`    |
 | **toggle**      | Single state button toggle                  | `components/toggle.md`       |
 | **toggleGroup** | Multiple toggles with group behavior        | `components/toggle-group.md` |
 
