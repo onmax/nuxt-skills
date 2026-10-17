@@ -235,6 +235,30 @@ const items = [
 defineShortcuts(extractShortcuts(items))
 ```
 
+### useTour
+
+Guided tours (v4.9+): re-anchors a single `UPopover` across steps. You control the content and navigation.
+
+```vue
+<script setup lang="ts">
+const tour = useTour([
+  { target: '#cta', title: 'Get started' },
+  { target: null, title: 'All set' }
+])
+</script>
+
+<template>
+  <UButton @click="tour.start()">Start tour</UButton>
+
+  <UPopover :open="tour.open.value" :reference="tour.reference.value" :dismissible="false">
+    <template #content>
+      <UButton :disabled="!tour.hasPrev.value" @click="tour.prev()">Back</UButton>
+      <UButton @click="tour.next()">{{ tour.hasNext.value ? 'Next' : 'Finish' }}</UButton>
+    </template>
+  </UPopover>
+</template>
+```
+
 ### Internationalization (i18n)
 
 Nuxt UI supports 50+ locales. Set the locale on `UApp` — all components inherit it.
