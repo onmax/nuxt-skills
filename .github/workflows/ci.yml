@@ -24,6 +24,7 @@ jobs:
           node-version: '22'
           cache: pnpm
 
+      - run: node --test scripts/nuxt-module-registry.test.mjs
       - run: pnpm install
       - run: pnpm lint --fix
       - run: pnpm typecheck
