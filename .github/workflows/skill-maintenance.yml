@@ -108,7 +108,7 @@ jobs:
         if: github.event.inputs.skill != '' && github.event.inputs.skill != 'all' && github.event.inputs.skill != matrix.skill
         run: echo "Skipping ${{ matrix.skill }} - not selected" && exit 0
 
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
 

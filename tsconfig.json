@@ -3,11 +3,18 @@
     "target": "ESNext",
     "module": "ESNext",
     "moduleResolution": "bundler",
+    "types": [
+      "node"
+    ],
     "strict": true,
     "noEmit": true,
     "esModuleInterop": true,
     "skipLibCheck": true
   },
-  "include": ["**/*.ts"],
-  "exclude": ["node_modules"]
+  "include": [
+    "**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
