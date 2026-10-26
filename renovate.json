@@ -1,0 +1,53 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended"],
+  "dependencyDashboard": true,
+  "automergeType": "pr",
+  "lockFileMaintenance": {
+    "enabled": true,
+    "schedule": ["before 5am on monday"],
+    "automerge": true
+  },
+  "packageRules": [
+    {
+      "description": "Automerge low-risk dev dependency updates once required checks pass.",
+      "matchDepTypes": ["devDependencies"],
+      "matchUpdateTypes": ["patch", "minor"],
+      "groupName": "dev dependencies",
+      "automerge": true
+    },
+    {
+      "description": "Automerge patch updates for regular runtime dependencies once required checks pass.",
+      "matchDepTypes": ["dependencies"],
+      "matchUpdateTypes": ["patch"],
+      "automerge": true
+    },
+    {
+      "description": "Keep major updates manual.",
+      "matchUpdateTypes": ["major"],
+      "automerge": false
+    },
+    {
+      "description": "Keep Nuxt, auth, NuxtHub, and database/runtime-sensitive packages manual.",
+      "matchPackageNames": [
+        "auth",
+        "better-auth",
+        "/^@better-auth\\//",
+        "nuxt",
+        "/^@nuxt\\//",
+        "/^@nuxtjs\\//",
+        "/^@nuxthub\\//",
+        "better-sqlite3",
+        "/^drizzle-/",
+        "postgres",
+        "/^@libsql\\//"
+      ],
+      "automerge": false
+    },
+    {
+      "description": "Update Better Auth and its CLI in one PR. auth pins an exact better-auth, so a lone auth bump installs a second copy.",
+      "matchPackageNames": ["auth", "better-auth", "/^@better-auth\\//"],
+      "groupName": "better-auth monorepo"
+    }
+  ]
+}
