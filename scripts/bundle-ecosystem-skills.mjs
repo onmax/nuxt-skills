@@ -8,6 +8,7 @@ import process from 'node:process'
 import { fileURLToPath } from 'node:url'
 import { promisify } from 'node:util'
 import { bundleRelativeLinks } from './markdown-links.mjs'
+import { fetchNuxtModules } from './nuxt-module-registry.mjs'
 
 const exec = promisify(execFile)
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
@@ -148,13 +149,6 @@ async function fetchText(url) {
   }
 }
 
-async function fetchRequiredText(url) {
-  const text = await fetchText(url)
-  if (!text)
-    throw new Error(`Unable to fetch required ecosystem resource: ${url}`)
-  return text
-}
-
 async function readJsonFile(path) {
   try {
     return JSON.parse(await readFile(path, 'utf8'))
@@ -205,22 +199,7 @@ async function findSkillPath(repo, ref, candidate) {
 }
 
 async function discoverNuxtModuleSources() {
-  const html = await fetchRequiredText('https://nuxt.com/modules')
-  const payloadPath = html?.match(/src="([^"]*modules\/_payload\.json[^"]*)"/)?.[1]
-  if (!payloadPath)
-    throw new Error('Nuxt module registry payload was not found')
-  const payload = await fetchJson(`https://nuxt.com${payloadPath}`)
-  if (!Array.isArray(payload))
-    throw new Error('Nuxt module registry payload was invalid')
-
-  const deref = value => typeof value === 'number' && value >= 0 && value < payload.length ? payload[value] : value
-  const moduleIndex = payload.findIndex(value => value && typeof value === 'object' && !Array.isArray(value) && 'modules' in value)
-  const moduleRefs = moduleIndex >= 0 ? deref(payload[moduleIndex].modules) : []
-  const modules = (Array.isArray(moduleRefs) ? moduleRefs : []).map(ref => deref(ref)).map((module) => {
-    if (!module || typeof module !== 'object')
-      return null
-    return { ...module, name: deref(module.name), npm: deref(module.npm), github: deref(module.github) }
-  }).filter(module => module && typeof module.github === 'string' && typeof module.npm === 'string')
+  const modules = await fetchNuxtModules(fetchText)
   const sources = []
   const seen = new Set()
   const uniqueModules = modules.filter((module) => {
