@@ -6,6 +6,8 @@
 
 <p align="center">Vue, Nuxt, and NuxtHub skills for AI coding assistants.</p>
 
+[![docs](https://comark-ui.onmax.me/badge.svg?label=docs&value=nuxt-skills)](https://github.com/onmax/nuxt-skills#installation)
+
 <p align="center">
   <img src="https://raw.githubusercontent.com/onmax/nuxt-skills/main/.github/badge-claude-code.svg" alt="Claude Code">
   <img src="https://raw.githubusercontent.com/onmax/nuxt-skills/main/.github/badge-copilot.svg" alt="GitHub Copilot">
