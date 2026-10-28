@@ -254,6 +254,8 @@ export default defineNuxtModule({
 
 ## Virtual Files (Templates)
 
+For `addTemplate` and `addTypeTemplate` development regeneration, read [template dependencies](template-dependencies.md) before declaring `dependsOn`.
+
 ```ts
 import { addTemplate, defineNuxtModule } from '@nuxt/kit'
 
