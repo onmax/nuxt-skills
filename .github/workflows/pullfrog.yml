@@ -17,6 +17,9 @@ permissions:
 jobs:
   pullfrog:
     runs-on: ubuntu-24.04
+    env:
+      OPENAI_COMPATIBLE_BASE_URL: https://ai.onmax.me/v1
+      OPENAI_COMPATIBLE_MODEL: gpt-6.1-sol
     permissions:
       id-token: write
       contents: read
@@ -25,6 +28,21 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 1
+      - name: Verify CLIProxy completion
+        env:
+          OPENAI_COMPATIBLE_API_KEY: ${{ secrets.CLIPROXY_API_KEY }}
+          CF_ACCESS_CLIENT_ID: ${{ secrets.CLIPROXY_CF_ACCESS_CLIENT_ID }}
+          CF_ACCESS_CLIENT_SECRET: ${{ secrets.CLIPROXY_CF_ACCESS_CLIENT_SECRET }}
+        run: |
+          response=$(curl --fail --silent --show-error --max-time 45 \
+            --header "Authorization: Bearer $OPENAI_COMPATIBLE_API_KEY" \
+            --header "CF-Access-Client-Id: $CF_ACCESS_CLIENT_ID" \
+            --header "CF-Access-Client-Secret: $CF_ACCESS_CLIENT_SECRET" \
+            --header 'Content-Type: application/json' \
+            --data "$(jq -nc --arg model "$OPENAI_COMPATIBLE_MODEL" \
+              '{model: $model, messages: [{role: "user", content: "Reply with exactly PROXY_OK."}], max_tokens: 32, stream: false}')" \
+            "$OPENAI_COMPATIBLE_BASE_URL/chat/completions")
+          jq -e '.choices[0].message.content | contains("PROXY_OK")' <<< "$response" > /dev/null
       - name: Configure proxy access
         run: |
           cat > "$RUNNER_TEMP/pullfrog-opencode.json" <<'JSON'
@@ -36,9 +54,7 @@ jobs:
           prompt: ${{ inputs.prompt }}
           model: openai-compatible/byok
         env:
-          OPENAI_COMPATIBLE_BASE_URL: https://ai.onmax.me/v1
           OPENAI_COMPATIBLE_API_KEY: ${{ secrets.CLIPROXY_API_KEY }}
-          OPENAI_COMPATIBLE_MODEL: gpt-5.6-sol
           OPENAI_COMPATIBLE_CONTEXT: '921000'
           OPENAI_COMPATIBLE_MAX_OUTPUT: '128000'
           OPENCODE_CONFIG: ${{ runner.temp }}/pullfrog-opencode.json
