@@ -85,7 +85,7 @@ Clone the repository and copy skill folders to your agent's skills directory:
 
 The complete skill list, including provenance links for every bundled or hand-authored skill, is maintained in the generated [skill catalog](#skill-catalog) below.
 
-The `nuxt-modules` skill includes [template dependency guidance](skills/nuxt-modules/references/template-dependencies.md), also consumed by Nuxt Skill Hub. Install it with `npx skills add onmax/nuxt-skills --skill nuxt-modules`.
+The `nuxt-modules` skill includes [template dependency guidance](skills/nuxt-modules/references/template-dependencies.md) covering restart behavior and targeted regeneration, also consumed by Nuxt Skill Hub. Install it with `npx skills add onmax/nuxt-skills --skill nuxt-modules`.
 
 ## How Skills Work
 

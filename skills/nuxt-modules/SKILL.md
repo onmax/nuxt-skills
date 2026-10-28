@@ -23,7 +23,7 @@ npm run test       # Run tests
 ## Available Guidance
 
 - **[references/development.md](references/development.md)** - Module anatomy, defineNuxtModule, Kit utilities, hooks
-- **[references/template-dependencies.md](references/template-dependencies.md)** - `addTemplate` / `addTypeTemplate` inputs and development regeneration
+- **[references/template-dependencies.md](references/template-dependencies.md)** - Template inputs, restart behavior, and targeted development regeneration
 - **[references/testing-and-publishing.md](references/testing-and-publishing.md)** - E2E testing, best practices, releasing, publishing
 - **[references/ci-workflows.md](references/ci-workflows.md)** - Copy-paste CI/CD workflow templates
 
@@ -32,7 +32,7 @@ npm run test       # Run tests
 **Consider loading these reference files based on your task:**
 
 - [ ] [references/development.md](references/development.md) - if building module features, using defineNuxtModule, or working with Kit utilities
-- [ ] [references/template-dependencies.md](references/template-dependencies.md) - if generating templates, declaring `dependsOn`, or investigating repeated regeneration
+- [ ] [references/template-dependencies.md](references/template-dependencies.md) - if generating templates, declaring `dependsOn`, choosing watcher behavior, or targeting regeneration
 - [ ] [references/testing-and-publishing.md](references/testing-and-publishing.md) - if writing E2E tests, publishing to npm, or following best practices
 - [ ] [references/ci-workflows.md](references/ci-workflows.md) - if setting up CI/CD workflows for your module
 

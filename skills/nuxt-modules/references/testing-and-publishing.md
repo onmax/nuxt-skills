@@ -79,21 +79,23 @@ npm install /path/to/my-module-1.0.0.tgz
 
 ### Async Setup
 
-Keep setup fast. Nuxt warns if setup exceeds 1 second.
+Keep setup fast. Use `debug: { modules: true }` to inspect module setup timing. Nuxt's slow-setup warning threshold depends on the release, so check the supported version when interpreting it.
 
 ```ts
-// Wrong - blocking
+// This fetch delays module setup
 async setup(options, nuxt) {
   const data = await fetchRemoteConfig()  // Slow!
 }
 
-// Right - defer to hooks
+// This moves the wait to ready, which Nuxt also awaits
 setup(options, nuxt) {
   nuxt.hook('ready', async () => {
     const data = await fetchRemoteConfig()
   })
 }
 ```
+
+Choose the lifecycle phase that needs the result. Moving awaited work to `ready` does not remove it from initialization. To reduce startup work, avoid unnecessary I/O and repeated computation, then check overall startup as well as module setup timing.
 
 ### Prefix All Exports
 
@@ -108,7 +110,7 @@ Avoid naming conflicts:
 
 ### Lifecycle Hooks
 
-For one-time setup tasks:
+For installation and upgrade tasks:
 
 ```ts
 export default defineNuxtModule({
@@ -118,13 +120,15 @@ export default defineNuxtModule({
     await generateInitialConfig(nuxt.options.rootDir)
   },
 
-  async onUpgrade(options, nuxt, previousVersion) {
+  async onUpgrade(nuxt, options, previousVersion) {
     if (semver.lt(previousVersion, '2.0.0')) {
       await migrateFromV1()
     }
   }
 })
 ```
+
+Nuxt stores lifecycle state in the project's `.nuxtrc`, under `meta.name` with `meta.version` as the recorded version. Missing state can make installation work run again, so initialization and migrations must tolerate repeat execution. Keep repeatable generated build output in normal setup or template generation. Lifecycle errors are logged without stopping the build; do not assume a failed required migration prevents setup from continuing.
 
 ### TypeScript + ESM Only
 
