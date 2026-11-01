@@ -119,8 +119,18 @@ const open = ref(false)
 </DialogTrigger>
 ```
 
-## Recent Updates (v2.6.0-v2.10.5)
+## Recent Updates (v2.6.0-v2.11.0)
 
+- **New components (v2.11.0)**: TagGroup, Field and Form primitives, Toast manager, `DrawerVirtualKeyboardProvider` (software keyboards)
+- **Loop navigation (v2.11.0)**: `loop` prop on Listbox, Select, Tree
+- **Checkbox**: `max` prop (v2.11.0)
+- **Combobox**: `unmountOnHide` prop (v2.11.0)
+- **NumberField**: `startingValue` and `allowInvalid` props (v2.11.0)
+- **Menu**: customizable grace area (v2.11.0)
+- **Select/Listbox/Combobox/Menu-family**: slot prop on `*Item`, `forceMount` on `*ItemIndicator` (v2.11.0)
+- **Toast**: actions can run without dismissing the toast (v2.11.0)
+- **Calendar/RangeCalendar**: Home/End/PageUp/PageDown keyboard navigation (v2.11.0)
+- **ContextMenu**: supports controlled open state (v2.11.0)
 - **New components**: Drawer with swipe gestures (v2.10.0), Autocomplete, TimeRangeField, Color components (ColorArea etc.), MonthPicker/YearPicker (v2.9.0)
 - **DropdownMenu**: filter component (v2.9.0)
 - **Checkbox/Switch**: custom true/false values (v2.9.0)
