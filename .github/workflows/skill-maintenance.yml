@@ -103,20 +103,43 @@ jobs:
               - Docs: https://vite.dev/
             focus: 'Config, plugins, HMR, build modes, SSR, library mode'
 
+    timeout-minutes: 30
+    env:
+      ANTHROPIC_BASE_URL: https://ai.onmax.me
+      CLAUDE_MODEL: claude-sonnet-5-5
+      SELECTED: ${{ inputs.skill == '' || inputs.skill == 'all' || inputs.skill == matrix.skill }}
     steps:
-      - name: Skip if not matching manual input
-        if: github.event.inputs.skill != '' && github.event.inputs.skill != 'all' && github.event.inputs.skill != matrix.skill
-        run: echo "Skipping ${{ matrix.skill }} - not selected" && exit 0
-
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        if: env.SELECTED == 'true'
         with:
           fetch-depth: 0
 
+      - name: Verify CLIProxy completion
+        if: env.SELECTED == 'true'
+        env:
+          CLIPROXY_API_KEY: ${{ secrets.CLIPROXY_API_KEY }}
+          CF_ACCESS_CLIENT_ID: ${{ secrets.CLIPROXY_CF_ACCESS_CLIENT_ID }}
+          CF_ACCESS_CLIENT_SECRET: ${{ secrets.CLIPROXY_CF_ACCESS_CLIENT_SECRET }}
+        run: |
+          response=$(curl --fail --silent --show-error --max-time 45 \
+            --header "x-api-key: $CLIPROXY_API_KEY" \
+            --header 'anthropic-version: 2023-06-01' \
+            --header "CF-Access-Client-Id: $CF_ACCESS_CLIENT_ID" \
+            --header "CF-Access-Client-Secret: $CF_ACCESS_CLIENT_SECRET" \
+            --header 'Content-Type: application/json' \
+            --data "$(jq -nc --arg model "$CLAUDE_MODEL" \
+              '{model: $model, messages: [{role: "user", content: "Reply with exactly PROXY_OK."}], max_tokens: 32}')" \
+            "$ANTHROPIC_BASE_URL/v1/messages")
+          jq -e '.content[0].text | contains("PROXY_OK")' <<< "$response" > /dev/null
+
       - uses: anthropics/claude-code-action@v1
+        if: env.SELECTED == 'true'
+        env:
+          ANTHROPIC_CUSTOM_HEADERS: |-
+            CF-Access-Client-Id: ${{ secrets.CLIPROXY_CF_ACCESS_CLIENT_ID }}
+            CF-Access-Client-Secret: ${{ secrets.CLIPROXY_CF_ACCESS_CLIENT_SECRET }}
         with:
-          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
-          model: claude-sonnet-4-20250514
-          timeout_minutes: 15
+          anthropic_api_key: ${{ secrets.CLIPROXY_API_KEY }}
           prompt: |
             SKILL: ${{ matrix.skill }}
             SKILL_PATH: skills/${{ matrix.skill }}/
@@ -164,4 +187,5 @@ jobs:
             - Include version info when relevant
 
           claude_args: |
+            --model ${{ env.CLAUDE_MODEL }}
             --allowedTools "Read,Write,Edit,Glob,Grep,WebFetch,Bash(git:*),Bash(gh:*),Bash(curl:*)"
