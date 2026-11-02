@@ -7,42 +7,37 @@ Single collapsible panel
 ## CollapsibleRoot
 
 ### Props
-
-| Prop          | Type                 | Default |
-| ------------- | -------------------- | ------- |
-| `as`          | `AsTag \| Component` | `"div"` |
-| `asChild`     | `boolean`            | -       |
-| `defaultOpen` | `boolean`            | `false` |
-| `disabled`    | `boolean`            | -       |
-| `open`        | `boolean`            | -       |
+| Prop | Type | Default |
+|------|------|---------|
+| `as` | `AsTag \| Component` | `"div"` |
+| `asChild` | `boolean` | - |
+| `defaultOpen` | `boolean` | `false` |
+| `disabled` | `boolean` | - |
+| `open` | `boolean` | - |
 
 ### Emits
-
-| Event         | Payload            |
-| ------------- | ------------------ |
+| Event | Payload |
+|-------|---------|
 | `update:open` | `[value: boolean]` |
 
 ### Slots
-
-| Slot   | Type      |
-| ------ | --------- |
+| Slot | Type |
+|------|------|
 | `open` | `boolean` |
 
 ## CollapsibleTrigger
 
 ### Props
-
-| Prop      | Type                 | Default    |
-| --------- | -------------------- | ---------- |
-| `as`      | `AsTag \| Component` | `"button"` |
-| `asChild` | `boolean`            | -          |
+| Prop | Type | Default |
+|------|------|---------|
+| `as` | `AsTag \| Component` | `"button"` |
+| `asChild` | `boolean` | - |
 
 ## CollapsibleContent
 
 ### Props
-
-| Prop         | Type                 | Default |
-| ------------ | -------------------- | ------- |
-| `as`         | `AsTag \| Component` | `"div"` |
-| `asChild`    | `boolean`            | -       |
-| `forceMount` | `boolean`            | -       |
+| Prop | Type | Default |
+|------|------|---------|
+| `as` | `AsTag \| Component` | `"div"` |
+| `asChild` | `boolean` | - |
+| `forceMount` | `boolean` | - |

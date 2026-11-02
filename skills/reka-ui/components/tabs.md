@@ -7,66 +7,59 @@ Tabbed content panels
 ## TabsRoot
 
 ### Props
-
-| Prop             | Type                         | Default        |
-| ---------------- | ---------------------------- | -------------- |
-| `activationMode` | `"automatic" \| "manual"`    | `"automatic"`  |
-| `as`             | `AsTag \| Component`         | `"div"`        |
-| `asChild`        | `boolean`                    | -              |
-| `defaultValue`   | `string \| number`           | -              |
-| `dir`            | `"ltr" \| "rtl"`             | -              |
-| `modelValue`     | `string \| number`           | -              |
-| `orientation`    | `"vertical" \| "horizontal"` | `"horizontal"` |
+| Prop | Type | Default |
+|------|------|---------|
+| `activationMode` | `"automatic" \| "manual"` | `"automatic"` |
+| `as` | `AsTag \| Component` | `"div"` |
+| `asChild` | `boolean` | - |
+| `defaultValue` | `string \| number` | - |
+| `dir` | `"ltr" \| "rtl"` | - |
+| `modelValue` | `string \| number` | - |
+| `orientation` | `"vertical" \| "horizontal"` | `"horizontal"` |
 
 ### Emits
-
-| Event               | Payload                     |
-| ------------------- | --------------------------- |
+| Event | Payload |
+|-------|---------|
 | `update:modelValue` | `[payload: StringOrNumber]` |
 
 ### Slots
-
-| Slot         | Type               |
-| ------------ | ------------------ |
+| Slot | Type |
+|------|------|
 | `modelValue` | `string \| number` |
 
 ## TabsList
 
 ### Props
-
-| Prop      | Type                 | Default |
-| --------- | -------------------- | ------- |
-| `as`      | `AsTag \| Component` | `"div"` |
-| `asChild` | `boolean`            | -       |
-| `loop`    | `boolean`            | `true`  |
+| Prop | Type | Default |
+|------|------|---------|
+| `as` | `AsTag \| Component` | `"div"` |
+| `asChild` | `boolean` | - |
+| `loop` | `boolean` | `true` |
 
 ## TabsTrigger
 
 ### Props
-
-| Prop       | Type                 | Default    |
-| ---------- | -------------------- | ---------- |
-| `as`       | `AsTag \| Component` | `"button"` |
-| `asChild`  | `boolean`            | -          |
-| `disabled` | `boolean`            | `false`    |
-| `value`\*  | `string \| number`   | -          |
+| Prop | Type | Default |
+|------|------|---------|
+| `as` | `AsTag \| Component` | `"button"` |
+| `asChild` | `boolean` | - |
+| `disabled` | `boolean` | `false` |
+| `value`* | `string \| number` | - |
 
 ## TabsContent
 
 ### Props
-
-| Prop         | Type                 | Default |
-| ------------ | -------------------- | ------- |
-| `as`         | `AsTag \| Component` | `"div"` |
-| `asChild`    | `boolean`            | -       |
-| `forceMount` | `boolean`            | -       |
-| `value`\*    | `string \| number`   | -       |
+| Prop | Type | Default |
+|------|------|---------|
+| `as` | `AsTag \| Component` | `"div"` |
+| `asChild` | `boolean` | - |
+| `forceMount` | `boolean` | - |
+| `value`* | `string \| number` | - |
 
 ## TabsIndicator
 
 ### Props
-
-| Prop      | Type                 | Default |
-| --------- | -------------------- | ------- |
-| `as`      | `AsTag \| Component` | `"div"` |
-| `asChild` | `boolean`            | -       |
+| Prop | Type | Default |
+|------|------|---------|
+| `as` | `AsTag \| Component` | `"div"` |
+| `asChild` | `boolean` | - |
