@@ -20,7 +20,6 @@ Only use the documented vnode properties: `type`, `props`, `children`, and `key`
 - [ ] Treat vnodes as opaque data structures for rendering, not inspection
 
 **Incorrect:**
-
 ```javascript
 import { h } from 'vue'
 
@@ -54,7 +53,6 @@ console.log(vnode.appContext) // Internal property
 ```
 
 **Correct:**
-
 ```javascript
 import { h } from 'vue'
 
@@ -98,12 +96,12 @@ export default {
 
 ## Documented VNode Properties
 
-| Property   | Type                       | Description                              |
-| ---------- | -------------------------- | ---------------------------------------- |
-| `type`     | `string \| Component`      | Element tag name or component definition |
-| `props`    | `object \| null`           | Props passed to the vnode                |
-| `children` | `any`                      | Child vnodes, text, or slots             |
-| `key`      | `string \| number \| null` | Key for list rendering                   |
+| Property | Type | Description |
+|----------|------|-------------|
+| `type` | `string \| Component` | Element tag name or component definition |
+| `props` | `object \| null` | Props passed to the vnode |
+| `children` | `any` | Child vnodes, text, or slots |
+| `key` | `string \| number \| null` | Key for list rendering |
 
 ## Safe VNode Inspection Patterns
 
@@ -141,7 +139,6 @@ export default {
 ## Why This Matters
 
 Vue's internal vnode structure may change for:
-
 - Performance optimizations
 - New feature implementations
 - Bug fixes
@@ -150,6 +147,5 @@ Vue's internal vnode structure may change for:
 Code relying on internal properties will break silently or throw errors when upgrading Vue versions. The documented properties are part of Vue's public API and are guaranteed to remain stable.
 
 ## Reference
-
 - [Vue.js Render Function APIs](https://vuejs.org/api/render-function.html)
 - [Vue.js Render Functions - The Virtual DOM](https://vuejs.org/guide/extras/render-function.html#the-virtual-dom)

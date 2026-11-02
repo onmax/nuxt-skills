@@ -32,6 +32,10 @@ fn.mockImplementation((x) => x * 2)
 fn.mockImplementationOnce(() => 'first call')
 ```
 
+`fn.mock.instances` (and `contexts`) has one entry per call: `this` for plain calls, or the object `new` returned (`undefined` if the constructor threw). `mockReturnValue`/`mockResolvedValue` etc. throw when the mock is called with `new`; use `mockImplementation` for classes.
+
+`fn.mock.calls` stores arguments **by reference**. If the argument is mutated after the call, assertions see the mutated value; clone at call time (e.g. `mockImplementation(arg => calls.push(structuredClone(arg)))`) when you need the pre-mutation state.
+
 ## Spying on Objects
 
 ```ts
@@ -110,10 +114,20 @@ test('mocked module', () => {
 })
 ```
 
+### Typed Mocks with `import()`
+
+Pass `import('./db.js')` instead of a string. TypeScript infers the module type, so the factory's return value is type-checked and `importOriginal` is typed. IDE renames/moves also update the path.
+
+```ts
+vi.mock(import('./db.js'), () => ({
+  getUser: vi.fn(),
+}))
+```
+
 ### Partial Mock
 
 ```ts
-vi.mock('./utils', async (importOriginal) => {
+vi.mock(import('./utils'), async (importOriginal) => {
   const actual = await importOriginal()
   return {
     ...actual,
@@ -137,7 +151,7 @@ test('spy on module', () => {
 })
 ```
 
-### Manual Mocks (**mocks**)
+### Manual Mocks (__mocks__)
 
 ```
 src/
@@ -234,6 +248,12 @@ Temporal.Now.instant().epochMilliseconds // 0
 vi.useFakeTimers({ toNotFake: ['Temporal'] })
 ```
 
+### Auto-advancing and Tick Modes
+
+While fake timers are on, `vi.waitFor`/`vi.waitUntil` advance timers by `interval` before each check, and `expect.poll` advances by `interval` after each failed attempt, so they don't hang. `vi.setTimerTickMode('interval' | 'nextTimerAsync')` makes timers advance by themselves: `interval` steps fake time on a real-time interval (for state with a limited lifetime), `nextTimerAsync` fires the next pending timer after each macrotask (for code that eventually settles).
+
+`vi.setSystemTime` and the `now` option of `vi.useFakeTimers` also accept `Temporal.Instant`/`Temporal.ZonedDateTime`. Set `fakeTimers.fakeNodeBuiltins: true` to also fake `node:timers` and `node:timers/promises`.
+
 ## Mock Globals
 
 ```ts
@@ -324,10 +344,12 @@ test('hoisted mock', () => {
 - Use `vi.when` for argument-specific behaviors; `using` for scoped auto-restore
 - Use `{ spy: true }` to keep implementation but track calls
 - `vi.hoisted` lets you reference variables in mock factories
+- Prefer `vi.mock(import('./mod'), factory)` over a string path for type-checked factories
 
 <!--
 Source references:
 - https://vitest.dev/guide/mocking.html
+- https://vitest.dev/guide/learn/mock-functions
 - https://vitest.dev/api/vi.html
 - https://vitest.dev/guide/recipes/conditional-mocking
 - https://vitest.dev/guide/recipes/explicit-resources

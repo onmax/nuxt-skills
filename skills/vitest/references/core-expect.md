@@ -208,9 +208,22 @@ expect.assert.isDefined(maybeUser)
 expect.assert.instanceOf(error, MyError)
 ```
 
+### `expect.unreachable`
+
+Type is `(message?: string) => never`, so a plain `if` guard narrows discriminated unions without `assert` helpers:
+
+```ts
+const result = v.safeParse(UserSchema, input) // { success: true, output } | { success: false, ... }
+if (!result.success)
+  expect.unreachable('should parse')
+expect(result.output.age).toBe(25) // narrowed to the success branch
+```
+
+Also use it to mark branches that must not run, e.g. after an `await` that should throw, or a `default` case in an exhaustive `switch`.
+
 ## Poll Assertions
 
-Retry until passes:
+Retry until passes (with fake timers on, timers are auto-advanced by `interval` after each failed attempt):
 
 ```ts
 await expect.poll(() => fetchStatus()).toBe('ready')
@@ -265,6 +278,8 @@ test('custom matcher', () => {
   expect(100).toBeWithinRange(90, 110)
 })
 ```
+
+Inside a matcher, `this.equals(a, b, customTesters)` doesn't compare `Map`/`Set` contents; to match `toEqual`, pass `[...this.customTesters, this.utils.iterableEquality]` as the third argument.
 
 ### TypeScript Declarations (v5)
 

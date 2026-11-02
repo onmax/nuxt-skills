@@ -99,6 +99,8 @@ vitest --list-tags=json        # JSON output
 --tagsFilter <expr>       # Run tests by tag expression, e.g. "db && !flaky"
 --changed                 # Run tests for changed files
 --changed HEAD~1          # Tests for last commit changes
+--since-last-run         # (5.1, experimental) Tests whose loaded files changed since their last run
+--last-failed             # (5.1) Only tests that failed in the last run (from results cache)
 --dir <path>              # Limit test discovery to a directory
 
 # Reporters
@@ -166,7 +168,6 @@ vitest --merge-reports=reports --reporter=junit --reporter=default
 ## Watch Mode Keyboard Shortcuts
 
 In watch mode, press:
-
 - `a` - Run all tests
 - `f` - Run only failed tests
 - `u` - Update snapshots

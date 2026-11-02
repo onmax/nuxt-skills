@@ -24,12 +24,12 @@ export default defineNuxtConfig({
 
 The default `srcDir` is `app/`, so path aliases resolve as:
 
-| Alias       | Resolves to                |
-| ----------- | -------------------------- |
-| `~` / `@`   | `<rootDir>/app`            |
+| Alias | Resolves to |
+|-------|-------------|
+| `~` / `@` | `<rootDir>/app` |
 | `~~` / `@@` | `<rootDir>` (project root) |
-| `#shared`   | `<rootDir>/shared`         |
-| `#server`   | `<rootDir>/server`         |
+| `#shared` | `<rootDir>/shared` |
+| `#server` | `<rootDir>/server` |
 
 Reference root-level paths (modules, server handlers) with `~~` or `#server`:
 
@@ -142,13 +142,13 @@ const appConfig = useAppConfig()
 
 ## runtimeConfig vs app.config
 
-| Feature                | runtimeConfig | app.config |
-| ---------------------- | ------------- | ---------- |
-| Client-side            | Hydrated      | Bundled    |
-| Environment variables  | Yes           | No         |
-| Reactive               | Yes           | Yes        |
-| Hot module replacement | No            | Yes        |
-| Non-primitive JS types | No            | Yes        |
+| Feature | runtimeConfig | app.config |
+|---------|--------------|------------|
+| Client-side | Hydrated | Bundled |
+| Environment variables | Yes | No |
+| Reactive | Yes | Yes |
+| Hot module replacement | No | Yes |
+| Non-primitive JS types | No | Yes |
 
 **Use runtimeConfig** for secrets and values that change per environment.
 **Use app.config** for public tokens, theme settings, and non-sensitive config.
@@ -210,30 +210,28 @@ export default defineNuxtConfig({
 
 Many former experimental flags are now on by default. Each can be reverted via the named option:
 
-| Behavior                                                        | Now default                                | Restore Nuxt 4 with                                                       |
-| --------------------------------------------------------------- | ------------------------------------------ | ------------------------------------------------------------------------- |
-| Case-sensitive page routing                                     | `router.options.sensitive: true`           | `router.options.sensitive: false`                                         |
-| Typed pages (`useRoute`/`navigateTo`/`<NuxtLink>` type-checked) | on                                         | `experimental.typedPages: false`                                          |
-| Page component name = route name                                | on                                         | `experimental.normalizePageNames: false`                                  |
-| All serializable `definePageMeta` written to route record       | on                                         | `experimental.extractSerializablePageMeta: false`                         |
-| Payload inlined in HTML, `_payload.json` only for SPA nav       | `experimental.payloadExtraction: 'client'` | `payloadExtraction: true`                                                 |
-| `clearNuxtState` resets to `useState` init value                | on                                         | `experimental.defaults.useState.resetOnClear: false`                      |
-| `await navigateTo()` early-returns from `setup()`               | on                                         | `experimental.navigateToEarlyReturn: false`                               |
-| `callHook` may return `void` (not always a Promise)             | on                                         | `experimental.asyncCallHook: true`                                        |
-| Client-only SSR placeholder is a comment node, not `<div>`      | on                                         | `experimental.clientNodePlaceholder: false`                               |
-| Reuse builder's file watcher                                    | `experimental.watcher: 'builder'`          | `watcher: 'chokidar'`                                                     |
-| Server auto-imports (Nitro helpers)                             | off                                        | `experimental.nitroAutoImports: true`                                     |
-| `error.data` parsed (never stringified)                         | forced on                                  | — (`parseErrorData` no longer configurable)                               |
-| Vue Options API compiled out of client bundle                   | on                                         | `vue: { optionsApi: true }`                                               |
-| `noUncheckedSideEffectImports` in generated tsconfig            | on                                         | `typescript.tsConfig.compilerOptions.noUncheckedSideEffectImports: false` |
+| Behavior | Now default | Restore Nuxt 4 with |
+|----------|-------------|---------------------|
+| Case-sensitive page routing | `router.options.sensitive: true` | `router.options.sensitive: false` |
+| Typed pages (`useRoute`/`navigateTo`/`<NuxtLink>` type-checked) | on | `experimental.typedPages: false` |
+| Page component name = route name | on | `experimental.normalizePageNames: false` |
+| All serializable `definePageMeta` written to route record | on | `experimental.extractSerializablePageMeta: false` |
+| Payload inlined in HTML, `_payload.json` only for SPA nav | `experimental.payloadExtraction: 'client'` | `payloadExtraction: true` |
+| `clearNuxtState` resets to `useState` init value | on | `experimental.defaults.useState.resetOnClear: false` |
+| `await navigateTo()` early-returns from `setup()` | on | `experimental.navigateToEarlyReturn: false` |
+| `callHook` may return `void` (not always a Promise) | on | `experimental.asyncCallHook: true` |
+| Client-only SSR placeholder is a comment node, not `<div>` | on | `experimental.clientNodePlaceholder: false` |
+| Reuse builder's file watcher | `experimental.watcher: 'builder'` | `watcher: 'chokidar'` |
+| Server auto-imports (Nitro helpers) | off | `experimental.nitroAutoImports: true` |
+| `error.data` parsed (never stringified) | forced on | — (`parseErrorData` no longer configurable) |
+| Vue Options API compiled out of client bundle | on | `vue: { optionsApi: true }` |
+| `noUncheckedSideEffectImports` in generated tsconfig | on | `typescript.tsConfig.compilerOptions.noUncheckedSideEffectImports: false` |
 
 **Removed options** (behavior now unconditional): `experimental.viteEnvironmentApi`, `experimental.routeTypedFetch`, `experimental.renderJsonPayloads`, `experimental.externalVue`. Delete them from config.
 
 `unhead.legacy` is ignored (setting it warns); Capo title sorting is always on.
 
 ## Other Experimental Flags
-
-> Node requirement: `22.21+`, `24.11+` or `26+` (Nuxt 4.6+, via Nuxt CLI v4). Errors carry stable codes (e.g. `NUXT_E1001`) documented with cause and fix. Mixing auto-imported h3 v1 helpers with `nuxt/server` helpers raises `NUXT_E8012`.
 
 Notable opt-in flags under `experimental` (see source for the full list):
 

@@ -21,8 +21,13 @@ Dynamic arguments allow runtime determination of which attribute or event to bin
 - [ ] Use `null` to explicitly remove a binding
 
 **Incorrect:**
-
 ```vue
+<script setup>
+// If component expects someAttr but browser lowercases to someattr
+// the binding silently fails
+const someAttr = 'href'
+</script>
+
 <template>
   <!-- ERROR: Spaces and quotes not allowed in dynamic arguments -->
   <a :[' foo' + bar]="value">Link</a>
@@ -36,34 +41,10 @@ Dynamic arguments allow runtime determination of which attribute or event to bin
   <!-- This becomes :[someattr] which won't match someAttr -->
   <a :[someAttr]="url">Link</a>
 </template>
-
-<script setup>
-// If component expects someAttr but browser lowercases to someattr
-// the binding silently fails
-const someAttr = 'href'
-</script>
 ```
 
 **Correct:**
-
 ```vue
-<template>
-  <!-- OK: Simple variable reference -->
-  <a :[attributeName]="url">Link</a>
-
-  <!-- OK: Use computed property for complex expressions -->
-  <a :[dynamicAttr]="value">Link</a>
-
-  <!-- OK: null removes the binding -->
-  <button :[disabledAttr]="isDisabled">Submit</button>
-
-  <!-- OK: Dynamic event names -->
-  <button @[eventName]="handler">Click</button>
-
-  <!-- OK: In SFCs, case is preserved -->
-  <a :[someAttr]="url">Link</a>
-</template>
-
 <script setup>
 import { ref, computed } from 'vue'
 
@@ -88,6 +69,23 @@ function handler() {
   console.log('Event triggered')
 }
 </script>
+
+<template>
+  <!-- OK: Simple variable reference -->
+  <a :[attributeName]="url">Link</a>
+
+  <!-- OK: Use computed property for complex expressions -->
+  <a :[dynamicAttr]="value">Link</a>
+
+  <!-- OK: null removes the binding -->
+  <button :[disabledAttr]="isDisabled">Submit</button>
+
+  <!-- OK: Dynamic event names -->
+  <button @[eventName]="handler">Click</button>
+
+  <!-- OK: In SFCs, case is preserved -->
+  <a :[someAttr]="url">Link</a>
+</template>
 ```
 
 ## In-DOM Template Workaround
@@ -117,11 +115,11 @@ createApp({
 
 ## SFC vs In-DOM Templates
 
-| Feature           | SFC (.vue files) | In-DOM (HTML)                   |
-| ----------------- | ---------------- | ------------------------------- |
-| Case sensitivity  | Preserved        | Lowercased by browser           |
-| Dynamic arguments | Full support     | Lowercase only                  |
-| Recommendation    | Preferred        | Use for progressive enhancement |
+| Feature | SFC (.vue files) | In-DOM (HTML) |
+|---------|------------------|---------------|
+| Case sensitivity | Preserved | Lowercased by browser |
+| Dynamic arguments | Full support | Lowercase only |
+| Recommendation | Preferred | Use for progressive enhancement |
 
 ## Valid Dynamic Argument Values
 
@@ -144,6 +142,5 @@ const attr6 = { foo: 1 } // Warning: should be string
 ```
 
 ## Reference
-
 - [Vue.js Template Syntax - Dynamic Arguments](https://vuejs.org/guide/essentials/template-syntax.html#dynamic-arguments)
 - [Vue.js Template Syntax - Dynamic Argument Value Constraints](https://vuejs.org/guide/essentials/template-syntax.html#dynamic-argument-value-constraints)

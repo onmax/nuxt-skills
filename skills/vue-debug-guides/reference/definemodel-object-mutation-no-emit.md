@@ -20,7 +20,6 @@ This happens because Vue only detects when the `model.value` reference itself ch
 - [ ] Consider using structuredClone for deeply nested objects
 
 **Incorrect - Mutation without event emission:**
-
 ```vue
 <script setup>
 // Child component with object v-model
@@ -40,7 +39,6 @@ function addToList() {
 ```
 
 **Correct - Replace object reference to trigger event:**
-
 ```vue
 <script setup>
 const model = defineModel<{ name: string; age: number }>()
@@ -145,7 +143,6 @@ model.value.name = 'New Name'  // Properly syncs with parent
 ```
 
 ## Reference
-
 - [Vue.js Component v-model](https://vuejs.org/guide/components/v-model.html)
 - [GitHub Discussion: defineModel with objects](https://github.com/orgs/vuejs/discussions/10538)
 - [SIMPL Engineering: Vue defineModel Pitfalls](https://engineering.simpl.de/post/vue_definemodel/)

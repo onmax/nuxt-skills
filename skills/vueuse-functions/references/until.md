@@ -77,7 +77,7 @@ await until(ref).not.toBeTruthy()
 
 ## Type Declarations
 
-````ts
+```ts
 export interface UntilToMatchOptions extends ConfigurableFlushSync {
   /**
    * Milliseconds timeout for promise to resolve/reject if the when condition does not meet.
@@ -158,4 +158,4 @@ export declare function until<T extends unknown[]>(
 export declare function until<T>(
   r: WatchSource<T> | MaybeRefOrGetter<T>,
 ): UntilValueInstance<T>
-````
+```

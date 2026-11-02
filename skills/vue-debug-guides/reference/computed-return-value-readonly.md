@@ -22,7 +22,6 @@ Every time the source state changes, a new snapshot is created. Mutating a snaps
 - [ ] Avoid array mutating methods (push, pop, splice, reverse, sort) on computed arrays
 
 **Incorrect:**
-
 ```vue
 <script setup>
 import { ref, computed } from 'vue'
@@ -75,7 +74,6 @@ export default {
 ```
 
 **Correct:**
-
 ```vue
 <script setup>
 import { ref, computed } from 'vue'
@@ -158,6 +156,5 @@ fullName.value = 'Jane Smith'  // Updates firstName and lastName
 ```
 
 ## Reference
-
 - [Vue.js Computed Properties - Avoid Mutating Computed Value](https://vuejs.org/guide/essentials/computed.html#avoid-mutating-computed-value)
 - [Vue.js Computed Properties - Writable Computed](https://vuejs.org/guide/essentials/computed.html#writable-computed)

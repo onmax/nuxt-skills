@@ -245,6 +245,5 @@ function mustFocus() {
 ```
 
 ## Reference
-
 - [Vue.js TypeScript with Composition API - Template Refs](https://vuejs.org/guide/typescript/composition-api.html#typing-template-refs)
 - [Vue.js Template Refs](https://vuejs.org/guide/essentials/template-refs.html)

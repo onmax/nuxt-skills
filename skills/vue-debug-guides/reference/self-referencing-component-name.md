@@ -17,7 +17,6 @@ tags: [vue3, component-registration, self-reference, recursive-components, sfc]
 - [ ] For clarity in recursive components, consider explicit naming
 
 **Example:**
-
 ```vue
 <!-- TreeItem.vue -->
 <script setup>
@@ -155,5 +154,4 @@ defineProps({
 ```
 
 ## Reference
-
 - [Vue.js Component Registration](https://vuejs.org/guide/components/registration.html)

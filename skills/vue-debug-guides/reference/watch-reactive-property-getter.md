@@ -20,7 +20,6 @@ When you need to watch a specific property of a reactive object, always wrap it 
 - [ ] For entire reactive objects, you can watch directly (creates implicit deep watcher)
 
 **Incorrect:**
-
 ```javascript
 import { reactive, watch } from 'vue'
 
@@ -39,7 +38,6 @@ watch(state.name, (newName) => {
 ```
 
 **Correct:**
-
 ```javascript
 import { reactive, watch } from 'vue'
 
@@ -107,5 +105,4 @@ watch(state, (newState) => {
 ```
 
 ## Reference
-
 - [Vue.js Watchers - Watch Source Types](https://vuejs.org/guide/essentials/watchers.html#watch-source-types)

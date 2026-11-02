@@ -28,14 +28,14 @@ Animate enter/leave of a single element or component.
 
 ### CSS Classes
 
-| Class                 | When                                          |
-| --------------------- | --------------------------------------------- |
-| `{name}-enter-from`   | Start state for enter                         |
+| Class | When |
+|-------|------|
+| `{name}-enter-from` | Start state for enter |
 | `{name}-enter-active` | Active state for enter (add transitions here) |
-| `{name}-enter-to`     | End state for enter                           |
-| `{name}-leave-from`   | Start state for leave                         |
-| `{name}-leave-active` | Active state for leave                        |
-| `{name}-leave-to`     | End state for leave                           |
+| `{name}-enter-to` | End state for enter |
+| `{name}-leave-from` | Start state for leave |
+| `{name}-leave-active` | Active state for leave |
+| `{name}-leave-to` | End state for leave |
 
 ### Transition Modes
 
@@ -155,7 +155,6 @@ Handle async dependencies with loading states. **Experimental feature.**
 ### Async Dependencies
 
 Suspense waits for:
-
 - Components with `async setup()`
 - Components using top-level `await` in `<script setup>`
 - Async components created with `defineAsyncComponent`
@@ -236,7 +235,6 @@ Skip re-renders when dependencies unchanged. Use for performance optimization.
 ```
 
 Equivalent to `v-once` when empty:
-
 ```vue
 <div v-memo="[]">Never updates</div>
 ```

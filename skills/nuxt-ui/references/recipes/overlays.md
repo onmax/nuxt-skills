@@ -2,8 +2,6 @@
 
 Patterns for modals, slideovers, drawers, and command palettes.
 
-> `UModal` and `USlideover` accept `:unmount-on-hide="false"` (v4.10+) to keep content mounted while closed, preserving form state and scroll position.
-
 ## Confirmation dialog
 
 ```vue

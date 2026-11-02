@@ -18,14 +18,7 @@ tags: [vue3, computed, methods, parameters, common-mistake]
 - [ ] Prefer method calls in templates for parameterized operations
 
 **Incorrect:**
-
 ```vue
-<template>
-  <!-- BAD: Computed properties don't accept parameters like this -->
-  <p>{{ filteredItems('active') }}</p>
-  <p>{{ formattedPrice(100, 'USD') }}</p>
-</template>
-
 <script setup>
 import { ref, computed } from 'vue'
 
@@ -37,6 +30,12 @@ const filteredItems = computed((status) => {  // status will be undefined or pre
   return items.value.filter(i => i.status === status)
 })
 </script>
+
+<template>
+  <!-- BAD: Computed properties don't accept parameters like this -->
+  <p>{{ filteredItems('active') }}</p>
+  <p>{{ formattedPrice(100, 'USD') }}</p>
+</template>
 ```
 
 ```vue
@@ -56,21 +55,7 @@ export default {
 ```
 
 **Correct:**
-
 ```vue
-<template>
-  <!-- GOOD: Use method for parameterized operations -->
-  <p>{{ getFilteredItems('active') }}</p>
-  <p>{{ formatPrice(100, 'USD') }}</p>
-
-  <!-- GOOD: Or use computed with reactive filter state -->
-  <select v-model="statusFilter">
-    <option value="active">Active</option>
-    <option value="inactive">Inactive</option>
-  </select>
-  <p>{{ filteredItems }}</p>
-</template>
-
 <script setup>
 import { ref, computed } from 'vue'
 
@@ -94,6 +79,19 @@ const filteredItems = computed(() => {
   return items.value.filter(i => i.status === statusFilter.value)
 })
 </script>
+
+<template>
+  <!-- GOOD: Use method for parameterized operations -->
+  <p>{{ getFilteredItems('active') }}</p>
+  <p>{{ formatPrice(100, 'USD') }}</p>
+
+  <!-- GOOD: Or use computed with reactive filter state -->
+  <select v-model="statusFilter">
+    <option value="active">Active</option>
+    <option value="inactive">Inactive</option>
+  </select>
+  <p>{{ filteredItems }}</p>
+</template>
 ```
 
 ## Workaround: Computed Returning a Function
@@ -101,10 +99,6 @@ const filteredItems = computed(() => {
 If you need something computed-like with parameters, you can return a function. **However, this defeats the caching benefit:**
 
 ```vue
-<template>
-  <p>{{ getItemsByStatus('active') }}</p>
-</template>
-
 <script setup>
 import { ref, computed } from 'vue'
 
@@ -119,17 +113,21 @@ const getItemsByStatus = computed(() => {
 // This is essentially equivalent to just using a method
 // Only useful if you need to compose with other computed properties
 </script>
+
+<template>
+  <p>{{ getItemsByStatus('active') }}</p>
+</template>
 ```
 
 ## When to Use Each Approach
 
-| Scenario                             | Approach                    | Caching |
-| ------------------------------------ | --------------------------- | ------- |
-| Fixed filter based on reactive state | Computed                    | Yes     |
-| Dynamic filter passed as argument    | Method                      | No      |
-| Filter options from user selection   | Computed + reactive param   | Yes     |
-| Formatting with variable parameters  | Method                      | No      |
-| Composed derivation with argument    | Computed returning function | Partial |
+| Scenario | Approach | Caching |
+|----------|----------|---------|
+| Fixed filter based on reactive state | Computed | Yes |
+| Dynamic filter passed as argument | Method | No |
+| Filter options from user selection | Computed + reactive param | Yes |
+| Formatting with variable parameters | Method | No |
+| Composed derivation with argument | Computed returning function | Partial |
 
 ## Make Parameters Reactive
 
@@ -157,6 +155,5 @@ function filterByStatus(status) {
 ```
 
 ## Reference
-
 - [Vue.js Computed Properties](https://vuejs.org/guide/essentials/computed.html)
 - [Vue.js Methods](https://vuejs.org/guide/essentials/reactivity-fundamentals.html#declaring-methods)

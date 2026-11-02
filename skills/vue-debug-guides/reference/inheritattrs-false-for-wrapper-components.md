@@ -15,16 +15,16 @@ When building wrapper components where attributes should be applied to an inner 
 
 ```vue
 <!-- BaseInput.vue - WRONG: attrs go to wrapper div, not input -->
+<script setup>
+defineProps(['label'])
+</script>
+
 <template>
   <div class="input-wrapper">
     <label>{{ label }}</label>
     <input type="text" />
   </div>
 </template>
-
-<script setup>
-defineProps(['label'])
-</script>
 
 <!-- Parent usage -->
 <BaseInput

@@ -22,29 +22,7 @@ Template expressions including function calls are evaluated whenever the compone
 - [ ] Avoid expensive computations; use computed properties for caching
 
 **Incorrect:**
-
 ```vue
-<template>
-  <!-- BAD: Modifies state on every render -->
-  <p>{{ incrementAndGet() }}</p>
-
-  <!-- BAD: API call on every render -->
-  <div>{{ fetchUserName() }}</div>
-
-  <!-- BAD: Logging side effect -->
-  <span>{{ logAndFormat(date) }}</span>
-
-  <!-- BAD: Expensive computation without caching -->
-  <ul>
-    <li v-for="item in filterAndSort(items)" :key="item.id">
-      {{ item.name }}
-    </li>
-  </ul>
-
-  <!-- BAD: Random values change on every render -->
-  <p>{{ getRandomGreeting() }}</p>
-</template>
-
 <script setup>
 import { ref } from 'vue'
 
@@ -82,33 +60,31 @@ function getRandomGreeting() {
   return greetings[Math.floor(Math.random() * greetings.length)]
 }
 </script>
-```
 
-**Correct:**
-
-```vue
 <template>
-  <!-- OK: Pure formatting function -->
-  <p>Count: {{ count }}</p>
-  <button @click="increment">Increment</button>
+  <!-- BAD: Modifies state on every render -->
+  <p>{{ incrementAndGet() }}</p>
 
-  <!-- OK: Data fetched via lifecycle/watcher -->
-  <div>{{ userName }}</div>
+  <!-- BAD: API call on every render -->
+  <div>{{ fetchUserName() }}</div>
 
-  <!-- OK: Pure function, no side effects -->
-  <span>{{ formatDate(date) }}</span>
+  <!-- BAD: Logging side effect -->
+  <span>{{ logAndFormat(date) }}</span>
 
-  <!-- OK: Computed property caches result -->
+  <!-- BAD: Expensive computation without caching -->
   <ul>
-    <li v-for="item in filteredAndSortedItems" :key="item.id">
+    <li v-for="item in filterAndSort(items)" :key="item.id">
       {{ item.name }}
     </li>
   </ul>
 
-  <!-- OK: Random value set once -->
-  <p>{{ greeting }}</p>
+  <!-- BAD: Random values change on every render -->
+  <p>{{ getRandomGreeting() }}</p>
 </template>
+```
 
+**Correct:**
+```vue
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 
@@ -144,12 +120,33 @@ const filteredAndSortedItems = computed(() => {
 const greetings = ['Hello', 'Hi', 'Hey']
 const greeting = ref(greetings[Math.floor(Math.random() * greetings.length)])
 </script>
+
+<template>
+  <!-- OK: Pure formatting function -->
+  <p>Count: {{ count }}</p>
+  <button @click="increment">Increment</button>
+
+  <!-- OK: Data fetched via lifecycle/watcher -->
+  <div>{{ userName }}</div>
+
+  <!-- OK: Pure function, no side effects -->
+  <span>{{ formatDate(date) }}</span>
+
+  <!-- OK: Computed property caches result -->
+  <ul>
+    <li v-for="item in filteredAndSortedItems" :key="item.id">
+      {{ item.name }}
+    </li>
+  </ul>
+
+  <!-- OK: Random value set once -->
+  <p>{{ greeting }}</p>
+</template>
 ```
 
 ## Pure Function Guidelines
 
 A pure function:
-
 1. Given the same inputs, always returns the same output
 2. Does not modify any external state
 3. Does not perform I/O operations (network, console, file system)
@@ -186,6 +183,5 @@ function updateAndReturn(obj, key, value) {
 ```
 
 ## Reference
-
 - [Vue.js Template Syntax - Calling Functions](https://vuejs.org/guide/essentials/template-syntax.html#calling-functions)
 - [Vue.js Computed Properties](https://vuejs.org/guide/essentials/computed.html)

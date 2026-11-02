@@ -20,7 +20,6 @@ tags: [vue3, provide-inject, reactivity, composition-api, options-api]
 ## The Gotcha: Primitives Lose Reactivity
 
 **Wrong - Primitive loses reactivity:**
-
 ```vue
 <!-- Provider.vue -->
 <script setup>
@@ -52,7 +51,6 @@ const count = inject('count') // Gets 0, forever static
 ```
 
 **Correct - Provide the ref itself:**
-
 ```vue
 <!-- Provider.vue -->
 <script setup>
@@ -89,7 +87,6 @@ const count = inject('count')
 In Options API, the `provide` option with plain properties is NOT reactive:
 
 **Wrong - Options API without computed:**
-
 ```js
 export default {
   data() {
@@ -107,7 +104,6 @@ export default {
 ```
 
 **Correct - Use computed() in Options API:**
-
 ```js
 import { computed } from 'vue'
 
@@ -192,7 +188,6 @@ const state = inject('state')
 ## Common Mistake: Destructuring Breaks Reactivity
 
 **Wrong - Destructuring provided reactive state:**
-
 ```vue
 <script setup>
 import { inject } from 'vue'
@@ -204,7 +199,6 @@ const { count, message } = inject('state')
 ```
 
 **Correct - Keep the reference intact:**
-
 ```vue
 <script setup>
 import { inject, toRefs } from 'vue'
@@ -227,7 +221,6 @@ If your injected value isn't updating:
 4. Use Vue DevTools to inspect the provided values
 
 ## Reference
-
 - [Vue.js Provide/Inject - Working with Reactivity](https://vuejs.org/guide/components/provide-inject.html#working-with-reactivity)
 - [How to make provide/inject reactive - LogRocket Blog](https://blog.logrocket.com/how-to-make-provide-inject-reactive/)
 - [GitHub Issue: Inject/Provide is not reactive](https://github.com/vuejs/vue/issues/7017)

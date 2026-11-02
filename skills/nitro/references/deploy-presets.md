@@ -26,28 +26,28 @@ The default production preset is `node_server`; dev always uses the isolated `ni
 
 ## Runtime presets
 
-| Preset            | Runtime / Notes                                                               |
-| ----------------- | ----------------------------------------------------------------------------- |
-| `node_server`     | Default. `node .output/server/index.mjs` starts a ready server.               |
-| `node_cluster`    | Multi-core via `node:cluster` (`NITRO_CLUSTER_WORKERS`).                      |
-| `node_middleware` | Exports a `(req, res)` middleware/`listener` for custom servers.              |
-| `bun`             | Optimized [Bun](https://bun.sh) output: `bun run ./.output/server/index.mjs`. |
-| `deno_server`     | [Deno](https://deno.com) server output.                                       |
+| Preset | Runtime / Notes |
+|---|---|
+| `node_server` | Default. `node .output/server/index.mjs` starts a ready server. |
+| `node_cluster` | Multi-core via `node:cluster` (`NITRO_CLUSTER_WORKERS`). |
+| `node_middleware` | Exports a `(req, res)` middleware/`listener` for custom servers. |
+| `bun` | Optimized [Bun](https://bun.sh) output: `bun run ./.output/server/index.mjs`. |
+| `deno_server` | [Deno](https://deno.com) server output. |
 
 Node server env vars: `NITRO_PORT`/`PORT` (3000), `NITRO_HOST`/`HOST`, `NITRO_UNIX_SOCKET`, `NITRO_SSL_CERT`/`NITRO_SSL_KEY`, and graceful-shutdown controls (`NITRO_SHUTDOWN_*`).
 
 ## Provider presets
 
-| Provider    | Preset(s)                                                                       | Auto-detect |
-| ----------- | ------------------------------------------------------------------------------- | ----------- |
-| Cloudflare  | `cloudflare_module` (recommended), `cloudflare_pages`                           | ✅          |
-| Vercel      | `vercel` (Fluid compute)                                                        | ✅          |
-| Netlify     | `netlify`, `netlify_edge`                                                       | ✅          |
-| AWS         | `aws_amplify`, `aws_lambda`                                                     | Amplify ✅  |
-| Azure       | `azure_swa`                                                                     | ✅          |
-| Deno Deploy | `deno_deploy`                                                                   | —           |
-| Firebase    | `firebase_app_hosting`                                                          | ✅          |
-| Others      | GitHub/GitLab Pages, DigitalOcean, Heroku, Render, Zeabur, Stormkit, Koyeb, ... | varies      |
+| Provider | Preset(s) | Auto-detect |
+|---|---|---|
+| Cloudflare | `cloudflare_module` (recommended), `cloudflare_pages` | ✅ |
+| Vercel | `vercel` (Fluid compute) | ✅ |
+| Netlify | `netlify`, `netlify_edge` | ✅ |
+| AWS | `aws_amplify`, `aws_lambda` | Amplify ✅ |
+| Azure | `azure_swa` | ✅ |
+| Deno Deploy | `deno_deploy` | — |
+| Firebase | `firebase_app_hosting` | ✅ |
+| Others | GitHub/GitLab Pages, DigitalOcean, Heroku, Render, Zeabur, Stormkit, Koyeb, ... | varies |
 
 ## Compatibility dates
 

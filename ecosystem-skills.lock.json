@@ -3,11 +3,11 @@
   "sources": {
     "antfu/skills": {
       "repository": "https://github.com/antfu/skills.git",
-      "revision": "e53a142a2420e8cd812cfe9ed0484ab01bc856aa"
+      "revision": "7de210b51c8d48cc405a4eac3e17cbb1396c653b"
     },
     "vuejs-ai/skills": {
       "repository": "https://github.com/vuejs-ai/skills.git",
-      "revision": "c9d355ff23f654309dd02006be671859df0a134c"
+      "revision": "198f0cd8f7f9c0a3d9b566ccc16de6677519ee78"
     },
     "vueuse/skills": {
       "repository": "https://github.com/vueuse/skills.git",
@@ -15,27 +15,43 @@
     },
     "nuxt-modules/yamcodes/arkenv": {
       "repository": "https://github.com/yamcodes/arkenv.git",
-      "revision": "7340aa223bb67c738fb7372ab785efb650312b8d"
-    },
-    "nuxt-modules/comarkdown/comark": {
-      "repository": "https://github.com/comarkdown/comark.git",
-      "revision": "70d929ca23d80595a8eef6fc27ab99e97fef7f43"
-    },
-    "nuxt-modules/rrd108/nuxt-users": {
-      "repository": "https://github.com/rrd108/nuxt-users.git",
-      "revision": "01dca12083354bbbdc965bc5e2e2e0d395fd0844"
-    },
-    "nuxt-modules/victorgarciaesgi/regle": {
-      "repository": "https://github.com/victorgarciaesgi/regle.git",
-      "revision": "9d697719719e0d930a8a5ed66a35b3235e1cbf08"
-    },
-    "nuxt-modules/nuxt/ui": {
-      "repository": "https://github.com/nuxt/ui.git",
-      "revision": "1c25c62e36f683c73b1e9451d04003e592cf1021"
+      "revision": "d7fcbf52804a4f09cbc9a0129b708ae75bb0e830"
     },
     "nuxt-modules/nuxt-modules/better-auth": {
       "repository": "https://github.com/nuxt-modules/better-auth.git",
-      "revision": "5254182ceeba26ad1413367995f2de678b251a11"
+      "revision": "3096c790f0c4febe3b26122b7ffb36ccebcfca86"
+    },
+    "nuxt-modules/comarkdown/comark": {
+      "repository": "https://github.com/comarkdown/comark.git",
+      "revision": "b17f4561833a501c2e0382fec2082b9ecf810a6e"
+    },
+    "nuxt-modules/vercel/eve": {
+      "repository": "https://github.com/vercel/eve.git",
+      "revision": "db7850007a424b2f0d62f1909145acd2ff2d124f"
+    },
+    "nuxt-modules/astraldev/nanime": {
+      "repository": "https://github.com/astraldev/nanime.git",
+      "revision": "565c81795e5a15c2cf01357b797cbbd3735f209f"
+    },
+    "nuxt-modules/websideproject/nuxt-protokit": {
+      "repository": "https://github.com/websideproject/nuxt-protokit.git",
+      "revision": "9881d6d9fd0d6667ca3f968487ef4883c500a91e"
+    },
+    "nuxt-modules/rrd108/nuxt-users": {
+      "repository": "https://github.com/rrd108/nuxt-users.git",
+      "revision": "6a17ae5abab6850b4b032ee7fa2b5ee7aaf090f1"
+    },
+    "nuxt-modules/victorgarciaesgi/regle": {
+      "repository": "https://github.com/victorgarciaesgi/regle.git",
+      "revision": "c2668d6f02ec414bdf01609f323fbdbd6036c838"
+    },
+    "nuxt-modules/nuxt/ui": {
+      "repository": "https://github.com/nuxt/ui.git",
+      "revision": "200b0bfb7a5666c870742f3f43c83cf09234aed9"
+    },
+    "nuxt-modules/yapyak/yapyak": {
+      "repository": "https://github.com/yapyak/yapyak.git",
+      "revision": "146bab4dabb9eea461fe513f8992c67f50ff89a5"
     }
   },
   "skills": {
@@ -52,10 +68,14 @@
     "vue-testing-best-practices": "vuejs-ai/skills",
     "vueuse-functions": "vueuse/skills",
     "arkenv": "nuxt-modules/yamcodes/arkenv",
+    "nuxt-better-auth": "nuxt-modules/nuxt-modules/better-auth",
     "comark": "nuxt-modules/comarkdown/comark",
+    "eve": "nuxt-modules/vercel/eve",
+    "nanime": "nuxt-modules/astraldev/nanime",
+    "nuxt-protokit": "nuxt-modules/websideproject/nuxt-protokit",
     "nuxt-users": "nuxt-modules/rrd108/nuxt-users",
     "regle": "nuxt-modules/victorgarciaesgi/regle",
     "nuxt-ui": "nuxt-modules/nuxt/ui",
-    "nuxt-better-auth": "nuxt-modules/nuxt-modules/better-auth"
+    "yapyak": "nuxt-modules/yapyak/yapyak"
   }
 }

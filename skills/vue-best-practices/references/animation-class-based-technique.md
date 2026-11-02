@@ -18,14 +18,12 @@ tags: [vue3, animation, css, class-binding, state]
 - Consider using `setTimeout` to auto-remove animation classes
 
 **When to Use Class-based Animations:**
-
 - User feedback (shake on error, pulse on success)
 - Attention-grabbing effects (highlight changes)
 - Hover/focus states that need more than CSS transitions
 - Any animation where the element stays mounted
 
 **When to Use Transition Component:**
-
 - Elements entering/leaving the DOM (v-if/v-show)
 - Route transitions
 - List item additions/removals
@@ -33,13 +31,6 @@ tags: [vue3, animation, css, class-binding, state]
 ## Basic Pattern
 
 ```vue
-<template>
-  <div :class="{ shake: showError }">
-    <button @click="submitForm">Submit</button>
-    <span v-if="showError">This feature is disabled!</span>
-  </div>
-</template>
-
 <script setup>
 import { ref } from 'vue'
 
@@ -57,6 +48,13 @@ function submitForm() {
   }
 }
 </script>
+
+<template>
+  <div :class="{ shake: showError }">
+    <button @click="submitForm">Submit</button>
+    <span v-if="showError">This feature is disabled!</span>
+  </div>
+</template>
 
 <style>
 .shake {
@@ -78,15 +76,6 @@ function submitForm() {
 ### Pulse on Success
 
 ```vue
-<template>
-  <button
-    @click="save"
-    :class="{ pulse: saved }"
-  >
-    {{ saved ? 'Saved!' : 'Save' }}
-  </button>
-</template>
-
 <script setup>
 import { ref } from 'vue'
 
@@ -98,6 +87,15 @@ async function save() {
   setTimeout(() => saved.value = false, 1000)
 }
 </script>
+
+<template>
+  <button
+    @click="save"
+    :class="{ pulse: saved }"
+  >
+    {{ saved ? 'Saved!' : 'Save' }}
+  </button>
+</template>
 
 <style>
 .pulse {
@@ -114,14 +112,6 @@ async function save() {
 ### Highlight on Change
 
 ```vue
-<template>
-  <div
-    :class="{ highlight: justUpdated }"
-  >
-    Value: {{ value }}
-  </div>
-</template>
-
 <script setup>
 import { ref, watch } from 'vue'
 
@@ -133,6 +123,14 @@ watch(value, () => {
   setTimeout(() => justUpdated.value = false, 1000)
 })
 </script>
+
+<template>
+  <div
+    :class="{ highlight: justUpdated }"
+  >
+    Value: {{ value }}
+  </div>
+</template>
 
 <style>
 .highlight {
@@ -149,15 +147,6 @@ watch(value, () => {
 ### Bounce Attention
 
 ```vue
-<template>
-  <div
-    :class="{ bounce: needsAttention }"
-    @animationend="needsAttention = false"
-  >
-    <BellIcon />
-  </div>
-</template>
-
 <script setup>
 import { ref } from 'vue'
 
@@ -168,6 +157,15 @@ function notifyUser() {
   // No setTimeout needed - using animationend event
 }
 </script>
+
+<template>
+  <div
+    :class="{ bounce: needsAttention }"
+    @animationend="needsAttention = false"
+  >
+    <BellIcon />
+  </div>
+</template>
 
 <style>
 .bounce {
@@ -186,15 +184,6 @@ function notifyUser() {
 Instead of `setTimeout`, use the `animationend` event for cleaner code:
 
 ```vue
-<template>
-  <div
-    :class="{ animate: isAnimating }"
-    @animationend="isAnimating = false"
-  >
-    Content
-  </div>
-</template>
-
 <script setup>
 import { ref } from 'vue'
 
@@ -205,6 +194,15 @@ function triggerAnimation() {
   // Class is automatically removed when animation ends
 }
 </script>
+
+<template>
+  <div
+    :class="{ animate: isAnimating }"
+    @animationend="isAnimating = false"
+  >
+    Content
+  </div>
+</template>
 ```
 
 ## Composable for Reusable Animations

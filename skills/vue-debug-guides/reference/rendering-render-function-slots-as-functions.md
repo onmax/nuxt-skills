@@ -18,7 +18,6 @@ tags: [vue3, render-function, slots, children, vnode]
 - [ ] For named slots, use an object with slot function properties
 
 **Incorrect:**
-
 ```js
 import { h } from 'vue'
 import MyComponent from './MyComponent.vue'
@@ -36,7 +35,6 @@ h(MyComponent, {
 ```
 
 **Correct:**
-
 ```js
 import { h } from 'vue'
 import MyComponent from './MyComponent.vue'
@@ -166,6 +164,5 @@ h('div', [
 ```
 
 ## Reference
-
 - [Vue.js Render Functions - Passing Slots](https://vuejs.org/guide/extras/render-function.html#passing-slots)
 - [Vue.js Render Functions - Children](https://vuejs.org/guide/extras/render-function.html#children)

@@ -20,7 +20,6 @@ For primitive values, Vue 3.4+ handles this automatically. For objects, manually
 - [ ] Consider if you really need to return an object, or if primitives would suffice
 
 **Incorrect:**
-
 ```vue
 <script setup>
 import { ref, computed, watchEffect } from 'vue'
@@ -44,7 +43,6 @@ watchEffect(() => {
 ```
 
 **Correct:**
-
 ```vue
 <script setup>
 import { ref, computed, watchEffect } from 'vue'
@@ -155,6 +153,5 @@ const optimized = computed((oldValue) => {
 ```
 
 ## Reference
-
 - [Vue.js Performance - Computed Stability](https://vuejs.org/guide/best-practices/performance.html#computed-stability)
 - [Vue.js Computed Properties](https://vuejs.org/guide/essentials/computed.html)

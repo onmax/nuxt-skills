@@ -4,7 +4,7 @@ description: MUST be used for Vue.js tasks. Strongly recommends Composition API 
 license: MIT
 metadata:
   author: github.com/vuejs-ai
-  version: "18.0.0"
+  version: "19.1.0"
 ---
 
 # Vue Best Practices Workflow
@@ -12,10 +12,9 @@ metadata:
 Use this skill as an instruction set. Follow the workflow in order unless the user explicitly asks for a different order.
 
 ## Core Principles
-
 - **Keep state predictable:** one source of truth, derive everything else.
 - **Make data flow explicit:** Props down, Events up for most cases.
-- **Favor small, focused components:** easier to test, reuse, and maintain.
+- **Decompose by responsibility:** keep each implementation focused and the contracts between implementations explicit.
 - **Avoid unnecessary re-renders:** use computed properties and watchers wisely.
 - **Readability counts:** write clear, self-documenting code.
 
@@ -36,13 +35,12 @@ Use this skill as an instruction set. Follow the workflow in order unless the us
 
 ### 1.2 Plan component boundaries before coding (required)
 
-Create a brief component map before implementation for any non-trivial feature.
+For a non-trivial feature or structural refactor, sketch responsibilities, state owners, and the contracts that cross their boundaries. For local fixes, preserve existing boundaries unless they obstruct the change.
 
-- Define each component's single responsibility in one sentence.
-- Keep entry/root and route-level view components as composition surfaces by default.
-- Move feature UI and feature logic out of entry/root/view components unless the task is intentionally a tiny single-file demo.
-- Define props/emits contracts for each child component in the map.
-- Prefer a feature folder layout (`components/<feature>/...`, `composables/use<Feature>.ts`) when adding more than one component.
+- Identify substantial UI responsibilities, stateful workflows, and DOM lifecycles in the affected feature. Sketch their owners, consumers, and the contracts needed for coordination.
+- Judge cohesion by behavior that changes together or maintains a shared invariant. Being on the same page, reading the same data, or having only one consumer does not by itself justify one implementation.
+- Let root/route components compose features and coordinate page behavior. Apply the same responsibility review inside feature components and composables; moving a whole feature to a child or a `useFeature()` function is not sufficient decomposition.
+- Follow the project's layout and scale the design to the affected behavior. A local fix does not require a project-wide component map or new architectural layers.
 
 ## 2) Apply essential Vue foundations (required)
 
@@ -59,49 +57,33 @@ These are essential, must-know foundations. Apply all of them in every Vue task 
 
 - Must-read reference from `1.1`: [sfc](references/sfc.md)
 - Keep SFC sections in this order: `<script>` → `<template>` → `<style>`.
-- Keep SFC responsibilities focused; split large components.
+- Keep SFC responsibilities cohesive; use the boundary criteria below when splitting.
 - Keep templates declarative; move branching/derivation to script.
 - Apply Vue template safety rules (`v-html`, list rendering, conditional rendering choices).
 
-### Keep components focused
+### Choose useful boundaries
 
-Split a component when it has **more than one clear responsibility** (e.g. data orchestration + UI, or multiple independent UI sections).
-
-- Prefer **smaller components + composables** over one “mega component”
-- Move **UI sections** into child components (props in, events out).
-- Move **state/side effects** into composables (`useXxx()`).
-
-Apply objective split triggers. Split the component if **any** condition is true:
-
-- It owns both orchestration/state and substantial presentational markup for multiple sections.
-- It has 3+ distinct UI sections (for example: form, filters, list, footer/status).
-- A template block is repeated or could become reusable (item rows, cards, list entries).
-
-Entry/root and route view rule:
-
-- Keep entry/root and route view components thin: app shell/layout, provider wiring, and feature composition.
-- Do not place full feature implementations in entry/root/view components when those features contain independent parts.
-- For CRUD/list features (todo, table, catalog, inbox), split at least into:
-  - feature container component
-  - input/form component
-  - list (and/or item) component
-  - footer/actions or filter/status component
-- Allow a single-file implementation only for very small throwaway demos; if chosen, explicitly justify why splitting is unnecessary.
+- Extract substantial, separable UI responsibilities and stateful workflows when doing so reduces the code a consumer or maintainer must understand. Single-use components and composables are valid; reuse is not a prerequisite. Keep the state and event handling needed by a UI responsibility with that UI.
+- During a structural refactor, implement useful boundaries for the responsibilities identified above. Review what remains together as well as what was extracted. A small public API can hide an implementation that still needs decomposition.
+- Treat file length, UI section count, and API size as review signals, not extraction thresholds. Keep a small cohesive production feature in one SFC when extra boundaries would not hide meaningful complexity.
+- If a split adds extensive forwarding or mutual callbacks, first move local state and DOM behavior to their UI owner, then identify genuinely shared dependencies and their lifetime. Use explicit contracts or scoped context as appropriate. Merge only when the boundary has no useful responsibility to encapsulate, not merely to reduce wiring.
+- Group inputs only when they form a cohesive concept. Passing a whole controller, grouping unrelated handlers, or adding catch-all events does not reduce the dependencies consumers must understand.
 
 ### Component data flow
 
 - Must-read reference from `1.1`: [component-data-flow](references/component-data-flow.md)
 - Use props down, events up as the primary model.
 - Use `v-model` only for true two-way component contracts.
-- Use provide/inject only for deep-tree dependencies or shared context.
+- Use typed, scoped provide/inject for shared descendant dependencies when intermediate components only relay them; reassess component boundaries first. See the data-flow reference for scope and ownership.
 - Keep contracts explicit and typed with `defineProps`, `defineEmits`, and `InjectionKey` as needed.
 
 ### Composables
 
 - Must-read reference from `1.1`: [composables](references/composables.md)
-- Extract logic into composables when it is reused, stateful, or side-effect heavy.
-- Keep composable APIs small, typed, and predictable.
-- Separate feature logic from presentational components.
+- Compose substantial stateful behavior from focused capabilities, including single-use workflows that improve code organization. Keep simple component-local logic local; use plain functions for pure calculations.
+- Distinguish implementation ownership from the public facade. A coordinator connects capabilities and implements cross-capability operations; it should not contain all their implementations or re-export all their internals.
+- Return consumer-facing state and actions. If a consumer needs unrelated groups of internals, review that consumer's responsibilities too. Encapsulate reactive bookkeeping so consumers can read current values without manually triggering invalidation.
+- Keep DOM interaction and cleanup with its owning UI or composable. Preserve the explicit coordination other features need, such as committing a pending draft before saving.
 
 ## 3) Consider optional features only when requirements call for them
 
@@ -145,11 +127,9 @@ Performance work is a post-functionality pass. Do not optimize before core behav
 - All must-read references were read and applied.
 - Reactivity model is minimal and predictable.
 - SFC structure and template rules are followed.
-- Components are focused and well-factored, splitting when needed.
-- Entry/root and route view components remain composition surfaces unless there is an explicit small-demo exception.
-- Component split decisions are explicit and defensible (responsibility boundaries are clear).
-- Data flow contracts are explicit and typed.
-- Composables are used where reuse/complexity justifies them.
-- Moved state/side effects into composables if applicable
+- Both sides of the boundary review pass: substantial separable responsibilities are not still concentrated in one implementation, and extracted units hide useful complexity rather than merely forward it.
+- Public contracts are typed and hide internals. Trace a representative local change through the code: it should stay with its responsible UI/workflow and legitimate coordination, without unrelated forwarding edits.
+- State has explicit ownership and lifetime; shared consumers use the same intended instance, independent instances remain independent, and side effects clean up with their owner.
+- Refactors preserve existing behavior, including pending work and cross-feature operations. Use the project's applicable tests; API or file-size reductions alone are not evidence of success.
 - Optional features are used only when requirements demand them.
 - Performance changes were applied only after functionality was complete.

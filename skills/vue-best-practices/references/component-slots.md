@@ -21,7 +21,6 @@ tags: [vue3, slots, components, typescript, composables]
 ## Shorthand syntax for named slots
 
 **BAD:**
-
 ```vue
 <MyComponent>
   <template v-slot:header> ... </template>
@@ -29,7 +28,6 @@ tags: [vue3, slots, components, typescript, composables]
 ```
 
 **GOOD:**
-
 ```vue
 <MyComponent>
   <template #header> ... </template>
@@ -41,7 +39,6 @@ tags: [vue3, slots, components, typescript, composables]
 Use `$slots` checks when wrapper elements add spacing, borders, or layout constraints.
 
 **BAD:**
-
 ```vue
 <!-- Card.vue -->
 <template>
@@ -62,7 +59,6 @@ Use `$slots` checks when wrapper elements add spacing, borders, or layout constr
 ```
 
 **GOOD:**
-
 ```vue
 <!-- Card.vue -->
 <template>
@@ -87,7 +83,6 @@ Use `$slots` checks when wrapper elements add spacing, borders, or layout constr
 In `<script setup lang="ts">`, use `defineSlots` so slot consumers get autocomplete and static checks.
 
 **BAD:**
-
 ```vue
 <!-- ProductList.vue -->
 <script setup lang="ts">
@@ -109,7 +104,6 @@ defineProps<{ products: Product[] }>()
 ```
 
 **GOOD:**
-
 ```vue
 <!-- ProductList.vue -->
 <script setup lang="ts">
@@ -141,7 +135,6 @@ defineSlots<{
 Fallback content makes components resilient when parents omit optional slots.
 
 **BAD:**
-
 ```vue
 <!-- SubmitButton.vue -->
 <template>
@@ -152,7 +145,6 @@ Fallback content makes components resilient when parents omit optional slots.
 ```
 
 **GOOD:**
-
 ```vue
 <!-- SubmitButton.vue -->
 <template>
@@ -167,7 +159,6 @@ Fallback content makes components resilient when parents omit optional slots.
 Renderless components are still useful for slot-driven composition, but composables are usually cleaner for logic-only reuse.
 
 **BAD:**
-
 ```vue
 <!-- MouseTracker.vue -->
 <script setup lang="ts">
@@ -191,7 +182,6 @@ onUnmounted(() => window.removeEventListener('mousemove', onMove))
 ```
 
 **GOOD:**
-
 ```ts
 // composables/useMouse.ts
 import { ref, onMounted, onUnmounted } from 'vue'

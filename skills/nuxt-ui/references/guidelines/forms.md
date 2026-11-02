@@ -47,14 +47,14 @@ function onSubmit(event: FormSubmitEvent<Schema>) {
 
 ## UFormField props
 
-| Prop          | Purpose                                     |
-| ------------- | ------------------------------------------- |
-| `name`        | Links to schema field for validation errors |
-| `label`       | Visible label text                          |
-| `description` | Help text below the input                   |
-| `hint`        | Right-aligned hint text (e.g., "Optional")  |
-| `required`    | Shows required indicator                    |
-| `size`        | Inherits to child input                     |
+| Prop | Purpose |
+|---|---|
+| `name` | Links to schema field for validation errors |
+| `label` | Visible label text |
+| `description` | Help text below the input |
+| `hint` | Right-aligned hint text (e.g., "Optional") |
+| `required` | Shows required indicator |
+| `size` | Inherits to child input |
 
 ## Field layout patterns
 

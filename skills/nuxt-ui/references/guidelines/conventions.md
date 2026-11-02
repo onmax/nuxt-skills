@@ -66,7 +66,6 @@ Recommended `.vscode/settings.json` for Tailwind IntelliSense autocomplete with 
 ## UApp wrapper
 
 Always wrap your app in `UApp` — it provides:
-
 - Toast container (`useToast`)
 - Tooltip provider
 - Programmatic overlay context (`useOverlay`)
@@ -134,17 +133,17 @@ export default defineAppConfig({
 
 Most components follow consistent slot naming:
 
-| Slot        | Used by                                | Purpose                         |
-| ----------- | -------------------------------------- | ------------------------------- |
-| `#header`   | Card, Modal, Slideover, DashboardPanel | Top section                     |
-| `#body`     | DashboardPanel                         | Scrollable content area         |
-| `#footer`   | Card, Modal, Slideover, DashboardPanel | Bottom section                  |
-| `#left`     | Page, DashboardNavbar                  | Left sidebar or content         |
-| `#right`    | Page, DashboardNavbar, Header          | Right sidebar or content        |
-| `#leading`  | Input, Button, Alert                   | Before main content (icon area) |
-| `#trailing` | Input, Button                          | After main content (icon area)  |
-| `#content`  | Modal, Slideover, Popover, Tooltip     | Full content override           |
-| `#default`  | Most components                        | Main content area               |
+| Slot | Used by | Purpose |
+|---|---|---|
+| `#header` | Card, Modal, Slideover, DashboardPanel | Top section |
+| `#body` | DashboardPanel | Scrollable content area |
+| `#footer` | Card, Modal, Slideover, DashboardPanel | Bottom section |
+| `#left` | Page, DashboardNavbar | Left sidebar or content |
+| `#right` | Page, DashboardNavbar, Header | Right sidebar or content |
+| `#leading` | Input, Button, Alert | Before main content (icon area) |
+| `#trailing` | Input, Button | After main content (icon area) |
+| `#content` | Modal, Slideover, Popover, Tooltip | Full content override |
+| `#default` | Most components | Main content area |
 
 ## Items arrays
 
@@ -235,30 +234,6 @@ const items = [
 defineShortcuts(extractShortcuts(items))
 ```
 
-### useTour
-
-Guided tours (v4.9+): re-anchors a single `UPopover` across steps. You control the content and navigation.
-
-```vue
-<script setup lang="ts">
-const tour = useTour([
-  { target: '#cta', title: 'Get started' },
-  { target: null, title: 'All set' }
-])
-</script>
-
-<template>
-  <UButton @click="tour.start()">Start tour</UButton>
-
-  <UPopover :open="tour.open.value" :reference="tour.reference.value" :dismissible="false">
-    <template #content>
-      <UButton :disabled="!tour.hasPrev.value" @click="tour.prev()">Back</UButton>
-      <UButton @click="tour.next()">{{ tour.hasNext.value ? 'Next' : 'Finish' }}</UButton>
-    </template>
-  </UPopover>
-</template>
-```
-
 ### Internationalization (i18n)
 
 Nuxt UI supports 50+ locales. Set the locale on `UApp` — all components inherit it.
@@ -315,9 +290,9 @@ export default defineNuxtConfig({
   modules: ['@nuxt/ui', '@nuxtjs/i18n'],
   i18n: {
     locales: [
-      { code: 'en', name: 'English' },
-      { code: 'fr', name: 'Français' },
-      { code: 'ar', name: 'العربية' }
+      { code: 'en', language: 'en', name: 'English' },
+      { code: 'fr', language: 'fr', name: 'Français' },
+      { code: 'ar', language: 'ar', dir: 'rtl', name: 'العربية' }
     ]
   }
 })
@@ -325,31 +300,25 @@ export default defineNuxtConfig({
 
 ```vue
 <script setup lang="ts">
-import * as locales from '@nuxt/ui/locale'
+const head = useLocaleHead()
 
-const { locale } = useI18n()
-
-const lang = computed(() => locales[locale.value]?.code)
-const dir = computed(() => locales[locale.value]?.dir)
-
-useHead({
-  htmlAttrs: { lang, dir }
-})
+useHead(() => ({
+  htmlAttrs: head.value.htmlAttrs
+}))
 </script>
 
 <template>
-  <UApp :locale="locales[locale]">
+  <UApp>
     <NuxtPage />
   </UApp>
 </template>
 ```
 
-Each locale has a `dir` property (`'ltr'` or `'rtl'`). `UApp` uses it to set directionality on all components. Use `useHead` to propagate `lang` and `dir` to the `<html>` element.
+With `@nuxtjs/i18n` installed, `UApp` follows the current i18n locale and only bundles the Nuxt UI locales matching `i18n.locales`. Don't use `import * as locales from '@nuxt/ui/locale'`: it bundles every locale. Use `useLocaleHead` to propagate `lang` and `dir` to the `<html>` element.
 
 ## Color mode
 
 Nuxt UI registers `@nuxtjs/color-mode` automatically. Built-in components for switching:
-
 - `UColorModeButton` — single button toggle (light/dark)
 - `UColorModeSwitch` — toggle switch
 - `UColorModeSelect` — dropdown with system/light/dark options

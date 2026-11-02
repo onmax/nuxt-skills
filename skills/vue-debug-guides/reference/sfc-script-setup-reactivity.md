@@ -18,7 +18,6 @@ tags: [vue3, sfc, script-setup, reactivity, ref, composition-api]
 - [ ] Use `computed()` from Vue, not a plain function, for derived reactive state
 
 **Problematic Code:**
-
 ```vue
 <script setup>
 // BAD: These are NOT reactive!
@@ -47,7 +46,6 @@ function updateMessage() {
 ```
 
 **Correct Code:**
-
 ```vue
 <script setup>
 import { ref, reactive, computed } from 'vue'
@@ -192,7 +190,6 @@ But in event handlers written inline, you might still need `.value`:
 ```
 
 ## Reference
-
 - [Vue.js Reactivity Fundamentals](https://vuejs.org/guide/essentials/reactivity-fundamentals.html)
 - [Vue.js ref()](https://vuejs.org/api/reactivity-core.html#ref)
 - [Vue.js reactive()](https://vuejs.org/api/reactivity-core.html#reactive)

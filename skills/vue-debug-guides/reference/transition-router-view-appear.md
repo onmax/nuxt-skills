@@ -18,7 +18,6 @@ tags: [vue3, transition, vue-router, appear, initial-load, navigation]
 - [ ] Consider whether initial animation is desired for your UX
 
 **Expected Behavior (Normal Transition):**
-
 ```vue
 <template>
   <!-- Without appear: No animation on initial render -->
@@ -34,7 +33,6 @@ tags: [vue3, transition, vue-router, appear, initial-load, navigation]
 ```
 
 **RouterView Behavior (Different!):**
-
 ```vue
 <template>
   <!-- RouterView transitions ALWAYS animate on initial load -->
@@ -69,14 +67,6 @@ Since the component wasn't present in the initial render and is "inserted" after
 ## If You Want to Disable Initial Animation
 
 ```vue
-<template>
-  <RouterView v-slot="{ Component }">
-    <Transition :name="isInitialLoad ? '' : 'fade'" mode="out-in">
-      <component :is="Component" />
-    </Transition>
-  </RouterView>
-</template>
-
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
@@ -92,19 +82,19 @@ router.isReady().then(() => {
   }, 0)
 })
 </script>
+
+<template>
+  <RouterView v-slot="{ Component }">
+    <Transition :name="isInitialLoad ? '' : 'fade'" mode="out-in">
+      <component :is="Component" />
+    </Transition>
+  </RouterView>
+</template>
 ```
 
 ## Alternative: Use CSS to Skip First Animation
 
 ```vue
-<template>
-  <RouterView v-slot="{ Component }">
-    <Transition name="fade" mode="out-in">
-      <component :is="Component" :class="{ 'skip-initial': isInitialLoad }" />
-    </Transition>
-  </RouterView>
-</template>
-
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
@@ -116,6 +106,14 @@ router.isReady().then(() => {
   isInitialLoad.value = false
 })
 </script>
+
+<template>
+  <RouterView v-slot="{ Component }">
+    <Transition name="fade" mode="out-in">
+      <component :is="Component" :class="{ 'skip-initial': isInitialLoad }" />
+    </Transition>
+  </RouterView>
+</template>
 
 <style>
 .fade-enter-active,
@@ -191,6 +189,5 @@ const routes = [
 ```
 
 ## Reference
-
 - [Vue Router Transitions](https://router.vuejs.org/guide/advanced/transitions.html)
 - [Vue.js Transition appear](https://vuejs.org/guide/built-ins/transition.html#transition-on-appear)

@@ -78,7 +78,6 @@ npx nuxt dev --tunnel
 | `--clear` | Clear console on restart |
 
 **Environment Variables:**
-
 - `NUXT_PORT` or `PORT` - Default port
 - `NUXT_HOST` or `HOST` - Default host
 
@@ -173,14 +172,6 @@ npx nuxt upgrade
 # Upgrade to nightly release
 npx nuxt upgrade --nightly
 ```
-
-### Nuxt CLI v4 additions (Nuxt 4.6+)
-
-`nuxt dev` ships an interactive terminal UI with richer diagnostics and a lock file in `.nuxt/`. New commands include `nuxt curl`, `nuxt task` and `nuxt docs "<query>"` (docs search) — run `npx nuxt <command> --help` for flags.
-
-`nuxt init` is removed — use `npm create nuxt@latest`. Nuxt 2 / `@nuxt/bridge` are no longer supported.
-
-> After upgrading to 4.5.1+ (security fixes: island props RCE, route rule bypass, cache payload disclosure) run `npx nuxt upgrade --dedupe`, and purge CDN/edge caches if you use `cache`/`swr`/`isr` route rules.
 
 ## Module Commands
 

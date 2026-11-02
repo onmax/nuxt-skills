@@ -20,7 +20,6 @@ This is a critical issue for Nuxt, Quasar SSR, and custom Vue SSR setups.
 - [ ] Test SSR applications thoroughly for hydration issues
 
 **Problem - SSR Hydration Mismatch:**
-
 ```vue
 <template>
   <!-- Server renders nothing for teleported content -->
@@ -35,14 +34,12 @@ This is a critical issue for Nuxt, Quasar SSR, and custom Vue SSR setups.
 ```
 
 Common error messages:
-
 ```
 [Vue warn]: Hydration children mismatch in <div>:
 server rendered element contains fewer child nodes than client vdom.
 ```
 
 **Solution 1 - Nuxt ClientOnly:**
-
 ```vue
 <template>
   <button @click="showModal = true">Open Modal</button>
@@ -59,19 +56,7 @@ server rendered element contains fewer child nodes than client vdom.
 ```
 
 **Solution 2 - Manual Client Detection:**
-
 ```vue
-<template>
-  <button @click="showModal = true">Open Modal</button>
-
-  <!-- Only render after component mounts on client -->
-  <Teleport v-if="isMounted" to="body">
-    <div v-if="showModal" class="modal">
-      Modal content
-    </div>
-  </Teleport>
-</template>
-
 <script setup>
 import { ref, onMounted } from 'vue'
 
@@ -82,10 +67,20 @@ onMounted(() => {
   isMounted.value = true
 })
 </script>
+
+<template>
+  <button @click="showModal = true">Open Modal</button>
+
+  <!-- Only render after component mounts on client -->
+  <Teleport v-if="isMounted" to="body">
+    <div v-if="showModal" class="modal">
+      Modal content
+    </div>
+  </Teleport>
+</template>
 ```
 
 **Solution 3 - Vue 3.5+ data-allow-mismatch:**
-
 ```vue
 <template>
   <!-- Suppress hydration warnings for intentional mismatches -->
@@ -128,7 +123,6 @@ For SSR, ensure consistent ordering or wrap each in `ClientOnly`.
 ## Element Plus and UI Library SSR
 
 Many UI libraries use Teleport internally. Element Plus components that use Teleport include:
-
 - ElDialog
 - ElDrawer
 - ElTooltip
@@ -153,7 +147,6 @@ Many UI libraries use Teleport internally. Element Plus components that use Tele
 - Nested teleports may cause app to break on hydration (Vue issue #5242)
 
 ## Reference
-
 - [Vue.js SSR - Teleports](https://vuejs.org/guide/scaling-up/ssr.html#teleports)
 - [Element Plus SSR Guide](https://element-plus.org/en-US/guide/ssr.html)
 - [Nuxt ClientOnly Component](https://nuxt.com/docs/api/components/client-only)

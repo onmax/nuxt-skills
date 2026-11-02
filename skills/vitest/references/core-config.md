@@ -159,6 +159,16 @@ defineConfig({
 - **`test.sequential`/`describe.sequential`/`sequential` removed** — use `{ concurrent: false }`.
 - `deps.optimizer.web` renamed to `deps.optimizer.client`; `deps.inline`/`deps.external` moved under `server.deps`.
 
+## v5.1 Additions
+
+- **`cache`** (default `true`) stores per-file results (failed/duration/last run) used to run failed and slow files first and by `--last-failed`; `cache.dir` is a no-op — use `cacheDir`.
+- **`experimental.recordDependencies`** + **`experimental.vcsProvider: 'mtime'`** back `--since-last-run` (see [features-filtering](features-filtering.md)). `vcsProvider` also accepts `'git'` or a custom `VCSProvider`, whose `findChangedFiles` now receives `resolver.getDependencies()`.
+- **`ui: { enabled, theme: 'auto' | 'light' | 'dark' }`** — `ui: true` is shorthand for `{ enabled: true }`; `theme` also applies to the Browser Mode UI.
+- **`fakeTimers.fakeNodeBuiltins`** fakes `node:timers` and `node:timers/promises`.
+- **`coverage.ignoreNode(node, type)`** (v8) skips generated code by AST node; return `true`, or `'ignore-this-and-nested-nodes'`.
+- In multi-project runs `process.cwd()` stays where Vitest started, regardless of project `root`; use `pool: 'forks'` plus a project `setupFiles` calling `process.chdir()` if tests need it.
+- In Browser Mode each browser instance counts as a worker for `maxWorkers`.
+
 ## Conditional Configuration
 
 Use `mode` or `process.env.VITEST` for test-specific config:

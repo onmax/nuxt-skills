@@ -18,7 +18,6 @@ tags: [vue3, conditional-rendering, v-show, template, limitations]
 - [ ] If you need to toggle multiple elements frequently, wrap in a real element (div, span)
 
 **Incorrect:**
-
 ```html
 <!-- WRONG: v-show on <template> - silently does nothing -->
 <template>
@@ -47,7 +46,6 @@ tags: [vue3, conditional-rendering, v-show, template, limitations]
 ```
 
 **Correct:**
-
 ```html
 <!-- CORRECT: Use v-if on <template> for multiple elements -->
 <template>
@@ -114,14 +112,13 @@ tags: [vue3, conditional-rendering, v-show, template, limitations]
 
 ## When to Choose Each
 
-| Need                                     | Use                                  |
-| ---------------------------------------- | ------------------------------------ |
-| Toggle multiple elements with CSS        | Wrap in real element + `v-show`      |
-| Toggle multiple elements without wrapper | `<template v-if>`                    |
-| Need v-else branches                     | `v-if`/`v-else`                      |
-| Frequent toggle, single element          | `v-show`                             |
-| Frequent toggle, need "else"             | Two `v-show` with negated conditions |
+| Need | Use |
+|------|-----|
+| Toggle multiple elements with CSS | Wrap in real element + `v-show` |
+| Toggle multiple elements without wrapper | `<template v-if>` |
+| Need v-else branches | `v-if`/`v-else` |
+| Frequent toggle, single element | `v-show` |
+| Frequent toggle, need "else" | Two `v-show` with negated conditions |
 
 ## Reference
-
 - [Vue.js Conditional Rendering - v-show](https://vuejs.org/guide/essentials/conditional.html#v-show)

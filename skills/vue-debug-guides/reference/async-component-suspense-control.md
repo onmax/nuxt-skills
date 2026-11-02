@@ -18,7 +18,6 @@ tags: [vue3, suspense, async-components, loading, error-handling]
 - [ ] Provide a retry path for failed loads
 
 **Incorrect:**
-
 ```vue
 <script setup>
 import { defineAsyncComponent } from 'vue'
@@ -40,7 +39,6 @@ const AsyncDashboard = defineAsyncComponent({
 ```
 
 **Correct (component handles its own states):**
-
 ```vue
 <script setup>
 import { defineAsyncComponent } from 'vue'
@@ -60,7 +58,6 @@ const AsyncDashboard = defineAsyncComponent({
 ```
 
 **Correct (parent Suspense owns loading/error UI):**
-
 ```vue
 <script setup>
 import { onErrorCaptured, ref } from 'vue'

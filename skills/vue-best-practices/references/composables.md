@@ -12,92 +12,119 @@ tags: [vue3, composables, composition-api, code-organization, api-design, readon
 
 ## Task List
 
-- Compose complex behavior from small, focused composables
-- Use options objects for composables with multiple optional parameters
-- Return readonly state when updates must flow through explicit actions
-- Keep pure utility functions as plain utilities, not composables
-- Organize composable and component code by feature concern, and extract composables when components grow
+- Decompose substantial workflows by responsibility, even when used once; keep simple local state in its component
+- Keep related state, actions, and lifecycle cleanup together
+- Expose consumer-facing state and actions; keep internal refs and helpers private
+- Use options objects for optional configuration, not to hide unrelated dependencies
+- Return readonly state when mutations must go through actions
+- Keep pure utility functions as plain utilities
 
-## Compose Composables from Smaller Primitives
+## Choose an Extraction Boundary
+
+Extract a composable when a substantial stateful responsibility can be understood and changed through a focused contract, even if it has one caller. Sharing source data does not mean loading, filtering, editing, and DOM interactions must have one implementation. Keep together the state, actions, and cleanup that maintain the responsibility's invariant.
+
+Reactive state alone does not justify extraction. A disclosure toggle can stay in its component. Conversely, a feature-wide name or a narrow return object does not make a large workflow cohesive. Review internal responsibilities as well as exported members.
+
+When an extraction needs most of the caller's refs or mutual callbacks, revise ownership first: move related state and behavior together, pass the capability actually needed, and put cross-capability sequencing in their common coordinator. Keep a unit together when splitting would fragment a shared invariant without hiding meaningful complexity.
+
+**Appropriate local state for a single disclosure:**
+```vue
+<script setup lang="ts">
+import { shallowRef } from 'vue'
+
+const expanded = shallowRef(false)
+</script>
+
+<template>
+  <button type="button" :aria-expanded="expanded" @click="expanded = !expanded">
+    Details
+  </button>
+  <p v-if="expanded">Additional information</p>
+</template>
+```
+
+## Extract a Stateful Responsibility, Not the Whole Component Script
+
+A substantial request lifecycle can have one consumer while still benefiting from its own implementation. The UI keeps its input and rendering; the request workflow owns cancellation and loading/error state. This example illustrates a boundary, not a requirement to extract every query or form field.
 
 **BAD:**
-
-```vue
-<script setup>
-import { ref, computed, onMounted, onUnmounted } from 'vue'
-
-const x = ref(0)
-const y = ref(0)
-const inside = ref(false)
-const el = ref(null)
-
-function onMove(e) {
-  x.value = e.pageX
-  y.value = e.pageY
-  if (!el.value) return
-  const r = el.value.getBoundingClientRect()
-  inside.value = x.value >= r.left && x.value <= r.right &&
-    y.value >= r.top && y.value <= r.bottom
+```ts
+// A different filename does not separate the page's responsibilities.
+export function useProductPage() {
+  // Loading, request cancellation, drafts, pointer handlers, and dialog focus
+  // are all implemented here and returned to the page as one controller.
 }
-
-onMounted(() => window.addEventListener('mousemove', onMove))
-onUnmounted(() => window.removeEventListener('mousemove', onMove))
-</script>
 ```
 
 **GOOD:**
+```ts
+// useProductSearch.ts
+import { shallowRef, watch, type Ref } from 'vue'
 
-```javascript
-// composables/useEventListener.js
-import { onMounted, onUnmounted, toValue } from 'vue'
+export interface Product { id: string; name: string }
+type SearchProducts = (query: string, signal: AbortSignal) => Promise<Product[]>
 
-export function useEventListener(target, event, callback) {
-  onMounted(() => toValue(target).addEventListener(event, callback))
-  onUnmounted(() => toValue(target).removeEventListener(event, callback))
+export function useProductSearch(query: Readonly<Ref<string>>, search: SearchProducts) {
+  const products = shallowRef<readonly Product[]>([])
+  const pending = shallowRef(false)
+  const error = shallowRef<string | null>(null)
+
+  watch(query, async (value, _previous, onCleanup) => {
+    const controller = new AbortController()
+    let current = true
+    onCleanup(() => { current = false; controller.abort() })
+    pending.value = true
+    error.value = null
+    try {
+      const result = await search(value, controller.signal)
+      if (current) products.value = result
+    } catch (cause) {
+      if (current) error.value = cause instanceof Error ? cause.message : String(cause)
+    } finally {
+      if (current) pending.value = false
+    }
+  }, { immediate: true })
+
+  return { products, pending, error }
 }
 ```
 
-```javascript
-// composables/useMouse.js
-import { ref } from 'vue'
-import { useEventListener } from './useEventListener'
+```vue
+<!-- ProductSearch.vue -->
+<script setup lang="ts">
+import { shallowRef } from 'vue'
+import { searchProducts } from './product-api'
+import { useProductSearch } from './useProductSearch'
 
-export function useMouse() {
-  const x = ref(0)
-  const y = ref(0)
+const query = shallowRef('')
+const { products, pending, error } = useProductSearch(query, searchProducts)
+const emit = defineEmits<{ select: [id: string] }>()
+</script>
 
-  useEventListener(window, 'mousemove', (e) => {
-    x.value = e.pageX
-    y.value = e.pageY
-  })
-
-  return { x, y }
-}
+<template>
+  <label>Search products <input v-model="query" /></label>
+  <p v-if="error" role="alert">{{ error }}</p>
+  <p v-if="pending" role="status">Loading…</p>
+  <ul>
+    <li v-for="product in products" :key="product.id">
+      <button type="button" @click="emit('select', product.id)">{{ product.name }}</button>
+    </li>
+  </ul>
+</template>
 ```
 
-```javascript
-// composables/useMouseInElement.js
-import { computed } from 'vue'
-import { useMouse } from './useMouse'
+A larger feature can compose additional focused capabilities through their relevant inputs/actions. Keep sequencing that spans them in the caller; do not move their private refs back into a universal controller. A child component may call its own composables, so ancestors need not receive and forward all their state.
 
-export function useMouseInElement(elementRef) {
-  const { x, y } = useMouse()
+## Keep Composable APIs Focused
 
-  const isOutside = computed(() => {
-    if (!elementRef.value) return true
-    const rect = elementRef.value.getBoundingClientRect()
-    return x.value < rect.left || x.value > rect.right ||
-      y.value < rect.top || y.value > rect.bottom
-  })
-
-  return { x, y, isOutside }
-}
-```
+- Return the state and operations consumers need. Keep request handles, bookkeeping, and private helpers internal.
+- When composing composables, preserve meaningful capability boundaries rather than re-exporting every internal member. Grouping the same internals under nested objects changes naming, not ownership.
+- Create shared state once per intended scope and pass or provide that instance. Calling a stateful composable in each consumer usually creates separate state.
+- Keep DOM refs, focus, and pointer handling with their owning UI or composable. Share only the state or operations needed for coordination.
 
 ## Use Options Object Pattern for Composable Parameters
 
 **BAD:**
-
 ```javascript
 export function useFetch(url, method, headers, timeout, retries, immediate) {
   // hard to read and easy to misorder
@@ -107,7 +134,6 @@ useFetch('/api/users', 'GET', null, 5000, 3, true)
 ```
 
 **GOOD:**
-
 ```javascript
 export function useFetch(url, options = {}) {
   const {
@@ -146,7 +172,6 @@ export function useCounter(options: UseCounterOptions = {}) {
 ## Return Readonly State with Explicit Actions
 
 **BAD:**
-
 ```javascript
 export function useCart() {
   const items = ref([])
@@ -159,7 +184,6 @@ items.value.push({ id: 1, price: 10 })
 ```
 
 **GOOD:**
-
 ```javascript
 import { ref, computed, readonly } from 'vue'
 
@@ -195,7 +219,6 @@ export function useCart() {
 ## Keep Utilities as Utilities
 
 **BAD:**
-
 ```javascript
 export function useFormatters() {
   const formatDate = (date) => new Intl.DateTimeFormat('en-US').format(date)
@@ -208,7 +231,6 @@ const { formatDate } = useFormatters()
 ```
 
 **GOOD:**
-
 ```javascript
 // utils/formatters.js
 export function formatDate(date) {
@@ -231,70 +253,5 @@ import { formatCurrency } from '@/utils/formatters'
 export function useInvoiceSummary(invoiceRef) {
   const totalLabel = computed(() => formatCurrency(invoiceRef.value.total))
   return { totalLabel }
-}
-```
-
-## Organize Composable and Component Code by Feature Concern
-
-**BAD:**
-
-```vue
-<script setup>
-import { ref, computed, watch, onMounted } from 'vue'
-
-const searchQuery = ref('')
-const items = ref([])
-const selected = ref(null)
-const showModal = ref(false)
-const sortBy = ref('name')
-const filter = ref('all')
-const loading = ref(false)
-
-const filtered = computed(() => items.value.filter(i => i.category === filter.value))
-function openModal() { showModal.value = true }
-const sorted = computed(() => [...filtered.value].sort(/* ... */))
-watch(searchQuery, () => { /* ... */ })
-onMounted(() => { /* ... */ })
-</script>
-```
-
-**GOOD:**
-
-```vue
-<script setup>
-import { useItems } from '@/composables/useItems'
-import { useSearch } from '@/composables/useSearch'
-import { useSelectionModal } from '@/composables/useSelectionModal'
-
-// Data
-const { items, loading, fetchItems } = useItems()
-
-// Search/filter/sort
-const { query, visibleItems } = useSearch(items)
-
-// Selection + modal
-const { selectedItem, isModalOpen, selectItem, closeModal } = useSelectionModal()
-</script>
-```
-
-```javascript
-// composables/useItems.js
-import { ref, onMounted } from 'vue'
-
-export function useItems() {
-  const items = ref([])
-  const loading = ref(false)
-
-  async function fetchItems() {
-    loading.value = true
-    try {
-      items.value = await api.getItems()
-    } finally {
-      loading.value = false
-    }
-  }
-
-  onMounted(fetchItems)
-  return { items, loading, fetchItems }
 }
 ```

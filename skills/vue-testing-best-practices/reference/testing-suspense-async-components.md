@@ -21,7 +21,6 @@ Create a test wrapper component with Suspense or use a `mountSuspense` helper fu
 - [ ] Consider using `@testing-library/vue` with caution (has Suspense issues)
 
 **Incorrect:**
-
 ```javascript
 import { mount } from '@vue/test-utils'
 import AsyncUserProfile from './AsyncUserProfile.vue'
@@ -41,7 +40,6 @@ test('displays user data', async () => {
 ```
 
 **Correct - Manual Wrapper Component:**
-
 ```javascript
 import { mount, flushPromises } from '@vue/test-utils'
 import { defineComponent, Suspense } from 'vue'
@@ -74,7 +72,6 @@ test('displays user data', async () => {
 ```
 
 **Correct - Reusable Helper Function:**
-
 ```javascript
 // test-utils.js
 import { mount, flushPromises } from '@vue/test-utils'
@@ -190,7 +187,6 @@ test('renders async page', async () => {
 ## Important Caveats
 
 ### @testing-library/vue Limitation
-
 ```javascript
 // CAUTION: @testing-library/vue has issues with Suspense
 // Use @vue/test-utils for async components instead
@@ -217,7 +213,6 @@ test('async component with testing library', async () => {
 ```
 
 ### Accessing Component Instance
-
 ```javascript
 test('access vm on async component', async () => {
   const { wrapper, component } = await mountSuspense(AsyncComponent)
@@ -229,7 +224,6 @@ test('access vm on async component', async () => {
 ```
 
 ## Reference
-
 - [Vue Test Utils - Async Suspense](https://test-utils.vuejs.org/guide/advanced/async-suspense)
 - [Vue.js Suspense Documentation](https://vuejs.org/guide/built-ins/suspense.html)
 - [Testing Library Vue Suspense Issue](https://github.com/testing-library/vue-testing-library/issues/230)

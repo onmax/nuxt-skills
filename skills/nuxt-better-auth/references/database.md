@@ -2,7 +2,14 @@
 
 ## Fastest database-backed path
 
-Use NuxtHub.
+Use NuxtHub. Schema generation also needs the Better Auth CLI package `auth`, on the same version as `better-auth`:
+
+```bash
+pnpm add @nuxthub/core
+pnpm add -D auth@<installed better-auth version>
+```
+
+A different `auth` version installs a second `better-auth` and breaks Better Auth types. The module reports `NUXT_AUTH_CLI_MISSING` or `NUXT_AUTH_CLI_VERSION_MISMATCH` with the exact command to run.
 
 ```ts
 export default defineNuxtConfig({

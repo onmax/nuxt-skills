@@ -34,7 +34,6 @@ This caveat is not obvious and can cause hard-to-debug issues when you assume th
 - [ ] Test with dynamic list operations (add, remove, reorder) to verify behavior
 
 **Incorrect:**
-
 ```vue
 <script setup>
 import { ref, useTemplateRef, onMounted } from 'vue'
@@ -61,7 +60,6 @@ onMounted(() => {
 ```
 
 **Correct:**
-
 ```vue
 <script setup>
 import { ref, useTemplateRef, onMounted } from 'vue'
@@ -171,5 +169,4 @@ onMounted(() => {
 ```
 
 ## Reference
-
 - [Vue.js Template Refs - Refs inside v-for](https://vuejs.org/guide/essentials/template-refs.html#refs-inside-v-for)

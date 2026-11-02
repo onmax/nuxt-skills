@@ -15,12 +15,6 @@ When an event listener is passed to a component as a fallthrough attribute, it i
 
 ```vue
 <!-- BaseButton.vue - Potential double-action bug -->
-<template>
-  <button @click="internalClick">
-    <slot />
-  </button>
-</template>
-
 <script setup>
 const emit = defineEmits(['action'])
 
@@ -31,11 +25,13 @@ function internalClick() {
 }
 </script>
 
-<!-- Parent.vue -->
 <template>
-  <BaseButton @click="parentClick">Submit</BaseButton>
+  <button @click="internalClick">
+    <slot />
+  </button>
 </template>
 
+<!-- Parent.vue -->
 <script setup>
 function parentClick() {
   // This ALSO runs (after internal)
@@ -43,6 +39,10 @@ function parentClick() {
   console.log('Parent click handler')
 }
 </script>
+
+<template>
+  <BaseButton @click="parentClick">Submit</BaseButton>
+</template>
 
 <!--
   RESULT: Both handlers fire!
@@ -144,15 +144,6 @@ The additive behavior can be useful for extending functionality:
 
 ```vue
 <!-- EnhancedButton.vue - Leveraging additive listeners -->
-<template>
-  <button
-    @click="trackClick"
-    @focus="trackFocus"
-  >
-    <slot />
-  </button>
-</template>
-
 <script setup>
 function trackClick() {
   analytics.track('button_click')
@@ -163,6 +154,15 @@ function trackFocus() {
   analytics.track('button_focus')
 }
 </script>
+
+<template>
+  <button
+    @click="trackClick"
+    @focus="trackFocus"
+  >
+    <slot />
+  </button>
+</template>
 
 <!-- Parent.vue -->
 <template>

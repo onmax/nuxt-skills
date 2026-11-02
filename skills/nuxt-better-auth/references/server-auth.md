@@ -5,6 +5,7 @@
 These helpers are auto-imported inside `server/` in full mode:
 
 - `serverAuth(event?)`
+- `ensureServerAuth(event?)`
 - `getUserSession(event)`
 - `getRequestSession(event)`
 - `setRequestSession(event, session)`
@@ -15,16 +16,17 @@ These helpers are auto-imported inside `server/` in full mode:
 
 ## Which helper to use
 
-| Need                                                                  | Helper                                |
-| --------------------------------------------------------------------- | ------------------------------------- |
-| Access raw Better Auth APIs                                           | `serverAuth(event)`                   |
-| Read session if it exists                                             | `getUserSession(event)`               |
-| Reuse the same session lookup in one request                          | `getRequestSession(event)`            |
-| Supply a session resolved by trusted server authentication            | `setRequestSession(event, session)`   |
-| Refresh Better Auth's cached session cookie after server-side updates | `refreshSessionCookieCache(event)`    |
-| Enforce auth                                                          | `requireUserSession(event, options?)` |
-| Create a session in a custom flow                                     | `createSession(event, userId)`        |
-| Attach a session token cookie manually                                | `setSessionCookie(event, token)`      |
+| Need | Helper |
+| --- | --- |
+| Access raw Better Auth APIs | `serverAuth(event)` |
+| Access Better Auth APIs at server startup (Nitro plugin, task) | `await ensureServerAuth()` |
+| Read session if it exists | `getUserSession(event)` |
+| Reuse the same session lookup in one request | `getRequestSession(event)` |
+| Supply a session resolved by trusted server authentication | `setRequestSession(event, session)` |
+| Refresh Better Auth's cached session cookie after server-side updates | `refreshSessionCookieCache(event)` |
+| Enforce auth | `requireUserSession(event, options?)` |
+| Create a session in a custom flow | `createSession(event, userId)` |
+| Attach a session token cookie manually | `setSessionCookie(event, token)` |
 
 ## Common API protection
 

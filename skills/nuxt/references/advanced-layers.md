@@ -131,7 +131,6 @@ export function useTheme() {
 ## Layer Priority
 
 Override order (highest to lowest):
-
 1. Your project files
 2. Auto-scanned layers (alphabetically, Z > A)
 3. `extends` array (first > last)

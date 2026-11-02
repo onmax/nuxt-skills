@@ -74,16 +74,16 @@ function handleSubmit(event: SubmitEvent) {
 
 ## Common Event Types
 
-| Event                    | Type            | Common Properties            |
-| ------------------------ | --------------- | ---------------------------- |
-| click, dblclick          | `MouseEvent`    | clientX, clientY, button     |
+| Event | Type | Common Properties |
+|-------|------|-------------------|
+| click, dblclick | `MouseEvent` | clientX, clientY, button |
 | keydown, keyup, keypress | `KeyboardEvent` | key, code, ctrlKey, shiftKey |
-| input, change            | `Event`         | target (needs assertion)     |
-| focus, blur              | `FocusEvent`    | relatedTarget                |
-| submit                   | `SubmitEvent`   | submitter                    |
-| drag, dragstart, drop    | `DragEvent`     | dataTransfer                 |
-| wheel, scroll            | `WheelEvent`    | deltaX, deltaY               |
-| touch events             | `TouchEvent`    | touches, changedTouches      |
+| input, change | `Event` | target (needs assertion) |
+| focus, blur | `FocusEvent` | relatedTarget |
+| submit | `SubmitEvent` | submitter |
+| drag, dragstart, drop | `DragEvent` | dataTransfer |
+| wheel, scroll | `WheelEvent` | deltaX, deltaY |
+| touch events | `TouchEvent` | touches, changedTouches |
 
 ## Element-Specific Type Assertions
 
@@ -208,7 +208,6 @@ function handleClick(event: MouseEvent) {
 ```
 
 ## Reference
-
 - [Vue.js TypeScript with Composition API - Event Handlers](https://vuejs.org/guide/typescript/composition-api.html#typing-event-handlers)
 - [MDN Event Reference](https://developer.mozilla.org/en-US/docs/Web/Events)
 - [TypeScript DOM Types](https://github.com/microsoft/TypeScript/blob/main/lib/lib.dom.d.ts)
