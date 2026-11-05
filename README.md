@@ -179,7 +179,6 @@ Every skill in the plugin is listed below with its provenance. The table is rege
 | [`pinia`](skills/pinia/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/7de210b51c8d48cc405a4eac3e17cbb1396c653b/skills/pinia) |
 | [`regle`](skills/regle/) | [Bundled from nuxt-modules/victorgarciaesgi/regle](https://github.com/victorgarciaesgi/regle/tree/c2668d6f02ec414bdf01609f323fbdbd6036c838/skills/regle) |
 | [`reka-ui`](skills/reka-ui/) | Manually written in this repository. |
-| [`t3-code-continue-thread`](skills/t3-code-continue-thread/) | Manually written in this repository. |
 | [`unocss`](skills/unocss/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/7de210b51c8d48cc405a4eac3e17cbb1396c653b/skills/unocss) |
 | [`vite`](skills/vite/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/7de210b51c8d48cc405a4eac3e17cbb1396c653b/skills/vite) |
 | [`vitest`](skills/vitest/) | [Bundled from antfu/skills](https://github.com/antfu/skills/tree/7de210b51c8d48cc405a4eac3e17cbb1396c653b/skills/vitest) |
