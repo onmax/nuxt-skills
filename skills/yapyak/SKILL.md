@@ -25,7 +25,7 @@ Every `YAPnnnn` diagnostic, its cause, and its fix: [references/diagnostics.md](
 
 ## Install
 
-Requirements: Node.js 22.22+, Vite 8+. Frameworks: React 19+, Vue 3.4+, Svelte 5+, Astro 7+, Nuxt 4.1+, React Router 7.9+, SvelteKit 3+, TanStack Start 1.168+.
+Requirements: Node.js 22.23.4+, Vite 8+. Frameworks: React 19+, Vue 3.4+, Svelte 5+, Astro 7+, Nuxt 4.1+, React Router 7.9+, SvelteKit 3+, TanStack Start 1.168+.
 
 | Framework | Install | Build config | Processor |
 | --- | --- | --- | --- |

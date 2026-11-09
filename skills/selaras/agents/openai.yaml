@@ -1,0 +1,4 @@
+interface:
+  display_name: Selaras
+  short_description: Build Nuxt interfaces with Selaras components
+  default_prompt: Use $selaras to build this interface with documented components and customization APIs.

@@ -495,7 +495,7 @@ pnpm test -- tests/parse.test.ts
 
 ## Resources
 
-- **README:** [README.md](https://github.com/comarkdown/comark/blob/b17f4561833a501c2e0382fec2082b9ecf810a6e/docs/README.md) - Installation and quick start
+- **README:** [README.md](https://github.com/comarkdown/comark/blob/f1f23843f0f1636885c5a93dc7d58949a09807a2/docs/README.md) - Installation and quick start
 - **Specifications:** SPEC/ - Complete syntax test cases
 
 ---

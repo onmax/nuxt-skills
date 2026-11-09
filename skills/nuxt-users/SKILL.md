@@ -67,6 +67,7 @@ All options live under `nuxtUsers` in `nuxt.config.ts`.
 | API | `apiBasePath` | Default `'/api/nuxt-users'` |
 | Tables | `tables.users`, `tables.personalAccessTokens`, `tables.passwordResetTokens`, `tables.migrations` | Custom table names |
 | Mailer | `mailer` | Nodemailer config for password reset emails |
+| URLs | `siteUrl` | Public app URL for links in emails (e.g. `'https://example.com'`). Required in production; the Host header is only trusted in development |
 | URLs | `passwordResetUrl`, `emailConfirmationUrl` | Paths for redirects |
 | Auth | `auth.whitelist` | Public routes (e.g. `['/register']`); `/login` is always public |
 | Auth | `auth.tokenExpiration` | Minutes (default 1440) |
@@ -133,7 +134,7 @@ Run from the project root so `nuxt.config.ts` (and optionally `.env`) are found.
 
 ## File references
 
-- Project LLM context and config types: [llms.txt](https://github.com/rrd108/nuxt-users/blob/6a17ae5abab6850b4b032ee7fa2b5ee7aaf090f1/llms.txt) in the repo root
+- Project LLM context and config types: [llms.txt](https://github.com/rrd108/nuxt-users/blob/ace4a22820a1b1a28951cf1819148c260f841df6/llms.txt) in the repo root
 - Full docs: [https://nuxt-users.webmania.cc/](https://nuxt-users.webmania.cc/)
 - Getting started and examples: `../../docs/user-guide/getting-started.md`, `../../docs/examples/basic-setup.md`
 - Authorization: `../../docs/user-guide/authorization.md`
