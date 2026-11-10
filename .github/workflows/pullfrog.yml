@@ -51,8 +51,8 @@ jobs:
           effort: xhigh
         env:
           OPENAI_COMPATIBLE_API_KEY: ${{ secrets.CLIPROXY_API_KEY }}
-          OPENAI_COMPATIBLE_CONTEXT: '921000'
-          OPENAI_COMPATIBLE_MAX_OUTPUT: '128000'
+          OPENAI_COMPATIBLE_CONTEXT: "921000"
+          OPENAI_COMPATIBLE_MAX_OUTPUT: "128000"
           OPENAI_COMPATIBLE_HEADERS: |
             CF-Access-Client-Id: ${{ secrets.CLIPROXY_CF_ACCESS_CLIENT_ID }}
             CF-Access-Client-Secret: ${{ secrets.CLIPROXY_CF_ACCESS_CLIENT_SECRET }}
