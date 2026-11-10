@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       OPENAI_COMPATIBLE_BASE_URL: https://ai.onmax.me/v1
-      OPENAI_COMPATIBLE_MODEL: gpt-6.1-sol
+      OPENAI_COMPATIBLE_MODEL: gpt-6.1-sol(xhigh)
     permissions:
       id-token: write
       contents: read
@@ -48,6 +48,7 @@ jobs:
         with:
           prompt: ${{ inputs.prompt }}
           model: openai-compatible/byok
+          effort: xhigh
         env:
           OPENAI_COMPATIBLE_API_KEY: ${{ secrets.CLIPROXY_API_KEY }}
           OPENAI_COMPATIBLE_CONTEXT: '921000'
