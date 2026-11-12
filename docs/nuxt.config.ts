@@ -29,9 +29,29 @@ export default defineNuxtConfig({
     // Link it at https://console.vitehub.dev: the Console gives a VITEHUB_CONSOLE_KEY_* variable to set on the Worker.
     console: true,
   },
+  fonts: {
+    // The ViteHub theme names Geist only in --font-sans and --font-mono, which @nuxt/fonts 1.x doesn't scan. The
+    // pages use weights 400 to 700, so each family is one variable file per subset.
+    families: ['Geist', 'Geist Mono'].map(name => ({
+      name,
+      provider: 'google',
+      weights: ['400 700'],
+      styles: ['normal'],
+      subsets: ['latin', 'latin-ext'],
+      global: true,
+    })),
+  },
   agentDiscovery: {
     // modules/hosted-skill.ts writes the `nuxt` skill here, for `npx skills add https://nuxt-skill.onmax.me/`.
     skills: { dir: 'node_modules/.cache/hosted-skills' },
+  },
+  hooks: {
+    // Every page prefetched every lazy chunk: charts, Mermaid and the CMS editor, about 1 MB gzipped that no page here
+    // uses. Without prefetch, a page loads the chunks it renders when it renders them.
+    'build:manifest': (manifest) => {
+      for (const chunk of Object.values(manifest))
+        chunk.dynamicImports = []
+    },
   },
   compatibilityDate: '2026-11-01',
 })
