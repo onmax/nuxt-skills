@@ -6,7 +6,7 @@
 
 <p align="center">Vue, Nuxt, and NuxtHub skills for AI coding assistants.</p>
 
-[![docs](https://comark-ui.onmax.me/badge.svg?label=docs&value=nuxt-skills)](https://github.com/onmax/nuxt-skills#installation)
+[![docs](https://comark-ui.onmax.me/badge.svg?label=docs&value=nuxt-skills)](https://nuxt-skill.onmax.me)
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/onmax/nuxt-skills/main/.github/badge-claude-code.svg" alt="Claude Code">
@@ -31,7 +31,6 @@
 
 ## Other projects
 
-- [Nuxt Skill Hub](https://nuxt-skill.onmax.me/): Give your coding agent Nuxt guidance tailored to your project's modules and stack.
 - [Vite Doctor](https://vite-doctor.onmax.me/): Catch framework bugs in Nuxt, Vue, Nitro, and Vite before code review.
 
 ## Installation
@@ -121,6 +120,7 @@ nuxt-skills/
 ├── mcp.json                # Portable Nuxt MCP configuration
 ├── skills/                 # Materialized manual and ecosystem skills
 ├── packages/nuxt-skill-hub/ # Nuxt module: detects agents, collects skills, writes one skill on `nuxt prepare`
+├── docs/                   # nuxt-skill.onmax.me, on @vite-hub/docs
 ├── ecosystem-skills.json   # Upstream skill sources and selected paths
 ├── .claude-plugin/         # Claude Code manifest and marketplace metadata
 └── .codex-plugin/          # Codex compatibility manifest
