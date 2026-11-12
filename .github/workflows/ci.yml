@@ -50,12 +50,10 @@ jobs:
           cache: pnpm
 
       - run: pnpm install --frozen-lockfile
-      - run: pnpm --filter @onmax/nuxt-skills typecheck
-      - run: pnpm --filter @onmax/nuxt-skills test
       - run: pnpm --filter nuxt-skill-hub dev:prepare
       - run: pnpm --filter nuxt-skill-hub typecheck
       - run: pnpm --filter nuxt-skill-hub test
-      - run: pnpm --filter @onmax/nuxt-skills --filter nuxt-skill-hub pack --pack-destination .packs
+      - run: pnpm --filter nuxt-skill-hub pack --pack-destination .packs
 
   validate-skills:
     runs-on: ubuntu-24.04

@@ -1,3 +1,4 @@
+// Internal barrel: what module.ts and install.ts use from the generator.
 export { detectCurrentTarget, detectInstalledTargets, getSupportedTargets, resolveAgentTargetConfig, validateTargets } from './agents'
 export type { InvalidTarget, SkillHubTarget } from './agents'
 export { BUNDLED_SKILL_NAMES, BUNDLED_SKILL_PACKAGES } from './bundled-skills'

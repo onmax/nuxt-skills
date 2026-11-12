@@ -3,7 +3,7 @@ import { promises as fsp } from 'node:fs'
 import { join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { describe, expect, it } from 'vitest'
-import { loadNuxtRuleFiles } from '../../core/src/nuxt-content'
+import { loadNuxtRuleFiles } from '../src/nuxt-content'
 import { expectCopiedPacksMatchRouterLinks } from './utils'
 
 const rootDir = fileURLToPath(new URL('./fixtures/module-author', import.meta.url))

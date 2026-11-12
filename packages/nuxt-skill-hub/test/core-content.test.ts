@@ -1,7 +1,7 @@
-import type { SkillEntrypointOptions } from '../../core/shared/skill-render'
+import type { SkillEntrypointOptions } from '../shared/skill-render'
 import { createHash } from 'node:crypto'
 import { describe, expect, it } from 'vitest'
-import { PACKAGE_VERSION } from '../../core/shared/package-info'
+import { PACKAGE_VERSION } from '../shared/package-info'
 import {
   createModuleIndex,
   createModuleWrapperContent,
@@ -11,9 +11,9 @@ import {
   selectLinkedPacks,
   SKILL_DESCRIPTION,
 
-} from '../../core/shared/skill-render'
-import { loadNuxtRuleFiles } from '../../core/src/nuxt-content'
-import { loadVueSkillFiles } from '../../core/src/vue-content'
+} from '../shared/skill-render'
+import { loadNuxtRuleFiles } from '../src/nuxt-content'
+import { loadVueSkillFiles } from '../src/vue-content'
 
 describe('template guidance publication', () => {
   it('keeps the generated section consistent with its source digest', async () => {

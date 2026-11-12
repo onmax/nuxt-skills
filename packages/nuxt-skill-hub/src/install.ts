@@ -2,11 +2,11 @@ import type { Nuxt } from '@nuxt/schema'
 import { readFileSync, writeFileSync } from 'node:fs'
 import process from 'node:process'
 import { useLogger } from '@nuxt/kit'
-import { collectInstalledModulePackages, deriveSkillName, detectConflictingSkills, detectCurrentTarget, detectInstalledTargets, formatConflictWarning, getSupportedTargets, MANAGED_HINT_END, MANAGED_HINT_START, pathExists, resolveExportRoot } from '@onmax/nuxt-skills'
 import { createConsola } from 'consola'
 import { colorize } from 'consola/utils'
 import { join } from 'pathe'
 import { agent, isAgent } from 'std-env'
+import { collectInstalledModulePackages, deriveSkillName, detectConflictingSkills, detectCurrentTarget, detectInstalledTargets, formatConflictWarning, getSupportedTargets, MANAGED_HINT_END, MANAGED_HINT_START, pathExists, resolveExportRoot } from './core'
 
 interface PendingWrite {
   file: string

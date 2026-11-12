@@ -3,6 +3,7 @@ import type { ResolvedContribution } from './types'
 import { existsSync } from 'node:fs'
 import { fileURLToPath } from 'mlly'
 import { dirname, resolve } from 'pathe'
+import bundledSkillPackages from './bundled-skills.json'
 import { normalizeContribution } from './internal'
 
 const PACKAGE_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..')
@@ -17,25 +18,7 @@ const SKILL_ROOTS = [
  * nuxt-skills skills linked when the app installs one of these Nuxt modules.
  * The module's own skill, shipped in its package, wins over these.
  */
-export const BUNDLED_SKILL_PACKAGES: Record<string, string[]> = {
-  'comark': ['@comark/nuxt'],
-  'nanime': ['nanime'],
-  'nuxt-better-auth': ['@nuxtjs/better-auth', '@onmax/nuxt-better-auth'],
-  'nuxt-content': ['@nuxt/content'],
-  'nuxt-i18n': ['@nuxtjs/i18n'],
-  'nuxt-protokit': ['@websideproject/nuxt-protokit'],
-  'nuxt-seo': ['@nuxtjs/seo'],
-  'nuxt-studio': ['nuxt-studio'],
-  'nuxt-ui': ['@nuxt/ui'],
-  'nuxt-users': ['nuxt-users'],
-  'nuxthub': ['@nuxthub/core'],
-  'pinia': ['@pinia/nuxt'],
-  'regle': ['@regle/nuxt'],
-  'reka-ui': ['reka-ui'],
-  'unocss': ['@unocss/nuxt'],
-  'vueuse-functions': ['@vueuse/nuxt'],
-  'yapyak': ['@yapyak/nuxt'],
-}
+export const BUNDLED_SKILL_PACKAGES: Record<string, string[]> = bundledSkillPackages
 
 /** Every skill the published package must carry. */
 export const BUNDLED_SKILL_NAMES = ['vue-best-practices', ...Object.keys(BUNDLED_SKILL_PACKAGES)]

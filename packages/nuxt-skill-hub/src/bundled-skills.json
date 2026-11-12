@@ -1,0 +1,54 @@
+{
+  "comark": [
+    "@comark/nuxt"
+  ],
+  "nanime": [
+    "nanime"
+  ],
+  "nuxt-better-auth": [
+    "@nuxtjs/better-auth",
+    "@onmax/nuxt-better-auth"
+  ],
+  "nuxt-content": [
+    "@nuxt/content"
+  ],
+  "nuxt-i18n": [
+    "@nuxtjs/i18n"
+  ],
+  "nuxt-protokit": [
+    "@websideproject/nuxt-protokit"
+  ],
+  "nuxt-seo": [
+    "@nuxtjs/seo"
+  ],
+  "nuxt-studio": [
+    "nuxt-studio"
+  ],
+  "nuxt-ui": [
+    "@nuxt/ui"
+  ],
+  "nuxt-users": [
+    "nuxt-users"
+  ],
+  "nuxthub": [
+    "@nuxthub/core"
+  ],
+  "pinia": [
+    "@pinia/nuxt"
+  ],
+  "regle": [
+    "@regle/nuxt"
+  ],
+  "reka-ui": [
+    "reka-ui"
+  ],
+  "unocss": [
+    "@unocss/nuxt"
+  ],
+  "vueuse-functions": [
+    "@vueuse/nuxt"
+  ],
+  "yapyak": [
+    "@yapyak/nuxt"
+  ]
+}

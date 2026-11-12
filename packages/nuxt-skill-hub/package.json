@@ -19,21 +19,29 @@
   "main": "./dist/module.mjs",
   "files": [
     "dist",
-    "nuxt-best-practices"
+    "nuxt-best-practices",
+    "skills"
   ],
   "scripts": {
     "build": "nuxt-module-build build",
-    "prepack": "nuxt-module-build build && node scripts/copy-rules.mjs",
+    "prepack": "nuxt-module-build build && node scripts/copy-skills.mjs",
     "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare",
     "test": "vitest run",
     "typecheck": "vue-tsc --noEmit"
   },
   "dependencies": {
     "@nuxt/kit": "^4.6.2",
-    "@onmax/nuxt-skills": "workspace:*",
     "consola": "^3.4.2",
+    "giget": "^3.3.1",
+    "gray-matter": "^4.0.3",
+    "mlly": "^1.8.2",
+    "ofetch": "^1.5.1",
+    "ohash": "^2.0.12",
     "pathe": "^2.0.3",
-    "std-env": "^4.3.0"
+    "pkg-types": "^2.4.0",
+    "std-env": "^4.3.0",
+    "tinyglobby": "^0.2.17",
+    "unagent": "^0.0.8"
   },
   "devDependencies": {
     "@nuxt/module-builder": "^1.0.3",

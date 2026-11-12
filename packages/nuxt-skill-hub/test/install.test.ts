@@ -37,7 +37,7 @@ vi.mock('std-env', () => ({
   },
 }))
 
-vi.mock('@onmax/nuxt-skills', () => ({
+vi.mock('../src/core', () => ({
   detectCurrentTarget: () => mockCurrentTarget,
   detectInstalledTargets: () => mockInstalledTargets,
   getSupportedTargets: () => mockSupportedTargets,

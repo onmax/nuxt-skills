@@ -1,10 +1,10 @@
-import type { SkillHubCallHook, SkillHubHooks, SkillHubOptions } from '@onmax/nuxt-skills'
+import type { SkillHubCallHook, SkillHubHooks, SkillHubOptions } from './core'
 import process from 'node:process'
 import { defineNuxtModule, useLogger } from '@nuxt/kit'
-import { DEFAULT_SKILL_HUB_GENERATION_MODE, deriveSkillName, detectConflictingSkills, formatConflictWarning, generateSkillTree, isValidSkillName, normalizeGenerationMode, resolveExportRoot, resolveTargets } from '@onmax/nuxt-skills'
 import { join } from 'pathe'
 import { isCI, isTest } from 'std-env'
 import { version as PACKAGE_VERSION } from '../package.json'
+import { DEFAULT_SKILL_HUB_GENERATION_MODE, deriveSkillName, detectConflictingSkills, formatConflictWarning, generateSkillTree, isValidSkillName, normalizeGenerationMode, resolveExportRoot, resolveTargets } from './core'
 import { runInstallWizard } from './install'
 
 export type ModuleOptions = SkillHubOptions
@@ -111,7 +111,7 @@ export default defineNuxtModule<ModuleOptions>({
   },
 })
 
-export type { SkillHubContribution, SkillHubContributionContext, SkillHubTarget } from '@onmax/nuxt-skills'
+export type { SkillHubContribution, SkillHubContributionContext, SkillHubTarget } from './core'
 
 declare module '@nuxt/schema' {
   interface NuxtHooks extends SkillHubHooks {}

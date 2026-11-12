@@ -23,8 +23,8 @@ vi.mock('std-env', () => ({
   isTest: false,
 }))
 
-vi.mock('@onmax/nuxt-skills', async importOriginal => ({
-  ...await importOriginal<typeof import('@onmax/nuxt-skills')>(),
+vi.mock('../src/core', async importOriginal => ({
+  ...await importOriginal<typeof import('../src/core')>(),
   generateSkillTree: mockGenerateSkillTree,
   resolveExportRoot: vi.fn(async () => '/repo'),
   deriveSkillName: vi.fn(async () => 'nuxt-test'),
