@@ -1,0 +1,5 @@
+{
+  "name": "with-modules-fixture",
+  "type": "module",
+  "private": true
+}

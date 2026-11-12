@@ -1,0 +1,51 @@
+{
+  "name": "nuxt-skill-hub",
+  "type": "module",
+  "version": "0.4.0",
+  "description": "Teach your AI agent the Nuxt way with best practices and module guidance.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/onmax/nuxt-skills.git",
+    "directory": "packages/nuxt-skill-hub"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/types.d.mts",
+      "import": "./dist/module.mjs",
+      "default": "./dist/module.mjs"
+    }
+  },
+  "main": "./dist/module.mjs",
+  "files": [
+    "dist",
+    "nuxt-best-practices"
+  ],
+  "scripts": {
+    "build": "nuxt-module-build build",
+    "prepack": "nuxt-module-build build && node scripts/copy-rules.mjs",
+    "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare",
+    "test": "vitest run",
+    "typecheck": "vue-tsc --noEmit"
+  },
+  "dependencies": {
+    "@nuxt/kit": "^4.6.2",
+    "@onmax/nuxt-skills": "workspace:*",
+    "consola": "^3.4.2",
+    "pathe": "^2.0.3",
+    "std-env": "^4.3.0"
+  },
+  "devDependencies": {
+    "@nuxt/module-builder": "^1.0.3",
+    "@nuxt/schema": "^4.6.2",
+    "@nuxt/test-utils": "^4.3.4",
+    "@types/node": "^24.19.2",
+    "@vue/test-utils": "^2.5.1",
+    "happy-dom": "^21.0.4",
+    "nuxt": "^4.6.2",
+    "typescript": "~6.0.3",
+    "vitest": "^5.0.5",
+    "vue": "^3.5.44",
+    "vue-tsc": "^3.3.13"
+  }
+}

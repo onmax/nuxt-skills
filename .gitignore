@@ -1,2 +1,7 @@
 node_modules
 docs-references/
+
+# Written by packages/nuxt-skill-hub tests and `nuxt prepare`
+.claude/skills/
+.agents/skills/
+.packs

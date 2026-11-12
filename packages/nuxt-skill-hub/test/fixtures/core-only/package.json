@@ -1,0 +1,5 @@
+{
+  "name": "core-only-fixture",
+  "type": "module",
+  "private": true
+}

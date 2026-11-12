@@ -1,0 +1,51 @@
+{
+  "name": "@onmax/nuxt-skills",
+  "type": "module",
+  "version": "0.4.0",
+  "description": "Generate a Nuxt agent skill for a project: detect agents, collect module skills, and write the skill tree.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/onmax/nuxt-skills.git",
+    "directory": "packages/core"
+  },
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "files": [
+    "dist",
+    "nuxt-best-practices",
+    "skills"
+  ],
+  "publishConfig": {
+    "exports": {
+      ".": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      }
+    }
+  },
+  "scripts": {
+    "build": "tsdown",
+    "prepack": "pnpm build && node scripts/copy-content.mjs",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "giget": "^3.3.1",
+    "gray-matter": "^4.0.3",
+    "mlly": "^1.8.2",
+    "ofetch": "^1.5.1",
+    "ohash": "^2.0.12",
+    "pathe": "^2.0.3",
+    "pkg-types": "^2.4.0",
+    "tinyglobby": "^0.2.17",
+    "unagent": "^0.0.8"
+  },
+  "devDependencies": {
+    "@types/node": "^24.19.2",
+    "tsdown": "^0.23.7",
+    "typescript": "^6.0.3",
+    "vitest": "^5.0.5"
+  }
+}

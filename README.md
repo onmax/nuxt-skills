@@ -81,6 +81,18 @@ Clone the repository and copy skill folders to your agent's skills directory:
 | OpenCode    | `.opencode/skill/` | `~/.config/opencode/skill/` |
 | Copilot     | `.github/skills/`  | —                           |
 
+### Nuxt projects
+
+The [`nuxt-skill-hub`](packages/nuxt-skill-hub) module writes one Nuxt skill into each detected agent's project folder on `nuxt prepare`:
+
+```bash
+npx nuxi module add nuxt-skill-hub
+```
+
+The skill routes to Nuxt rule packs, the Vue guide, and a skill for each installed module. A module's own skill wins. Otherwise the module uses the matching skill from this repository, such as `nuxthub` for `@nuxthub/core` or `pinia` for `@pinia/nuxt`. Skills update when you update the package. Set `skillHub: false` in `nuxt.config.ts` to turn it off.
+
+The logic lives in [`@onmax/nuxt-skills`](packages/core), which has no Nuxt dependency.
+
 ## Skills
 
 The complete skill list, including provenance links for every bundled or hand-authored skill, is maintained in the generated [skill catalog](#skill-catalog) below.
@@ -110,6 +122,8 @@ nuxt-skills/
 ├── plugin.json             # Portable Agent Plugins manifest
 ├── mcp.json                # Portable Nuxt MCP configuration
 ├── skills/                 # Materialized manual and ecosystem skills
+├── packages/core/          # @onmax/nuxt-skills: detects agents, collects skills, writes the skill tree
+├── packages/nuxt-skill-hub/ # Nuxt module that runs the core on `nuxt prepare`
 ├── ecosystem-skills.json   # Upstream skill sources and selected paths
 ├── .claude-plugin/         # Claude Code manifest and marketplace metadata
 └── .codex-plugin/          # Codex compatibility manifest
