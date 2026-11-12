@@ -4,7 +4,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Purpose
 
-Claude Code skills for Vue 3, Nuxt 4+, NuxtHub v0.10, and Nuxt module development. Pure documentation repo - no build/test commands.
+Claude Code skills for Vue 3, Nuxt 4+, NuxtHub v0.10, and Nuxt module development.
+
+The skills are documentation. `packages/nuxt-skill-hub` is the Nuxt module that ships them into Nuxt projects: on `nuxt prepare` it detects agents, collects skills, and writes one skill tree. Test with `pnpm --filter nuxt-skill-hub dev:prepare && pnpm --filter nuxt-skill-hub test`.
+
+When a skill should reach Nuxt apps that install a module, map it to the module's package in `packages/nuxt-skill-hub/src/bundled-skills.json`.
 
 ## Structure
 
@@ -12,6 +16,7 @@ Follows [agentskills](https://github.com/agentskills/agentskills) standard forma
 
 - `skills/<name>/SKILL.md` - Entry point (frontmatter with name/description/license)
 - `skills/<name>/references/*.md` - Sub-files loaded on-demand
+- `packages/nuxt-skill-hub` - Nuxt module, with the Nuxt rule packs in `nuxt-best-practices/`
 - `plugin.json` and `mcp.json` - Portable Agent Plugins manifest and Nuxt MCP configuration
 - `.claude-plugin/plugin.json` - Claude Code plugin manifest
 - `.claude-plugin/marketplace.json` - Claude Code marketplace manifest
