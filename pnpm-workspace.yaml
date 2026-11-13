@@ -1,10 +1,118 @@
+# The docs site uses ViteHub builds from pkg.pr.new, whose tarballs depend on other pkg.pr.new tarballs.
+blockExoticSubdeps: false
 minimumReleaseAgeExcludePrune: true
+
 trustPolicy: no-downgrade
+# comark-ui's plugins (onmax's packages): their 0.10.1 releases were published without provenance.
+trustPolicyExclude:
+  - comark-annotate
+  - comark-badge
+  - comark-cards
+  - comark-carousel
+  - comark-cast
+  - comark-charts
+  - comark-chips
+  - comark-cjk
+  - comark-code
+  - comark-code-notes
+  - comark-colors
+  - comark-comments
+  - comark-critic
+  - comark-deflist
+  - comark-details
+  - comark-diagrams
+  - comark-diff
+  - comark-embed
+  - comark-fields
+  - comark-figure
+  - comark-file-tree
+  - comark-footnotes
+  - comark-github
+  - comark-icon
+  - comark-include
+  - comark-keys
+  - comark-links
+  - comark-magic-move
+  - comark-mark
+  - comark-mathml
+  - comark-media
+  - comark-metrics
+  - comark-outline
+  - comark-properties
+  - comark-qr
+  - comark-quiz
+  - comark-reading-time
+  - comark-sources
+  - comark-steps
+  - comark-table
+  - comark-tabs
+  - comark-tests
+  - comark-time
+  - comark-xref
+  - comark-zoom
+# ViteHub's generated server code imports @vite-hub/* packages from the app root.
+publicHoistPattern:
+  - '@vite-hub/*'
+  # Nuxt aliases optional server packages, such as ws's utf-8-validate, to mocked-exports, resolved from the package's folder.
+  - mocked-exports
+
 shellEmulator: true
 
 packages:
   - .
   - packages/*
+  - docs
+
+# The docs site pins every ViteHub package to one pkg.pr.new build, so peers resolve to one copy of each.
+overrides:
+  # @nuxt/ui asks for ^0.14, which downloads fonts in Nitro's rollup:before hook. Nuxt 5 never calls it, so every font
+  # file shipped empty. 1.x downloads them when Vite finishes the bundle.
+  '@nuxt/fonts': 1.2.0
+  # vitehub:start
+  '@vite-hub/agent': https://pkg.pr.new/vite-hub/vitehub/@vite-hub/agent@5591bb93b0c4bdb7ac51ef499e96435ec7484e22
+  '@vite-hub/auth': https://pkg.pr.new/vite-hub/vitehub/@vite-hub/auth@5591bb93b0c4bdb7ac51ef499e96435ec7484e22
+  '@vite-hub/blob': https://pkg.pr.new/vite-hub/vitehub/@vite-hub/blob@5591bb93b0c4bdb7ac51ef499e96435ec7484e22
+  '@vite-hub/browser': https://pkg.pr.new/vite-hub/vitehub/@vite-hub/browser@5591bb93b0c4bdb7ac51ef499e96435ec7484e22
+  '@vite-hub/bundle': https://pkg.pr.new/vite-hub/vitehub/@vite-hub/bundle@5591bb93b0c4bdb7ac51ef499e96435ec7484e22
+  '@vite-hub/channels': https://pkg.pr.new/vite-hub/vitehub/@vite-hub/channels@5591bb93b0c4bdb7ac51ef499e96435ec7484e22
+  '@vite-hub/cli': https://pkg.pr.new/vite-hub/vitehub/@vite-hub/cli@5591bb93b0c4bdb7ac51ef499e96435ec7484e22
+  '@vite-hub/cms': https://pkg.pr.new/vite-hub/vitehub/@vite-hub/cms@5591bb93b0c4bdb7ac51ef499e96435ec7484e22
+  '@vite-hub/codemods': https://pkg.pr.new/vite-hub/vitehub/@vite-hub/codemods@5591bb93b0c4bdb7ac51ef499e96435ec7484e22
+  '@vite-hub/comments': https://pkg.pr.new/vite-hub/vitehub/@vite-hub/comments@5591bb93b0c4bdb7ac51ef499e96435ec7484e22
+  '@vite-hub/connections': https://pkg.pr.new/vite-hub/vitehub/@vite-hub/connections@5591bb93b0c4bdb7ac51ef499e96435ec7484e22
+  '@vite-hub/content': https://pkg.pr.new/vite-hub/vitehub/@vite-hub/content@5591bb93b0c4bdb7ac51ef499e96435ec7484e22
+  '@vite-hub/database': https://pkg.pr.new/vite-hub/vitehub/@vite-hub/database@5591bb93b0c4bdb7ac51ef499e96435ec7484e22
+  '@vite-hub/decisions': https://pkg.pr.new/vite-hub/vitehub/@vite-hub/decisions@5591bb93b0c4bdb7ac51ef499e96435ec7484e22
+  '@vite-hub/docs': https://pkg.pr.new/vite-hub/vitehub/@vite-hub/docs@5591bb93b0c4bdb7ac51ef499e96435ec7484e22
+  '@vite-hub/email': https://pkg.pr.new/vite-hub/vitehub/@vite-hub/email@5591bb93b0c4bdb7ac51ef499e96435ec7484e22
+  '@vite-hub/env': https://pkg.pr.new/vite-hub/vitehub/@vite-hub/env@5591bb93b0c4bdb7ac51ef499e96435ec7484e22
+  '@vite-hub/forge': https://pkg.pr.new/vite-hub/vitehub/@vite-hub/forge@5591bb93b0c4bdb7ac51ef499e96435ec7484e22
+  '@vite-hub/forms': https://pkg.pr.new/vite-hub/vitehub/@vite-hub/forms@5591bb93b0c4bdb7ac51ef499e96435ec7484e22
+  '@vite-hub/gateways': https://pkg.pr.new/vite-hub/vitehub/@vite-hub/gateways@5591bb93b0c4bdb7ac51ef499e96435ec7484e22
+  '@vite-hub/i18n': https://pkg.pr.new/vite-hub/vitehub/@vite-hub/i18n@5591bb93b0c4bdb7ac51ef499e96435ec7484e22
+  '@vite-hub/kv': https://pkg.pr.new/vite-hub/vitehub/@vite-hub/kv@5591bb93b0c4bdb7ac51ef499e96435ec7484e22
+  '@vite-hub/markdown-template': https://pkg.pr.new/vite-hub/vitehub/@vite-hub/markdown-template@5591bb93b0c4bdb7ac51ef499e96435ec7484e22
+  '@vite-hub/mcp': https://pkg.pr.new/vite-hub/vitehub/@vite-hub/mcp@5591bb93b0c4bdb7ac51ef499e96435ec7484e22
+  '@vite-hub/presets': https://pkg.pr.new/vite-hub/vitehub/@vite-hub/presets@5591bb93b0c4bdb7ac51ef499e96435ec7484e22
+  '@vite-hub/queue': https://pkg.pr.new/vite-hub/vitehub/@vite-hub/queue@5591bb93b0c4bdb7ac51ef499e96435ec7484e22
+  '@vite-hub/rate-limit': https://pkg.pr.new/vite-hub/vitehub/@vite-hub/rate-limit@5591bb93b0c4bdb7ac51ef499e96435ec7484e22
+  '@vite-hub/realtime': https://pkg.pr.new/vite-hub/vitehub/@vite-hub/realtime@5591bb93b0c4bdb7ac51ef499e96435ec7484e22
+  '@vite-hub/runtime': https://pkg.pr.new/vite-hub/vitehub/@vite-hub/runtime@5591bb93b0c4bdb7ac51ef499e96435ec7484e22
+  '@vite-hub/sandbox': https://pkg.pr.new/vite-hub/vitehub/@vite-hub/sandbox@5591bb93b0c4bdb7ac51ef499e96435ec7484e22
+  '@vite-hub/schedule': https://pkg.pr.new/vite-hub/vitehub/@vite-hub/schedule@5591bb93b0c4bdb7ac51ef499e96435ec7484e22
+  '@vite-hub/shell': https://pkg.pr.new/vite-hub/vitehub/@vite-hub/shell@5591bb93b0c4bdb7ac51ef499e96435ec7484e22
+  '@vite-hub/source': https://pkg.pr.new/vite-hub/vitehub/@vite-hub/source@5591bb93b0c4bdb7ac51ef499e96435ec7484e22
+  '@vite-hub/ui': https://pkg.pr.new/vite-hub/vitehub/@vite-hub/ui@5591bb93b0c4bdb7ac51ef499e96435ec7484e22
+  '@vite-hub/web-container': https://pkg.pr.new/vite-hub/vitehub/@vite-hub/web-container@5591bb93b0c4bdb7ac51ef499e96435ec7484e22
+  '@vite-hub/workflow': https://pkg.pr.new/vite-hub/vitehub/@vite-hub/workflow@5591bb93b0c4bdb7ac51ef499e96435ec7484e22
+  '@vite-hub/workspace': https://pkg.pr.new/vite-hub/vitehub/@vite-hub/workspace@5591bb93b0c4bdb7ac51ef499e96435ec7484e22
+  # vitehub:end
+  # The range >=1.0.0-rc.5 picks 1.0.0-rc.5-ab785fc, a tagged build without drizzle-orm/d1/codecs, which ViteHub's D1 driver imports.
+  drizzle-orm: 1.0.0-rc.5
+  vite-hub: https://pkg.pr.new/vite-hub/vitehub/vite-hub@5591bb93b0c4bdb7ac51ef499e96435ec7484e22
 
 allowBuilds:
+  '@mongodb-js/zstd': false
   esbuild: true
+  node-liblzma: false
+  vue-demi: true

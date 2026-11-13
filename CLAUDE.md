@@ -8,6 +8,8 @@ Claude Code skills for Vue 3, Nuxt 4+, NuxtHub v0.10, and Nuxt module developmen
 
 The skills are documentation. `packages/nuxt-skill-hub` is the Nuxt module that ships them into Nuxt projects: on `nuxt prepare` it detects agents, collects skills, and writes one skill tree. Test with `pnpm --filter nuxt-skill-hub dev:prepare && pnpm --filter nuxt-skill-hub test`.
 
+`docs/` is the site at nuxt-skill.onmax.me, built on `@vite-hub/docs` (ViteHub from a pkg.pr.new build pinned in `pnpm-workspace.yaml`). Pages are Markdown in `docs/content/`. The skills catalog page is generated from `skills/*/SKILL.md` on build (`docs/modules/skill-catalog.ts`), and `docs/modules/hosted-skill.ts` serves the `nuxt` skill at `/.well-known/skills` for `npx skills add https://nuxt-skill.onmax.me/`. Check it with `pnpm --filter nuxt-skills-docs build`.
+
 When a skill should reach Nuxt apps that install a module, map it to the module's package in `packages/nuxt-skill-hub/src/bundled-skills.json`.
 
 ## Structure
@@ -17,6 +19,7 @@ Follows [agentskills](https://github.com/agentskills/agentskills) standard forma
 - `skills/<name>/SKILL.md` - Entry point (frontmatter with name/description/license)
 - `skills/<name>/references/*.md` - Sub-files loaded on-demand
 - `packages/nuxt-skill-hub` - Nuxt module, with the Nuxt rule packs in `nuxt-best-practices/`
+- `docs/` - the docs site
 - `plugin.json` and `mcp.json` - Portable Agent Plugins manifest and Nuxt MCP configuration
 - `.claude-plugin/plugin.json` - Claude Code plugin manifest
 - `.claude-plugin/marketplace.json` - Claude Code marketplace manifest
