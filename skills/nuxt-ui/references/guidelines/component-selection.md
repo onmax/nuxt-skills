@@ -77,6 +77,7 @@ Decision matrices for choosing the right component. When in doubt, use the MCP `
 | Loading state | `USkeleton` | Placeholder shimmer while loading |
 | Progress indicator | `UProgress` | Determinate or indeterminate progress |
 | Breakdown of a total | `UProgressGroup` | One bar split into colored segments that add up to `max` |
+| Line / area / bar / donut chart | `UChart` | v4.12+. Install `@tanstack/charts`; props `type`, `data`, `index`, `categories`. Colors come from `--ui-chart-1`…`6` |
 
 ### Rules
 - Use `useToast()` for action feedback: "Item saved", "Email sent", "Error occurred"
