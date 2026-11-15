@@ -136,6 +136,26 @@ watch(source, callback, { flush: 'post' })
 watchPostEffect(() => {})  // Alias for flush: 'post'
 ```
 
+## Template Refs & IDs (Vue 3.5+)
+
+```vue
+<script setup lang="ts">
+import { useTemplateRef, useId, onMounted } from 'vue'
+
+// Preferred over a same-named `const input = ref()` - works with dynamic ref names
+const input = useTemplateRef<HTMLInputElement>('input')
+onMounted(() => input.value?.focus())
+
+// SSR-stable unique ID (same on server and client), e.g. for label/for
+const id = useId()
+</script>
+
+<template>
+  <label :for="id">Name</label>
+  <input :id="id" ref="input">
+</template>
+```
+
 ## Lifecycle Hooks
 
 ```ts
