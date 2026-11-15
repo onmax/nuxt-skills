@@ -105,6 +105,7 @@ Quick-reference index of all 125+ components. For full API docs (props, slots, e
 |---|---|
 | `UTable` | Data table (TanStack Table) with sorting, selection, pinning |
 | `UTree` | Hierarchical tree view |
+| `UChart` | Line, area, bar, and donut charts (v4.12+, needs optional peer dep `@tanstack/charts`) |
 
 ## Dashboard
 
