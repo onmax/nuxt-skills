@@ -314,9 +314,38 @@ declare module 'vue' {
 }
 ```
 
+## Lazy Hydration (Vue 3.5+, SSR)
+
+Async components can delay hydration with a strategy:
+
+```ts
+import { defineAsyncComponent, hydrateOnVisible, hydrateOnIdle, hydrateOnInteraction, hydrateOnMediaQuery } from 'vue'
+
+const Comments = defineAsyncComponent({
+  loader: () => import('./Comments.vue'),
+  hydrate: hydrateOnVisible(),   // or hydrateOnIdle(), hydrateOnInteraction('click'), hydrateOnMediaQuery('(max-width: 500px)')
+})
+```
+
+## Vapor Mode (Vue 3.6 RC, experimental)
+
+Opt-in, VDOM-free compilation for `<script setup>` components. Not in stable 3.5; 3.6.0 is at rc stage, so avoid in production.
+
+```vue
+<script setup vapor>
+// Vapor components require <script setup>
+</script>
+```
+
+- Interop between Vapor and VDOM components goes through `vaporInteropPlugin`
+- Event delegation is opt-in: use `@click.delegate` (the `compilerOptions.eventDelegation` option was removed)
+- `v-memo` and `@vue:*` element hooks are ignored (dev warning)
+
 <!--
 Source references:
 - https://vuejs.org/api/built-in-components.html
+- https://github.com/vuejs/core/blob/minor/CHANGELOG.md
+- https://vuejs.org/guide/components/async.html#lazy-hydration
 - https://vuejs.org/guide/built-ins/transition.html
 - https://vuejs.org/guide/built-ins/teleport.html
 - https://vuejs.org/guide/built-ins/suspense.html
