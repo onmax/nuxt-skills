@@ -1,10 +1,10 @@
 ---
 name: nuxthub
-description: Use when building NuxtHub v0.10.8 applications - provides database (Drizzle ORM with sqlite/postgresql/mysql), KV storage, blob storage, and cache APIs. Covers configuration, schema definition, migrations, multi-cloud deployment (Cloudflare, Vercel), and the new hub:db, hub:kv, hub:blob virtual module imports.
+description: Use when building NuxtHub v0.10.12 applications - provides database (Drizzle ORM with sqlite/postgresql/mysql), KV storage, blob storage, and cache APIs. Covers configuration, schema definition, migrations, multi-cloud deployment (Cloudflare, Vercel), and the new hub:db, hub:kv, hub:blob virtual module imports.
 license: MIT
 ---
 
-# NuxtHub v0.10.8
+# NuxtHub v0.10.12
 
 Full-stack Nuxt framework with database, KV, blob, and cache. Multi-cloud support (Cloudflare, Vercel, Deno, Netlify).
 
@@ -49,7 +49,7 @@ export default defineNuxtConfig({
 hub: {
   db: {
     dialect: 'postgresql',
-    driver: 'postgres-js', // Optional: auto-detected
+    driver: 'postgres-js', // Optional: auto-detected. 'node-postgres' opt-in (v0.10.12+)
     casing: 'snake_case',  // camelCase JS -> snake_case DB (v0.10.3+)
     migrationsDirs: ['server/db/custom-migrations/'],
     applyMigrationsDuringBuild: true, // default
@@ -138,7 +138,7 @@ Migrations auto-apply during `npx nuxi dev` and `npx nuxi build`. Tracked in `_h
 | Dialect    | Local                | Production                                                         |
 | ---------- | -------------------- | ------------------------------------------------------------------ |
 | sqlite     | `.data/db/sqlite.db` | D1 (Cloudflare), Turso (`TURSO_DATABASE_URL`, `TURSO_AUTH_TOKEN`)  |
-| postgresql | PGlite               | postgres-js (`DATABASE_URL`), neon-http (v0.10.2+, `DATABASE_URL`) |
+| postgresql | PGlite               | postgres-js (`DATABASE_URL`), neon-http (v0.10.2+, `DATABASE_URL`), node-postgres (v0.10.12+, explicit `driver`) |
 | mysql      | -                    | mysql2 (`DATABASE_URL`, `MYSQL_URL`)                               |
 
 ## KV Storage
@@ -158,6 +158,8 @@ await kv.clear('prefix:')
 ```
 
 Constraints: max value 25 MiB, max key 512 bytes.
+
+**Atomic operations (v0.10.10+):** `kv.getAndDelete(key)` (read + delete in one request) and `kv.increment(key, ...)` (expiring counter). Only available on Redis and Upstash drivers; not on Cloudflare KV, Deno KV, S3, or local `fs-lite`. Check the [KV docs](https://hub.nuxt.com/docs/kv) for exact `increment` options.
 
 ### KV Providers
 
