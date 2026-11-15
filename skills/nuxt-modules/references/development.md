@@ -186,6 +186,20 @@ export default defineNuxtModule({
 import { helper } from '#server/utils/helper'  // Clean imports
 ```
 
+**`nuxt/server` (Nuxt 4.6+):** Server handlers that import only from `nuxt/server` need no `h3`/`nitropack` peer dependency and no per-Nitro-version variants:
+
+```ts
+// runtime/server/api/status.get.ts
+import { defineEventHandler, getQuery } from 'nuxt/server'
+
+export default defineEventHandler(event => ({ ok: true, query: getQuery(event) }))
+```
+
+- Import **everything** explicitly from `nuxt/server`, including `defineEventHandler`. Mixing it with auto-imported h3 helpers throws `NUXT_E8012`.
+- Helpers differ from h3 v1: `createError` takes `status`/`statusText`, `sendRedirect` returns the response, response headers are set via `event.res.headers`.
+- `addServerHandler`, `addDevServerHandler` and `addNitroPlugin` accept a map of variants per server API (e.g. `nuxt`, `nitro2`). If imports are ambiguous, declare `meta.compatibility.server`.
+- Requires Nuxt 4.6+; keep h3/Nitro handlers if you support older versions.
+
 ## Runtime Config
 
 ```ts
@@ -228,6 +242,7 @@ export default defineNuxtModule({
 | -------------- | ------------------ |
 | `ready`        | Nuxt initialized   |
 | `modules:done` | All modules loaded |
+| `module:before` / `module:done` | Around each module's setup (Nuxt 4.6+) |
 | `pages:extend` | Modify pages array |
 | `nitro:config` | Configure Nitro    |
 | `close`        | Nuxt shutting down |
