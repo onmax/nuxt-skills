@@ -12,6 +12,16 @@ The skills are documentation. `packages/nuxt-skill-hub` is the Nuxt module that 
 
 When a skill should reach Nuxt apps that install a module, map it to the module's package in `packages/nuxt-skill-hub/src/bundled-skills.json`.
 
+## Deploy the docs site
+
+CI does not deploy the docs. Run these steps from `docs/` on a local machine to deploy the Cloudflare Worker `nuxt-skills-docs` and apply migrations to its D1 database of the same name.
+
+1. Log in with `npx --package=wrangler@4.158.0 -- wrangler login`. Set `CLOUDFLARE_ACCOUNT_ID` if you have multiple Cloudflare accounts.
+2. Before the first deploy, add the Console **public** key to `nitro.cloudflare.wrangler.vars` in `docs/nuxt.config.ts`. If you don't have a key from Console yet, run `pnpm exec vitehub secret console-key BOOTSTRAP` and add only the `VITEHUB_CONSOLE_KEY_BOOTSTRAP` name and value. Never commit or deploy the private key. Without a public key, deployment stops before applying migrations or uploading the Worker, even with `--yes`.
+3. Before each subsequent deploy, export all existing Worker secrets locally from your secret manager, including `VITEHUB_GITHUB_TOKEN` once configured. Having the secrets stored only on the Worker does not satisfy the CLI's deploy check. Do not commit the secret values.
+4. Run `npx --package=wrangler@4.158.0 -- pnpm exec vitehub deploy --host cloudflare`. The `npx` wrapper puts Wrangler on the deploy process's PATH so ViteHub can use the saved OAuth login. On the first deploy, after the Worker exists, set the CMS token with `npx --package=wrangler@4.158.0 -- wrangler secret put VITEHUB_GITHUB_TOKEN --name nuxt-skills-docs`.
+5. When linking the site in Console, replace the bootstrap Wrangler variable with the Console-issued public key and redeploy with the local secrets set. Use **Check connection** in Console to verify the new key works. ViteHub deploys with `--keep-vars`, so if `VITEHUB_CONSOLE_KEY_BOOTSTRAP` is still listed in the Worker's Cloudflare settings, remove it there too.
+
 ## Structure
 
 Follows [agentskills](https://github.com/agentskills/agentskills) standard format.
