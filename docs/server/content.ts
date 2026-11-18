@@ -7,6 +7,9 @@ import { docsCollection } from 'vite-hub/docs'
 export default defineContent({
   extends: [cms, { repo: 'onmax/nuxt-skills', publish: 'pr' }],
   collections: { docs: docsCollection({ path: 'docs/content/**/*.md' }) },
-  // Only the Console calls Content, with a request signed for a member of the linked project, who comes in as `user`.
+  // The repository is public, so anyone reads published pages: /llms.txt, /sitemap.md, Markdown copies and /mcp.
+  access: 'public',
+  // Drafts, saves and publishes come only from the Console, with a request signed for a member of the linked project,
+  // who comes in as `user`.
   authorize: ({ user }) => Boolean(user),
 })

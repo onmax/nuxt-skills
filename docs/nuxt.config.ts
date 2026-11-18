@@ -1,7 +1,8 @@
-import process from 'node:process'
+import { detectHost } from 'vite-hub'
 
-// Local builds and CI run on Node with SQLite. The deploy build sets CLOUDFLARE_D1_DATABASE_ID to build the Worker.
-const d1DatabaseId = process.env.CLOUDFLARE_D1_DATABASE_ID
+// Local builds and CI run on Node with SQLite. `vitehub deploy --host cloudflare` sets VITEHUB_HOST, so the deploy
+// builds the Worker with the D1 database that it provisions and records in .vitehub/provision.json.
+const host = detectHost() ?? 'node'
 
 export default defineNuxtConfig({
   // hosted-skill and skill-catalog write files that @vite-hub/docs reads, so they run before it.
@@ -23,9 +24,10 @@ export default defineNuxtConfig({
   },
   vitehub: {
     name: 'nuxt-skills-docs',
-    preset: d1DatabaseId ? 'cloudflare' : 'node',
     // The CMS keeps editor sessions here. Documents and their history live in the GitHub repository.
-    database: d1DatabaseId ? { databaseId: d1DatabaseId, databaseName: 'nuxt-skills-docs' } : true,
+    database: host === 'cloudflare'
+      ? { driver: 'cloudflare', databaseName: 'nuxt-skills-docs', migrateOnDeploy: true }
+      : true,
     // Link it at https://console.vitehub.dev: the Console gives a VITEHUB_CONSOLE_KEY_* variable to set on the Worker.
     console: true,
   },
