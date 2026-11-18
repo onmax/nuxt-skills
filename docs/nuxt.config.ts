@@ -28,8 +28,16 @@ export default defineNuxtConfig({
     database: host === 'cloudflare'
       ? { driver: 'cloudflare', databaseName: 'nuxt-skills-docs', migrateOnDeploy: true }
       : true,
-    // Link it at https://console.vitehub.dev: the Console gives a VITEHUB_CONSOLE_KEY_* variable to set on the Worker.
+    // Linked at https://console.vitehub.dev as "Nuxt Skills". Its public key is the Worker var below.
     console: true,
+  },
+  nitro: {
+    cloudflare: {
+      wrangler: {
+        // A public key, not a secret: the Console signs its calls with the private half.
+        vars: { VITEHUB_CONSOLE_KEY_CONSOLE_073E73ED: '51iPVWlAcmwgvdRZczP-Z5JGLrx1b4YRYSvdpvo3Eb8' },
+      },
+    },
   },
   fonts: {
     // The ViteHub theme names Geist only in --font-sans and --font-mono, which @nuxt/fonts 1.x doesn't scan. The
