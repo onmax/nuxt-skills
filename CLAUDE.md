@@ -8,9 +8,18 @@ Claude Code skills for Vue 3, Nuxt 4+, NuxtHub v0.10, and Nuxt module developmen
 
 The skills are documentation. `packages/nuxt-skill-hub` is the Nuxt module that ships them into Nuxt projects: on `nuxt prepare` it detects agents, collects skills, and writes one skill tree. Test with `pnpm --filter nuxt-skill-hub dev:prepare && pnpm --filter nuxt-skill-hub test`.
 
-`docs/` is the site at nuxt-skill.onmax.me, built on `@vite-hub/docs` (ViteHub from a pkg.pr.new build pinned in `pnpm-workspace.yaml`). Pages are Markdown in `docs/content/`. The skills catalog page is generated from `skills/*/SKILL.md` on build (`docs/modules/skill-catalog.ts`), and `docs/modules/hosted-skill.ts` serves the `nuxt` skill at `/.well-known/skills` for `npx skills add https://nuxt-skill.onmax.me/`. Check it with `pnpm --filter nuxt-skills-docs build`. It deploys from a local machine to the Cloudflare Worker `nuxt-skills-docs` with D1 `nuxt-skills-docs`: `cd docs && pnpm exec vitehub deploy --host cloudflare`. CI does not deploy it.
+`docs/` is the site at nuxt-skill.onmax.me, built on `@vite-hub/docs` (ViteHub from a pkg.pr.new build pinned in `pnpm-workspace.yaml`). Pages are Markdown in `docs/content/`. The skills catalog page is generated from `skills/*/SKILL.md` on build (`docs/modules/skill-catalog.ts`), and `docs/modules/hosted-skill.ts` serves the `nuxt` skill at `/.well-known/skills` for `npx skills add https://nuxt-skill.onmax.me/`. Check it with `pnpm --filter nuxt-skills-docs build`.
 
 When a skill should reach Nuxt apps that install a module, map it to the module's package in `packages/nuxt-skill-hub/src/bundled-skills.json`.
+
+## Deploy the docs site
+
+CI does not deploy the docs. Run these steps from `docs/` on a local machine to deploy the Cloudflare Worker `nuxt-skills-docs` and apply migrations to its D1 database of the same name.
+
+1. Log in with `npx wrangler login`. Set `CLOUDFLARE_ACCOUNT_ID` if you have multiple Cloudflare accounts.
+2. Before the first deploy, add the Console **public** key to `nitro.cloudflare.wrangler.vars` in `docs/nuxt.config.ts`. If you don't have a key from Console yet, run `pnpm exec vitehub secret console-key BOOTSTRAP` and add only the `VITEHUB_CONSOLE_KEY_BOOTSTRAP` name and value. Never commit or deploy the private key. Without a public key, deployment stops before applying migrations or uploading the Worker, even with `--yes`.
+3. Before each subsequent deploy, export all existing Worker secrets locally from your secret manager, including `VITEHUB_GITHUB_TOKEN` once configured. Having the secrets stored only on the Worker does not satisfy the CLI's deploy check. Do not commit the secret values.
+4. Run `pnpm exec vitehub deploy --host cloudflare`. On the first deploy, after the Worker exists, set the CMS token with `npx wrangler secret put VITEHUB_GITHUB_TOKEN --name nuxt-skills-docs`. Then, when linking the site in Console, replace the bootstrap Wrangler variable with the Console-issued public key and redeploy with the local secrets set.
 
 ## Structure
 
