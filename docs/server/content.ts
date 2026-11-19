@@ -3,7 +3,8 @@ import { defineContent } from 'vite-hub/content'
 import { docsCollection } from 'vite-hub/docs'
 
 // The Console edits the docs pages. A save commits to the `vitehub/content` branch of this repository, and a publish
-// opens a pull request into main. Both need VITEHUB_GITHUB_TOKEN.
+// opens a pull request into main. Both sign in to GitHub as the Personal Project CMS App (VITEHUB_GITHUB_APP_ID and
+// VITEHUB_GITHUB_PRIVATE_KEY on the Worker).
 export default defineContent({
   extends: [cms, { repo: 'onmax/nuxt-skills', publish: 'pr' }],
   collections: { docs: docsCollection({ path: 'docs/content/**/*.md' }) },

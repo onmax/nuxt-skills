@@ -28,6 +28,11 @@ export default defineNuxtConfig({
     database: host === 'cloudflare'
       ? { driver: 'cloudflare', databaseName: 'nuxt-skills-docs', migrateOnDeploy: true }
       : true,
+    // Content keeps GitHub answers that never change (commits, trees, archives) here, so a new Worker isolate opens the
+    // Console overview with a few GitHub requests instead of reading every commit again.
+    kv: host === 'cloudflare'
+      ? { driver: 'cloudflare', namespaceName: 'nuxt-skills-docs' }
+      : true,
     // Linked at https://console.vitehub.dev as "Nuxt Skills". Its public key is the Worker var below.
     console: true,
   },
