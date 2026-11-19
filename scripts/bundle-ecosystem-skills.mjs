@@ -342,12 +342,17 @@ async function normalizeMarkdown(dir) {
   }
 }
 
-/** Replaces the frontmatter `description` (one line or a folded block) of a bundled skill with ours. */
+/** Replaces the frontmatter `description` (one line or an indented block, blank lines included) of a bundled skill with ours. */
 async function setDescription(skillFile, description) {
   const content = await readFile(skillFile, 'utf8')
-  const frontmatter = content.match(/^---\n[\s\S]*?\n---\n/)?.[0]
-  if (!frontmatter || !/^description:/m.test(frontmatter))
+  const end = content.startsWith('---\n') ? content.indexOf('\n---\n', 3) : -1
+  const lines = end === -1 ? [] : content.slice(4, end).split('\n')
+  const start = lines.findIndex(line => line.startsWith('description:'))
+  if (start === -1)
     throw new Error(`${skillFile}: no description to replace`)
-  const next = frontmatter.replace(/^description:.*(?:\n[ \t].*)*/m, `description: ${JSON.stringify(description)}`)
-  await writeFile(skillFile, content.replace(frontmatter, next))
+  let stop = start + 1
+  while (stop < lines.length && (lines[stop].startsWith(' ') || lines[stop].startsWith('\t') || lines[stop].trim() === ''))
+    stop++
+  lines.splice(start, stop - start, `description: ${JSON.stringify(description)}`)
+  await writeFile(skillFile, `---\n${lines.join('\n')}${content.slice(end)}`)
 }
