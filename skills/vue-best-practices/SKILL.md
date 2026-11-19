@@ -1,6 +1,6 @@
 ---
 name: vue-best-practices
-description: MUST be used for Vue.js tasks. Strongly recommends Composition API with `<script setup>` and TypeScript as the standard approach. Covers Vue 3, SSR, Volar, vue-tsc. Load for any Vue, .vue files, Vue Router, Pinia, or Vite with Vue work. ALWAYS use Composition API unless the project explicitly requires Options API.
+description: "Use before planning or building a Vue 3 app or feature, with or without Nuxt: a workflow for component boundaries, data flow, composables and state, then performance once behavior is correct. Prefers the Composition API with `<script setup>` and TypeScript."
 license: MIT
 metadata:
   author: github.com/vuejs-ai

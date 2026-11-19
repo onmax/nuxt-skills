@@ -39,7 +39,7 @@ try {
 
     for (const entry of source.include) {
       const skillName = typeof entry === 'string' ? entry : entry.name
-      const sourcePath = typeof entry === 'string' ? entry : entry.path
+      const sourcePath = typeof entry === 'string' ? entry : entry.path || entry.name
       const sourceDir = join(checkout, source.root, sourcePath)
       const skillFile = join(sourceDir, 'SKILL.md')
       if (!existsSync(skillFile))
@@ -60,6 +60,8 @@ try {
       })
       await bundleRelativeLinks({ sourceDir, targetDir, checkout, upstreamUrl: source.repository.replace(/\.git$/, ''), revision: revision.trim() })
       await normalizeMarkdown(targetDir)
+      if (typeof entry === 'object' && entry.description)
+        await setDescription(join(targetDir, 'SKILL.md'), entry.description)
       console.log(`bundled ${skillName} from ${source.name}`)
     }
   }
@@ -110,10 +112,11 @@ async function updateReadme(bundleLock) {
     const revision = bundleLock.sources[source.name].revision
     for (const entry of source.include) {
       const skillName = typeof entry === 'string' ? entry : entry.name
-      const sourcePath = typeof entry === 'string' ? entry.path || entry : entry.path
+      const sourcePath = typeof entry === 'string' ? entry : entry.path || entry.name
       const repository = source.repository.replace(/\.git$/, '')
       const sourceUrl = `${repository}/tree/${revision}/${source.root === '.' ? '' : `${source.root}/`}${sourcePath}`
-      bundled.set(skillName, `[Bundled from ${source.name}](${sourceUrl})`)
+      const description = typeof entry === 'object' && entry.description ? ', description set in `ecosystem-skills.json`' : ''
+      bundled.set(skillName, `[Bundled from ${source.name}](${sourceUrl})${description}`)
     }
   }
   for (const entry of (await readdir(destination, { withFileTypes: true })).filter(entry => entry.isDirectory()).sort((a, b) => a.name.localeCompare(b.name))) {
@@ -337,4 +340,19 @@ async function normalizeMarkdown(dir) {
       await writeFile(path, normalized)
     }
   }
+}
+
+/** Replaces the frontmatter `description` (one line or an indented block, blank lines included) of a bundled skill with ours. */
+async function setDescription(skillFile, description) {
+  const content = await readFile(skillFile, 'utf8')
+  const end = content.startsWith('---\n') ? content.indexOf('\n---\n', 3) : -1
+  const lines = end === -1 ? [] : content.slice(4, end).split('\n')
+  const start = lines.findIndex(line => line.startsWith('description:'))
+  if (start === -1)
+    throw new Error(`${skillFile}: no description to replace`)
+  let stop = start + 1
+  while (stop < lines.length && (lines[stop].startsWith(' ') || lines[stop].startsWith('\t') || lines[stop].trim() === ''))
+    stop++
+  lines.splice(start, stop - start, `description: ${JSON.stringify(description)}`)
+  await writeFile(skillFile, `---\n${lines.join('\n')}${content.slice(end)}`)
 }

@@ -16,7 +16,10 @@
         "unocss",
         "vite",
         "vitest",
-        "vue"
+        {
+          "name": "vue",
+          "description": "Use when writing Vue 3 components and composables: `<script setup>` macros (defineProps, defineEmits, defineModel, defineSlots), refs, computed, watchers, lifecycle hooks, and Transition, Teleport, Suspense and KeepAlive."
+        }
       ]
     },
     {
@@ -24,9 +27,15 @@
       "repository": "https://github.com/vuejs-ai/skills.git",
       "root": "skills",
       "include": [
-        "vue-best-practices",
+        {
+          "name": "vue-best-practices",
+          "description": "Use before planning or building a Vue 3 app or feature, with or without Nuxt: a workflow for component boundaries, data flow, composables and state, then performance once behavior is correct. Prefers the Composition API with `<script setup>` and TypeScript."
+        },
         "vue-debug-guides",
-        "vue-router-best-practices",
+        {
+          "name": "vue-router-best-practices",
+          "description": "Use when adding routes or navigation guards with Vue Router 4 or 5: async guards without `next()`, redirect loops, components that keep stale data when only the params change, and `beforeRouteEnter` without `this`."
+        },
         "vue-testing-best-practices"
       ]
     },

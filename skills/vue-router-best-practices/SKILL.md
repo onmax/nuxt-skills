@@ -1,6 +1,6 @@
 ---
 name: vue-router-best-practices
-description: "Vue Router 4 patterns, navigation guards, route params, and route-component lifecycle interactions."
+description: "Use when adding routes or navigation guards with Vue Router 4 or 5: async guards without `next()`, redirect loops, components that keep stale data when only the params change, and `beforeRouteEnter` without `this`."
 license: MIT
 ---
 
