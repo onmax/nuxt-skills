@@ -18,6 +18,7 @@
     "@vite-hub/cms": "https://pkg.pr.new/vite-hub/vitehub/@vite-hub/cms@ccf65749c55a9b3f498f4868c81ee3a58c71f9dc",
     "@vite-hub/content": "https://pkg.pr.new/vite-hub/vitehub/@vite-hub/content@ccf65749c55a9b3f498f4868c81ee3a58c71f9dc",
     "@vite-hub/docs": "https://pkg.pr.new/vite-hub/vitehub/@vite-hub/docs@ccf65749c55a9b3f498f4868c81ee3a58c71f9dc",
+    "@vite-hub/kv": "https://pkg.pr.new/vite-hub/vitehub/@vite-hub/kv@ccf65749c55a9b3f498f4868c81ee3a58c71f9dc",
     "comark": "0.9.0",
     "comark-ui": "0.12.2",
     "nuxt": "npm:nuxt-nightly@5.0.0-2611052317-a04317f",
