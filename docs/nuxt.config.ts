@@ -18,6 +18,7 @@ export default defineNuxtConfig({
       { label: 'nuxt-skills on GitHub', icon: 'i-simple-icons-github', to: 'https://github.com/onmax/nuxt-skills' },
       { label: 'nuxt-skill-hub on npm', icon: 'i-simple-icons-npm', to: 'https://npmx.dev/package/nuxt-skill-hub' },
     ],
+    banner: 'nuxt-skills is discontinued and no longer gets updates. The Install page says how to remove it.',
     seoAudit: 'error',
     // Off: readers who comment need to sign in, and the site has no Auth yet.
     comments: false,
