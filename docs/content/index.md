@@ -6,6 +6,10 @@ seo:
   title: nuxt-skills, agent skills for Nuxt and Vue
 ---
 
+::warning
+nuxt-skills is discontinued. More than 100 agent runs in [nuxt-evals](https://nuxt-evals.onmax.me/timeline) show the skills no longer improve coding with frontier models, so I've stopped maintaining them. This site stays up to read. [Remove nuxt-skills](/getting-started/install#remove-nuxt-skills) says how to take it out of your projects.
+::
+
 Coding agents learned Nuxt from old code. They mix Nuxt 3 and Nuxt 4, guess module options, and miss what changed last month. A skill is a folder of Markdown that the agent reads before it writes code, so it follows the current docs instead of what it remembers.
 
 nuxt-skills is a set of those skills for Nuxt, Vue, and their ecosystem, and a Nuxt module that picks the right ones for your project.

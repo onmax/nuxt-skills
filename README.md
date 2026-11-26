@@ -1,3 +1,6 @@
+> [!WARNING]
+> **nuxt-skills is discontinued.** For 18 days I ran [nuxt-evals](https://nuxt-evals.onmax.me/timeline), more than 100 agent runs on Nuxt and Vue apps. With skills loaded, Opus 5.5 and GPT-6.2 Sol scored lower in 3 of 4 cases, and Opus cost about twice as much per run. The results show the skills no longer improve coding with frontier models, so I've stopped maintaining them. This repository and [nuxt-skill.onmax.me](https://nuxt-skill.onmax.me) stay up to read. [Remove nuxt-skills](#remove-nuxt-skills) says how to take it out of your projects.
+
 <p align="center">
   <img src="https://raw.githubusercontent.com/onmax/nuxt-skills/main/.github/nuxt-skills.webp" alt="Nuxt Skills" width="100%">
   <br>
@@ -22,6 +25,43 @@
   </a>
 </p>
 
+## Remove nuxt-skills
+
+| You installed it with                         | Remove it with                                                                                                           |
+| --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| The Claude Code plugin                        | `/plugin uninstall nuxt-skills@nuxt-skills`, then `/plugin marketplace remove nuxt-skills`                               |
+| The Codex plugin                              | `codex plugin remove nuxt-skills@nuxt-skills`, then `codex plugin marketplace remove nuxt-skills`                        |
+| `npx skills add onmax/nuxt-skills`            | `npx skills remove onmax/nuxt-skills`, with `-g` if you installed them globally                                          |
+| `npx skills add https://nuxt-skill.onmax.me/` | `npx skills remove nuxt`, with `-g` if you installed it globally                                                         |
+| A copy by hand                                | Delete the folders you copied, such as `skills/nuxt/`, from `.agents/`, `.claude/`, `.codex/` or your agent's own folder |
+| The `nuxt-skill-hub` module                   | The steps below                                                                                                          |
+
+To remove `nuxt-skill-hub` from a Nuxt project:
+
+1. Remove `'nuxt-skill-hub'` from `modules` in `nuxt.config.ts`, and the `skillHub` options if you set any.
+2. Remove the package from `package.json`, for example with `npm uninstall nuxt-skill-hub`.
+3. Delete the skill folder it wrote, named `nuxt-<your package name>` or `nuxt`, from `.agents/skills/`, `.claude/skills/` or your agent's skills folder. Windsurf keeps it in `.codeium/windsurf/rules/`.
+4. If the setup added a hint to `AGENTS.md` or `CLAUDE.md`, delete the lines from `<!-- nuxt-skill-hub:start -->` to `<!-- nuxt-skill-hub:end -->`.
+
+### Get bundled skills from their source
+
+Many skills here were copies from other repositories. Install them from there instead:
+
+- `nuxt-ui`: [nuxt/ui](https://github.com/nuxt/ui/tree/v4/skills/nuxt-ui)
+- `nuxt-better-auth`: [nuxt-modules/better-auth](https://github.com/nuxt-modules/better-auth/tree/main/docs/public/.well-known/skills/nuxt-better-auth)
+- `comark`: [comarkdown/comark](https://github.com/comarkdown/comark/tree/main/docs/skills/comark)
+- `regle`: [victorgarciaesgi/regle](https://github.com/victorgarciaesgi/regle/tree/main/skills/regle)
+- `arkenv`: [yamcodes/arkenv](https://github.com/yamcodes/arkenv/tree/v1/skills/arkenv)
+- `eve`: [vercel/eve](https://github.com/vercel/eve/tree/main/skills/eve)
+- `nanime`: [astraldev/nanime](https://github.com/astraldev/nanime/tree/main/skills/nanime)
+- `nuxt-protokit`: [websideproject/nuxt-protokit](https://github.com/websideproject/nuxt-protokit/tree/main/.claude/skills/nuxt-protokit)
+- `nuxt-users`: [rrd108/nuxt-users](https://github.com/rrd108/nuxt-users/tree/main/skills/nuxt-users)
+- `selaras`: [sewadahapp/selaras](https://github.com/sewadahapp/selaras/tree/master/skills/selaras)
+- `yapyak`: [yapyak/yapyak](https://github.com/yapyak/yapyak/tree/main/skills/yapyak)
+- `vueuse-functions`: [vueuse/skills](https://github.com/vueuse/skills/tree/main/skills/vueuse-functions)
+- `vue`, `nuxt`, `nitro`, `pinia`, `vite`, `vitest`, `unocss`: [antfu/skills](https://github.com/antfu/skills/tree/main/skills)
+- `vue-best-practices`, `vue-debug-guides`, `vue-router-best-practices`, `vue-testing-best-practices`: [vuejs-ai/skills](https://github.com/vuejs-ai/skills/tree/main/skills)
+
 > [!NOTE]
 > **Sponsored by [Cactus](https://usecactus.app/for-coding-agents?utm_source=github&utm_medium=readme&utm_campaign=nuxt_skills_cactus_test)**
 >
@@ -33,68 +73,11 @@
 
 - [Vite Doctor](https://vite-doctor.onmax.me/): Catch framework bugs in Nuxt, Vue, Nitro, and Vite before code review.
 
-## Installation
-
-```bash
-npx skills add onmax/nuxt-skills
-```
-
-The [`skills`](https://www.npmjs.com/package/skills) CLI auto-detects your installed agents and provides an interactive picker. Use `-g` for global (user-wide) or `-y` to install all skills.
-
-Works with Claude Code, Cursor, Codex, OpenCode, GitHub Copilot, Antigravity, Roo Code, and more.
-
-### Claude Code Marketplace
-
-An alternative for Claude Code users:
-
-```bash
-# Add marketplace
-/plugin marketplace add onmax/nuxt-skills
-
-# Install Nuxt Skills
-/plugin install nuxt-skills@nuxt-skills
-```
-
-Claude Code installs Nuxt Skills as one plugin and dynamically discovers all included skill entries.
-
-### Codex plugin marketplace
-
-Install the Codex plugin from this repository's marketplace source:
-
-```bash
-codex plugin marketplace add onmax/nuxt-skills
-codex plugin add nuxt-skills@nuxt-skills
-```
-
-See the [Codex plugin manifest](.codex-plugin/plugin.json) and [marketplace source](https://github.com/onmax/nuxt-skills) for the published metadata.
-
-### Manual Installation
-
-Clone the repository and copy skill folders to your agent's skills directory:
-
-| Agent       | Project path       | Global path                 |
-| ----------- | ------------------ | --------------------------- |
-| Claude Code | `.claude/skills/`  | `~/.claude/skills/`         |
-| Cursor      | `.cursor/skills/`  | `~/.cursor/skills/`         |
-| Codex       | `.codex/skills/`   | `~/.codex/skills/`          |
-| OpenCode    | `.opencode/skill/` | `~/.config/opencode/skill/` |
-| Copilot     | `.github/skills/`  | —                           |
-
-### Nuxt projects
-
-The [`nuxt-skill-hub`](packages/nuxt-skill-hub) module writes one Nuxt skill into each detected agent's project folder on `nuxt prepare`:
-
-```bash
-npx nuxi module add nuxt-skill-hub
-```
-
-The skill routes to Nuxt rule packs, the Vue guide, and a skill for each installed module. A module's own skill wins. Otherwise the module uses the matching skill from this repository, such as `nuxthub` for `@nuxthub/core` or `pinia` for `@pinia/nuxt`. Skills update when you update the package. Set `skillHub: false` in `nuxt.config.ts` to turn it off.
-
 ## Skills
 
 The complete skill list, including provenance links for every bundled or hand-authored skill, is maintained in the generated [skill catalog](#skill-catalog) below.
 
-The `nuxt-modules` skill includes [template dependency guidance](skills/nuxt-modules/references/template-dependencies.md) covering restart behavior and targeted regeneration, also consumed by Nuxt Skill Hub. Install it with `npx skills add onmax/nuxt-skills --skill nuxt-modules`.
+The `nuxt-modules` skill includes [template dependency guidance](skills/nuxt-modules/references/template-dependencies.md) covering restart behavior and targeted regeneration, also consumed by Nuxt Skill Hub.
 
 ## How Skills Work
 
@@ -125,20 +108,6 @@ nuxt-skills/
 ├── .claude-plugin/         # Claude Code manifest and marketplace metadata
 └── .codex-plugin/          # Codex compatibility manifest
 ```
-
-## Automated Maintenance
-
-Skills are kept up-to-date via GitHub Actions:
-
-| Workflow                        | Schedule              | Purpose                                                                                             |
-| ------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------- |
-| **update-skills.yml**           | Weekly (Monday)       | Regenerates reka-ui docs from upstream                                                              |
-| **skill-maintenance.yml**       | Biweekly (1st & 15th) | Claude analyzes upstream changelogs, creates PRs if updates needed                                  |
-| **bundle-ecosystem-skills.yml** | Weekly (Monday)       | Replaces configured local skills with upstream ecosystem copies, validates them, and pushes changes |
-
-The maintenance workflow uses [claude-code-action](https://github.com/anthropics/claude-code-action) to intelligently detect breaking changes, new features, and deprecations from upstream sources.
-
-The ecosystem bundle is configured in [`ecosystem-skills.json`](ecosystem-skills.json). It records the upstream repositories and skill names included in the Claude and Codex plugin. `ecosystem-skills.lock.json` records the exact source revisions used for each bundle.
 
 ## Nuxt module skill discovery
 

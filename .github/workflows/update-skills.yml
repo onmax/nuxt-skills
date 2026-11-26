@@ -1,8 +1,6 @@
 name: Update Skills
 
 on:
-  schedule:
-    - cron: '0 6 * * 1' # Weekly on Monday at 6am UTC
   workflow_dispatch: # Manual trigger
 
 permissions:

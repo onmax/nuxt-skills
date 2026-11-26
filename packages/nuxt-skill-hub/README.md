@@ -1,3 +1,6 @@
+> [!WARNING]
+> **nuxt-skill-hub is discontinued.** For 18 days I ran [nuxt-evals](https://nuxt-evals.onmax.me/timeline), more than 100 agent runs on Nuxt and Vue apps. With skills loaded, Opus 5.5 and GPT-6.2 Sol scored lower in 3 of 4 cases, and Opus cost about twice as much per run. The results show the skills no longer improve coding with frontier models, so I've stopped maintaining this module and [nuxt-skills](https://github.com/onmax/nuxt-skills). This repository and [nuxt-skill.onmax.me](https://nuxt-skill.onmax.me) stay up to read. [Remove nuxt-skill-hub](#remove-nuxt-skill-hub) says how to take it out of your project.
+
 <p align="center">
   <img src="https://nuxt-skill.onmax.me/og/readme-banner.png" alt="Nuxt Skill Hub: teach your AI agent the Nuxt way" width="100%">
 </p>
@@ -17,19 +20,16 @@
 
 **[nuxt-skill.onmax.me](https://nuxt-skill.onmax.me)**
 
-## Install
+## Remove nuxt-skill-hub
 
-For agents:
+1. Remove `'nuxt-skill-hub'` from `modules` in `nuxt.config.ts`, and the `skillHub` options if you set any.
+2. Remove the package from `package.json`, for example with `npm uninstall nuxt-skill-hub`.
+3. Delete the skill folder it wrote, named `nuxt-<your package name>` or `nuxt`, from `.agents/skills/`, `.claude/skills/` or your agent's skills folder. Windsurf keeps it in `.codeium/windsurf/rules/`.
+4. If the setup added a hint to `AGENTS.md` or `CLAUDE.md`, delete the lines from `<!-- nuxt-skill-hub:start -->` to `<!-- nuxt-skill-hub:end -->`.
 
-```bash
-npx skills add https://nuxt-skill.onmax.me/
-```
+If you installed the hosted skill with `npx skills add https://nuxt-skill.onmax.me/`, remove it with `npx skills remove nuxt`, adding `-g` if you installed it globally.
 
-For Nuxt projects:
-
-```bash
-npx nuxi module add nuxt-skill-hub
-```
+Module skills it copied, such as Nuxt UI's, live in each module's own repository. [nuxt-skills lists where each one comes from](https://github.com/onmax/nuxt-skills#get-bundled-skills-from-their-source).
 
 Use [Doctor](https://vite-doctor.onmax.me/) to check AI-written Nuxt changes for Nuxt, Vue, Nitro, and Vite issues before review.
 

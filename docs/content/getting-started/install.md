@@ -1,9 +1,32 @@
 ---
 title: Install
-description: Install nuxt-skills as a Claude Code or Codex plugin, with the skills CLI, or as a Nuxt module.
+description: nuxt-skills is discontinued. How to remove the Claude Code or Codex plugin, skills from the skills CLI, and the nuxt-skill-hub module.
 icon: i-lucide-download
 navigation.order: 2
 ---
+
+::warning
+nuxt-skills is discontinued and no longer gets updates. Remove it with the steps below.
+::
+
+## Remove nuxt-skills
+
+| You installed it with | Remove it with |
+| --- | --- |
+| The Claude Code plugin | `/plugin uninstall nuxt-skills@nuxt-skills`, then `/plugin marketplace remove nuxt-skills` |
+| The Codex plugin | `codex plugin remove nuxt-skills@nuxt-skills`, then `codex plugin marketplace remove nuxt-skills` |
+| `npx skills add onmax/nuxt-skills` | `npx skills remove onmax/nuxt-skills`, with `-g` if you installed them globally |
+| `npx skills add https://nuxt-skill.onmax.me/` | `npx skills remove nuxt`, with `-g` if you installed it globally |
+| A copy by hand | Delete the folders you copied, such as `skills/nuxt/`, from `.agents/`, `.claude/`, `.codex/` or your agent's own folder |
+
+To remove the `nuxt-skill-hub` module from a Nuxt project:
+
+1. Remove `'nuxt-skill-hub'` from `modules` in `nuxt.config.ts`, and the `skillHub` options if you set any.
+2. Remove the package from `package.json`, for example with `npm uninstall nuxt-skill-hub`.
+3. Delete the skill folder it wrote, named `nuxt-<your package name>` or `nuxt`, from `.agents/skills/`, `.claude/skills/` or your agent's skills folder. Windsurf keeps it in `.codeium/windsurf/rules/`.
+4. If the setup added a hint to `AGENTS.md` or `CLAUDE.md`, delete the lines from `<!-- nuxt-skill-hub:start -->` to `<!-- nuxt-skill-hub:end -->`.
+
+Many skills here were copies from other repositories. The [README](https://github.com/onmax/nuxt-skills#get-bundled-skills-from-their-source) lists where to get each one.
 
 ## Plugin
 
